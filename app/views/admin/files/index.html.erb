@@ -1,0 +1,41 @@
+<% content_for :title, 'Files' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        'Files'
+      ]} %>
+
+      <h2>Files</h2>
+
+      <%= form_tag({action: :create}, multipart: true) do %>
+        <%= file_field_tag 'file' %><br>
+        <%= submit_tag 'Upload', class: 'btn btn-primary' %>
+      <% end %><br>
+
+      <ul>
+      <% @files.each do |file| %>
+        <% path = "/uploads/election/file/" + @election.id.to_s + "/" + file[:filename] %>
+        <li>
+          <a href="<%= path %>" target="_blank"><%= file[:filename] %></a>
+          (<%= number_to_human_size(file[:size]) %>)<br>
+          Path: <%= path %><br>
+
+          <!-- <%= file[:ctime].in_time_zone(@election.time_zone).strftime('%A, %B %e, %Y %l:%M %p %Z') %><br> -->
+
+          <% if ['.jpg', '.jpeg', '.png', '.gif'].include?(File.extname(file[:filename]).downcase) %>
+            <a href="<%= path %>" target="_blank"><img src="<%= path %>" style="max-width: 400px;"></a><br>
+          <% end %>
+
+          <a href="<%= admin_election_file_path(election_id: @election.id, id: URI.escape(file[:filename])) %>"
+             data-method="delete" data-confirm="Are you sure you want to delete this file?">Delete...</a>
+          <br><br>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

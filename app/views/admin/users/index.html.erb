@@ -1,0 +1,72 @@
+<% content_for :title, 'Users' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+      <% if @election %>
+        <%= render partial: 'shared/admin_toolbar', locals: {items: [
+          @election,
+          'Users'
+        ]} %>
+      <% else %>
+        <%= render partial: 'shared/admin_toolbar', locals: {items: ['Users']} %>
+      <% end %>
+
+      <h2>Users</h2>
+
+      <div>
+        <a href="<%= url_for(action: :new) %>">Add a new user</a>
+      </div>
+
+      <% if @election  # User list of an election. Only admins of that election (and superadmins) can see this page. %>
+        <% if !@admin_users.empty? %>
+          <h3>Admins</h3>
+          <%= render partial: 'shared/users_index', locals: {users: @admin_users, election: @election} %>
+        <% end %>
+
+        <% if !@volunteer_users.empty? %>
+          <h3>Volunteers</h3>
+          <%= render partial: 'shared/users_index', locals: {users: @volunteer_users, election: @election} %>
+        <% end %>
+      <% else  # User list of every election. Only superadmins can see this page. %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Email address</th>
+              <th>Status</th>
+              <th>Already confirmed?</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.username %></td>
+                <td>
+                  <% if user.is_superadmin %>
+                    Superadmin<br>
+                  <% end %>
+                  <% user.election_users.each do |election_user| %>
+                    <%= election_user.status.capitalize %>
+                    (<a href="<%= admin_election_users_path(election_user.election) %>"><%= election_user.election.name %></a>)<br>
+                  <% end %>
+                </td>
+                <td>
+                  <%= user.confirmed %>
+                  <% if !user.confirmed %>
+                    <br><a href="<%= resend_confirmation_admin_user_path(user) %>">Resend confirmation</a>
+                  <% end %>
+                </td>
+                <td>
+                  <a href="<%= edit_admin_user_path(user) %>">Edit</a> |
+                  <a href="<%= admin_user_path(user) %>" data-method="delete" data-confirm="Are you sure you want to delete this user?">Delete</a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email address</th>
+      <th>Already confirmed?</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td>
+          <%= user.confirmed %>
+          <% if !user.confirmed %>
+            <br><a href="<%= resend_confirmation_admin_election_user_path(election_id: election.id, id: user.id) %>">Resend confirmation</a>
+          <% end %>
+        </td>
+        <td>
+          <a href="/admin/elections/<%= election.id %>/users/<%= user.id %>/edit">Edit</a> |
+          <a href="/admin/elections/<%= election.id %>/users/<%= user.id %>/election_user_destroy" data-method="delete" data-confirm="Are you sure you want to delete this user?">Delete</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

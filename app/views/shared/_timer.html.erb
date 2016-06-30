@@ -1,0 +1,55 @@
+<% if real_voting? && conf[:timeout] && conf[:timeout] != 0 %>
+  <div class="modal" id="timeoutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <span style="font-size: 16px;">
+            <%= t('general.timeout.body').html_safe %>
+          </span>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary btn-lg" data-dismiss="modal"><%= t('general.timeout.continue_button').html_safe %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var timer = null;
+
+    function exit() {
+      window.location.href = "<%= url_for(action: :exit) %>";
+    }
+
+    function warn() {
+      $('#timeoutModal').modal();
+      timer = setTimeout(exit, 30 * 1000);
+    }
+
+    function resetTimer() {
+      if ($('#timeoutModal').hasClass('in')) {
+        $('#timeoutModal').modal('hide');
+      }
+      clearTimeout(timer);
+      timer = setTimeout(warn, <%= conf[:timeout] %> * 1000);
+    }
+
+    resetTimer();
+
+    if (window.addEventListener) {
+      window.addEventListener('mousemove', resetTimer);
+      window.addEventListener('keypress', resetTimer);
+      window.addEventListener('scroll', resetTimer);
+    } else {
+      window.attachEvent('onmousemove', resetTimer);
+      window.attachEvent('onkeypress', resetTimer);
+      window.attachEvent('onscroll', resetTimer);
+    }
+
+    $('#timeoutModal').on('hidden.bs.modal', function (e) {
+      resetTimer();
+    })
+  })();
+  </script>
+<% end %>

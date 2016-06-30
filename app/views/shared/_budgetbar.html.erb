@@ -1,0 +1,67 @@
+<% content_for :head do %>
+<style>
+#budgetbar-offset {
+  margin-top: -40px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #budgetbar-offset {
+    margin-top: 0;
+  }
+  #projects {
+    margin-top: 60px;
+  }
+}
+
+#budgetbar-text {
+  font-size: 20px;
+  color: #ccc;
+}
+
+#budgetbar-text .money {
+  color: white;
+}
+
+#budgetbar-text .remaining-money {
+  color: #a1ff00;
+}
+
+#budgetbar-progress {
+  background-color: white;
+  pointer-events: auto;
+}
+
+#budgetbar-progress .progress-bar {
+  border-right: 1px #f5f5f5 solid;
+}
+
+#budgetbar-progress .progress-bar:last-child {
+  border-right: none;
+}
+
+#budgetbar-progress .progress-bar:hover {
+  background-color: #3fb83f;
+}
+
+.budgerbar-thumb {
+  max-width: 160px;
+}
+</style>
+<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="padding: 0 30px;">
+      <div id="budgetbar-offset">
+        <span id="budgetbar-text">
+          <%= t('approval.budgetbar.text',
+                total: '<span class="money">$<span id="budgetbar-total">0</span></span>',
+                budget: '<span class="money">$' + number_with_delimiter(@election.budget) + '</span>').html_safe %><br>
+          <span id="budgetbar-description"></span>
+        </span>
+        <div class="progress" id="budgetbar-progress"></div>
+      </div>
+    </div>
+  </div>
+</div>

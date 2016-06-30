@@ -1,0 +1,77 @@
+<% content_for :title, 'Codes: New' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        ['Codes', admin_election_code_batches_path(@election)],
+        'New'
+      ]} %>
+
+      <h2>Generate new codes</h2>
+
+      <%= form_for(:code_batch, url: {action: :create}, html: {class: 'form-horizontal'}) do |f| %>
+        <div class="form-group">
+          <%= f.label :n_codes, 'Number of codes', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-9">
+            <%= f.text_field :n_codes, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Format</label>
+          <div class="col-sm-9">
+            <div class="radio">
+              <label>
+                <%= f.radio_button :format, 'normal', checked: true, onclick: 'changeFormat();' %> Normal (7 digits of numbers and lowercase letters, excluding o, 0, 1, l, and q.)
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <%= f.radio_button :format, 'access_codes', onclick: 'changeFormat();' %> Access codes (10 digits of numbers. Optionally with a prefix.)
+                <%= f.text_field :access_code_prefix, id: 'access_code_prefix', style: 'width:150px', placeholder: 'Prefix', class: 'form-control' %>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <%= f.radio_button :format, 'test_codes', onclick: 'changeFormat();' %> Test codes ("_test" followed by a number.)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <% if current_user.superadmin? %>
+          <h2>Or import codes</h2>
+
+          <div class="form-group">
+            <%= f.label :import_file, 'Text file', class: 'col-sm-3 control-label' %>
+            <div class="col-sm-9">
+              <div><%= f.file_field :import_file, accept: 'text/plain' %></div>
+              <div class="checkbox">
+                <label><%= f.check_box :personal_id %> Personal IDs (If the code the voter enters has been used, this option will tell them to contact us in case there is an error.)</label>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= f.submit 'Generate', class: 'btn btn-primary' %>
+      <% end %>
+
+      <script>
+      function changeFormat() {
+        var prefix_field = document.getElementById('access_code_prefix');
+        var format = document.querySelector('input[name="code_batch[format]"]:checked').value;
+        if (format == "access_codes") {
+          prefix_field.disabled = false;
+        } else {
+          prefix_field.disabled = true;
+          prefix_field.value = "";
+        }
+      }
+      changeFormat();
+      </script>
+    </div>
+  </div>
+</div>

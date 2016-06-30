@@ -1,0 +1,213 @@
+<style>
+.panel {
+  background-color: #fafafa;
+}
+
+.panel-body {
+  font-size: 16px;
+}
+
+input[type='text'], input[type='tel'], input[type='email'] {
+  height: 40px;
+  font-size: 16px;
+}
+
+#birth_year, #ward {
+  height: 40px;
+  font-size: 16px;
+}
+</style>
+
+<script>
+function validate() {
+  <% if @election.config[:voter_registration_questions].include?('age_verify') && filled_by_voter %>
+    if (!document.getElementById('age_verify').checked) {
+      alert("Please check the checkbox that says \"<%=j strip_tags(t('registration.verify_age_label').html_safe) %>\"");
+      return false;
+    }
+  <% end %>
+
+  return true;
+}
+</script>
+
+<%= form_for(@record, url: submit_url, html: {class: 'form-horizontal', onsubmit: 'return validate();'}) do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <% if !@record.errors.full_messages.empty? %>
+        <p class="text-danger">Please fix the following errors:</p>
+        <ul>
+          <% @record.errors.full_messages.each do |msg| %>
+            <li class="text-danger"><%= msg.html_safe %>.</li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= t('registration.instructions').html_safe %>
+
+      <!-- Name -->
+      <% if @election.config[:voter_registration_questions].include?('name') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="name">* <%= t('registration.name') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :name, id: 'name', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- First name -->
+      <% if @election.config[:voter_registration_questions].include?('first_name') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="first_name">* <%= t('registration.first_name') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :first_name, id: 'first_name', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Middle initial -->
+      <% if @election.config[:voter_registration_questions].include?('middle_initial') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="middle_initial"><%= t('registration.middle_initial') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :middle_initial, id: 'middle_initial', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Last name -->
+      <% if @election.config[:voter_registration_questions].include?('last_name') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="last_name">* <%= t('registration.last_name') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :last_name, id: 'last_name', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Suffix -->
+      <% if @election.config[:voter_registration_questions].include?('suffix') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="suffix"><%= t('registration.suffix') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :suffix, id: 'suffix', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Phone number -->
+      <% if @election.config[:voter_registration_questions].include?('phone_number') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="phone_number"><%= t('registration.phone_number') %></label>
+          <div class="col-sm-9">
+            <%= f.telephone_field :phone_number, id: 'phone_number', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Address -->
+      <% if @election.config[:voter_registration_questions].include?('address') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="address">* <%= t('registration.address') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :address, id: 'address', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- City -->
+      <% if @election.config[:voter_registration_questions].include?('city') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="city">* <%= t('registration.city') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :city, id: 'city', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- ZIP Code -->
+      <% if @election.config[:voter_registration_questions].include?('zip_code') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="zip_code">* <%= t('registration.zip_code') %></label>
+          <div class="col-sm-9">
+            <%= f.text_field :zip_code, id: 'zip_code', class: 'form-control', autocomplete: 'off' %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Birth year -->
+      <% if @election.config[:voter_registration_questions].include?('birth_year') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="birth_year">* <%= t('registration.birth_year') %></label>
+          <div class="col-sm-9">
+            <%= f.select(:birth_year, 1910..(Time.now.year - 11), {include_blank: true}, {id: 'birth_year', class: 'form-control'}) %>
+          </div>
+        </div>
+      <% end %>
+
+       <!-- Date of birth -->
+      <% if @election.config[:voter_registration_questions].include?('date_of_birth') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">* <%= t('registration.date_of_birth') %></label>
+          <div class="col-sm-9">
+            <%= f.hidden_field :date_of_birth, id: 'date_of_birth' %>
+
+            <div class="form-inline">
+              <%= select_date(nil, {prefix: 'dob', include_blank: true,
+                start_year: Time.now.year - ((@election.config[:maximum_voting_age] != 0) ? @election.config[:maximum_voting_age] : 100) - 1,
+                end_year: Time.now.year - ((@election.config[:minimum_voting_age] != 0) ? @election.config[:minimum_voting_age] : 11)
+                }, {class: 'form-control', onchange: 'changeDateOfBirth()'}) %>
+            </div>
+
+            <script>
+            function changeDateOfBirth() {
+              var day = document.getElementById('dob_day').value;
+              var month = document.getElementById('dob_month').value;
+              var year = document.getElementById('dob_year').value;
+              document.getElementById('date_of_birth').value = month + "/" + day + "/" + year;
+            }
+
+            var dateComponents = document.getElementById('date_of_birth').value.split("/");
+            if (dateComponents.length == 3) {
+              document.getElementById('dob_day').value = dateComponents[1];
+              document.getElementById('dob_month').value = dateComponents[0];
+              document.getElementById('dob_year').value = dateComponents[2];
+            }
+            </script>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Ward -->
+      <% if @election.config[:voter_registration_questions].include?('ward') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="ward">* <%= t('registration.ward') %></label>
+          <div class="col-sm-9">
+            <%= f.select(:ward, ['1', '2', '3', '4', '5', [t('registration.ward_do_not_know'), 'Do not know']], {include_blank: true}, {id: 'ward', class: 'form-control'}) %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Email -->
+      <% if @election.config[:voter_registration_questions].include?('email') %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="email"><%= t('registration.email') %></label>
+          <div class="col-sm-9">
+            <%= f.email_field :email, id: 'email', class: 'form-control', autocomplete: 'off' %>
+            <p><%= t('registration.email_instruction_label').html_safe %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Verify age -->
+      <% if @election.config[:voter_registration_questions].include?('age_verify') && filled_by_voter %>
+        <div class="checkbox">
+          <label><input type="checkbox" name="age_verify" id="age_verify"><%= t('registration.verify_age_label').html_safe %></label>
+        </div><br>
+      <% end %>
+
+      <%= f.submit t('registration.proceed_button'), class: 'btn-lg btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+<br>

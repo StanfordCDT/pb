@@ -1,0 +1,93 @@
+<% content_for :title, 'Voters' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 main">
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        'Voters'
+      ]} %>
+
+<h2>Voters</h2>
+
+<style>
+.void td {
+  text-decoration: line-through;
+}
+.void td > span {
+  color: #999;
+}
+.void td:last-child {
+  text-decoration: none;
+}
+</style>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Voter ID</th>
+      <th>Auth.</th>
+      <th>Auth. ID</th>
+      <th>Data</th>
+      <th>Location</th>
+      <th>Created at</th>
+      <th>IP address</th>
+      <th>Stage</th>
+      <th>Voter Registration Record</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @voters.each do |voter| %>
+      <tr id="voter<%= voter.id %>"<%= ' class="void"'.html_safe if voter.void %>>
+        <td><span><%= voter.id %></span></td>
+        <td><span><%= voter.authentication_method %></span></td>
+        <td><span><%= voter.authentication_id %></span></td>
+        <td><span><a href="<%= admin_election_voter_path(election_id: @election.id, id: voter.id) %>">View</a></span></td>
+        <td><span><%= voter.location.name if !voter.location.nil? %></span></td>
+        <td><span><%= voter.created_at.in_time_zone(@election.time_zone).strftime('%a, %B %e, %Y %l:%M %p %Z') %></span></td>
+        <td><span><%= voter.ip_address %></span></td>
+        <td><span><%= voter.stage %></span></td>
+        <td><span><%= voter.voter_registration_record.data_before_type_cast if !voter.voter_registration_record.nil?  %></span></td>
+        <td class="actions">
+          <%# FIXME: Don't repeat yourself. %>
+          <% if !voter.void %>
+            <a href="javascript:setVoid(<%= voter.id %>,1)" data-method="patch" data-confirm="Are you sure you want to void this vote?">Void</a>
+          <% else %>
+            <a href="javascript:setVoid(<%= voter.id %>,0)" data-method="patch" data-confirm="Are you sure you want to unvoid this vote?">Unvoid</a>
+          <% end %>
+          <% if voter.authentication_id.start_with?('_test')  # Only allow deleting test votes for now. %>
+            | <a href="<%= admin_election_voter_path(election_id: @election.id, id: voter.id) %>" data-method="delete" data-confirm="Are you sure you want to remove this vote? This action cannot be undone.">Remove</a>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+function loadRow(voter_id, voter_void) {
+  if (voter_void) {
+    $('#voter' + voter_id).addClass('void');
+    $('#voter' + voter_id + ' .actions').html('<a href="javascript:setVoid(' + voter_id + ',0)" data-method="patch" data-confirm="Are you sure you want to unvoid this vote?">Unvoid</a>');
+  } else {
+    $('#voter' + voter_id).removeClass('void');
+    $('#voter' + voter_id + ' .actions').html('<a href="javascript:setVoid(' + voter_id + ',1)" data-method="patch" data-confirm="Are you sure you want to void this vote?">Void</a>');
+  }
+}
+
+function setVoid(voter_id, voter_void) {
+  $.ajax({
+    dataType: 'json',
+    method: 'PATCH',
+    url: '/admin/elections/<%= @election.id %>/voters/' + voter_id,
+    data: {'void': voter_void}
+  }).done(function(msg) {
+    loadRow(voter_id, voter_void);
+  });
+}
+</script>
+
+    </div>
+  </div>
+</div>

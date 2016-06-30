@@ -1,0 +1,239 @@
+<p>
+  <a href="<%= url_for(format: :csv, table: 'comparison_ratios') %>">Export ratios</a>,
+  <a href="<%= url_for(format: :csv, table: 'comparison_wins') %>">Export wins</a>,
+  <a href="<%= url_for(format: :csv, table: 'comparison_ties') %>">Export ties</a>,
+  <a href="<%= url_for(format: :csv, table: 'comparison_losses') %>">Export losses</a><br>
+  <% if is_allowed_to_see_voter_data? %>
+    <a href="<%= url_for(format: :csv, table: 'comparisons_individual') %>">Export individual votes into Excel</a>
+  <% end %>
+</p>
+
+<p>
+  <label class="radio-inline">
+    <input type="radio" name="comparison_values" value="ratios" checked="checked"> Ratios
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="comparison_values" value="counts"> Counts
+  </label>
+</p>
+
+<div id="comparison"></div>
+
+ <!-- Analytics table for comparison -->
+<h4>Comparisons - Vote counts</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comparison_voters_by_date.each do |v| %>
+      <tr>
+        <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
+        <td><%= number_with_delimiter(v.vote_count) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td><b>Total</b></td>
+      <td><%= number_with_delimiter(@comparison_total) %> </td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+#comparison-table td {
+  border: 1px #ddd solid;
+}
+
+#comparison-table .cell {
+  min-width: 26px;
+  max-width: 26px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#comparison-table tr:first-child td {
+  text-align: center;
+  padding: 3px;
+}
+
+#comparison-table td:first-child {
+  padding: 3px;
+}
+
+#comparison-table tr:first-child td.tooltip-inner {
+  display: hidden;
+}
+
+.comparison-table-tooltip .tooltip-inner {
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  max-width: none;
+}
+</style>
+
+<script type="text/javascript">
+var comparison_data = <%= @comparison_data.to_json %>;
+var comparison_ordered_indices = <%= @comparison_ordered_indices.to_json %>;
+
+(function() {
+  var table = document.createElement('table');
+  table.setAttribute("id", "comparison-table");
+  var tbody = document.createElement('tbody');
+
+  { // first row
+    var tr = document.createElement('tr');
+
+    { // first column of the first row
+      var td = document.createElement('td');
+      tr.appendChild(td);
+    }
+
+    for (var j = 0; j < comparison_ordered_indices.length; ++j) {
+      var td = document.createElement('td');
+      td.textContent = j + 1;
+      td.setAttribute('data-title', projects[comparison_ordered_indices[j]].title);
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+
+  for (var i = 0; i < comparison_ordered_indices.length; ++i) {
+    var tr = document.createElement('tr');
+
+    { // first column of each row is the row number + project's title
+      var td = document.createElement('td');
+      td.textContent = (i + 1) + ' ' + projects[comparison_ordered_indices[i]].title;
+      tr.appendChild(td);
+    }
+
+    for (var j = 0; j < comparison_ordered_indices.length; ++j) {
+      var td = document.createElement('td');
+      td.className = 'cell';
+      if (i != j) {
+        var counts = comparison_data[comparison_ordered_indices[i]][comparison_ordered_indices[j]];
+        td.setAttribute('data-title', 'wins :' + counts[2] + ' &nbsp; ' +
+                                      'ties: ' + counts[1] + ' &nbsp; ' +
+                                      'losses: ' + counts[0]);
+      } else {
+        td.textContent = '-';
+        td.style.color = 'transparent';
+      }
+      td.addEventListener("mouseover", (function(i, j) {
+        return function () { mouseOver(i, j); };
+      })(i, j));
+      td.addEventListener("mouseout", mouseOut);
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+
+  document.getElementById('comparison').appendChild(table);
+
+  $('#comparison-table .cell').tooltip({
+    animation: false,
+    container: 'body',
+    html: true,
+    placement: 'top'
+  });
+
+  $('#comparison-table tr:first-child td').tooltip({
+    animation: false,
+    container: 'body',
+    html: true,
+    placement: 'top',
+    template: '<div class="tooltip comparison-table-tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'
+  });
+
+  function mouseOut() {
+    $('#comparison-table tr:first-child td, #comparison-table td:first-child').css('backgroundColor', 'transparent');
+    $('#comparison-table tr:first-child td').tooltip('hide');
+  }
+
+  function mouseOver(i, j) {
+    mouseOut();
+    table.rows[i + 1].cells[0].style.backgroundColor = '#ddd';
+    table.rows[0].cells[j + 1].style.backgroundColor = '#ddd';
+    $(table.rows[0].cells[j + 1]).tooltip('show');
+  }
+
+  function populateTable(table, f) {
+    var i, j;
+    for (i = 0; i < projects.length; ++i) {
+      for (j = 0; j < projects.length; ++j) {
+        f(comparison_ordered_indices[i], comparison_ordered_indices[j], table.rows[i + 1].cells[j + 1]);
+      }
+    }
+  }
+
+  var fillRatios = function() {
+    function ratioColor(x) {  // 0 = red, 0.5 = white, 1 = green
+      if (isNaN(x)) // when divided by zero
+        return 'white';
+      var color0 = '255,0,0', color1 = '0,255,0';
+      if (x <= 0.5)
+        return 'rgba(' + color0 + ',' + ((0.5 - x) * 2) + ')';
+      return 'rgba(' + color1 + ',' + ((x - 0.5) * 2) + ')';
+    }
+
+    populateTable(table, function(i, j, td) {
+      if (i != j) {
+        var counts = comparison_data[i][j];
+        var wins_ratio = Math.round((counts[2] + 0.5 * counts[1]) / (counts[0] + counts[1] + counts[2]) * 100) / 100;
+        td.textContent = isNaN(wins_ratio) ? '-' : wins_ratio.toString().replace(/^0\./, '.'); // change '0.xx' to '.xx'
+        td.style.backgroundColor = ratioColor(wins_ratio);
+        td.style.color = isNaN(wins_ratio) ? 'transparent' : 'black';
+      }
+    });
+  }
+
+  var fillCounts = function() {
+    var max_n = 0;
+    var i, j;
+    for (i = 0; i < projects.length; ++i) {
+      for (j = 0; j < projects.length; ++j) {
+        var counts = comparison_data[i][j];
+        max_n = Math.max(max_n, counts[0] + counts[1] + counts[2]);
+      }
+    }
+
+    populateTable(table, function (i, j, td) {
+      if (i != j) {
+        var counts = comparison_data[i][j];
+        var n = counts[0] + counts[1] + counts[2];
+        td.textContent = n;
+        td.style.backgroundColor = 'rgba(70, 130, 180, ' + (n/max_n) + ')';
+        td.style.color = 'black';
+      }
+    });
+  }
+
+  window.reloadComparisonTable = function() {
+    var values = $("input[name='comparison_values']:checked").val();
+    if (values == 'ratios') {
+      fillRatios();
+    } else if (values == 'counts') {
+      fillCounts();
+    }
+  }
+
+  $("input[name='comparison_values']:radio").change(function() {
+    reloadComparisonTable();
+  });
+
+  reloadComparisonTable();
+})();
+
+if (window.reloadCallbacks) {
+  reloadCallbacks.push(function(data) {
+    comparison_data = data.comparison_data;
+    reloadComparisonTable();
+  });
+}
+</script>

@@ -1,0 +1,59 @@
+<style>
+.adjustable-cost-project-table .progress {
+  margin-bottom: 0;
+  background-color: #e4e4e4;
+}
+</style>
+
+<% @adjustable_cost_projects.each do |project| %>
+  <h2><%= project[:title] %></h2>
+
+  <% if !is_public && !is_allowed_to_see_exact_results? %>
+    <p class="alert alert-warning" role="alert">
+      <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
+    </p>
+  <% end %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="50%">Metric</th>
+        <th width="50%">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Average cost</td>
+        <td><%= project[:average_cost].nil? ? 'n/a' : cost_with_delimiter(project[:average_cost].round) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="adjustable-cost-project-table table table-striped">
+    <thead>
+      <tr>
+        <th width="50%">Selected Cost</th>
+        <th width="50%">Votes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% project[:vote_counts].sort.reverse.each do |cost, vote_count| %>
+        <tr>
+          <td><%= cost_with_delimiter(cost) %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success"
+                style="width: <%= if project[:max_vote_count] == 0
+                                    0
+                                  else
+                                    vote_count * 100 / project[:max_vote_count]
+                                  end %>%;">
+                <%= vote_count %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table><br>
+<% end %>

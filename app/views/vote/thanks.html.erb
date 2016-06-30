@@ -1,0 +1,26 @@
+<% content_for :title, t('thanks.title') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <% if voting_machine? || conf[:allow_remote_voting] %>
+        <div style="height: 100px;"></div>
+        <p class="lead text-center"><%= t('thanks.description.real').html_safe %></p>
+        <center>
+          <a href="<%= url_for(action: :done) %>" class="btn btn-primary btn-lg"><%= t('thanks.exit') %></a>
+        </center><br><br>
+      <% else %>
+        <div style="height: 60px;"></div>
+        <p class="lead"><%= t('thanks.description.demo').html_safe %></p>
+        <%= t('election.info').html_safe %>
+        <center>
+          <a href="<%= url_for(action: :index) %>" class="btn btn-primary btn-lg"><%= t('thanks.exit') %></a>
+        </center><br><br>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/timer' %>

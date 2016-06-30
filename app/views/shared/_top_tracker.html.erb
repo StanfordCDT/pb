@@ -1,0 +1,21 @@
+<% content_for :head do %>
+  <style>
+  #tracker {
+    font-size: 16px;
+    text-align: center;
+  }
+  #tracker-count {
+    font-weight: bold;
+    font-size: 34px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  #tracker-count.exceed {
+    color: red;
+  }
+  </style>
+<% end %>
+
+<div id="tracker">
+  <%= t('approval.tracker.text', count: '<span id="tracker-count">0 / 0</span>').html_safe %>
+</div>

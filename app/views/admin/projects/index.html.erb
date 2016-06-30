@@ -1,0 +1,106 @@
+<% content_for :title, 'Projects' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        'Projects'
+      ]} %>
+
+      <style>
+      #project-list .handle {
+        cursor: move;
+        float: right;
+      }
+      #project-list a.header {
+        color: inherit;
+      }
+      </style>
+
+      <h2>Projects</h2>
+
+      <p><a href="<%= new_admin_election_project_path(@election) %>">Add a new project</a></p>
+
+      <% if !@projects.empty? %>
+        <p>
+          You can reorder projects by dragging the <span class="glyphicon glyphicon-menu-hamburger"></span> icons
+          and then clicking "Save Order."
+        </p>
+
+        <ul id="project-list" class="list-group">
+          <% @projects.each do |project| %>
+            <li class="list-group-item" data-project-id="<%= project.id %>">
+              <span class="glyphicon glyphicon-menu-hamburger handle"></span>
+
+              <a href="javascript:$(&quot;#project<%= project.id %>&quot;).toggle()" class="header">
+                <b><%= project.number + '.' if !project.number.blank? %> <%= project.title %></b>
+                <% if !project.adjustable_cost? %>
+                  (<%= cost_with_delimiter(project.cost) %>)
+                <% else %>
+                (<%= cost_with_delimiter(project.cost_min) %> - <%= cost_with_delimiter(project.cost) %>)
+                <% end %>
+              </a>
+
+              <div id="project<%= project.id %>" style="display: none;">
+                <p><%= project.description %></p>
+                <p>
+                  <% if !project.details.blank? %>
+                    <b>Details:</b> <%= project.details %><br>
+                  <% end %>
+                  <% if !project.address.blank? %>
+                    <b>Location:</b> <%= project.address.html_safe %></b><br>
+                  <% end %>
+                  <b>Category:</b> <%= project.category ? project.category.name : 'Uncategorized' %><br>
+                  <% if project.image? %>
+                    <img src="<%= project.image.url %>" style="max-width: 300px;" />
+                  <% end %>
+                </p>
+
+                <a href="<%= edit_admin_election_project_path(election_id: @election.id, id: project.id) %>"><span class="glyphicon glyphicon-pencil"></span> Edit</a> &nbsp; | &nbsp;
+                <a href="<%= admin_election_project_path(election_id: @election.id, id: project.id) %>"
+                  data-method="delete" data-confirm="Are you sure you want to delete this project? This project and the votes that it has received will be removed permanently.">
+                  <span class="glyphicon glyphicon-remove"></span> Delete...
+                </a>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+
+        <button class="btn btn-primary" id="save-order-button" disabled="disabled">Save Order</button>
+        <br><br><br><br>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery.ui.touch-punch.min.js"></script>
+<script>
+var $saveOrderButton = $('#save-order-button');
+
+$('#project-list').sortable({
+  handle: ".handle",
+  update: function(event, ui) {
+    $saveOrderButton.prop('disabled', false);
+  }
+});
+
+$saveOrderButton.click(function() {
+  var projectIDs = $('#project-list').sortable('toArray', {attribute: "data-project-id"});
+  $saveOrderButton.text('Saving Order...');
+  $saveOrderButton.prop('disabled', true);
+  $.ajax({
+    method: 'PATCH',
+    url: '/admin/elections/<%= @election.id %>/projects/reorder',
+    data: {project_ids: projectIDs}
+  }).done(function() {
+  }).fail(function() {
+    $saveOrderButton.prop('disabled', false);
+    alert("An error has occurred.")
+  }).always(function() {
+    $saveOrderButton.text('Save Order');
+  });
+});
+</script>

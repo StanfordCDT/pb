@@ -1,0 +1,717 @@
+<script type="text/javascript">
+// --------------------------------- Utilities ---------------------------------
+
+// Script for animating background-color
+// from http://stackoverflow.com/questions/190560/jquery-animate-backgroundcolor
+(function(d){d.each(["backgroundColor","color"],
+  function(f,e){d.fx.step[e]=function(g){if(!g.colorInit){g.start=c(g.elem,e);g.end=b(g.end);
+    g.colorInit=true}g.elem.style[e]="rgb("+[Math.max(Math.min(parseInt((g.pos*(g.end[0]-
+      g.start[0]))+g.start[0]),255),0),Math.max(Math.min(parseInt((g.pos*(g.end[1]-g.start[1]))+
+    g.start[1]),255),0),Math.max(Math.min(parseInt((g.pos*(g.end[2]-g.start[2]))+g.start[2]),
+      255),0)].join(",")+")"}});function b(f){var e;if(f&&f.constructor==Array&&f.length==3)
+  {return f}if(e=/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec(f))
+  {return[parseInt(e[1]),parseInt(e[2]),parseInt(e[3])]}
+  if(e=/rgb\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*\)/.exec(f))
+    {return[parseFloat(e[1])*2.55,parseFloat(e[2])*2.55,parseFloat(e[3])*2.55]}
+  if(e=/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/.exec(f)){return[parseInt(e[1],16)
+    ,parseInt(e[2],16),parseInt(e[3],16)]}
+    if(e=/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/.exec(f)){
+      return[parseInt(e[1]+e[1],16),parseInt(e[2]+e[2],16),parseInt(e[3]+e[3],16)]}
+      if(e=/rgba\(0, 0, 0, 0\)/.exec(f)){return a.transparent}return a[d.trim(f).toLowerCase()]}
+        function c(g,e){var f;do{f=d.css(g,e);if(f!=""&&f!="transparent"||d.nodeName(g,"body"))
+      {break}e="backgroundColor"}while(g=g.parentNode);return b(f)}var a={transparent:[255,255,255]}})(jQuery);
+
+function numberWithDelimiter(val) {
+  while (/(\d+)(\d{3})/.test(val.toString())) {
+    val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  }
+  return val;
+}
+
+// --------------------------------- Views ---------------------------------
+
+function initializeViews() {
+  for (var i = 0; i < projects.length; ++i) {
+    (function(i) {
+      costs[i] = 0;
+      ranks[i] = 0;
+      var project = projects[i];
+      var id = project.id;
+      var data = project.parsed_data;
+
+      // Add a click listener to each button
+      $('#select-button' + id).click(function() {
+        selectProject(id);
+      });
+      $('#remove-button' + id).click(function() {
+        removeProject(id);
+      });
+
+      // Initialize the sliders
+      if (isAdjustableCostProject(id) && usesSlider(id)) {
+        var slider = $("#slider" + id);
+        slider.slider({
+          formater: function(value) {
+            return '$' + numberWithDelimiter(value);
+          }
+        });
+        slider.slider().on('slide', function(e){
+          var value = slider.data('slider').getValue();
+          var realCostMax = Math.floor((budget - getTotal() + costs[i]) / project.cost_step) * project.cost_step;
+          costs[i] = Math.max(project.cost_min, Math.min(realCostMax, value));
+          updateViews();
+        });
+      }
+
+      // Draw a map
+      if (typeof google != 'undefined') {
+        if ($('#project-map-' + id).length) {
+          drawMap('project-map-' + id, JSON.parse(project.map_geometry));
+        }
+
+        if (isAdjustableCostProject(id) && data && data.hasOwnProperty('ward_center')) {
+          var templates = {
+            street_resurfacing_count: {
+              one: '<%= t("approval.map.street_resurfacing_count.one") %>',
+              other: '<%= t("approval.map.street_resurfacing_count.other") %>'
+            },
+            alley_resurfacing_count: {
+              one: '<%= t("approval.map.alley_resurfacing_count.one") %>',
+              other: '<%= t("approval.map.alley_resurfacing_count.other") %>'
+            },
+            apron_resurfacing_count: {
+              one: '<%= t("approval.map.apron_resurfacing_count.one") %>',
+              other: '<%= t("approval.map.apron_resurfacing_count.other") %>'
+            },
+            sidewalk_repairing_count: {
+              one: '<%= t("approval.map.sidewalk_repairing_count.one") %>',
+              other: '<%= t("approval.map.sidewalk_repairing_count.other") %>'
+            },
+          };
+          var gmap = new GMap('project-map-canvas' + id, 'project-map-info' + id, data, 14, templates);
+          adjustCostCallbacks[i] = function(cost) {
+            // $('#map-wrapper').css('display', (cost == 0) ? 'none' : 'block');
+            gmap.renderMap(cost);
+          };
+        }
+      }
+
+      // Code to show the photo gallery for the project images
+      <% if conf[:approval][:show_photos] %>
+        var imageURL = project.image_url;
+        if (imageURL != null) {
+          // Add the main image to the gallery
+          var galleryItems = [];
+          galleryItems.push({src: imageURL});
+
+          // Add extra images if they exist
+          if (data && data.hasOwnProperty("images_gallery")) {
+            var urlPrefix = imageURL.substring(0, imageURL.lastIndexOf("/") + 1);
+            var extraImages = data["images_gallery"];
+            for (var j = 0; j < extraImages.length; ++j) {
+              galleryItems.push({src: urlPrefix + extraImages[j]});
+            }
+          }
+
+          // Generate the magnific popup
+          $('#project-image-' + id).magnificPopup({
+            items: galleryItems,
+            gallery: {
+              enabled: true,
+              navigateByImgClick: true,
+              preload: [0, 1]
+            },
+            image: {
+              tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+            },
+            type: 'image',
+            closeBtnInside: false,
+            closeOnContentClick: (galleryItems.length == 1)
+          });
+        }
+      <% end %>
+    })(i);
+  }
+
+  // Initialize the acknowledgment checkbox, if it exists.
+  if ($('#ack-box').length) {
+    $('#ack-box').click(function() {
+      var $button = $('#submitModal .submit');
+      if ($('#ack-box').is(':checked')) {
+        $button.removeClass('disabled2');
+      } else {
+        $button.addClass('disabled2');
+      }
+    });
+
+    $('#form').submit(function(event) {
+      if (!$('#ack-box').is(':checked')) {
+        $frame = $('#ack-frame');
+        $frame.addClass('flashing');
+        setTimeout(function() {
+          $frame.removeClass('flashing');
+          setTimeout(function() {
+            $frame.addClass('flashing');
+            setTimeout(function() {
+              $frame.removeClass('flashing');
+            }, 400);
+          }, 400);
+        }, 400);
+        event.preventDefault();
+      }
+    });
+
+    $('#submitModal').on('show.bs.modal', function (e) {
+      $('#ack-box').prop('checked', false);
+      $('#submitModal .submit').addClass('disabled2');
+    });
+  }
+
+  // Initialze YouTube popups
+  if ($('.popup-youtube').length) {
+    $('.popup-youtube').magnificPopup({
+      disableOn: 700,
+      type: 'iframe',
+      iframe: {
+        patterns: {
+          youtube_short: {
+            index: 'youtu.be/',
+            id: 'youtu.be/',
+            src: '//www.youtube.com/embed/%id%?autoplay=1'
+          }
+        }
+      },
+      mainClass: 'mfp-fade',
+      removalDelay: 160,
+      preloader: false,
+
+      fixedContentPos: false
+    });
+  }
+}
+
+function updateViews() {
+  updateList();
+
+  // For the ranking interface
+  if (isRankingEnabled())
+    updateRankedList();
+
+  // Disable the submit button until the selected project count is at least what we specify.
+  checkSelectedProjectCount();
+
+  updateSidebar();
+  updateBudgetbar();
+  updateTracker();
+  updateModal();
+
+  for (var i = 0; i < projects.length; ++i) {
+    $('input[name="project[' + projects[i].id + ']"]').val(costs[i]);
+    $('input[name="project_rank[' + projects[i].id + ']"]').val(ranks[i]);
+  }
+}
+
+function updateList() {
+  var total = getTotal();
+  for (var i = 0; i < projects.length; ++i) {
+    var id = projects[i].id;
+    var $select_button = $('#select-button' + id);
+    var $remove_button = $('#remove-button' + id);
+
+    if (isProjectSelected(id)) {
+      $select_button.html("<span class='glyphicon glyphicon-ok'></span> <%=j t('approval.select_button.selected').html_safe %>");
+      $select_button.removeClass('select-button');
+      $select_button.addClass('btn-success');
+
+      $remove_button.show();
+      $remove_button.tooltip({
+        html: true,
+        title: "<span style='font-size: 16px;'><%=j t('approval.remove_button_tooltip') %></span>",
+        animation: false,
+        container: 'body',
+        placement: 'top'
+      });
+    } else {
+      if (canSelectProject(id)) {
+        $select_button.html("<%=j t('approval.select_button.select').html_safe %>");
+        $select_button.removeAttr('disabled');
+      } else {
+        if (has_n_project_limit && selectedProjectIDs.length >= max_n_projects) {
+          $select_button.html("<span style='font-size: 16px'>" + "<%=j t('approval.select_button.more_projects') %>".replace('%{max_n_projects}', max_n_projects) + "</span>");
+        } else {
+          $select_button.html("<%=j t('approval.select_button.not_enough_money').html_safe %>");
+        }
+        $select_button.attr('disabled', 'disabled');
+      }
+      $select_button.addClass('select-button');
+      $select_button.removeClass('btn-success');
+
+      $remove_button.hide();
+      if ($remove_button.tooltip) {
+        $remove_button.tooltip('hide'); // need to call 'hide' before 'destroy' -- a bug in Chrome
+        $remove_button.tooltip('destroy');
+      }
+
+      if (canSelectProject(id) || isMandatoryProject(id)) {
+        $('#project-cell'+id).removeClass('disabled');
+      } else {
+        $('#project-cell'+id).addClass('disabled');
+      }
+    }
+
+    // Update the sliders or radio buttons for the adjustable cost projects
+    if (isAdjustableCostProject(id)) {
+      if (usesSlider(id)) {
+        if (isProjectSelected(id)) {
+          $("#slider-wrapper" + id).show();
+          //$("#slider" + id).slider('setRealMax', Math.min(projects[i].cost, budget - total + costs[i]));
+          $("#slider" + id).slider('setValue', costs[i]);
+          $("#slider-value" + id).text("$" + numberWithDelimiter(costs[i]));
+        } else {
+          $("#slider-wrapper" + id).hide();
+        }
+      } else {
+        updateRadioButtons(id);
+      }
+    }
+
+    $('#project-cell'+id).stop();
+    $('#project-cell'+id).css('background-color', backgroundColorForProject(id));
+  }
+}
+
+// Update the ranking list for the ranking interface whenever a project is selected or removed
+function updateRankedList() {
+  // Get the list for the selected projects
+  var projectList = document.getElementById("selected-project-list");
+  var rank = projectList.childNodes.length + 1;
+  for (var i = 0; i < projects.length; ++i) {
+    var id = projects[i].id;
+    // Add a newly selected project to the list
+    if (isProjectSelected(id) && ranks[i] == 0) {
+      // Update the rank for the project
+      ranks[i] = rank;
+
+      // Create the list item for the selected project
+      var projectItem = document.createElement("li");
+      projectItem.id = "selected-project-" + id;
+      projectItem.className = "list-group-item";
+
+      // Add a span tag for displaying the rank
+      var projectRank = document.createElement("span");
+      projectRank.className = "list-item-rank";
+      projectRank.innerHTML = ranks[i];
+
+      // Add the project title to the list item
+      projectItem.innerHTML = projectString(projects[i]);
+
+      // Add the handle to drag the projects for reordering
+      var projectHandle = document.createElement("span");
+      projectHandle.className = "glyphicon glyphicon-sort handle";
+      projectItem.appendChild(projectRank);
+      projectItem.appendChild(projectHandle);
+      projectList.appendChild(projectItem);
+    }
+
+    // Remove a previously selected project from the list
+    if (ranks[i] != 0 && !isProjectSelected(id)) {
+      var projectItem = document.getElementById("selected-project-" + id);
+      projectList.removeChild(projectItem);
+
+      // Decrement the ranks of all projects with rank greater than the removed project
+      for (var j = 0; j < projects.length; ++j) {
+        if (ranks[j] > ranks[i]) {
+          ranks[j]--;
+          var projectId = projects[j].id;
+          var projectListItem = document.getElementById("selected-project-" + projectId);
+          projectListItem.getElementsByTagName("span")[0].innerHTML = ranks[j];
+        }
+      }
+
+      // Set rank of removed project to 0
+      ranks[i] = 0;
+    }
+  }
+
+  // Set the parameters
+  for (var i = 0; i < projects.length; ++i) {
+    $('input[name="project_rank[' + projects[i].id + ']"]').val(ranks[i]);
+  }
+}
+
+// Update the ranks on reordering in the ranking interface
+function updateRankings(projectRanks) {
+  for (var i = 0; i < projectRanks.length; ++i) {
+    // Update the rank of the project
+    var projectId = projectRanks[i].split("-")[2];
+    ranks[idToIndex[projectId]] = i + 1;
+
+    // Update the displayed rank
+    var projectListItem = document.getElementById(projectRanks[i]);
+    projectListItem.getElementsByTagName("span")[0].innerHTML = ranks[idToIndex[projectId]];
+  }
+
+  // Update the modal
+  updateModal();
+
+  // Update the parameters
+  for (var i = 0; i < projects.length; ++i) {
+    $('input[name="project_rank[' + projects[i].id + ']"]').val(ranks[i]);
+  }
+}
+
+function updateSidebar() {
+  for (var i = 0; i < projects.length; ++i) {
+    var id = projects[i].id;
+    // If there is a adjustable cost project
+    if (isMandatoryProject(id)) {
+      if (costs[i] > 0) {
+        $('#sidebar-item'+id).addClass('success');
+      } else {
+        $('#sidebar-item'+id).removeClass('success');
+      }
+    } else {
+      if (isProjectSelected(id)) {
+        $('#sidebar-item'+id).addClass('success');
+      } else {
+        $('#sidebar-item'+id).removeClass('success');
+        if (canSelectProject(id)) {
+          $('#sidebar-item'+id).removeClass('disabled');
+        } else {
+          $('#sidebar-item'+id).addClass('disabled');
+        }
+      }
+    }
+  }
+}
+
+function updateBudgetbar() {
+  var total = getTotal();
+  var cls = (total <= budget) ? 'success' : 'danger'; // TODO: use other colors
+  var budget2 = (total <= budget) ? budget : total;
+  var progressBarForProject = function(id) {
+    var width = costs[idToIndex[id]] / budget2 * 100;
+    if (width <= 0)
+      return '';
+    var photo_name = "";
+    var title = "<span style='font-size: 14px'>" + projects[idToIndex[id]].title;
+    var content = "<%=j t('approval.estimated_cost') %>: $" + numberWithDelimiter(costs[idToIndex[id]]) + "<br>" +
+      "<button type='button' class='btn btn-default btn-lg' class='remove-button" + id + "' style='outline: none;' onclick='removeProject(" + id + ")'><%=j t('approval.remove_button').html_safe %></button>" +
+      (photo_name ? ("<br><img src='/project_images/" + photo_name + "' class='budgerbar-thumb' />") : '') + "</span>";
+    return "<a class='progress-bar progress-bar-" + cls + "' " +
+      "style='width: " + width + "%;' data-toggle='popover' " +
+      "title=\"" + title + "\" data-content=\"" + content + "\" href='javascript:showProject(" + id + ")'>" +
+        //"<div style='background-color:white; width: 40px; height: 40px;'></div>" +
+        "</a>";
+  }
+
+  $('#budgetbar-total').text(numberWithDelimiter(total));
+
+  var s = "";
+  for (var i = 0; i < projects.length; ++i) {
+    if (isMandatoryProject(projects[i].id))
+      s += progressBarForProject(projects[i].id);
+  }
+  for (var i = 0; i < selectedProjectIDs.length; ++i) {
+    s += progressBarForProject(selectedProjectIDs[i]);
+  }
+
+  $('#budgetbar-progress').html(s);
+  $('#budgetbar-progress .progress-bar').popover({
+    animation: false,
+    html: true,
+    placement: 'bottom',
+    trigger: 'manual'
+  })
+  .on("mouseenter", function () {
+    var _this = this;
+    $(this).popover("show");
+    $(this).siblings(".popover").on("mouseleave", function () {
+      $(_this).popover('hide');
+    });
+  }).on("mouseleave", function () {
+    var _this = this;
+    setTimeout(function () {
+      if (!$(".popover:hover").length) {
+        $(_this).popover("hide")
+      }
+    }, 100);
+  });
+
+  var description = '';
+  if (total <= budget) {
+    // FIXME: say something else when total == budget
+    // FIXME: change the language if (has_n_project_limit && selectedProjectIDs.length >= max_n_projects)
+    description = "<%=j t('approval.budgetbar.under_budget').html_safe %>".replace('%{remaining_money}', "<span class='remaining-money'>$" + numberWithDelimiter(budget-total) + "</span>");
+  } else if (!has_budget_limit && (!has_n_project_limit || selectedProjectIDs.length < max_n_projects)) {
+    description = "<%=j t('approval.budgetbar.over_budget_but_can_add_projects').html_safe %>";
+  } else {
+    description = "<%=j t('approval.budgetbar.over_budget').html_safe %>";
+  }
+  $('#budgetbar-description').html(description);
+}
+
+function updateTracker() {
+  var n = selectedProjectIDs.length;
+  var trackerCount;
+  if (has_n_project_limit) {
+    trackerCount = "<%=j t('approval.tracker.x_out_of_y').html_safe %>".replace('%{x}', n).replace('%{y}', max_n_projects);
+  } else {
+    trackerCount = n;
+  }
+  $('#tracker-count').text(trackerCount);
+  if (has_n_project_limit && n > max_n_projects) {
+    $('#tracker-count').addClass('exceed');
+  } else {
+    $('#tracker-count').removeClass('exceed');
+  }
+  var trackerList = '<ul>';
+  for (var j = 0; j < selectedProjectIDs.length; ++j) {
+    var project = projects[idToIndex[selectedProjectIDs[j]]];
+    trackerList += "<li><a href='javascript:showProject(" + project.id + ")'>" + project.title + "</a></li>";
+  }
+  trackerList += '</ul>';
+  $('#tracker-list').html(trackerList);
+}
+
+function updateModal() {
+  if (has_budget_limit && getTotal() > budget) {
+    $('#submitModal .modal-title').html("<%=j t('approval.confirmation_over_limit.title').html_safe %>");
+    $('#confirmation-body').html("<%=j t('approval.confirmation_over_limit.over_budget_limit').html_safe %>");
+    $('#ack-frame').hide();
+    $('#submitModal .submit').hide();
+  } else if (has_n_project_limit && selectedProjectIDs.length > max_n_projects) {
+    $('#submitModal .modal-title').html("<%=j t('approval.confirmation_over_limit.title').html_safe %>");
+    $('#confirmation-body').html("<%=j t('approval.confirmation_over_limit.over_n_project_limit').html_safe %>"
+      .replace('%{n_projects}', selectedProjectIDs.length).replace('%{max_n_projects}', max_n_projects)
+      .replace('%{extra}', selectedProjectIDs.length - max_n_projects));
+    $('#ack-frame').hide();
+    $('#submitModal .submit').hide();
+  } else {
+    <% if conf[:approval][:categories_in_popups] %>
+      $('#submitModal .modal-title').html("<%=j t("#{current_action}.confirmation.title", category: @categories.first.name).html_safe %>");
+    <% else %>
+      $('#submitModal .modal-title').html("<%=j t("#{current_action}.confirmation.title").html_safe %>");
+    <% end %>
+
+    var summary_zero = "<%=j t("#{current_action}.confirmation.body.summary.zero").html_safe %>";
+    var summary_other = "<%=j t("#{current_action}.confirmation.body.summary.other").html_safe %>";
+    var item = "<%=j t("#{current_action}.confirmation.body.summary.item").html_safe %>";
+    var under_n_project_limit = "<%=j t("#{current_action}.confirmation.body.under_n_project_limit.limit").html_safe %>";
+    var under_n_project_limit_one = "<%=j t("#{current_action}.confirmation.body.under_n_project_limit.one").html_safe %>";
+    var under_n_project_limit_less = "<%=j t("#{current_action}.confirmation.body.under_n_project_limit.less").html_safe %>";
+    var warning = "<%=j t("#{current_action}.confirmation.body.warning").html_safe %>";
+
+    // For the mandatory projects.
+    var adjustable_cost_project_warning = "<%=j t("#{current_action}.adjustable_cost_project.not_adjusted_warning").html_safe %>";
+    var adjustable_cost_project_summary = '';
+
+    for (var i = 0; i < projects.length; ++i) {
+      if (!isMandatoryProject(projects[i].id))
+        continue;
+      var project = projects[i];
+      if (costs[i] > 0) {
+        adjustable_cost_project_summary += '<%=j t("#{current_action}.adjustable_cost_project.message").html_safe %>'
+          .replace('%{cost}', numberWithDelimiter(costs[i]))
+          .replace('%{project}', project.title) + '<br><br>';
+      } else {
+        adjustable_cost_project_summary += adjustable_cost_project_warning.replace('%{project}', project.title) + "<br><br>";
+      }
+    }
+
+    // If ranking is enabled, show the ranks
+    // Else have an unordered list
+    var projects_s = '';
+    if (isRankingEnabled()) {
+      // Sort the projects by rank
+      var rankedProjectIds = []
+      var minimumRank = 1;
+      while (minimumRank <= selectedProjectIDs.length) {
+        for (var j=0; j<selectedProjectIDs.length; ++j) {
+          if (ranks[idToIndex[selectedProjectIDs[j]]] == minimumRank) {
+            rankedProjectIds.push(selectedProjectIDs[j]);
+            minimumRank++;
+            break;
+          }
+        }
+      }
+
+      projects_s += '<ol>';
+      for (var j = 0; j < rankedProjectIds.length; ++j) {
+        var i = idToIndex[rankedProjectIds[j]];
+        var project = projects[i];
+        projects_s += '<li>' +
+          item.replace('%{cost}', numberWithDelimiter(costs[i]))
+          .replace('%{project}', project.title) + '</li>';
+      }
+      projects_s += '</ol>';
+    } else {
+      projects_s += '<ul>';
+      for (var j = 0; j < selectedProjectIDs.length; ++j) {
+        var i = idToIndex[selectedProjectIDs[j]];
+        var project = projects[i];
+        projects_s += '<li>' +
+          item.replace('%{cost}', numberWithDelimiter(costs[i]))
+          .replace('%{project}', project.title) + '</li>';
+      }
+      projects_s += '</ul>';
+    }
+
+    var summary = (selectedProjectIDs.length == 0) ? summary_zero : summary_other;
+    summary = summary.replace('%{projects}', projects_s);
+    var under_limit_warning = '';
+    if (has_n_project_limit && selectedProjectIDs.length < max_n_projects) {
+      if (selectedProjectIDs.length == 1) {
+        under_limit_warning += under_n_project_limit_one + ' ';
+      } else if (selectedProjectIDs.length > 0) {
+        under_limit_warning += under_n_project_limit_less.replace('%{count}', selectedProjectIDs.length) + ' ';
+      }
+      under_limit_warning += under_n_project_limit.replace('%{max_n_projects}', max_n_projects);
+    }
+
+    $('#confirmation-body').html(adjustable_cost_project_summary + ' ' + summary + ' ' + under_limit_warning + ' ' + warning);
+    $('#ack-frame').show();
+    $('#submitModal .submit').show();
+  }
+}
+
+function updateRadioButtons(id) {
+  if (!has_budget_limit || allow_selection_beyond_limits)
+    return;
+  var total = getTotal();
+  var budgetLeft = budget - total;
+  var index = idToIndex[id];
+  var project = projects[index];
+
+  var currentSelection = +$("input[name='project-adjustable-cost" + id + "']:checked").val();
+  var radioButtons = $("input[name='project-adjustable-cost" + id + "']");
+  for (var i = 0; i < radioButtons.length; ++i) {
+    var radioButton = radioButtons[i];
+    var costOption = +radioButton.value;
+    radioButton.disabled = (costOption - currentSelection > budgetLeft);
+  }
+}
+
+//------------------------- Code for the adjustable cost project -------------------------
+
+function adjustCost(id, cost) {
+  var i = idToIndex[id];
+  costs[i] = cost;
+  updateViews();
+  if (adjustCostCallbacks[i])
+    adjustCostCallbacks[i](cost);
+}
+
+function isAdjustableCostProject(id) {
+  return projects[idToIndex[id]].adjustable_cost;
+}
+
+function usesSlider(id) {
+  return projects[idToIndex[id]].uses_slider;
+}
+
+function isMandatoryProject(id) {
+  return projects[idToIndex[id]]['mandatory?'];
+}
+
+// --------------------------------- Utilities ---------------------------------
+
+function showProject(id) {
+  window.location.hash = "project" + id;
+  var $projectCell = $('#project-cell' + id);
+  $projectCell.css('background-color', '#cccccc');
+  $projectCell.animate({ backgroundColor: backgroundColorForProject(id)}, 'slow');
+}
+
+function projectString(project) {
+  if (<%= current_action == :ranking %>)
+    return project.title;
+  else
+    return project.title + " ($" + numberWithDelimiter(project.cost) + ")";
+}
+
+function projectMinimumCost(id) {
+  var project = projects[idToIndex[id]];
+  if (isAdjustableCostProject(id))
+    return project.cost_min;
+  return project.cost;
+}
+
+function isProjectSelected(id) {
+  return $.inArray(id, selectedProjectIDs) != -1; // IE 8 doesn't support .indexOf
+}
+
+function canSelectProject(id) {
+  if (allow_selection_beyond_limits)
+    return true;
+  if (has_budget_limit && getTotal() + projectMinimumCost(id) > budget)
+    return false;
+  if (has_n_project_limit && selectedProjectIDs.length >= max_n_projects)
+    return false;
+  return true;
+}
+
+function selectProject(id) {
+  if (isProjectSelected(id) || !canSelectProject(id) || isMandatoryProject(id))
+    return;
+  selectedProjectIDs.push(id);
+  var i = idToIndex[id];
+  costs[i] = projectMinimumCost(id);
+  updateViews();
+  return true;
+}
+
+function removeProject(id) {
+  var j = $.inArray(id, selectedProjectIDs);
+  if (j == -1)
+    return;
+  selectedProjectIDs.splice(j, 1);
+  var i = idToIndex[id];
+  costs[i] = 0;
+  updateViews();
+}
+
+function selectOrRemoveProject(id) {
+  window.location.hash = "project" + id;
+  if (!isProjectSelected(id))
+    selectProject(id);
+  else
+    removeProject(id);
+}
+
+function getTotal() {
+  var total = 0;
+  for (var i = 0; i < projects.length; ++i) {
+    total += costs[idToIndex[projects[i].id]];
+  }
+  return total;
+}
+
+function backgroundColorForProject(id) {
+  if (isMandatoryProject(id))
+    return '#ffffff';
+  // TODO: move this to CSS and make sure the animation still works
+  if (isProjectSelected(id))
+    return '#dff0d8';
+  if (!canSelectProject(id))
+    return '#eeeeee';
+  return '#ffffff';
+}
+
+function isRankingEnabled() {
+  return <%= conf[current_action][:project_ranking] %>;
+}
+
+function checkSelectedProjectCount() {
+  if (!has_n_project_limit || selectedProjectIDs.length >= min_n_projects) {
+    document.getElementById('submit-vote-button').disabled = false;
+  } else {
+    document.getElementById('submit-vote-button').disabled = true;
+  }
+}
+
+// --------------------------------- Views ---------------------------------
+
+initializeViews();
+updateViews();
+</script>

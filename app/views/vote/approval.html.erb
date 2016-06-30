@@ -1,0 +1,273 @@
+<% content_for :title, t(current_action.to_s + '.title') %>
+
+<% @y_offset = conf[current_action][:budgetbar] ? 57 : 0 %>
+
+<% if conf[current_action][:show_maps] %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_maps_api_key %>"></script>
+  <script type="text/javascript" src="/js/gmap.js"></script>
+<% end %>
+
+<link rel="stylesheet" href="/css/magnific-popup.css">
+<script src="/js/jquery.magnific-popup.min.js"></script>
+
+<% content_for :head do %>
+  <script type="text/javascript">
+  var projects = <%= @projects_json.to_json.html_safe %>;
+  var selectedProjectIDs = [];
+  var costs = new Array(projects.length);
+  var ranks = new Array(projects.length);
+  var has_budget_limit = <%= conf[current_action][:has_budget_limit] %>;
+  var has_n_project_limit = <%= conf[current_action][:has_n_project_limit] %>;
+  var budget = <%= @election.budget %>;
+  var max_n_projects = <%= conf[current_action][:max_n_projects] %>;
+  var min_n_projects = <%= conf[current_action][:min_n_projects] %>;
+  // For multiple approval pages, select the project limit from the project_limits array
+  <% if current_action == :approval && conf[:approval][:pages].length > 1 && conf[:approval][:project_limits][@current_subpage] %>
+    max_n_projects = <%= conf[:approval][:project_limits][@current_subpage] %>
+  <% end %>
+  var allow_selection_beyond_limits = <%= conf[current_action][:allow_selection_beyond_limits] %>;
+  var adjustCostCallbacks = new Array(projects.length);
+
+  var idToIndex = {};
+  for (var i = 0; i < projects.length; ++i) {
+    idToIndex[projects[i].id] = i;
+  }
+  </script>
+
+  <style>
+  #leftbar {
+    position: fixed;
+    width: 400px;
+    display: none;
+    top: <%= @y_offset + 50 %>px;
+    bottom: 0px;
+    padding: 20px 0;
+    overflow: auto;
+  }
+
+  #topbar {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    margin-top: -20px;
+    padding: 5px;
+    display: none;
+    background-color: #ddd;
+    z-index: 500;
+  }
+
+  div#projects ol {
+    font-size: 18px;
+  }
+  @media (min-width: 1000px) {
+    #leftbar {
+      display: block;
+    }
+    #projects.projects-with-leftbar {
+      padding-left: 400px;
+    }
+  }
+
+  @media (min-height: 500px) {
+    #topbar {
+      display: block;
+    }
+    #projects.projects-with-topbar {
+      padding-top: 50px;
+    }
+  }
+  </style>
+
+  <script src="/js/bootstrap-slider.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/slider.css">
+<% end %>
+
+<% content_for :navbar_links do %>
+  <% if real_voting? && (current_action == :approval || current_action == :ranking) %>
+    <li><a href="<%= url_for(action: :exit) %>"><%= t('navigation.exit') %></a></li>
+  <% end %>
+  <% if current_action == :knapsack %>
+    <li><a href="<%= url_for(next_page(:knapsack)) %>"><%= t('navigation.exit') %></a></li>
+  <% end %>
+  <% if conf[current_action][:show_help] %>
+    <li><a href="#" data-toggle="modal" data-target="#instructionModal"><%= t('navigation.help') %></a></li>
+  <% end %>
+<% end %>
+
+<% if conf[current_action][:budgetbar] %>
+  <% content_for :fixed do %>
+    <%= render 'shared/budgetbar' %>
+  <% end %>
+  <div style="height: <%= @y_offset %>px"></div>
+<% end %>
+
+<% if conf[current_action][:sidebar] || conf[current_action][:tracker] %>
+  <div id="leftbar">
+    <% if conf[current_action][:categories_in_sidebar] %>
+      <%= render 'shared/category_name_image' %>
+    <% end %>
+    <% if conf[current_action][:tracker] %>
+      <%= render 'shared/tracker' %>
+    <% end %>
+    <% if conf[current_action][:sidebar] %>
+      <%= render 'shared/sidebar' %>
+    <% end %>
+  </div>
+  <div class="container-fluid">
+    <div id="projects" class="projects-with-leftbar">
+      <%= render 'shared/project_list' %>
+    </div>
+  </div>
+<% elsif conf[current_action][:top_tracker] %>
+  <div id="topbar">
+    <%= render 'shared/top_tracker' %>
+  </div>
+  <div class="container-fluid">
+    <div class="col-md-10 col-md-offset-1">
+      <div id="projects" class="projects-with-topbar">
+        <%= render 'shared/project_list' %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div id="projects">
+          <%= render 'shared/project_list' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<style>
+.disabled2 { /* appears disabled, but allows clicking */
+  opacity: 0.65;
+  cursor: default;
+  outline: none;
+}
+
+.disabled2:hover {
+  background-color: #428bca;
+  outline: none;
+}
+
+.flashing {
+  border: 4px red solid !important;
+  background-color: #ffcccc !important;
+}
+</style>
+
+<div>
+  <form action="<%= @submit_url %>" method="post" id="form">
+    <% @projects_json.each do |project| %>
+      <input type="hidden" name="project[<%= project['id'] %>]" id="project<%= project['id'] %>" value="0" />
+      <input type="hidden" name="project_rank[<%= project['id'] %>]" id="project-rank<%= project['id'] %>" value="0" />
+    <% end %>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+    <div class="modal fade" id="submitModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- In case the option to display category in popups is enabled -->
+          <% if conf[current_action][:categories_in_popups] %>
+            <div class="modal-header">
+                <h4 class="modal-title"><%= t(current_action.to_s + '.confirmation.title', category: @categories.first.name) %></h4>
+            </div>
+            <div class="modal-body" style="font-size: 16px;">
+              <!-- Add the categories names and images to the confirmation modal -->
+              <%= render "shared/category_name_image" %>
+
+              <div id="confirmation-body"></div>
+              <% if conf[current_action][:checkbox_acknowledgment] %>
+                <div class="checkbox" style="font-size: 18px; border: 4px white solid; background-color: #eeeeee; padding-left: 30px;" id="ack-frame">
+                  <label>
+                    <input type="checkbox" id="ack-box" style="border: 1px black solid;" />
+                      <%= raw t('approval.confirmation.body.checkbox', category: @categories.first.name) %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+            <div class="modal-footer" style="margin-top: 0;">
+              <button type="button" class="btn btn-default btn-lg" data-dismiss="modal"><%= t('approval.confirmation.cancel') %></button>
+              <button type="submit" class="btn btn-primary btn-lg submit"><%= t('approval.confirmation.ok', category: @categories.first.name) %></button>
+            </div>
+
+          <!-- In case category does not need to be displayed in the popups -->
+          <% else %>
+            <div class="modal-header">
+              <h4 class="modal-title"><%= raw t(current_action.to_s + '.confirmation.title') %></h4>
+            </div>
+            <div class="modal-body" style="font-size: 16px;">
+              <div id="confirmation-body"></div>
+              <% if conf[current_action][:checkbox_acknowledgment] %>
+                <div class="checkbox" style="font-size: 18px; border: 4px white solid; background-color: #eeeeee; padding-left: 30px;" id="ack-frame">
+                  <label>
+                    <input type="checkbox" id="ack-box" style="border: 1px black solid;" />
+                      <%= raw t('approval.confirmation.body.checkbox') %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+            <div class="modal-footer" style="margin-top: 0;">
+              <button type="button" class="btn btn-default btn-lg" data-dismiss="modal"><%= t('approval.confirmation.cancel') %></button>
+              <button type="submit" class="btn btn-primary btn-lg submit"><%= t('approval.confirmation.ok') %></button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<% if conf[current_action][:show_popup] %>
+  <div class="modal" id="instructionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><%= raw real_voting? ? t("#{current_action}.popup.real.title") : t("#{current_action}.popup.demo.title") %></h4>
+        </div>
+        <div class="modal-body">
+          <!-- Add the categories names and images to the instructions modal -->
+          <% if conf[current_action][:categories_in_popups] %>
+            <%= render "shared/category_name_image" %>
+          <% end %>
+
+          <%= raw t(real_voting? ? "#{current_action}.popup.real.body" : "#{current_action}.popup.demo.body",
+            max_n_projects: (current_action == :approval && conf[:approval][:pages].length > 1 && conf[:approval][:project_limits][@current_subpage]) ? conf[:approval][:project_limits][@current_subpage] : conf[current_action][:max_n_projects],
+            budget: '$' + number_with_delimiter(@election.budget.to_i))
+          %>
+        </div>
+        <div class="modal-footer">
+          <% if current_action == :knapsack %>
+            <a href="<%= url_for(next_page(:knapsack)) %>" class="btn btn-default btn-lg"><%= t('knapsack.popup.real.exit') %></a>
+          <% end %>
+          <button class="btn btn-primary btn-lg" data-dismiss="modal"><%= t("#{current_action}.popup.real.ok") %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  $(document).ready(function() {
+    $('#instructionModal').modal({
+      keyboard: false,
+      backdrop: 'static'
+    });
+  });
+  </script>
+<% end %>
+
+
+<% if conf[current_action][:theme] && conf[current_action][:theme] != 0 %>
+  <% content_for :head do %>
+    <%= render 'shared/themes/theme_' + conf[current_action][:theme].to_s %>
+  <% end %>
+<% end %>
+
+
+<%# FIXME: This is bad. %>
+<%= render 'shared/approval_js' %>
+
+<%= render 'shared/timer' %>

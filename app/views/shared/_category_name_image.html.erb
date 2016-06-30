@@ -1,0 +1,32 @@
+<% content_for :head do %>
+  <style>
+  .category-title-name {
+    font-size: 24px;
+    padding-left: 32px;
+    font-weight: bold;
+    display: block;
+    color: inherit;
+  }
+
+  .category-title-image {
+    vertical-align: text-bottom;
+    display: block;
+    margin-bottom: 12px;
+    padding-left: 32px;
+    max-width: 150px;
+  }
+  </style>
+<% end %>
+
+<div id="category_name_image">
+  <% if conf[:categorized] %>
+    <center>
+    <% @categories.each do |category| %>
+      <% if category.image? %>
+        <img src="<%= category.image.url %>" class="category-title-image" />
+      <% end %>
+      <p class="category-title-name"><%= category.name %></p>
+    <% end %>
+    </center>
+  <% end %>
+</div>

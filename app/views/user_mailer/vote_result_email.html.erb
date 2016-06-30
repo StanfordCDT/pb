@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h2>Here is your vote result</h2>
+<ul>
+  <% @result.each do |project_title| %>
+    <li><%= project_title %></li>
+  <% end %>
+</ul>
+<p>Thank you for voting and have a great day!</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<% content_for :title, 'Convert to a voting machine' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <h2><%= @election.name %></h2>
+
+      <h3>Convert to a voting machine</h3>
+
+      <form action="<%= url_for(action: :post_to_voting_machine) %>" method="post">
+        <% if @locations.length > 0 %>
+          <p>Choose the current location:</p>
+          <% @locations.each do |location| %>
+            <div class="radio">
+              <label><input type="radio" name="location_id" value="<%= location.id %>" /> <%= location.name %></label>
+            </div>
+          <% end %>
+          <div class="radio">
+            <label><input type="radio" name="location_id" id="other_location_id" value="0" /> Other (please specify): </label>&nbsp;
+            <input type="text" name="other_location_name" id="other_location_name" placeholder="Enter location" />
+          </div>
+          <script>
+          $("input[name='location_id']:radio").change(function() {
+            var location_id = $("input[name='location_id']:checked").val();
+            if (location_id == 0) {
+              $('#other_location_name').focus();
+            } else {
+              $('#other_location_name').val('');
+            }
+          });
+          $('#other_location_name').keydown(function() {
+            $("#other_location_id").prop('checked', true);
+          });
+          </script>
+        <% else %>
+          <p>Please enter the current location:</p>
+          <p><input type="text" name="other_location_name" id="other_location_name" class="form-control" placeholder="Enter location" autofocus="autofocus" /></p>
+        <% end %>
+
+        <input type="submit" value="OK" class="btn btn-lg btn-primary" />
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      </form>
+
+    </div>
+  </div>
+</div>

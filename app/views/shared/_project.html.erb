@@ -1,0 +1,173 @@
+<% if @shuffled && conf[current_action][:show_numbers_on_top_when_shuffled] %>
+  <p class="project-number-button"><%= t('general.project_string').html_safe %> #<%= project.number %></p>
+<% end %>
+
+<%# Div for showing a map for the project %>
+<% if conf[:approval][:show_maps] && !project.map_geometry.blank? %>
+  <div class="project-map" id="project-map-<%= project.id %>"></div>
+<% end %>
+
+<p class="project-title lead">
+  <% if conf[:approval][:show_numbers] && (!@shuffled || conf[:approval][:show_numbers_when_shuffled]) %>
+    <%= project.number %>.
+  <% end %>
+  <% if conf[:approval][:show_cost_in_title] %>
+    <%= project.title.html_safe %> (<%= cost_with_delimiter(project.cost) %>)
+  <% else %>
+    <%= project.title.html_safe %>
+  <% end %>
+</p>
+
+<p class="project-description">
+  <% if @shuffled && conf[current_action][:show_numbers_in_description_when_shuffled] %>
+    <i>(<%= t('general.project_string').html_safe %> #<%= project.number %>)</i>
+  <% end %>
+  <%= project.description.html_safe %>
+  <% if !project.details.blank? %>
+    <a href="#" data-toggle="modal" data-target="#detailModal<%= project.id %>"><%= t('approval.read_details') %></a>
+  <% end %>
+  <% if !project.video_url.blank? %>
+    <br><a class="popup-youtube" href='<%= project.video_url %>'><%= t('approval.youtube_video') %></a>
+  <% end %>
+</p>
+
+<% if conf[current_action][:show_cost] && (!project.adjustable_cost? || project.uses_slider?) %>
+  <%# We don't need to show costs for adjustable cost projects with radio buttons because the costs are already on the radio buttons. %>
+  <p class="project-cost">
+    <b><%= t('approval.estimated_cost') %></b>:
+    <% if project.adjustable_cost? %>
+      <%= cost_with_delimiter(project.cost_min) %> -
+      <%= cost_with_delimiter(project.cost) %>
+    <% else %>
+      <%= cost_with_delimiter(project.cost) %>
+    <% end %>
+  </p>
+<% end %>
+
+<% if project.adjustable_cost? && project.uses_slider? %>
+  <div id="slider-wrapper<%= project.id %>" class="slider-wrapper">
+    <p>
+      <b>Currently Selected Cost</b>:
+      <span id="slider-value<%= project.id %>"></span>
+    </p>
+    <p>
+      <input id="slider<%= project.id %>" data-slider-tooltip="show" type="text" data-slider-min="0" data-slider-max="<%= project.cost %>" data-slider-step="<%= project.cost_step %>" data-slider-value="<%= project.cost_min %>" />
+    </p>
+  </div>
+<% end %>
+
+<% if !project.address.blank? %>
+  <p class="project-location"><b><%= t('approval.location') %></b>: <%= project.address.html_safe %></p>
+<% end %>
+<% if !project.committee.blank? %>
+  <p class="project-committee"><b><%= t('approval.committee') %></b>: <%= project.committee.html_safe %></p>
+<% end %>
+<% if !project.partner.blank? %>
+  <p class="project-partner"><b><%= t('approval.partner') %></b>: <%= project.partner.html_safe %></p>
+<% end %>
+
+<% if !project.mandatory? %>
+  <p>
+    <button type="button" class="btn btn-default btn-lg select-button" id="select-button<%= project.id %>" style="outline: none;">
+      Select
+    </button>
+    &nbsp; &nbsp;
+    <button type="button" class="btn btn-default btn-lg" id="remove-button<%= project.id %>" style="outline: none; display: none;">
+      <%= t('approval.remove_button') %>
+    </button>
+  </p>
+<% end %>
+
+<% if conf[:approval][:show_photos] && project.image_url %>
+  <p>
+    <div class="project-image-wrapper">
+      <img src="<%= project.image.url %>" class="project-image" id="project-image-<%= project.id %>" />
+    </div>
+  </p>
+  <% if !project.parsed_data.nil? && project.parsed_data.key?('images_gallery') %>
+    <p>
+      <img src="/img/gallery_icon.png" style="width: 30px; height: 30px;">
+      <%= t('approval.image_gallery.cue') %>
+    </p>
+  <% end %>
+<% end %>
+
+<% if !project.details.blank? %>
+  <div class="modal fade" id="detailModal<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><%= project.title.html_safe %></h4>
+        </div>
+        <div class="modal-body" style="font-size: 16px;">
+          <p><%= project.description.html_safe %></p>
+          <div class="project-details"><%= project.details.html_safe %></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if project.adjustable_cost? && !project.uses_slider? %>
+  <%# Div for showing the radio buttons for the adjustable cost project %>
+  <%
+  show_street_map = conf[:approval][:show_maps] && !project.parsed_data.nil? && project.parsed_data.key?('ward_center')
+  show_cost_table = !project.parsed_data.nil? && project.parsed_data.key?('cost_table')
+  %>
+  <div style="<%= (show_street_map || show_cost_table) ? 'width:23%; float:right;' : '' %>">
+    <span style="font-size: 16px; font-weight: bold;"><%= t('approval.adjustable_cost_project.instructions') %></span>
+    <div class="radio" style="-webkit-user-select: none;">
+      <% costs = (project.cost_min..project.cost).step(project.cost_step).to_a %>
+      <% costs.reverse! if conf[:approval][:reverse_order_of_radio_buttons_for_adjustable_cost_projects] %>
+      <% costs.each do |cost| %>
+        <label>
+          <input type="radio" name="project-adjustable-cost<%= project.id %>" value="<%= cost %>"
+            onclick="adjustCost(<%= project.id %>, <%= cost %>)" <%= (cost == project.cost_min) ? 'checked="checked"' : '' %> />
+          <% if project.cost_min == 0  # Show percentage if cost_min is 0 %>
+            &nbsp;<%= (cost * 100) / project.cost %>%&nbsp;&nbsp;(<%= cost_with_delimiter(cost) %>)
+          <% else %>
+            &nbsp;<%= cost_with_delimiter(cost) %>
+          <% end %>
+        </label>
+        <br />
+      <% end %>
+    </div>
+  </div>
+
+  <%# Add the street map %>
+  <% if show_street_map %>
+    <div class="project-map-wrapper" style="height: 400px; width:70%; position: relative;">
+      <div id="project-map-canvas<%= project.id %>" style="height: 400px; border: 1px #cccccc solid;"></div>
+      <div id="project-map-info<%= project.id %>" style="position: absolute; top: 2px; right: 6px; pointer-events: none; text-align: right; font-size: 16px;">No streets repaved</div>
+    </div>
+  <% end %>
+
+  <%# Add a cost information table %>
+  <% if show_cost_table %>
+    <div style="width:70%; position:relative">
+    <table class="table table-striped" style="text-align:center">
+      <thead>
+        <th style="text-align:center"><%= t('approval.adjustable_cost_project.table_headings.percentage_column') %></th>
+        <th style="text-align:center"><%= t('approval.adjustable_cost_project.table_headings.cost_column') %></th>
+        <th style="text-align:center"><%= t('approval.adjustable_cost_project.table_headings.number_column') %></th>
+      </thead>
+      <tbody>
+      <% street_counts = project.parsed_data['n_street_resurfacing'] %>
+      <% costs = (project.cost_min..project.cost).step(project.cost_step).to_a %>
+      <% costs.reverse! if conf[:approval][:reverse_order_of_radio_buttons_for_adjustable_cost_projects] %>
+      <% costs.each do |cost| %>
+        <tr>
+          <td><%= (cost * 100) / project.cost %>%</td>
+          <td><%= cost_with_delimiter(cost) %></td>
+          <td><%= street_counts[(cost - project.cost_min) / project.cost_step] %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    </div>
+  <% end %>
+<% end%>

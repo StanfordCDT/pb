@@ -1,0 +1,114 @@
+<% content_for :head do %>
+  <style>
+  .sidebar-title {
+    padding-left: 32px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+  }
+
+  .sidebar-category-name {
+    padding-left: 32px;
+    font-weight: bold;
+    display: block;
+    color: inherit;
+  }
+
+  .sidebar-category-name:hover {
+    text-decoration: none;
+  }
+
+  .sidebar-category-group {
+    margin-bottom: 10px;
+  }
+
+  a.sidebar-item {
+    padding: 2px 0px;
+    border-top: 1px #bbb solid;
+    border-right: 1px #bbb solid;
+    -webkit-user-select: none;
+    display: block;
+    color: inherit;
+    background-color: white;
+  }
+
+  .sidebar-item:last-child {
+    border-bottom: 1px #bbb solid;
+  }
+
+  .sidebar-item:hover {
+    background-color: #dddddd;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .sidebar-item.success {
+    background-color: #dff0d8;
+  }
+
+  .sidebar-item.disabled {
+    color: #aaaaaa;
+  }
+
+  .sidebar-item .checkmark-wrapper {
+    width: 32px;
+  }
+
+  .sidebar-item .checkmark {
+    color: transparent;
+    padding-left: 10px;
+  }
+
+  .sidebar-item .checkmark:hover {
+    color: white;
+  }
+
+  .sidebar-item.success .checkmark {
+    color: #468847;
+  }
+
+  .sidebar-item.success .checkmark:hover {
+    color: red;
+  }
+
+  .sidebar-item.disabled .checkmark {
+    color: transparent;
+  }
+  </style>
+<% end %>
+
+
+<% if !conf[:approval][:tracker] %>
+  <div class="sidebar-title"><%= t('approval.list_of_projects') %></div>
+<% end %>
+
+<% @categories.each do |category| %>
+  <% if conf[:categorized] %>
+    <a class="sidebar-category-name" href="#category<%= category.id %>"><%= category.name.html_safe %></a>
+  <% end %>
+  <div class="sidebar-category-group">
+    <% category.ordered_projects.each do |project| %>
+      <a class="sidebar-item" id="sidebar-item<%= project.id %>" href="javascript:showProject(<%= project.id %>)">
+        <table>
+          <tr>
+            <td class="checkmark-wrapper">
+              <% if conf[:approval][:allow_select_in_sidebar] %>
+                <a href="javascript:selectOrRemoveProject(<%= project.id %>)">
+                  <span class="glyphicon glyphicon-ok checkmark" id="sidebar-checkmark<%= project.id %>"></span>
+                </a>
+              <% end %>
+            </td>
+            <td>
+              <% if conf[:approval][:show_numbers] && (!@shuffled || conf[:approval][:show_numbers_when_shuffled]) %>
+                <%= project.number %>.
+              <% end %>
+              <%= project.title %>
+            </td>
+          </tr>
+        </table>
+      </a>
+    <% end %>
+  </div>
+<% end %>

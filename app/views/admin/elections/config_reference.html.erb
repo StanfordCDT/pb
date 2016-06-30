@@ -1,0 +1,32 @@
+<% content_for :title, 'Default Config' %>
+
+<script type="text/javascript" src="/js/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="/js/syntaxhighlighter/shBrushYaml.js"></script>
+<link href="/css/syntaxhighlighter.css" rel="stylesheet">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <h3>Default Config</h3>
+      <pre id="default_config" class="brush: yaml; gutter: false; toolbar: false; quick-code: false; auto-links: false;"></pre>
+
+      <% @locales.each do |locale| %>
+        <h3>config/locales/<%= locale[:filename] %></h3>
+        <pre class="brush: yaml; gutter: false; toolbar: false; quick-code: false; auto-links: false;"><%= locale[:yaml] %></pre>
+      <% end %>
+
+      <script src="/js/js-yaml-customized.min.js"></script>
+      <script>
+      // Use JavaScript to dump the config, because the output from Rails' YAML.dump() is too ugly.
+      var defaultConfig = <%= @default_config.to_json.html_safe %>;
+      var defaultConfigYAML = jsyaml.safeDump(defaultConfig, {schema: jsyaml.JSON_SCHEMA, lineWidth: -1});
+      document.getElementById('default_config').textContent = defaultConfigYAML;
+
+      SyntaxHighlighter.all();
+      </script>
+      <br><br>
+
+    </div>
+  </div>
+</div>

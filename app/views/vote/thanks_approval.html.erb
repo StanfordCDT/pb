@@ -1,0 +1,143 @@
+<% content_for :title, t('thanks_approval.title') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <% if real_voting? %>
+        <%= t('thanks_approval.description.real').html_safe %>
+      <% else %>
+        <%= t('thanks_approval.description.demo').html_safe %>
+      <% end %>
+
+      <% if real_voting? && conf[:thanks_approval][:vote_email] %>
+        <form class="form-inline">
+          <div class="checkbox">
+            <label><input type="checkbox" id="send-vote-email"> <%= t('thanks_approval.send_vote_email').html_safe %></label>
+          </div>
+          <input type="email" class="form-control" id="voter-email" placeholder="<%= t('thanks_approval.email_placeholder') %>">
+        </form><br>
+      <% end %>
+
+      <% if conf[:thanks_approval][:survey_questions] %>
+        <div class="alert alert-info" role="alert">
+          <b><%= t('general.experiment_disclaimer') %></b>
+        </div>
+
+        <form action="<%= @submit_url %>" method="post" id="survey-form">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        </form><br>
+      <% else %>
+        <center>
+          <a href="<%= url_for(next_page(:thanks_approval)) %>" class="btn btn-primary btn-lg" id="next-page"><%= t('thanks_approval.next_button').html_safe %></a>
+        </center>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var $nextBtn = $('#next-page');
+
+  // Function to send the email on pressing Enter or the Next button
+  var sendEmail = function(e) {
+    if ($('#send-vote-email').is(':checked')) {
+      e.preventDefault();
+      var email = $('#voter-email').val();
+      if (!/^[a-zA-Z0-9_\-\+\.=\$]+@[a-zA-Z0-9_\-\+]+\.[a-zA-Z0-9_\-\+\.]+$/.test(email)) {
+        alert('"' + email + '" is not a valid email address.');
+        return;
+      }
+
+      $nextBtn.attr('disabled', 'disabled');
+      var finishedUrl = $nextBtn.attr('href');
+      $.ajax({
+        data: {
+          email: email
+        },
+        method: 'post',
+        url: '<%= url_for(action: :send_vote_email) %>'
+      }).done(function(result) {
+        alert(result.message);
+        window.location.href = finishedUrl;
+      }).error(function(error) {
+        alert('There is something wrong. The email could not be sent.');
+        $nextBtn.removeAttr('disabled');
+      });
+    }
+  };
+
+  (function() {
+    // Invoke the function to send email on pressing the next button
+    $nextBtn.on('click', sendEmail);
+
+    // Invoke the function to send email on pressing the Enter key
+    $('#voter-email').on('keypress', function(e) {
+      var keycode = (e.keyCode ? e.keyCode : e.which);
+      if(keycode == 13){
+        sendEmail(e);
+      }
+    });
+
+    $('#send-vote-email').on('change', function() {
+      if (!$('#send-vote-email').is(':checked')) {
+        $('#voter-email').val('');
+      }
+    });
+    $('#voter-email').on('keydown', function(e) {
+      $('#send-vote-email').prop('checked', true);
+    });
+  })();
+
+  // Function to get the param name for input
+  var getParamName = function(question) {
+    if (question == "Gender" || question == "Sexo") return "Gender";
+    else if (question == "Age" || question == "Edad") return "Age";
+    else if (question == "Household Income" || question == "Ingresos del hogar") return "Household Income";
+    else if (question == "Ethnicity" || question == "Etnia") return "Ethnicity";
+  }
+
+  // Function to create the survey questions
+  var createSurveyQuestions = function(questions, options) {
+    // Get the form element
+    var formDiv = document.getElementById("survey-form");
+    for (var i=0; i<questions.length; i++) {
+      var inputDiv = document.createElement("div");
+      inputDiv.className = "form-group";
+      var label = document.createElement("label");
+      label.htmlFor = questions[i];
+      label.innerHTML = questions[i];
+      inputDiv.appendChild(label);
+      var select = document.createElement("select");
+      select.className = "form-control";
+      select.name = getParamName(questions[i]);
+      select.appendChild(document.createElement("option"));
+      for (var j=0; j<options[i].length; j++) {
+        var option = document.createElement("option");
+        option.value = options[i][j];
+        option.innerHTML = options[i][j];
+        select.appendChild(option);
+      }
+      inputDiv.appendChild(select);
+      formDiv.appendChild(inputDiv);
+    }
+
+    // Add the submit button in the form
+    var submitDiv = document.createElement("div");
+    submitDiv.style.textAlign = "center";
+    var submitButton = document.createElement("input");
+    submitButton.type = "submit";
+    submitButton.className = "btn btn-primary btn-lg";
+    submitButton.value = "<%= t('thanks_approval.survey.submit_button').html_safe %>";
+    submitDiv.appendChild(submitButton);
+    formDiv.appendChild(document.createElement("br"));
+    formDiv.appendChild(submitDiv);
+  }
+
+  <% if conf[:thanks_approval][:survey_questions] %>
+    createSurveyQuestions(<%= raw @questions %>, <%= raw @options %>);
+  <% end %>
+</script>
+
+<%= render 'shared/timer' %>

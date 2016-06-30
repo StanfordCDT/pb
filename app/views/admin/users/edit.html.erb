@@ -1,0 +1,27 @@
+<% content_for :title, 'User: Edit' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <% if @election %>
+        <%= render partial: 'shared/admin_toolbar', locals: {items: [
+          @election,
+          ['Users', admin_election_users_path(@election)],
+          'Edit'
+        ]} %>
+      <% else %>
+        <%= render partial: 'shared/admin_toolbar', locals: {items: [
+          ['Users', admin_users_path],
+          'Edit'
+        ]} %>
+      <% end %>
+
+      <%= render partial: 'shared/user_form', locals: { election: @election, user: @user, election_user: @election_user, is_creating: false, is_owner: false } %>
+
+      <div>
+        <a href="<%= @election ? admin_election_users_path(@election) : admin_users_path %>">Back to users list</a>
+      </div>
+    </div>
+  </div>
+</div>

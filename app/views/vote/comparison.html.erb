@@ -1,0 +1,222 @@
+<% content_for :title, t('comparison.title') %>
+
+<% if conf[:comparison][:show_exit_link] %>
+  <% content_for :navbar_links do %>
+    <li><a href="<%= url_for(action: :done_comparison) %>"><%= t('navigation.exit') %></a></li>
+  <% end %>
+<% end %>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+<% if conf[:comparison][:show_disclaimer] %>
+  <div class="alert alert-info" role="alert">
+    <b><%= t('general.experiment_disclaimer') %></b>
+    <% if conf[:comparison][:show_exit_link] %>
+      <a style="float:right; font-size:16px" href="<%= url_for(action: :done_comparison) %>"><%= t('navigation.exit') %></a>
+    <% end %>
+  </div>
+<% end %>
+
+<h2>
+  <%= t('comparison.header') %>
+
+  <div class="progress" style="width: 120px; margin: 0 0 0 10px; padding: 0; display: inline-block">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 0%; transition: 0s 0s all ease;" id="progress">
+    </div>
+  </div>
+</h2>
+<br />
+
+<style>
+.col0, .col1 {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+#description1, #description2 {
+  font-size: 16px;
+}
+</style>
+
+<table style="width: 100%;" cellpadding="0" cellspacing="0" id="table">
+  <tr>
+    <td valign="top" id="project0" style="width: 50%;" class="col0">
+      <p class="lead" id="title1" style="margin-bottom: 10px; font-weight: bold;">Project 1</p>
+    </td>
+    <td valign="top" id="project1" style="" class="col1">
+      <p class="lead" id="title2" style="margin-bottom: 10px; font-weight: bold;">Project 2</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="col0">
+      <p id="description1">description</p>
+    </td>
+    <td valign="top" class="col1" id="project2">
+      <p id="description2">description</p>
+    </td>
+  </tr>
+<% if conf[:comparison][:show_cost_bars] %>
+  <tr>
+    <td class="col0">
+      <p style="margin-bottom: 0; font-size: 16px;"><strong><%= t('comparison.estimated_cost') %>:</strong> <span id="cost1"></span></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%; transition: 0s 0s all ease;" id="bar1">
+        </div>
+      </div>
+      <br>
+    </td>
+    <td class="col1">
+      <p style="margin-bottom: 0; font-size: 16px;"><strong><%= t('comparison.estimated_cost') %>:</strong> <span id="cost2"></span></p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 0%; transition: 0s 0s all ease;" id="bar2">
+        </div>
+      </div>
+      <br>
+    </td>
+  </tr>
+<% end %>
+<% if conf[:comparison][:show_photos] %>
+  <tr>
+    <td class="col0">
+      <div id="photo1"></div>
+    </td>
+    <td class="col1">
+      <div id="photo2"></div>
+    </td>
+  </tr>
+<% end %>
+  <tr>
+    <td class="col0" style="text-align: center;">
+      <br />
+      <a href="javascript:vote(0)" class="btn btn-primary btn-lg" style="outline: none;" id="button0"><%= t('comparison.this_project') %></a>
+    </td>
+    <td class="col1" style="text-align: center;">
+      <br />
+      <a href="javascript:vote(1)" class="btn btn-primary btn-lg" style="outline: none;" id="button1"><%= t('comparison.this_project') %></a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center;">
+      <div style="margin-top: -30px;">
+        <a href="javascript:vote(-1)" class="btn btn-default btn-lg" style="outline: none;" id="button-1" ><%= t('comparison.not_sure') %></a>
+      </div>
+    </td>
+  </tr>
+</table>
+<br /><br />
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var projects = <%= @projects_json.to_json.html_safe %>;
+var pairs = <%= @pairs.to_json %>;
+var curIndex = 0;
+var max_pairs = pairs.length;
+var budget = <%= @election.budget %>;
+
+function render() {
+
+  //$('#progress').text( (curIndex+1) + ' / ' + max_pairs );
+  $('#progress').css('width',  (curIndex/max_pairs*100) + '%')
+
+  function update(i, project) {
+    //var project = projects[pairs[curIndex][i-1][0]];
+    $('#title' + i).text(project.title);
+
+    var cost = pairs[curIndex][i-1][1];
+    $('#photo' + i).html("<img src=\"" + project.image_url + "\" style='max-height: 200px; max-width: 300px' />");
+    $('#description' + i).html(project.description);
+    $('#cost' + i).text('$' + numberWithDelimiter(cost));
+    $('#bar' + i).css('width',  (cost/budget*100) + '%')
+  }
+  var project1 = projects[pairs[curIndex][0][0]];
+  var project2 = projects[pairs[curIndex][1][0]];
+  update(1, project1);
+  update(2, project2);
+}
+render();
+
+function vote(i) {
+  if (i >= 0) {
+    $('#button' + i).addClass('btn-success');
+    $('.col' + i).css('background-color', '#dff0d8');
+  }
+  $('#button0, #button1, #button-1').attr('disabled', 'disabled');
+
+  var project1 = projects[pairs[curIndex][0][0]];
+  var project2 = projects[pairs[curIndex][1][0]];
+
+  $.ajax({
+    url: "<%= url_for(action: :submit_comparison) %>",
+    data: {
+      first_project_id: projects[pairs[curIndex][0][0]].id,
+      first_project_cost: pairs[curIndex][0][1],
+      second_project_id: projects[pairs[curIndex][1][0]].id,
+      second_project_cost: pairs[curIndex][1][1],
+      result: (i == -1) ? 0 : ((i == 0) ? 1 : -1)
+    }
+  });
+
+  curIndex++;
+
+  setTimeout(function () {
+    $('#table').fadeTo(200, 0);
+
+    if (curIndex >= max_pairs) {
+      window.location.href = "<%= url_for(action: :done_comparison) %>";
+      return;
+    }
+
+    setTimeout(function () {
+      $('#table').css('opacity', '1');
+      $('#button0, #button1').removeClass('btn-success');
+      $('#button0, #button1, #button-1').removeAttr('disabled');
+      $('.col0, .col1').css('background-color', 'transparent');
+      render();
+    }, 500);
+  }, 250);
+}
+
+function numberWithDelimiter(val){
+  while (/(\d+)(\d{3})/.test(val.toString())){
+    val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  }
+  return val;
+}
+</script>
+
+<% if conf[:comparison][:show_popup] %>
+  <div class="modal" id="instructionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel"><%= t('comparison.popup.title') %></h4>
+        </div>
+        <div class="modal-body">
+          <%= raw t('comparison.popup.body', count: @pairs.length) %>
+        </div>
+        <div class="modal-footer">
+          <a href="<%= url_for(action: :done_comparison) %>" class="btn btn-default btn-lg"><%= t('comparison.popup.exit') %></a>
+          <button class="btn btn-primary btn-lg" data-dismiss="modal"><%= t('comparison.popup.ok') %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  $(document).ready(function() {
+    $('#instructionModal').modal({
+      keyboard: false,
+      backdrop: 'static'
+    });
+  });
+  </script>
+<% end %>
+
+<%= render 'shared/timer' %>

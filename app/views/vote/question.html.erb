@@ -1,0 +1,26 @@
+<% content_for :title, t('question.title') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+      <center>
+        <br><br>
+        <h3><%= raw t('question.question') %></h3>
+        <br><br>
+        <p>
+          <%
+          alternative_page = {action: conf[:question][:alternative_page]}
+          if conf[:question][:alternative_params]
+            alternative_page.merge!(conf[:question][:alternative_params])
+          end
+          %>
+          <a href="<%= url_for(alternative_page) %>" class="btn btn-default btn-lg"><%= raw t('question.alternative') %></a>
+          &nbsp; &nbsp; &nbsp;
+          <a href="<%= url_for(next_page(:question)) %>" class="btn btn-primary btn-lg"><%= raw t('question.ok') %></a>
+        </p>
+      </center>
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/timer' %>

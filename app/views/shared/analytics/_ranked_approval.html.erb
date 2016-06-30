@@ -1,0 +1,110 @@
+<% if !is_allowed_to_see_exact_results? %>
+  <p class="alert alert-warning" role="alert">
+    <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
+    The total score may not be accurate.
+  </p>
+<% end %>
+
+<a href="<%= url_for(format: :csv, table: 'project_ranked_votes') %>">Export into Excel</a>
+
+<div id="ranked-approval-analytics-table"></div><br>
+
+<style>
+#ranked-approval-table .progress {
+  margin-bottom: 0;
+  background-color: #e4e4e4;
+}
+</style>
+
+<!-- Code for the projects ranked-approval table -->
+<script type="text/javascript">
+var project_ranked_votes = <%= @project_ranked_votes.to_json.html_safe %>;
+var max_n_projects = <%= @election.config[:ranking][:max_n_projects] %>;
+
+function reloadRankedApprovalTable() {
+  var table = document.createElement('table');
+  table.setAttribute("id", "ranked-approval-table");
+  table.className = 'table table-striped';
+  var thead = document.createElement('thead');
+
+  { // first row
+    var tr = document.createElement('tr');
+
+    {
+      var th = document.createElement('th');
+      th.textContent = 'Project';
+      tr.appendChild(th);
+
+      th = document.createElement('th');
+      th.textContent = 'Cost';
+      tr.appendChild(th);
+
+      for (var i = 1; i <= max_n_projects; i++) {
+        th = document.createElement('th');
+        th.textContent = 'Rank ' + i;
+        tr.appendChild(th);
+      }
+
+      th = document.createElement('th');
+      th.textContent = 'Total Score';
+      tr.appendChild(th);
+    }
+
+    thead.appendChild(tr);
+  }
+  table.appendChild(thead);
+
+  // Find the maximum vote count
+  var maximum_vote_count = 0;
+  for (var i = 0; i < project_ranked_votes.length; i++) {
+    if (project_ranked_votes[i][max_n_projects+2] > maximum_vote_count) {
+      maximum_vote_count = project_ranked_votes[i][max_n_projects+2];
+    }
+  }
+
+  var tbody = document.createElement('tbody');
+  for (var i = 0; i < project_ranked_votes.length; ++i) {
+    var tr = document.createElement('tr');
+
+    {
+      var td = document.createElement('td');
+      td.textContent = project_ranked_votes[i][0];
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.textContent = '$' + numberWithDelimiter(project_ranked_votes[i][1]);
+      tr.appendChild(td);
+
+      for (var j = 0; j < max_n_projects; j++) {
+        td = document.createElement('td');
+        td.textContent = project_ranked_votes[i][j+2];
+        tr.appendChild(td);
+      }
+
+      td = document.createElement('td');
+      {
+        var progressDiv = document.createElement('div');
+        progressDiv.className = 'progress';
+        {
+          var progressBarDiv = document.createElement('div');
+          progressBarDiv.className = 'progress-bar progress-bar-success';
+          progressBarDiv.style.width = (project_ranked_votes[i][max_n_projects+2] / maximum_vote_count * 100) + '%';
+          progressBarDiv.textContent = numberWithDelimiter(project_ranked_votes[i][max_n_projects+2]);
+          progressDiv.appendChild(progressBarDiv);
+        }
+        td.appendChild(progressDiv);
+      }
+      tr.appendChild(td);
+
+    }
+
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+
+  $('#ranked-approval-analytics-table').text("");
+  $('#ranked-approval-analytics-table').append(table);
+}
+
+reloadRankedApprovalTable();
+</script>

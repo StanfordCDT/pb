@@ -1,0 +1,80 @@
+<style>
+.error {
+  color: red;
+}
+</style>
+
+<% available_locales = @election.config[:available_locales] %>
+
+<% if available_locales.length > 1 %>
+  <%# Tabs for selecting langauges. %>
+  <ul class="nav nav-tabs" role="tablist">
+    <% available_locales.each_with_index do |locale, index| %>
+      <li role="presentation" class="<%= index == 0 ? 'active' : '' %>"><a href="#<%= locale %>" aria-controls="home" role="tab" data-toggle="tab"><%= LOCALE_NAMES[locale.to_sym] %></a></li>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<% @category.errors.full_messages.each do |msg| %>
+  <p class="error"><%= msg %></p>
+<% end %>
+
+<%= form_for([:admin, @election, @category], html: {class: 'form-horizontal'}) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <% available_locales.each do |locale| %>
+        <%= f.text_field 'name_' + locale, class: 'form-control localized locale-' + locale %>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :image, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <% if @category.image? %>
+        <img src="<%= @category.image.url %>"><br>
+        <%= f.check_box :remove_image %>
+        <%= f.label :remove_image, "Remove image" %>
+      <% end %>
+      <%= f.file_field :image, accept: 'image/*' %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pinned, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :pinned %> Pin this category to the top when categories are arranged in a random order.
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :category_group, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :category_group, class: 'form-control' %>
+      <p class="help-block">In almost every election, this field should be 1. In an extremely rare case where you want to show different sets of projects for different pages, use this number to identify the set.</p>
+    </div>
+  </div>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
+
+<script>
+function updateLocale(locale) {
+  $('.localized').hide();
+  $('.locale-' + locale).show();
+}
+
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var locale = e.target.href.substring(e.target.href.lastIndexOf('#') + 1);
+  updateLocale(locale);
+})
+
+updateLocale("<%= available_locales[0] %>");
+</script>

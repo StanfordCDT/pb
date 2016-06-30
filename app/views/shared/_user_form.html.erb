@@ -1,0 +1,68 @@
+<%= form_for(user, url: {action: (is_owner ? :update_profile : (is_creating ? :create : :update))}, html: {class: 'form-horizontal'}) do |f| %>
+  <div class="form-group">
+    <%= f.label :username, "Email address", class: 'col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.text_field :username, class: 'form-control', disabled: !is_creating && !is_owner %>
+    </div>
+  </div>
+
+  <% if !is_owner %>
+    <% if election %>
+      <div class="form-group">
+        <%= f.label "Status", class: 'col-sm-2' %>
+        <div class="col-sm-10">
+          <div class="radio">
+            <label>
+              <%= radio_button_tag :status, 'volunteer', election_user.status.nil? || election_user.status == 'volunteer' %> Volunteer
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <%= radio_button_tag :status, 'admin', election_user.status == 'admin' %> Admin
+            </label>
+          </div>
+          <p class="help-block">
+            Volunteers can set up a voting machine.
+            Admins can set up a voting machine, create new users, change projects, generate new codes, register in-person voters, and see the vote results.
+          </p>
+        </div>
+      </div>
+    <% else %>
+      <div class="form-group">
+        <%= f.label "Superadmin", class: 'col-sm-2' %>
+        <div class="col-sm-10">
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :is_superadmin %> Superadmin
+            </label>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <% if is_owner %>
+        Enter your password to save changes to your account.
+      <% elsif is_creating %>
+        Enter <i>your</i> password to create a new user.
+      <% else %>
+        Enter <i>your</i> password to edit this user.
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password, "Your password", class: 'col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.password_field :current_password, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit (is_creating ? 'Create' : 'Save'), class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

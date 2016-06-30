@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <style>
+  body { padding-top: 70px; }
+  </style>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <%= yield :head %>
+  <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand"><%= params[:controller] == 'vote' ? t('navigation.brand') : 'PB' %></span>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right" style="font-size: 16px">
+        <%= yield :navbar_links %>
+
+        <% if params[:controller] == 'vote' and ['about'].include?(params[:action]) %>
+          <li><a href="<%= url_for(action: :index) %>"><%= t('navigation.home') %></a></li>
+        <% end %>
+
+        <% if current_user %>
+          <li><a href="/admin/users/profile">Profile</a></li>
+          <li><a href="/admin/users/logout">Log Out</a></li>
+        <% end %>
+
+        <% if params[:controller] == 'vote' and ['index'].include?(params[:action]) %>
+          <li><a href="<%= url_for(action: :about) %>"><%= t('navigation.about') %></a></li>
+        <% end %>
+
+        <% languages = {en: 'English', es: 'Español', fr: 'Français', ja: '日本語', zh: '中文'} %>
+        <% locales = (params[:controller] == 'vote') ? conf[:available_locales].map(&:to_sym) : [:en] # just English by default %>
+        <% if locales.length <= 3  # if there are <= 3 languages available, show links to the other languages %>
+          <% (locales - [I18n.locale]).each do |locale| %>
+            <li><a href="<%= url_for(params.merge(locale: locale)) %>"><%= languages[locale] %></a></li>
+          <% end %>
+        <% else  # if there are more than 3 languages, show a dropdown for changing languages  %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Languages <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <% locales.each do |locale| %>
+                <li>
+                  <a href="<%= url_for(params.merge(locale: locale)) %>">
+                    <span class="glyphicon glyphicon-ok" style="font-size: 0.8em; margin-left: -1em; margin-right: 4px; <%= (I18n.locale != locale) ? 'visibility: hidden;' : '' %>"></span>
+                    <%= languages[locale] %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <%= yield :fixed %>
+</div>
+
+<% if flash[:errors] %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 main">
+        <% flash[:errors].each do |err|  %>
+        <p class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <%= err %>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 main">
+        <p class="alert alert-success" role="alert">
+          <%= flash[:notice] %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

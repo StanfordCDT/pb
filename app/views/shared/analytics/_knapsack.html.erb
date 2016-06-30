@@ -1,0 +1,363 @@
+<% if !is_allowed_to_see_exact_results? %>
+  <p class="alert alert-warning" role="alert">
+    <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
+    The allocation may not be accurate.
+  </p>
+<% end %>
+
+<!--
+FIXME: Currently not working. Need to fix this.
+<a href="<%= url_for(format: :csv, table: 'knapsacks') %>">Export into Excel</a><br>
+-->
+
+<% if is_allowed_to_see_voter_data? %>
+  <a href="<%= url_for(format: :csv, table: 'knapsacks_individual') %>">Export individual votes into Excel</a>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th class="text-right">Votes</th>
+      <th class="text-right">Allocation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+    id_to_project = {}
+    @projects.each { |project| id_to_project[project[:id]] = project }
+    %>
+    <% @knapsack_data.each do |project| %>
+      <tr>
+        <td><%= id_to_project[project[:id]][:title] %></td>
+        <td class="text-right">
+          <% project[:votes].each do |v| %>
+            $<%= number_with_delimiter(v[0]) %> - <%= v[1].to_s %><br>
+          <% end %>
+        </td>
+        <td class="text-right">$<%= number_with_precision(project[:allocation], precision: 2, delimiter: ',') %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Total</td>
+      <td></td>
+      <td class="text-right">$<%= number_with_precision(@knapsack_data.map { |p| p[:allocation] }.sum, precision: 2, delimiter: ',') %></td>
+    </tr>
+  <tbody>
+</table>
+
+
+<svg id="knapsack-bar-chart"></svg>
+
+<!--
+<h4>Projects in the Knapsack</h4>
+<svg id="knapsack-pie-chart"></svg>
+-->
+
+<h4>Knapsack - Vote counts</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @knapsack_voters_by_date.each do |v| %>
+      <tr>
+        <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
+        <td><%= number_with_delimiter(v.vote_count) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td><b>Total</b></td>
+      <td><%= number_with_delimiter(@knapsack_total) %> </td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+.knapsack-bar-rect {
+  stroke: #999999;
+}
+.knapsack-bar-text {
+  fill: #333333;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.knapsack-bar-text-hidden {
+  display: none;
+}
+.knapsack-bar-allocation {
+  pointer-events: none;
+}
+.knapsack-bar:hover .knapsack-bar-rect {
+  stroke: black;
+}
+.knapsack-bar:hover .knapsack-bar-text-hidden {
+  display: inline;
+}
+</style>
+
+<script type="text/javascript">
+var knapsack_data = <%= @knapsack_data.to_json.html_safe %>;
+var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
+
+(function() {
+  // knapsack_data is an array of objects whose keys and values are
+  // - id: project's id
+  // - votes: an array of votes for the project. Each vote is an array of length 2: [cost, vote_count]
+  // - allocation: how much money is allocated to the project
+
+  // Sort the projects by allocation
+  knapsack_data.sort(function(a, b) { return b.allocation - a.allocation; });
+
+  // Sort the votes for each project by cost and calculate various values for each vote.
+  knapsack_data.forEach(function(project) {
+    var votes = project.votes;
+    votes.sort(function(a, b) { return b[0] - a[0]; }); // Larger cost to smaller cost.
+
+    var cumulativeVoteCount = 0;
+    for (var i = 0; i < votes.length; ++i) {
+      // Calculate cumulative vote counts.
+      cumulativeVoteCount += votes[i][1];
+      votes[i][2] = cumulativeVoteCount;
+
+      // Calculate cost differences. (This project's cost - next project's cost)
+      votes[i][3] = votes[i][0] - ((i + 1 < votes.length) ? votes[i + 1][0] : 0);
+
+      // Set project ID for each vote to facilitate D3.
+      votes[i][4] = project.id;
+    }
+
+    // Each vote is [cost, vote_count, cumulative_vote_count, cost_difference, project_id]
+  });
+
+  var margin = {top: 30, right: 50, bottom: 50, left: 200},
+    width = 960 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
+  var svg = d3.select("#knapsack-bar-chart")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var x = d3.scale.linear().range([0, width]);
+  var y = d3.scale.ordinal().rangeRoundBands([0, height], .3);
+
+  x.domain([0, d3.max(projects, function(project) { return project.cost; })]);
+  y.domain(knapsack_data.map(function(d) { return d.id; }));
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+  // SVG path data for the allocation.
+  var allocationPathData = "";
+  allocationPathData += "M" + x(knapsack_data[0].allocation) + " " + y(knapsack_data[0].id) + " ";
+  for (var i = 0; i < knapsack_data.length; ++i) {
+    if (knapsack_data[i].allocation == 0)
+      break;
+    var smooth = 8;
+    allocationPathData += "l0 " + y.rangeBand() + " ";
+    if (i + 1 < knapsack_data.length) {
+      allocationPathData += "C" + x(knapsack_data[i].allocation) + " " + (y(knapsack_data[i].id) + y.rangeBand() + smooth) + " " +
+        x(knapsack_data[i + 1].allocation) + " " + (y(knapsack_data[i + 1].id) - smooth) + " " +
+        x(knapsack_data[i + 1].allocation) + " " + y(knapsack_data[i + 1].id) + " ";
+    }
+  }
+
+  // Coloring function.
+  var knapsackColor = function(voteCount) {
+    var t = voteCount / knapsack_max_vote_count;
+    var r = 70, g = 130, b = 180;
+    var interpolate = function(x, t) { // Map t:[0, 1] to [255, x].
+      return Math.round(255 - (255 - x) * t);
+    };
+    return "rgb(" + interpolate(r, t) + "," + interpolate(g, t) + "," + interpolate(b, t) + ")";
+  }
+
+  // Function for truncating long text with an ellipsis ("...").
+  function wrapText() {
+    var self = d3.select(this);
+    var text = self.text();
+    while (this.getComputedTextLength() > margin.left - 10 && text.length > 0) {
+      text = text.slice(0, -1);
+      self.text(text + "...");
+    }
+  }
+
+  // x-axis.
+  svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .append("text")
+      .text("Cost")
+      .attr("x", width + 4);
+
+  // y-axis.
+  svg.append("g")
+    .attr("class", "axis")
+    .call(yAxis)
+    .selectAll("text")
+      .text(function(id) { return projects[idToIndex[id]].title; })
+      .style("text-anchor", "end")
+      .each(wrapText);
+
+  // Background color for allocation.
+  svg.append("path")
+    .attr("d", allocationPathData + "L" + x(0) + " " + (y(knapsack_data[0].id)) )
+    .style("stroke", "none")
+    .style("fill", "#eeeeee");
+
+  // Cost line + cost text.
+  var costGroup = svg.append("g")
+    .style("opacity", 0);
+
+  // Cost line.
+  costGroup.append("path")
+    .attr("d", "M" + x(0) + " 2 l0 " + height)
+    .style("stroke-dasharray", "4,4")
+    .style("stroke", "black")
+    .style("fill", "none")
+    ;
+
+  // Cost text.
+  var costText = costGroup.append("text")
+    .attr("x", x(0))
+    .attr("y", 0)
+    .style("text-anchor", "middle")
+  ;
+
+  // Bar group for each project.
+  var project = svg.selectAll(".project")
+    .data(knapsack_data)
+  .enter().append("g")
+    .attr("class", "g")
+    .attr("transform", function(d) { return "translate(0," + y(d.id) + ")"; });
+
+  // Each bar group consists of bars.
+  var bar = project.selectAll("rect")
+    .data(function(d) { return d.votes; });
+
+  var barEnter = bar.enter().append("g")
+      .attr("class", "knapsack-bar");
+
+  // A rectangle for each bar.
+  barEnter.append("rect")
+    .attr("class", "knapsack-bar-rect")
+    .attr("height", y.rangeBand())
+    .attr("width", function(d) { return x(d[0]); })
+    .style("fill", function(d) { return knapsackColor(d[2]); })
+    .on("mouseover", handleMouseOver)
+    .on("mouseout", handleMouseOut)
+    ;
+
+  // A text in each bar.
+  barEnter.append("text")
+    .attr("class", function(d) { return "knapsack-bar-text" + ((d[3] >= 100) ? "" : " knapsack-bar-text-hidden"); }) // If the cost diff is too small, hide it.
+    .attr("x", function(d) { return x(d[0]) - x(d[3])/2; })
+    .attr("dy", y.rangeBand() / 2 + 5)
+    .text(function(d) { return numberWithDelimiter(d[2]); }); // Show the vote count.
+
+  function update(highlighted, d, i) {
+    bar.select(".knapsack-bar-rect")
+      .style("opacity", function(d2, i2) {
+        if (!highlighted)
+          return 1;
+        if (d[4] != d2[4]) // If the project IDs are different ...
+          return 1;
+        return (i != i2) ? 0.3 : 1;
+      })
+      ;
+    bar.select(".knapsack-bar-text")
+      .style("opacity", function(d2, i2) {
+        if (!highlighted)
+          return 1;
+        if (d[4] != d2[4]) // If the project IDs are different ...
+          return 1;
+        return (i != i2) ? 0 : 1;
+      })
+      ;
+    if (highlighted) {
+      costGroup.style("opacity", 1).attr("transform", "translate(" + x(d[0]) + ",0)");
+      costText.text("$" + numberWithDelimiter(d[0]));
+    } else {
+      costGroup.style("opacity", 0);
+    }
+  }
+
+  // An allocation line for each project.
+  /*
+  project.append("path")
+    .attr("class", "knapsack-bar-allocation")
+    .attr("d", function(d) { return "M" + x(d.allocation) + " 0 l0," + (y.rangeBand()) + ""; })
+    .attr("x", function(d) { return x(d.allocation); })
+    .style("stroke", "red");
+    */
+
+  // Allocation line.
+  svg.append("path")
+    .attr("d", allocationPathData)
+    .style("stroke", "#333")
+    .style("stroke-width", "1.5")
+    .style("fill", "none")
+    ;
+
+  function handleMouseOver(d, i) {
+    update(true, d, i);
+  }
+
+  function handleMouseOut(d, i) {
+    update(false);
+  }
+
+  // Knapsack pie chart
+  /*
+  var w = 600;
+  var h = 600;
+  var r = 250;
+  var color = d3.scale.category20c();
+  var vis = d3.select('#knapsack-pie-chart').data([only_knapsack]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + (w/2) + "," + (h/2) + ")");
+  var pie = d3.layout.pie().value(function(d) { return d.cost; }).sort(null);
+
+  // declare an arc generator function
+  var arc = d3.svg.arc().innerRadius(0).outerRadius(r);
+
+  // select paths, use arc generator to draw
+  var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+  arcs.append("svg:path")
+    .attr("fill", function(d, i) {
+      if (d.data.id == 0) // the 'Remaining budget' project
+        return '#ddd';
+      return color(i);
+    })
+    .attr("d", function (d) {
+      return arc(d);
+    });
+
+  var getAngle = function (d) {
+    return ((d.endAngle + d.startAngle) / 2) % (2 * Math.PI);
+  };
+  arcs.append("svg:text")
+    .attr("transform", function(d) {
+      var angle = getAngle(d);
+      var angle2 = (angle < Math.PI) ? (angle + Math.PI) : angle;
+      return "translate(" + arc.centroid(d) + ") " + "rotate(" + (angle2*180/Math.PI+90) + ")";
+    })
+    .attr("text-anchor", function(d) {
+      return (getAngle(d) > Math.PI) ? "end" : "start";
+    })
+    .attr("dx", function(d) {
+      return ((r/2 - 30) * ((getAngle(d) > Math.PI) ? 1 : -1)) + "px";
+    })
+    .attr("dy", ".35em")
+    .text(function(d, i) { return only_knapsack[i].title; });
+  */
+})();
+</script>

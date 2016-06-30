@@ -1,0 +1,491 @@
+en:
+  navigation:  # text on the navigation bar
+    brand: "PB"  # text at the top left corner
+    home: "Home"
+    about: "About"
+    help: "Help"
+    exit: "Exit"
+
+  index:
+    title: "Participatory Budgeting"  # text on the title bar
+    voting_machine:
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting</p>"
+      instruction: "Please enter the code you received."
+      code_placeholder: "Code"
+      enter_code_button: "Enter"
+      wrong_code: "Wrong code"
+      used_code: "This code has already been used."
+      used_personal_id: "This ID has already been used. Please contact voxpopuli@lists.stanford.edu in case this is an error or you need to vote again."
+    remote:
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting</p>"
+      vote_button: "Vote"  # button to go to the real vote screen
+      code_verification_button: "Enter code"
+      other_verification_button: "Vote with other details"
+      see_projects_button: "See Projects"  # button to go to the demo vote screen
+    demo:
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $... million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from ... to ... . See all times and locations below.</p>"
+      proceed_button: "View sample ballot &gt;&gt;"
+      remote_voting_button: "Vote remotely now &gt;&gt;"
+      exit: "Exit"
+    voting_ended: "The voting has ended."
+    public_results: "See Election Results"
+
+  approval:
+    title: "Participatory Budgeting"
+    popup:
+      real:
+        title: "Instructions"
+        body: "<ol>
+                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               </ol>"
+        ok: "OK"
+      demo:
+        title: "Instructions"
+        body: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+               <ol>
+                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               </ol>"
+        ok: "OK"
+    instructions:
+      real: "<h3>Instructions</h3>
+             <ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+      demo: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+             <h3>Instructions</h3>
+             <ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+    list_of_projects: "List of Projects"
+    estimated_cost: "Estimated Cost"
+    youtube_video: "YouTube video"
+    location: "Location"
+    partner: "Partner"
+    committee: "Committee"
+    read_details: "Read more..."
+    select_button:  # Text on the button to select a project
+      select: "Select"  # if the project is not selected
+      selected: "Selected" # if the project is selected
+      not_enough_money: "Not enough money"
+      more_projects: "Can't choose more than %{max_n_projects} projects"
+    remove_button: "Remove"  # Text on the button to remove a selected project
+    remove_button_tooltip: "Click here if you don't want to choose this project anymore."
+    submit_button: "Submit My Vote..."
+    confirmation:
+      title: "Are you sure you want to submit your vote?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected the following projects: %{projects}"
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>You have selected only one project.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
+          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        warning: "After submitting your vote, you <strong>cannot</strong> change your vote. If you want to modify your vote, please click 'Go Back' below. If you want to submit your vote, please check the box below and then click 'Submit My Vote.'"
+        checkbox: "I understand that after I submit my vote, I <strong>cannot</strong> change it."
+      ok: "Submit My Vote"
+      cancel: "Go Back"
+    confirmation_over_limit:
+      title: "Could not submit your vote"
+      over_n_project_limit: "<span style='color:red'>You have selected <b>%{n_projects}</b> projects. You can only select at most <b>%{max_n_projects}</b> projects. Please remove <b>%{extra}</b> or more projects.</span>"
+      over_budget_limit: "<span style='color:red'>You're currently over budget.</span>"
+      cancel: "Go Back"
+    tracker:
+      text: "You have selected %{count} projects."
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "Selected %{total} of %{budget} total budget."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You're currently over budget."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    adjustable_cost_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
+      message: "You have selected $%{cost} for %{project}"
+      table_headings:
+        percentage_column: "Percentage of the budget spent"
+        cost_column: "Cost"
+        number_column: "Approximate # of blocks resurfaced"
+    map:
+      street_resurfacing_count:
+        one: "1 street repaved"
+        other: "%{count} streets repaved"
+      alley_resurfacing_count:
+        one: "1 alley repaved"
+        other: "%{count} alleys repaved"
+      apron_resurfacing_count:
+        one: "1 apron repaved"
+        other: "%{count} aprons repaved"
+      sidewalk_repairing_count:
+        one: "1 sidewalk repaired"
+        other: "%{count} sidewalks repaired"
+    image_gallery:
+      cue: "Click image for slide show"
+    project_ranking:
+      list_header: "You have selected the following projects. Change their ranking by dragging the <span class='glyphicon glyphicon-sort'></span> icons."
+
+  thanks_approval:
+    title: "Thank you"
+    description:
+      real: "<br><br><p class='lead text-center'>Thank you for voting. Please click 'Next' below to go to the next page.</p>"
+      demo: "<br><br><p class='lead'>Thank you for voting! <span style='color: red;'><strong>Please note that this is only a <u>preview</u>.</strong></span> Please click 'Next' below to go to the next page.</p>"
+    send_vote_email: "(Optional) I want to send my vote result to my email:"
+    email_placeholder: "Enter email"
+    next_button: "Next &gt;&gt;"
+    survey:
+      questions: []
+      options: []
+      submit_button: "Submit and Continue"
+  
+  ranking:
+    title: "Participatory Budgeting"
+    popup:
+      real:
+        title: "Instructions"
+        body: "<ol>
+                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               </ol>"
+        ok: "OK"
+      demo:
+        title: "Instructions"
+        body: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+               <ol>
+                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               </ol>"
+        ok: "OK"
+    instructions:
+      real: "<h3>Instructions</h3>
+             <ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+      demo: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+             <h3>Instructions</h3>
+             <ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+    list_of_projects: "List of Projects"
+    estimated_cost: "Estimated Cost"
+    youtube_video: "YouTube video"
+    location: "Location"
+    partner: "Partner"
+    committee: "Committee"
+    read_details: "Read more..."
+    select_button:  # Text on the button to select a project
+      select: "Select"  # if the project is not selected
+      selected: "Selected" # if the project is selected
+      not_enough_money: "Not enough money"
+      more_projects: "Can't choose more than %{max_n_projects} projects"
+    remove_button: "Remove"  # Text on the button to remove a selected project
+    remove_button_tooltip: "Click here if you don't want to choose this project anymore."
+    submit_button: "Submit My Vote..."
+    confirmation:
+      title: "Are you sure you want to submit your vote?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected the following projects: %{projects}"
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>You have selected only one project.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
+          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        warning: "After submitting your vote, you <strong>cannot</strong> change your vote. If you want to modify your vote, please click 'Go Back' below. If you want to submit your vote, please check the box below and then click 'Submit My Vote.'"
+        checkbox: "I understand that after I submit my vote, I <strong>cannot</strong> change it."
+      ok: "Submit My Vote"
+      cancel: "Go Back"
+    confirmation_over_limit:
+      title: "Could not submit your vote"
+      over_n_project_limit: "<span style='color:red'>You have selected <b>%{n_projects}</b> projects. You can only select at most <b>%{max_n_projects}</b> projects. Please remove <b>%{extra}</b> or more projects.</span>"
+      over_budget_limit: "<span style='color:red'>You're currently over budget.</span>"
+      cancel: "Go Back"
+    tracker:
+      text: "You have selected %{count} projects."
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "Selected %{total} of %{budget} total budget."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You're currently over budget."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    adjustable_cost_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
+      message: "You have selected $%{cost} for %{project}"
+      table_headings:
+        percentage_column: "Percentage of the budget spent"
+        cost_column: "Cost"
+        number_column: "Approximate # of blocks resurfaced"
+    image_gallery:
+      cue: "Click image for slide show"
+    project_ranking:
+      list_header: "You have selected the following projects. Change their ranking by dragging the <span class='glyphicon glyphicon-sort'></span> icons."
+
+  question:
+    title: "Survey"
+    question: "Are you 14 years or older?"
+    ok: "Yes, I am 14 years or older"
+    alternative: "No, I am under 14 years old"
+
+  comparison:
+    title: "Comparison"
+    header: "Which project gives the best value for money, that is, provides the most benefit to the community per dollar spent?"
+    estimated_cost: "Estimated cost"
+    this_project: "This project"
+    not_sure: "I am not sure"
+    popup:
+      title: "Instructions"
+      body: "<p style='font-size: 22px;'>You will now be asked to compare projects in terms of their community benefit for money spent. This comparison activity is part of a Stanford University research project meant to help us improve the participatory budgeting process, and is not part of your vote.</p>
+      <ul style='font-size: 22px;'><li>Participating in this activity is optional, and you can exit at any time.</li>
+      <li>The expected time for this activity is 2-3 minutes.</li></ul>
+<p style='font-size: 14px;'>This study poses no risk.
+No payment will be made to you for participation, and we
+cannot guarantee any benefits to you. You have the right to refuse to
+answer particular questions. This study is funded partially by the US
+Department of Defense. Please contact Professor Ashish Goel at
+goel_admins@lists.stanford.edu if you have any questions, suggestions,
+or concerns. You may also contact the Stanford Institutional Review
+Board at 650-723-2480.</p>"
+      ok: "Continue"
+      exit: "Exit"
+
+  knapsack:
+    title: "Knapsack"
+    popup:
+      real:
+        title: "Instructions"
+        body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that
+will <u>not</u> affect your vote, but is part of a Stanford University research project meant
+to help us improve the participatory budgeting process.</p>
+<ul style='font-size: 22px;'><li>Participating in this activity is optional. You can exit at any time.</li>
+<li>The expected time for this activity is 2-3 minutes.</li>
+<li>In this activity, you will be asked to choose an unlimited number of
+projects, but the total cost of the chosen projects cannot exceed %{budget}.</li></ul>
+<p style='font-size: 14px;'>This study poses no risk.
+No payment will be made to you for participation, and we
+cannot guarantee any benefits to you. You have the right to refuse to
+answer particular questions. This study is funded partially by the US
+Department of Defense. Please contact Professor Ashish Goel at
+goel_admins@lists.stanford.edu if you have any questions, suggestions,
+or concerns. You may also contact the Stanford Institutional Review
+Board at 650-723-2480.</p>"
+        ok: "OK"
+        exit: "Exit"
+      demo:
+        title: "Instructions"
+        body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that
+will <u>not</u> affect your vote, but is part of a Stanford University research project meant
+to help us improve the participatory budgeting process.</p>
+<ul style='font-size: 22px;'><li>Participating in this activity is optional. You can exit at any time.</li>
+<li>The expected time for this activity is 2-3 minutes.</li>
+<li>In this activity, you will be asked to choose an unlimited number of
+projects, but the total cost of the chosen projects cannot exceed %{budget}.</li></ul>
+<p style='font-size: 14px;'>This study poses no risk.
+No payment will be made to you for participation, and we
+cannot guarantee any benefits to you. You have the right to refuse to
+answer particular questions. This study is funded partially by the US
+Department of Defense. Please contact Professor Ashish Goel at
+goel_admins@lists.stanford.edu if you have any questions, suggestions,
+or concerns. You may also contact the Stanford Institutional Review
+Board at 650-723-2480.</p>"
+        ok: "OK"
+        exit: "Exit"
+    instructions:
+      real: "<h3>Instructions</h3>
+             <ol>
+               <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
+               <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+      demo: "<h3>Instructions</h3>
+             <ol>
+               <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
+               <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+    confirmation:
+      title: "Are you sure you want to submit your vote?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
+          other: "You have selected the following projects: %{projects}"
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>You have selected only one project.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
+          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
+      ok: "Submit My Vote"
+      cancel: "Go Back"
+    adjustable_cost_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
+      message: "You have selected $%{cost} for %{project}"
+
+  plusminus:
+    popup:
+      title: "Instructions"
+      body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that is not part of your vote, but part of a Stanford University research project meant to help us improve the participatory budgeting process.</p>
+      <ul style='font-size: 22px;'><li>Participating in this activity is optional, will <u>not</u> affect your vote, and you can exit at any time.</li>
+      <li>The expected time for this activity is 2-3 minutes.</li>
+      <li>In this activity, you will be allowed to cast both positive votes (for
+projects that you approve) and also negative votes or \"downvotes\" (for
+projects that you believe should not be funded).</li></ul>
+<p style='font-size: 14px;'>This study poses no risk.
+No payment will be made to you for participation, and we
+cannot guarantee any benefits to you. You have the right to refuse to
+answer particular questions. This study is funded partially by the US
+Department of Defense. Please contact Professor Ashish Goel at
+goel_admins@lists.stanford.edu if you have any questions, suggestions,
+or concerns. You may also contact the Stanford Institutional Review
+Board at 650-723-2480.</p>"
+      ok: "OK"
+      exit: "Exit"
+    instructions: "<h3>Instructions</h3>
+                   <ol>
+                     <li>Select the projects you would like to support by clicking the&nbsp;<b>+</b>&nbsp;buttons (\"upvote\").
+                      Select the projects you believe should not be funded by clicking the&nbsp;<b>&minus;</b>&nbsp;buttons (\"downvote\").</li>
+                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                   </ol>"
+    clear_button: "Clear"  # button to remove the upvote/downvote from a project (i.e. change it to the neutral state)
+    used_up_upvotes: "You have used all %{n_upvotes} upvotes"
+    used_up_downvotes: "You have used all %{n_downvotes} downvotes"
+    tracker:
+      text: "You have %{count} remaining."
+      n_upvotes_and_n_downvotes: "<strong>%{n_upvotes} upvotes</strong> (+) and <strong>%{n_downvotes} downvotes</strong> (&minus;)"
+    confirmation:
+      title: "Are you sure you want to submit your vote?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
+          upvotes: "You <b>upvoted</b> the following projects: %{projects}"
+          downvotes: "You <b>downvoted</b> the following projects: %{projects}"
+          item: "%{project} ($%{cost})"
+        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
+      ok: "Submit My Vote"
+      cancel: "Go Back"
+
+  survey:
+    title: "Survey"
+    header: "Take a Survey"
+    question:
+      title: "Thank you"
+      body: "Thank you for voting. Are you 14 years or older?"
+      ok: "Yes, I am 14 years or older"
+      alternative: "No, I am under 14 years old"
+
+  thanks:
+    title: "Thank you"
+    description:
+      real: "Thank you for voting. Please click the 'Exit' button below."
+      demo: "Thank you for testing the digital participatory budgeting interface! <span style='color: red;'><strong>Please note that this is only a <u>test</u>.</strong></span> In order to vote, please come to a voting location in one of the following places:"
+    exit: "Exit"
+
+  about:
+    title: "About"
+    description: "<center><h1 class='sub-header'>About the digital participatory budgeting interface</h1></center>
+    <br><p class='lead'>The digital participatory budgeting interface has been developed by the <a href='http://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. <br>We hope that the visual nature of the interface and the richness of the information presented will help you learn about the projects and cast more informative votes.</p>
+    <p class='lead'><b>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
+    <p class='lead'>If you have technical problems or you want to give feedback, please email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> and we will try to get back to you as soon as possible.</p>"
+
+  result:
+    title: "Results"
+    vote_results: "Vote Results"
+    description: "The results based on the votes from %{count} voters from %{start} to %{end}."
+    proposed_project: "Proposed Projects"  # A table header
+    votes: "Votes"  # A table header
+    projects: "Projects"
+
+  election:
+    info: "<h3>Voting Locations</h3>
+           <b>Saturday, September 27</b> &nbsp; (12:00 noon - 4:00 p.m.)<br>
+           Somewhere<br>
+           <br>
+           <b>Tuesday, September 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+           Somewhere<br>
+           <br>
+           <p>For more information, please visit <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
+
+  sms_signup:
+    title: "Verify your phone number"
+    header: "Verify your phone number"
+    instructions: "<p>In order to vote online, you will need a cell phone that can receive a text message, so that we can verify your phone number.</p><p>Enter your cell phone number, and we'll text you a confirmation code.</p>"
+    phone_number_placeholder: "Enter phone number"
+    verify_button: "Verify"
+    invalid_phone_number: "\"%{phone_number}\" is not a valid phone number."
+    dont_have_cell_phone: "Don't have a cell phone? Please email XXX@stanford.edu or call XXX-XXX-XXX to get a code. Once you get the code, press the <b>Enter Code</b> button to continue. You also can come to one of the following places to cast your vote:<br><br>"
+
+  code_signup:
+    title: "Enter access code to vote"
+    instruction: ""
+    no_code_instruction: "If you do not have an access code, get it from the City."
+    code_placeholder: "Access code"
+    vote_button: "Vote"
+    wrong_access_code: "Wrong access code"
+    used_access_code: "This access code has already been used"
+
+  other_signup:
+    title: "Enter details to vote"
+    instruction: ""
+    no_account_number_instruction: "If you do not have an account number, contact the City."
+    zipcode_placeholder: "Zip code"
+    account_number_placeholder: "Account Number"
+    vote_button: "Vote"
+    wrong_account_number: "Wrong account number"
+    used_account_number: "This account number has already been used"
+
+  registration:
+    title: "Voter details"
+    header: "Voter details"
+    instructions: "<p>Please enter the following details to proceed to the ballot for casting your vote. Fields marked with * are required.</p>"
+    proceed_button: "Proceed"
+    no_phone_number: "I do not have a phone number"
+    name: "Name"
+    first_name: "First name"
+    middle_initial: "Middle initial"
+    last_name: "Last name"
+    suffix: "Suffix"
+    phone_number: "Phone number"
+    email: "Email"
+    address: "Street address"
+    city: "City"
+    zip_code: "ZIP code"
+    birth_year: "Birth year"
+    date_of_birth: "Date of birth"
+    verify_age_label: "I am over 16 years old"
+    email_instruction_label: "Do you want to find out the results of this vote? Enter your email to stay updated."
+    ward: "Ward"
+    ward_do_not_know: "Do not know"
+    not_voting_age_error: "You must be between the age requirement in order to vote in this election"
+
+  sms_signup_confirm:
+    title: "Verify your phone number"
+    header: "Verify your phone number"
+    instructions: "<p>We have sent a confirmation code to <b>%{phone_number}</b>. You should receive the code within a minute.</p><p>Please enter the confirmation code to verify your phone number.</p>"
+    code_placeholder: "Enter code"
+    confirm_button: "Confirm"
+    wrong_code: "Wrong code."
+    resend_code: "If you do not receive the code within a minute, click <a href=\"%{resend_code_url}\">here</a> to resend the confirmation code."
+    make_sure_phone_number_is_correct: "Make sure that %{phone_number} is your correct cell phone number. If it is <u>not</u> correct, please click <a href=\"%{signup_url}\">here</a> to change it."
+    still_not_working: "If you still have trouble receiving the confirmation code after several tries, please email XXX@stanford.edu or call XXX-XXX-XXX to get a code. Once you get the code, press the <b>Enter Code</b> button to continue. You also can come to one of the following places to cast your vote:<br><br>"
+
+  general:
+    experiment_disclaimer: "This is only a survey. It will not affect your vote."
+    shuffle_note: "<span style='font-size: 18px;'>Note: These projects are arranged in a random order.</span>"
+    project_string: "Project"
+    timeout:
+      body: "Your session is about to expire. Click \"Continue\" to continue using the website."
+      continue_button: "Continue"
+
+  date:
+    order:
+    - :month
+    - :day
+    - :year

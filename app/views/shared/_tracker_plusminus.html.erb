@@ -1,0 +1,21 @@
+<% content_for :head do %>
+  <style>
+  #tracker {
+    margin-left: 26px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  #tracker-count {
+    font-size: 20px;
+  }
+  </style>
+<% end %>
+
+<div id="tracker">
+  <%= t('plusminus.tracker.text',
+    count: '<div id="tracker-count">' + t('plusminus.tracker.n_upvotes_and_n_downvotes',
+      n_upvotes: '<span id="tracker-remaining-upvotes">0</span>',
+      n_downvotes: '<span id="tracker-remaining-downvotes">0</span>'
+    ) + '</div>'
+  ).html_safe %>
+</div>

@@ -1,0 +1,30 @@
+<% content_for :title, 'Login' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+      <% if flash[:error] %>
+        <p class="alert alert-danger"><%= flash[:error]%></p>
+      <% end %>
+
+      <h1>Login</h1>
+
+      <%= form_for(:user, url: {action: :post_login, previous_url: @previous_url}) do |f| %>
+        <div class="form-group">
+          <%= f.label :username, "Email address" %>
+          <%= f.email_field :username, autocomplete: "off", autofocus: "autofocus", class: "form-control" %><br />
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %><br />
+          <%= f.submit 'Login', class: 'btn btn-large btn-primary' %>
+        </div>
+
+        <div class="form-group">
+          <a href="/admin/users/reset_password">Forgot password?</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

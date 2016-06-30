@@ -1,0 +1,26 @@
+<% content_for :head do %>
+  <style>
+  #tracker {
+    margin-left: 32px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  #tracker-count {
+    font-weight: bold;
+    font-size: 34px;
+  }
+  #tracker-count.exceed {
+    color: red;
+  }
+  #tracker-list a {
+    color: inherit;
+  }
+  </style>
+<% end %>
+
+<div id="tracker">
+  <%= t(current_action.to_s + '.tracker.text', count: '<div id="tracker-count">0 / 0</div>').html_safe %>
+  <% if !conf[:approval][:sidebar] %>
+    <div id="tracker-list"></div>
+  <% end %>
+</div>

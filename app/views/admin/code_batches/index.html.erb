@@ -1,0 +1,47 @@
+<% content_for :title, 'Codes' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        'Codes'
+      ]} %>
+
+<h2>Codes</h2>
+
+<p><a href="<%= url_for(action: :new) %>">Generate new codes</a></p>
+
+<ul class="list-group">
+  <% @code_batches.each do |batch| %>
+    <li class="list-group-item">
+      <dl class="dl-horizontal" style="margin-bottom: 0;">
+        <dt>Batch #</dt>
+        <dd><%= batch.id %></dd>
+
+        <dt>Number of codes</dt>
+        <dd><%= number_with_delimiter(batch.codes.count) %></dd>
+
+        <dt>Issued by</dt>
+        <dd><%= batch.user.username %></dd>
+
+        <dt>Issued at</dt>
+        <dd><%= batch.created_at.in_time_zone(@election.time_zone).strftime('%A, %B %e, %Y %l:%M %p %Z') %></dd>
+
+        <dt>Actions</dt>
+        <dd>
+          <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id) %>">View</a> &nbsp; | &nbsp;
+          <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :pdf) %>">Print</a> &nbsp; | &nbsp;
+          <% if current_user.superadmin? %>
+            <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :txt) %>">Export</a> &nbsp; | &nbsp;
+          <% end %>
+          <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id) %>" data-method="delete" data-confirm="Are you sure you want to remove this code batch?">Remove</a>
+        </dd>
+      </dl>
+    </li>
+  <% end %>
+</ul>
+
+    </div>
+  </div>
+</div>

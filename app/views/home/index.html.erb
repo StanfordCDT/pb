@@ -1,0 +1,32 @@
+<% content_for :title, 'Participatory Budgeting' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+      <center>
+      <h2>Welcome to the Participatory Budgeting Platform</h2>
+      <h3><i>Made by the <a href='http://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a></i></h3>
+
+      <br><h4>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</h4>
+
+      <br><h3 style='color:green'>Active Elections (Voting online)</h3>
+      <div style="margin-top: 20px">
+        <% @active_elections.each do |election| %>
+          <a href="/<%= election.slug %>" class="btn btn-default btn-lg btn-block"><%= election.name %></a>
+        <% end %>
+      </div>
+
+      <br><h3 style='color:red'>Past Elections (Voting ended)</h3>
+      <div style="margin: 20px 0px 30px 0px;">
+        <% @inactive_elections.each do |election| %>
+          <a href="/<%= election.slug %>" class="btn btn-default btn-lg btn-block"><%= election.name %></a>
+        <% end %>
+      </div>
+
+      <div class="footer" style='margin-bottom: 20px'>
+      <p>Copyright © 2016 Stanford Crowdsourced Democracy Team</p>
+      </div>
+      </center>
+    </div>
+  </div>
+</div>

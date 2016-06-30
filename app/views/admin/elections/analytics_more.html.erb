@@ -1,0 +1,70 @@
+<% content_for :title, 'Analytics' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        'Analytics'
+      ]} %>
+
+      <a href="<%= url_for('analytics') %>">Go back to main analytics</a>
+
+      <h2>Analytics</h2>
+
+      <h3>Time spent</h3>
+
+<%
+# More accurate version of Rails' distance_of_time_in_words
+def accurate_distance_of_time_in_words(t)
+  t = t.round
+  m = t / 60
+  s = t % 60
+  words = []
+  words << m.to_s + ' ' + ((m == 1) ? 'minute' : 'minutes') if m > 0
+  words << s.to_s + ' ' + ((s == 1) ? 'second' : 'seconds') if s > 0
+  words.to_sentence
+end
+%>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Mean</th>
+            <th>Median</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @duration_stats.each do |o| %>
+            <tr>
+              <td><%= o[:page] %></td>
+              <td><%= accurate_distance_of_time_in_words(o[:mean]) %></td>
+              <td><%= accurate_distance_of_time_in_words(o[:median]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3>Languages</h3>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Languages</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @voter_counts_by_locale.each do |locale, voter_count| %>
+            <tr>
+              <td><%= locale %></td>
+              <td><%= voter_count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

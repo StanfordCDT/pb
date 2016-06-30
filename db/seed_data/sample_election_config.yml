@@ -1,0 +1,58 @@
+workflow: [approval, thanks_approval, comparison, thanks]
+allow_remote_voting: false
+categorized: true
+available_locales: [en]
+
+approval:
+  has_budget_limit: false
+  has_n_project_limit: true
+  max_n_projects: 5
+  allow_selection_beyond_limits: true
+  shuffle_projects: true
+  sidebar: true
+  budgetbar: false
+  tracker: true
+  n_cols: 2
+  show_photos: true
+  show_popup: true
+
+comparison:
+  n_pairs: 4
+  show_photos: false
+  show_exit_link: true
+  show_disclaimer: true
+  show_popup: true
+
+locales:
+  en:
+    navigation:
+      brand: "PB NYC"
+
+    index:
+      title: "Participatory Budgeting NYC"
+      voting_machine:
+        welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting in NYC</p>"
+      demo:
+        welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Welcome to the NYC Participatory Budgeting sample digital ballot, courtesy of the <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $2.4 million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from September 27 to October 6. See all times and locations below.</p>"
+
+    approval:
+      title: "Participatory Budgeting NYC"
+
+    election:
+      info: "<h3>Voting Locations</h3>
+             <b>Saturday, September 27</b> &nbsp; (12:00 noon - 4:00 p.m.)<br>
+             Waterfront under the tent north of the Ferry Terminal<br>
+             <br>
+             <b>Tuesday, September 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+             Solano Middle School Gym - 1025 Corcoran Avenue<br>
+             <br>
+             <b>Thursday, October 2</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+             Hogan Middle School Gym - 850 Rosewood Avenue<br>
+             <br>
+             <b>Sunday, October 5</b> &nbsp; (12:00 noon - 3:00 p.m.)<br>
+             Norman King Community Center - 545 Magazine Street<br>
+             <br>
+             <b>Every Weekday -- Monday, September 29 thru Monday, October 6</b> &nbsp; (12:00 noon - 7:00 p.m.)<br>
+             NYC City Hall - 555 Santa Clara Street<br>
+             <br>
+             <p>Plus dozens of satellite voting locations throughout NYC! For more information, please visit <a href=\"https://www.example.com/\">https://www.example.com/</a></p>"

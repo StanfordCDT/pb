@@ -1,0 +1,176 @@
+<% content_for :title, 'Analytics: ' + @election.name %>
+
+<script type="text/javascript" src="/js/d3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript">
+var projects = <%= @projects.to_json.html_safe %>;
+var idToIndex = {};
+for (var i = 0; i < projects.length; ++i) {
+  idToIndex[projects[i].id] = i;
+}
+
+function numberWithDelimiter(val) {
+  while (/(\d+)(\d{3})/.test(val.toString())) {
+    val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  }
+  return val;
+}
+
+var reloadCallbacks = [];
+function reloadData(params) {
+  $.ajax({
+    dataType: 'json',
+    method: 'GET',
+    url: '/admin/elections/<%= @election.id %>/analytics.json',
+    data: params
+  }).done(function(data) {
+    for (var i = 0; i < reloadCallbacks.length; ++i) {
+      reloadCallbacks[i](data);
+    }
+  });
+}
+
+// Common variables for charts
+var margin = {top: 30, right: 150, bottom: 300, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+</script>
+
+<!-- Common style for charts. From http://bl.ocks.org/mbostock/3885304 -->
+<style>
+.bar {
+  fill: steelblue;
+}
+.bar:hover {
+  fill: #2ca02c;
+}
+.axis {
+  font-size: 14px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+</style>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+
+      <%= render partial: 'shared/admin_toolbar', locals: {items: [
+        @election,
+        'Analytics'
+      ]} %>
+
+      <h2>
+        Analytics
+        <% if @authentication_method %>
+          <% if @authentication_method == 'code' %>
+            for <%= @location_name %>
+          <% elsif @authentication_method == 'remote_code' %>
+            for remote votes
+          <% elsif @authentication_method == 'phone' %>
+            for votes from phone
+          <% end %>
+          <a href="<%= analytics_admin_election_path(@election) %>" class="btn btn-default">See All</a>
+        <% end %>
+      </h2>
+
+      <p>
+        <a href="<%= url_for(format: :csv, table: 'all') %>">Export into Excel</a> |
+        <a href="<%= analytics_more_admin_election_path(@election) %>">View details</a>
+      </p>
+
+      <style>
+      #votecount-table > thead > tr > th:first-child,
+      #votecount-table > tbody > tr > td:first-child {
+        border-right: 2px solid #ddd;
+      }
+      </style>
+
+      <table class="table table-bordered" id="votecount-table">
+        <thead>
+          <tr>
+            <th></th>
+            <% @columns.each do |c| %>
+              <th>
+                <% if c.is_a?(Hash) %>
+                  <% if c[:authentication_method] == 'code' %>
+                    <%= c[:location].name %>
+                  <% elsif c[:authentication_method] == 'remote_code' %>
+                    Remote
+                  <% else %>
+                    <%= c[:authentication_method].capitalize %>
+                  <% end %>
+                <% else %>
+                  <%= c %>
+                <% end %>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vote_counts.each do |r| %>
+            <tr>
+              <td><%= r[0].strftime('%a, %B %e, %Y') if r[0] %></td>
+              <% r[1].each do |v| %>
+                <td><%= (v > 0) ? number_with_delimiter(v) : '' %></td>
+              <% end %>
+            </tr>
+          <% end %>
+          <tr>
+            <td>Total</td>
+            <% @columns.each_with_index do |c, i| %>
+              <td>
+                <%= number_with_delimiter(@totals[i]) %></a>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+      <% workflow = @election.config[:workflow].flatten %>
+
+      <% if @election.config[:approval][:project_ranking] || workflow.include?('ranking') %>
+        <h3>Ranked Approval</h3>
+        <%= render partial: 'shared/analytics/ranked_approval' %>
+      <% elsif workflow.include?('approval') %>
+        <h3>Approval</h3>
+        <%= render partial: 'shared/analytics/approval', locals: {is_public: false} %>
+      <% end %>
+
+      <% if workflow.include?('knapsack') %>
+        <h3>Knapsack</h3>
+        <%= render partial: 'shared/analytics/knapsack' %>
+      <% end %>
+
+      <% if workflow.include?('plusminus') %>
+        <h3>Plus/minus</h3>
+        <%= render partial: 'shared/analytics/plusminus' %>
+      <% end %>
+
+      <% if workflow.include?('comparison') %>
+        <h3>Comparisons</h3>
+        <%= render partial: 'shared/analytics/comparison' %>
+      <% end %>
+
+      <% if is_allowed_to_see_voter_data? && @voter_registration_exists %>
+        <h3>Voter registration</h3>
+        <a href="<%= url_for(format: :csv, table: 'voter_registration') %>">Export voter registration records</a>
+      <% end %>
+
+      <% if is_allowed_to_see_voter_data? && @election.config[:thanks_approval][:survey_questions] %>
+        <h3>Demographic Survey</h3>
+        <a href="<%= url_for(format: :csv, table: 'thanks_approval_survey') %>">Export into Excel</a>
+      <% end %>
+
+      <br><br>
+
+    </div>
+  </div>
+</div>

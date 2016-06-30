@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 main">
+  <% if @authentication_status == :ok %>
+    <p>Please set your password.
+      <br>
+      <%= form_for(:user, url: {action: :set_password}) do |f| %>
+        <%= f.hidden_field :confirmation_id, value: @confirmation_id %>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control", autofocus: "autofocus" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit 'Submit', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </p>
+  <% elsif @authentication_status == :expired %>
+    <p>Sorry, the link has expired.</p>
+  <% elsif @authentication_status == :error %>
+    <p>Sorry, it seems that you have got the wrong email, or you have already set your password.</p>
+  <% elsif @authentication_status == :over_rate_limit %>
+    Too many attempts. Please wait two minutes and come back to this page again.
+  <% end %>
+    </div>
+  </div>
+</div>

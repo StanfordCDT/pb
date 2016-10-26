@@ -6,4 +6,5 @@ LOCALE_NAMES = {
   fr: 'French',
   ja: 'Japanese',
   zh: 'Chinese',
+  sw: 'Swahili'
 }

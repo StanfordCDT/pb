@@ -48,7 +48,7 @@
           <li><a href="<%= url_for(action: :about) %>"><%= t('navigation.about') %></a></li>
         <% end %>
 
-        <% languages = {en: 'English', es: 'Español', fr: 'Français', ja: '日本語', zh: '中文'} %>
+        <% languages = {en: 'English', es: 'Español', fr: 'Français', ja: '日本語', zh: '中文', sw: 'Kiswahili'} %>
         <% locales = (params[:controller] == 'vote') ? conf[:available_locales].map(&:to_sym) : [:en] # just English by default %>
         <% if locales.length <= 3  # if there are <= 3 languages available, show links to the other languages %>
           <% (locales - [I18n.locale]).each do |locale| %>

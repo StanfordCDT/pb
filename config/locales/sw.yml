@@ -7,63 +7,63 @@ sw:
     exit: "Kuingia nje"
 
   index:
-    title: "Participatory Budgeting"  # text on the title bar
+    title: "Shirikishi bajeti"  # text on the title bar
     voting_machine:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting</p>"
-      instruction: "Please enter the code you received."
-      code_placeholder: "Code"
-      enter_code_button: "Enter"
-      wrong_code: "Wrong code"
-      used_code: "This code has already been used."
-      used_personal_id: "This ID has already been used. Please contact voxpopuli@lists.stanford.edu in case this is an error or you need to vote again."
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Karibu online Bajeti Shirikishi</p>"
+      instruction: "Tafadhali kuingia code kitambulisho umepokea."
+      code_placeholder: "Kanuni"
+      enter_code_button: "Kuingia"
+      wrong_code: "Sio sahihi kitambulisho kificho"
+      used_code: "Kanuni hii ya utambulisho tayari kutumika."
+      used_personal_id: "ID hili tayari kutumika. Tafadhali wasiliana voxpopuli@lists.stanford.edu katika kesi hii ni kosa au unahitaji kupiga kura tena.""
     remote:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting</p>"
-      vote_button: "Vote"  # button to go to the real vote screen
-      code_verification_button: "Enter code"
-      other_verification_button: "Vote with other details"
-      see_projects_button: "See Projects"  # button to go to the demo vote screen
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Karibu online Bajeti shirikishi</p>"
+      vote_button: "Kwenda kupiga kura"  # button to go to the real vote screen
+      code_verification_button: "kuingia kitambulisho kanuni yako"
+      other_verification_button: "Kura na maelezo mengine"
+      see_projects_button: "Angalia katika orodha ya miradi"  # button to go to the demo vote screen
     demo:
       welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $... million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from ... to ... . See all times and locations below.</p>"
-      proceed_button: "View sample ballot &gt;&gt;"
-      remote_voting_button: "Vote remotely now &gt;&gt;"
-      exit: "Exit"
-    voting_ended: "The voting has ended."
-    public_results: "See Election Results"
+      proceed_button: "Angalia katika sampuli za kupigia kura &gt;&gt;"
+      remote_voting_button: "Kupiga kura kutoka eneo lako sasa &gt;&gt;"
+      exit: "Utgång"
+    voting_ended: "Kupiga kura kumalizika."
+    public_results: "Kuona Matokeo ya Uchaguzi"
 
   approval:
-    title: "Participatory Budgeting"
+    title: "Shirikishi bajeti"
     popup:
       real:
-        title: "Instructions"
+        title: "Maelekezo"
         body: "<ol>
-                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu"\"</b> button wakati uko tayari kuwasilisha.</li>
                </ol>"
         ok: "OK"
       demo:
-        title: "Instructions"
-        body: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+        title: "Maelekezo"
+        body: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
                <ol>
-                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu"\"</b> button wakati uko tayari kuwasilisha.</li>
                </ol>"
         ok: "OK"
     instructions:
-      real: "<h3>Instructions</h3>
+      real: "<h3>Maelekezo</h3>
              <ol>
-               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+               <li>Click <b>\"Kuwasilisha Vote yangu"\"</b> button wakati uko tayari kuwasilisha.</li>
+             </ol>"
+      demo: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
+             <h3>Maelekezo</h3>
+             <ol>
+               <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
                <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
              </ol>"
-      demo: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
-             <h3>Instructions</h3>
-             <ol>
-               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
-             </ol>"
-    list_of_projects: "List of Projects"
-    estimated_cost: "Estimated Cost"
-    youtube_video: "YouTube video"
-    location: "Location"
+    list_of_projects: "Orodha ya Miradi"
+    estimated_cost: "Inakadiriwa Gharama"
+    youtube_video: "Video YouTube"
+    location: "Eneo"
     partner: "Partner"
     committee: "Committee"
     read_details: "Read more..."
@@ -146,14 +146,14 @@ sw:
     title: "Participatory Budgeting"
     popup:
       real:
-        title: "Instructions"
+        title: "Maelekezo"
         body: "<ol>
                  <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
                  <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
                </ol>"
         ok: "OK"
       demo:
-        title: "Instructions"
+        title: "Maelekezo"
         body: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
                <ol>
                  <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
@@ -241,7 +241,7 @@ sw:
     this_project: "This project"
     not_sure: "I am not sure"
     popup:
-      title: "Instructions"
+      title: "Maelekezo"
       body: "<p style='font-size: 22px;'>You will now be asked to compare projects in terms of their community benefit for money spent. This comparison activity is part of a Stanford University research project meant to help us improve the participatory budgeting process, and is not part of your vote.</p>
       <ul style='font-size: 22px;'><li>Participating in this activity is optional, and you can exit at any time.</li>
       <li>The expected time for this activity is 2-3 minutes.</li></ul>
@@ -260,7 +260,7 @@ Board at 650-723-2480.</p>"
     title: "Knapsack"
     popup:
       real:
-        title: "Instructions"
+        title: "Maelekezo"
         body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that
 will <u>not</u> affect your vote, but is part of a Stanford University research project meant
 to help us improve the participatory budgeting process.</p>
@@ -279,7 +279,7 @@ Board at 650-723-2480.</p>"
         ok: "OK"
         exit: "Exit"
       demo:
-        title: "Instructions"
+        title: "Maelekezo"
         body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that
 will <u>not</u> affect your vote, but is part of a Stanford University research project meant
 to help us improve the participatory budgeting process.</p>
@@ -298,13 +298,13 @@ Board at 650-723-2480.</p>"
         ok: "OK"
         exit: "Exit"
     instructions:
-      real: "<h3>Instructions</h3>
+      real: "<h3>Maelekezo</h3>
              <ol>
                <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
                <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
                <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
              </ol>"
-      demo: "<h3>Instructions</h3>
+      demo: "<h3>Maelekezo</h3>
              <ol>
                <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
                <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
@@ -331,7 +331,7 @@ Board at 650-723-2480.</p>"
 
   plusminus:
     popup:
-      title: "Instructions"
+      title: "Maelekezo"
       body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that is not part of your vote, but part of a Stanford University research project meant to help us improve the participatory budgeting process.</p>
       <ul style='font-size: 22px;'><li>Participating in this activity is optional, will <u>not</u> affect your vote, and you can exit at any time.</li>
       <li>The expected time for this activity is 2-3 minutes.</li>
@@ -348,7 +348,7 @@ or concerns. You may also contact the Stanford Institutional Review
 Board at 650-723-2480.</p>"
       ok: "OK"
       exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+    instructions: "<h3>Maelekezo</h3>
                    <ol>
                      <li>Select the projects you would like to support by clicking the&nbsp;<b>+</b>&nbsp;buttons (\"upvote\").
                       Select the projects you believe should not be funded by clicking the&nbsp;<b>&minus;</b>&nbsp;buttons (\"downvote\").</li>

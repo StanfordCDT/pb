@@ -64,14 +64,14 @@ sw:
     estimated_cost: "Inakadiriwa Gharama"
     youtube_video: "Video YouTube"
     location: "Eneo"
-    partner: "Partner"
-    committee: "Committee"
-    read_details: "Read more..."
+    partner: "Mshirika"
+    committee: "Kamati"
+    read_details: "Soma zaidi..."
     select_button:  # Text on the button to select a project
-      select: "Select"  # if the project is not selected
-      selected: "Selected" # if the project is selected
-      not_enough_money: "Not enough money"
-      more_projects: "Can't choose more than %{max_n_projects} projects"
+      select: "Kuchagua"  # if the project is not selected
+      selected: "Kuchaguliwa" # if the project is selected
+      not_enough_money: "Hakuna fedha za kutosha"
+      more_projects: "Huwezi kuchagua miradi zaidi ya %{max_n_projects}"
     remove_button: "Remove"  # Text on the button to remove a selected project
     remove_button_tooltip: "Click here if you don't want to choose this project anymore."
     submit_button: "Submit My Vote..."

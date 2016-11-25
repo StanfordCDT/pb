@@ -15,7 +15,7 @@ sw:
       enter_code_button: "Kuingia"
       wrong_code: "Sio sahihi kitambulisho kificho"
       used_code: "Kanuni hii ya utambulisho tayari kutumika."
-      used_personal_id: "ID hili tayari kutumika. Tafadhali wasiliana voxpopuli@lists.stanford.edu katika kesi hii ni kosa au unahitaji kupiga kura tena.""
+      used_personal_id: "ID hili tayari kutumika. Tafadhali wasiliana voxpopuli@lists.stanford.edu katika kesi hii ni kosa au unahitaji kupiga kura tena."
     remote:
       welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Karibu online Bajeti shirikishi</p>"
       vote_button: "Kwenda kupiga kura"  # button to go to the real vote screen

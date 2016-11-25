@@ -37,7 +37,7 @@ sw:
         title: "Maelekezo"
         body: "<ol>
                  <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
-                 <li>Click <b>\"Kuwasilisha Vote yangu"\"</b> button wakati uko tayari kuwasilisha.</li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
                </ol>"
         ok: "OK"
       demo:
@@ -45,20 +45,20 @@ sw:
         body: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
                <ol>
                  <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
-                 <li>Click <b>\"Kuwasilisha Vote yangu"\"</b> button wakati uko tayari kuwasilisha.</li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
                </ol>"
         ok: "OK"
     instructions:
       real: "<h3>Maelekezo</h3>
              <ol>
                <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
-               <li>Click <b>\"Kuwasilisha Vote yangu"\"</b> button wakati uko tayari kuwasilisha.</li>
+               <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
              </ol>"
       demo: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
              <h3>Maelekezo</h3>
              <ol>
                <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
              </ol>"
     list_of_projects: "Orodha ya Miradi"
     estimated_cost: "Inakadiriwa Gharama"

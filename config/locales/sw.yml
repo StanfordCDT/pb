@@ -72,24 +72,24 @@ sw:
       selected: "Kuchaguliwa" # if the project is selected
       not_enough_money: "Hakuna fedha za kutosha"
       more_projects: "Huwezi kuchagua miradi zaidi ya %{max_n_projects}"
-    remove_button: "Remove"  # Text on the button to remove a selected project
-    remove_button_tooltip: "Click here if you don't want to choose this project anymore."
-    submit_button: "Submit My Vote..."
+    remove_button: "Ondoa"  # Text on the button to remove a selected project
+    remove_button_tooltip: "Bonyeza hapa kama huna wanataka kuchagua mradi huu tena."
+    submit_button: "Kuwasilisha kura yangu ..."
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "Una uhakika unataka kuwasilisha kura yako?"
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected the following projects: %{projects}"
+          zero: "<span style='color: red;'>Hujateua mradi wowote.</span>"
+          other: "Una kuchaguliwa miradi ifuatayo: %{projects}"
           item: "%{project} ($%{cost})"
         under_n_project_limit:
-          one: "<span style='color: red;'>You have selected only one project.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
-          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote. If you want to modify your vote, please click 'Go Back' below. If you want to submit your vote, please check the box below and then click 'Submit My Vote.'"
-        checkbox: "I understand that after I submit my vote, I <strong>cannot</strong> change it."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+          one: "<span style='color: red;'>Una kuchaguliwa mradi mmoja tu.</span>"
+          less: "<span style='color: red;'>Una kuchaguliwa miradi %{count} tu.</span>"
+          limit: "<span style='color: red;'>Unaweza kupiga kura kwa ajili ya miradi hadi %{max_n_projects}.</span>"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako. Kama unataka kurekebisha kura yako, tafadhali bonyeza 'Rudi nyuma' hapa chini. Kama unataka kuwasilisha kura yako, tafadhali angalia sanduku la hapa chini na kisha click 'Wasilisha Vote wangu'."
+        checkbox: "Naelewa kwamba baada ya mimi kuwasilisha kura yangu, siwezi mabadiliko hayo."
+      ok: "Mimi kuwasilisha pendekezo hili bajeti"
+      cancel: "Rudi nyuma"
     confirmation_over_limit:
       title: "Could not submit your vote"
       over_n_project_limit: "<span style='color:red'>You have selected <b>%{n_projects}</b> projects. You can only select at most <b>%{max_n_projects}</b> projects. Please remove <b>%{extra}</b> or more projects.</span>"

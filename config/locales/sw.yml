@@ -91,25 +91,25 @@ sw:
       ok: "Mimi kuwasilisha pendekezo hili bajeti"
       cancel: "Rudi nyuma"
     confirmation_over_limit:
-      title: "Could not submit your vote"
-      over_n_project_limit: "<span style='color:red'>You have selected <b>%{n_projects}</b> projects. You can only select at most <b>%{max_n_projects}</b> projects. Please remove <b>%{extra}</b> or more projects.</span>"
-      over_budget_limit: "<span style='color:red'>You're currently over budget.</span>"
-      cancel: "Go Back"
+      title: "Mfumo hakuweza kuwasilisha kura yako"
+      over_n_project_limit: "<span style='color:red'>Una kuchaguliwa miradi <b>%{n_projects}</b>. Unaweza kuchagua miradi saa zaidi <b>%{max_n_projects}</b>. Tafadhali kuondoa miradi <b>%{extra}</b> au zaidi.</span>"
+      over_budget_limit: "<span style='color:red'>Uteuzi wako unazidi bajeti.</span>"
+      cancel: "Rudi nyuma"
     tracker:
-      text: "You have selected %{count} projects."
+      text: "Una kuchaguliwa miradi %{count}."
       x_out_of_y: "%{x} / %{y}"
     budgetbar:
-      text: "Selected %{total} of %{budget} total budget."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You're currently over budget."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+      text: "Kuchaguliwa %{total} ya %{budget} jumla ya bajeti."
+      under_budget: "Bado una %{remaining_money} shilingi/dola kushoto."
+      over_budget: "Uteuzi wako unazidi bajeti."
+      over_budget_but_can_add_projects: "Una ilizidi bajeti, lakini unaweza kuendelea kuongeza miradi."
     adjustable_cost_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected $%{cost} for %{project}"
+      instructions: "Tafadhali kuchagua moja ya chaguzi chini:"
+      not_adjusted_warning: "<span style='color:red'>Una kuchaguliwa shilingi/dola sifuri kwa %{project}.</span>"
+      message: "Una kuchaguliwa shilingi/dola 5 kwa %{project}"
       table_headings:
-        percentage_column: "Percentage of the budget spent"
-        cost_column: "Cost"
+        percentage_column: "Asilimia ya bajeti alitumia"
+        cost_column: "Gharama"
         number_column: "Approximate # of blocks resurfaced"
     map:
       street_resurfacing_count:
@@ -143,50 +143,50 @@ sw:
       submit_button: "Submit and Continue"
   
   ranking:
-    title: "Participatory Budgeting"
+    title: "Shirikishi bajeti"
     popup:
       real:
         title: "Maelekezo"
         body: "<ol>
-                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
                </ol>"
         ok: "OK"
       demo:
         title: "Maelekezo"
         body: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
                <ol>
-                 <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-                 <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
                </ol>"
         ok: "OK"
     instructions:
-      real: "<h3>Instructions</h3>
+      real: "<h3>Maelekezo</h3>
              <ol>
-               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
              </ol>"
       demo: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
-             <h3>Instructions</h3>
+             <h3>Maelekezo</h3>
              <ol>
-               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
              </ol>"
-    list_of_projects: "List of Projects"
-    estimated_cost: "Estimated Cost"
-    youtube_video: "YouTube video"
-    location: "Location"
-    partner: "Partner"
-    committee: "Committee"
-    read_details: "Read more..."
+    list_of_projects: "Orodha ya Miradi"
+    estimated_cost: "Inakadiriwa Gharama"
+    youtube_video: "Video YouTube"
+    location: "Eneo"
+    partner: "Mshirika"
+    committee: "Kamati"
+    read_details: "Soma zaidi..."
     select_button:  # Text on the button to select a project
-      select: "Select"  # if the project is not selected
-      selected: "Selected" # if the project is selected
-      not_enough_money: "Not enough money"
-      more_projects: "Can't choose more than %{max_n_projects} projects"
-    remove_button: "Remove"  # Text on the button to remove a selected project
-    remove_button_tooltip: "Click here if you don't want to choose this project anymore."
-    submit_button: "Submit My Vote..."
+      select: "Kuchagua"  # if the project is not selected
+      selected: "Kuchaguliwa" # if the project is selected
+      not_enough_money: "Hakuna fedha za kutosha"
+      more_projects: "Huwezi kuchagua miradi zaidi ya %{max_n_projects}"
+    remove_button: "Ondoa"  # Text on the button to remove a selected project
+    remove_button_tooltip: "Bonyeza hapa kama huna wanataka kuchagua mradi huu tena."
+    submit_button: "Kuwasilisha kura yangu ..."
     confirmation:
       title: "Are you sure you want to submit your vote?"
       body:

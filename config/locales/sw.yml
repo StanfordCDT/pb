@@ -110,37 +110,37 @@ sw:
       table_headings:
         percentage_column: "Asilimia ya bajeti alitumia"
         cost_column: "Gharama"
-        number_column: "Approximate # of blocks resurfaced"
+        number_column: "Idadi takriban ya mitaa umeandaliwa"
     map:
       street_resurfacing_count:
-        one: "1 street repaved"
-        other: "%{count} streets repaved"
+        one: "1 mitaani umeandaliwa"
+        other: "%{count} mitaa umeandaliwa"
       alley_resurfacing_count:
-        one: "1 alley repaved"
-        other: "%{count} alleys repaved"
+        one: "1 kilimo cha umeandaliwa"
+        other: "%{count} 2 vichochoro umeandaliwa"
       apron_resurfacing_count:
-        one: "1 apron repaved"
-        other: "%{count} aprons repaved"
+        one: "1 apron umeandaliwa"
+        other: "%{count} aprons umeandaliwa"
       sidewalk_repairing_count:
-        one: "1 sidewalk repaired"
-        other: "%{count} sidewalks repaired"
+        one: "sidewalk moja umeandaliwa"
+        other: "%{count} sidewalks umeandaliwa"
     image_gallery:
-      cue: "Click image for slide show"
+      cue: "Bofya picha slide show"
     project_ranking:
-      list_header: "You have selected the following projects. Change their ranking by dragging the <span class='glyphicon glyphicon-sort'></span> icons."
+      list_header: "Una kuchaguliwa miradi ifuatayo. Drag <span class='glyphicon glyphicon-sort'></span> icons kubadili cheo yao."
 
   thanks_approval:
-    title: "Thank you"
+    title: "Asante"
     description:
-      real: "<br><br><p class='lead text-center'>Thank you for voting. Please click 'Next' below to go to the next page.</p>"
-      demo: "<br><br><p class='lead'>Thank you for voting! <span style='color: red;'><strong>Please note that this is only a <u>preview</u>.</strong></span> Please click 'Next' below to go to the next page.</p>"
-    send_vote_email: "(Optional) I want to send my vote result to my email:"
-    email_placeholder: "Enter email"
-    next_button: "Next &gt;&gt;"
+      real: "<br><br><p class='lead text-center'>Asante kwa kupiga kura. Tafadhali bonyeza 'Ijayo' chini kwenda ukurasa wa pili.</p>"
+      demo: "<br><br><p class='lead'>Asante kwa kupiga kura! <span style='color: red;'><strong>Tafadhali kumbuka kuwa hii ni hakikisho tu.</strong></span> Tafadhali bonyeza 'Ijayo' chini kwenda ukurasa wa pili.</p>"
+    send_vote_email: "(Optional) I want to send the results of my vote to my email:"
+    email_placeholder: "kuingia barua pepe"
+    next_button: "Ijayo &gt;&gt;"
     survey:
       questions: []
       options: []
-      submit_button: "Submit and Continue"
+      submit_button: "Kuwasilisha na kuendelea"
   
   ranking:
     title: "Shirikishi bajeti"

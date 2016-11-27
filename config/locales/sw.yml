@@ -188,45 +188,45 @@ sw:
     remove_button_tooltip: "Bonyeza hapa kama huna wanataka kuchagua mradi huu tena."
     submit_button: "Kuwasilisha kura yangu ..."
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "Una uhakika unataka kuwasilisha kura yako?"
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected the following projects: %{projects}"
+          zero: "<span style='color: red;'>Hujateua mradi wowote.</span>"
+          other: "Una kuchaguliwa miradi ifuatayo: %{projects}"
           item: "%{project} ($%{cost})"
         under_n_project_limit:
-          one: "<span style='color: red;'>You have selected only one project.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
-          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote. If you want to modify your vote, please click 'Go Back' below. If you want to submit your vote, please check the box below and then click 'Submit My Vote.'"
-        checkbox: "I understand that after I submit my vote, I <strong>cannot</strong> change it."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+          one: "<span style='color: red;'>Una kuchaguliwa mradi mmoja tu.</span>"
+          less: "<span style='color: red;'>Una kuchaguliwa miradi %{count} tu.</span>"
+          limit: "<span style='color: red;'>Unaweza kupiga kura kwa ajili ya miradi hadi %{max_n_projects}.</span>"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako. Kama unataka kurekebisha kura yako, tafadhali bonyeza 'Rudi nyuma' hapa chini. Kama unataka kuwasilisha kura yako, tafadhali angalia sanduku la hapa chini na kisha click 'Wasilisha Vote wangu'."
+        checkbox: "Naelewa kwamba baada ya mimi kuwasilisha kura yangu, siwezi mabadiliko hayo."
+      ok: "Mimi kuwasilisha pendekezo hili bajeti"
+      cancel: "Rudi nyuma"
     confirmation_over_limit:
-      title: "Could not submit your vote"
-      over_n_project_limit: "<span style='color:red'>You have selected <b>%{n_projects}</b> projects. You can only select at most <b>%{max_n_projects}</b> projects. Please remove <b>%{extra}</b> or more projects.</span>"
-      over_budget_limit: "<span style='color:red'>You're currently over budget.</span>"
-      cancel: "Go Back"
+      title: "Mfumo hakuweza kuwasilisha kura yako"
+      over_n_project_limit: "<span style='color:red'>Una kuchaguliwa miradi <b>%{n_projects}</b>. Unaweza kuchagua miradi saa zaidi <b>%{max_n_projects}</b>. Tafadhali kuondoa miradi <b>%{extra}</b> au zaidi.</span>"
+      over_budget_limit: "<span style='color:red'>Uteuzi wako unazidi bajeti.</span>"
+      cancel: "Rudi nyuma"             
     tracker:
-      text: "You have selected %{count} projects."
+      text: "Una kuchaguliwa miradi %{count}."
       x_out_of_y: "%{x} / %{y}"
     budgetbar:
-      text: "Selected %{total} of %{budget} total budget."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You're currently over budget."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+      text: "Kuchaguliwa %{total} ya %{budget} jumla ya bajeti."
+      under_budget: "Bado una %{remaining_money} shilingi/dola kushoto."
+      over_budget: "Uteuzi wako unazidi bajeti."
+      over_budget_but_can_add_projects: "Una ilizidi bajeti, lakini unaweza kuendelea kuongeza miradi."
     adjustable_cost_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected $%{cost} for %{project}"
+      instructions: "Tafadhali kuchagua moja ya chaguzi chini:"
+      not_adjusted_warning: "<span style='color:red'>Una kuchaguliwa shilingi/dola sifuri kwa %{project}.</span>"
+      message: "Una kuchaguliwa shilingi/dola 5 kwa %{project}"
       table_headings:
-        percentage_column: "Percentage of the budget spent"
-        cost_column: "Cost"
-        number_column: "Approximate # of blocks resurfaced"
+        percentage_column: "Asilimia ya bajeti alitumia"
+        cost_column: "Gharama"
+        number_column: "Idadi takriban ya mitaa umeandaliwa"        
     image_gallery:
-      cue: "Click image for slide show"
+      cue: "Bofya picha slide show"
     project_ranking:
-      list_header: "You have selected the following projects. Change their ranking by dragging the <span class='glyphicon glyphicon-sort'></span> icons."
+      list_header: "Una kuchaguliwa miradi ifuatayo. Drag <span class='glyphicon glyphicon-sort'></span> icons kubadili cheo yao."
 
   question:
     title: "Survey"

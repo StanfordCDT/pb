@@ -229,43 +229,40 @@ sw:
       list_header: "Una kuchaguliwa miradi ifuatayo. Drag <span class='glyphicon glyphicon-sort'></span> icons kubadili cheo yao."
 
   question:
-    title: "Survey"
-    question: "Are you 14 years or older?"
-    ok: "Yes, I am 14 years or older"
-    alternative: "No, I am under 14 years old"
+    title: "Dodoso"
+    question: "Je, wewe miaka 14 au zaidi?"
+    ok: "Ndiyo, mimi ni miaka 14 au zaidi"
+    alternative: "Hakuna Nina umri wa miaka mdogo kuliko 14."
 
   comparison:
-    title: "Comparison"
-    header: "Which project gives the best value for money, that is, provides the most benefit to the community per dollar spent?"
-    estimated_cost: "Estimated cost"
-    this_project: "This project"
-    not_sure: "I am not sure"
+    title: "Kulinganisha"
+    header: "Ambayo mradi inatoa thamani bora kwa fedha, yaani, hutoa faida zaidi kwa jamii kwa dola alitumia?"
+    estimated_cost: "makadirio ya gharama"
+    this_project: "Mradi huu"
+    not_sure: "Sina uhakika"
     popup:
       title: "Maelekezo"
-      body: "<p style='font-size: 22px;'>You will now be asked to compare projects in terms of their community benefit for money spent. This comparison activity is part of a Stanford University research project meant to help us improve the participatory budgeting process, and is not part of your vote.</p>
-      <ul style='font-size: 22px;'><li>Participating in this activity is optional, and you can exit at any time.</li>
-      <li>The expected time for this activity is 2-3 minutes.</li></ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. This study is funded partially by the US
-Department of Defense. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
-      ok: "Continue"
-      exit: "Exit"
+      body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+      <ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+      <li>Itachukua tu 2 au 3 dakika ya muda wako.</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480..</p>"
+      ok: "Kuendelea"
+      exit: "Utgång"
 
   knapsack:
     title: "Knapsack"
     popup:
       real:
         title: "Maelekezo"
-        body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 22px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
+        body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+<ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+<li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
 <li>In this activity, you will be asked to choose an unlimited number of
 projects, but the total cost of the chosen projects cannot exceed %{budget}.</li></ul>
 <p style='font-size: 14px;'>This study poses no risk.
@@ -290,8 +287,7 @@ projects, but the total cost of the chosen projects cannot exceed %{budget}.</li
 <p style='font-size: 14px;'>This study poses no risk.
 No payment will be made to you for participation, and we
 cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. This study is funded partially by the US
-Department of Defense. Please contact Professor Ashish Goel at
+answer particular questions. Please contact Professor Ashish Goel at
 goel_admins@lists.stanford.edu if you have any questions, suggestions,
 or concerns. You may also contact the Stanford Institutional Review
 Board at 650-723-2480.</p>"

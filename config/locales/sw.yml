@@ -134,7 +134,7 @@ sw:
     description:
       real: "<br><br><p class='lead text-center'>Asante kwa kupiga kura. Tafadhali bonyeza 'Ijayo' chini kwenda ukurasa wa pili.</p>"
       demo: "<br><br><p class='lead'>Asante kwa kupiga kura! <span style='color: red;'><strong>Tafadhali kumbuka kuwa hii ni hakikisho tu.</strong></span> Tafadhali bonyeza 'Ijayo' chini kwenda ukurasa wa pili.</p>"
-    send_vote_email: "(Optional) I want to send the results of my vote to my email:"
+    send_vote_email: "(Hiari) Nataka kupeleka matokeo ya kura yangu kwa email yangu:"
     email_placeholder: "kuingia barua pepe"
     next_button: "Ijayo &gt;&gt;"
     survey:
@@ -166,7 +166,7 @@ sw:
                  <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
                  <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
              </ol>"
-      demo: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+      demo: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
              <h3>Maelekezo</h3>
              <ol>
                  <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
@@ -251,7 +251,7 @@ hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
 kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
 goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
 au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
-Bodi katika + 1-650-723-2480..</p>"
+Bodi katika + 1-650-723-2480.</p>"
       ok: "Kuendelea"
       exit: "Utgång"
 
@@ -263,110 +263,106 @@ Bodi katika + 1-650-723-2480..</p>"
         body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
 <ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
 <li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
-<li>In this activity, you will be asked to choose an unlimited number of
-projects, but the total cost of the chosen projects cannot exceed %{budget}.</li></ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. This study is funded partially by the US
-Department of Defense. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
-        ok: "OK"
-        exit: "Exit"
+<li>Katika shughuli hii, hakuna kikomo juu ya idadi ya
+miradi unaweza kuchagua, lakini gharama ya jumla ya miradi waliochaguliwa hawawezi kisichozidi shilingi %{budget} au dola.</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+        ok: "Kuendelea"
+        exit: "Utgång"
       demo:
         title: "Maelekezo"
-        body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 22px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-<li>In this activity, you will be asked to choose an unlimited number of
-projects, but the total cost of the chosen projects cannot exceed %{budget}.</li></ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
-        ok: "OK"
-        exit: "Exit"
+        body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+<ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+<li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
+<li>Katika shughuli hii, hakuna kikomo juu ya idadi ya
+miradi unaweza kuchagua, lakini gharama ya jumla ya miradi waliochaguliwa hawawezi kisichozidi shilingi %{budget} au dola.</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+        ok: "Kuendelea"
+        exit: "Utgång"
     instructions:
       real: "<h3>Maelekezo</h3>
              <ol>
-               <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
-               <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               <li>Kuchagua miradi ungependa kusaidia. Jumla ya gharama hawawezi kisichozidi shilingi/dola <b>%{budget}</b>.</li>
+               <li>Unaweza kuona kiasi jumla una zilizotengwa hivyo mbali katika bar hapo juu. Unaweza kuondoa miradi yoyote awali kuchaguliwa kwa kubonyeza bar au moja kwa moja kwa kubonyeza mradi kuchaguliwa.</li>
+               <li>Click <b>\"Kuwasilisha kura yangu<b>\" wakati uko tayari kuwasilisha.</li>
              </ol>"
       demo: "<h3>Maelekezo</h3>
              <ol>
-               <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
-               <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               <li>Kuchagua miradi ungependa kusaidia. Jumla ya gharama hawawezi kisichozidi shilingi/dola <b>%{budget}</b>.</li>
+               <li>Unaweza kuona kiasi jumla una zilizotengwa hivyo mbali katika bar hapo juu. Unaweza kuondoa miradi yoyote awali kuchaguliwa kwa kubonyeza bar au moja kwa moja kwa kubonyeza mradi kuchaguliwa.</li>
+               <li>Click <b>\"Kuwasilisha kura yangu<b>\" wakati uko tayari kuwasilisha.</li>
              </ol>"
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "Una uhakika unataka kuwasilisha kura yako?"
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
-          other: "You have selected the following projects: %{projects}"
+          zero: "<span style='color: red;'>Hujateua miradi yoyote.</span>"
+          other: "Una kuchaguliwa miradi ifuatayo: %{projects}"
           item: "%{project} ($%{cost})"
         under_n_project_limit:
-          one: "<span style='color: red;'>You have selected only one project.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
-          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+          one: "<span style='color: red;'>Una kuchaguliwa mradi mmoja tu.</span>"
+          less: "<span style='color: red;'>Una kuchaguliwa miradi %{count} tu.</span>"
+          limit: "<span style='color: red;'>Unaweza kupiga kura kwa ajili ya miradi hadi %{max_n_projects}.</span>"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako. "
+      ok: "Kuwasilisha kura yangu"
+      cancel: "Rudi nyuma"
     adjustable_cost_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected $%{cost} for %{project}"
+      instructions: "Tafadhali kuchagua moja ya chaguzi chini:"
+      not_adjusted_warning: "<span style='color:red'>Una kuchaguliwa $ 0 kwa %{project}</span>"
+      message: "Una kuchaguliwa $%{cost} kwa %{project}"
 
   plusminus:
     popup:
       title: "Maelekezo"
-      body: "<p style='font-size: 22px;'>You will now be asked to participate in an activity that is not part of your vote, but part of a Stanford University research project meant to help us improve the participatory budgeting process.</p>
-      <ul style='font-size: 22px;'><li>Participating in this activity is optional, will <u>not</u> affect your vote, and you can exit at any time.</li>
-      <li>The expected time for this activity is 2-3 minutes.</li>
-      <li>In this activity, you will be allowed to cast both positive votes (for
-projects that you approve) and also negative votes or \"downvotes\" (for
-projects that you believe should not be funded).</li></ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. This study is funded partially by the US
-Department of Defense. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
-      ok: "OK"
-      exit: "Exit"
+        body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+<ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+<li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
+      <li>Katika shughuli hii, utakuwa kuruhusiwa kupiga kura wote chanya (kwa
+miradi ambayo wewe kupitisha) na pia kura hasi au \"downvotes\" (kwa
+miradi ambayo unaamini haipaswi unafadhiliwa).</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+      ok: "Kuendelea"
+      exit: "Utgång"
     instructions: "<h3>Maelekezo</h3>
                    <ol>
-                     <li>Select the projects you would like to support by clicking the&nbsp;<b>+</b>&nbsp;buttons (\"upvote\").
-                      Select the projects you believe should not be funded by clicking the&nbsp;<b>&minus;</b>&nbsp;buttons (\"downvote\").</li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                     <li>Kuchagua miradi ungependa kusaidia kwa kubonyeza&nbsp;<b>+</b>&nbsp;vifungo (\"upvote\").
+                      Kuchagua miradi unaamini haipaswi unafadhiliwa kwa kubonyeza &nbsp;<b>&minus;</b>&nbsp;vifungo (\"downvote\").</li>
+                     <li>Click <b>\"Kuwasilisha kura yangu<b>\" wakati uko tayari kuwasilisha..</li>
                    </ol>"
-    clear_button: "Clear"  # button to remove the upvote/downvote from a project (i.e. change it to the neutral state)
-    used_up_upvotes: "You have used all %{n_upvotes} upvotes"
-    used_up_downvotes: "You have used all %{n_downvotes} downvotes"
+    clear_button: "kufuta"  # button to remove the upvote/downvote from a project (i.e. change it to the neutral state)
+    used_up_upvotes: "Una kutumika upvotes wote %{n_upvotes} upvotes"
+    used_up_downvotes: "Una kutumika upvotes wote %{n_downvotes} downvotes"
     tracker:
-      text: "You have %{count} remaining."
-      n_upvotes_and_n_downvotes: "<strong>%{n_upvotes} upvotes</strong> (+) and <strong>%{n_downvotes} downvotes</strong> (&minus;)"
+      text: "Una %{count} iliyobaki."
+      n_upvotes_and_n_downvotes: "<strong>%{n_upvotes} upvotes</strong> (+) na <strong>%{n_downvotes} downvotes</strong> (&minus;)"
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "Una uhakika unataka kuwasilisha kura yako?"
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
-          upvotes: "You <b>upvoted</b> the following projects: %{projects}"
-          downvotes: "You <b>downvoted</b> the following projects: %{projects}"
+          zero: "<span style='color: red;'>Hujateua miradi yoyote.</span>"
+          upvotes: "miradi ifuatayo kupokea <b>upvotes</b> kutoka kwenu: %{projects}"
+          downvotes: "miradi ifuatayo kupokea <b>downvotes</b> kutoka kwenu: %{projects}"
           item: "%{project} ($%{cost})"
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako."
+      ok: "Kuwasilisha kura yangu"
+      cancel: "Rudi nyuma"
 
   survey:
     title: "Survey"

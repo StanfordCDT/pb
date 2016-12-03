@@ -365,20 +365,20 @@ Bodi katika + 1-650-723-2480.</p>"
       cancel: "Rudi nyuma"
 
   survey:
-    title: "Survey"
-    header: "Take a Survey"
+    title: "Dodoso"
+    header: "Habari kuhusu wewe mwenyewe"
     question:
-      title: "Thank you"
-      body: "Thank you for voting. Are you 14 years or older?"
-      ok: "Yes, I am 14 years or older"
-      alternative: "No, I am under 14 years old"
+      title: "Asante"
+    question: "Je, wewe miaka 14 au zaidi?"
+    ok: "Ndiyo, mimi ni miaka 14 au zaidi"
+    alternative: "Hakuna Nina umri wa miaka mdogo kuliko 14."
 
   thanks:
-    title: "Thank you"
+    title: "Asante"
     description:
-      real: "Thank you for voting. Please click the 'Exit' button below."
-      demo: "Thank you for testing the digital participatory budgeting interface! <span style='color: red;'><strong>Please note that this is only a <u>test</u>.</strong></span> In order to vote, please come to a voting location in one of the following places:"
-    exit: "Exit"
+      real: "Asante kwa kupiga kura. Tafadhali bonyeza 'Toka' kifungo chini."
+      demo: "Asante kwa ajili ya kupima digital shirikishi bajeti interface! <span style='color: red;'><strong>Tafadhali kumbuka kuwa hii ni tu <u>mtihani</u>.</strong></span> Ili kupiga kura, tafadhali kuja eneo kupiga kura katika moja ya maeneo yafuatayo:"
+    exit: "Toka"
 
   about:
     title: "About"

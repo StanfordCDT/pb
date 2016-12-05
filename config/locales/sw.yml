@@ -381,19 +381,19 @@ Bodi katika + 1-650-723-2480.</p>"
     exit: "Toka"
 
   about:
-    title: "About"
-    description: "<center><h1 class='sub-header'>About the digital participatory budgeting interface</h1></center>
-    <br><p class='lead'>The digital participatory budgeting interface has been developed by the <a href='http://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. <br>We hope that the visual nature of the interface and the richness of the information presented will help you learn about the projects and cast more informative votes.</p>
-    <p class='lead'><b>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
-    <p class='lead'>If you have technical problems or you want to give feedback, please email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> and we will try to get back to you as soon as possible.</p>"
+    title: "Kuhusu"
+    description: "<center><h1 class='sub-header'>Kuhusu mfumo huu shirikishi bajeti</h1></center>
+    <br><p class='lead'><a href='http://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a> ya saa Stanford University maendeleo ya mfumo huu kwa bajeti shirikishi. <br>Ni matumaini yetu kwamba mpango wa mfumo wa na utajiri wa taarifa iliyotolewa si tu kukusaidia kujifunza zaidi kuhusu miradi lakini pia kukusaidia kupiga kura muhimu zaidi.</p>
+    <p class='lead'><b>Hii ni wazi chanzo mradi leseni chini ya GNU GPL v3.0 leseni. Unaweza kupata chanzo kanuni juu ya <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
+    <p class='lead'>Kama una matatizo ya kiufundi au unataka kutoa maoni, tafadhali email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> na sisi kujaribu kupata nyuma yenu haraka iwezekanavyo.</p>"
 
   result:
-    title: "Results"
-    vote_results: "Vote Results"
-    description: "The results based on the votes from %{count} voters from %{start} to %{end}."
-    proposed_project: "Proposed Projects"  # A table header
-    votes: "Votes"  # A table header
-    projects: "Projects"
+    title: "Matokeo"
+    vote_results: "kura Matokeo"
+    description: "matokeo msingi kura kutoka kwa wapiga kura %{count} kutoka %{start} hadi %{end}."
+    proposed_project: "Miradi iliyopendekezwa"  # A table header
+    votes: "Kura"  # A table header
+    projects: "Miradi"
 
   election:
     info: "<h3>Voting Locations</h3>

@@ -396,32 +396,32 @@ Bodi katika + 1-650-723-2480.</p>"
     projects: "Miradi"
 
   election:
-    info: "<h3>Voting Locations</h3>
-           <b>Saturday, September 27</b> &nbsp; (12:00 noon - 4:00 p.m.)<br>
-           Somewhere<br>
+    info: "<h3>kupiga kura Maeneo</h3>
+           <b>Jumamosi, Septemba 27</b> &nbsp; (12:00 noon - 4:00 p.m.)<br>
+           mahali fulani<br>
            <br>
-           <b>Tuesday, September 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
-           Somewhere<br>
+           <b>Jumanne, Septemba 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+           mahali fulani<br>
            <br>
-           <p>For more information, please visit <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
+           <p>Kwa habari zaidi, tafadhali tembelea <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
 
   sms_signup:
-    title: "Verify your phone number"
-    header: "Verify your phone number"
-    instructions: "<p>In order to vote online, you will need a cell phone that can receive a text message, so that we can verify your phone number.</p><p>Enter your cell phone number, and we'll text you a confirmation code.</p>"
-    phone_number_placeholder: "Enter phone number"
-    verify_button: "Verify"
-    invalid_phone_number: "\"%{phone_number}\" is not a valid phone number."
-    dont_have_cell_phone: "Don't have a cell phone? Please email XXX@stanford.edu or call XXX-XXX-XXX to get a code. Once you get the code, press the <b>Enter Code</b> button to continue. You also can come to one of the following places to cast your vote:<br><br>"
+    title: "Kuthibitisha nambari yako ya simu"
+    header: "Kuthibitisha nambari yako ya simu"
+    instructions: "<p>Ili kupiga kura online, unahitaji simu ya mkononi ambayo inaweza kupokea ujumbe wa maandishi, ili tuweze kuthibitisha namba yako ya simu.</p><p>Kuingia katika kiini namba yako ya simu, na tutaweza Nakala wewe uthibitisho kificho.</p>"
+    phone_number_placeholder: "Ingiza namba ya simu"
+    verify_button: "Kuthibitisha"
+    invalid_phone_number: "\"%{phone_number}\" si halali namba ya simu."
+    dont_have_cell_phone: "Je, si kuwa na simu ya mkononi?? Ili kupata code, tafadhali tuma barua pepe kwa XXX@stanford.edu. Unaweza pia kupiga simu 000-000-000. Mara baada ya kupata kanuni, vyombo vya habari <b>Weka Kanuni</b> button kuendelea. Unaweza pia kuja moja ya maeneo yafuatayo kupiga kura yako:<br><br>"
 
   code_signup:
-    title: "Enter access code to vote"
+    title: "Kupiga kura, kuingia kupata code yako."
     instruction: ""
-    no_code_instruction: "If you do not have an access code, get it from the City."
-    code_placeholder: "Access code"
-    vote_button: "Vote"
-    wrong_access_code: "Wrong access code"
-    used_access_code: "This access code has already been used"
+    no_code_instruction: "Kama huna upatikanaji kanuni, kupata kutoka kwa serikali ya mji."
+    code_placeholder: "kanuni ya upatikanaji"
+    vote_button: "Kura"
+    wrong_access_code: "Sio sahihi upatikanaji kanuni"
+    used_access_code: "Msimbo ulioingiza tayari kutumika"
 
   other_signup:
     title: "Enter details to vote"

@@ -424,14 +424,14 @@ Bodi katika + 1-650-723-2480.</p>"
     used_access_code: "Msimbo ulioingiza tayari kutumika"
 
   other_signup:
-    title: "Enter details to vote"
+    title: "Kuingia habari zifuatazo kupiga kura"
     instruction: ""
-    no_account_number_instruction: "If you do not have an account number, contact the City."
-    zipcode_placeholder: "Zip code"
-    account_number_placeholder: "Account Number"
-    vote_button: "Vote"
-    wrong_account_number: "Wrong account number"
-    used_account_number: "This account number has already been used"
+    no_account_number_instruction: "Kama huna kuwa na idadi ya akaunti, wasiliana na City."
+    zipcode_placeholder: "kanuni ya posta"
+    account_number_placeholder: "Idadi akaunti"
+    vote_button: "Kura"
+    wrong_account_number: "Sio sahihi idadi ya akaunti"
+    used_account_number: "Idadi hii akaunti tayari kutumika"
 
   registration:
     title: "Voter details"

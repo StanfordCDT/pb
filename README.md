@@ -1,5 +1,5 @@
-# **Participatory Budgeting Platform** #
-The Participatory Budgeting Platform has been developed by the [Stanford Crowdsourced Democracy Team](http://voxpopuli.stanford.edu/). The platform is being used by many cities across the United States for hosting participatory budgeting elections. You can check out the live platform hosted at [https://pbstanford.org/](https://pbstanford.org/).
+# **Stanford Participatory Budgeting Platform** #
+The Stanford Participatory Budgeting Platform has been developed by the [Stanford Crowdsourced Democracy Team](http://voxpopuli.stanford.edu/). The platform is being used by many cities across the United States for hosting participatory budgeting elections. You can check out the live platform hosted at [https://pbstanford.org/](https://pbstanford.org/).
 
 ## **Requirements** ##
 * **Ruby**: >= 2.2.1
@@ -26,7 +26,7 @@ The Participatory Budgeting Platform has been developed by the [Stanford Crowdso
 ## **Contributing** ##
 Improvements are always welcome. Please follow these steps to contribute
 
-1. Submit a **Pull Request** with a detailed explaination of changes and screenshots (if UI is changing).
+1. Submit a **Pull Request** with a detailed explanation of changes and screenshots (if UI is changing).
 
 2. We will review the changes and merge them if approved.
 

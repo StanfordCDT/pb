@@ -1,0 +1,483 @@
+sw:
+  navigation:  # text on the navigation bar
+    brand: "PB"  # text at the top left corner
+    home: "Mwanzo"
+    about: "Kuhusu"
+    help: "Msaada"
+    exit: "Kuingia nje"
+
+  index:
+    title: "Shirikishi bajeti"  # text on the title bar
+    voting_machine:
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Karibu online Bajeti Shirikishi</p>"
+      instruction: "Tafadhali kuingia code kitambulisho umepokea."
+      code_placeholder: "Kanuni"
+      enter_code_button: "Kuingia"
+      wrong_code: "Sio sahihi kitambulisho kificho"
+      used_code: "Kanuni hii ya utambulisho tayari kutumika."
+      used_personal_id: "ID hili tayari kutumika. Tafadhali wasiliana voxpopuli@lists.stanford.edu katika kesi hii ni kosa au unahitaji kupiga kura tena."
+    remote:
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Karibu online Bajeti shirikishi</p>"
+      vote_button: "Kwenda kupiga kura"  # button to go to the real vote screen
+      code_verification_button: "kuingia kitambulisho kanuni yako"
+      other_verification_button: "Kura na maelezo mengine"
+      see_projects_button: "Angalia katika orodha ya miradi"  # button to go to the demo vote screen
+    demo:
+      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Karibu Shirikishi Bajeti sampuli digital kura, kwa hisani ya <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class = 'bullet'> Katika tovuti hii, unaweza familiarize mwenyewe na miradi ya mwaka huu na kura digital. Tovuti hii ni habari tu, na wewe <b>hawezi</b> kupiga kura yako halisi hapa.</p><p class = 'lead'> Wakati kutupwa yako <u>halisi kura</u>, utakuwa kuwa kuamua jinsi gani unataka kutenga $ ... milioni ya kuboresha mji mkuu wa bajeti ya jiji hilo. Ili kupiga kura, unahitaji kuja moja ya maeneo mengi ya kupiga kura ambayo itakuwa iko katika mji. kupiga kura utafanyika kuanzia ... kwa .... Angalia wakati wote na maeneo hapa chini.</p>"
+      proceed_button: "Angalia katika sampuli za kupigia kura &gt;&gt;"
+      remote_voting_button: "Kupiga kura kutoka eneo lako sasa &gt;&gt;"
+      exit: "Utgång"
+    voting_ended: "Kupiga kura kumalizika."
+    public_results: "Kuona Matokeo ya Uchaguzi"
+
+  approval:
+    title: "Shirikishi bajeti"
+    popup:
+      real:
+        title: "Maelekezo"
+        body: "<ol>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+               </ol>"
+        ok: "OK"
+      demo:
+        title: "Maelekezo"
+        body: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
+               <ol>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+               </ol>"
+        ok: "OK"
+    instructions:
+      real: "<h3>Maelekezo</h3>
+             <ol>
+               <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+               <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+             </ol>"
+      demo: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
+             <h3>Maelekezo</h3>
+             <ol>
+               <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+               <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+             </ol>"
+    list_of_projects: "Orodha ya Miradi"
+    estimated_cost: "Inakadiriwa Gharama"
+    youtube_video: "Video YouTube"
+    location: "Eneo"
+    partner: "Mshirika"
+    committee: "Kamati"
+    read_details: "Soma zaidi..."
+    select_button:  # Text on the button to select a project
+      select: "Kuchagua"  # if the project is not selected
+      selected: "Kuchaguliwa" # if the project is selected
+      not_enough_money: "Hakuna fedha za kutosha"
+      more_projects: "Huwezi kuchagua miradi zaidi ya %{max_n_projects}"
+    remove_button: "Ondoa"  # Text on the button to remove a selected project
+    remove_button_tooltip: "Bonyeza hapa kama huna wanataka kuchagua mradi huu tena."
+    submit_button: "Kuwasilisha kura yangu ..."
+    confirmation:
+      title: "Una uhakika unataka kuwasilisha kura yako?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>Hujateua mradi wowote.</span>"
+          other: "Una kuchaguliwa miradi ifuatayo: %{projects}"
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Una kuchaguliwa mradi mmoja tu.</span>"
+          less: "<span style='color: red;'>Una kuchaguliwa miradi %{count} tu.</span>"
+          limit: "<span style='color: red;'>Unaweza kupiga kura kwa ajili ya miradi hadi %{max_n_projects}.</span>"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako. Kama unataka kurekebisha kura yako, tafadhali bonyeza 'Rudi nyuma' hapa chini. Kama unataka kuwasilisha kura yako, tafadhali angalia sanduku la hapa chini na kisha click 'Wasilisha Vote wangu'."
+        checkbox: "Naelewa kwamba baada ya mimi kuwasilisha kura yangu, siwezi mabadiliko hayo."
+      ok: "Mimi kuwasilisha pendekezo hili bajeti"
+      cancel: "Rudi nyuma"
+    confirmation_over_limit:
+      title: "Mfumo hakuweza kuwasilisha kura yako"
+      over_n_project_limit: "<span style='color:red'>Una kuchaguliwa miradi <b>%{n_projects}</b>. Unaweza kuchagua miradi saa zaidi <b>%{max_n_projects}</b>. Tafadhali kuondoa miradi <b>%{extra}</b> au zaidi.</span>"
+      over_budget_limit: "<span style='color:red'>Uteuzi wako unazidi bajeti.</span>"
+      cancel: "Rudi nyuma"
+    tracker:
+      text: "Una kuchaguliwa miradi %{count}."
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "Kuchaguliwa %{total} ya %{budget} jumla ya bajeti."
+      under_budget: "Bado una %{remaining_money} shilingi/dola kushoto."
+      over_budget: "Uteuzi wako unazidi bajeti."
+      over_budget_but_can_add_projects: "Una ilizidi bajeti, lakini unaweza kuendelea kuongeza miradi."
+    adjustable_cost_project:
+      instructions: "Tafadhali kuchagua moja ya chaguzi chini:"
+      not_adjusted_warning: "<span style='color:red'>Una kuchaguliwa shilingi/dola sifuri kwa %{project}.</span>"
+      message: "Una kuchaguliwa shilingi/dola 5 kwa %{project}"
+      table_headings:
+        percentage_column: "Asilimia ya bajeti alitumia"
+        cost_column: "Gharama"
+        number_column: "Idadi takriban ya mitaa umeandaliwa"
+    map:
+      street_resurfacing_count:
+        one: "1 mitaani umeandaliwa"
+        other: "%{count} mitaa umeandaliwa"
+      alley_resurfacing_count:
+        one: "1 kilimo cha umeandaliwa"
+        other: "%{count} 2 vichochoro umeandaliwa"
+      apron_resurfacing_count:
+        one: "1 apron umeandaliwa"
+        other: "%{count} aprons umeandaliwa"
+      sidewalk_repairing_count:
+        one: "sidewalk moja umeandaliwa"
+        other: "%{count} sidewalks umeandaliwa"
+    image_gallery:
+      cue: "Bofya picha slide show"
+    project_ranking:
+      list_header: "Una kuchaguliwa miradi ifuatayo. Drag <span class='glyphicon glyphicon-sort'></span> icons kubadili cheo yao."
+
+  thanks_approval:
+    title: "Asante"
+    description:
+      real: "<br><br><p class='lead text-center'>Asante kwa kupiga kura. Tafadhali bonyeza 'Ijayo' chini kwenda ukurasa wa pili.</p>"
+      demo: "<br><br><p class='lead'>Asante kwa kupiga kura! <span style='color: red;'><strong>Tafadhali kumbuka kuwa hii ni hakikisho tu.</strong></span> Tafadhali bonyeza 'Ijayo' chini kwenda ukurasa wa pili.</p>"
+    send_vote_email: "(Hiari) Nataka kupeleka matokeo ya kura yangu kwa email yangu:"
+    email_placeholder: "kuingia barua pepe"
+    next_button: "Ijayo &gt;&gt;"
+    survey:
+      questions: []
+      options: []
+      submit_button: "Kuwasilisha na kuendelea"
+  
+  ranking:
+    title: "Shirikishi bajeti"
+    popup:
+      real:
+        title: "Maelekezo"
+        body: "<ol>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+               </ol>"
+        ok: "OK"
+      demo:
+        title: "Maelekezo"
+        body: "<h3 style='color: red'>This is only a preview. Your vote will not be recorded.</h3>
+               <ol>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+               </ol>"
+        ok: "OK"
+    instructions:
+      real: "<h3>Maelekezo</h3>
+             <ol>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+             </ol>"
+      demo: "<h3 style='color: red'>Hii ni hakikisho tu. Kura yako si kuwa kumbukumbu.</h3>
+             <h3>Maelekezo</h3>
+             <ol>
+                 <li>Kuchagua miradi ungependa kusaidia. Unaweza kupiga kura kwa ajili ya miradi hadi <b>%{max_n_projects}.</b></li>
+                 <li>Click <b>\"Kuwasilisha Vote yangu\"</b> button wakati uko tayari kuwasilisha.</li>
+             </ol>"
+    list_of_projects: "Orodha ya Miradi"
+    estimated_cost: "Inakadiriwa Gharama"
+    youtube_video: "Video YouTube"
+    location: "Eneo"
+    partner: "Mshirika"
+    committee: "Kamati"
+    read_details: "Soma zaidi..."
+    select_button:  # Text on the button to select a project
+      select: "Kuchagua"  # if the project is not selected
+      selected: "Kuchaguliwa" # if the project is selected
+      not_enough_money: "Hakuna fedha za kutosha"
+      more_projects: "Huwezi kuchagua miradi zaidi ya %{max_n_projects}"
+    remove_button: "Ondoa"  # Text on the button to remove a selected project
+    remove_button_tooltip: "Bonyeza hapa kama huna wanataka kuchagua mradi huu tena."
+    submit_button: "Kuwasilisha kura yangu ..."
+    confirmation:
+      title: "Una uhakika unataka kuwasilisha kura yako?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>Hujateua mradi wowote.</span>"
+          other: "Una kuchaguliwa miradi ifuatayo: %{projects}"
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Una kuchaguliwa mradi mmoja tu.</span>"
+          less: "<span style='color: red;'>Una kuchaguliwa miradi %{count} tu.</span>"
+          limit: "<span style='color: red;'>Unaweza kupiga kura kwa ajili ya miradi hadi %{max_n_projects}.</span>"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako. Kama unataka kurekebisha kura yako, tafadhali bonyeza 'Rudi nyuma' hapa chini. Kama unataka kuwasilisha kura yako, tafadhali angalia sanduku la hapa chini na kisha click 'Wasilisha Vote wangu'."
+        checkbox: "Naelewa kwamba baada ya mimi kuwasilisha kura yangu, siwezi mabadiliko hayo."
+      ok: "Mimi kuwasilisha pendekezo hili bajeti"
+      cancel: "Rudi nyuma"
+    confirmation_over_limit:
+      title: "Mfumo hakuweza kuwasilisha kura yako"
+      over_n_project_limit: "<span style='color:red'>Una kuchaguliwa miradi <b>%{n_projects}</b>. Unaweza kuchagua miradi saa zaidi <b>%{max_n_projects}</b>. Tafadhali kuondoa miradi <b>%{extra}</b> au zaidi.</span>"
+      over_budget_limit: "<span style='color:red'>Uteuzi wako unazidi bajeti.</span>"
+      cancel: "Rudi nyuma"             
+    tracker:
+      text: "Una kuchaguliwa miradi %{count}."
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "Kuchaguliwa %{total} ya %{budget} jumla ya bajeti."
+      under_budget: "Bado una %{remaining_money} shilingi/dola kushoto."
+      over_budget: "Uteuzi wako unazidi bajeti."
+      over_budget_but_can_add_projects: "Una ilizidi bajeti, lakini unaweza kuendelea kuongeza miradi."
+    adjustable_cost_project:
+      instructions: "Tafadhali kuchagua moja ya chaguzi chini:"
+      not_adjusted_warning: "<span style='color:red'>Una kuchaguliwa shilingi/dola sifuri kwa %{project}.</span>"
+      message: "Una kuchaguliwa shilingi/dola 5 kwa %{project}"
+      table_headings:
+        percentage_column: "Asilimia ya bajeti alitumia"
+        cost_column: "Gharama"
+        number_column: "Idadi takriban ya mitaa umeandaliwa"        
+    image_gallery:
+      cue: "Bofya picha slide show"
+    project_ranking:
+      list_header: "Una kuchaguliwa miradi ifuatayo. Drag <span class='glyphicon glyphicon-sort'></span> icons kubadili cheo yao."
+
+  question:
+    title: "Dodoso"
+    question: "Je, wewe miaka 14 au zaidi?"
+    ok: "Ndiyo, mimi ni miaka 14 au zaidi"
+    alternative: "Hakuna Nina umri wa miaka mdogo kuliko 14."
+
+  comparison:
+    title: "Kulinganisha"
+    header: "Ambayo mradi inatoa thamani bora kwa fedha, yaani, hutoa faida zaidi kwa jamii kwa dola alitumia?"
+    estimated_cost: "makadirio ya gharama"
+    this_project: "Mradi huu"
+    not_sure: "Sina uhakika"
+    popup:
+      title: "Maelekezo"
+      body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+      <ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+      <li>Itachukua tu 2 au 3 dakika ya muda wako.</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+      ok: "Kuendelea"
+      exit: "Utgång"
+
+  knapsack:
+    title: "Knapsack"
+    popup:
+      real:
+        title: "Maelekezo"
+        body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+<ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+<li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
+<li>Katika shughuli hii, hakuna kikomo juu ya idadi ya
+miradi unaweza kuchagua, lakini gharama ya jumla ya miradi waliochaguliwa hawawezi kisichozidi shilingi %{budget} au dola.</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+        ok: "Kuendelea"
+        exit: "Utgång"
+      demo:
+        title: "Maelekezo"
+        body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+<ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+<li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
+<li>Katika shughuli hii, hakuna kikomo juu ya idadi ya
+miradi unaweza kuchagua, lakini gharama ya jumla ya miradi waliochaguliwa hawawezi kisichozidi shilingi %{budget} au dola.</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+        ok: "Kuendelea"
+        exit: "Utgång"
+    instructions:
+      real: "<h3>Maelekezo</h3>
+             <ol>
+               <li>Kuchagua miradi ungependa kusaidia. Jumla ya gharama hawawezi kisichozidi shilingi/dola <b>%{budget}</b>.</li>
+               <li>Unaweza kuona kiasi jumla una zilizotengwa hivyo mbali katika bar hapo juu. Unaweza kuondoa miradi yoyote awali kuchaguliwa kwa kubonyeza bar au moja kwa moja kwa kubonyeza mradi kuchaguliwa.</li>
+               <li>Click <b>\"Kuwasilisha kura yangu<b>\" wakati uko tayari kuwasilisha.</li>
+             </ol>"
+      demo: "<h3>Maelekezo</h3>
+             <ol>
+               <li>Kuchagua miradi ungependa kusaidia. Jumla ya gharama hawawezi kisichozidi shilingi/dola <b>%{budget}</b>.</li>
+               <li>Unaweza kuona kiasi jumla una zilizotengwa hivyo mbali katika bar hapo juu. Unaweza kuondoa miradi yoyote awali kuchaguliwa kwa kubonyeza bar au moja kwa moja kwa kubonyeza mradi kuchaguliwa.</li>
+               <li>Click <b>\"Kuwasilisha kura yangu<b>\" wakati uko tayari kuwasilisha.</li>
+             </ol>"
+    confirmation:
+      title: "Una uhakika unataka kuwasilisha kura yako?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>Hujateua miradi yoyote.</span>"
+          other: "Una kuchaguliwa miradi ifuatayo: %{projects}"
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Una kuchaguliwa mradi mmoja tu.</span>"
+          less: "<span style='color: red;'>Una kuchaguliwa miradi %{count} tu.</span>"
+          limit: "<span style='color: red;'>Unaweza kupiga kura kwa ajili ya miradi hadi %{max_n_projects}.</span>"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako. "
+      ok: "Kuwasilisha kura yangu"
+      cancel: "Rudi nyuma"
+    adjustable_cost_project:
+      instructions: "Tafadhali kuchagua moja ya chaguzi chini:"
+      not_adjusted_warning: "<span style='color:red'>Una kuchaguliwa $ 0 kwa %{project}</span>"
+      message: "Una kuchaguliwa $%{cost} kwa %{project}"
+
+  plusminus:
+    popup:
+      title: "Maelekezo"
+      body: "<p style='font-size: 22px;'>Wewe sasa kuulizwa kulinganisha miradi katika suala la faida ya jamii yao kwa fedha zilizotumika. Shughuli hii kulinganisha ni sehemu ya mradi wa utafiti Chuo Kikuu cha Stanford. Mradi huu utafiti ni maana ya kutusaidia kuboresha shirikishi utaratibu wa kutayarisha bajeti, na si sehemu ya kura yako.</p>
+      <ul style='font-size: 22px;'><li>Shughuli hii ni ya hiari, na unaweza exit wakati wowote.</li>
+      <li>Itachukua tu 2 au 3 dakika ya muda wako.</li>
+      <li>Katika shughuli hii, utakuwa kuruhusiwa kupiga kura wote chanya (kwa
+miradi ambayo wewe kupitisha) na pia kura hasi au \"downvotes\" (kwa
+miradi ambayo unaamini haipaswi unafadhiliwa).</li></ul>
+<p style='font-size: 14px;'>Utafiti huu unaleta hakuna hatari.
+Hakuna malipo zitafanywa na wewe kwa ajili ya kushiriki, na sisi
+hawezi kuthibitisha faida yoyote na wewe. Una haki ya kukataa
+kujibu maswali fulani. Tafadhali wasiliana Profesa Ashish Goel katika
+goel_admins@lists.stanford.edu kama una maswali yoyote, mapendekezo,
+au wasiwasi. Unaweza pia kuwasiliana na Stanford Taasisi Review
+Bodi katika + 1-650-723-2480.</p>"
+      ok: "Kuendelea"
+      exit: "Utgång"
+    instructions: "<h3>Maelekezo</h3>
+                   <ol>
+                     <li>Kuchagua miradi ungependa kusaidia kwa kubonyeza&nbsp;<b>+</b>&nbsp;vifungo (\"upvote\").
+                      Kuchagua miradi unaamini haipaswi unafadhiliwa kwa kubonyeza &nbsp;<b>&minus;</b>&nbsp;vifungo (\"downvote\").</li>
+                     <li>Click <b>\"Kuwasilisha kura yangu<b>\" wakati uko tayari kuwasilisha..</li>
+                   </ol>"
+    clear_button: "kufuta"  # button to remove the upvote/downvote from a project (i.e. change it to the neutral state)
+    used_up_upvotes: "Una kutumika upvotes wote %{n_upvotes} upvotes"
+    used_up_downvotes: "Una kutumika upvotes wote %{n_downvotes} downvotes"
+    tracker:
+      text: "Una %{count} iliyobaki."
+      n_upvotes_and_n_downvotes: "<strong>%{n_upvotes} upvotes</strong> (+) na <strong>%{n_downvotes} downvotes</strong> (&minus;)"
+    confirmation:
+      title: "Una uhakika unataka kuwasilisha kura yako?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>Hujateua miradi yoyote.</span>"
+          upvotes: "miradi ifuatayo kupokea <b>upvotes</b> kutoka kwenu: %{projects}"
+          downvotes: "miradi ifuatayo kupokea <b>downvotes</b> kutoka kwenu: %{projects}"
+          item: "%{project} ($%{cost})"
+        warning: "Baada ya kuwasilisha kura yako, huwezi kubadilisha kura yako."
+      ok: "Kuwasilisha kura yangu"
+      cancel: "Rudi nyuma"
+
+  survey:
+    title: "Dodoso"
+    header: "Habari kuhusu wewe mwenyewe"
+    question:
+      title: "Asante"
+    question: "Je, wewe miaka 14 au zaidi?"
+    ok: "Ndiyo, mimi ni miaka 14 au zaidi"
+    alternative: "Hakuna Nina umri wa miaka mdogo kuliko 14."
+
+  thanks:
+    title: "Asante"
+    description:
+      real: "Asante kwa kupiga kura. Tafadhali bonyeza 'Toka' kifungo chini."
+      demo: "Asante kwa ajili ya kupima digital shirikishi bajeti interface! <span style='color: red;'><strong>Tafadhali kumbuka kuwa hii ni tu <u>mtihani</u>.</strong></span> Ili kupiga kura, tafadhali kuja eneo kupiga kura katika moja ya maeneo yafuatayo:"
+    exit: "Toka"
+
+  about:
+    title: "Kuhusu"
+    description: "<center><h1 class='sub-header'>Kuhusu mfumo huu shirikishi bajeti</h1></center>
+    <br><p class='lead'><a href='http://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a> ya saa Stanford University maendeleo ya mfumo huu kwa bajeti shirikishi. <br>Ni matumaini yetu kwamba mpango wa mfumo wa na utajiri wa taarifa iliyotolewa si tu kukusaidia kujifunza zaidi kuhusu miradi lakini pia kukusaidia kupiga kura muhimu zaidi.</p>
+    <p class='lead'><b>Hii ni wazi chanzo mradi leseni chini ya GNU GPL v3.0 leseni. Unaweza kupata chanzo kanuni juu ya <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
+    <p class='lead'>Kama una matatizo ya kiufundi au unataka kutoa maoni, tafadhali email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> na sisi kujaribu kupata nyuma yenu haraka iwezekanavyo.</p>"
+
+  result:
+    title: "Matokeo"
+    vote_results: "kura Matokeo"
+    description: "matokeo msingi kura kutoka kwa wapiga kura %{count} kutoka %{start} hadi %{end}."
+    proposed_project: "Miradi iliyopendekezwa"  # A table header
+    votes: "Kura"  # A table header
+    projects: "Miradi"
+
+  election:
+    info: "<h3>kupiga kura Maeneo</h3>
+           <b>Jumamosi, Septemba 27</b> &nbsp; (12:00 noon - 4:00 p.m.)<br>
+           mahali fulani<br>
+           <br>
+           <b>Jumanne, Septemba 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+           mahali fulani<br>
+           <br>
+           <p>Kwa habari zaidi, tafadhali tembelea <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
+
+  sms_signup:
+    title: "Kuthibitisha nambari yako ya simu"
+    header: "Kuthibitisha nambari yako ya simu"
+    instructions: "<p>Ili kupiga kura online, unahitaji simu ya mkononi ambayo inaweza kupokea ujumbe wa maandishi, ili tuweze kuthibitisha namba yako ya simu.</p><p>Kuingia katika kiini namba yako ya simu, na tutaweza Nakala wewe uthibitisho kificho.</p>"
+    phone_number_placeholder: "Ingiza namba ya simu"
+    verify_button: "Kuthibitisha"
+    invalid_phone_number: "\"%{phone_number}\" si halali namba ya simu."
+    dont_have_cell_phone: "Je, si kuwa na simu ya mkononi?? Ili kupata code, tafadhali tuma barua pepe kwa XXX@stanford.edu. Unaweza pia kupiga simu 000-000-000. Mara baada ya kupata kanuni, vyombo vya habari <b>Weka Kanuni</b> button kuendelea. Unaweza pia kuja moja ya maeneo yafuatayo kupiga kura yako:<br><br>"
+
+  code_signup:
+    title: "Kupiga kura, kuingia kupata code yako."
+    instruction: ""
+    no_code_instruction: "Kama huna upatikanaji kanuni, kupata kutoka kwa serikali ya mji."
+    code_placeholder: "kanuni ya upatikanaji"
+    vote_button: "Kura"
+    wrong_access_code: "Sio sahihi upatikanaji kanuni"
+    used_access_code: "Msimbo ulioingiza tayari kutumika"
+
+  other_signup:
+    title: "Kuingia habari zifuatazo kupiga kura"
+    instruction: ""
+    no_account_number_instruction: "Kama huna kuwa na idadi ya akaunti, wasiliana na City."
+    zipcode_placeholder: "kanuni ya posta"
+    account_number_placeholder: "Idadi akaunti"
+    vote_button: "Kura"
+    wrong_account_number: "Sio sahihi idadi ya akaunti"
+    used_account_number: "Idadi hii akaunti tayari kutumika"
+
+  registration:
+    title: "habari za mtu binafsi"
+    header: "habari za mtu binafsi"
+    instructions: "<p>Tafadhali kuingia maelezo yafuatayo kuendelea na kura. Nafasi zilizoachwa wazi alama na * wanatakiwa.</p>"
+    proceed_button: "kuendelea"
+    no_phone_number: "Sina namba ya simu"
+    name: "Jina"
+    first_name: "Jina la kwanza"
+    middle_initial: "jina la kati"
+    last_name: "jina la familia"
+    suffix: "Suffix"
+    phone_number: "Nambari ya simu"
+    email: "Email"
+    address: "Anuani ya mtaa"
+    city: "Mji"
+    zip_code: "kanuni ya posta"
+    birth_year: "mwaka wa kuzaliwa"
+    date_of_birth: "tarehe ya kuzaliwa"
+    verify_age_label: "Mimi ni umri wa zaidi ya miaka 16"
+    email_instruction_label: "Je, unataka kujua matokeo ya kura hii? Kuingia barua pepe yako kukaa habari."
+    ward: "Ward"
+    ward_do_not_know: "Sijui"
+    not_voting_age_error: "Lazima kukidhi mahitaji ya umri ili kupiga kura katika uchaguzi huu"
+
+  sms_signup_confirm:
+    title: "Thibitisha nambari yako"
+    header: "Thibitisha nambari yako"
+    instructions: "<p>Sisi tumekutuma uthibitisho kificho kwa simu na idadi <b>%{phone_number}</b>. Unapaswa kupokea kificho ndani ya dakika moja.</p><p>Tafadhali kuingia uthibitisho kificho kuthibitisha namba yako ya simu.</p>"
+    code_placeholder: "kuingia katika kanuni"
+    confirm_button: "kuthibitisha"
+    wrong_code: "kificho vibaya."
+    resend_code: "Kama huna kupokea kificho ndani ya dakika moja, bonyeza <a href=\"%{resend_code_url}\">hapa</a> kwa kutuma upya uthibitisho kificho."
+    make_sure_phone_number_is_correct: "Kuhakikisha kwamba %{phone_number} ni yako sahihi kiini namba ya simu. Kama ni <u>si</u> correct, sahihi, tafadhali bonyeza  <a href=\"%{signup_url}\">hapa</a> mabadiliko hayo."
+    still_not_working: "Kama bado una matatizo ya kupokea uthibitisho kificho baada ya inajaribu kadhaa, tafadhali email XXX@stanford.edu au piga XXX-XXX-XXX kupata kanuni. Mara baada ya kupata kanuni, vyombo vya habari <b>Weka Kanuni</b> kifungo kuendelea. Unaweza pia kuja moja ya maeneo yafuatayo kupiga kura yako:<br><br>"
+
+  general:
+    experiment_disclaimer: "Hii ni tu utafiti. Itakuwa si kuathiri kura yako."
+    shuffle_note: "<span style='font-size: 18px;'>Kumbuka: Miradi hii ni waliotajwa katika hakuna utaratibu maalum.</span>"
+    project_string: "Miradi"
+    timeout:
+      body: "kikao yako ni kuhusu kumalizika. Bofya \"Kuendelea\" kuendelea kutumia tovuti."
+      continue_button: "Kuendelea"
+
+  date:
+    order:
+    - :month
+    - :day
+    - :year

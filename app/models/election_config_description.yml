@@ -36,7 +36,7 @@
   human_readable_name: "Available languages"
   type: checkboxes
   default: [en]
-  values: [[en, English], [es, Spanish], [fr, French], [zh, Chinese]]
+  values: [[en, English], [es, Spanish], [fr, French], [zh, Chinese], [sw, Swahili]]
   required: true
   validators: [["value.length >= 1", "Select at least one language."]]
 

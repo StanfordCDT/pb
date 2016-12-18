@@ -164,7 +164,7 @@ var configDescription = <%= @config_description.to_json.html_safe %>;
     }
   }
 
-  var localeNames = {en: "English", es: "Spanish", fr: "French", zh: "Chinese"}
+  var localeNames = {en: "English", es: "Spanish", fr: "French", zh: "Chinese", sw: "Swahili"}
   for (var locale in locales) {
     var localeOption = {name: locale, human_readable_name: localeNames[locale], type: 'group', children: [], collapsible: true};
     localeOption.condition = "c('available_locales').indexOf('" + locale + "') != -1"

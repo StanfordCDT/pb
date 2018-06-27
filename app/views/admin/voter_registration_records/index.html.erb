@@ -1,13 +1,7 @@
 <% content_for :title, 'Voter Registration' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        'Voter Registration'
-      ]} %>
 
       <h2>Voter Registration</h2>
 
@@ -16,7 +10,7 @@
       <% if !@records.empty? %>
         <h3>Last 5 records that you entered</h3>
         <table class="table table-bordered">
-          <thead>
+          <thead class="thead-light">
             <tr>
               <% @questions.each do |question| %>
                 <th><%= t('registration.' + question) %></th>
@@ -39,6 +33,11 @@
           </tbody>
         </table>
       <% end %>
-    </div>
-  </div>
+
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  'Voter Registration'
+]} %>

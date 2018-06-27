@@ -25,24 +25,7 @@
     border-bottom: 1px #999 solid;
   }
 
-  <% if conf[current_action][:n_cols] > 1 %>
-    /* trick to make columns have the same height */
-    @media (min-width: 768px) {
-      #projects .row {
-        display: table;
-      }
-      #projects .col-sm-1,
-      #projects .col-sm-2,
-      #projects .col-sm-3,
-      #projects .col-sm-4,
-      #projects .col-sm-6,
-      #projects .col-sm-12 {
-        float: none;
-        display: table-cell;
-        vertical-align: top;
-      }
-    }
-  <% end %>
+
 
   .project.disabled {
     color: #666;
@@ -58,7 +41,7 @@
   }
 
   .project-description, .project-cost, .project-location {
-    font-size: 16px;
+    
   }
 
   .project-details img {
@@ -66,8 +49,12 @@
     height: auto;
   }
 
-  .select-button {
-    background-color: #f0f0f0;
+  .select-button.btn-success {
+    box-shadow: none !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    cursor: default !important;
+    pointer-events: none;
   }
 
   .project-image-wrapper {
@@ -135,7 +122,10 @@
     </div>
   <% end %>
 
-  <%= raw t(real_voting? ? "#{current_action}.instructions.real" : "#{current_action}.instructions.demo",
+  <% if !real_voting? %>
+    <h3 style='color: red'><%= raw t("general.demo_warning") %></h3>
+  <% end %>
+  <%= raw t("#{current_action}.instructions",
     max_n_projects: (current_action == :approval && conf[:approval][:pages].length > 1 && conf[:approval][:project_limits][@current_subpage]) ? conf[:approval][:project_limits][@current_subpage] : @election.config[current_action][:max_n_projects],
     budget: '$' + number_with_delimiter(@election.budget.to_i)
   ) %>
@@ -147,17 +137,17 @@
 
   <% if !conf[current_action][:project_ranking] %>
     <center>
-      <button type="button" class="btn btn-primary btn-lg submit" data-toggle="modal" data-target="#submitModal"><%= t('approval.submit_button') %></button>
+      <button type="button" class="btn btn-primary btn-lg submitVoteButton" data-toggle="modal" data-target="#submitModal"><%= t('approval.submit_button') %></button>
     </center><br>
   <% end %>
 
-  <% n_cols = conf[current_action][:n_cols] %>
+  <% n_cols = [conf[current_action][:n_cols], 1].max %>
 
   <% @categories.each do |category| %>
-    <% if conf[:categorized] %>
+    <% if @election.categorized? %>
       <a id="category<%= category.id %>" style="display: block; position: relative; top: <%= -90 - @y_offset %>px;"></a>
       <h3 class="category-name">
-        <% if conf[:approval][:show_category_image] && category.image? %>
+        <% if category.image? %>
           <img src="<%= category.image.url %>" class="category-image" />
         <% end %>
         <%= category.name.html_safe %>
@@ -216,7 +206,7 @@
 
   <br>
   <center>
-    <button type="button" class="btn btn-primary btn-lg submit" data-toggle="modal" data-target="#submitModal" id="submit-vote-button"><%= t('approval.submit_button') %></button>
+    <button type="button" class="btn btn-primary btn-lg submitVoteButton" data-toggle="modal" data-target="#submitModal"><%= t('approval.submit_button') %></button>
   </center>
   <br><br><br>
 </div>

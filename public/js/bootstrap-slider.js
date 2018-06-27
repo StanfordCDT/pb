@@ -87,7 +87,7 @@
     this.selection = this.element.data('slider-selection')||options.selection;
     this.selectionEl = this.picker.find('.slider-selection');
     if (this.selection === 'none') {
-      this.selectionEl.addClass('hide');
+      this.selectionEl.addClass('d-none');
     }
     this.selectionElStyle = this.selectionEl[0].style;
 
@@ -117,7 +117,7 @@
       this.value[1] = Math.max(this.min, Math.min(this.max, this.value[1]));
     } else {
       this.value = [ Math.max(this.min, Math.min(this.max, this.value))];
-      this.handle2.addClass('hide');
+      this.handle2.addClass('d-none');
       if (this.selection == 'after') {
         this.value[1] = this.max;
       } else {
@@ -155,7 +155,7 @@
         mouseleave: $.proxy(this.hideTooltip, this)
       });
     } else {
-      this.tooltip.addClass('hide');
+      this.tooltip.addClass('d-none');
     }
   };
 
@@ -355,7 +355,7 @@
         this.value[1] = Math.max(this.min, Math.min(this.max, this.value[1]));
       } else {
         this.value = [ Math.max(this.min, Math.min(this.max, this.value))];
-        this.handle2.addClass('hide');
+        this.handle2.addClass('d-none');
         if (this.selection == 'after') {
           this.value[1] = this.max;
         } else {

@@ -1,12 +1,7 @@
 <% content_for :title, 'Voters' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12 main">
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        'Voters'
-      ]} %>
 
 <h2>Voters</h2>
 
@@ -22,8 +17,8 @@
 }
 </style>
 
-<table class="table">
-  <thead>
+<table class="table table-sm">
+  <thead class="thead-light">
     <tr>
       <th>Voter ID</th>
       <th>Auth.</th>
@@ -88,6 +83,10 @@ function setVoid(voter_id, voter_void) {
 }
 </script>
 
-    </div>
-  </div>
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  'Voters'
+]} %>

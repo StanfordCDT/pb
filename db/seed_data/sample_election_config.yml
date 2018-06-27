@@ -1,6 +1,5 @@
 workflow: [approval, thanks_approval, comparison, thanks]
 allow_remote_voting: false
-categorized: true
 available_locales: [en]
 
 approval:

@@ -1,8 +1,8 @@
 <% content_for :title, t('registration.title') %>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 main">
       <h2><%= t('registration.header').html_safe %></h2>
 
       <%= render partial: 'shared/voter_registration_form', locals: { submit_url: url_for(action: :post_registration), filled_by_voter: true } %>

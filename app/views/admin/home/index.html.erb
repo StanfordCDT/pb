@@ -1,51 +1,119 @@
 <% content_for :title, 'Admin' %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-      <% if current_user %>
-        <%= render partial: 'shared/admin_toolbar', locals: {items: []} %>
+<% if current_user %>
+  <% content_for :primary do %>
+    <style>
+    .election-table .glyphicon {
+      margin-right: 2px;
+    }
+    </style>
 
-        <h2>Elections</h2>
+    <div class="container-fluid">
 
-        <% if current_user.superadmin? %>
-          <a href="<%= new_admin_election_path %>">Add a new election</a><br><br>
-        <% end %>
+      <h2>Elections</h2>
 
-        <%if !@active_elections.empty? %>
-          <div><b>Active</b></div>
-          <ul>
-            <% @active_elections.each do |election| %>
-              <li>
-                <a href="<%= admin_election_path(election.id) %>"><%= election.name %></a>&nbsp;
-                (<a href="/<%= election.slug %>" target="_blank">/<%= election.slug %></a>)
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <%if !@inactive_elections.empty? %>
-          <div><b>Inactive</b></div>
-          <ul>
-            <% @inactive_elections.each do |election| %>
-              <li>
-                <a href="<%= admin_election_path(election.id) %>"><%= election.name %></a>&nbsp;
-                (<a href="/<%= election.slug %>" target="_blank">/<%= election.slug %></a>)
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <% if current_user.superadmin? %>
-          <h2>Users</h2>
-
-          <a href="<%= admin_users_path %>">Manage users</a>
-        <% end %>
-      <% elsif session[:voting_machine_user_id] %>
-        <br><br><br><br>
-        <center><a href="/admin/users/logout" class="btn btn-primary btn-lg">Log Out</a></center>
+      <% if current_user.superadmin? %>
+        <a href="<%= new_admin_election_path %>">Add a new election</a><br><br>
       <% end %>
+
+      <table class="table table-sm election-table">
+      <% if !@active_elections.empty? %>
+          <thead class="thead-light">
+            <tr>
+              <td class="border-top-0" colspan="3">
+                <h4>Active Elections</h4>
+              </td>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>URL</th>
+              <% if current_user.superadmin? %>
+                <th>Voting method</th>
+              <% end %>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @active_elections.each do |election| %>
+              <tr>
+                <td><a href="<%= admin_election_path(election.id) %>"><%= election.name %></a></td>
+                <td>/<%= election.slug %></td>
+                <% if current_user.superadmin? %>
+                  <td><%= summarize_workflow(election.config[:workflow]) %></td>
+                <% end %>
+                <td>
+                  <div class="dropdown">
+                    <a href="#" id="dropdownMenuButton" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="/<%= election.slug %>" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> View Website</a>
+                      <% if current_user.superadmin? %>
+                        <a class="dropdown-item" href="<%= duplicate_admin_election_path(election.id) %>"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Duplicate</a>
+                      <% end %>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        
+      <% end %>
+
+
+      <% if !@inactive_elections.empty? %>
+          <thead class="thead-light">
+            <tr>
+              <td class="border-top-0" colspan="3">
+                <h4>Inactive Elections</h4>
+              </td>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>URL</th>
+              <% if current_user.superadmin? %>
+                <th>Voting method</th>
+              <% end %>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @inactive_elections.each do |election| %>
+              <tr>
+                <td><a href="<%= admin_election_path(election.id) %>"><%= election.name %></a></td>
+                <td>/<%= election.slug %></td>
+                <% if current_user.superadmin? %>
+                  <td><%= summarize_workflow(election.config[:workflow]) %></td>
+                <% end %>
+                <td>
+                  <div class="dropdown">
+                    <a href="#" id="dropdownMenuButton" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="/<%= election.slug %>" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> View Website</a>
+                      <% if current_user.superadmin? %>
+                        <a class="dropdown-item" href="<%= duplicate_admin_election_path(election.id) %>"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Duplicate</a>
+                      <% end %>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        
+      <% end %>
+      </table>
+
       <br><br>
     </div>
+  <% end %>
+
+  <%= render partial: 'shared/admin_template', locals: {items: []} %>
+<% elsif session[:voting_machine_user_id] %>
+  <div class="container-fluid text-center">
+    <br><br><br><br>
+    <a href="/admin/users/logout" class="btn btn-primary btn-lg">Log Out</a>
+    <br><br>
   </div>
-</div>
+<% end %>

@@ -7,9 +7,9 @@ zh:
     exit: "退出"
 
   index:
-    title: "参与式纽约市预算"  # text on the title bar
+    title: "参与式预算"  # text on the title bar
     voting_machine:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>欢迎来到纽约市第5区的参与式预算 (PB) 投票。</p>"
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>欢迎来到纽约市第5区的参与式预算 (PB) 投票。</p>"
       instruction: "请输入你收到的代码。"
       code_placeholder: "代码"
       enter_code_button: "输入"
@@ -17,49 +17,30 @@ zh:
       used_code: "此代码已经被使用。"
       used_personal_id: "此ID已被使用。请一旦接触voxpopuli@lists.stanford.edu这是一个错误，或者您需要再次投票。"
     remote:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting in NYC</p>"
-      vote_button: "投票"  # button to go to the real vote screen
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the Stanford Crowdsourced Democracy Team.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $... million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from ... to ... . See all times and locations below.</p>"
+      proceed_button: "继续 &gt;&gt;"
+      remote_voting_button: "快来投票 &gt;&gt;"
       code_verification_button: "Enter code"
       other_verification_button: "Vote with other details"
       see_projects_button: "查看项目"  # button to go to the demo vote screen
-    demo:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $... million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from ... to ... . See all times and locations below.</p>"
-      proceed_button: "继续 &gt;&gt;"
-      remote_voting_button: "Vote remotely &gt;&gt;"
-      exit: "退出"
+    voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "The voting has ended."
     public_results: "See Election Results"
 
   approval:
     title: "纽约市第5区"
     popup:
-      real:
-        title: "使用说明"
-        body: "<ol>
-                 <li>选择你想要支持的项目。你最多可以投票支持<b>%{max_n_projects}个项目</b>。</li>
-                 <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
-               </ol>"
-        ok: "OK"
-      demo:
-        title: "使用说明"
-        body: "<h3 style='color: red'>这只是预览。你的投票将不会被记录。</h3>
-               <ol>
-                 <li>选择你想要支持的项目。你最多可以投票支持<b>%{max_n_projects}个项目</b>。</li>
-                 <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
-               </ol>"
-        ok: "OK"
-    instructions:
-      real: "<h3>使用说明</h3>
-             <ol>
+      title: "使用说明"
+      body: "<ol>
                <li>选择你想要支持的项目。你最多可以投票支持<b>%{max_n_projects}个项目</b>。</li>
                <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
              </ol>"
-      demo: "<h3 style='color: red'>这只是预览。你的投票将不会被记录。</h3>
-             <h3>使用说明</h3>
-             <ol>
-               <li>选择你想要支持的项目。你最多可以投票支持<b>%{max_n_projects}个项目</b>。</li>
-               <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
-             </ol>"
+      ok: "OK"
+    instructions: "<h3>使用说明</h3>
+                   <ol>
+                     <li>选择你想要支持的项目。你最多可以投票支持<b>%{max_n_projects}个项目</b>。</li>
+                     <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
+                   </ol>"
     list_of_projects: "项目列表"
     estimated_cost: "预算费用"
     youtube_video: "YouTube video"
@@ -138,10 +119,6 @@ zh:
     send_vote_email: "(可选项) 我想发送我的投票结果到我的电子邮箱:"
     email_placeholder: "输入电子邮件地址"
     next_button: "下一页 &gt;&gt;"
-    survey:
-      questions: []
-      options: []
-      submit_button: "Submit"
 
   question:
     title: "调查"
@@ -167,37 +144,20 @@ zh:
   knapsack:
     title: "背包问题"
     popup:
-      real:
-        title: "使用说明"
-        body: "<p style='font-size: 22px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-        <ul style='font-size: 22px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-        <li>此活动的预计时间是2-3分钟。</li>
-        <li>在这个活动中，你将被要求选择一些项目，数量不限，但是选择项目的总花费不能超过%{budget}。</li></ul>
+      title: "使用说明"
+      body: "<p style='font-size: 20px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
+      <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
+      <li>此活动的预计时间是2-3分钟。</li>
+      <li>在这个活动中，你将被要求选择一些项目，数量不限，但是选择项目的总花费不能超过%{budget}。</li></ul>
 <p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。 这项研究部分由美国国防部资助。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
-        ok: "OK"
-        exit: "退出"
-      demo:
-        title: "使用说明"
-        body: "<p style='font-size: 22px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-        <ul style='font-size: 22px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-        <li>此活动的预计时间是2-3分钟。</li>
-        <li>在这个活动中，你将被要求选择一些项目，数量不限，但是选择项目的总花费不能超过%{budget}。</li></ul>
-<p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。 这项研究部分由美国国防部资助。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
-        ok: "OK"
-        exit: "退出"
-    instructions:
-      real: "<h3>使用说明</h3>
-             <ol>
-               <li>选择你想支持的项目。总花费不能超过<b>%{budget}</b>。</li>
-               <li>你可以在上方的进度条中查看你已经分配的总数量。你可以通过点击进度条移除任何已经选择的项目或者通过点击已选择的项目直接移除。</li>
-               <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
-             </ol>"
-      demo: "<h3>使用说明</h3>
-             <ol>
-               <li>选择你想支持的项目。总花费不能超过<b>%{budget}</b>。</li>
-               <li>你可以在上方的进度条中查看你已经分配的总数量。你可以通过点击进度条移除任何已经选择的项目或者通过点击已选择的项目直接移除。</li>
-               <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
-             </ol>"
+      ok: "OK"
+      exit: "退出"
+    instructions: "<h3>使用说明</h3>
+                   <ol>
+                     <li>选择你想支持的项目。总花费不能超过<b>%{budget}</b>。</li>
+                     <li>你可以在上方的进度条中查看你已经分配的总数量。你可以通过点击进度条移除任何已经选择的项目或者通过点击已选择的项目直接移除。</li>
+                     <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
+                   </ol>"
     confirmation:
       title: "你确定你想提交你的投票吗？"
       body:
@@ -217,40 +177,6 @@ zh:
       not_adjusted_warning: "<span style='color:red'>您选择0美元的%{project}</span>"
       message: "您已选择$%{cost}为%{project}"
 
-  plusminus:
-    popup:
-      title: "使用说明"
-      body: "<p style='font-size: 22px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-      <ul style='font-size: 22px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-      <li>此活动的预计时间是2-3分钟。</li>
-      <li>在这次活动中，你将被允许投出赞成票（对于你赞同的项目）也可投出反对票或者“否决票” （对于你认为不应该被资助的项目）。</li></ul>
-<p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。 这项研究部分由美国国防部资助。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
-      ok: "OK"
-      exit: "退出"
-    instructions: "<h3>使用说明</h3>
-                   <ol>
-                     <li>通过点击&nbsp;<b>+</b>&nbsp;按键（“支持”）来选择你想要支持的项目。
-                     通过点击&nbsp;<b>&minus;</b>&nbsp;按键（“否决”）来选择你认为不应该被资助的项目。</li>
-                     <li>当你准备好提交时。点击 <b>“提交我的投票”</b>按键。</li>
-                   </ol>"
-    clear_button: "清除"  # button to remove the upvote/downvote from a project (i.e. change it to the neutral state)
-    used_up_upvotes: "你已经使用了所有的%{n_upvotes}支持票。"
-    used_up_downvotes: "你已经使用了所有的%{n_downvotes}否决票。"
-    tracker:
-      text: "你还剩下%{count}。"
-      n_upvotes_and_n_downvotes: "<strong>%{n_upvotes}张支持票</strong>(+) 和 <strong>%{n_downvotes}张否决票</strong>(&minus;)"
-    confirmation:
-      title: "你确定你想提交你的投票吗？"
-      body:
-        summary:
-          zero: "<span style='color: red;'>你还没有选择任何项目。</span>"
-          upvotes: "您为以下项目投了<b>好评</b>票： %{projects}"
-          downvotes: "您为以下项目投了<b>差评</b>票： %{projects}"
-          item: "%{project} ($%{cost})"
-        warning: "在提交你的投票后，你<strong>不能</strong> 修改你的投票。"
-      ok: "提交我的投票"
-      cancel: "返回"
-
   survey:
     title: "调查"
     header: "参与调查"
@@ -259,6 +185,7 @@ zh:
       body: "感谢你的投票。你是14岁及以上吗？"
       ok: "是的，我是14岁或以上"
       alternative: "不，我没有14岁"
+    url: ""
 
   thanks:
     title: "谢谢"
@@ -270,7 +197,7 @@ zh:
   about:
     title: "关于"
     description: "<center><h1 class='sub-header'>关于数字预算界面</h1></center>
-    <br><p class='lead'>该数字预算界面是由<a href='http://voxpopuli.stanford.edu/' target='_blank'>斯坦福众包民主团队</a>开发的。<br>我们希望该界面的视觉性及其展现的丰富信息能帮助你了解这些项目并投出更具信息性的投票。</p>
+    <br><p class='lead'>该数字预算界面是由<a href='https://voxpopuli.stanford.edu/' target='_blank'>斯坦福众包民主团队</a>开发的。<br>我们希望该界面的视觉性及其展现的丰富信息能帮助你了解这些项目并投出更具信息性的投票。</p>
     <p class='lead'><b>这是使用GNU GPL V3.0许可证授权的开源项目。你可以找到<a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>Github</a>上的源代码。</b></p>
     <p class='lead'>如果你遇到技术问题或者你想提供反馈，请发送电子邮件至<a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>我们会尽量给您回复尽快。</p>"
 
@@ -283,7 +210,15 @@ zh:
     projects: "Projects"
 
   election:
-    info: ""
+    can_also_vote_in_person: "你可以前往以下地点投票："
+    info: "<h3>Voting Locations</h3>
+           <b>Saturday, September 27</b> &nbsp; (12:00 noon - 4:00 p.m.)<br>
+           Somewhere<br>
+           <br>
+           <b>Tuesday, September 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+           Somewhere<br>
+           <br>
+           <p>For more information, please visit <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
 
   sms_signup:
     title: "确认你的电话号码"
@@ -292,12 +227,12 @@ zh:
     phone_number_placeholder: "输入手机号码"
     verify_button: "确认"
     invalid_phone_number: "\"%{phone_number}\"不是一个有效的手机号码。"
-    dont_have_cell_phone: "没有手机？你可以前往以下地点投票："
+    no_cell_phone_instruction: "If you don't have a cell phone, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
+    #dont_have_cell_phone: "没有手机？你可以前往以下地点投票："
 
   code_signup:
     title: "Enter access code to vote"
-    instruction: ""
-    no_code_instruction: "If you do not have an access code, get it from the City"
+    instruction: "Please email XXX@stanford.edu or call XXX-XXX-XXX to get an access code. Once you get the access code, enter it below and press the <b>Vote</b> button to continue."
     code_placeholder: "Access code"
     vote_button: "Vote"
     wrong_access_code: "Wrong access code"
@@ -306,7 +241,7 @@ zh:
   other_signup:
     title: "Enter details to vote"
     instruction: ""
-    no_account_number_instruction: "If you do not have a account number, contact the City."
+    no_account_number_instruction: "If you don't have an account number, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
     zipcode_placeholder: "Zip code"
     account_number_placeholder: "Account Number"
     vote_button: "Vote"
@@ -316,7 +251,7 @@ zh:
   registration:
     title: "Voter details"
     header: "Voter details"
-    instructions: "<p>Please enter the following details to proceed to the ballot for casting your vote.</p>"
+    instructions: "Please enter the following details to proceed to the ballot for casting your vote. Fields marked with * are required."
     proceed_button: "Proceed"
     no_phone_number: "I do not have a phone number"
     name: "Name"
@@ -334,6 +269,7 @@ zh:
     verify_age_label: "我已年满16岁"
     ward: "Ward"
     ward_do_not_know: "Do not know"
+    error: "Please fix the following errors:"
     not_voting_age_error: "You must be between the age requirement in order to vote in this election"
 
   sms_signup_confirm:
@@ -345,9 +281,11 @@ zh:
     wrong_code: "错误的代码。"
     resend_code: "如果你没有在一分钟之内收到验证码，请点击<a href=\"%{resend_code_url}\">此处</a>来重新发送验证码。"
     make_sure_phone_number_is_correct: "确保%{phone_number}你是正确的手机号。如果它<u>不</u>正确，请点击<a href=\"%{signup_url}\">此处</a>来修改它。"
-    still_not_working: "如果你在尝试几次之后仍无法收到验证码，你可以前往以下地点去投票："
+    still_not_working: "If you still have trouble receiving the confirmation code after several tries, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
+    #still_not_working: "如果你在尝试几次之后仍无法收到验证码，你可以前往以下地点去投票："
 
   general:
+    demo_warning: "这只是预览。你的投票将不会被记录。"
     experiment_disclaimer: "这只是一个调查。它将不会影响你的投票。"
     shuffle_note: "<span style='font-size: 18px;'>注意：这些项目是随机排列的。</span>"
     project_string: "项目"

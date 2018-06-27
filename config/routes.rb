@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     root 'home#index'
     resources :elections do
       member do
+        get 'duplicate'
+        post 'post_duplicate'
         get 'analytics'
         get 'analytics_more'
+        get 'analytics_cooccurrence'
         get 'analytics_adjustable_cost_projects'
         get 'analytics_chicago49'
         get 'to_voting_machine'
@@ -63,6 +66,8 @@ Rails.application.routes.draw do
       match '*path', to: 'home#fake_no_access', via: :all
     end
   end
+
+  post 'contact' => 'home#contact'
 
   get ':election_slug(/:action(/:id))', controller: 'vote'
   post ':election_slug(/:action(/:id))', controller: 'vote'

@@ -1,0 +1,429 @@
+ht:
+  navigation:
+    brand: PB
+    home: Akèy
+    about: Enfòmasyon
+    help: "Èd"
+    exit: Sòti
+  index:
+    title: Bidjè Patisipatif
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Byenvini
+        nan entèfas vòt nimerik pou Bidjè Patisipatif la</p>'
+      instruction: Tanpri antre kòd ou te resevwa a.
+      code_placeholder: Kòd
+      enter_code_button: Antre
+      wrong_code: Move kòd
+      used_code: Kòd sa itilize deja.
+      used_personal_id: Idantifikasyon sa itilize deja. Tanpri kontakte voxpopuli@lists.stanford.edu
+        si se yon erè oubyen si ou bezwen vote ankò
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+        <p class='lead'>Byenvini nan echantiyon Bidjè Patisipatif vòt nimerik la, yon koutwazi de Stanford Crowdsourced Democracy Team.</p>
+        <p class='lead'>Sou sit sa, ou ka familyarize tèt ou avèk pwojè ane sa e avèk vòt nimerik la. Sit sa selman pou jwenn enfòmasyon, e ou <b>p'ap ka</b> vote sou sit sa.</p>
+        <p class='lead'>Lè ou depoze bilten vòt ou, ou pral deside kòman ou vle yo repati $XXX milyon nan bidjè amelyorasyon kapital vil la. Pou ka vote, ou bezwen vini nan youn nan kote pou vote sa yo ki ap nan tout vil la. Vòt la ap kòmanse a pati de (Dat XXX) rive (Dat YYY). Gade tout lè epi kote yo anba'a.</p>
+      proceed_button: Gade yon echantiyon bilten vòt &gt;&gt;
+      remote_voting_button: Vote a distans kounya &gt;&gt;
+      code_verification_button: Antre kòd la
+      other_verification_button: Vòt avèk lòt detay
+      see_projects_button: Wè Pwojè yo
+    voting_has_not_started: Vòt sou sit sa poko kòmanse. Nou pral kòmanse kolekte
+      vòt a distans yo nan yon ti tan ki pa two lwen. Mèsi pou pasyans ou.
+    voting_ended: Moman vòt la fini.
+    public_results: Gade Rezilta Eleksyon yo
+  approval:
+    title: Bidjè Patisipatif
+    popup:
+      title: Enstriksyon yo
+      body: |-
+        <ol>
+        <li>Seleksyone pwojè ou t'ap renmen sipòte yo. Ou ka vote jiska <b>%{max_n_projects} pwojè.</b></li>
+        <li>Klike sou bouton <b>"Voye Vòt Mwen an"</b> lè ou santi ou prè pou voye li.</li>
+        </ol>
+      ok: OK
+    instructions: |-
+      <h3>Enstriksyon yo</h3>
+      <ol>
+      <li>Seleksyone pwojè ou t'ap renmen sipòte yo. Ou ka vote jiska <b>%{max_n_projects} pwojè.</b></li>
+      <li>Klike sou bouton <b>"Voye Vòt Mwen an"</b> lè ou santi ou prè pou voye li.</li>
+      </ol>
+    list_of_projects: Lis Pwojè yo
+    estimated_cost: Pri li ka koute
+    youtube_video: Video sou YouTube
+    location: Kote
+    partner: Patnè
+    committee: Komite
+    read_details: Li plis…
+    select_button:
+      select: Seleksyone
+      selected: Seleksyone
+      not_enough_money: Pa gen ase lajan
+      more_projects: Paka chwazi plis ke %{max_n_projects} pwojè
+    remove_button: Retire
+    remove_button_tooltip: Klike la si ou pa vle chwazi pwojè sa ankò.
+    submit_button: Voye Vòt Mwen an…
+    confirmation:
+      title: Eske ou asire ke ou vle voye vòt ou a?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
+          other: 'Ou te seleksyone pwojè sa yo: %{projects}'
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Ou te seleksyone yon sèl pwojè sèlman.</span>"
+          less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"
+          limit: "<span style='color: red;'>Ou ka vote jiska %{max_n_projects} pwojè.</span>"
+        warning: Aprè ou fin voye vòt ou a, ou <strong>paka</strong> chanje vòt ou
+          a. Si ou vle modifye vòt ou a, tanpri klike sou 'Retounen' anba'a. Si ou
+          vle voye vòt ou a, tanpri tcheke ti bwat ki anba'a epi klike sou 'Voye Vòt
+          Mwen an'.
+        checkbox: Mwen konprann ke aprè mwen voye vòt mwen an, mwen <strong>paka</strong>
+          chanje li.
+      ok: Voye Vòt Mwen an
+      cancel: Retounen
+    confirmation_over_limit:
+      title: Pa't ka voye vòt ou a
+      over_n_project_limit: "<span style='color:red'>Ou te seleksyone <b>%{n_projects}</b>
+        pwojè. Ou ka seleksyone sèlman pou pi plis <b>%{max_n_projects}</b> pwojè.
+        Tanpri retire <b>%{extra}</b> oswa plis pwojè.</span>"
+      over_budget_limit: "<span style='color:red'>Ou apèn sot depase bidjè a.</span>"
+      cancel: Retounen
+    tracker:
+      text: Ou te seleksyone %{count} pwojè.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Seleksyone %{total} nan %{budget} bidjè total la.
+      under_budget: Ou toujou genyen %{remaining_money} ki rete.
+      over_budget: Ou apèn sot depase bidjè a
+      over_budget_but_can_add_projects: Ou apèn sot depase bidjè a, men ou ka toujou
+        kontinye ajoute pwojè.
+    adjustable_cost_project:
+      instructions: 'Tanpri seleksyone youn nan opsyon ki anba yo:'
+      not_adjusted_warning: "<span style='color:red'>Ou te seleksyone $0 pou %{project}</span>"
+      message: Ou te seleksyone $%{cost} pou %{project}
+      table_headings:
+        percentage_column: Pousantaj ki depanse nan bidjè a
+        cost_column: Pri
+        number_column: "# apeprè blòk ki reparèt"
+    map:
+      street_resurfacing_count:
+        one: 1 ri asfalte
+        other: "%{count} ri asfalte"
+      alley_resurfacing_count:
+        one: 1 riyèl asfalte
+        other: "%{count} riyèl asfalte"
+      apron_resurfacing_count:
+        one: 1 pis aterisaj asfalte
+        other: "%{count} pis aterisaj asfalte"
+      sidewalk_repairing_count:
+        one: 1 totwa repare
+        other: "%{count} totwa repare"
+    image_gallery:
+      cue: Klike sou imaj la pou prezantasyon
+    project_ranking:
+      list_header: Ou te seleksyone pwojè sa yo. Chanje pozisyon yo pandan w'ap glise
+        <span class='glyphicon glyphicon-sort'></span> ikòn yo desann.
+  thanks_approval:
+    title: Mèsi
+    description:
+      real: <p class='lead text-center'>Mèsi paske ou vote, Tanpri klike sou "Pwochen"
+        ki anba'a pou ale sou pwochen paj la.</p>
+      demo: '<p class=''lead''>Mèsi paske ou vote! <span style=''color: red;''><strong>Tanpri
+        sonje ke sa se selman yon <u>apèsi</u>.</strong></span> Tanpri klike sou "Pwochen"
+        ki anba''a pou ale sou pwochen paj la.</p>'
+    send_vote_email: "(Opsyonèl) Mwen vle voye rezilta vòt mwen an nan adrès elektronik
+      mwen:"
+    email_placeholder: Antre adrès elektronik
+    next_button: Pwochen &gt;&gt;
+  ranking:
+    title: Bidjè Patisipatif
+    popup:
+      title: Enstriksyon yo
+      body: |-
+        <ol>
+        <li>Seleksyone pwojè ou t'ap renmen sipòte yo. Ou ka vote jiska <b>%{max_n_projects}</b> pwojè.</li>
+        <li>Klike sou bouton <b>"Voye Vòt Mwen an"</b> lè ou prè pou ou voye li.</li>
+        </ol>
+      ok: OK
+    instructions: |-
+      <h3>Enstriksyon yo</h3>
+      <ol>
+      <li>Seleksyone pwojè ou t'ap renmen sipòte yo. Ou ka vote jiska %{max_n_projects} pwojè.</li>
+      <li>Klike sou bouton <b>"Voye Vòt Mwen an"</b> lè ou prè pou ou voye li.</li>
+      </ol>
+    list_of_projects: Lis Pwojè yo
+    estimated_cost: Pri li ka koute
+    youtube_video: Video sou YouTube
+    location: Kote
+    partner: Patnè
+    committee: Komite
+    read_details: Li plis…
+    select_button:
+      select: Seleksyone
+      selected: Seleksyone
+      not_enough_money: Pa gen ase lajan
+      more_projects: Paka chwazi plis ke %{max_n_projects yo} pwojè.
+    remove_button: Retire
+    remove_button_tooltip: Klike la si ou pa vle chwazi pwojè sa ankò.
+    submit_button: Voye Vòt Mwen an…
+    confirmation:
+      title: Eske ou asire ke ou vle voye vòt ou a?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
+          other: 'Ou te seleksyone pwojè sa yo: %{projects}'
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Ou te seleksyone sèlman yon pwojè.</span>"
+          less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"
+          limit: "<span style='color: red;'>Ou ka vote jiska %{max_n_projects} pwojè.</span>"
+        warning: Aprè ou fin voye vòt ou a, ou <strong>paka</strong> chanje vòt ou
+          a. Si ou vle modifye vòt ou a, tanpri klike sou 'Retounen' anba'a. Si ou
+          vle voye vòt ou a, tanpri tcheke ti bwat ki anba'a epi klike sou 'Voye Vòt
+          Mwen an'.
+        checkbox: Mwen konprann ke aprè mwen voye vòt mwen an, mwen <strong>paka</strong>
+          chanje li.
+      ok: Voye Vòt Mwen an
+      cancel: Retounen
+    confirmation_over_limit:
+      title: Pa't ka voye vòt ou a
+      over_n_project_limit: "<span style='color:red'>Ou te seleksyone <b>%{n_projects}</b>
+        pwojè. Ou ka seleksyone sèlman pou pi plis <b>%{max_n_projects}</b> pwojè.
+        Tanpri retire <b>%{extra}</b> oswa plis pwojè.</span>"
+      over_budget_limit: "<span style='color:red'>Ou apèn sot depase bidjè a.</span>"
+      cancel: Retounen
+    tracker:
+      text: Ou te seleksyone %{count} pwojè.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Seleksyone %{total} nan %{budget} bidjè total la.
+      under_budget: Ou toujou genyen %{remaining_money} ki rete.
+      over_budget: Ou apèn sot depase bidjè a.
+      over_budget_but_can_add_projects: Ou apèn sot depase bidjè a, men ou ka toujou
+        kontinye ajoute pwojè.
+    adjustable_cost_project:
+      instructions: 'Tanpri seleksyone youn nan opsyon sa yo ki anba''a:'
+      not_adjusted_warning: "<span style='color:red'>Ou te seleksyone $0 pou %{project}</span>"
+      message: Ou te seleksyone $%{cost} pou %{project}
+      table_headings:
+        percentage_column: Pousantaj ki depanse nan bidjè a
+        cost_column: Pri
+        number_column: "# apeprè blòk ki reparèt"
+    image_gallery:
+      cue: Klike sou imaj la pou prezantasyon
+    project_ranking:
+      list_header: Ou te seleksyone pwojè sa yo. Chanje pozisyon yo pandan w'ap glise
+        <span class='glyphicon glyphicon-sort'></span> ikòn yo desann.
+  question:
+    title: Ankèt
+    question: Eske ou gen 14 ane oswa pi plis?
+    ok: Wi, mwen gen 14 ane oswa pi plis.
+    alternative: Non, mwen gen mwens ke 14 ane
+  comparison:
+    title: Konparezon
+    header: Ki pwojè ki bay pi bon avantaj pou lajan, sa vle di, ki bay plis avantaj
+      a kominote a sou chak dola ki depanse?
+    estimated_cost: Pri li ka koute
+    this_project: Pwojè sa
+    not_sure: Mwen pa asire
+    popup:
+      title: Enstriksyon yo
+      body: "<p style='font-size: 22px;'>Yo pral mande ou kounya pou konpare pwojè
+        yo nan tèm benefis kominote a pou lajan ki depanse. Aktivite konparezon sa
+        fè pati yon pwojè rechèch Inivèstie Stanford ki vle di pou ede nou amelyore
+        pwosesis bidjè patisipatif la, e sa pa fè pati nan vòt ou a.</p>\n<ul style='font-size:
+        22px;'><li>Patisipe nan aktivite sa'a se si ou vle, e ou ka sòti ladan li
+        nenpòt kilè.</li>\n<li>Aktivite sa ka pran 2 oswa 3 minit konsa.</li></ul>\n<p
+        style='font-size: 14px;'>Etid sa'a pa gen okenn danje. Yo p'ap peye ou pou
+        patisipe, e nou paka garanti ou okenn benefis. Ou gen dwa pou refize reponn
+        kèk kesyon. \nEtid sa'a finanse an pati pa Depatman Defans EtaZini. Tanpri
+        kontakte Pwofesè Ashish Goel nan goel_admins@lists.stanford.edu si ou gen
+        nenpòt kesyon, sijesyon oswa enkyetid. Ou ka kontakte tou Stanford Institutional
+        Board Review nan 650-723-2480.</p>"
+      ok: Kontinye
+      exit: Sòti
+  knapsack:
+    title: Valiz nan do
+    popup:
+      title: Enstriksyon yo
+      body: "<p style='font-size: 20px;'>Yo pral mande ou kounya pou patisipe nan
+        yon aktivite ki pa'p afekte vòt ou a, men se yon pati nan yon pwojè rechèch
+        Inivèsite Stanford ki vle di pou ede nou amelyore pwosesis bidjè patisipatif
+        la.</p>\n<ul style='font-size: 20px;'><li>Patisipe nan aktivite sa'a se si
+        ou vle. Ou ka sòti ladan li nenpòt kilè.</li>\n<li>Aktivite sa ka pran 2 oswa
+        3 minit konsa.</li>\n<li>Nan aktivite sa'a, yo pral mande ou pou chwazi yon
+        kantite pwojè san limit, men pri total pwojè yo chwazi yo paka depase %{budget}.</li></ul>\n<p
+        style='font-size: 14px;'>Etid sa'a pa gen okenn danje.\nYo p'ap peye ou pou
+        patisipe, e nou paka garanti ou okenn benefis. Ou gen dwa pou refize reponn
+        kèk kesyon. \nEtid sa'a finanse an pati pa Depatman Defans EtaZini. Tanpri
+        kontakte Pwofesè Ashish Goel nan goel_admins@lists.stanford.edu si ou gen
+        nenpòt kesyon, sijesyon oswa enkyetid. Ou ka kontakte tou Stanford Institutional
+        Board Review nan 650-723-2480.</p>"
+      ok: OK
+      exit: Sòti
+    instructions: |-
+      <h3>Enstriksyon yo</h3>
+      <ol>
+      <li>Seleksyone pwojè ou t'ap renmen sipòte yo. Pri total la paka plis pase <b>%{budget}</b>.</li>
+      <li>Ou ka wè kantite total ou te depanse nan ba ki anwo a. Ou ka retire nenpòt pwojè ou te seleksyone deja, nan klike sou ba'a oswa klike dirèkteman sou pwojè ou chwazi a.</li>
+      <li>Klike sou bouton <b>"Voye Vòt Mwen an"</b> lè ou prè pou ou voye li.</li>
+      </ol>
+    confirmation:
+      title: Eske ou asire ke ou vle voye vòt ou a?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
+          other: 'Ou te seleksyone pwojè sa yo: %{projects}'
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Ou te seleksyone sèlman yon pwojè.</span>"
+          less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"
+          limit: "<span style='color: red;'>Ou ka vote pou pi plis %{max_n_projects}
+            pwojè.</span>"
+        warning: Aprè ou fin voye vòt ou a, ou <strong>paka</strong> chanje vòt ou
+          a.
+      ok: Voye Vòt Mwen an
+      cancel: Retounen
+    adjustable_cost_project:
+      instructions: 'Tanpri seleksyone youn nan opsyon sa yo ki anba a:'
+      not_adjusted_warning: "<span style='color:red'>Ou te seleksyone $0 pou %{project}</span>"
+      message: Ou te seleksyone $%{cost} pou %{project}
+  survey:
+    title: Ankèt
+    header: Pran yon Ankèt
+    question:
+      title: Mèsi
+      body: Mèsi paske ou te vote. Eske ou gen 14 ane oswa pi plis?
+      ok: Wi, mwen gen 14 ane oswa pi plis
+      alternative: Non, mwen gen mwens ke 14 ane
+    url: ''
+  thanks:
+    title: Mèsi
+    description:
+      real: Mèsi paske ou te vote. Tanpri klike sou bouton 'Sòti' an ki anba.
+      demo: 'Mèsi paske ou teste entèfas nimerik bidjè patisipatif la! <span style=''color:
+        red;''><strong>Tanpri sonje ke sa se sèlman yon <u>apèsi</u>.</strong></span>
+        Pou ka vote, tanpri vini nan yon kote pou vote nan youn nan kote sa yo:'
+    exit: Sòti
+  about:
+    title: Enfòmasyon
+    description: |-
+      <center><h1 class='sub-header'>Enfòmasyon sou entèfas nimerik bidjè patisipatif la</h1></center>
+      <br><p class='lead'>Entèfas nimerik bidjè patisipatif la te devlope pa <a href='https://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. Nou espere ke nati vizyèl entèfas la epi richès enfòmasyon ki prezante yo ap ede ou aprann sou pwojè yo, epi depoze plis vòt enfòmatif.</p>
+      <p class='lead'>Sa se yon pwojè sous ouvri ki lisansye anba lisans GNU GPL v3.0. Ou ka jwenn kòd sous la sou <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
+      <p class='lead'>Si ou gen pwoblèm teknik oswa ou vle bay kòmantè, tanpri voye yon imèl bay <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> epi n'ap eseye reponn ou pi vit posib.</p>
+  result:
+    title: Rezilta
+    vote_results: Rezilta Vòt yo
+    description: Rezilta yo baze sou vòt yo de %{count} moun k'ap vote yo sòti nan
+      %{start} pou rive nan %{end}.
+    proposed_project: Pwojè pwopoze yo
+    votes: Vòt yo
+    projects: Pwojè yo
+  election:
+    can_also_vote_in_person: 'Ou ka vini nan youn nan kote sa yo tou pou depoze vòt
+      ou a:'
+    info: |-
+      <h3>Kote pou Vòt yo</h3>
+      <b>Samdi 27 Septanm</b> &nbsp; (12:00 midi - 4:00 p.m.)<br>
+      Yon kote<br>
+      <br>
+      <b>Madi 30 Septanm</b> &nbsp; (6:00 pm - 9:00 p.m.)<br>
+      Yon kote<br>
+      <br>
+      <p>Pou plis enfòmasyon, tanpri vizite <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: Verifye nimewo telefòn ou an
+    header: Verifye nimewo telefòn ou an
+    instructions: "<p>Nan fason pou vote sou entènèt la, ou ap bezwen yon telefòn
+      selilè ki ka resevwa yon mesaj tèks, pou nou ka verifye nimewo telefòn ou an.</p><p>Mete
+      nimewo telefòn selilè ou a, epi nou ap tèks ou yon kòd konfimasyon.</p>"
+    phone_number_placeholder: Mete nimewo telefòn nan
+    verify_button: Verifye
+    invalid_phone_number: '"%{phone_number}" la se pa yon nimewo telefòn ki valab.'
+    no_cell_phone_instruction: Si ou pa gen yon telefòn selilè, tanpri <a href="%{code_signup_url}">klike
+      la</a> pou itilize yon lòt metòd pou vote sou entènèt la.
+  code_signup:
+    title: Mete kòd aksè a pou vote
+    instruction: Tanpri voye yon imèl nan XXX@stanford.edu oswa rele XXX-XXX-XXX pou
+      jwenn yon kòd aksè. Lè ou fin jwenn kòd aksè a, antre li anba'a epi peze bouton
+      <b>Vòt</b> a pou kontinye.
+    code_placeholder: kòd aksè
+    vote_button: Vòt
+    wrong_access_code: Move kòd aksè
+    used_access_code: Kòd aksè sa itilize deja
+  other_signup:
+    title: Mete detay yo pou vote
+    instruction: ''
+    no_account_number_instruction: Si ou pa genyen yon nimewo kont, tanpri <a href="%{code_signup_url}">klike
+      la</a> pou itilize yon lot metòd pou vote sou entènèt la.
+    zipcode_placeholder: ZIP kòd
+    account_number_placeholder: Nimewo kont
+    vote_button: Vòt
+    wrong_account_number: Move nimewo kont
+    used_account_number: Nimewo kont sa itilize deja
+  registration:
+    title: Detay sou moun k'ap vote a
+    header: Detay sou moun k'ap vote a
+    instructions: Tanpri antre detay sa yo pou ale nan bilten vòt la pou depoze vòt
+      ou. Se yon obligasyon pou ou ranpli pati ki gen * yo.
+    proceed_button: Kontinye
+    no_phone_number: Mwen pa gen yon nimewo telefòn
+    name: Tout non ou
+    first_name: Non ou
+    middle_initial: Dezyèm non
+    last_name: Siyati
+    suffix: Alyas
+    phone_number: Nimewo telefòn
+    email: Adrès elekronik
+    address: Adrès kote rete
+    city: Vil
+    zip_code: ZIP kòd
+    birth_year: Ane ou fèt
+    date_of_birth: Dat ou fèt
+    verify_age_label: Mwen gen plis pase 16 ane
+    email_instruction_label: Eske ou vle jwenn rezilta vòt sa'a? Antre adrès elekronik
+      ou pou ka rete enfòme.
+    ward: Katye
+    ward_do_not_know: Pa konnen
+    error: "Please fix the following errors:"
+    not_voting_age_error: Ou dwe gen laj yo mande a pou ka vote nan eleksyon sa'a
+  sms_signup_confirm:
+    title: Verifye nimewo telefòn ou an
+    header: Verifye nimewo telefòn ou an
+    instructions: "<p>Nou voye yon kòd konfimasyon sou <b>%{phone_number}</b>. Ou
+      ta dwe resevwa kòd la nan yon (1) minit.</p><p>Tanpri antre kòd konfimasyon
+      an pou verifye nimewo telefòn ou an.</p>"
+    code_placeholder: Antre kòd la
+    confirm_button: Konfime
+    wrong_code: Move kòd
+    resend_code: Si ou pa resevwa kòd la nan yon (1) minit, <a href="%{resend_code_url}">klike
+      la</a> pou revoye kòd konfimasyon an.
+    make_sure_phone_number_is_correct: Asire ou ke %{phone_number} nan se nimewo telefòn
+      selilè kòrèk ou. Si li <u>pa</u> kòrèk, tanpri <a href="%{signup_url}">klike
+      la</a> pou chanje li.
+    still_not_working: Si ou toujou gen pwoblèm pou resevwa kòd konfimasyon an aprè
+      ou eseye plizyè fwa, tanpri <a href="%{code_signup_url}">klike la</a> pou itilize
+      yon lòt metòd pou vote sou entènèt la.
+  general:
+    demo_warning: Sa se sèlman yon apèsi. Vòt ou an p'ap anrejistre.
+    experiment_disclaimer: Sa se sèlman yon ankèt. Li p'ap afekte vòt ou a.
+    shuffle_note: "<span style='font-size: 18px;'>Remak: Yo ranje pwojè sa yo nan
+      yon lòd o aza.</span>"
+    project_string: Pwojè
+    timeout:
+      body: Sesyon ou an pral ekspire. Klike sou "Kontinye" pou kontinye itilize sit
+        wèb la.
+      continue_button: Kontinye
+  date:
+    month_names: [~, Janvye, Fevriye, Mas, Avril, Mè, Jen, Jiyè, Daou, Septanm, Oktob, Novanm, Desanm]
+    order:
+    - :day
+    - :month
+    - :year
+  errors:
+    messages:
+      blank: "can't be blank"
+      invalid: "is invalid"

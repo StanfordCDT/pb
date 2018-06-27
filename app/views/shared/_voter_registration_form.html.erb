@@ -1,12 +1,4 @@
 <style>
-.panel {
-  background-color: #fafafa;
-}
-
-.panel-body {
-  font-size: 16px;
-}
-
 input[type='text'], input[type='tel'], input[type='email'] {
   height: 40px;
   font-size: 16px;
@@ -31,11 +23,11 @@ function validate() {
 }
 </script>
 
-<%= form_for(@record, url: submit_url, html: {class: 'form-horizontal', onsubmit: 'return validate();'}) do |f| %>
-  <div class="panel panel-default">
-    <div class="panel-body">
+<%= form_for(@record, url: submit_url, html: {onsubmit: 'return validate();'}) do |f| %>
+  <div class="card bg-light">
+    <div class="card-body">
       <% if !@record.errors.full_messages.empty? %>
-        <p class="text-danger">Please fix the following errors:</p>
+        <p class="text-danger"><%= t('registration.error') %></p>
         <ul>
           <% @record.errors.full_messages.each do |msg| %>
             <li class="text-danger"><%= msg.html_safe %>.</li>
@@ -43,11 +35,11 @@ function validate() {
         </ul>
       <% end %>
 
-      <%= t('registration.instructions').html_safe %>
+      <p><%= t('registration.instructions').html_safe %></p>
 
       <!-- Name -->
       <% if @election.config[:voter_registration_questions].include?('name') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="name">* <%= t('registration.name') %></label>
           <div class="col-sm-9">
             <%= f.text_field :name, id: 'name', class: 'form-control', autocomplete: 'off' %>
@@ -57,7 +49,7 @@ function validate() {
 
       <!-- First name -->
       <% if @election.config[:voter_registration_questions].include?('first_name') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="first_name">* <%= t('registration.first_name') %></label>
           <div class="col-sm-9">
             <%= f.text_field :first_name, id: 'first_name', class: 'form-control', autocomplete: 'off' %>
@@ -67,7 +59,7 @@ function validate() {
 
       <!-- Middle initial -->
       <% if @election.config[:voter_registration_questions].include?('middle_initial') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="middle_initial"><%= t('registration.middle_initial') %></label>
           <div class="col-sm-9">
             <%= f.text_field :middle_initial, id: 'middle_initial', class: 'form-control', autocomplete: 'off' %>
@@ -77,7 +69,7 @@ function validate() {
 
       <!-- Last name -->
       <% if @election.config[:voter_registration_questions].include?('last_name') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="last_name">* <%= t('registration.last_name') %></label>
           <div class="col-sm-9">
             <%= f.text_field :last_name, id: 'last_name', class: 'form-control', autocomplete: 'off' %>
@@ -87,7 +79,7 @@ function validate() {
 
       <!-- Suffix -->
       <% if @election.config[:voter_registration_questions].include?('suffix') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="suffix"><%= t('registration.suffix') %></label>
           <div class="col-sm-9">
             <%= f.text_field :suffix, id: 'suffix', class: 'form-control', autocomplete: 'off' %>
@@ -97,7 +89,7 @@ function validate() {
 
       <!-- Phone number -->
       <% if @election.config[:voter_registration_questions].include?('phone_number') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="phone_number"><%= t('registration.phone_number') %></label>
           <div class="col-sm-9">
             <%= f.telephone_field :phone_number, id: 'phone_number', class: 'form-control', autocomplete: 'off' %>
@@ -107,7 +99,7 @@ function validate() {
 
       <!-- Address -->
       <% if @election.config[:voter_registration_questions].include?('address') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="address">* <%= t('registration.address') %></label>
           <div class="col-sm-9">
             <%= f.text_field :address, id: 'address', class: 'form-control', autocomplete: 'off' %>
@@ -117,7 +109,7 @@ function validate() {
 
       <!-- City -->
       <% if @election.config[:voter_registration_questions].include?('city') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="city">* <%= t('registration.city') %></label>
           <div class="col-sm-9">
             <%= f.text_field :city, id: 'city', class: 'form-control', autocomplete: 'off' %>
@@ -127,7 +119,7 @@ function validate() {
 
       <!-- ZIP Code -->
       <% if @election.config[:voter_registration_questions].include?('zip_code') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="zip_code">* <%= t('registration.zip_code') %></label>
           <div class="col-sm-9">
             <%= f.text_field :zip_code, id: 'zip_code', class: 'form-control', autocomplete: 'off' %>
@@ -137,7 +129,7 @@ function validate() {
 
       <!-- Birth year -->
       <% if @election.config[:voter_registration_questions].include?('birth_year') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="birth_year">* <%= t('registration.birth_year') %></label>
           <div class="col-sm-9">
             <%= f.select(:birth_year, 1910..(Time.now.year - 11), {include_blank: true}, {id: 'birth_year', class: 'form-control'}) %>
@@ -147,7 +139,7 @@ function validate() {
 
        <!-- Date of birth -->
       <% if @election.config[:voter_registration_questions].include?('date_of_birth') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label">* <%= t('registration.date_of_birth') %></label>
           <div class="col-sm-9">
             <%= f.hidden_field :date_of_birth, id: 'date_of_birth' %>
@@ -180,7 +172,7 @@ function validate() {
 
       <!-- Ward -->
       <% if @election.config[:voter_registration_questions].include?('ward') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="ward">* <%= t('registration.ward') %></label>
           <div class="col-sm-9">
             <%= f.select(:ward, ['1', '2', '3', '4', '5', [t('registration.ward_do_not_know'), 'Do not know']], {include_blank: true}, {id: 'ward', class: 'form-control'}) %>
@@ -190,7 +182,7 @@ function validate() {
 
       <!-- Email -->
       <% if @election.config[:voter_registration_questions].include?('email') %>
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label" for="email"><%= t('registration.email') %></label>
           <div class="col-sm-9">
             <%= f.email_field :email, id: 'email', class: 'form-control', autocomplete: 'off' %>
@@ -201,8 +193,11 @@ function validate() {
 
       <!-- Verify age -->
       <% if @election.config[:voter_registration_questions].include?('age_verify') && filled_by_voter %>
-        <div class="checkbox">
-          <label><input type="checkbox" name="age_verify" id="age_verify"><%= t('registration.verify_age_label').html_safe %></label>
+        <div class="form-check">
+          <input type="checkbox" name="age_verify" id="age_verify" class="form-check-input">
+          <label class="form-check-label" for="age_verify">
+            <%= t('registration.verify_age_label').html_safe %>
+          </label>
         </div><br>
       <% end %>
 

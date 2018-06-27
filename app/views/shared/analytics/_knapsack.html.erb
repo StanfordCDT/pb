@@ -14,8 +14,8 @@ FIXME: Currently not working. Need to fix this.
   <a href="<%= url_for(format: :csv, table: 'knapsacks_individual') %>">Export individual votes into Excel</a>
 <% end %>
 
-<table class="table table-striped">
-  <thead>
+<table class="table table-bordered table-sm">
+  <thead class="thead-light">
     <tr>
       <th>Project</th>
       <th class="text-right">Votes</th>
@@ -55,8 +55,8 @@ FIXME: Currently not working. Need to fix this.
 -->
 
 <h4>Knapsack - Vote counts</h4>
-<table class="table table-bordered">
-  <thead>
+<table class="table table-bordered table-sm">
+  <thead class="thead-light">
     <tr>
       <th></th>
       <th>Votes</th>
@@ -238,7 +238,7 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
   var project = svg.selectAll(".project")
     .data(knapsack_data)
   .enter().append("g")
-    .attr("class", "g")
+    .attr("class", "project")
     .attr("transform", function(d) { return "translate(0," + y(d.id) + ")"; });
 
   // Each bar group consists of bars.

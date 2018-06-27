@@ -9,10 +9,10 @@ class Election < ActiveRecord::Base
   has_many :locations, dependent: :destroy
   has_many :election_users, dependent: :destroy
   has_many :users, through: :election_users
-  has_many :admin_users, -> { where election_users: { status: ElectionUser.statuses[:admin] } },
-                         through: :election_users, class_name: 'User', source: :user
-  has_many :volunteer_users, -> { where election_users: { status: ElectionUser.statuses[:volunteer] } },
-                         through: :election_users, class_name: 'User', source: :user
+  #has_many :admin_users, -> { where election_users: { status: ElectionUser.statuses[:admin] } },
+  #                       through: :election_users, class_name: 'User', source: :user
+  #has_many :volunteer_users, -> { where election_users: { status: ElectionUser.statuses[:volunteer] } },
+  #                       through: :election_users, class_name: 'User', source: :user
   after_destroy :delete_files
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: true,
@@ -38,8 +38,15 @@ class Election < ActiveRecord::Base
     @@config_cache.delete(id)
   end
 
-  def ordered_categories(categorized, category_group, shuffled)
-    if categorized
+  def categorized?
+    if @categorized.nil?
+      @categorized = categories.exists?
+    end
+    @categorized
+  end
+
+  def ordered_categories(category_group, shuffled)
+    if categorized?
       cs = (category_group.nil? ? categories : categories.where(category_group: category_group)).to_a
       uncategorized_projects = projects.where(category_id: nil)
       if uncategorized_projects.exists?
@@ -93,7 +100,7 @@ class Election < ActiveRecord::Base
   def self.default_config_helper(options)
     c = {}
     options.each do |option|
-      if option['type'] == 'group'
+      if option.key?('children')
         value = default_config_helper(option['children'])
       else
         value = option['default']

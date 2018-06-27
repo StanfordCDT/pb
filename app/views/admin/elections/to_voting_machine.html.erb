@@ -1,16 +1,20 @@
 <% content_for :title, 'Convert to a voting machine' %>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 main">
 
       <h2><%= @election.name %></h2>
 
-      <h3>Convert to a voting machine</h3>
+      <h3>Convert this computer to a voting machine</h3>
+
+      <p>If you would like voters to vote <b>in person</b> on the current computer, use this page to turn this computer into a voting machine.</p>
+      <p>Once this computer turns into a voting machine, there will be a text box that lets voters enter a <b>code</b> to vote. You will have to provide each voter a unique code.</p>
+      <p>Once the voting ends, go to <%= request.host_with_port + "/admin" %> to log out.</p>
 
       <form action="<%= url_for(action: :post_to_voting_machine) %>" method="post">
         <% if @locations.length > 0 %>
-          <p>Choose the current location:</p>
+          <p><b>Choose the current location:</b></p>
           <% @locations.each do |location| %>
             <div class="radio">
               <label><input type="radio" name="location_id" value="<%= location.id %>" /> <%= location.name %></label>
@@ -34,7 +38,7 @@
           });
           </script>
         <% else %>
-          <p>Please enter the current location:</p>
+          <p><b>Please enter the current location:</b> (For example, "Main Office" or "ABC High School")</p>
           <p><input type="text" name="other_location_name" id="other_location_name" class="form-control" placeholder="Enter location" autofocus="autofocus" /></p>
         <% end %>
 

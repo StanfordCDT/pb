@@ -68,6 +68,10 @@ module Admin
           data = @code_batch.codes.map(&:code).join("\n") + "\n"
           send_data data, filename: "codes_#{id}.txt", type: 'text/plain'
         end
+        format.csv do
+          data = @code_batch.codes.map(&:code).join("\n") + "\n"
+          send_data data, filename: "codes_#{id}.csv", type: Mime::CSV
+        end
       end
     end
 
@@ -93,7 +97,7 @@ module Admin
             code_batch_id = code_batch.id.to_s
             status = Code.statuses[personal_id_codes ? :personal_id : :ok].to_s
             rows = params[:code_batch][:import_file].read.split("\n").map do |c|
-              c.strip!
+              c = sanitize_code(c)
               c.empty? ? nil : ("(" + Code.sanitize(c) + "," + code_batch_id + "," + status + ",UTC_TIMESTAMP(),UTC_TIMESTAMP())")
             end
             sql_query = "INSERT INTO codes (`code`, `code_batch_id`, `status`, `created_at`, `updated_at`) VALUES " + rows.compact.join(",")
@@ -101,7 +105,7 @@ module Admin
           else
             params[:code_batch][:import_file].read.split("\n").each do |c|
               code = Code.new
-              code.code = c
+              code.code = sanitize_code(c)
               code.code_batch = code_batch
               code.status = personal_id_codes ? :personal_id : :ok
               code.save!
@@ -188,6 +192,16 @@ module Admin
       code_batch = code.code_batch
       code.update_attribute(:status, 2)
       redirect_to action: :view, id: code_batch.id
+    end
+
+    private
+
+    def sanitize_code(c)
+      # Remove non-alphanumeric characters and strip leading zeros in the code.
+      # NOTE: This is a bit different from sanitize_code in vote_controller.rb.
+      c.split("&").map { |x|
+        x.downcase.gsub(/[^0-9a-z_]/, '').sub(/^0+/, '')
+      }.join("&")
     end
   end
 end

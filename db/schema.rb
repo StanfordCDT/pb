@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160503040605) do
   end
 
   add_index "vote_approvals", ["project_id"], name: "index_vote_approvals_on_project_id", using: :btree
+  add_index "vote_approvals", ["voter_id"], name: "index_vote_approvals_on_voter_id", using: :btree
 
   create_table "vote_comparisons", force: :cascade do |t|
     t.integer  "voter_id",            limit: 4, null: false
@@ -166,6 +167,8 @@ ActiveRecord::Schema.define(version: 20160503040605) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_index "vote_comparisons", ["voter_id"], name: "index_vote_comparisons_on_voter_id", using: :btree
+
   create_table "vote_knapsacks", force: :cascade do |t|
     t.integer  "voter_id",   limit: 4, null: false
     t.integer  "project_id", limit: 4, null: false
@@ -175,6 +178,7 @@ ActiveRecord::Schema.define(version: 20160503040605) do
   end
 
   add_index "vote_knapsacks", ["project_id"], name: "index_vote_knapsacks_on_project_id", using: :btree
+  add_index "vote_knapsacks", ["voter_id"], name: "index_vote_knapsacks_on_voter_id", using: :btree
 
   create_table "vote_plusminuses", force: :cascade do |t|
     t.integer  "voter_id",   limit: 4, null: false
@@ -185,11 +189,12 @@ ActiveRecord::Schema.define(version: 20160503040605) do
   end
 
   add_index "vote_plusminuses", ["project_id"], name: "index_vote_plusminuses_on_project_id", using: :btree
+  add_index "vote_plusminuses", ["voter_id"], name: "index_vote_plusminuses_on_voter_id", using: :btree
 
   create_table "voter_registration_records", force: :cascade do |t|
     t.integer  "election_id", limit: 4,     null: false
-    t.integer  "user_id",     limit: 4,     null: false
-    t.integer  "voter_id",    limit: 4,     null: false
+    t.integer  "user_id",     limit: 4
+    t.integer  "voter_id",    limit: 4
     t.text     "data",        limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false

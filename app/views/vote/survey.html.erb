@@ -2,7 +2,7 @@
 
 <% if conf[:survey][:show_exit_link] %>
   <% content_for :navbar_links do %>
-    <li><a href="<%= url_for(next_page(:survey)) %>"><%= t('navigation.exit') %></a></li>
+    <li class="nav-item"><a href="<%= url_for(next_page(:survey)) %>" class="nav-link"><%= t('navigation.exit') %></a></li>
   <% end %>
 <% end %>
 
@@ -17,14 +17,22 @@ def add_params(url)
   end
   url + (ps.empty? ? '' : ('&' + ps.to_query))
 end
+
+campaign = "none"
+if params[:campaign]
+  campaign = params[:campaign]
+end
 %>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 main">
 
       <% url = (params[:alternative] != '1') ? conf[:survey][:url] : conf[:survey][:alternative_url] %>
-      <iframe id="iframe" src="<%= add_params(url).html_safe %>" style="width: 100%; height: 600px; border: 0;"></iframe>
+      <% if url.nil? || url.length == 0 %>
+        <% url = t('survey.url') %>
+      <% end %>
+      <iframe id="iframe" src="<%= add_params(url).gsub("[campaign]", campaign).html_safe %>" style="width: 100%; height: 600px; border: 0;"></iframe>
 
     </div>
   </div>
@@ -43,9 +51,9 @@ end
         <div class="modal-body">
           <%= raw t('survey.question.body') %>
         </div>
-        <div class="modal-footer">
-          <a href="<%= url_for(next_page(:survey)) %>" class="btn btn-default btn-lg"><%= raw t('survey.question.alternative') %></a>
-          <button type="submit" class="btn btn-primary btn-lg" data-dismiss="modal"><%= raw t('survey.question.ok') %></button>
+        <div class="modal-footer" style="flex-wrap: wrap;">
+          <a href="<%= url_for(next_page(:survey)) %>" class="btn btn-secondary btn-lg"><%= raw t('survey.question.alternative') %></a>
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"><%= raw t('survey.question.ok') %></button>
         </div>
       </div>
     </div>

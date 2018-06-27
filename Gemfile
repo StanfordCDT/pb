@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.10'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -45,10 +45,11 @@ group :development do
   gem 'spring'
 end
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.10'
 gem 'globalize'
 gem 'globalize-accessors'
 gem 'prawn'
 gem 'twilio-ruby'
 gem 'carrierwave'
 gem 'capistrano-rvm'
+gem 'react-rails'

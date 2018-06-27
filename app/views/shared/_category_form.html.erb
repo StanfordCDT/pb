@@ -1,16 +1,10 @@
-<style>
-.error {
-  color: red;
-}
-</style>
-
 <% available_locales = @election.config[:available_locales] %>
 
 <% if available_locales.length > 1 %>
   <%# Tabs for selecting langauges. %>
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs">
     <% available_locales.each_with_index do |locale, index| %>
-      <li role="presentation" class="<%= index == 0 ? 'active' : '' %>"><a href="#<%= locale %>" aria-controls="home" role="tab" data-toggle="tab"><%= LOCALE_NAMES[locale.to_sym] %></a></li>
+      <li class="nav-item"><a href="#<%= locale %>" class="nav-link <%= index == 0 ? 'active' : '' %>" data-toggle="tab"><%= LOCALE_NAMES[locale.to_sym] %></a></li>
     <% end %>
   </ul>
   <br>
@@ -21,11 +15,11 @@
 <% end %>
 
 <% @category.errors.full_messages.each do |msg| %>
-  <p class="error"><%= msg %></p>
+  <p class="text-danger"><%= msg %></p>
 <% end %>
 
-<%= form_for([:admin, @election, @category], html: {class: 'form-horizontal'}) do |f| %>
-  <div class="form-group">
+<%= form_for([:admin, @election, @category]) do |f| %>
+  <div class="form-group row">
     <%= f.label :name, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
@@ -33,7 +27,7 @@
       <% end %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :image, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% if @category.image? %>
@@ -45,7 +39,7 @@
       <%= f.hidden_field :image_cache %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :pinned, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <div class="checkbox">
@@ -55,7 +49,7 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :category_group, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :category_group, class: 'form-control' %>

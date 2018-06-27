@@ -5,9 +5,12 @@
 <% end %>
 
 <% if !is_public %>
+  <% if is_allowed_to_see_voter_data? %>
+    <a href="<%= analytics_cooccurrence_admin_election_path(@election) %>">View co-occurrence matrix</a><br>
+  <% end %>
   <a href="<%= url_for(format: :csv, table: 'approvals') %>">Export into Excel</a><br>
   <% if is_allowed_to_see_voter_data? %>
-    <% if @election.slug == '49' || @election.slug == '49_2016'  # FIXME %>
+    <% if @election.slug == '49' || @election.slug.start_with?('49_20')  # FIXME %>
       <a href="<%= analytics_chicago49_admin_election_path(@election, format: :csv) %>">Export individual votes into Excel (Chicago's 49th Ward format)</a><br>
     <% else %>
       <a href="<%= url_for(format: :csv, table: 'approvals_individual') %>">Export individual votes into Excel</a>
@@ -29,15 +32,17 @@
 <script type="text/javascript">
 var approvals = <%= @approvals.to_json.html_safe %>;
 var max_approval_vote_count = <%= @max_approval_vote_count.to_json %>;
+var categorized = <%= @election.categorized? %>;
 
 // Approval table.
 function reloadApprovalTable() {
   var table = document.createElement('table');
   table.setAttribute("id", "approval-table");
-  table.className = 'table table-striped';
+  table.className = 'table table-bordered table-sm';
 
   // Header
   var thead = document.createElement('thead');
+  thead.className = 'thead-light';
   {
     var tr = document.createElement('tr');
 
@@ -45,6 +50,12 @@ function reloadApprovalTable() {
       var th = document.createElement('th');
       th.textContent = 'Project';
       tr.appendChild(th);
+
+      if (categorized) {
+        var th = document.createElement('th');
+        th.textContent = 'Category';
+        tr.appendChild(th);
+      }
 
       th = document.createElement('th');
       th.textContent = 'Cost';
@@ -71,6 +82,13 @@ function reloadApprovalTable() {
       td.textContent = project.title;
       tr.appendChild(td);
 
+      if (categorized) {
+        // Category name
+        var td = document.createElement('td');
+        td.textContent = project.category_name;
+        tr.appendChild(td);
+      }
+
       // Cost
       td = document.createElement('td');
       td.textContent = project.adjustable_cost ? ('$0 - ' + '$' + numberWithDelimiter(project.cost)) : ('$' + numberWithDelimiter(project.cost)); // FIXME:
@@ -83,7 +101,7 @@ function reloadApprovalTable() {
         progressDiv.className = 'progress';
         {
           var progressBarDiv = document.createElement('div');
-          progressBarDiv.className = 'progress-bar progress-bar-success';
+          progressBarDiv.className = 'progress-bar bg-success';
           progressBarDiv.style.width = (approvals[i].vote_count / max_approval_vote_count * 100) + '%';
           progressBarDiv.textContent = numberWithDelimiter(approvals[i].vote_count);
           progressDiv.appendChild(progressBarDiv);

@@ -1,32 +1,396 @@
-<% content_for :title, 'Participatory Budgeting' %>
+<% content_for :title, 'Stanford Participatory Budgeting Platform' %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-      <center>
-      <h2>Welcome to the Participatory Budgeting Platform</h2>
-      <h3><i>Made by the <a href='http://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a></i></h3>
+<% content_for :head do %>
+  <meta property="og:title" content="Stanford Participatory Budgeting Platform" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Stanford Participatory Budgeting Platform allows cities, municipalities, states and foundations and other organizations to run a participatory budgeting (PB) election in which people can vote on the budget. This project is made by the Stanford Crowdsourced Democracy Team at Stanford University. It is open-source and free." />
+  <meta property="og:url" content="https://pbstanford.org/" />
+  <meta property="og:image" content="https://pbstanford.org/img/stanford.jpg" />
+  <meta property="og:image:alt" content="The Main Quad at Stanford University" />
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|PT+Sans:400,700" rel="stylesheet" />
+  <link href="/css/font-awesome.min.css" rel="stylesheet" />
+  <style>
+  body {
+    padding-top: 50px;
+    font-family: 'Libre Franklin', Helvetica, Arial, sans-serif;
+  }
+  section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+  }
+  
+  @media (min-width: 768px) {
+    p { font-size: 16px }
+    .lead { font-size: 20px }
+  }
 
-      <br><h4>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</h4>
+  h1 { font-size: 2.5em }
+  h2 { font-size: 2em }
+  h3 { font-size: 1.75em }
+  h4 { font-size: 1.5em }
+  h5 { font-size: 1.25em }
+  h6 { font-size: 1em }
+  hr { max-width: 125px; margin: 0 auto; }
 
-      <br><h3 style='color:green'>Active Elections (Voting online)</h3>
-      <div style="margin-top: 20px">
-        <% @active_elections.each do |election| %>
-          <a href="/<%= election.slug %>" class="btn btn-default btn-lg btn-block"><%= election.name %></a>
-        <% end %>
-      </div>
+  header {
+    background-image: url('/img/stanford.jpg');
+    background-color: #666;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: white;
+  }
+  header .btn-outline-light,
+  header .btn-outline-light:hover,
+  header .btn-outline-light:active,
+  header .btn-outline-light:active:hover,
+  header .btn-outline-light:focus {
+    background: none;
+    color: white;
+    box-shadow: none !important;
+  }
+  header .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+  header .intro-text .intro-subtitle {
+    font-weight: 300;
+    margin-bottom: 25px;
+  }
+  @media (min-width: 768px) {
+    header .intro-text {
+      padding-top: 234px;
+      padding-bottom: 234px;
+    }
+    header .intro-text .intro-subtitle {
+      margin-bottom: 50px;
+    }
+  }
 
-      <br><h3 style='color:red'>Past Elections (Voting ended)</h3>
-      <div style="margin: 20px 0px 30px 0px;">
-        <% @inactive_elections.each do |election| %>
-          <a href="/<%= election.slug %>" class="btn btn-default btn-lg btn-block"><%= election.name %></a>
-        <% end %>
-      </div>
+  .feature {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .feature i {
+    font-size: 80px;
+  }
+  .ss {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  .ss img {
+    border: 1px #eee solid;
+    max-width: 300px;
+    width: 100%;
+  }
+  .ss a {
+    color: inherit;
+  }
 
-      <div class="footer" style='margin-bottom: 20px'>
-      <p>Copyright © 2016 Stanford Crowdsourced Democracy Team</p>
-      </div>
-      </center>
+  #elections {
+    background-color: #eee;
+  }
+
+  #slide {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  #contactus {
+    background-color: #eee;
+  }
+
+  footer {
+    margin: 60px 0 20px;
+  }
+
+  footer a {
+    color: inherit;
+  }
+  </style>
+<% end %>
+
+<% content_for :navbar_links do %>
+  <li class="nav-item"><a class="nav-link page-scroll" href="#overview">Overview</a></li>
+  <li class="nav-item"><a class="nav-link page-scroll" href="#features">Features</a></li>
+  <li class="nav-item"><a class="nav-link page-scroll" href="#elections">Elections</a></li>
+  <li class="nav-item"><a class="nav-link page-scroll" href="#mission">Mission</a></li>
+  <li class="nav-item"><a class="nav-link page-scroll" href="#contactus">Contact Us</a></li>
+<% end %>
+
+<header>
+  <div class="container-fluid">
+    <div class="intro-text">
+      <h1 class="intro-heading">Stanford Participatory Budgeting Platform</h1>
+      <h4 class="intro-subtitle">A platform for running online participatory budgeting elections</h4>
+      <p><a class="btn btn-outline-light btn-lg page-scroll" href="#overview">Read Overview</a></p>
     </div>
   </div>
-</div>
+</header>
+
+<section id="overview">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 text-center">
+        <h2>Overview</h2>
+        <p class="lead">Stanford Participatory Budgeting Platform allows cities, municipalities, states and foundations and other organizations to run a participatory budgeting (PB) election in which people can vote on the budget.
+          
+        This project is made by the <a href="https://voxpopuli.stanford.edu/" target="_blank">Stanford Crowdsourced Democracy Team</a> at Stanford University.
+        The project is open-source and free.</p>
+        <p class="lead">Our platform has been used in many cities in the United States, such as Chicago, Seattle, Boston, and New York City.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section id="features">
+  <div class="container-fluid text-center">
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <h2>Features</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="feature">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          <h4>Easy to Use</h4>
+          <p>With simple and intuitive user interface,
+          our platform is designed so that everyone can use it, whether they are tech-savvy or not.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="feature">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          <h4>Customizable</h4>
+          <p>Our platform can be customized to suit your needs.
+          We support many voting methods, such as approval voting, <a href="https://web.stanford.edu/~anilesh/publications/knapsack_voting.pdf" target="_blank">knapsack voting</a>, and
+          ranked voting.
+          We also support remote voting.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="feature">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+          <h4>Language Support</h4>
+          <p>We currently support English, Spanish, French, and Chinese on the platform.
+          Our editing tool lets you enter projects in multiple languages.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="feature">
+          <i class="fa fa-mobile" aria-hidden="true"></i>
+          <h4>Mobile Friendly</h4>
+          <p>Our website adapts to the screen size of different devices.
+          The website works everywhere whether it is on a PC or a smartphone.</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="feature">
+          <i class="fa fa-bar-chart" aria-hidden="true"></i>
+          <h4>Analytics</h4>
+          <p>The analytics tools let you explore the data and gain insight into the voters' preferences
+          through visualization while protecting their privacy.
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="feature">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <h4>Open Source</h4>
+          <p>This is an open source project licensed under the GNU GPL v3.0 license.
+          You can find the source code on <a href="https://github.com/StanfordCDT/pb" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="elections">
+  <div class="container-fluid text-center">
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <h2>Elections</h2>
+        <p class="lead">See some of the past PB elections below. Or <a href="#" data-toggle="modal" data-target="#electionModal">click here</a> to see the list of all the PB elections.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="ss">
+          <p><a href="/boston15" target="_blank"><img src="/img/ss_boston.png" alt="Screenshot of PB Boston"></a></p>
+          <h5><a href="/boston15" target="_blank">Boston, MA</a></h5>
+          <p>Approval voting</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="ss">
+          <p><a href="/nyc8/knapsack" target="_blank"><img src="/img/ss_nyc8.png" alt="Screenshot of PB New York City's District 8"></a></p>
+          <h5><a href="/nyc8/knapsack" target="_blank">New York City's District 8</a></h5>
+          <p>Knapsack voting</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="ss">
+          <p><a href="/49_2015/approval" target="_blank"><img src="/img/ss_chicago.png" alt="Screenshot of PB Chicago's 49th Ward"></a></p>
+          <h5><a href="/49_2015/approval" target="_blank">Chicago's 49th Ward</a></h5>
+          <p>Map visualization</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="ss">
+          <p><a href="/dieppe2015" target="_blank"><img src="/img/ss_dieppe.png" alt="Screenshot of PB Dieppe, Canada"></a></p>
+          <h5><a href="/dieppe2015" target="_blank">Dieppe, Canada</a></h5>
+          <p>Ranked voting</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="ss">
+          <p><a href="/nyc27/comparison" target="_blank"><img src="/img/ss_nyc27.png" alt="Screenshot of PB New York City's District 27"></a></p>
+          <h5><a href="/nyc27/comparison" target="_blank">New York City's District 27</a></h5>
+          <p>Comparison voting</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="ss">
+          <p><a href="/greensboro1_2016/approval" target="_blank"><img src="/img/ss_greensboro.png" alt="Screenshot of PB Greensboro, NC"></a></p>
+          <h5><a href="/greensboro1_2016/approval" target="_blank">Greensboro, NC</a></h5>
+          <p>Approval voting</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="electionModal" tabindex="-1" role="dialog" aria-labelledby="electionModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+          <h4>Active Elections (Voting online)</h4>
+          <ul>
+            <% @active_elections.each do |election| %>
+              <li><a href="/<%= election.slug %>" target="_blank"><%= election.name %></a></li>
+            <% end %>
+          </ul>
+
+          <h4>Past Elections (Voting ended)</h4>
+          <ul>
+            <% @inactive_elections.each do |election| %>
+              <li><a href="/<%= election.slug %>" target="_blank"><%= election.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mission">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 text-center">
+        <h2>Mission</h2>
+        <p>Our mission is to scale up collaboration and decision-making. We envision an era in which large communities can deliberate and brainstorm with one another on important issues with the aid of intelligently designed algorithms and digital communication platforms. We believe that this will not only aid decision-makers in harnessing collective intelligence, but also lead to community members who are more informed and engaged in making their communities better. As part of this mission, our team has begun to partner with cities and municipalities to help organize local partipicatory budgeting elections.</p>
+        <p>Stanford Participatory Budgeting Platform is a tool for participatory budgeting at the state, federal, and local levels. It will not only aid decision-makers in harnessing collective intelligence, but also lead to community members to be more informed and engaged. It was adopted from the earlier Widescope project. Read this Wall Street Journal <a href="https://www.wsj.com/articles/SB10001424053111904716604576542472754782288" target="_blank" rel="noopener noreferrer">article</a> to learn more about it: Crowdsourcing Deficit Reduction.</p>
+        <p>To read more about our current work and publications, <a href="https://voxpopuli.stanford.edu/publications/" target="_blank">click here</a>.</p>
+        <center>
+          <iframe id="slide" src="https://docs.google.com/presentation/d/1XXueoHPaj5mkCTavegoSZ9LQud7fOrhdArtiv3kUnig/embed?start=false&loop=false&delayms=3000" frameborder="0" width="600" height="366" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </center>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contactus">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <h2 class="text-center">Contact Us</h2>
+        <p class="lead text-center">Want to run a PB in your city or organization? Have a suggestion? Let us know below.</p>
+
+        <%= form_tag '/contact' do %>
+          <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="name" name="name" />
+            </div>
+            <label for="email" class="col-sm-1 col-form-label">Email</label>
+            <div class="col-sm-5">
+              <input type="email" class="form-control" id="email" name="email" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="message" class="col-sm-2 col-form-label">Message</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 text-center">
+        <p>
+          Copyright &copy; 2018 <a href="https://voxpopuli.stanford.edu/" target="_blank">Stanford Crowdsourced Democracy Team</a>
+          &nbsp; &nbsp;
+          <!--<a><img src="/img/facebook.png" width="33" height="33"></a>&nbsp;-->
+          <a href="https://twitter.com/stan_voxpopuli" target="_blank" rel="noopener noreferrer"><img src="/img/twitter.png" width="33" height="33"></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// From http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js
+$.easing.easeInOutExpo = function (x, t, b, c, d) {
+  if (t==0) return b;
+  if (t==d) return b+c;
+  if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+  return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+};
+
+$('a.page-scroll').bind('click', function(event) {
+  $('html, body').stop().animate({
+    scrollTop: $(this.getAttribute('href')).offset().top - 50
+  }, 1000, 'easeInOutExpo');
+  event.preventDefault();
+});
+
+$('body').scrollspy({
+  target: '.navbar',
+  offset: 150
+});
+</script>

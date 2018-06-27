@@ -35,12 +35,14 @@
   <%# We don't need to show costs for adjustable cost projects with radio buttons because the costs are already on the radio buttons. %>
   <p class="project-cost">
     <b><%= t('approval.estimated_cost') %></b>:
-    <% if project.adjustable_cost? %>
-      <%= cost_with_delimiter(project.cost_min) %> -
-      <%= cost_with_delimiter(project.cost) %>
-    <% else %>
-      <%= cost_with_delimiter(project.cost) %>
-    <% end %>
+    <span class="text-nowrap">
+      <% if project.adjustable_cost? %>
+        <%= cost_with_delimiter(project.cost_min) %> -
+        <%= cost_with_delimiter(project.cost) %>
+      <% else %>
+        <%= cost_with_delimiter(project.cost) %>
+      <% end %>
+    </span>
   </p>
 <% end %>
 
@@ -68,17 +70,17 @@
 
 <% if !project.mandatory? %>
   <p>
-    <button type="button" class="btn btn-default btn-lg select-button" id="select-button<%= project.id %>" style="outline: none;">
+    <button type="button" class="btn btn-primary btn-lg select-button" id="select-button<%= project.id %>">
       Select
     </button>
     &nbsp; &nbsp;
-    <button type="button" class="btn btn-default btn-lg" id="remove-button<%= project.id %>" style="outline: none; display: none;">
+    <button type="button" class="btn btn-secondary btn-lg" id="remove-button<%= project.id %>" style="display: none;">
       <%= t('approval.remove_button') %>
     </button>
   </p>
 <% end %>
 
-<% if conf[:approval][:show_photos] && project.image_url %>
+<% if project.image_url %>
   <p>
     <div class="project-image-wrapper">
       <img src="<%= project.image.url %>" class="project-image" id="project-image-<%= project.id %>" />
@@ -118,22 +120,23 @@
   show_street_map = conf[:approval][:show_maps] && !project.parsed_data.nil? && project.parsed_data.key?('ward_center')
   show_cost_table = !project.parsed_data.nil? && project.parsed_data.key?('cost_table')
   %>
-  <div style="<%= (show_street_map || show_cost_table) ? 'width:23%; float:right;' : '' %>">
+  <div style="<%= (show_street_map || show_cost_table) ? 'width:26%; float:right;' : '' %>">
     <span style="font-size: 16px; font-weight: bold;"><%= t('approval.adjustable_cost_project.instructions') %></span>
-    <div class="radio" style="-webkit-user-select: none;">
+    <div style="-webkit-user-select: none;">
       <% costs = (project.cost_min..project.cost).step(project.cost_step).to_a %>
       <% costs.reverse! if conf[:approval][:reverse_order_of_radio_buttons_for_adjustable_cost_projects] %>
-      <% costs.each do |cost| %>
-        <label>
-          <input type="radio" name="project-adjustable-cost<%= project.id %>" value="<%= cost %>"
+      <% costs.each_with_index do |cost, index| %>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" name="project-adjustable-cost<%= project.id %>" id="project-adjustable-cost<%= project.id %>-<%= index %>" value="<%= cost %>"
             onclick="adjustCost(<%= project.id %>, <%= cost %>)" <%= (cost == project.cost_min) ? 'checked="checked"' : '' %> />
-          <% if project.cost_min == 0  # Show percentage if cost_min is 0 %>
-            &nbsp;<%= (cost * 100) / project.cost %>%&nbsp;&nbsp;(<%= cost_with_delimiter(cost) %>)
-          <% else %>
-            &nbsp;<%= cost_with_delimiter(cost) %>
-          <% end %>
-        </label>
-        <br />
+          <label class="form-check-label" for="project-adjustable-cost<%= project.id %>-<%= index %>">
+            <% if project.cost_min == 0  # Show percentage if cost_min is 0 %>
+              &nbsp;<%= (cost * 100) / project.cost %>%&nbsp;&nbsp;(<%= cost_with_delimiter(cost) %>)
+            <% else %>
+              &nbsp;<%= cost_with_delimiter(cost) %>
+            <% end %>
+          </label>
+        </div>
       <% end %>
     </div>
   </div>
@@ -142,7 +145,9 @@
   <% if show_street_map %>
     <div class="project-map-wrapper" style="height: 400px; width:70%; position: relative;">
       <div id="project-map-canvas<%= project.id %>" style="height: 400px; border: 1px #cccccc solid;"></div>
-      <div id="project-map-info<%= project.id %>" style="position: absolute; top: 2px; right: 6px; pointer-events: none; text-align: right; font-size: 16px;">No streets repaved</div>
+      <div style="position: absolute; top: 2px; right: 6px; pointer-events: none; text-align: right; font-size: 16px;">
+        <span id="project-map-info<%= project.id %>" style="background-color: rgba(255, 255, 255, 0.5);"></span>
+      </div>
     </div>
   <% end %>
 

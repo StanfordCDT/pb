@@ -19,7 +19,7 @@
 <% end %>
 
 <div id="category_name_image">
-  <% if conf[:categorized] %>
+  <% if @election.categorized? %>
     <center>
     <% @categories.each do |category| %>
       <% if category.image? %>

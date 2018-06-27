@@ -1,70 +1,72 @@
 <% content_for :title, 'Voters' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        ['Voters', admin_election_voters_path(@election)],
-        'Voter ' + @voter.authentication_id
-      ]} %>
 
 <h2>Voter</h2>
 
 <h3>Data</h3>
-<p><%= h(JSON.pretty_generate(@voter.data)).gsub("\n", '<br>').gsub('  ', '&nbsp;').html_safe %></p>
+<% if @voter.data.nil? %>
+  <p>No data</p>
+<% else %>
+  <p><%= h(JSON.pretty_generate(@voter.data)).gsub("\n", '<br>').gsub('  ', '&nbsp;').html_safe %></p>
 
-<% if @voter.data.key?('timestamps') %>
-  <h3>Timeline</h3>
-  <div id="timeline"></div>
+  <% if @voter.data.key?('timestamps') %>
+    <h3>Timeline</h3>
+    <div id="timeline"></div>
 
-  <style type="text/css">
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-  }
-  </style>
+    <style type="text/css">
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+    </style>
 
-  <script type="text/javascript" src="/js/d3.min.js"></script>
-  <script type="text/javascript" src="/js/d3-timeline.js"></script>
-  <script>
-  var data = <%= @voter.data.to_json.html_safe %>;
-  var utc_offset = <%= @election.utc_offset_in_seconds %>;
-  var timestamps = data.timestamps;
+    <script type="text/javascript" src="/js/d3.min.js"></script>
+    <script type="text/javascript" src="/js/d3-timeline.js"></script>
+    <script>
+    var data = <%= @voter.data.to_json.html_safe %>;
+    var utc_offset = <%= @election.utc_offset_in_seconds %>;
+    var timestamps = data.timestamps;
 
-  var timestampList = [];
-  for (var page in timestamps) {
-    timestampList.push([page, timestamps[page]]);
-  }
+    var timestampList = [];
+    for (var page in timestamps) {
+      timestampList.push([page, timestamps[page]]);
+    }
 
-  var timelineData = [];
-  for (var i = 0; i < timestampList.length - 1; ++i) {
-    timelineData.push({label: timestampList[i][0],
-      times: [{
-        "starting_time": (timestampList[i][1] + utc_offset) * 1000,
-        "ending_time": (timestampList[i+1][1] + utc_offset) * 1000
-      }]
-    });
-  }
+    var timelineData = [];
+    for (var i = 0; i < timestampList.length - 1; ++i) {
+      timelineData.push({label: timestampList[i][0],
+        times: [{
+          "starting_time": (timestampList[i][1] + utc_offset) * 1000,
+          "ending_time": (timestampList[i+1][1] + utc_offset) * 1000
+        }]
+      });
+    }
 
-  var chart = d3.timeline()
-    .width(700)
-    .stack()
-    .tickFormat({
-      format: d3.time.format.utc("%-I:%M %p"),
-      tickTime: d3.time.minutes,
-      tickSize: 6
-    })
-    .margin({left:120, right:30, top:0, bottom:0});
-  var svg = d3.select("#timeline").append("svg")
-    .attr("width", 700)
-    .datum(timelineData).call(chart);
-  </script>
+    var chart = d3.timeline()
+      .width(700)
+      .stack()
+      .tickFormat({
+        format: d3.time.format.utc("%-I:%M %p"),
+        tickTime: d3.time.minutes,
+        tickSize: 6
+      })
+      .margin({left:120, right:30, top:0, bottom:0});
+    var svg = d3.select("#timeline").append("svg")
+      .attr("width", 700)
+      .datum(timelineData).call(chart);
+    </script>
+  <% end %>
 <% end %>
 
-    </div>
-  </div>
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  ['Voters', admin_election_voters_path(@election)],
+  'Voter ' + @voter.authentication_id
+]} %>

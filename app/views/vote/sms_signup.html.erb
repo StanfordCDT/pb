@@ -1,15 +1,11 @@
 <% content_for :title, t('sms_signup.title') %>
 
 <style>
-.panel {
-  background-color: #fafafa;
-}
-
-.panel-body {
+.card-body {
   font-size: 18px;
 }
 
-p#side-note {
+.side-note {
   font-size: 18px;
 }
 
@@ -26,8 +22,8 @@ input[type='tel'], input[type='text'] {
 </style>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 main">
       <script>
       function strip(s) {
         return s.replace(/^\s+|\s+$/g, '');
@@ -45,8 +41,8 @@ input[type='tel'], input[type='text'] {
       <form action="<%= url_for(action: :post_sms_signup) %>" method="post" onsubmit="return validate();">
         <h1><%= t('sms_signup.header').html_safe %></h1>
         <br>
-        <div class="panel panel-default">
-          <div class="panel-body">
+        <div class="card bg-light">
+          <div class="card-body">
             <%= t('sms_signup.instructions').html_safe %>
             <p>
               <input type="tel" name="phone_number" id="phone_number" class="form-control" autocomplete="off" placeholder="<%= t('sms_signup.phone_number_placeholder') %>" autofocus="autofocus" />
@@ -66,13 +62,9 @@ input[type='tel'], input[type='text'] {
           </div>
         </div>
       </form><br>
-      <p id="side-note">
-        <%= t('sms_signup.dont_have_cell_phone').html_safe %>
-        <% if conf[:remote_voting_code_verification] %>
-          <a href="<%= url_for action: :code_signup %>" class="btn btn-primary btn-lg" role="button"><%= t('index.remote.code_verification_button').html_safe %></a>
-        <% end %>
-        <%= t('election.info').html_safe %>
-      </p>
+      <p class="side-note"><%= t('sms_signup.no_cell_phone_instruction', code_signup_url: url_for(action: :code_signup)).html_safe %></p>
+      <p class="side-note"><%= t('election.can_also_vote_in_person').html_safe %></p>
+      <%= t('election.info').html_safe %>
     </div>
   </div>
 </div>

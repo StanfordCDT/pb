@@ -1,18 +1,16 @@
 <% content_for :title, 'Location: New' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        ['Locations', admin_election_locations_path(@election)],
-        'New'
-      ]} %>
 
       <h2>New Location</h2>
       <%= render partial: 'shared/location_form' %>
 
-    </div>
-  </div>
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  ['Locations', admin_election_locations_path(@election)],
+  'New'
+]} %>

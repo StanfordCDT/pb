@@ -2,14 +2,14 @@
 
 <% if conf[:comparison][:show_exit_link] %>
   <% content_for :navbar_links do %>
-    <li><a href="<%= url_for(action: :done_comparison) %>"><%= t('navigation.exit') %></a></li>
+    <li class="nav-item"><a href="<%= url_for(action: :done_comparison) %>" class="nav-link"><%= t('navigation.exit') %></a></li>
   <% end %>
 <% end %>
 
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 main">
 
 <% if conf[:comparison][:show_disclaimer] %>
   <div class="alert alert-info" role="alert">
@@ -20,15 +20,15 @@
   </div>
 <% end %>
 
-<h2>
+<h3 class="mb-4">
   <%= t('comparison.header') %>
-
-  <div class="progress" style="width: 120px; margin: 0 0 0 10px; padding: 0; display: inline-block">
-    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 0%; transition: 0s 0s all ease;" id="progress">
+  <div style="width: 120px; margin-left: 10px; display: inline-block">
+    <div class="progress">
+      <div class="progress-bar bg-success" role="progressbar" style="width: 0%; transition: 0s 0s all ease;" id="progress">
+      </div>
     </div>
   </div>
-</h2>
-<br />
+</h3>
 
 <style>
 .col0, .col1 {
@@ -91,17 +91,17 @@
   <tr>
     <td class="col0" style="text-align: center;">
       <br />
-      <a href="javascript:vote(0)" class="btn btn-primary btn-lg" style="outline: none;" id="button0"><%= t('comparison.this_project') %></a>
+      <button type="button" onclick="vote(0)" class="btn btn-primary btn-lg" style="box-shadow: none;" id="button0"><%= t('comparison.this_project') %></button>
     </td>
     <td class="col1" style="text-align: center;">
       <br />
-      <a href="javascript:vote(1)" class="btn btn-primary btn-lg" style="outline: none;" id="button1"><%= t('comparison.this_project') %></a>
+      <button type="button" onclick="vote(1)" class="btn btn-primary btn-lg" style="box-shadow: none;" id="button1"><%= t('comparison.this_project') %></button>
     </td>
   </tr>
   <tr>
     <td colspan="2" style="text-align: center;">
       <div style="margin-top: -30px;">
-        <a href="javascript:vote(-1)" class="btn btn-default btn-lg" style="outline: none;" id="button-1" ><%= t('comparison.not_sure') %></a>
+        <button type="button" onclick="javascript:vote(-1)" class="btn btn-secondary btn-lg" style="box-shadow: none;" id="button-1" ><%= t('comparison.not_sure') %></button>
       </div>
     </td>
   </tr>
@@ -149,8 +149,8 @@ function vote(i) {
   }
   $('#button0, #button1, #button-1').attr('disabled', 'disabled');
 
-  var project1 = projects[pairs[curIndex][0][0]];
-  var project2 = projects[pairs[curIndex][1][0]];
+  //var project1 = projects[pairs[curIndex][0][0]];
+  //var project2 = projects[pairs[curIndex][1][0]];
 
   $.ajax({
     url: "<%= url_for(action: :submit_comparison) %>",
@@ -166,20 +166,20 @@ function vote(i) {
   curIndex++;
 
   setTimeout(function () {
-    $('#table').fadeTo(200, 0);
-
     if (curIndex >= max_pairs) {
       window.location.href = "<%= url_for(action: :done_comparison) %>";
       return;
     }
 
-    setTimeout(function () {
-      $('#table').css('opacity', '1');
-      $('#button0, #button1').removeClass('btn-success');
-      $('#button0, #button1, #button-1').removeAttr('disabled');
-      $('.col0, .col1').css('background-color', 'transparent');
-      render();
-    }, 500);
+    $('#table').fadeTo(200, 0, function() {
+      setTimeout(function () {
+        $('#table').css('opacity', '1');
+        $('#button0, #button1').removeClass('btn-success');
+        $('#button0, #button1, #button-1').removeAttr('disabled');
+        $('.col0, .col1').css('background-color', 'transparent');
+        render();
+      }, 200);
+    });
   }, 250);
 }
 
@@ -202,7 +202,7 @@ function numberWithDelimiter(val){
           <%= raw t('comparison.popup.body', count: @pairs.length) %>
         </div>
         <div class="modal-footer">
-          <a href="<%= url_for(action: :done_comparison) %>" class="btn btn-default btn-lg"><%= t('comparison.popup.exit') %></a>
+          <a href="<%= url_for(action: :done_comparison) %>" class="btn btn-secondary btn-lg"><%= t('comparison.popup.exit') %></a>
           <button class="btn btn-primary btn-lg" data-dismiss="modal"><%= t('comparison.popup.ok') %></button>
         </div>
       </div>

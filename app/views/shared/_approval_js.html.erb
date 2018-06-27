@@ -90,46 +90,44 @@ function initializeViews() {
           };
           var gmap = new GMap('project-map-canvas' + id, 'project-map-info' + id, data, 14, templates);
           adjustCostCallbacks[i] = function(cost) {
-            // $('#map-wrapper').css('display', (cost == 0) ? 'none' : 'block');
             gmap.renderMap(cost);
           };
+          gmap.renderMap(0);
         }
       }
 
       // Code to show the photo gallery for the project images
-      <% if conf[:approval][:show_photos] %>
-        var imageURL = project.image_url;
-        if (imageURL != null) {
-          // Add the main image to the gallery
-          var galleryItems = [];
-          galleryItems.push({src: imageURL});
+      var imageURL = project.image_url;
+      if (imageURL != null && imageURL != "") {
+        // Add the main image to the gallery
+        var galleryItems = [];
+        galleryItems.push({src: imageURL});
 
-          // Add extra images if they exist
-          if (data && data.hasOwnProperty("images_gallery")) {
-            var urlPrefix = imageURL.substring(0, imageURL.lastIndexOf("/") + 1);
-            var extraImages = data["images_gallery"];
-            for (var j = 0; j < extraImages.length; ++j) {
-              galleryItems.push({src: urlPrefix + extraImages[j]});
-            }
+        // Add extra images if they exist
+        if (data && data.hasOwnProperty("images_gallery")) {
+          var urlPrefix = imageURL.substring(0, imageURL.lastIndexOf("/") + 1);
+          var extraImages = data["images_gallery"];
+          for (var j = 0; j < extraImages.length; ++j) {
+            galleryItems.push({src: urlPrefix + extraImages[j]});
           }
-
-          // Generate the magnific popup
-          $('#project-image-' + id).magnificPopup({
-            items: galleryItems,
-            gallery: {
-              enabled: true,
-              navigateByImgClick: true,
-              preload: [0, 1]
-            },
-            image: {
-              tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-            },
-            type: 'image',
-            closeBtnInside: false,
-            closeOnContentClick: (galleryItems.length == 1)
-          });
         }
-      <% end %>
+
+        // Generate the magnific popup
+        $('#project-image-' + id).magnificPopup({
+          items: galleryItems,
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0, 1]
+          },
+          image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+          },
+          type: 'image',
+          closeBtnInside: false,
+          closeOnContentClick: (galleryItems.length == 1)
+        });
+      }
     })(i);
   }
 
@@ -220,7 +218,7 @@ function updateList() {
 
     if (isProjectSelected(id)) {
       $select_button.html("<span class='glyphicon glyphicon-ok'></span> <%=j t('approval.select_button.selected').html_safe %>");
-      $select_button.removeClass('select-button');
+      //$select_button.removeClass('select-button');
       $select_button.addClass('btn-success');
 
       $remove_button.show();
@@ -237,19 +235,19 @@ function updateList() {
         $select_button.removeAttr('disabled');
       } else {
         if (has_n_project_limit && selectedProjectIDs.length >= max_n_projects) {
-          $select_button.html("<span style='font-size: 16px'>" + "<%=j t('approval.select_button.more_projects') %>".replace('%{max_n_projects}', max_n_projects) + "</span>");
+          $select_button.html("<span style='font-size: 16px'>" + "<%=j t('approval.select_button.more_projects').html_safe %>".replace('%{max_n_projects}', max_n_projects) + "</span>");
         } else {
           $select_button.html("<%=j t('approval.select_button.not_enough_money').html_safe %>");
         }
         $select_button.attr('disabled', 'disabled');
       }
-      $select_button.addClass('select-button');
+      //$select_button.addClass('select-button');
       $select_button.removeClass('btn-success');
 
       $remove_button.hide();
       if ($remove_button.tooltip) {
-        $remove_button.tooltip('hide'); // need to call 'hide' before 'destroy' -- a bug in Chrome
-        $remove_button.tooltip('destroy');
+        //$remove_button.tooltip('hide'); // need to call 'hide' before 'destroy' -- a bug in Chrome
+        $remove_button.tooltip('dispose');
       }
 
       if (canSelectProject(id) || isMandatoryProject(id)) {
@@ -396,9 +394,9 @@ function updateBudgetbar() {
     var photo_name = "";
     var title = "<span style='font-size: 14px'>" + projects[idToIndex[id]].title;
     var content = "<%=j t('approval.estimated_cost') %>: $" + numberWithDelimiter(costs[idToIndex[id]]) + "<br>" +
-      "<button type='button' class='btn btn-default btn-lg' class='remove-button" + id + "' style='outline: none;' onclick='removeProject(" + id + ")'><%=j t('approval.remove_button').html_safe %></button>" +
+      "<button type='button' class='btn btn-secondary' onclick='removeProject(" + id + ")'><%=j t('approval.remove_button').html_safe %></button>" +
       (photo_name ? ("<br><img src='/project_images/" + photo_name + "' class='budgerbar-thumb' />") : '') + "</span>";
-    return "<a class='progress-bar progress-bar-" + cls + "' " +
+    return "<a class='progress-bar bg-" + cls + "' " +
       "style='width: " + width + "%;' data-toggle='popover' " +
       "title=\"" + title + "\" data-content=\"" + content + "\" href='javascript:showProject(" + id + ")'>" +
         //"<div style='background-color:white; width: 40px; height: 40px;'></div>" +
@@ -416,6 +414,7 @@ function updateBudgetbar() {
     s += progressBarForProject(selectedProjectIDs[i]);
   }
 
+  $("[data-toggle='popover']").popover("hide");
   $('#budgetbar-progress').html(s);
   $('#budgetbar-progress .progress-bar').popover({
     animation: false,
@@ -424,12 +423,16 @@ function updateBudgetbar() {
     trigger: 'manual'
   })
   .on("mouseenter", function () {
+    //console.log("mouse enter");
     var _this = this;
     $(this).popover("show");
-    $(this).siblings(".popover").on("mouseleave", function () {
-      $(_this).popover('hide');
+    //$(this).siblings(".popover").on("mouseleave", function () {
+    $(".popover").on("mouseleave", function () {
+      //console.log("mouse leave2");
+      $(_this).popover("hide");
     });
   }).on("mouseleave", function () {
+    //console.log("mouse leave");
     var _this = this;
     setTimeout(function () {
       if (!$(".popover:hover").length) {
@@ -704,9 +707,9 @@ function isRankingEnabled() {
 
 function checkSelectedProjectCount() {
   if (!has_n_project_limit || selectedProjectIDs.length >= min_n_projects) {
-    document.getElementById('submit-vote-button').disabled = false;
+    $('.submitVoteButton').prop('disabled', false);
   } else {
-    document.getElementById('submit-vote-button').disabled = true;
+    $('.submitVoteButton').prop('disabled', true);
   }
 }
 

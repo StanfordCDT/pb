@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options=nil)
     o = {}
     o[:locale] = I18n.locale if I18n.locale != I18n.default_locale
-    o[:sms] = params[:sms] if params[:sms]
+    o[:campaign] = params[:campaign] if params[:campaign]
     o
   end
 

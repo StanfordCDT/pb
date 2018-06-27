@@ -1,7 +1,7 @@
 class CreateVoteComparisons < ActiveRecord::Migration
   def change
     create_table :vote_comparisons do |t|
-      t.references :voter, null: false
+      t.references :voter, index: true, null: false
       t.integer :first_project_id, null: false
       t.integer :first_project_cost
       t.integer :second_project_id, null: false

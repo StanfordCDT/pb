@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   has_many :vote_approvals
   has_many :vote_knapsacks
   has_many :vote_plusminuses
-  translates :title, :short_title, :description, :details, :address, :partner, :committee, :video_url
+  translates :title, :short_title, :description, :details, :address, :partner, :committee, :video_url, :partner
   globalize_accessors
   mount_uploader :image, ImageUploader
   validates :title, presence: true
@@ -42,7 +42,7 @@ class Project < ActiveRecord::Base
     return if map_geometry.blank?
     begin
       points = JSON.parse(map_geometry)
-      if !points.is_a?(Array) || !points.all? { |p| p.is_a?(Array) && p.length == 2 }
+      if !points.is_a?(Array) || !points.all? { |p| (p.is_a?(Array) && p.length == 2) || p.is_a?(::Hash) }
         errors.add(:map_geometry, 'is in the wrong format. An example: [[37.43, -122.17]]')
       end
     rescue => exception

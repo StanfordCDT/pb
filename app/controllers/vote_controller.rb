@@ -1,8 +1,12 @@
 class VoteController < ApplicationController
   before_action :set_no_cache, if: :real_voting?
-  before_action :check_voter, only: [:approval, :submit_approval, :ranking, :submit_ranking, :knapsack, :submit_knapsack, :comparison, :submit_comparison, :thanks_approval, :submit_survey_thanks_approval, :question, :survey, :done_survey, :thanks]
+  before_action :check_voter, only: [:approval, :submit_approval, :ranking, :submit_ranking, :knapsack, :submit_knapsack, :comparison, :submit_comparison, :thanks_approval, :question, :survey, :done_survey, :thanks]
   helper_method :conf, :voting_machine?, :real_voting?, :next_page, :current_action
   before_action :update_locales_with_config
+
+  def index
+    I18n.locale = params[:locale] ? params[:locale] : conf[:default_locale]
+  end
 
   # Approval voting
   def approval
@@ -123,57 +127,9 @@ class VoteController < ApplicationController
   end
 
   def thanks_approval
-    # Set the survey questions, options and submit URL
-    if conf[:thanks_approval][:survey_questions]
-      @questions = t('thanks_approval.survey.questions')
-      @options = t('thanks_approval.survey.options')
-      @submit_url = url_for(action: :submit_survey_thanks_approval)
-    end
-
     # Send an sms for thanks approval
     send_thanks_approval_sms if (current_voter && conf[:voter_registration] && conf[:send_vote_sms])
     return if !update_stage(:thanks_approval)  # FIXME: What is this?
-  end
-
-  # Store the voter survey data (from the thanks_approval page) in the database
-  def submit_survey_thanks_approval
-    # Store only for voters during the actual voting
-    if !current_voter.nil? && !current_voter.test? && !conf[:stop_accepting_votes]
-      voter = current_voter
-      voter.data['gender'] = params['Gender']
-      voter.data['age'] = params['Age']
-      voter.data['household_income'] = params['Household Income']
-      voter.data['ethnicity'] = params['Ethnicity']
-      voter.save!
-    end
-    redirect_to next_page(:thanks_approval)
-  end
-
-  def send_thanks_approval_sms
-    require 'twilio-ruby'
-
-    # Get the voter's phone number and send sms if it exists
-    voter = current_voter
-    record = voter.voter_registration_record
-    phone_number = record.nil? ? nil : record.phone_number
-    if !phone_number.nil?
-      twilio_info = Rails.application.secrets.twilio
-      begin
-        # set up a client to talk to the Twilio REST API
-        client = Twilio::REST::Client.new twilio_info['account_sid'], twilio_info['auth_token']
-        client.account.messages.create({
-          from: twilio_info['phone_number'],
-          to: phone_number,
-          body: 'Thank you! Your vote has been succesfully recorded.',
-        })
-      rescue Twilio::REST::RequestError => e
-        log_activity('sms_failure', note: phone_number)
-        @error = e
-        return
-      end
-    else
-      log_activity('no_phone_number', note: voter.id.to_s)
-    end
   end
 
   def send_vote_email
@@ -190,45 +146,6 @@ class VoteController < ApplicationController
         message: 'Sorry, a problem has occured. The email could not be sent.'
       }
     end
-  end
-
-  # Plus/minus voting
-  def plusminus
-    return if !update_stage(:plusminus)
-    @election = current_election
-    @projects_json = @election.projects.as_json(only: [:id, :title, :cost], methods: :image_url)
-    @categories = @election.ordered_categories(conf[:categorized], nil, true)
-  end
-
-  # Save plus/minus vote to the database
-  def submit_plusminus
-    if !current_voter.nil? && !current_voter.test? && !conf[:stop_accepting_votes] && current_voter.vote_plusminuses.empty?  # TODO: the last clause is hacky
-      voter = current_voter
-      election = current_election
-
-      ActiveRecord::Base.transaction do
-        n_pluses = 0
-        n_minuses = 0
-        election.projects.each do |project|
-          plusminus = params[:project][project.id.to_s].to_i
-          if plusminus != 0
-            vpm = VotePlusminus.new
-            vpm.voter = voter
-            vpm.project = project
-            vpm.plusminus = plusminus
-            vpm.save!
-            if plusminus == 1
-              n_pluses += 1
-            else
-              n_minuses += 1
-            end
-          end
-        end
-        raise 'error' if n_pluses > conf[:plusminus][:upvotes] || n_minuses > conf[:plusminus][:downvotes]
-      end
-    end
-
-    redirect_to next_page(:plusminus)
   end
 
   # Comparison voting
@@ -422,8 +339,8 @@ class VoteController < ApplicationController
       end
 
       session[:voter_id] = voter.id
-      if @election.config[:voter_registration] && !voting_machine?
-        render :registration  # FIXME: Is this even possible?
+      if @election.config[:voter_registration]
+        redirect_to action: :registration
       else
         redirect_to action: conf[:workflow][0]
       end
@@ -438,11 +355,11 @@ class VoteController < ApplicationController
 
   # SMS signup in remote voting
   def sms_signup
-    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification]
+    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification] && !conf[:stop_accepting_votes]
   end
 
   def post_sms_signup
-    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification]
+    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification] && !conf[:stop_accepting_votes]
 
     require 'twilio-ruby'
 
@@ -471,12 +388,12 @@ class VoteController < ApplicationController
     begin
       # set up a client to talk to the Twilio REST API
       client = Twilio::REST::Client.new twilio_info['account_sid'], twilio_info['auth_token']
-      client.account.messages.create({
+      client.api.account.messages.create({
         from: twilio_info['phone_number'],
         to: @phone_number,
         body: 'Confirmation code for voting: ' + confirmation_code,
       })
-    rescue Twilio::REST::RequestError => e
+    rescue Twilio::REST::RestError => e
       log_activity('sms_signup_failure', note: @phone_number)
       @error = e
       render action: :sms_signup  # TODO: redirect_to
@@ -501,12 +418,12 @@ class VoteController < ApplicationController
 
   # Ask the voter to enter the confirmation code that we have sent to them through SMS.
   def sms_signup_confirm
-    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification]
+    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification] && !conf[:stop_accepting_votes]
     @voter = Voter.find_by(id: session[:tmp_voter_id])
   end
 
   def post_sms_signup_confirm
-    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification]
+    raise "SMS signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_sms_verification] && !conf[:stop_accepting_votes]
     @election = current_election
     @voter = Voter.find(session[:tmp_voter_id])
 
@@ -541,11 +458,11 @@ class VoteController < ApplicationController
 
   # Access code signup in remote voting
   def code_signup
-    raise "Code signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_code_verification]
+    raise "Code signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_code_verification] && !conf[:stop_accepting_votes]
   end
 
   def post_code_signup
-    raise "Code signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_code_verification]
+    raise "Code signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_code_verification] && !conf[:stop_accepting_votes]
     @election = current_election
 
     if count_activity('remote_voting_signup_failure', 1.minute.ago, ip_address: request.remote_ip) >= 5
@@ -595,11 +512,11 @@ class VoteController < ApplicationController
 
   # Other signup in remote voting
   def other_signup
-    raise "Other signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_other_verification]
+    raise "Other signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_other_verification] && !conf[:stop_accepting_votes]
   end
 
   def post_other_signup
-    raise "Other signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_other_verification]
+    raise "Other signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_other_verification] && !conf[:stop_accepting_votes]
     @election = current_election
 
     if count_activity('remote_voting_signup_failure', 1.minute.ago, ip_address: request.remote_ip) >= 5
@@ -608,10 +525,13 @@ class VoteController < ApplicationController
       return
     end
 
-    # Remove whitespaces and strip leading zeros in the code
-    number = params[:account_number].downcase.gsub(/\s+/, '')
-    c = number.sub(/^[0:]*/, '')
+    c = sanitize_code(params[:account_number])
     code = @election.codes.find_by(code: c)
+    if code.nil? && !params[:zipcode].blank?  # This is currently only used in Dieppe 2018.
+      zipcode = sanitize_code(params[:zipcode])
+      c = c + "&" + zipcode
+      code = @election.codes.find_by(code: c)
+    end
     if code
       if code.status == 'void'
         # Void code
@@ -634,6 +554,10 @@ class VoteController < ApplicationController
         voter.ip_address = request.remote_ip
         voter.user_agent = request.env['HTTP_USER_AGENT']
         voter.save!
+      end
+
+      if !params[:zipcode].blank?  # This is currently only used in Dieppe 2018.
+        voter.update_data(zip_code: params[:zipcode])
       end
 
       session[:voter_id] = voter.id
@@ -749,7 +673,11 @@ class VoteController < ApplicationController
   # Find the next page specified in 'workflow' in the configuration
   def next_page(current_page)
     workflow = conf[:workflow]
-    index = workflow.index { |o| o.is_a?(Array) ? o.include?(current_page.to_s) : (o == current_page.to_s) }
+    if current_page == :home
+      index = -1
+    else
+      index = workflow.index { |o| o.is_a?(Array) ? o.include?(current_page.to_s) : (o == current_page.to_s) }
+    end
     action = index ? workflow[index + 1] : :thanks
     if action.is_a?(Array)
       action = action.sample
@@ -776,6 +704,38 @@ class VoteController < ApplicationController
     @projects_json = @election.projects.as_json(only: [:id, :title, :cost, :cost_min, :cost_step, :map_geometry, :adjustable_cost, :uses_slider], methods: [:image_url, :parsed_data, :mandatory?])
     @current_subpage = current_subpage
     @shuffled = conf[current_action][:shuffle_projects] && rand < conf[current_action][:shuffle_probability]
-    @categories = @election.ordered_categories(conf[:categorized], conf[current_action][:pages][@current_subpage], @shuffled)
+    @categories = @election.ordered_categories(conf[current_action][:pages][@current_subpage], @shuffled)
+  end
+
+  def send_thanks_approval_sms
+    require 'twilio-ruby'
+
+    # Get the voter's phone number and send sms if it exists
+    voter = current_voter
+    record = voter.voter_registration_record
+    phone_number = record.nil? ? nil : record.phone_number
+    if !phone_number.nil?
+      twilio_info = Rails.application.secrets.twilio
+      begin
+        # set up a client to talk to the Twilio REST API
+        client = Twilio::REST::Client.new twilio_info['account_sid'], twilio_info['auth_token']
+        client.api.account.messages.create({
+          from: twilio_info['phone_number'],
+          to: phone_number,
+          body: 'Thank you! Your vote has been succesfully recorded.',
+        })
+      rescue Twilio::REST::RestError => e
+        log_activity('sms_failure', note: phone_number)
+        @error = e
+        return
+      end
+    else
+      log_activity('no_phone_number', note: voter.id.to_s)
+    end
+  end
+
+  def sanitize_code(c)
+    # Remove non-alphanumeric characters and strip leading zeros in the code.
+    c.downcase.gsub(/[^0-9a-z_]/, '').sub(/^0+/, '')
   end
 end

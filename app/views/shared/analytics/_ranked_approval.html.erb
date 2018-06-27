@@ -5,7 +5,10 @@
   </p>
 <% end %>
 
-<a href="<%= url_for(format: :csv, table: 'project_ranked_votes') %>">Export into Excel</a>
+<a href="<%= url_for(format: :csv, table: 'project_ranked_votes') %>">Export into Excel</a><br>
+<% if is_allowed_to_see_voter_data? %>
+  <a href="<%= url_for(format: :csv, table: 'ranking_approval_individual') %>">Export individual votes into Excel</a>
+<% end %>
 
 <div id="ranked-approval-analytics-table"></div><br>
 

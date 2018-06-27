@@ -1,19 +1,13 @@
-<style>
-.error {
-  color: red;
-}
-</style>
-
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
 
 <% @location.errors.full_messages.each do |msg| %>
-  <p class="error"><%= msg %></p>
+  <p class="text-danger"><%= msg %></p>
 <% end %>
 
-<%= form_for([:admin, @election, @location], html: {class: 'form-horizontal'}) do |f| %>
-  <div class="form-group">
+<%= form_for([:admin, @election, @location]) do |f| %>
+  <div class="form-group row">
     <%= f.label :name, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.text_field :name, class: 'form-control' %>

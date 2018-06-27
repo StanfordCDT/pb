@@ -9,10 +9,6 @@
   font-size: 18px;
 }
 
-p.side-note {
-  font-size: 18px;
-}
-
 span.alert {
   font-size: 16px;
 }
@@ -27,8 +23,8 @@ input[type='text'] {
 </style>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 main">
       <center>
         <h2><%= t('other_signup.title') %></h2>
         <br>
@@ -43,6 +39,9 @@ input[type='text'] {
               <div class="form-group">
                 <input type="text" name="account_number" id="account_number" class="form-control" autocomplete="off" placeholder="<%= t('other_signup.account_number_placeholder') %>" autofocus="autofocus" required="required" />
               </div>
+              <div class="form-group">
+                <input type="text" name="zipcode" id="zipcode" class="form-control" autocomplete="off" placeholder="<%= t('other_signup.zipcode_placeholder') %>" required="required" />
+              </div>
               <input type="submit" value="<%= t('other_signup.vote_button') %>" class="btn-lg btn btn-primary" />
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
             </div>
@@ -50,13 +49,9 @@ input[type='text'] {
         </form>
 
       </center>
-      <p id="side-note">
-        <%= t('other_signup.no_account_number_instruction').html_safe %>
-        <% if conf[:remote_voting_code_verification] %>
-          <a href="<%= url_for action: :code_signup %>" class="btn btn-primary btn-lg" role="button"><%= t('index.remote.code_verification_button').html_safe %></a>
-        <% end %>
-        <%= t('election.info').html_safe %>
-      </p>
+      <p><%= t('other_signup.no_account_number_instruction', code_signup_url: url_for(action: :code_signup)).html_safe %></p>
+      <p><%= t('election.can_also_vote_in_person').html_safe %></p>
+      <%= t('election.info').html_safe %>
     </div>
   </div>
 </div>

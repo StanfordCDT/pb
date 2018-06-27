@@ -1,0 +1,104 @@
+<style>
+.control-label {
+  font-weight: bold;
+}
+
+.help-block {
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+</style>
+
+
+<% @election.errors.full_messages.each do |msg| %>
+  <p class="text-danger"><%= msg %></p>
+<% end %>
+
+<%= form_for([:admin, @election], remote: !is_creating, html: {id: 'form-advanced', :'data-type' => is_creating ? nil : :json}) do |f| %>
+  <div class="form-group row">
+    <%= f.label :name, class: 'col-left col-sm-12 control-label' %>
+    <div class="col-right col-sm-12">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :slug, class: 'col-left col-sm-12 control-label' %>
+    <div class="col-right col-sm-12">
+      <div class="input-group">
+        <div class="input-group-prepend"><div class="input-group-text"><%= request.host_with_port %>/</div></div>
+        <%= f.text_field :slug, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :budget, class: 'col-left col-sm-12 control-label' %>
+    <div class="col-right col-sm-12">
+      <div class="input-group">
+        <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+        <%= f.number_field :budget, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :time_zone, class: 'col-left col-sm-12 control-label' %>
+    <div class="col-right col-sm-12">
+      <%= f.time_zone_select(:time_zone, nil, {default: 'Pacific Time (US & Canada)'}, {class: 'form-control'}) %>
+    </div>
+  </div>
+  <% if current_user.superadmin? %>
+    <div class="form-group row">
+      <label class="col-left col-sm-12 control-label">Security / Privacy</label>
+      <div class="col-right col-sm-12">
+        <div class="form-check">
+          <%= f.check_box :allow_admins_to_update_election, {class: 'form-check-input'} %>
+          <label class="form-check-label" for="election_allow_admins_to_update_election">Allow admins to change the config and projects.</label>
+        </div>
+        <div class="form-check">
+          <%= f.check_box :allow_admins_to_see_voter_data, {class: 'form-check-input'} %>
+          <label class="form-check-label" for="election_allow_admins_to_see_voter_data">Allow admins to see the individual votes and voter registration records in the analytics.</label>
+        </div>
+        <div class="form-check">
+          <%= f.check_box :allow_admins_to_see_exact_results, {class: 'form-check-input'} %>
+          <label class="form-check-label" for="election_allow_admins_to_see_exact_results">Allow admins to see the exact vote results in the analytics. If not allowed, the results will be rounded to the nearest 10.</label>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <div class="col-left col-sm-12 control-label">
+      <div><%= f.label :config_yaml, 'Config YAML' %> (<a href="<%= config_reference_admin_elections_path %>" target="_blank">Reference</a>)</div>
+    </div>
+    <div class="col-right col-sm-12">
+      <%= f.text_area :config_yaml, rows: 16, class: 'form-control', style: 'font-family: monospace;' %>
+    </div>
+  </div>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+
+<% end %>
+
+<br><br><br>
+
+<% if !is_creating %>
+<script>
+(function() {
+  var $submitButton = $("#form-advanced input[type=submit]");
+  $("#form-advanced").on("ajax:send", function (e, data, status, xhr) {
+    $submitButton.attr('disabled', 'disabled');
+    $submitButton.val('Saving...');
+  }).on("ajax:success", function (e, data, status, xhr) {
+    $submitButton.val('Saved');
+    setTimeout(function() {  // hacky
+      $submitButton.removeAttr('disabled');
+      $submitButton.val('Save');
+    }, 400);
+  }).on("ajax:error", function (e, xhr, status, error) {
+    $submitButton.removeAttr('disabled');
+    $submitButton.val('Save');
+    alert("Error\n" + xhr.responseText);
+  }).on("ajax:complete", function (e, xhr, status, error) {
+  });
+})();
+</script>
+<% end %>

@@ -9,7 +9,7 @@
   font-size: 18px;
 }
 
-p.side-note {
+.instruction, .side-note {
   font-size: 18px;
 }
 
@@ -20,25 +20,23 @@ span.alert {
 </style>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 main">
       <center>
         <h2><%= t('code_signup.title') %></h2>
         <br>
-        <p><%= t('code_signup.instruction') %></p>
+        <p class="instruction"><%= t('code_signup.instruction').html_safe %></p>
         <%= form_for(:code, url: {action: :post_code_signup}) do |f| %>
           <% if flash[:error] %>
             <p style="font-size: 20px; color: red;"><%= flash[:error] %></p>
           <% end %>
           <%= f.text_field :code, placeholder: t('code_signup.code_placeholder'), autocomplete: "off", autofocus: "autofocus", style: "font-size: 20px; width: 200px; height: 40px; margin-right: 20px" %>
 
-          <%= f.submit t('code_signup.vote_button'), class: "btn btn-primary btn-lg", style: "font-size: 20px" %><br /><br />
+          <%= f.submit t('code_signup.vote_button'), class: "btn btn-primary btn-lg", style: "font-size: 20px" %><br><br>
         <% end %>
       </center>
-      <br><h4><%= raw t('code_signup.no_code_instruction') %></h4><br>
-      <p id="side-note">
-        <%= t('election.info').html_safe %>
-      </p>
+      <p class="side-note"><%= t('election.can_also_vote_in_person').html_safe %></p>
+      <%= t('election.info').html_safe %>
     </div>
   </div>
 </div>

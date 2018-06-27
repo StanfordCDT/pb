@@ -3,11 +3,6 @@ module Admin
     before_action :set_no_cache
     before_action :require_admin_auth_with_special_permission
 
-    def index
-      @election = Election.find(params[:election_id])
-      @categories = @election.categories.order(:sort_order)
-    end
-
     def new
       @election = Election.find(params[:election_id])
       @category = Category.new
@@ -19,7 +14,7 @@ module Admin
       @category.election = @election
       @category.sort_order = @election.categories.maximum(:sort_order).to_i + 1
       if @category.save
-        redirect_to admin_election_categories_path(@election)
+        redirect_to admin_election_projects_path(@election)
       else
         render :new
       end
@@ -34,7 +29,7 @@ module Admin
       @election = Election.find(params[:election_id])
       @category = @election.categories.find(params[:id])
       if @category.update(category_params)
-        redirect_to admin_election_categories_path(@election)
+        redirect_to admin_election_projects_path(@election)
       else
         render :edit
       end
@@ -44,7 +39,7 @@ module Admin
       election = Election.find(params[:election_id])
       category = election.categories.find(params[:id])
       category.destroy
-      redirect_to admin_election_categories_path(election)
+      redirect_to admin_election_projects_path(election)
     end
 
     def reorder

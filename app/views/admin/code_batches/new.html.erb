@@ -1,42 +1,37 @@
 <% content_for :title, 'Codes: New' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        ['Codes', admin_election_code_batches_path(@election)],
-        'New'
-      ]} %>
-
       <h2>Generate new codes</h2>
 
-      <%= form_for(:code_batch, url: {action: :create}, html: {class: 'form-horizontal'}) do |f| %>
-        <div class="form-group">
+      <%= form_for(:code_batch, url: {action: :create}) do |f| %>
+        <div class="form-group row">
           <%= f.label :n_codes, 'Number of codes', class: 'col-sm-3 control-label' %>
           <div class="col-sm-9">
-            <%= f.text_field :n_codes, class: 'form-control' %>
+            <%= f.number_field :n_codes, class: 'form-control' %>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-sm-3 control-label">Format</label>
           <div class="col-sm-9">
-            <div class="radio">
-              <label>
-                <%= f.radio_button :format, 'normal', checked: true, onclick: 'changeFormat();' %> Normal (7 digits of numbers and lowercase letters, excluding o, 0, 1, l, and q.)
+            <div class="form-check">
+              <%= f.radio_button :format, 'normal', checked: true, onclick: 'changeFormat();', class: 'form-check-input' %>
+              <label class="form-check-label" for="code_batch_format_normal">
+                Normal (7 digits of numbers and lowercase letters)
               </label>
             </div>
-            <div class="radio">
-              <label>
-                <%= f.radio_button :format, 'access_codes', onclick: 'changeFormat();' %> Access codes (10 digits of numbers. Optionally with a prefix.)
+           <div class="form-check">
+              <%= f.radio_button :format, 'access_codes', onclick: 'changeFormat();', class: 'form-check-input' %>
+              <label class="form-check-label" for="code_batch_format_access_codes">
+                Access codes (10 digits of numbers. Optionally with a prefix.)
                 <%= f.text_field :access_code_prefix, id: 'access_code_prefix', style: 'width:150px', placeholder: 'Prefix', class: 'form-control' %>
               </label>
             </div>
-            <div class="radio">
-              <label>
-                <%= f.radio_button :format, 'test_codes', onclick: 'changeFormat();' %> Test codes ("_test" followed by a number.)
+            <div class="form-check">
+              <%= f.radio_button :format, 'test_codes', onclick: 'changeFormat();', class: 'form-check-input' %>
+              <label class="form-check-label" for="code_batch_format_test_codes">
+                Test codes ("_test" followed by a number.)
               </label>
             </div>
           </div>
@@ -45,12 +40,15 @@
         <% if current_user.superadmin? %>
           <h2>Or import codes</h2>
 
-          <div class="form-group">
+          <div class="form-group row">
             <%= f.label :import_file, 'Text file', class: 'col-sm-3 control-label' %>
             <div class="col-sm-9">
               <div><%= f.file_field :import_file, accept: 'text/plain' %></div>
-              <div class="checkbox">
-                <label><%= f.check_box :personal_id %> Personal IDs (If the code the voter enters has been used, this option will tell them to contact us in case there is an error.)</label>
+              <div class="form-check">
+                <%= f.check_box :personal_id, class: 'form-check-input' %>
+                <label class="form-check-label" for="code_batch_personal_id">
+                  Personal IDs (If the code the voter enters has been used, this option will tell them to contact us in case there is an error.)
+                </label>
               </div>
             </div>
           </div>
@@ -72,6 +70,11 @@
       }
       changeFormat();
       </script>
-    </div>
-  </div>
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  ['Codes', admin_election_code_batches_path(@election)],
+  'New'
+]} %>

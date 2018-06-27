@@ -1,19 +1,17 @@
 <% content_for :title, t('index.title') %>
 
-<% I18n.locale = params[:locale] ? params[:locale] : conf[:default_locale]  %>
-
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 main">
       <% if conf[:voting_has_ended] %>
         <h1 class="text-center" style="color: red;"><%= t('index.voting_ended').html_safe %></h1>
       <% elsif conf[:stop_accepting_votes] %>
-        <h2 class="text-center" style="color: red;">Unfortunately, voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience.</h2>
+        <h2 class="text-center" style="color: red;"><%= t('index.voting_has_not_started').html_safe %></h2>
       <% end %>
 
       <% if conf[:show_public_results] %>
         <center>
-          <a href="<%= url_for action: :results%>" class="btn btn-primary btn-lg" role="button" style="margin: 20px"><%= t('index.public_results').html_safe %></a>
+          <a href="<%= url_for action: :results%>" class="btn btn-primary btn-lg" style="margin: 20px"><%= t('index.public_results').html_safe %></a>
         </center>
       <% end %>
 
@@ -38,28 +36,28 @@
           <br><br>
         <% end %>
         </div>
-      <% else  # Remote voting. # FIXME: Change 'demo' to 'remote'. %>
-        <%= raw t('index.demo.welcome', about_url: 'http://voxpopuli.stanford.edu/') %>
+      <% else %>
+        <%= raw t('index.remote.welcome', about_url: 'https://voxpopuli.stanford.edu/') %>
 
         <center>
           <%# Explore button %>
           <% if conf[:index][:show_explore_button] %>
             <%# FIXME: Change the text on the button to 'Explore'. %>
-            <a href="<%= url_for action: conf[:workflow][0] %>" class="btn btn-primary btn-lg" role="button" style="margin: 0 15px;"><%= t('index.demo.proceed_button').html_safe %></a>
+            <a href="<%= url_for(next_page(:home)) %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.proceed_button').html_safe %></a>
           <% end %>
 
           <%# See projects button %>
-          <% if conf[:index][:see_projects_url] %>
-            <a href="<%= conf[:index][:see_projects_url] %>" target="_blank" class="btn btn-primary btn-lg" role="button" style="margin: 0 15px;"><%= t('index.remote.see_projects_button').html_safe %></a>
+          <% if conf[:index][:see_projects_url] && !conf[:index][:see_projects_url].blank? %>
+            <a href="<%= conf[:index][:see_projects_url] %>" target="_blank" class="btn btn-primary btn-lg" role="noopener" style="margin: 0 15px 10px;"><%= t('index.remote.see_projects_button').html_safe %></a>
           <% end %>
 
           <%# Remote voting button(s) %>
           <% if conf[:allow_remote_voting] && conf[:index][:show_remote_voting_button] && !conf[:voting_has_ended] %>
             <% if conf[:remote_voting_sms_verification] %>
-              <a href="<%= url_for action: :sms_signup %>" class="btn btn-primary btn-lg" role="button" style="margin: 0 15px;"><%= t('index.demo.remote_voting_button').html_safe %></a>
+              <a href="<%= url_for action: :sms_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.remote_voting_button').html_safe %></a>
             <% end %>
             <% if conf[:remote_voting_other_verification] %>
-              <a href="<%= url_for action: :other_signup %>" class="btn btn-primary btn-lg" role="button" style="margin: 0 15px;"><%= t('index.remote.other_verification_button').html_safe %></a>
+              <a href="<%= url_for action: :other_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.other_verification_button').html_safe %></a>
             <% end %>
           <% end %>
         </center>

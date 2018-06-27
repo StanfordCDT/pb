@@ -1,31 +1,33 @@
 <style>
-.error {
-  color: red;
-}
-
-.default-checkbox-label {
-  padding-top: 2px !important;
-}
-
 .group {
-  background-color: white;
+  border: 1px #ced4da solid;
+  border-radius: 0.25rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 15px;
 }
-
 .group-title {
   font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 8px;
+}
+.group-info {
+  float: right;
+  color: #6c757d;
 }
 
-.group-title-collapsible {
-  color: #337ab7;
-  cursor: pointer;
+.font-weight-lightbold {
+  font-weight: 600;
 }
 
-.group-title-collapsible:hover {
-  color: ##23527c;
-  text-decoration: underline;
+.help-block {
+  color: #6c757d;
+  margin-bottom: 5px;
 }
+
+.url {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+}
+
 
 #submit-button-wrapper {
   position: fixed;
@@ -34,104 +36,192 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.1);
   z-index: 100;
-  padding: 12px;
+  padding: 12px 0;
+}
+
+
+.text-reset {
+  text-align: right;
+  font-size: 90%;
+}
+
+.text-reset a {
+  color: #737373;
+}
+
+
+.localeTable > tbody > tr > td:first-child {
+  vertical-align: top;
+  white-space: nowrap;
+  padding-top: 8px;
+  padding-right: 5px;
+  font-size: 90%;
+}
+
+.localeTable > tbody > tr > td:last-child {
+  width: 100%;
+}
+
+
+.basicInfoTable > tbody > tr > td:first-child {
+  vertical-align: top;
+  white-space: nowrap;
+  padding-top: 8px;
+  padding-right: 10px;
+}
+
+.basicInfoTable > tbody > tr > td:last-child {
+  width: 100%;
+  padding-bottom: 6px;
+}
+
+
+.preview-wrapper {
+  border: 1px #ccc solid;
+  border-radius: 4px;
+  height: 280px;
+  overflow: hidden;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  font-size: 90%;
+}
+
+.preview-budgetbar {
+  padding: 8px;
+  text-align: center;
+  background-color: #343a40;
+  color: #fff;
+}
+.preview-budgetbar .progress {
+  width: 80%;
+  height: 12px;
+  margin: 0 auto;
+}
+.preview-budgetbar .progress-bar {
+  width: 40%;
+}
+
+.preview-leftbar {
+  padding: 8px;
+  width: 100px;
+  vertical-align: top;
+}
+.preview-sidebar > div {
+  margin: 0 -8px;
+  padding: 0 8px;
+}
+
+.preview-list {
+  padding: 8px;
+}
+
+.preview-topTracker {
+  background-color: #ddd;
+  margin: -8px -8px 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+.preview-project {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.preview-project-row {
+  display: table-row;
+}
+.preview-project-cell {
+  display: table-cell;
+  border: 1px #ccc solid;
+  padding: 4px;
+  height: 80px;
+}
+
+.preview-project-cell-selected {
+  background-color: #dff0d8;
+}
+
+.preview-theme0 .preview-sidebar > div {
+  border-top: 1px #ccc solid;
+  border-right: 1px #ccc solid;
+}
+.preview-theme0 .preview-sidebar > div:last-child {
+  border-bottom: 1px #ccc solid;
+}
+.preview-theme0 .preview-sidebar-selected {
+  background-color: #dff0d8;
+}
+.preview-theme1 .preview-leftbar {
+  background-color: #ddd;
+}
+.preview-theme1 .preview-sidebar-selected {
+  background-color: #a6cba6;
+}
+.preview-theme2 .preview-leftbar {
+  background-color: #444;
+  color: #fff;
+}
+.preview-theme2 .preview-sidebar-selected {
+  background-color: #449d44;
+}
+
+
+.projectPreview {
+  border: 1px #ccc solid;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 90%;
+}
+.projectPreview p {
+  margin-bottom: 0.75rem;
+}
+.projectPreview img {
+  float: right;
+  margin-left: 10px;
+}
+.projectPreview button {
+  pointer-events: none;
+  font-size: 100%;
+}
+
+
+.previewCaption {
+  text-align: center;
+  margin-top: 4px;
+}
+
+
+.tinyMCEEditor {
+  border: 1px #ced4da solid;
+  border-radius: 4px;
+  padding: 8px;
+}
+.mce-edit-focus {
+  outline: none;
 }
 </style>
+
 
 <% @election.errors.full_messages.each do |msg| %>
   <p class="error"><%= msg %></p>
 <% end %>
 
 <%= form_for([:admin, @election], remote: !is_creating, html: {id: 'form', :'data-type' => is_creating ? nil : :json}) do |f| %>
-  <div class="form-horizontal">
-    <div class="form-group">
-      <%= f.label :name, class: 'col-sm-3 control-label' %>
-      <div class="col-sm-9">
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :slug, class: 'col-sm-3 control-label' %>
-      <div class="col-sm-9">
-        <div class="input-group">
-          <div class="input-group-addon"><%= request.host_with_port %>/</div>
-          <%= f.text_field :slug, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :budget, class: 'col-sm-3 control-label' %>
-      <div class="col-sm-9">
-        <div class="input-group">
-          <div class="input-group-addon">$</div>
-          <%= f.text_field :budget, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :time_zone, class: 'col-sm-3 control-label' %>
-      <div class="col-sm-9">
-        <%= f.time_zone_select(:time_zone, nil, {default: 'Pacific Time (US & Canada)'}, {class: 'form-control'}) %>
-      </div>
-    </div>
-    <% if current_user.superadmin? %>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Security / Privacy</label>
-        <div class="col-sm-9">
-          <div class="checkbox">
-            <label>
-              <%= f.check_box :allow_admins_to_update_election %> Allow admins to change the config and projects.
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <%= f.check_box :allow_admins_to_see_voter_data %> Allow admins to see the individual votes and voter registration records in the analytics.
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <%= f.check_box :allow_admins_to_see_exact_results %> Allow admins to see the exact vote results in the analytics. If not allowed, the results will be rounded.
-            </label>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <div class="form-group">
-      <label class="col-sm-3 control-label"><b>Settings</b></label>
-      <div class="col-sm-9">
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-default active" id="config_gui_editor_button">
-            <input type="radio" name="config_editor" autocomplete="off" checked> Simple
-          </label>
-          <label class="btn btn-default" id="config_text_editor_button">
-            <input type="radio" name="config_editor" autocomplete="off"> Advanced
-          </label>
-        </div>
-      </div>
-    </div>
 
-    <div class="form-group" id="config_text_editor">
-      <div class="col-sm-3 control-label">
-        <div><%= f.label :config_yaml, 'Config YAML' %></div>
-        <p>(<a href="<%= config_reference_admin_elections_path %>" target="_blank">Reference</a>)</p>
-      </div>
-      <div class="col-sm-9">
-        <%= f.text_area :config_yaml, rows: 16, class: 'form-control', style: 'font-family: monospace;' %>
-      </div>
-    </div>
+  <%# # FIXME: Hacky way to circumvent elements with same ID in the advanced form %>
+  <%= f.hidden_field :config_yaml, id: 'config_yaml' %>
 
-    <div id="config_gui_editor"></div>
-  </div>
+  <div id="config_gui_editor"></div>
 
   <%#= f.submit 'Save', class: 'btn btn-primary' %>
 
-  <div id="submit-button-wrapper">
+  <div id="submit-button-wrapper" class="primary">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <%= f.submit 'Save', class: 'btn btn-primary' %>
-        </div>
-      </div>
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
     </div>
   </div>
 
@@ -139,501 +229,152 @@
 
 <br><br><br>
 
+<script src="/js/tinymce/tinymce.min.js"></script>
 <script src="/js/js-yaml-customized.min.js"></script>
+<script>
+var localeNames = <%= LOCALE_NAMES.to_json.html_safe %>; // FIXME: Hacky.
+
+var electionData = <%= @election.as_json(only: [:name, :slug, :budget, :time_zone] + (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results] : [])).to_json.html_safe %>;
+
+var timeZones = <%= ActiveSupport::TimeZone.all.map { |tz| [tz.to_s, tz.name] }.to_json.html_safe %>;
+var hostWithPort = "<%=j request.host_with_port %>";
+var isCurrentUserSuperadmin = <%= current_user.superadmin? %>;
+</script>
+
+<%= javascript_include_tag 'config' %>
+
 <script>
 var configDescription = <%= @config_description.to_json.html_safe %>;
 
 // Add locales to configDescription
-// We want to do it on the server, but configDescription would be extremely large.
+// We could do it on the server, but configDescription would be extremely large.
 (function() {
   var locales = <%= @locales.to_json.html_safe %>;
-  var localesOption = {name: 'locales', type: 'group', children: []};
-  function addLocale(o, a) {
+  function toDescription(o) {
+    var results = [];
     for (var k in o) {
       var v = o[k];
       var option;
       if ((v instanceof Object) && !(v instanceof Array)) {
-        option = {name: k, type: 'group', children: []};
-        addLocale(v, option.children);
+        option = {name: k, children: toDescription(v)};
       } else if (v instanceof Array) {
-        option = {name: k, type: 'array', default: v};
+        //option = {name: k, default: v};
+        continue;
       } else {
-        option = {name: k, type: 'string', default: v}; //FIXME: not always string
+        option = {name: k, default: v}; //FIXME: not always string
       }
-      a.push(option);
+      results.push(option);
     }
+    return results;
   }
 
-  var localeNames = {en: "English", es: "Spanish", fr: "French", zh: "Chinese"}
-  for (var locale in locales) {
-    var localeOption = {name: locale, human_readable_name: localeNames[locale], type: 'group', children: [], collapsible: true};
-    localeOption.condition = "c('available_locales').indexOf('" + locale + "') != -1"
-    addLocale(locales[locale], localeOption.children);
-    localesOption.children.push(localeOption);
-  }
-  configDescription.push(localesOption);
+  configDescription.push({name: 'locales', children: toDescription(locales)});
 })();
 
 
 
+const DB = function(configDescription) {
+  const configTree = construct(configDescription);
+  let callback = function() { };
+  let savedConfigStr;
 
-
-var configGUIEditorDiv = document.getElementById('config_gui_editor');
-var configTextEditorDiv = document.getElementById('config_text_editor');
-var usingConfigGUIEditor = false;
-var configGUIEditor = new ConfigGUIEditor(configDescription, configGUIEditorDiv);
-
-function useConfigGUIEditor() {
-  if (usingConfigGUIEditor)
-    return;
-  if (!configGUIEditor.setConfigYAML(document.getElementById('election_config_yaml').value)) {
-    // Hacky
-    window.setTimeout(function() {
-      document.getElementById('config_text_editor_button').click();
-    }, 0);
-    return;
-  }
-  usingConfigGUIEditor = true;
-  configGUIEditorDiv.style.display = "block";
-  configTextEditorDiv.style.display = "none";
-}
-
-function useConfigTextEditor() {
-  if (!usingConfigGUIEditor)
-    return;
-  usingConfigGUIEditor = false;
-  document.getElementById('election_config_yaml').value = configGUIEditor.getConfigYAML();
-  configGUIEditorDiv.style.display = "none";
-  configTextEditorDiv.style.display = "block";
-}
-
-document.getElementById('config_gui_editor_button').addEventListener('click', useConfigGUIEditor);
-document.getElementById('config_text_editor_button').addEventListener('click', useConfigTextEditor);
-useConfigGUIEditor();
-
-document.getElementById('form').addEventListener("submit", function() {
-  if (usingConfigGUIEditor) {
-    document.getElementById('election_config_yaml').value = configGUIEditor.getConfigYAML();
-  }
-});
-
-
-
-function ConfigGUIEditor(configDescription, element) {
-  function getValue(o, path) {
-    for (var i = 0; i < path.length; ++i) {
-      var key = path[i];
-      if (!o.hasOwnProperty(key))
-        return undefined;
-      o = o[key];
-    }
-    return o;
-  }
-
-  function setValue(o, path, value) {
-    for (var i = 0; i < path.length - 1; ++i) {
-      var key = path[i];
-      if (!o.hasOwnProperty(key)) {
-        o[key] = {};
-      }
-      o = o[key];
-    }
-    o[path[path.length - 1]] = value;
-  }
-
-  function treeRecurse(cd, f, path) {
-    if (path === undefined)
-      path = [];
-    for (var i = 0; i < cd.length; ++i) {
-      var option = cd[i];
-      var path2 = path.concat(option.name);
-      var shouldContinue = f(option, path2);
-      if (option.type == "group" && shouldContinue) {
-        treeRecurse(option.children, f, path2)
-      }
-    }
-  }
-
-  function update() {
-    var newConfig = {}; // only for condition evaluator consumption
-    var c = function(path) { // Don't rename it. It will be called inside evals below.
-      return getValue(newConfig, path.split('.'));
-    }
-    //TODO: remove newConfig
-    treeRecurse(configDescription, function(option, path) {
-      var shouldShow = true;
-      if (option.hasOwnProperty('condition')) {
-        shouldShow = eval(option.condition);
-      }
-      //console.log(option.name + " " + shouldShow);
-      if (shouldShow) {
-        option.element.style.display = 'block';
+  function construct(os) {
+    const result = {};
+    for (let o of os) {
+      const k = o.name;
+      if (o.children !== undefined) {
+        result[k] = {
+          children: construct(o.children),
+          hidden: false
+        }
       } else {
-        option.element.style.display = 'none';
-        return false;
-      }
-
-      if (option.type != "group") {
-        var value = option.value; // Don't rename it. It will be called inside evals below.
-        if (value !== undefined)
-          setValue(newConfig, path, value);
-
-        if (option.validators) {
-          option.errorElement.textContent = "";
-          if (value !== undefined) {
-            for (var i = 0; i < option.validators.length; ++i) {
-              var validator = option.validators[i];
-              if (!eval(validator[0])) {
-                option.errorElement.textContent = validator[1];
-                break;
-              }
-            }
-          }
+        result[k] = {
+          default: o.default,
+          value: (!!o.required) ? o.default : undefined,
+          required: !!o.required,
+          hidden: false
+        }
+        if (o.default === null) {
+          //console.log(o); // FIXME: need to fix alternative_params
         }
       }
-      return true;
-    });
-
-    return newConfig;
-  }
-
-  function stylizeName(name) {
-    name = name.charAt(0).toUpperCase() + name.slice(1);
-    name = name.replace(/_/g, ' ');
-    return name;
-  }
-
-
-
-  function createRow(option, content) {
-    /*
-    <div class="form-group">
-      <= f.label :name, class: 'col-sm-3 control-label' >
-      <div class="col-sm-9">
-        <= f.text_field :name, class: 'form-control' >
-      </div>
-    </div>
-    */
-
-    var div = document.createElement('div');
-    div.className = "form-group";
-
-    var label = document.createElement('label');
-    label.className = "col-sm-3 control-label";
-    label.appendChild(document.createTextNode(option.human_readable_name || stylizeName(option.name)));
-    div.appendChild(label);
-
-    var contentDiv = document.createElement('div');
-    contentDiv.className = "col-sm-9";
-
-    contentDiv.appendChild(content);
-
-    var errorElement = document.createElement('div');
-    errorElement.className = "error";
-    contentDiv.appendChild(errorElement);
-
-    if (option.description) {
-      var descriptionDiv = document.createElement('p');
-      descriptionDiv.className = "help-block";
-      descriptionDiv.innerHTML = option.description;
-      contentDiv.appendChild(descriptionDiv);
     }
-
-    div.appendChild(contentDiv);
-
-    return [div, errorElement];
+    return result;
   }
 
-  function renderSelectOption(option, values) {
-    var div = document.createElement('div');
-
-    var select = document.createElement('select');
-    select.className = "form-control";
-
-    if (!option.required) {
-      var defaultOption = document.createElement('option');
-      defaultOption.value = -1;
-      //defaultOption.textContent = "Default";
-      select.appendChild(defaultOption);
+  function retrieve(path) {
+    const a = path.split(".");
+    const n = a.length;
+    let o = configTree;
+    for (let i = 0; i < n - 1; ++i) {
+      o = o[a[i]].children;
     }
+    return o[a[n - 1]];
+  };
 
-    for (var i = 0; i < values.length; ++i) {
-      var opt = document.createElement('option');
-      opt.value = i;
-      opt.textContent = values[i][1];
-      select.appendChild(opt);
-      if (values[i][0] === option.value) {
-        select.value = i;
+  this.get = function(key) {
+    const tmp = retrieve(key);
+    return (tmp.value !== undefined) ? tmp.value : tmp.default;
+  }
+
+  this.set = function(key, value) {
+    if (savedConfigStr === undefined) {
+      savedConfigStr = JSON.stringify(getConfig());
+    }
+    retrieve(key).value = value;
+    callback();
+  }
+
+  this.setHidden = function(key, hidden) {
+    retrieve(key).hidden = hidden;
+  }
+
+  this.setCallback = function(c) {
+    callback = c;
+  }
+
+  // Extract (minimal) config from configTree.
+  function recurse(o) {
+    // FIXME: There is a delay between render and willReceiveProps
+    let result;
+    for (let k in o) {
+      const v = o[k];
+      if (v.hidden)
+        continue;
+      let tmp;
+      if (v.children !== undefined) {
+        tmp = recurse(v.children);
+      } else if (v.value !== undefined && (v.value !== v.default || v.required)) {
+        // FIXME: The equality doesn't work with object types.
+        tmp = v.value;
+      }
+      if (tmp !== undefined) {
+        if (result === undefined) {
+          result = {};
+        }
+        result[k] = tmp;
       }
     }
-
-    select.addEventListener("change", function() {
-      option.value = (select.value == -1) ? undefined : values[select.value][0];
-      update();
-    });
-
-    div.appendChild(select);
-
-    return div;
+    return result;
   }
 
-  function renderBooleanOption(option) {
-    return renderSelectOption(option, [[true, "Yes"], [false, "No"]]);
+  function getConfig() {
+    const config = recurse(configTree);
+    return (config !== undefined) ? config : {};
   }
 
-  function renderDropdownOption(option) {
-    return renderSelectOption(option, option.values);
-  }
-
-  function renderTextFieldOption(option, stringCoercer, typeCoercer, multiline) { // covers string, number, and array
-    var div = document.createElement('div');
-
-    var inputGroup = document.createElement('div');
-    if (!option.required) // Hacky
-      inputGroup.className = "input-group";
-
-    var inputGroupAddon = document.createElement('span');
-    inputGroupAddon.className = "input-group-addon";
-    var label = document.createElement('label');
-    label.className = "checkbox-inline default-checkbox-label";
-    var defaultCheckbox = document.createElement('input');
-    defaultCheckbox.type = "checkbox";
-    label.appendChild(defaultCheckbox);
-    label.appendChild(document.createTextNode("Default"));
-    inputGroupAddon.appendChild(label);
-    if (!option.required) // Hacky
-      inputGroup.appendChild(inputGroupAddon);
-
-    var input;
-    if (multiline) {
-      input = document.createElement('textarea');
-      var apparentValue = (option.value !== undefined) ? option.value : option.default;
-      input.rows = (typeof apparentValue == "string" && apparentValue.length > 100) ? 2 : 1;
-      // TODO: Make it auto expand.
-    } else {
-      input = document.createElement('input');
-      input.type = "text";
-    }
-    input.className = "form-control";
-    inputGroup.appendChild(input);
-
-    div.appendChild(inputGroup);
-
-    // set values
-    if (option.value !== undefined) {
-      defaultCheckbox.checked = false;
-      input.value = stringCoercer(option.value);
-    } else {
-      defaultCheckbox.checked = true;
-      input.value = stringCoercer(option.default);
-      input.readOnly = true;
-    }
-
-    // set events
-    input.addEventListener("change", function() {
-      option.value = typeCoercer(input.value);
-      update();
-    });
-    defaultCheckbox.addEventListener("change", function() {
-      if (defaultCheckbox.checked) {
-        input.value = stringCoercer(option.default);
-        input.readOnly = true;
-        option.value = undefined;
+  // Apply config to configTree.
+  function recurse2(o, config) {
+    for (let k in o) {
+      const tmp = config[k];
+      if (tmp === undefined)
+        continue;
+      const v = o[k];
+      if (v.children !== undefined) {
+        recurse2(v.children, tmp);
       } else {
-        input.readOnly = false;
-        option.value = option.default;
+        v.value = tmp;
       }
-      update();
-    });
-
-    return div;
-  }
-
-  function renderStringOption(option) {
-    return renderTextFieldOption(option,
-      function(value) {
-        return value;
-      },
-      function(str) {
-        return str;
-      },
-      true
-    );
-  }
-
-  function renderNumberOption(option) {
-    if (!option.validators)
-      option.validators = [];
-    option.validators.unshift(["!isNaN(value)", "The value must be a number."]); // Hacky
-    return renderTextFieldOption(option,
-      function(value) {
-        return value;
-      },
-      function(str) {
-        if (isNaN(str))
-          return str;
-        return +str;
-      },
-      false
-    );
-  }
-
-  function renderArrayOption(option) {
-    if (!option.validators)
-      option.validators = [];
-    option.validators.unshift(["value instanceof Array", "The value must be an array."]); // Hacky
-    return renderTextFieldOption(option,
-      function(value) {
-        return jsyaml.safeDump(value, {schema: jsyaml.JSON_SCHEMA, flowLevel: 0, lineWidth: -1});
-      },
-      function(str) {
-        try {
-          var value = jsyaml.safeLoad(str, {schema: jsyaml.JSON_SCHEMA});
-          // Need to check for undefined because jsyaml.safeLoad('') returns undefined.
-          return (value !== undefined) ? value : str;
-        } catch (e) {
-          return str;
-        }
-      },
-      false
-    );
-  }
-
-  function renderCheckboxesOption(option) {
-    var div = document.createElement('div');
-
-    var defaultCheckbox = document.createElement('input');
-
-    var apparentValue = (option.value !== undefined) ? option.value : option.default;
-    var checkboxes = [];
-
-    function getCheckboxesValue() {
-      var value = [];
-      for (var i = 0; i < option.values.length; ++i) {
-        if (checkboxes[i].checked) {
-          value.push(option.values[i][0]);
-        }
-      }
-      return value;
-    }
-
-    function setCheckboxesValue(value, disabled) {
-      for (var i = 0; i < option.values.length; ++i) {
-        var v = option.values[i][0];
-        checkboxes[i].checked = (value.indexOf(v) != -1);
-        checkboxes[i].disabled = disabled;
-      }
-    }
-
-    if (!option.required) {
-      var checkboxDiv = document.createElement('div');
-      checkboxDiv.className = "checkbox";
-      var label = document.createElement('label');
-      defaultCheckbox.type = "checkbox";
-      defaultCheckbox.addEventListener("change", function() {
-        if (defaultCheckbox.checked) {
-          setCheckboxesValue(option.default, true);
-          option.value = undefined;
-        } else {
-          setCheckboxesValue(option.default, false);
-          option.value = getCheckboxesValue();
-        }
-        update();
-      });
-      label.appendChild(defaultCheckbox);
-      label.appendChild(document.createTextNode(' Default'));
-      checkboxDiv.appendChild(label);
-      div.appendChild(checkboxDiv);
-    }
-
-    for (var i = 0; i < option.values.length; ++i) {
-      var v = option.values[i][0];
-      var description = option.values[i][1];
-      var checkboxDiv = document.createElement('div');
-      checkboxDiv.className = "checkbox";
-      var label = document.createElement('label');
-      var checkbox = document.createElement('input');
-      checkbox.type = "checkbox";
-      checkbox.value = v;
-      checkbox.checked = (apparentValue.indexOf(v) != -1);
-      checkbox.addEventListener("change", function() {
-        option.value = getCheckboxesValue();
-        update();
-      });
-      label.appendChild(checkbox);
-      label.appendChild(document.createTextNode(description));
-      checkboxDiv.appendChild(label);
-      div.appendChild(checkboxDiv);
-      checkboxes.push(checkbox);
-    }
-    // TODO: set value of select
-
-    if (option.value !== undefined) {
-      defaultCheckbox.checked = false;
-      setCheckboxesValue(option.value, false);
-    } else {
-      defaultCheckbox.checked = true;
-      setCheckboxesValue(option.default, true);
-    }
-
-    return div;
-  }
-
-  function renderGroup(option) {
-    var div = document.createElement('div');
-    div.className = "group well";
-
-    var titleDiv = document.createElement('div');
-    titleDiv.className = 'group-title';
-    titleDiv.appendChild(document.createTextNode(option.human_readable_name || stylizeName(option.name)));
-    div.appendChild(titleDiv);
-
-    if (option.description) {
-      var descriptionDiv = document.createElement('p');
-      descriptionDiv.className = "help-block";
-      descriptionDiv.innerHTML = option.description;
-      div.appendChild(descriptionDiv);
-    }
-
-    var childrenDiv = document.createElement('div');
-    childrenDiv.className = 'group-children';
-    div.appendChild(childrenDiv);
-
-    if (option.collapsible) {
-      titleDiv.className = 'group-title group-title-collapsible';
-      childrenDiv.style.display = 'none';
-      titleDiv.addEventListener("click", function() {
-        childrenDiv.style.display = (childrenDiv.style.display == 'none') ? 'block' : 'none';
-      });
-    }
-
-    renderOptions(option.children, childrenDiv);
-
-    return div;
-  }
-
-  function renderOptions(cd, ele) {
-    var renderers = {
-      string: renderStringOption,
-      number: renderNumberOption,
-      boolean: renderBooleanOption,
-      dropdown: renderDropdownOption,
-      checkboxes: renderCheckboxesOption,
-      array: renderArrayOption,
-      group: renderGroup
-    };
-    for (var i = 0; i < cd.length; ++i) {
-      var option = cd[i];
-      var renderer = renderers[option.type];
-      var content = renderer(option);
-      if (option.type == "group") {
-        option.element = content;
-      } else {
-        var tmp = createRow(option, content); // FIXME: Bad variable name.
-        option.element = tmp[0];
-        option.errorElement = tmp[1];
-      }
-      ele.appendChild(option.element);
     }
   }
 
@@ -651,45 +392,69 @@ function ConfigGUIEditor(configDescription, element) {
     if (config === undefined)
       config = {};
 
-    treeRecurse(configDescription, function(option, path) {
-      if (option.type == "group")
-        return true;
-      option.value = getValue(config, path); // FIXME: We shouldn't use getValue here. It's inefficient.
-      if (option.required && option.value === undefined)
-        option.value = option.default;
-      return true;
-    });
-
-    element.innerHTML = "";
-    renderOptions(configDescription, element);
-    update();
+    recurse2(configTree, config);
+    callback();
     return true;
   }
 
   this.getConfigYAML = function() {
-    var config = update();
+    var config = getConfig();
     return jsyaml.safeDump(config, {schema: jsyaml.JSON_SCHEMA, lineWidth: -1});
   }
+
+  this.hasUnsavedChange = function() {
+    return savedConfigStr !== undefined && savedConfigStr != JSON.stringify(getConfig());
+  }
+
+  this.saveChange = function() {
+    savedConfigStr = undefined;
+  }
 }
-</script>
+
+
+const configDB = new DB(configDescription);
+
+if (!configDB.setConfigYAML(document.getElementById('config_yaml').value)) {
+  alert('Error');
+}
+
+document.getElementById('form').addEventListener("submit", function() {
+  document.getElementById('config_yaml').value = configDB.getConfigYAML();
+});
+
+// FIXME: Handle exception.
+var configGUIEditorDiv = document.getElementById('config_gui_editor');
+ReactDOM.render(React.createElement(ConfigEditor, {db: configDB}), configGUIEditorDiv);
+
+window.addEventListener("beforeunload", function(event) {
+  var s = undefined;
+  if (configDB.hasUnsavedChange()) {
+    s = "Changes you made may not be saved.";
+    event.returnValue = s;
+  }
+  return s;
+});
 
 <% if !is_creating %>
-<script>
-var $submitButton = $(".edit_election input[type=submit]");
-$(".edit_election").on("ajax:send", function (e, data, status, xhr) {
-  $submitButton.attr('disabled', 'disabled');
-  $submitButton.val('Saving...');
-}).on("ajax:success", function (e, data, status, xhr) {
-  $submitButton.val('Saved');
-  setTimeout(function() {  // hacky
+(function() {
+  var $submitButton = $("#form input[type=submit]");
+  $("#form").on("ajax:send", function (e, data, status, xhr) {
+    $submitButton.attr('disabled', 'disabled');
+    $submitButton.val('Saving...');
+  }).on("ajax:success", function (e, data, status, xhr) {
+    configDB.saveChange();
+    $submitButton.val('Saved');
+    setTimeout(function() {  // hacky
+      $submitButton.removeAttr('disabled');
+      $submitButton.val('Save');
+    }, 400);
+  }).on("ajax:error", function (e, xhr, status, error) {
     $submitButton.removeAttr('disabled');
     $submitButton.val('Save');
-  }, 400);
-}).on("ajax:error", function (e, xhr, status, error) {
-  $submitButton.removeAttr('disabled');
-  $submitButton.val('Save');
-  alert("Error\n" + xhr.responseText);
-}).on("ajax:complete", function (e, xhr, status, error) {
-});
-</script>
+    alert("Error\n" + xhr.responseText);
+  }).on("ajax:complete", function (e, xhr, status, error) {
+  });
+})();
 <% end %>
+
+</script>

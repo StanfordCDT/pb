@@ -1,36 +1,40 @@
 <% content_for :title, 'Codes: Batch #' + @code_batch.id.to_s %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        ['Codes', admin_election_code_batches_path(@election)],
-        'Batch #' + @code_batch.id.to_s
-      ]} %>
 
 <h1>Batch #<%= @code_batch.id %></h1>
 
-<table class="table">
-  <tr>
-    <th>Code</th>
-    <th>Status</th>
-  </tr>
-<% @codes.each do |code| %>
-  <tr>
-    <td>
-      <% if code.status == 1 %>
-        <span style="text-decoration: line-through;"><span style=" color: #aaaaaa;"><%= code.code %></span></span>
-      <% else %>
-        <%= code.code %>
-      <% end %>
-    </td>
-    <td><%= code.status %> <%= ' (used)' if code.used? %></td>
-  </tr>
-<% end %>
+<table class="table table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th>Code</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @codes.each do |code| %>
+    <tr>
+      <td>
+        <% if code.status == 1 %>
+          <span style="text-decoration: line-through;"><span style="color: #aaaaaa;"><%= code.code %></span></span>
+        <% else %>
+          <%= code.code %>
+        <% end %>
+      </td>
+      <td><%= code.status %> <%= ' (used)' if code.used? %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 
     </div>
   </div>
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  ['Codes', admin_election_code_batches_path(@election)],
+  'Batch #' + @code_batch.id.to_s
+]} %>

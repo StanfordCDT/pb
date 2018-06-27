@@ -9,7 +9,7 @@ es:
   index:
     title: "Presupuesto Participativo"  # text on the title bar
     voting_machine:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Bienvenido a la interfaz de votación digital para el presupuesto participativo de la ciudad de NYC</p>"
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>Bienvenido a la interfaz de votación digital para el presupuesto participativo de la ciudad de NYC</p>"
       instruction: "Por favor ingrese el código que recibió."
       code_placeholder: "Código"
       enter_code_button: "Entrar"
@@ -17,49 +17,30 @@ es:
       used_code: "Este código ya ha sido utilizado."
       used_personal_id: "Este ID ya se ha utilizado. Por favor, póngase en contacto con voxpopuli@lists.stanford.edu en caso de que esto es un error o tienes que votar de nuevo."
     remote:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Bienvenido a la interfaz de votación digital para el presupuesto participativo de la ciudad de NYC</p>"
-      vote_button: "Votar"  # button to go to the real vote screen
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del Equipo Stanford Crowdsourced Democracy.</p><p class='lead'>En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class='lead'>Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
+      proceed_button: "Continuar &gt;&gt;"
+      remote_voting_button: "Votar &gt;&gt;"
       code_verification_button: "Enter code"
       other_verification_button: "Vote with other details"
-      see_projects_button: "Ver Proyectos"  # button to go to the demo vote screen
-    demo:
-      welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del <a href='%{about_url}'>Equipo Stanford Crowdsourced Democracy</a>.</p><p class='lead'>En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class='lead'>Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
-      proceed_button: "Continuar &gt;&gt;"
-      remote_voting_button: "Votar a distancia &gt;&gt;"
-      exit: "Salir"
+      see_projects_button: "Ver Proyectos"  # Link to an external site
+    voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "The voting has ended."
     public_results: "See Election Results"
 
   approval:
     title: "Presupuesto Participativo"
     popup:
-      real:
-        title: "Instrucciones"
-        body: "<ol>
-    <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
-    <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-  </ol>"
-        ok: "OK"
-      demo:
-        title: "Instrucciones"
-        body: "<h3 style='color: red'>Esta es solo una vista previa. Su voto no se guardará.</h3>
-  <ol>
-    <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
-    <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-  </ol>"
-        ok: "OK"
-    instructions:
-      real: "<h3>Instrucciones</h3>
-             <ol>
+      title: "Instrucciones"
+      body: "<ol>
               <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
               <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-             </ol>"
-      demo: "<h3 style='color: red'>Esta es solo una vista previa. Su voto no se guardará.</h3>
-             <h3>Instrucciones</h3>
-             <ol>
-              <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
-              <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-             </ol>"
+            </ol>"
+      ok: "OK"
+    instructions: "<h3>Instrucciones</h3>
+                   <ol>
+                    <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
+                    <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
+                   </ol>"
     list_of_projects: "Lista de proyectos"
     estimated_cost: "Costo Estimado"
     youtube_video: "YouTube video"
@@ -137,10 +118,6 @@ es:
     send_vote_email: "(Opcional) Quiero enviar el resultado de mi votación a mi correo electrónico:"
     email_placeholder: "Introduzca el correo electrónico"
     next_button: "Siguiente &gt;&gt;"
-    survey:
-      questions: []
-      options: []
-      submit_button: "Enviar"
 
   question:
     title: "Encuesta"
@@ -167,37 +144,20 @@ es:
     title: "Knapsack"
     header: "Seleccione los proyectos que le gustaría apoyar, arrastrándolos de la derecha a la izquierda."
     popup:
-      real:
-        title: "Instrucciones"
-        body: "<p style='font-size: 22px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-        <ul style='font-size: 22px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-        <li>En esta actividad, se le pedirá elegir un número ilimitado de proyectos, pero el coste total de los proyectos elegidos no puede exceder los %{budget}.</li></ul>
+      title: "Instrucciones"
+      body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
+      <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
+      <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
+      <li>En esta actividad, se le pedirá elegir un número ilimitado de proyectos, pero el coste total de los proyectos elegidos no puede exceder los %{budget}.</li></ul>
 <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Este estudio está financiado en parte por el Departamento de Defensa de los Estados Unidos. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-        ok: "OK"
-        exit: "Salir"
-      demo:
-        title: "Instrucciones"
-        body: "<p style='font-size: 22px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto participativo.</p>
-        <ul style='font-size: 22px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-        <li>En esta actividad, se le pedirá elegir un número ilimitado de proyectos, pero el costo total de los proyectos elegidos no puede exceder los %{budget}.</li></ul>
-<p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Este estudio está financiado en parte por el Departamento de Defensa de los Estados Unidos. Por favor, contacte al Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-        ok: "OK"
-        exit: "Salir"
-    instructions:
-      real: "<h3>Instrucciones</h3>
-             <ol>
-               <li>Seleccione los proyectos que le gustaría apoyar. El coste total no puede exceder los <b>%{budget}.</b></li>
-               <li>Puede ver la cantidad total que ha acumulado en la barra de arriba. Puede eliminar cualquier proyecto seleccionado anteriormente haciendo click en la barra o directamente haciendo click en el proyecto elegido.</li>
-               <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li>
-             </ol>"
-      demo: "<h3>Instrucciones</h3>
-             <ol>
-               <li>Seleccione los proyectos que le gustaría apoyar. El coste total no puede exceder los <b>%{budget}.</b></li>
-               <li>Puede ver la cantidad total que ha acumulado en la barra de arriba. Puede eliminar cualquier proyecto seleccionado anteriormente haciendo click en la barra o directamente haciendo click en el proyecto elegido.</li>
-               <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li>
-             </ol>"
+      ok: "OK"
+      exit: "Salir"
+    instructions: "<h3>Instrucciones</h3>
+                   <ol>
+                     <li>Seleccione los proyectos que le gustaría apoyar. El coste total no puede exceder los <b>%{budget}.</b></li>
+                     <li>Puede ver la cantidad total que ha acumulado en la barra de arriba. Puede eliminar cualquier proyecto seleccionado anteriormente haciendo click en la barra o directamente haciendo click en el proyecto elegido.</li>
+                     <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li>
+                   </ol>"
     confirmation:
       title: "¿Está seguro(a) de que quiere enviar su voto?"
       body:
@@ -217,40 +177,6 @@ es:
       not_adjusted_warning: "<span style='color:red'>Ha seleccionado 0 dólares para %{project}</span>"
       message: "Ha seleccionado $%{cost} para %{project}"
 
-  plusminus:
-    popup:
-      title: "Instrucciones"
-      body: "<p style='font-size: 22px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-      <ul style='font-size: 22px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-      <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-      <li>En esta actividad se le permitirá arrojar tanto votos positives (para proyectos que apruebe) como votos negativos (para proyectos que cree que no deberían tener fondos).</li></ul>
-<p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Este estudio está financiado en parte por el Departamento de Defensa de los Estados Unidos. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: "OK"
-      exit: "Salir"
-    instructions: "<h3>Instrucciones</h3>
-                   <ol>
-                     <li>Seleccione los proyectos que le gustaría apoyar haciendo click en el&nbsp;botón&nbsp;<b>+</b> (\"votos positivos\").
-                      Seleccione los proyectos que cree que no deberían tener fondos hacienda click en el&nbsp;botón&nbsp;<b>&minus;</b> (\"votos negativos\").</li>
-                     <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li>
-                   </ol>"
-    clear_button: "Despejar"  # button to remove the upvote/downvote from a project (i.e. change it to the neutral state)
-    used_up_upvotes: "Usted ha usado todos los %{n_upvotes} votos positivos"
-    used_up_downvotes: "Usted ha usado todos los %{n_downvotes} votos negativos"
-    tracker:
-      text: "A usted le quedan  %{count}."
-      n_upvotes_and_n_downvotes: "<strong>%{n_upvotes} votos positivos</strong> (+) y <strong>%{n_downvotes} votos negativos</strong> (&minus;)"
-    confirmation:
-      title: "¿Está seguro(a) de que quiere enviar su voto?"
-      body:
-        summary:
-          zero: "<span style='color: red;'>No ha elegido ningún proyecto.</span>"
-          upvotes: "Usted <b>aprobó</b> los siguientes proyectos: %{projects}"
-          downvotes: "Usted <b>dio su voto negativo a</b> los siguientes proyectos: %{projects}"
-          item: "%{project} ($%{cost})"
-        warning: "Después de enviar su voto, <strong>no podrá</strong> cambiarlo."
-      ok: "Enviar Mi Voto"
-      cancel: "Regresar"
-
   survey:
     title: "Encuesta"
     header: "Responda la Encuesta Por Favor"
@@ -259,6 +185,7 @@ es:
       body: "Gracias por votar. ¿Tiene 14 años o más?"
       ok: "Sí, tengo 14 años o más"
       alternative: "No, soy menor de 14 años"
+    url: ""
 
   thanks:
     title: "Gracias"
@@ -270,7 +197,7 @@ es:
   about:
     title: "Sobre Nosotros"
     description: "<center><h1 class='sub-header'>Sobre la interface digital de presupuesto</h1></center>
-    <br><p class='lead'>La interface digital ha sido desarrollada por el <a href='http://voxpopuli.stanford.edu/' target='_blank'>equipo de Democracia Participativa de la Universidad de Stanford</a>. <br>Esperamos que la naturaleza visual de la interface y la riqueza de la información que se presenta le ayudará a aprender acerca de los proyectos y emitir su voto de una manera más informada.</p>
+    <br><p class='lead'>La interface digital ha sido desarrollada por el <a href='https://voxpopuli.stanford.edu/' target='_blank'>equipo de Democracia Participativa de la Universidad de Stanford</a>. <br>Esperamos que la naturaleza visual de la interface y la riqueza de la información que se presenta le ayudará a aprender acerca de los proyectos y emitir su voto de una manera más informada.</p>
     <p class='lead'><b>Este es un proyecto de código abierto con licencia bajo la licencia GNU GPL v3.0. Puede encontrar el código fuente en <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
     <p class='lead'>Si tiene un problema técnico o si desea dar su opinión, por favor escriba a <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> y vamos a tratar de volver a usted tan pronto como sea posible.</p>"
 
@@ -283,6 +210,7 @@ es:
     projects: "Proyectos"
 
   election:
+    can_also_vote_in_person: "Puede dirigirse a uno de los siguientes lugares para emitir su voto:"
     info: "<h3>Ubicación de las Urnas de Votación</h3>
            <b>Sábado, 27 de Septiembre</b> &nbsp; (12:00 - 4:00 p.m.)<br>
            Somewhere<br>
@@ -299,12 +227,13 @@ es:
     phone_number_placeholder: "Introducir número de teléfono"
     verify_button: "Verifica"
     invalid_phone_number: "\"%{phone_number}\" no es un número de teléfono válido."
-    dont_have_cell_phone: "¿No dispone de un teléfono móvil? Puede dirigirse a uno de los siguientes lugares para emitir su voto:"
+    no_cell_phone_instruction: "If you don't have a cell phone, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
+    #dont_have_cell_phone: "¿No dispone de un teléfono móvil? Puede dirigirse a uno de los siguientes lugares para emitir su voto:"
 
   code_signup:
     title: "Introduzca el código de voto"
-    instruction: ""
-    no_code_instruction: "Si usted no tiene un código de acceso, obtener de la Ciudad"
+    instruction: "Please email XXX@stanford.edu or call XXX-XXX-XXX to get an access code. Once you get the access code, enter it below and press the <b>Votar</b> button to continue."
+    #no_code_instruction: "Si usted no tiene un código de acceso, obtener de la Ciudad"
     code_placeholder: "Código de acceso"
     vote_button: "Votar"
     wrong_access_code: "Código de acceso incorrecto"
@@ -313,7 +242,7 @@ es:
   other_signup:
     title: "Enter details to vote"
     instruction: ""
-    no_account_number_instruction: "If you do not have a account number, contact the City."
+    no_account_number_instruction: "If you don't have an account number, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
     zipcode_placeholder: "Zip code"
     account_number_placeholder: "Account Number"
     vote_button: "Vote"
@@ -323,8 +252,7 @@ es:
   registration:
     title: "Detalles de votantes"
     header: "Detalles de votantes"
-    instructions: "<p>Por favor, introduzca los siguientes datos para proceder a la votación para la votación. 
-Los campos marcados con * son requeridos.</p>"
+    instructions: "Por favor, introduzca los siguientes datos para proceder a la votación para la votación. Los campos marcados con * son requeridos."
     proceed_button: "Proceder"
     no_phone_number: "Yo no tengo un número de teléfono"
     name: "Nombre"
@@ -343,6 +271,7 @@ Los campos marcados con * son requeridos.</p>"
     email_instruction_label: "¿Quieres conocer los resultados de esta votación? Introduce tu email para estar al día."
     ward: "Ward"
     ward_do_not_know: "Do not know"
+    error: "Please fix the following errors:"
     not_voting_age_error: "You must be between the age requirement in order to vote in this election"
 
   sms_signup_confirm:
@@ -354,9 +283,10 @@ Los campos marcados con * son requeridos.</p>"
     wrong_code: "Código incorrecto."
     resend_code: "Si no recibe el código en un minuto, haga clic <a href=\"%{resend_code_url}\">aquí</a> para reenviar el código de confirmación."
     make_sure_phone_number_is_correct: "Asegúrese de que %{phone_number} es su número de teléfono móvil o celular correcto. Si <u>no</u> es correcto, haga clic <a href=\"%{signup_url}\">aquí</a> para cambiarlo."
-    still_not_working: "Si todavía tiene problemas para recibir el código de confirmación tras varios intentos, puede dirigirse a uno de los siguientes lugares para emitir su voto:"
+    still_not_working: "Si todavía tiene problemas para recibir el código de confirmación tras varios intentos, por favor haga <a href=\"%{code_signup_url}\">clic aquí</a> para usar otro método para votar en línea."
 
   general:
+    demo_warning: "Esta es solo una vista previa. Su voto no se guardará."
     experiment_disclaimer: "Esto es sólo una encuesta. No afectará su voto."
     shuffle_note: "<span style='font-size: 18px;'>Nota: Estos proyectos están en orden aleatorio.</span>"
     project_string: "Proyecto"

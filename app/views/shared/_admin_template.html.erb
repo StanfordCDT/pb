@@ -1,0 +1,197 @@
+<style>
+.secondary .list-group-item {
+  border: none;
+  padding: 0.5rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .secondary {
+    position: fixed;
+    width: 240px;
+    overflow: auto;
+    top: 56px; /* FIXME: Hard code. */
+    padding-top: 14px; /* 70 - 56 */
+    padding-bottom: 20px;
+    bottom: 0;
+    background-color: #f8f9fa;
+    z-index: 1000; /* Just below modals */
+    border-right: 1px solid rgba(0,0,0,.125);
+  }
+
+  .secondary .list-group-item {
+    padding: 0.65rem 1.25rem;
+    background: #f8f9fa;
+  }
+  
+  .secondary .list-group-item-action:hover {
+    background-color: #eff0f1; /* f8f9fa */
+  }
+  .secondary .list-group-item.active {
+    background-color: #007bff;
+  }
+
+  .primary {
+    margin-left: 240px;
+  }
+}
+
+
+.secondary a {
+  color: #495057;
+}
+
+.secondary .glyphicon {
+  margin-right: 5px;
+}
+</style>
+
+
+<div class="secondary">
+
+  <% if items.length > 0 && items[0].is_a?(Election) %>
+    <%
+    election = items[0]
+    controller = params[:controller]
+    action = params[:action]
+    can_update_election = current_user.superadmin? || (current_user.admin?(@election) && @election.allow_admins_to_update_election?)
+    links = [
+      {
+        url: admin_election_path(election),
+        text: "Overview",
+        glyphicon: "home",
+        active: controller == "admin/elections" && action == "show",
+        visible: true
+      },
+      {
+        url: edit_admin_election_path(election),
+        text: "Settings",
+        glyphicon: "cog",
+        active: controller == "admin/elections" && action == "edit",
+        visible: can_update_election
+      },
+      {
+        url: admin_election_projects_path(election),
+        text: "Projects",
+        glyphicon: "list",
+        active: controller == "admin/projects" || controller == "admin/categories",
+        visible: can_update_election
+      },
+      {
+        url: admin_election_code_batches_path(election),
+        text: "Codes",
+        glyphicon: "tag",
+        active: controller == "admin/code_batches",
+        visible: current_user.admin?(@election)
+      },
+      {
+        url: analytics_admin_election_path(election),
+        text: "Analytics",
+        glyphicon: "stats",
+        active: controller == "admin/elections" && ["analytics", "analytics_more", "analytics_cooccurrence"].include?(action),
+        visible: current_user.admin?(@election)
+      },
+      {
+        url: admin_election_users_path(election),
+        text: "Users",
+        glyphicon: "user",
+        active: controller == "admin/users",
+        visible: current_user.admin?(@election)
+      },
+      {
+        url: admin_election_voters_path(election),
+        text: "Voters",
+        glyphicon: "inbox",
+        active: controller == "admin/voters",
+        visible: current_user.superadmin?
+      },
+      {
+        url: admin_election_files_path(election),
+        text: "Files",
+        glyphicon: "file",
+        active: controller == "admin/files",
+        visible: can_update_election
+      },
+      {
+        url: admin_election_locations_path(election),
+        text: "Locations",
+        glyphicon: "map-marker",
+        active: controller == "admin/locations",
+        visible: current_user.superadmin?
+      },
+    ].select { |link| link[:visible] }
+    %>
+  
+    <div class="container-fluid">
+      <% if current_user.superadmin? || current_user.elections.count > 1  # show a dropdown %>
+        <div><a href="<%= admin_root_path %>">Elections</a> &gt;</div>
+      <% end %>
+      <h5><%= election.name %></h5>
+      <!--
+      <div><small><a href="/<%= @election.slug %>" target="_blank"><span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> View Site</a></small></div>
+    -->
+    </div>
+
+    <div class="list-group list-group-flush">
+      <% links.each do |link| %>
+        <a href="<%= link[:url] %>" class="list-group-item list-group-item-action <%= link[:active] ? "active" : "" %>"><span class='glyphicon glyphicon-<%= link[:glyphicon] %>' aria-hidden='true'></span> <%= raw link[:text] %></a>
+      <% end %>
+      <a href="/<%= @election.slug %>" class="list-group-item list-group-item-action" target="_blank"><span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> View Website</a>
+    </div>
+    
+
+
+<%
+=begin
+%>
+
+      <h5><%= election.name %></h5>
+      <!--
+      <div><small><a href="/<%= @election.slug %>" target="_blank"><span class='glyphicon glyphicon-new-window' aria-hidden='true'></span> View Site</a></small></div>
+      -->
+        
+      <nav class="nav flex-column sidenav">
+        <% links.each do |link| %>
+          <a href="<%= link[:url] %>" class="nav-link <%= link[:active] ? "active" : "" %>"><span class='glyphicon glyphicon-<%= link[:glyphicon] %>' aria-hidden='true'></span> <%= raw link[:text] %></a>
+        <% end %>
+      </nav>
+<%
+=end
+%>
+
+  <% else %>
+    <%
+    controller = params[:controller]
+    action = params[:action]
+    links = [
+      {
+        url: admin_root_path,
+        text: "Elections",
+        glyphicon: "home",
+        active: (controller == "admin/home" && action == "index") || (controller == "admin/elections"),
+        visible: true
+      },
+      {
+        url: admin_users_path,
+        text: "Users",
+        glyphicon: "user",
+        active: controller == "admin/users",
+        visible: current_user.superadmin?
+      },
+    ].select { |link| link[:visible] }
+    %>
+    <div class="container-fluid">
+      <h4>Admin</h4>
+    </div>
+
+    <div class="list-group list-group-flush">
+      <% links.each do |link| %>
+        <a href="<%= link[:url] %>" class="list-group-item list-group-item-action <%= link[:active] ? "active" : "" %>"><span class='glyphicon glyphicon-<%= link[:glyphicon] %>' aria-hidden='true'></span> <%= raw link[:text] %></a>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="primary">
+  <%= yield :primary %>
+</div>

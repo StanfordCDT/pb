@@ -6,6 +6,7 @@ module Admin
     def index
       @election = Election.find(params[:election_id])
       @projects = @election.projects.order(:sort_order)
+      @categories = @election.categories.order(:sort_order)
     end
 
     def new

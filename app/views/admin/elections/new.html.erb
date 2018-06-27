@@ -1,16 +1,43 @@
 <% content_for :title, 'Election: New' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        'New election'
-      ]} %>
 
       <h2>New Election</h2>
+      
+      <% @election.errors.full_messages.each do |msg| %>
+        <p class="text-danger"><%= msg %></p>
+      <% end %>
 
-      <%= render partial: 'shared/election_form', locals: { is_creating: true } %>
-    </div>
-  </div>
+      <% is_creating = true %>
+      <%= form_for([:admin, @election], remote: !is_creating, html: {id: 'form', :'data-type' => is_creating ? nil : :json}) do |f| %>
+
+        <div class="form-group row">
+          <%= f.label :name, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :slug, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <div class="input-group">
+              <div class="input-group-prepend"><div class="input-group-text"><%= request.host_with_port %>/</div></div>
+              <%= f.text_field :slug, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="offset-sm-2 col-sm-10">
+            <%= f.submit 'Save', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  'New election'
+]} %>

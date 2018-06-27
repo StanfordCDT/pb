@@ -1,7 +1,7 @@
 module Admin
   class FilesController < ApplicationController
     before_action :set_no_cache
-    before_action :require_superadmin_auth
+    before_action :require_admin_auth_with_special_permission
 
     def index
       @election = Election.find(params[:election_id])
@@ -26,7 +26,7 @@ module Admin
         return
       end
       FileUtils::mkdir_p(dir)
-      File.open(File.join(dir, uploaded_io.original_filename), 'wb') do |file|
+      File.open(File.join(dir, uploaded_io.original_filename.strip), 'wb') do |file|
         file.write(uploaded_io.read)
       end
 

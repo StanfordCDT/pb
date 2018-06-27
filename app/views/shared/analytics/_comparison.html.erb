@@ -8,13 +8,16 @@
   <% end %>
 </p>
 
+<p>A green cell <span style="background-color: #0f0; width: 22px; height: 22px; border: 1px #ddd solid; display: inline-block;"></span> indicates that when the row project and the column project were shown to the voters on the left side and the right side, respectively, the row project received more votes.</p>
 <p>
-  <label class="radio-inline">
-    <input type="radio" name="comparison_values" value="ratios" checked="checked"> Ratios
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="comparison_values" value="counts"> Counts
-  </label>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="comparison_values" id="comparison_values_ratios" value="ratios" checked="checked">
+    <label class="form-check-label" for="comparison_values_ratios">Ratios</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="comparison_values" id="comparison_values_counts" value="counts">
+    <label class="form-check-label" for="comparison_values_counts">Counts</label>
+  </div>
 </p>
 
 <div id="comparison"></div>
@@ -68,7 +71,7 @@
 }
 
 .comparison-table-tooltip .tooltip-inner {
-  background-color: white;
+  background-color: #ddd;
   color: black;
   font-size: 14px;
   max-width: none;
@@ -116,7 +119,7 @@ var comparison_ordered_indices = <%= @comparison_ordered_indices.to_json %>;
       td.className = 'cell';
       if (i != j) {
         var counts = comparison_data[comparison_ordered_indices[i]][comparison_ordered_indices[j]];
-        td.setAttribute('data-title', 'wins :' + counts[2] + ' &nbsp; ' +
+        td.setAttribute('data-title', 'wins: ' + counts[2] + ' &nbsp; ' +
                                       'ties: ' + counts[1] + ' &nbsp; ' +
                                       'losses: ' + counts[0]);
       } else {

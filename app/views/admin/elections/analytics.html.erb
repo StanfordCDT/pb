@@ -1,5 +1,6 @@
 <% content_for :title, 'Analytics: ' + @election.name %>
 
+<% content_for :primary do %>
 <script type="text/javascript" src="/js/d3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
 <script type="text/javascript">
@@ -59,13 +60,6 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
 </style>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        'Analytics'
-      ]} %>
 
       <h2>
         Analytics
@@ -77,7 +71,7 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
           <% elsif @authentication_method == 'phone' %>
             for votes from phone
           <% end %>
-          <a href="<%= analytics_admin_election_path(@election) %>" class="btn btn-default">See All</a>
+          <a href="<%= analytics_admin_election_path(@election) %>" class="btn btn-secondary">See All</a>
         <% end %>
       </h2>
 
@@ -93,8 +87,8 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
       }
       </style>
 
-      <table class="table table-bordered" id="votecount-table">
-        <thead>
+      <table class="table table-bordered table-sm" id="votecount-table">
+        <thead class="thead-light">
           <tr>
             <th></th>
             <% @columns.each do |c| %>
@@ -140,22 +134,17 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
         <h3>Ranked Approval</h3>
         <%= render partial: 'shared/analytics/ranked_approval' %>
       <% elsif workflow.include?('approval') %>
-        <h3>Approval</h3>
+        <h3>Approval voting</h3>
         <%= render partial: 'shared/analytics/approval', locals: {is_public: false} %>
       <% end %>
 
       <% if workflow.include?('knapsack') %>
-        <h3>Knapsack</h3>
+        <h3>Knapsack voting</h3>
         <%= render partial: 'shared/analytics/knapsack' %>
       <% end %>
 
-      <% if workflow.include?('plusminus') %>
-        <h3>Plus/minus</h3>
-        <%= render partial: 'shared/analytics/plusminus' %>
-      <% end %>
-
       <% if workflow.include?('comparison') %>
-        <h3>Comparisons</h3>
+        <h3>Comparison voting</h3>
         <%= render partial: 'shared/analytics/comparison' %>
       <% end %>
 
@@ -164,13 +153,12 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
         <a href="<%= url_for(format: :csv, table: 'voter_registration') %>">Export voter registration records</a>
       <% end %>
 
-      <% if is_allowed_to_see_voter_data? && @election.config[:thanks_approval][:survey_questions] %>
-        <h3>Demographic Survey</h3>
-        <a href="<%= url_for(format: :csv, table: 'thanks_approval_survey') %>">Export into Excel</a>
-      <% end %>
-
       <br><br>
 
-    </div>
-  </div>
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  'Analytics'
+]} %>

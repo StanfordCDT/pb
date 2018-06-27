@@ -1,13 +1,7 @@
 <% content_for :title, 'Analytics' %>
 
+<% content_for :primary do %>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 main">
-
-      <%= render partial: 'shared/admin_toolbar', locals: {items: [
-        @election,
-        'Analytics'
-      ]} %>
 
       <a href="<%= url_for('analytics') %>">Go back to main analytics</a>
 
@@ -29,7 +23,7 @@ end
 %>
 
       <table class="table table-bordered">
-        <thead>
+        <thead class="thead-light">
           <tr>
             <th>Page</th>
             <th>Mean</th>
@@ -50,7 +44,7 @@ end
       <h3>Languages</h3>
 
       <table class="table table-bordered">
-        <thead>
+        <thead class="thead-light">
           <tr>
             <th>Languages</th>
             <th>Count</th>
@@ -65,6 +59,11 @@ end
           <% end %>
         </tbody>
       </table>
-    </div>
-  </div>
+
 </div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  'Analytics'
+]} %>

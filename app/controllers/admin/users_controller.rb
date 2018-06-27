@@ -15,8 +15,7 @@ module Admin
         require_admin_auth
         return if performed?
         @election = Election.find(params[:election_id])
-        @admin_users = @election.admin_users
-        @volunteer_users = @election.volunteer_users
+        @election_users = @election.election_users.includes(:user).order(:status)
       else
         # This is called from GET /admin/users
         require_superadmin_auth
@@ -381,6 +380,9 @@ module Admin
         return if performed?
         user = User.find(params[:id])
       end
+      if confirmation_id_expired?(user)
+        generate_new_confirmation_id(user)
+      end
       UserMailer.confirmation_email(user, request.base_url).deliver
       redirect_to({action: :index}, flash: {notice: "Confirmation sent"})
     end
@@ -398,13 +400,17 @@ module Admin
       user.save!
     end
 
+    def confirmation_id_expired?(user)
+      Time.now - user.confirmation_id_created_at > 1.week
+    end
+
     def authenticate_confirmation_id(user, confirmation_id)
       if count_activity('validate_confirmation_failure', 2.minutes.ago, note: params[:id]) >= 5
         return :over_rate_limit
       end
 
       if !user.nil? && !user.confirmation_id.blank? && confirmation_id == user.confirmation_id
-        if Time.now - user.confirmation_id_created_at > 1.week
+        if confirmation_id_expired?(user)
           return :expired
         end
         return :ok

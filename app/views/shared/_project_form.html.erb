@@ -2,74 +2,67 @@
 .image {
   max-width: 500px;
 }
-
-.error {
-  color: red;
+/* The "collapsed" class is added/removed automatically by Bootstrap */
+.collapsed .moreFieldExpandedChevron {
+  display: none;
+}
+.moreFieldCollapsedChevron {
+  display: none;
+}
+.collapsed .moreFieldCollapsedChevron {
+  display: inline-block;
 }
 </style>
 
-<% available_locales = @election.config[:available_locales] %>
+<%
+available_locales = @election.config[:available_locales]
+multiple_locales = available_locales.length > 1
+%>
 
-<% if available_locales.length > 1 %>
-  <%# Tabs for selecting langauges. %>
-  <ul class="nav nav-tabs" role="tablist">
-    <% available_locales.each_with_index do |locale, index| %>
-      <li role="presentation" class="<%= index == 0 ? 'active' : '' %>"><a href="#<%= locale %>" aria-controls="home" role="tab" data-toggle="tab"><%= LOCALE_NAMES[locale.to_sym] %></a></li>
-    <% end %>
-  </ul>
-  <br>
-<% end %>
-
-<p>* indicates a required field.</p>
+<p class="text-muted">* indicates a required field.</p>
 
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
 
 <% @project.errors.full_messages.each do |msg| %>
-  <p class="error"><%= msg %></p>
+  <p class="text-danger"><%= msg %></p>
 <% end %>
 
-<%= form_for([:admin, @election, @project], html: {class: 'form-horizontal'}) do |f| %>
-  <div class="form-group">
+<%= form_for([:admin, @election, @project]) do |f| %>
+  <div class="form-group row">
     <%= f.label :number, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10"><%= f.text_field :number, class: 'form-control' %></div>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <%= f.text_field :number, class: 'form-control' %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :title, '* Title', class: 'col-sm-2 control-label' %>
+  <div class="form-group row">
+    <%= f.label :title, 'Title*', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_field 'title_' + locale, class: 'form-control localized locale-' + locale %>
+        <%= f.text_field 'title_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
       <% end %>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :description, '* Description', class: 'col-sm-2 control-label' %>
+  <div class="form-group row">
+    <%= f.label :description, 'Description*', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_area 'description_' + locale, rows: 6, class: 'form-control localized locale-' + locale %>
+        <%= f.text_area 'description_' + locale, rows: 4, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
       <% end %>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :details, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <% available_locales.each do |locale| %>
-        <%= f.text_area 'details_' + locale, rows: 6, class: 'form-control localized locale-' + locale %>
-      <% end %>
-      <p class="help-block">Details, unlike description, are hidden by default. Voters have to click a link that says "Read more" to read them.</p>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :cost, '* Cost', class: 'col-sm-2 control-label' %>
+  <div class="form-group row">
+    <%= f.label :cost, 'Cost*', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <div class="input-group">
-        <div class="input-group-addon">$</div>
-        <%= f.text_field :cost, class: 'form-control' %>
+        <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+        <%= f.number_field :cost, class: 'form-control' %>
       </div>
       <div class="checkbox">
         <label>
@@ -80,20 +73,20 @@
   </div>
 
   <div id="fields_for_adjustable_cost_project">
-    <div class="form-group">
-      <%= f.label :cost_min, '* Cost min', class: 'col-sm-2 control-label' %>
+    <div class="form-group row">
+      <%= f.label :cost_min, 'Cost min*', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <div class="input-group">
-          <div class="input-group-addon">$</div>
+          <div class="input-group-prepend"><div class="input-group-text">$</div></div>
           <%= f.text_field :cost_min, class: 'form-control' %>
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <%= f.label :cost_step, '* Cost step', class: 'col-sm-2 control-label' %>
+    <div class="form-group row">
+      <%= f.label :cost_step, 'Cost step*', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <div class="input-group">
-          <div class="input-group-addon">$</div>
+          <div class="input-group-prepend"><div class="input-group-text">$</div></div>
           <%= f.text_field :cost_step, class: 'form-control' %>
         </div>
         <div class="checkbox">
@@ -105,31 +98,23 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :address, 'Location', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_field 'address_' + locale, class: 'form-control localized locale-' + locale %>
+        <%= f.text_field 'address_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
       <% end %>
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :map_geometry, 'Map location coordinates', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :map_geometry, class: 'form-control' %>
-      <p class="help-block">An array of points. A point is an array of a latitude and a longitude.</p>
-    </div>
-  </div>
-
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :category_id, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.collection_select(:category_id, @election.categories, :id, :name, {include_blank: 'Uncategorized'}, class: 'form-control') %>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <%= f.label :image, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% if @project.image? %>
@@ -142,30 +127,67 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :video_url, 'YouTube URL', class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <% available_locales.each do |locale| %>
-        <%= f.text_field 'video_url_' + locale, class: 'form-control localized locale-' + locale %>
-      <% end %>
-    </div>
-  </div>
+  <%
+  # Determine whether "More fields" should be shown by default.
+  def localized_fields(field, locales)
+    locales.map { |locale| field + '_' + locale }
+  end
+  more_fields = ['map_geometry', 'external_vote_count', 'data'] + localized_fields('video_url', available_locales) + localized_fields('details', available_locales)
+  show_more_fields_by_default = more_fields.any? { |field| !@project.send(field).blank? }
+  %>
 
-  <% if !is_creating %>
-    <div class="form-group">
-      <%= f.label :external_vote_count, class: 'col-sm-2 control-label' %>
+  <p>
+    <a data-toggle="collapse" href="#moreOptions" class="<%= show_more_fields_by_default ? '' : 'collapsed' %>" role="button" aria-expanded="<%= show_more_fields_by_default %>" aria-controls="moreOptions">
+      <span class="glyphicon glyphicon-triangle-bottom moreFieldExpandedChevron" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-triangle-right moreFieldCollapsedChevron" aria-hidden="true"></span>
+      More fields
+    </a>
+  </p>
+
+  <div class="collapse <%= show_more_fields_by_default ? 'show' : '' %>" id="moreOptions">
+    <div class="form-group row">
+      <%= f.label :map_geometry, 'Coordinates', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <%= f.text_field :external_vote_count, class: 'form-control' %>
-        <p class="help-block">If voters can vote on paper ballot and you want to include the vote count from the paper ballot in the analytics, enter the vote count from the paper ballot in this box.</p>
+        <%= f.text_field :map_geometry, class: 'form-control' %>
+        <p class="text-muted">An array of points. A point is an array of a latitude and a longitude. For example, [[37.424107, -122.166077]]</p>
       </div>
     </div>
-  <% end %>
 
-  <div class="form-group">
-    <%= f.label :data, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_area :data, rows: 6, class: 'form-control' %>
-      <p class="help-block">This field is for advanced settings. You probably don't need to use it.</p>
+    <div class="form-group row">
+      <%= f.label :video_url, 'YouTube URL', class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <% available_locales.each do |locale| %>
+          <%= f.text_field 'video_url_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :details, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <% available_locales.each do |locale| %>
+          <%= f.text_area 'details_' + locale, rows: 3, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+        <% end %>
+        <p class="text-muted">Details, unlike description, are hidden by default. Voters have to click a link that says "Read more" to read them.</p>
+      </div>
+    </div>
+
+    <% if !is_creating %>
+      <div class="form-group row">
+        <%= f.label :external_vote_count, class: 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :external_vote_count, class: 'form-control' %>
+          <p class="text-muted">If voters can vote on paper ballot and you want to include the vote count from the paper ballot in the analytics, enter the vote count from the paper ballot in this box.</p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-group row">
+      <%= f.label :data, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_area :data, rows: 3, class: 'form-control' %>
+        <p class="text-muted">This field is for advanced settings. You probably don't need to use it.</p>
+      </div>
     </div>
   </div>
 
@@ -188,17 +210,4 @@ function updateCostFields() {
 
 adjustableCostCheckbox.addEventListener('change', updateCostFields);
 updateCostFields();
-
-
-function updateLocale(locale) {
-  $('.localized').hide();
-  $('.locale-' + locale).show();
-}
-
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  var locale = e.target.href.substring(e.target.href.lastIndexOf('#') + 1);
-  updateLocale(locale);
-})
-
-updateLocale("<%= available_locales[0] %>");
 </script>

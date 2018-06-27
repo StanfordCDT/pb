@@ -1,0 +1,224 @@
+<% content_for :title, 'Analytics' %>
+
+<% content_for :primary do %>
+<div class="container-fluid">
+
+      <a href="<%= url_for('analytics') %>">Go back to main analytics</a>
+
+      <h2>Analytics</h2>
+
+      <h3>Co-occurrence matrix</h3>
+
+<p>"Probabilities" show how likely the project on the top is chosen if the project on the left is chosen. "Counts" show how many times a pair of projects is chosen together.</p>
+<p>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="cooccurrence_values" id="cooccurrence_values_ratios" value="ratios" checked="checked">
+    <label class="form-check-label" for="cooccurrence_values_ratios">Probabilities</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="cooccurrence_values" id="cooccurrence_values_counts" value="counts">
+    <label class="form-check-label" for="cooccurrence_values_counts">Counts</label>
+  </div>
+</p>
+
+<div id="cooccurrence"></div>
+
+<br><br><br>
+
+<style>
+#cooccurrence-table td {
+  border: 1px #ddd solid;
+}
+
+#cooccurrence-table .cell {
+  min-width: 26px;
+  max-width: 26px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#cooccurrence-table tr:first-child td {
+  text-align: center;
+  padding: 3px;
+}
+
+#cooccurrence-table td:first-child {
+  padding: 3px;
+}
+
+#cooccurrence-table tr:first-child td.tooltip-inner {
+  display: hidden;
+}
+
+.cooccurrence-table-tooltip .tooltip-inner {
+  background-color: #ddd;
+  color: black;
+  font-size: 14px;
+  max-width: none;
+}
+</style>
+
+<script type="text/javascript">
+var projects = <%= @projects.to_json.html_safe %>;
+var cooccurrence_data = <%= @cooccurrence_data.to_json %>;
+var cooccurrence_ordered_indices = <%= @cooccurrence_ordered_indices.to_json %>;
+
+(function() {
+  var table = document.createElement('table');
+  table.setAttribute("id", "cooccurrence-table");
+  var tbody = document.createElement('tbody');
+
+  { // first row
+    var tr = document.createElement('tr');
+
+    { // first column of the first row
+      var td = document.createElement('td');
+      tr.appendChild(td);
+    }
+
+    for (var j = 0; j < cooccurrence_ordered_indices.length; ++j) {
+      var td = document.createElement('td');
+      td.textContent = j + 1;
+      td.setAttribute('data-title', projects[cooccurrence_ordered_indices[j]].title);
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+
+  for (var i = 0; i < cooccurrence_ordered_indices.length; ++i) {
+    var tr = document.createElement('tr');
+
+    { // first column of each row is the row number + project's title
+      var td = document.createElement('td');
+      td.textContent = (i + 1) + ' ' + projects[cooccurrence_ordered_indices[i]].title;
+      tr.appendChild(td);
+    }
+
+    for (var j = 0; j < cooccurrence_ordered_indices.length; ++j) {
+      var td = document.createElement('td');
+      td.className = 'cell';
+      if (i != j) {
+        var counts = cooccurrence_data[cooccurrence_ordered_indices[i]][cooccurrence_ordered_indices[j]];
+        td.setAttribute('data-title', '<b>' + projects[cooccurrence_ordered_indices[i]].title + '</b>: ' + counts[1] + '<br>' +
+                                      '<b>' + projects[cooccurrence_ordered_indices[j]].title + '</b>: ' + counts[1] + '<br>' +
+                                      '<b>Co-occurred</b>: ' + counts[0]);
+      } else {
+        td.textContent = '-';
+        td.style.color = 'transparent';
+      }
+      td.addEventListener("mouseover", (function(i, j) {
+        return function () { mouseOver(i, j); };
+      })(i, j));
+      td.addEventListener("mouseout", mouseOut);
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+
+  document.getElementById('cooccurrence').appendChild(table);
+
+  $('#cooccurrence-table .cell').tooltip({
+    animation: false,
+    container: 'body',
+    html: true,
+    placement: 'top'
+  });
+
+  $('#cooccurrence-table tr:first-child td').tooltip({
+    animation: false,
+    container: 'body',
+    html: true,
+    placement: 'top',
+    template: '<div class="tooltip cooccurrence-table-tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'
+  });
+
+  function mouseOut() {
+    $('#cooccurrence-table tr:first-child td, #cooccurrence-table td:first-child').css('backgroundColor', 'transparent');
+    $('#cooccurrence-table tr:first-child td').tooltip('hide');
+  }
+
+  function mouseOver(i, j) {
+    mouseOut();
+    table.rows[i + 1].cells[0].style.backgroundColor = '#ddd';
+    table.rows[0].cells[j + 1].style.backgroundColor = '#ddd';
+    $(table.rows[0].cells[j + 1]).tooltip('show');
+  }
+
+  function populateTable(table, f) {
+    var i, j;
+    for (i = 0; i < projects.length; ++i) {
+      for (j = 0; j < projects.length; ++j) {
+        f(cooccurrence_ordered_indices[i], cooccurrence_ordered_indices[j], table.rows[i + 1].cells[j + 1]);
+      }
+    }
+  }
+
+  var fillRatios = function() {
+    function ratioColor(x) {  // 0 = red, 0.5 = white, 1 = green
+      if (isNaN(x)) // when divided by zero
+        return 'white';
+      var color0 = '255,0,0', color1 = '0,255,0';
+      if (x <= 0.5)
+        return 'rgba(' + color0 + ',' + ((0.5 - x) * 2) + ')';
+      return 'rgba(' + color1 + ',' + ((x - 0.5) * 2) + ')';
+    }
+
+    populateTable(table, function(i, j, td) {
+      if (i != j) {
+        var counts = cooccurrence_data[i][j];
+        var ratio = counts[0] / counts[1];
+        td.textContent = isNaN(ratio) ? '-' : ratio.toFixed(2).replace(/^0\./, '.'); // change '0.xx' to '.xx'
+        td.style.backgroundColor = isNaN(ratio) ? 'white' : ('rgba(70, 130, 180, ' + (ratio) + ')');
+        td.style.color = isNaN(ratio) ? 'transparent' : 'black';
+      }
+    });
+  }
+
+  var fillCounts = function() {
+    var max_n = 0;
+    var i, j;
+    for (i = 0; i < projects.length; ++i) {
+      for (j = 0; j < projects.length; ++j) {
+        var counts = cooccurrence_data[i][j];
+        max_n = Math.max(max_n, counts[0]);
+      }
+    }
+
+    populateTable(table, function (i, j, td) {
+      if (i != j) {
+        var counts = cooccurrence_data[i][j];
+        var n = counts[0];
+        td.textContent = n;
+        td.style.backgroundColor = 'rgba(70, 130, 180, ' + (n/max_n) + ')';
+        td.style.color = 'black';
+      }
+    });
+  }
+
+  var reloadCooccurrenceTable = function() {
+    var values = $("input[name='cooccurrence_values']:checked").val();
+    if (values == 'ratios') {
+      fillRatios();
+    } else if (values == 'counts') {
+      fillCounts();
+    }
+  }
+
+  $("input[name='cooccurrence_values']:radio").change(function() {
+    reloadCooccurrenceTable();
+  });
+
+  reloadCooccurrenceTable();
+})();
+</script>
+
+</div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  'Analytics'
+]} %>

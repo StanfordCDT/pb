@@ -1,0 +1,417 @@
+fi:
+  navigation:
+    brand: PB
+    home: Koti
+    about: Lisätietoa
+    help: Apua
+    exit: Poistu
+  index:
+    title: Osallistava budjetointi
+    voting_machine:
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>Tervetuloa osallistavaan budjetointiin liittyvälle sähköiselle äänestysalustalle</p>"
+      instruction: Kirjoita saamasi koodi.
+      code_placeholder: Koodi
+      enter_code_button: Lisää
+      wrong_code: Väärä koodi
+      used_code: Tämä koodi on jo käytetty.
+      used_personal_id: Tämä ID on jo käytetty. Otathan yhteyttä osoitteeseen voxpopuli@lists.stanford.edu,
+        jos tämä on virhe tai jos sinun tarvitsee äänestää uudelleen.
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+        <p class='lead'>Tervetuloa kokeilemaan osallistuvan budjetoinnin digitaalista äänestyslipuketta, jonka on tehnyt Stanfordin osallistavan demokratian ryhmä yhdessä Espoon kaupungin kanssa.</p>
+        <p class='lead'>Tällä nettisivulla voit tutustua tämän vuoden projekteihin ja digitaaliseen äänestykseen. Tämä nettisivu on vain tiedon tarjoamista varten, <b>etkä voi</b> äänestää täällä oikeasti.</p>
+        <p class='lead'>Kun <u>äänestät oikeasti</u>, olet mukana päättämässä, mihin $XXX miljoonaa kaupungin kehitysbudjetista käytetään. Äänestääksesi sinun täytyy saapua yhdelle kaupungin monista äänestyspaikoista. Äänestys pidetään päivästä (Date XXX) päivään (Date YYY). Näet kaikki ajat ja paikat alta.</p>
+      proceed_button: Katso esimerkkiäänestyslipuketta &gt;&gt;
+      remote_voting_button: "Äänestä nyt &gt;&gt;"
+      code_verification_button: Lisää koodi
+      other_verification_button: "Äänestä toisilla henkilötiedoilla"
+      see_projects_button: Katso projektit
+    voting_has_not_started: "Äänestäminen tällä sivustolla ei ole vielä alkanut. Alamme
+      keräämään etä-ääniä niin pian kuin mahdollista. Kiitos kärsivällisyydestäsi."
+    voting_ended: "Äänestys on päättynyt."
+    public_results: Katso äänestystulokset
+  approval:
+    title: Osallistava budjetointi
+    popup:
+      title: Ohjeet
+      body: |-
+        <ol>
+        <li>Valitse projektit, joita haluat tukea. Voit valita maksimissaan <b>%{max_n_projects} projektia.</b></li>
+        <li>Klikkaa<b>"Äänestä"</b> -nappulaa, kun olet valmis lähettämään äänesi.</li>
+        </ol>
+      ok: OK
+    instructions: |-
+      <h3>Ohjeet</h3>
+      <ol>
+      <li>Valitse projektit, joita haluat tukea. Voit valita maksimissaan <b>%{max_n_projects} projektia.</b></li>
+      <li>Klikkaa <b>"Äänestä"</b> -nappulaa, kun olet valmis lähettämään äänesi.</li>
+      </ol>
+    list_of_projects: Lista projekteista
+    estimated_cost: Arvioitu hinta
+    youtube_video: YouTube-video
+    location: Paikka
+    partner: Yhteistyökumppani
+    committee: Komitea
+    read_details: Lue lisää…
+    select_button:
+      select: Valitse
+      selected: Valittu
+      not_enough_money: Ei tarpeeksi rahaa
+      more_projects: Et voi valita enempää kuin %{max_n_projects} projektia
+    remove_button: Poista
+    remove_button_tooltip: Klikkaa tästä, jos et haluakaan valita tätä projektia.
+    submit_button: "Äänestä..."
+    confirmation:
+      title: Oletko varma, että haluat lähettää äänesi?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Et ole valinnut yhtäkään projektia.</span>"
+          other: 'Olet valinnut seuraavat projektit: %{projects}'
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
+          less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"
+          limit: "<span style='color: red;'>Voit äänestää enintään %{max_n_projects}
+            projektia.</span>"
+        warning: Kun olet lähettänyt äänesi, <strong>et voi</strong> muuttaa sitä
+          enää. Jos haluat muuttaa ääntäsi, klikkaa ’Palaa takaisin’ -nappulaa alapuolella.
+          Jos haluat lähettää äänesi, rastita alapuolella oleva ruutu ja klikkaa sitten
+          ’Äänestä’.
+        checkbox: Ymmärrän, että lähetettyäni ääneni, <strong>en voi</strong> muuttaa
+          sitä enää.
+      ok: "Äänestä"
+      cancel: Palaa takaisin
+    confirmation_over_limit:
+      title: "Ääntäsi ei voitu lähettää"
+      over_n_project_limit: "<span style='color:red'>Olet valinnut <b>%{n_projects}</b>
+        projektia. Voit valita enintään <b>%{max_n_projects}</b> projektia. Poista
+        <b>%{extra}</b> tai useampi projekti.</span>"
+      over_budget_limit: "<span style='color:red'>Olet ylittänyt budjetin.</span>"
+      cancel: Palaa takaisin
+    tracker:
+      text: Olet valinnut %{count} projektia.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Valittuna %{total} kokonaisbudjetista %{budget}.
+      under_budget: Sinulla on vielä %{remaining_money} budjetista jäljellä.
+      over_budget: Olet ylittänyt budjetin.
+      over_budget_but_can_add_projects: Olet ylittänyt budjetin, mutta voit silti
+        lisätä vielä projekteja.
+    adjustable_cost_project:
+      instructions: 'Valitse yksi alla olevista vaihtoehdoista:'
+      not_adjusted_warning: "<span style='color:red'>Olet valinnut $0 kohteeseen %{project}</span>"
+      message: Olet valinnut $%{cost} kohteeseen %{project}
+      table_headings:
+        percentage_column: Prosenttia budjetista käytetty
+        cost_column: Hinta
+        number_column: 'Noin # korttelia päällystetty uudelleen'
+    map:
+      street_resurfacing_count:
+        one: 1 katu päällystetty uudelleen
+        other: "%{count} katua päällystetty uudelleen"
+      alley_resurfacing_count:
+        one: 1 kuja päällystetty uudelleen
+        other: "%{count} kujaa päällystetty uudelleen"
+      apron_resurfacing_count:
+        one: 1 ramppi päällystetty uudelleen
+        other: "%{count} ramppia päällystetty uudelleen"
+      sidewalk_repairing_count:
+        one: 1 jalkakäytävä korjattu
+        other: "%{count} jalkakäytävää korjattu"
+    image_gallery:
+      cue: Klikkaa kuvaa aktivoidaksesi kuvaesityksen
+    project_ranking:
+      list_header: Olet valinnut seuraavat projektit. Muuta niiden järjestystä raahaamalla<span
+        class='glyphicon glyphicon-sort'></span> kuvakkeita.
+  thanks_approval:
+    title: Kiitos
+    description:
+      real: "<p class='lead text-center'>Kiitos äänestämisestä. Klikkaa alapuolella
+        olevaa ’Seuraava’-nappulaa siirtyäksesi seuraavalle sivulle.</p>"
+      demo: "<p class='lead'>Kiitos äänestämisestä! <span style='color: red;'><strong>Huomioithan,
+        että tämä on vain <u>esikatselu</u>.</strong></span> Klikkaa alapuolella olevaa
+        ’Seuraava’-nappulaa siirtyäksesi seuraavalle sivulle.</p>"
+    send_vote_email: "(Optional) Haluan lähettää äänestyslomakkeeni sähköpostiini:"
+    email_placeholder: Lisää sähköpostiosoite
+    next_button: Seuraava &gt;&gt;
+  ranking:
+    title: Osallistava budjetointi
+    popup:
+      title: Ohjeet
+      body: |-
+        <ol>
+        <li>Valitse projektit, joita haluat tukea. Voit valita enintään <b>%{max_n_projects} projektia.</b></li>
+        <li>Klikkaa <b>"Äänestä"</b> -nappulaa, kun olet valmis lähettämään äänesi.</li>
+        </ol>
+      ok: OK
+    instructions: |-
+      <h3>Instructions</h3>
+      <ol>
+      <li>Valitse projektit, joita haluat tukea. Voit valita enintään <b>%{max_n_projects} projektia.</b></li>
+      <li>Klikkaa <b>"Äänestä"</b> -nappulaa, kun olet valmis lähettämään äänesi.</li>
+      </ol>
+    list_of_projects: Projektilista
+    estimated_cost: Arvioitu hinta
+    youtube_video: YouTube-video
+    location: Paikka
+    partner: Yhteistyökumppani
+    committee: Komitea
+    read_details: Lue lisää...
+    select_button:
+      select: Valitse
+      selected: Valittu
+      not_enough_money: Ei tarpeeksi rahaa
+      more_projects: Et voi valita enempää kuin %{max_n_projects} projektia
+    remove_button: Poista
+    remove_button_tooltip: Klikkaa tästä, jos et haluakaan valita tätä projektia.
+    submit_button: "Äänestä..."
+    confirmation:
+      title: Oletko varma, että haluat lähettää äänesi?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Et ole valinnut yhtäkään projektia.</span>"
+          other: 'Olet valinnut seuraavat projektit: %{projects}'
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
+          less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"
+          limit: "<span style='color: red;'>Voit äänestää enintään %{max_n_projects}
+            projektia.</span>"
+        warning: Kun olet lähettänyt äänesi, <strong>et voi</strong> muuttaa sitä
+          enää. Jos haluat muuttaa ääntäsi, klikkaa ’Palaa takaisin’ -nappulaa alapuolella.
+          Jos haluat lähettää äänesi, rastita alapuolella oleva ruutu ja klikkaa sitten
+          ’Äänestä’.
+        checkbox: Ymmärrän, että lähetettyäni ääneni, <strong>en voi</strong> muuttaa
+          sitä enää.
+      ok: "Äänestä"
+      cancel: Palaa takaisin
+    confirmation_over_limit:
+      title: "Ääntäsi ei voitu lähettää"
+      over_n_project_limit: "<span style='color:red'>Olet valinnut <b>%{n_projects}</b>
+        projektia. Voit valita enintään <b>%{max_n_projects}</b> projektia. Poista
+        <b>%{extra}</b> tai useampi projekti.</span>"
+      over_budget_limit: "<span style='color:red'>Olet ylittänyt budjetin.</span>"
+      cancel: Palaa takaisin
+    tracker:
+      text: Olet valinnut %{count} projektia.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Valittuna %{total} kokonaisbudjetista %{budget}.
+      under_budget: Sinulla on vielä %{remaining_money} budjetista jäljellä.
+      over_budget: Olet ylittänyt budjetin.
+      over_budget_but_can_add_projects: Olet ylittänyt budjetin, mutta voit silti
+        lisätä vielä projekteja.
+    adjustable_cost_project:
+      instructions: 'Valitse yksi alla olevista vaihtoehdoista:'
+      not_adjusted_warning: "<span style='color:red'>Olet valinnut $0 kohteeseen %{project}</span>"
+      message: Olet valinnut $%{cost} kohteeseen %{project}
+      table_headings:
+        percentage_column: Prosenttia budjetista käytetty
+        cost_column: Hinta
+        number_column: 'Noin # korttelia päällystetty uudelleen'
+    image_gallery:
+      cue: Klikkaa kuvaa aktivoidaksesi kuvaesityksen
+    project_ranking:
+      list_header: Olet valinnut seuraavat projektit. Muuta niiden järjestystä raahaamalla<span
+        class='glyphicon glyphicon-sort'></span> kuvakkeita.
+  question:
+    title: Kysely
+    question: Oletko 14-vuotias tai vanhempi?
+    ok: Kyllä, olen 14-vuotias tai vanhempi
+    alternative: En, olen alle 14-vuotias
+  comparison:
+    title: Vertailu
+    header: Mikä projekti tarjoaa eniten vastinetta rahalle, eli tarjoaa eniten hyötyä
+      yhteisölle jokaista käytettyä dollaria kohden?
+    estimated_cost: Arvioitu hinta
+    this_project: Tämä projekti
+    not_sure: En ole varma
+    popup:
+      title: Ohjeet
+      body: |-
+        <p style='font-size: 22px;'>Sinua pyydetään nyt arvioimaan projekteja niiden yhteisölle tarjoaman hyödyn perusteella käytettyyn rahaan verrattuna. Tämä vertailu on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia, eikä se ole osa ääntäsi.</p>
+        <ul style='font-size: 22px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
+        <li>Osallistuminen kestää noin 2-3 minuuttia.</li></ul>
+        <p style='font-size: 14px;'>Tutkimus ei sisällä minkäänlaista riskiä.
+        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Kyselyn rahoittaa osittain Yhdysvaltain puolustusministeriö. Otathan yhteyttä professori Ashish Goeliin osoitteessa
+        goel_admins@lists.stanford.edu jos sinulla on kysymyksiä, ehdotuksia tai huolia. Voit myös soittaa Stanford Institutional Review
+        Boardille numeroon 650-723-2480.</p>
+      ok: Jatka
+      exit: Poistu
+  knapsack:
+    title: Kontti
+    popup:
+      title: Ohjeet
+      body: |-
+        <p style='font-size: 20px;'>Sinua <u>ei</u> pyydetä osallistumaan toimintaan, joka vaikuttaa ääneesi. Tämä on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia.</p>
+        <ul style='font-size: 20px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
+        <li>Osallistuminen kestää noin 2-3 minuuttia.</li>
+        <li>Sinua pyydetään valitsemaan rajaton määrä projekteja, mutta projektien kokonaishinta ei voi ylittää %{budget}.</li></ul>
+        <p style='font-size: 14px;'>Tutkimus ei sisällä minkäänlaista riskiä.
+        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Kyselyn rahoittaa osittain Yhdysvaltain puolustusministeriö. Otathan yhteyttä professori Ashish Goeliin osoitteessa
+        goel_admins@lists.stanford.edu jos sinulla on kysymyksiä, ehdotuksia tai huolia. Voit myös soittaa Stanford Institutional Review
+        Boardille numeroon 650-723-2480.</p>
+      ok: OK
+      exit: Poistu
+    instructions: |-
+      <h3>Ohjeet</h3>
+      <ol>
+      <li>Valitse projektit, joita haluat tukea. Yhteishinta ei voi ylittää <b>%{budget}</b>.</li>
+      <li>Voit nähdä käyttämäsi kokonaisrahamäärän yläpuolella olevassa palkissa. Voit poistaa aiemmin valittuja projekteja klikkaamalla palkkia tai klikkaamalla suoraan valittua projektia. </li>
+      <li>Klikkaa <b>"Äänestä"</b>-nappulaa, kun olet valmis lähettämään äänesi.</li>
+      </ol>
+    confirmation:
+      title: Oletko varma, että haluat lähettää äänesi?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Et ole valinnut yhtään projektia.</span>"
+          other: 'Olet valinnut seuraavat projektit: %{projects}'
+          item: "%{project} ($%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
+          less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"
+          limit: "<span style='color: red;'>Voit äänestää enintään %{max_n_projects}
+            projektia.</span>"
+        warning: Kun olet lähettänyt äänesi, <strong>et voi</strong> muuttaa sitä
+          enää.
+      ok: "Äänestä"
+      cancel: Palaa takaisin
+    adjustable_cost_project:
+      instructions: 'Valitse yksi alla olevista vaihtoehdoista:'
+      not_adjusted_warning: "<span style='color:red'>Olet valinnut $0 kohteeseen %{project}</span>"
+      message: Olet valinnut $%{cost} kohteeseen %{project}
+  survey:
+    title: Kysely
+    header: Osallistu kyselyyn
+    question:
+      title: Kiitos
+      body: Kiitos äänestämisestä. Oletko yli 14-vuotias?
+      ok: Kyllä, olen 14-vuotias tai vanhempi
+      alternative: En, olen alle 14-vuotias
+    url: ''
+  thanks:
+    title: Kiitos
+    description:
+      real: Kiitos äänestämisestä. Klikkaa alapuolella olevaa ’Poistu’-nappulaa.
+      demo: 'Kiitos, että testasit digitaalista osallistavan budjetoinnin alustaa!
+        <span style=''color: red;''><strong>Huomioithan, että tämä on vain <u>esikatselu</u>.</strong></span>
+        Äänestääksesi saavu johonkin seuraavista paikoista:'
+    exit: Poistu
+  about:
+    title: Lisätietoa
+    description: |-
+      <center><h1 class='sub-header'>Tietoa osallistavan budjetoinnin alustasta</h1></center>
+      <br><p class='lead'>Osallistavan budjetoinnin alustan on kehittänyt <a href='https://voxpopuli.stanford.edu/' target='_blank'>Stanfordin osallistavan demokratian tiimi</a>. Toivomme, että alustan visuaalinen ilme ja esitetyn tiedon määrä auttaa sinua tutustumaan projekteihin ja äänestämään valistuneemmin.</p>
+      <p class='lead'>Tämä on avoimen lähdekoodin projekti ja lisensioitu GNU GPL v3.0 -lisenssin alla. Löydät lähdekoodin osoitteesta <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
+      <p class='lead'>Jos sinulla on teknisiä ongelmia tai haluat antaa palautetta, lähetäthän sähköpostia osoitteeseen <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>, ja yritämme palata asiaan mahdollisimman pian. </p>
+  result:
+    title: Tulokset
+    vote_results: "Äänestystulokset"
+    description: Tulokset perustuvat %{count} äänestäjän ääniin ajalta %{start} -
+      %{end}.
+    proposed_project: Ehdotetut projektit
+    votes: "Äänet"
+    projects: Projektit
+  election:
+    can_also_vote_in_person: 'Voit myös saapua yhteen seuraavista paikoista äänestääksesi:'
+    info: |-
+      <h3>Äänestyspaikat</h3>
+      <b>Lauantai 27. syyskuuta</b> &nbsp; (12:00 - 16:00)<br>
+      Jossain<br>
+      <br>
+      <b>Tiistai 30. syyskuuta</b> &nbsp; (18:00 - 21:00)<br>
+      Jossain<br>
+      <br>
+      <p>Lisätietoa saat osoitteesta <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: Vahvista puhelinnumerosi
+    header: Vahvista puhelinnumerosi
+    instructions: "<p>Äänestääksesi netissä, tarvitset matkapuhelimen joka voi vastaanottaa
+      tekstiviestejä, jotta voimme vahvistaa puhelinnumerosi. </p><p>Lisää puhelinnumerosi,
+      ja lähetämme sinulle vahvistuskoodin.</p>"
+    phone_number_placeholder: Lisää puhelinnumero
+    verify_button: Vahvista
+    invalid_phone_number: '"%{phone_number}" ei ole kelvollinen puhelinnumero.'
+    no_cell_phone_instruction: Jos sinulla ei ole matkapuhelinta, <a href="%{code_signup_url}">klikkaa
+      tästä</a> käyttääksesi toista nettiäänestystapaa.
+  code_signup:
+    title: Lisää pääsykoodi äänestääksesi
+    instruction: Lähetä sähköpostia osoitteeseen XXX@stanford.edu tai soita numeroon
+      XXX-XXX-XXX saadaksesi pääsykoodin. Kun olet saanut pääsykoodin, lisää se alle
+      ja paina <b>Äänestä</b>-nappulaa jatkaaksesi.
+    code_placeholder: Pääsykoodi
+    vote_button: "Äänestä"
+    wrong_access_code: Väärä pääsykoodi
+    used_access_code: Tämä pääsykoodi on jo käytetty
+  other_signup:
+    title: Lisää tietosi äänestääksesi
+    instruction: ''
+    no_account_number_instruction: Jos sinulla ei ole tilin numeroa, <a href="%{code_signup_url}">klikkaa
+      tästä</a> käyttääksesi toista nettiäänestystapaa.
+    zipcode_placeholder: Postinumero
+    account_number_placeholder: Tilin numero
+    vote_button: "Äänestä"
+    wrong_account_number: Väärä tilin numero
+    used_account_number: Tämä tilin numero on jo käytetty
+  registration:
+    title: "Äänestäjän tiedot"
+    header: "Äänestäjän tiedot"
+    instructions: "Lisää seuraavat tiedot jatkaaksesi äänestyslomakkeeseen. Tähdellä
+      merkityt kentät ovat pakollisia."
+    proceed_button: Jatka
+    no_phone_number: Minulla ei ole puhelinnumeroa
+    name: Nimi
+    first_name: Etunimi
+    middle_initial: Toisen nimen ensimmäinen kirjain
+    last_name: Sukunimi
+    suffix: Pääte
+    phone_number: Puhelinnumero
+    email: Sähköposti
+    address: Katuosoite
+    city: Kaupunki
+    zip_code: Postinumero
+    birth_year: Syntymävuosi
+    date_of_birth: Syntymäaika
+    verify_age_label: Olen yli 16-vuotias
+    email_instruction_label: Haluatko saada tietää äänestystulokset? Lisää sähköpostisi
+      pysyäksesi ajan tasalla.
+    ward: "Äänestysalue"
+    ward_do_not_know: En tiedä
+    error: "Please fix the following errors:"
+    not_voting_age_error: Sinun täytyy olla ikärajan sisällä voidaksesi äänestää
+  sms_signup_confirm:
+    title: Vahvista puhelinnumerosi
+    header: Vahvista puhelinnumerosi
+    instructions: "<p>Olemme lähettäneet vahvistuskoodin numeroon <b>%{phone_number}</b>.
+      Saat sen noin minuutin kuluessa.</p><p>Kirjoita koodi alle varmentaaksesi puhelinnumerosi.</p>"
+    code_placeholder: Kirjoita koodi
+    confirm_button: Vahvista
+    wrong_code: Väärä koodi.
+    resend_code: Jos et saa koodia minuutin kuluessa, klikkaa <a href="%{resend_code_url}">tästä</a>
+      lähettääksesi sen uudelleen.
+    make_sure_phone_number_is_correct: Varmista, että %{phone_number} on puhelinnumerosi.
+      Jos se <u>ei ole</u> oikein, klikkaa <a href="%{signup_url}">tästä[[</a> muuttaaksesi
+      sitä.
+    still_not_working: Jos sinulla on vielä muutaman yrityksen jälkeen vaikeuksia
+      saada vahvistuskoodi, <a href="%{code_signup_url}">klikkaa tästä</a> käyttääksesi
+      toista nettiäänestystapaa.
+  general:
+    demo_warning: Tämä on vain esikatselu. Ääntäsi ei tallenneta.
+    experiment_disclaimer: Tämä on vain kysely. Tämä ei vaikuta ääneesi.
+    shuffle_note: "<span style='font-size: 18px;'>Huomio: nämä projektit ovat satunnaisessa
+      järjestyksessä.</span>"
+    project_string: Projekti
+    timeout:
+      body: Istuntosi on umpeutumassa. Klikkaa "Jatka" jatkaaksesi sivuston käyttöä.
+      continue_button: Jatka
+  date:
+    month_names: [~, tammikuu, helmikuu, maaliskuu, huhtikuu, toukokuu, kesäkuu, heinäkuu, elokuu, syyskuu, lokakuu, marraskuu, joulukuu]
+    order:
+    - :day
+    - :month
+    - :year
+  errors:
+    messages:
+      blank: ei voi olla sisällötön
+      invalid: on kelvoton

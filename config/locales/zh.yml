@@ -18,8 +18,8 @@ zh:
       used_personal_id: "此ID已被使用。请一旦接触voxpopuli@lists.stanford.edu这是一个错误，或者您需要再次投票。"
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the Stanford Crowdsourced Democracy Team.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $... million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from ... to ... . See all times and locations below.</p>"
-      proceed_button: "继续 &gt;&gt;"
-      remote_voting_button: "快来投票 &gt;&gt;"
+      proceed_button: "继续 >>"
+      remote_voting_button: "快来投票 >>"
       code_verification_button: "Enter code"
       other_verification_button: "Vote with other details"
       see_projects_button: "查看项目"  # button to go to the demo vote screen
@@ -142,7 +142,7 @@ zh:
       exit: "退出"
 
   knapsack:
-    title: "背包问题"
+    title: "参与式预算"
     popup:
       title: "使用说明"
       body: "<p style='font-size: 20px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
@@ -191,7 +191,7 @@ zh:
     title: "谢谢"
     description:
       real: "感谢你的投票。请点击下面的‘退出’按键。"
-      demo: "感谢你试验数字参与式预算界面！ <span style='color: red;'><strong>请注意这只是一个<u>测试</u>。</strong></span> 请前往以下地点的投票点去投票："
+      demo: "感谢你试验数字参与式预算界面！ <span style='color: red;'><strong>请注意这只是一个<u>测试</u>。</strong></span>"
     exit: "退出"
 
   about:

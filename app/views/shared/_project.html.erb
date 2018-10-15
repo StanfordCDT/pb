@@ -8,13 +8,12 @@
 <% end %>
 
 <p class="project-title lead">
-  <% if conf[:approval][:show_numbers] && (!@shuffled || conf[:approval][:show_numbers_when_shuffled]) %>
+  <% if conf[current_action][:show_numbers] && (!@shuffled || conf[current_action][:show_numbers_when_shuffled]) %>
     <%= project.number %>.
   <% end %>
-  <% if conf[:approval][:show_cost_in_title] %>
-    <%= project.title.html_safe %> (<%= cost_with_delimiter(project.cost) %>)
-  <% else %>
-    <%= project.title.html_safe %>
+  <%= (!project.title.blank? ? project.title : "<span class='text-danger'>MISSING TITLE</span>").html_safe %>
+  <% if conf[current_action][:show_cost_in_title] %>
+    (<%= cost_with_delimiter(project.cost) %>)
   <% end %>
 </p>
 
@@ -22,7 +21,7 @@
   <% if @shuffled && conf[current_action][:show_numbers_in_description_when_shuffled] %>
     <i>(<%= t('general.project_string').html_safe %> #<%= project.number %>)</i>
   <% end %>
-  <%= project.description.html_safe %>
+  <%= (!project.description.blank? ? project.description : "<span class='text-danger'>MISSING DESCRIPTION</span>").html_safe %>
   <% if !project.details.blank? %>
     <a href="#" data-toggle="modal" data-target="#detailModal<%= project.id %>"><%= t('approval.read_details') %></a>
   <% end %>
@@ -83,7 +82,7 @@
 <% if project.image_url %>
   <p>
     <div class="project-image-wrapper">
-      <img src="<%= project.image.url %>" class="project-image" id="project-image-<%= project.id %>" />
+      <img src="<%= project.image.url %>" class="project-image" id="project-image-<%= project.id %>" alt="<%= project.image_description.blank? ? 'Image for ' + project.title : project.image_description %>" />
     </div>
   </p>
   <% if !project.parsed_data.nil? && project.parsed_data.key?('images_gallery') %>

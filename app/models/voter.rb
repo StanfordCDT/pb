@@ -1,6 +1,6 @@
-class Voter < ActiveRecord::Base
+class Voter < ApplicationRecord
   belongs_to :election
-  belongs_to :location
+  belongs_to :location, optional: true
   has_many :vote_approvals, dependent: :destroy
   has_many :vote_comparisons, dependent: :destroy
   has_many :vote_knapsacks, dependent: :destroy

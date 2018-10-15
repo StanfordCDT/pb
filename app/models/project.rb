@@ -1,14 +1,14 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   belongs_to :election
-  belongs_to :category
+  belongs_to :category, optional: true
   has_many :vote_approvals
   has_many :vote_knapsacks
   has_many :vote_plusminuses
-  translates :title, :short_title, :description, :details, :address, :partner, :committee, :video_url, :partner
+  translates :title, :description, :details, :address, :partner, :committee, :video_url, :partner, :image_description
   globalize_accessors
   mount_uploader :image, ImageUploader
-  validates :title, presence: true
-  validates :description, presence: true
+  #validates :title, presence: true
+  #validates :description, presence: true
   validates :cost, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :cost_min, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
   validates :cost_step, numericality: {only_integer: true, greater_than: 0}, allow_blank: true

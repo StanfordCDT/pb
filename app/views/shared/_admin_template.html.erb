@@ -53,7 +53,6 @@
     election = items[0]
     controller = params[:controller]
     action = params[:action]
-    can_update_election = current_user.superadmin? || (current_user.admin?(@election) && @election.allow_admins_to_update_election?)
     links = [
       {
         url: admin_election_path(election),
@@ -67,14 +66,14 @@
         text: "Settings",
         glyphicon: "cog",
         active: controller == "admin/elections" && action == "edit",
-        visible: can_update_election
+        visible: current_user.admin?(@election)
       },
       {
         url: admin_election_projects_path(election),
         text: "Projects",
         glyphicon: "list",
         active: controller == "admin/projects" || controller == "admin/categories",
-        visible: can_update_election
+        visible: current_user.admin?(@election)
       },
       {
         url: admin_election_code_batches_path(election),
@@ -109,7 +108,7 @@
         text: "Files",
         glyphicon: "file",
         active: controller == "admin/files",
-        visible: can_update_election
+        visible: current_user.admin?(@election)
       },
       {
         url: admin_election_locations_path(election),

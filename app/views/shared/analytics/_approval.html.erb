@@ -1,31 +1,55 @@
-<% if !is_public && !is_allowed_to_see_exact_results? %>
+<% if !is_public && !current_user.can_see_exact_results?(@election) %>
   <p class="alert alert-warning" role="alert">
     <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
   </p>
 <% end %>
 
 <% if !is_public %>
-  <% if is_allowed_to_see_voter_data? %>
-    <a href="<%= analytics_cooccurrence_admin_election_path(@election) %>">View co-occurrence matrix</a><br>
-  <% end %>
-  <a href="<%= url_for(format: :csv, table: 'approvals') %>">Export into Excel</a><br>
-  <% if is_allowed_to_see_voter_data? %>
-    <% if @election.slug == '49' || @election.slug.start_with?('49_20')  # FIXME %>
-      <a href="<%= analytics_chicago49_admin_election_path(@election, format: :csv) %>">Export individual votes into Excel (Chicago's 49th Ward format)</a><br>
-    <% else %>
-      <a href="<%= url_for(format: :csv, table: 'approvals_individual') %>">Export individual votes into Excel</a>
-    <% end %>
-  <% end %>
+  <div style="float: right;">
+    <span class="dropdown">
+      <a class="dropdown-toggle" id="approvalExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Export to Excel
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="approvalExportDropdown">
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'approvals') %>">Aggregate results</a>
+        <% if current_user.can_see_voter_data?(@election) %>
+          <% if @election.slug == '49' || @election.slug.start_with?('49_') || @election.slug.start_with?('chicago49') # FIXME %>
+            <a class="dropdown-item" href="<%= analytics_chicago49_admin_election_path(@election, format: :csv) %>">Individual votes (Chicago's 49th Ward format)</a>
+          <% end %>
+          <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'approvals_individual') %>">Individual votes</a>
+        <% end %>
+      </div>
+    </span>
+  </div>
 <% end %>
 
-<div id="approval-analytics-table"></div><br>
+<div class="mb-2">
+  <ul class="nav formatSelector" role="tablist">
+    <li class="nav-item">
+      <a class="active" id="approval-table-tab" data-toggle="tab" href="#approval-table" role="tab" aria-controls="approval-table" aria-selected="true">Table</a> |
+    </li>
+    <li class="nav-item">
+      <a id="approval-chart-tab" data-toggle="tab" href="#approval-chart" role="tab" aria-controls="approval-chart" aria-selected="false">Chart</a>
+    </li>
+    <% if current_user.can_see_voter_data?(@election) %>
+      <li class="nav-item">
+        | <a href="<%= analytics_cooccurrence_admin_election_path(@election) %>">Co-occurrence matrix</a>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
-<svg id="approval-bar-chart"></svg>
+<div class="tab-content">
+  <div class="tab-pane show active" id="approval-table" role="tabpanel" aria-labelledby="approval-table-tab">
+  </div>
+  <div class="tab-pane" id="approval-chart" role="tabpanel" aria-labelledby="approval-chart-tab">
+  </div>
+</div>
 
 <style>
 #approval-table .progress {
   margin-bottom: 0;
-  background-color: #e4e4e4;
+  background-color: #bbbbbb;
 }
 </style>
 
@@ -103,6 +127,7 @@ function reloadApprovalTable() {
           var progressBarDiv = document.createElement('div');
           progressBarDiv.className = 'progress-bar bg-success';
           progressBarDiv.style.width = (approvals[i].vote_count / max_approval_vote_count * 100) + '%';
+
           progressBarDiv.textContent = numberWithDelimiter(approvals[i].vote_count);
           progressDiv.appendChild(progressBarDiv);
         }
@@ -122,8 +147,8 @@ function reloadApprovalTable() {
   }
   table.appendChild(tbody);
 
-  document.getElementById('approval-analytics-table').innerHTML = '';
-  document.getElementById('approval-analytics-table').appendChild(table);
+  document.getElementById('approval-table').innerHTML = '';
+  document.getElementById('approval-table').appendChild(table);
 }
 
 reloadApprovalTable();
@@ -138,28 +163,28 @@ if (window.reloadCallbacks) {
 
 // Approval bar chart.
 (function() {
-  var svg = d3.select("#approval-bar-chart")
-      .attr("width", width + margin.left + margin.right)
+  // Filter out adjustable cost projects from the bar chart because they might be misleading.
+  var data = approvals.filter(function(p) { return !projects[idToIndex[p.id]].adjustable_cost; });
+
+  var actualWidth = Math.min(45 * data.length, width);
+  var svg = d3.select("#approval-chart")
+    .append("svg")
+      .attr("width", actualWidth + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var x = d3.scale.ordinal().rangeRoundBands([0, width], .2);
-  var y = d3.scale.linear().range([height, 0]);
-
-  // Filter out adjustable cost projects from the bar chart because they might be misleading.
-  var data = approvals.filter(function(p) { return !projects[idToIndex[p.id]].adjustable_cost; });
+  var x = d3.scaleBand().rangeRound([0, actualWidth]).padding(.2);
+  var y = d3.scaleLinear().range([height, 0]);
 
   x.domain(data.slice(0).sort(function(a, b){ return b.vote_count - a.vote_count }).map(function(p) { return p.id; }));
   y.domain([0, d3.max(data, function(p) { return p.vote_count; })]);
 
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+  var xAxis = d3.axisBottom()
+    .scale(x);
 
-  var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+  var yAxis = d3.axisLeft()
+    .scale(y);
 
   // x-axis.
   svg.append("g")
@@ -189,13 +214,13 @@ if (window.reloadCallbacks) {
   bar.append("rect")
     .attr("class", "bar")
     .attr("x", function(p) { return x(p.id); })
-    .attr("width", x.rangeBand())
+    .attr("width", x.bandwidth())
     .attr("y", function(p) { return y(p.vote_count); })
     .attr("height", function(p) { return height - y(p.vote_count); });
 
   // Text above each bar.
   bar.append("text")
-    .attr("x", function(p) { return x(p.id) + x.rangeBand() / 2; })
+    .attr("x", function(p) { return x(p.id) + x.bandwidth() / 2; })
     .attr("y", function(p) { return y(p.vote_count); })
     .attr("dy", "-.4em")
     .style("text-anchor", "middle")

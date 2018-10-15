@@ -1,0 +1,43 @@
+<thead class="thead-light">
+  <tr>
+    <td class="border-top-0" colspan="3">
+      <h4><%= is_active ? "Active" : "Inactive" %> Elections</h4>
+    </td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th>URL</th>
+    <% if current_user.superadmin? %>
+      <th>Voting method</th>
+      <th>Approx. Vote Count</th>
+    <% end %>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <% elections.each do |election| %>
+    <tr>
+      <td><a href="<%= admin_election_path(election.id) %>"><%= election.name %></a></td>
+      <td>/<%= election.slug %></td>
+      <% if current_user.superadmin? %>
+        <td><%= election.workflow_summary.html_safe %></td>
+        <td>
+          <%= election.real_election? ? number_with_delimiter(election.voter_count) : "-" %>
+        </td>
+      <% end %>
+      <td>
+        <div class="dropdown">
+          <a href="#" id="dropdownMenuButton" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-option-horizontal"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/<%= election.slug %>" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> View Website</a>
+            <% if current_user.superadmin? %>
+              <a class="dropdown-item" href="<%= duplicate_admin_election_path(election.id) %>"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Duplicate</a>
+            <% end %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</tbody>

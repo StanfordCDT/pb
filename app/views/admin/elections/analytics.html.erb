@@ -42,9 +42,6 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
 .bar {
   fill: steelblue;
 }
-.bar:hover {
-  fill: #2ca02c;
-}
 .axis {
   font-size: 14px;
 }
@@ -54,8 +51,17 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
   stroke: #000;
   shape-rendering: crispEdges;
 }
-.x.axis path {
-  display: none;
+.axis text {
+  fill: #000;
+}
+.formatSelector.nav {
+  display: inline;
+}
+.formatSelector li {
+  display: inline;
+}
+.formatSelector .active {
+  font-weight: bold;
 }
 </style>
 
@@ -75,10 +81,13 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
         <% end %>
       </h2>
 
-      <p>
-        <a href="<%= url_for(format: :csv, table: 'all') %>">Export into Excel</a> |
-        <a href="<%= analytics_more_admin_election_path(@election) %>">View details</a>
-      </p>
+      <div style="float: right;">
+        <a href="<%= url_for(format: :csv, table: 'all') %>">Export to Excel</a>
+      </div>
+
+      <div class="mb-2">
+        <a href="<%= analytics_more_admin_election_path(@election) %>">Time and language statistics</a>
+      </div>
 
       <style>
       #votecount-table > thead > tr > th:first-child,
@@ -148,7 +157,7 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
         <%= render partial: 'shared/analytics/comparison' %>
       <% end %>
 
-      <% if is_allowed_to_see_voter_data? && @voter_registration_exists %>
+      <% if current_user.can_see_voter_data?(@election) && @voter_registration_exists %>
         <h3>Voter registration</h3>
         <a href="<%= url_for(format: :csv, table: 'voter_registration') %>">Export voter registration records</a>
       <% end %>

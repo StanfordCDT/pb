@@ -1,49 +1,73 @@
-<p>
-  <a href="<%= url_for(format: :csv, table: 'comparison_ratios') %>">Export ratios</a>,
-  <a href="<%= url_for(format: :csv, table: 'comparison_wins') %>">Export wins</a>,
-  <a href="<%= url_for(format: :csv, table: 'comparison_ties') %>">Export ties</a>,
-  <a href="<%= url_for(format: :csv, table: 'comparison_losses') %>">Export losses</a><br>
-  <% if is_allowed_to_see_voter_data? %>
-    <a href="<%= url_for(format: :csv, table: 'comparisons_individual') %>">Export individual votes into Excel</a>
-  <% end %>
-</p>
+<div style="float: right;">
+  <span class="dropdown">
+    <a class="dropdown-toggle" id="approvalExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Export to Excel
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="approvalExportDropdown">
+      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'comparison_ratios') %>">Win ratios</a>
+      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'comparison_wins') %>">Win counts</a>
+      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'comparison_ties') %>">Tie counts</a>
+      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'comparison_losses') %>">Loss counts</a>
+      <% if current_user.can_see_voter_data?(@election) %>
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'comparisons_individual') %>">Individual votes</a>
+      <% end %>
+    </div>
+  </span>
+</div>
 
-<p>A green cell <span style="background-color: #0f0; width: 22px; height: 22px; border: 1px #ddd solid; display: inline-block;"></span> indicates that when the row project and the column project were shown to the voters on the left side and the right side, respectively, the row project received more votes.</p>
-<p>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="comparison_values" id="comparison_values_ratios" value="ratios" checked="checked">
-    <label class="form-check-label" for="comparison_values_ratios">Ratios</label>
+<div class="mb-2">
+  <ul class="nav formatSelector" role="tablist">
+    <li class="nav-item">
+      <a class="active" id="comparison-table-tab" data-toggle="tab" href="#comparison-table" role="tab" aria-controls="comparison-table" aria-selected="true">Table</a> |
+    </li>
+    <li class="nav-item">
+      <a id="comparison-voteCountByDay-tab" data-toggle="tab" href="#comparison-voteCountByDay" role="tab" aria-controls="comparison-voteCountByDay" aria-selected="false">Vote count by day</a>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <div class="tab-pane show active" id="comparison-table" role="tabpanel" aria-labelledby="comparison-table-tab">
+
+    <p>A green cell <span style="background-color: #0f0; width: 22px; height: 22px; border: 1px #ddd solid; display: inline-block;"></span> indicates that when the row project and the column project were shown to the voters on the left side and the right side, respectively, the row project received more votes.</p>
+
+    <p>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="comparison_values" id="comparison_values_ratios" value="ratios" checked="checked">
+        <label class="form-check-label" for="comparison_values_ratios">Win ratios</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="comparison_values" id="comparison_values_counts" value="counts">
+        <label class="form-check-label" for="comparison_values_counts">Counts</label>
+      </div>
+    </p>
+
+    <div id="comparison"></div>
+
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="comparison_values" id="comparison_values_counts" value="counts">
-    <label class="form-check-label" for="comparison_values_counts">Counts</label>
+  <div class="tab-pane" id="comparison-voteCountByDay" role="tabpanel" aria-labelledby="comparison-voteCountByDay-tab">
+    <table class="table table-bordered table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th></th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comparison_voters_by_date.each do |v| %>
+          <tr>
+            <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
+            <td><%= number_with_delimiter(v.vote_count) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><b>Total</b></td>
+          <td><%= number_with_delimiter(@comparison_total) %> </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</p>
-
-<div id="comparison"></div>
-
- <!-- Analytics table for comparison -->
-<h4>Comparisons - Vote counts</h4>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Votes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @comparison_voters_by_date.each do |v| %>
-      <tr>
-        <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
-        <td><%= number_with_delimiter(v.vote_count) %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><b>Total</b></td>
-      <td><%= number_with_delimiter(@comparison_total) %> </td>
-    </tr>
-  </tbody>
-</table>
+</div>
 
 <style>
 #comparison-table td {

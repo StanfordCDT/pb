@@ -18,90 +18,10 @@
 
       <table class="table table-sm election-table">
       <% if !@active_elections.empty? %>
-          <thead class="thead-light">
-            <tr>
-              <td class="border-top-0" colspan="3">
-                <h4>Active Elections</h4>
-              </td>
-            </tr>
-            <tr>
-              <th>Name</th>
-              <th>URL</th>
-              <% if current_user.superadmin? %>
-                <th>Voting method</th>
-              <% end %>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @active_elections.each do |election| %>
-              <tr>
-                <td><a href="<%= admin_election_path(election.id) %>"><%= election.name %></a></td>
-                <td>/<%= election.slug %></td>
-                <% if current_user.superadmin? %>
-                  <td><%= summarize_workflow(election.config[:workflow]) %></td>
-                <% end %>
-                <td>
-                  <div class="dropdown">
-                    <a href="#" id="dropdownMenuButton" data-toggle="dropdown">
-                      <span class="glyphicon glyphicon-option-horizontal"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="/<%= election.slug %>" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> View Website</a>
-                      <% if current_user.superadmin? %>
-                        <a class="dropdown-item" href="<%= duplicate_admin_election_path(election.id) %>"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Duplicate</a>
-                      <% end %>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        
+        <%= render partial: 'shared/election_list', locals: {elections: @active_elections, is_active: true} %>
       <% end %>
-
-
       <% if !@inactive_elections.empty? %>
-          <thead class="thead-light">
-            <tr>
-              <td class="border-top-0" colspan="3">
-                <h4>Inactive Elections</h4>
-              </td>
-            </tr>
-            <tr>
-              <th>Name</th>
-              <th>URL</th>
-              <% if current_user.superadmin? %>
-                <th>Voting method</th>
-              <% end %>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @inactive_elections.each do |election| %>
-              <tr>
-                <td><a href="<%= admin_election_path(election.id) %>"><%= election.name %></a></td>
-                <td>/<%= election.slug %></td>
-                <% if current_user.superadmin? %>
-                  <td><%= summarize_workflow(election.config[:workflow]) %></td>
-                <% end %>
-                <td>
-                  <div class="dropdown">
-                    <a href="#" id="dropdownMenuButton" data-toggle="dropdown">
-                      <span class="glyphicon glyphicon-option-horizontal"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="/<%= election.slug %>" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> View Website</a>
-                      <% if current_user.superadmin? %>
-                        <a class="dropdown-item" href="<%= duplicate_admin_election_path(election.id) %>"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span> Duplicate</a>
-                      <% end %>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        
+        <%= render partial: 'shared/election_list', locals: {elections: @inactive_elections, is_active: false} %>
       <% end %>
       </table>
 

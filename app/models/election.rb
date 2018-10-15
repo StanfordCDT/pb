@@ -1,4 +1,4 @@
-class Election < ActiveRecord::Base
+class Election < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :voters, dependent: :destroy
@@ -90,6 +90,10 @@ class Election < ActiveRecord::Base
     Rails.root.join('public', 'uploads', 'election', 'file', id.to_s)
   end
 
+  def workflow_summary
+    workflow_summary_helper(config[:workflow]) || ""
+  end
+
   private
 
   def self.default_config
@@ -131,5 +135,29 @@ class Election < ActiveRecord::Base
 
   def delete_files
     FileUtils.rm_rf(store_dir)
+  end
+
+  def workflow_summary_helper(workflow)
+    workflow.map do |page|
+      tmp =
+      case page
+      when "approval"
+        "Approval"
+      when "knapsack"
+        "Knapsack"
+      when "ranking"
+        "Ranking"
+      when "comparison"
+        "Comparison"
+      when "plusminus"
+        "Plus/minus"
+      else
+        page.is_a?(Array) ? "[" + workflow_summary_helper(page) + "]" : nil
+      end
+      if !page.is_a?(Array) && !tmp.nil? && config[page.to_sym][:show_disclaimer]
+        tmp = "<span class='text-success'>" + tmp + "</span>"
+      end
+      tmp
+    end.reject(&:nil?).join(", ")
   end
 end

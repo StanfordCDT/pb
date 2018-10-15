@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   belongs_to :election
   has_many :projects, dependent: :nullify
   translates :name

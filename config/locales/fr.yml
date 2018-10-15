@@ -18,8 +18,8 @@ fr:
       used_personal_id: "Cette identification a déjà été utilisé. S'il vous plaît contacter voxpopuli@lists.stanford.edu au cas où cela est une erreur ou si vous devez voter à nouveau."
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenue à l'échantillon de la ville de NYC budget participatif de vote numérique, gracieuseté de l'équipe pour la démocratie Crowdsourced Stanford.</p><p class='lead'>Sur ce site, vous pouvez vous familiariser avec les projets de cette année et le bulletin de vote numérique. Ce site est uniquement informatif, et vous ne pouvez pas voter réelle ici.</p><p class='lead'>Quand vous lancez votre bulletin de vote réel, vous sera de décider comment vous voulez allouer 2,4 millions $ du budget d'amélioration des immobilisations de la ville. Pour voter, vous devez venir à l'un des sites de vote de nombreux qui seront situés dans toute la ville.</p>"
-      proceed_button: "Voir échantillon du bulletin de vote &gt;&gt;"
-      remote_voting_button: "Voter &gt;&gt;"
+      proceed_button: "Voir échantillon du bulletin de vote >>"
+      remote_voting_button: "Voter >>"
       code_verification_button: "Entrer le code"
       other_verification_button: "Votez avec d'autres détails"
       see_projects_button: "Voir les projets"  # Link to an external site
@@ -141,7 +141,7 @@ fr:
       exit: "Quitter"
 
   knapsack:
-    title: "Knapsack"
+    title: "Participatory Budgeting"
     popup:
       title: "Instructions"
       body: "<p style='font-size: 20px;'>Vous allez maintenant être invité à participer à une activité qui sera pas affecter votre vote, mais fait partie d'un projet de recherche Université de Stanford signifiait pour nous aider à améliorer le processus de budgétisation participative.</p>
@@ -190,7 +190,7 @@ fr:
     title: "Merci"
     description:
       real: "Merci d'avoir voté. S'il vous plaît cliquer sur le bouton 'Quitter' ci-dessous."
-      demo: "Merci pour tester l'interface de budgétisation participative numérique! <span style='color: red;'><strong>S'il vous plaît noter que ceci est seulement un <u>test</u>.</strong></span> Pour voter, s'il vous plaît venez à un bureau de vote dans l'un des endroits suivants:"
+      demo: "Merci pour tester l'interface de budgétisation participative numérique! <span style='color: red;'><strong>S'il vous plaît noter que ceci est seulement un <u>test</u>.</strong></span>"
     exit: "Quitter"
 
   about:

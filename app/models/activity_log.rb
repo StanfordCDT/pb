@@ -1,3 +1,3 @@
-class ActivityLog < ActiveRecord::Base
-  belongs_to :user
+class ActivityLog < ApplicationRecord
+  belongs_to :user, optional: true
 end

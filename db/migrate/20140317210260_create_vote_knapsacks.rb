@@ -1,4 +1,4 @@
-class CreateVoteKnapsacks < ActiveRecord::Migration
+class CreateVoteKnapsacks < ActiveRecord::Migration[5.2]
   def change
     create_table :vote_knapsacks do |t|
       t.references :voter, index: true, null: false

@@ -18,8 +18,8 @@ es:
       used_personal_id: "Este ID ya se ha utilizado. Por favor, póngase en contacto con voxpopuli@lists.stanford.edu en caso de que esto es un error o tienes que votar de nuevo."
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del Equipo Stanford Crowdsourced Democracy.</p><p class='lead'>En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class='lead'>Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
-      proceed_button: "Continuar &gt;&gt;"
-      remote_voting_button: "Votar &gt;&gt;"
+      proceed_button: "Boleta de muestra >>"
+      remote_voting_button: "Votar >>"
       code_verification_button: "Enter code"
       other_verification_button: "Vote with other details"
       see_projects_button: "Ver Proyectos"  # Link to an external site
@@ -141,7 +141,7 @@ es:
       exit: "Salir"
 
   knapsack:
-    title: "Knapsack"
+    title: "Presupuesto Participativo"
     header: "Seleccione los proyectos que le gustaría apoyar, arrastrándolos de la derecha a la izquierda."
     popup:
       title: "Instrucciones"
@@ -191,7 +191,7 @@ es:
     title: "Gracias"
     description:
       real: "Gracias por votar. Por favor haga clic en el botón 'Salir'."
-      demo: "¡Gracias por probar la interfaz digital del presupuesto participativo! <span style='color: red;'><strong>Tenga en cuenta que esto es sólo una <u>prueba</u>.</strong></span> Para poder votar, acuda a una ubicación de votación en uno de los siguientes lugares:"
+      demo: "¡Gracias por probar la interfaz digital del presupuesto participativo! <span style='color: red;'><strong>Tenga en cuenta que esto es sólo una <u>prueba</u>.</strong></span>"
     exit: "Salir"
 
   about:

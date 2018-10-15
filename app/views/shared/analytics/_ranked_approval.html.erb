@@ -1,21 +1,30 @@
-<% if !is_allowed_to_see_exact_results? %>
+<% if !current_user.can_see_exact_results?(@election) %>
   <p class="alert alert-warning" role="alert">
     <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
     The total score may not be accurate.
   </p>
 <% end %>
 
-<a href="<%= url_for(format: :csv, table: 'project_ranked_votes') %>">Export into Excel</a><br>
-<% if is_allowed_to_see_voter_data? %>
-  <a href="<%= url_for(format: :csv, table: 'ranking_approval_individual') %>">Export individual votes into Excel</a>
-<% end %>
+<div style="float: right;" class="mb-2">
+  <span class="dropdown">
+    <a class="dropdown-toggle" id="approvalExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Export to Excel
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="approvalExportDropdown">
+      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'project_ranked_votes') %>">Aggregate results</a>
+      <% if current_user.can_see_voter_data?(@election) %>
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'ranking_approval_individual') %>">Individual votes</a>
+      <% end %>
+    </div>
+  </span>
+</div>
 
 <div id="ranked-approval-analytics-table"></div><br>
 
 <style>
 #ranked-approval-table .progress {
   margin-bottom: 0;
-  background-color: #e4e4e4;
+  background-color: #bbbbbb;
 }
 </style>
 
@@ -26,9 +35,9 @@ var max_n_projects = <%= @election.config[:ranking][:max_n_projects] %>;
 
 function reloadRankedApprovalTable() {
   var table = document.createElement('table');
-  table.setAttribute("id", "ranked-approval-table");
-  table.className = 'table table-striped';
+  table.className = 'table table-bordered table-sm';
   var thead = document.createElement('thead');
+  thead.className = 'thead-light';
 
   { // first row
     var tr = document.createElement('tr');

@@ -1,15 +1,17 @@
 module Admin
   class CategoriesController < ApplicationController
     before_action :set_no_cache
-    before_action :require_admin_auth_with_special_permission
+    before_action :require_admin_auth
 
     def new
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @category = Category.new
     end
 
     def create
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @category = Category.new(category_params)
       @category.election = @election
       @category.sort_order = @election.categories.maximum(:sort_order).to_i + 1
@@ -22,11 +24,13 @@ module Admin
 
     def edit
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @category = @election.categories.find(params[:id])
     end
 
     def update
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @category = @election.categories.find(params[:id])
       if @category.update(category_params)
         redirect_to admin_election_projects_path(@election)
@@ -37,6 +41,7 @@ module Admin
 
     def destroy
       election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(election)
       category = election.categories.find(params[:id])
       category.destroy
       redirect_to admin_election_projects_path(election)
@@ -44,6 +49,7 @@ module Admin
 
     def reorder
       election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(election)
       category_ids = params[:category_ids].map(&:to_i)
       election.categories.each do |category|
         category.update_attribute(:sort_order, category_ids.index(category.id))

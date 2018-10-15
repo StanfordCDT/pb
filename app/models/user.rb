@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # TODO: rename username to email?
   # TODO: use a proper regex for email
   validates :username, presence: true, uniqueness: true, format: {with: /\A[a-zA-Z0-9\.@_+\-]+\Z/}
@@ -38,6 +38,18 @@ class User < ActiveRecord::Base
 
   def admin_or_volunteer?(election)
     admin?(election) || volunteer?(election)
+  end
+
+  def can_update_election?(election)
+    superadmin? || (admin?(election) && election.allow_admins_to_update_election?)
+  end
+
+  def can_see_voter_data?(election)
+    superadmin? || (admin?(election) && election.allow_admins_to_see_voter_data?)
+  end
+
+  def can_see_exact_results?(election)
+    superadmin? || (admin?(election) && election.allow_admins_to_see_exact_results?)
   end
 
   private

@@ -4,11 +4,9 @@ module Admin
   class ElectionsController < ApplicationController
     before_action :set_no_cache
     before_action :require_superadmin_auth, only: [:new, :create, :duplicate, :post_duplicate, :destroy]
-    before_action :require_admin_auth_with_special_permission, only: [:edit, :update]
-    before_action :require_admin_auth, only: [:analytics, :analytics_more, :analytics_cooccurrence, :analytics_adjustable_cost_projects, :analytics_chicago49]
+    before_action :require_admin_auth, only: [:edit, :update, :analytics, :analytics_more, :analytics_cooccurrence, :analytics_adjustable_cost_projects, :analytics_chicago49]
     before_action :require_admin_or_volunteer_auth, only: [:show, :to_voting_machine, :post_to_voting_machine]
     before_action :require_user_account, only: [:config_reference]
-    helper_method :is_allowed_to_see_voter_data?, :is_allowed_to_see_exact_results?
 
     def show
       @election = Election.find(params[:id])
@@ -22,6 +20,15 @@ module Admin
       @election = Election.new(election_params)
       @election.config_yaml = ""
       if @election.save
+        (1..5).each do |i|
+          project = Project.new
+          project.election = @election
+          project.number = i.to_s
+          project.title = "Example Project " + i.to_s
+          project.description = "Example description " + i.to_s + "."
+          project.cost = i * 1000
+          project.save!
+        end
         redirect_to admin_election_path(@election)
       else
         render :new
@@ -58,6 +65,7 @@ module Admin
 
     def update
       @election = Election.find(params[:id])
+      raise "error" if !current_user.can_update_election?(@election)
 
       respond_to do |format|
         if @election.update(election_params)
@@ -166,7 +174,7 @@ module Admin
             when :ranking_approval_individual then ranking_approval_individual_csv.call
             else raise 'error'
           end
-          send_data csv_string, type: Mime::CSV, disposition: "attachment; filename=" + @election.slug + "-" + table + ".csv"
+          send_data csv_string, type: :csv, disposition: "attachment; filename=" + @election.slug + "-" + table + ".csv"
           # render plain: csv_string  # for debugging
         end
       end
@@ -209,9 +217,9 @@ module Admin
     end
 
     def analytics_cooccurrence
-      raise 'error' unless is_allowed_to_see_voter_data?
-
       @election = Election.find(params[:id])
+
+      raise 'error' unless current_user.can_see_voter_data?(@election)
 
       vote_approvals = @election.valid_voters.joins('LEFT OUTER JOIN vote_approvals ON vote_approvals.voter_id = voters.id')
         .select('voters.id, vote_approvals.project_id').order(:id)
@@ -291,7 +299,7 @@ module Admin
           end
         end
 
-        if !is_allowed_to_see_exact_results?
+        if !current_user.can_see_exact_results?(@election)
           vote_counts.each { |cost, vote_count| vote_counts[cost] = vote_count.round(-1) }
         end
 
@@ -342,7 +350,7 @@ module Admin
           csv << [(i+1).to_s] + cs + [''] + ls
         end
       end
-      send_data csv_string, type: Mime::CSV, disposition: "attachment; filename=pb" + @election.slug + ".csv"
+      send_data csv_string, type: :csv, disposition: "attachment; filename=pb" + @election.slug + ".csv"
     end
 
     def to_voting_machine
@@ -404,7 +412,7 @@ module Admin
     def election_params
       params.require(:election).permit(
         [:name, :slug, :budget, :time_zone, :config_yaml] +
-        (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results] : [])
+        (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :show_link_on_home_page, :real_election, :remarks] : [])
       )
     end
 
@@ -464,7 +472,7 @@ module Admin
         }
       end
 
-      if !is_allowed_to_see_exact_results?
+      if !current_user.can_see_exact_results?(election)
         approvals.each { |p| p[:vote_count] = p[:vote_count].round(-1) }
       end
 
@@ -480,7 +488,7 @@ module Admin
       end
 
       approvals_individual_csv = lambda do
-        raise 'error' unless is_allowed_to_see_voter_data?
+        raise 'error' unless current_user.can_see_voter_data?(election)
 
         vote_approvals = election.valid_voters.joins('LEFT OUTER JOIN vote_approvals ON vote_approvals.voter_id = voters.id')
           .select('voters.id, voters.authentication_id, vote_approvals.project_id').order(:id)
@@ -568,7 +576,7 @@ module Admin
       comparison_total = comparison_voters_by_date.map(&:vote_count).sum
 
       comparisons_individual_csv = lambda do
-        raise 'error' unless is_allowed_to_see_voter_data?
+        raise 'error' unless current_user.can_see_voter_data?(election)
 
         vote_comparisons = election.valid_voters.joins(:vote_comparisons)
           .select('voters.id, vote_comparisons.first_project_id, vote_comparisons.second_project_id, vote_comparisons.result').order(:id)
@@ -611,7 +619,7 @@ module Admin
         .group('projects.id, vote_knapsacks.cost')
         .order('vote_count DESC, projects.sort_order')
 
-      if !is_allowed_to_see_exact_results?
+      if !current_user.can_see_exact_results?(election)
         votes_by_project_and_cost.each { |v| v.vote_count = v.vote_count.round(-1) }
       end
 
@@ -657,7 +665,7 @@ module Admin
       knapsack_total = knapsack_voters_by_date.map(&:vote_count).sum
 
       knapsacks_individual_csv = lambda do
-        raise 'error' unless is_allowed_to_see_voter_data?
+        raise 'error' unless current_user.can_see_voter_data?(election)
 
         vote_knapsacks = election.valid_voters.joins('LEFT OUTER JOIN vote_knapsacks ON vote_knapsacks.voter_id = voters.id')
           .select('voters.id, vote_knapsacks.project_id, vote_knapsacks.cost').order(:id)
@@ -725,7 +733,7 @@ module Admin
         'INNER JOIN voters ON voters.id = vote_approvals.voter_id AND voters.void = 0')
         .select('vote_approvals.project_id, vote_approvals.rank, COUNT(voters.id) AS vote_count')
         .group('vote_approvals.project_id, vote_approvals.rank')
-      if !is_allowed_to_see_exact_results?
+      if !current_user.can_see_exact_results?(election)
         votes_by_project_and_rank.each { |v| v.vote_count = v.vote_count.round(-1) }
       end
       votes_by_project_and_rank.each do |v|
@@ -765,7 +773,7 @@ module Admin
 
       # The lambda function to generate the CSV file for the voter data
       ranking_approval_individual_csv = lambda do
-        raise 'error' unless is_allowed_to_see_voter_data?
+        raise 'error' unless current_user.can_see_voter_data?(election)
 
         ranking_approval_votes = election.valid_voters.joins('JOIN vote_approvals ON vote_approvals.voter_id = voters.id')
           .select('voters.id, vote_approvals.project_id, vote_approvals.rank')
@@ -820,7 +828,7 @@ module Admin
       voter_registration_exists = election.voter_registration_records.exists?
 
       voter_registration_csv = lambda do
-        raise 'error' unless is_allowed_to_see_voter_data?
+        raise 'error' unless current_user.can_see_voter_data?(election)
 
         records = election.voter_registration_records
           .joins('LEFT OUTER JOIN voters ON voters.id = voter_registration_records.voter_id AND ' \
@@ -887,14 +895,6 @@ module Admin
         end
       end
       csv_string
-    end
-
-    def is_allowed_to_see_voter_data?
-      current_user.superadmin? || @election.allow_admins_to_see_voter_data?
-    end
-
-    def is_allowed_to_see_exact_results?
-      current_user.superadmin? || @election.allow_admins_to_see_exact_results?
     end
   end
 end

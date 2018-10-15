@@ -101,10 +101,10 @@
               <% end %>
             </td>
             <td>
-              <% if conf[:approval][:show_numbers] && (!@shuffled || conf[:approval][:show_numbers_when_shuffled]) %>
+              <% if conf[current_action][:show_numbers] && (!@shuffled || conf[current_action][:show_numbers_when_shuffled]) %>
                 <%= project.number %>.
               <% end %>
-              <%= project.title %>
+              <%= (!project.title.blank? ? project.title : "<span class='text-danger'>MISSING TITLE</span>").html_safe %>
             </td>
           </tr>
         </table>

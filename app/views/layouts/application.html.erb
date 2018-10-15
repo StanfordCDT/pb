@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
 <head>
   <title><%= yield :title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,16 +53,18 @@
         <% end %>
 
         <% locales = (params[:controller] == 'vote') ? conf[:available_locales].map(&:to_sym) : [:en] # just English by default %>
+        <% permitted_params = params.permit %>
+
         <% if locales.length <= 3  # if there are <= 3 languages available, show links to the other languages %>
           <% (locales - [I18n.locale]).each do |locale| %>
-            <li class="nav-item"><a href="<%= url_for(params.merge(locale: locale)) %>" class="nav-link nav-locale"><%= LOCAL_LOCALE_NAMES[locale] %></a></li>
+            <li class="nav-item"><a href="<%= url_for(permitted_params.merge(locale: locale)) %>" class="nav-link nav-locale"><%= LOCAL_LOCALE_NAMES[locale] %></a></li>
           <% end %>
         <% else  # if there are more than 3 languages, show a dropdown for changing languages  %>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link nav-locale dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Languages <span class="caret"></span></a>
             <div class="dropdown-menu" role="menu">
               <% locales.each do |locale| %>
-                <a href="<%= url_for(params.merge(locale: locale)) %>" class="dropdown-item">
+                <a href="<%= url_for(permitted_params.merge(locale: locale)) %>" class="dropdown-item">
                   <span class="glyphicon glyphicon-ok" style="font-size: 0.8em; margin-left: -1em; margin-right: 4px; <%= (I18n.locale != locale) ? 'visibility: hidden;' : '' %>"></span>
                   <%= LOCAL_LOCALE_NAMES[locale] %>
                 </a>

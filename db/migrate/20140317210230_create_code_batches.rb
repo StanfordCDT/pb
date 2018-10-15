@@ -1,4 +1,4 @@
-class CreateCodeBatches < ActiveRecord::Migration
+class CreateCodeBatches < ActiveRecord::Migration[5.2]
   def change
     create_table :code_batches do |t|
       t.references :election, null: false

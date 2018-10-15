@@ -10,15 +10,15 @@
       <% end %>
 
       <% if conf[:show_public_results] %>
-        <center>
+        <div class="text-center">
           <a href="<%= url_for action: :results%>" class="btn btn-primary btn-lg" style="margin: 20px"><%= t('index.public_results').html_safe %></a>
-        </center>
+        </div>
       <% end %>
 
       <% if voting_machine? %>
         <%= raw t('index.voting_machine.welcome', about_url: 'http://voxpopuli.stanford.edu/') %>
 
-        <div style="text-align: center;">
+        <div class="text-center">
         <%= form_for(:code, url: {action: :authenticate_code}) do |f| %>
 
           <div style="font-size: 30px;"><%= t('index.voting_machine.instruction').html_safe %></div><br /><br />
@@ -39,7 +39,7 @@
       <% else %>
         <%= raw t('index.remote.welcome', about_url: 'https://voxpopuli.stanford.edu/') %>
 
-        <center>
+        <div class="text-center">
           <%# Explore button %>
           <% if conf[:index][:show_explore_button] %>
             <%# FIXME: Change the text on the button to 'Explore'. %>
@@ -52,15 +52,18 @@
           <% end %>
 
           <%# Remote voting button(s) %>
-          <% if conf[:allow_remote_voting] && conf[:index][:show_remote_voting_button] && !conf[:voting_has_ended] %>
-            <% if conf[:remote_voting_sms_verification] %>
+          <% if conf[:allow_remote_voting] && !conf[:voting_has_ended] %>
+            <% if conf[:remote_voting_sms_verification] && conf[:index][:show_remote_voting_sms_button] %>
               <a href="<%= url_for action: :sms_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.remote_voting_button').html_safe %></a>
             <% end %>
-            <% if conf[:remote_voting_other_verification] %>
+            <% if conf[:remote_voting_other_verification] && conf[:index][:show_remote_voting_other_button] %>
               <a href="<%= url_for action: :other_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.other_verification_button').html_safe %></a>
             <% end %>
+            <% if conf[:remote_voting_code_verification] && conf[:index][:show_remote_voting_code_button] %>
+              <a href="<%= url_for action: :code_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.code_verification_button').html_safe %></a>
+            <% end %>
           <% end %>
-        </center>
+        </div>
 
         <%= t('election.info').html_safe %>
         <br><br>

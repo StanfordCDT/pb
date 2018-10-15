@@ -1,4 +1,4 @@
-class VoteApproval < ActiveRecord::Base
+class VoteApproval < ApplicationRecord
   belongs_to :voter
   belongs_to :project
   validate :validate_cost

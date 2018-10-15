@@ -1,4 +1,4 @@
-class CreateElectionUsers < ActiveRecord::Migration
+class CreateElectionUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :election_users do |t|
       t.references :election, null: false

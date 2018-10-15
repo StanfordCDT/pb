@@ -1,4 +1,4 @@
-class CreateProjects < ActiveRecord::Migration
+class CreateProjects < ActiveRecord::Migration[5.2]
   def up
     create_table :projects do |t|
       t.references :election, null: false
@@ -18,13 +18,13 @@ class CreateProjects < ActiveRecord::Migration
     end
     Project.create_translation_table! ({
       :title => :string,
-      :short_title => :string,
       :description => :text,
       :details => :text,
       :address => :string,
       :partner => :string,
       :committee => :string,
       :video_url => :string,
+      :image_description => :text,
     })
   end
 

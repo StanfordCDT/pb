@@ -1,7 +1,7 @@
-class VoterRegistrationRecord < ActiveRecord::Base
+class VoterRegistrationRecord < ApplicationRecord
   belongs_to :election
-  belongs_to :user  # In case of in-person voter
-  belongs_to :voter  # In case of online voter
+  belongs_to :user, optional: true  # In case of in-person voter
+  belongs_to :voter, optional: true  # In case of online voter
   serialize :data, JSON
 
   validate :validate_name, if: Proc.new { should_validate?('name') }
@@ -57,7 +57,7 @@ class VoterRegistrationRecord < ActiveRecord::Base
     minimum_voting_age = election.config[:minimum_voting_age]
     maximum_voting_age = election.config[:maximum_voting_age]
     if minimum_voting_age != 0 || maximum_voting_age != 0
-      as_of_date = election.config[:age_as_of_date].blank? ? Date.today : Date.strptime(election.config[:age_as_of_date], '%m/%d/%Y')
+      as_of_date = election.config[:age_as_of_date].blank? ? Date.today : Date.strptime(election.config[:age_as_of_date], '%Y-%m-%d')
       age = as_of_date.year - dob.year - ((as_of_date.month > dob.month || (as_of_date.month == dob.month && as_of_date.day >= dob.day)) ? 0 : 1)
       if (minimum_voting_age != 0 && age < minimum_voting_age) || (maximum_voting_age != 0 && age > maximum_voting_age)
         errors.add(:base, I18n.t('registration.not_voting_age_error'))

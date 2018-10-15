@@ -22,8 +22,8 @@ fi:
         <p class='lead'>Tervetuloa kokeilemaan osallistuvan budjetoinnin digitaalista äänestyslipuketta, jonka on tehnyt Stanfordin osallistavan demokratian ryhmä yhdessä Espoon kaupungin kanssa.</p>
         <p class='lead'>Tällä nettisivulla voit tutustua tämän vuoden projekteihin ja digitaaliseen äänestykseen. Tämä nettisivu on vain tiedon tarjoamista varten, <b>etkä voi</b> äänestää täällä oikeasti.</p>
         <p class='lead'>Kun <u>äänestät oikeasti</u>, olet mukana päättämässä, mihin $XXX miljoonaa kaupungin kehitysbudjetista käytetään. Äänestääksesi sinun täytyy saapua yhdelle kaupungin monista äänestyspaikoista. Äänestys pidetään päivästä (Date XXX) päivään (Date YYY). Näet kaikki ajat ja paikat alta.</p>
-      proceed_button: Katso esimerkkiäänestyslipuketta &gt;&gt;
-      remote_voting_button: "Äänestä nyt &gt;&gt;"
+      proceed_button: Katso esimerkkiäänestyslipuketta >>
+      remote_voting_button: "Äänestä nyt >>"
       code_verification_button: Lisää koodi
       other_verification_button: "Äänestä toisilla henkilötiedoilla"
       see_projects_button: Katso projektit
@@ -240,7 +240,7 @@ fi:
       ok: Jatka
       exit: Poistu
   knapsack:
-    title: Kontti
+    title: Osallistava budjetointi
     popup:
       title: Ohjeet
       body: |-
@@ -295,8 +295,7 @@ fi:
     description:
       real: Kiitos äänestämisestä. Klikkaa alapuolella olevaa ’Poistu’-nappulaa.
       demo: 'Kiitos, että testasit digitaalista osallistavan budjetoinnin alustaa!
-        <span style=''color: red;''><strong>Huomioithan, että tämä on vain <u>esikatselu</u>.</strong></span>
-        Äänestääksesi saavu johonkin seuraavista paikoista:'
+        <span style=''color: red;''><strong>Huomioithan, että tämä on vain <u>esikatselu</u>.</strong></span>'
     exit: Poistu
   about:
     title: Lisätietoa

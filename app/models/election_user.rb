@@ -1,4 +1,4 @@
-class ElectionUser < ActiveRecord::Base
+class ElectionUser < ApplicationRecord
   enum status: [:admin, :volunteer]
   belongs_to :election
   belongs_to :user

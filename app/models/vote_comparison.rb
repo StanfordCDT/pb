@@ -1,4 +1,4 @@
-class VoteComparison < ActiveRecord::Base
+class VoteComparison < ApplicationRecord
   belongs_to :voter
   belongs_to :first_project, class_name: 'Project'
   belongs_to :second_project, class_name: 'Project'

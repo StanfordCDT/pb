@@ -22,7 +22,7 @@ def accurate_distance_of_time_in_words(t)
 end
 %>
 
-      <table class="table table-bordered">
+      <table class="table table-bordered table-sm">
         <thead class="thead-light">
           <tr>
             <th>Page</th>
@@ -43,7 +43,7 @@ end
 
       <h3>Languages</h3>
 
-      <table class="table table-bordered">
+      <table class="table table-bordered table-sm">
         <thead class="thead-light">
           <tr>
             <th>Languages</th>
@@ -53,8 +53,8 @@ end
         <tbody>
           <% @voter_counts_by_locale.each do |locale, voter_count| %>
             <tr>
-              <td><%= locale %></td>
-              <td><%= voter_count %></td>
+              <td><%= LOCALE_NAMES[locale.to_sym] %></td>
+              <td><%= number_with_delimiter(voter_count) %></td>
             </tr>
           <% end %>
         </tbody>

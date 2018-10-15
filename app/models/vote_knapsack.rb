@@ -1,4 +1,4 @@
-class VoteKnapsack < ActiveRecord::Base
+class VoteKnapsack < ApplicationRecord
   belongs_to :voter
   belongs_to :project
   validate :validate_cost

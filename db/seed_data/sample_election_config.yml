@@ -1,4 +1,4 @@
-workflow: [approval, thanks_approval, comparison, thanks]
+workflow: [approval, thanks]
 allow_remote_voting: false
 available_locales: [en]
 
@@ -28,14 +28,10 @@ locales:
       brand: "PB NYC"
 
     index:
-      title: "Participatory Budgeting NYC"
       voting_machine:
-        welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting in NYC</p>"
-      demo:
-        welcome: "<center><img src=\"/img/sample-city-logo.png\" /></center><br><p class='lead'>Welcome to the NYC Participatory Budgeting sample digital ballot, courtesy of the <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $2.4 million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from September 27 to October 6. See all times and locations below.</p>"
-
-    approval:
-      title: "Participatory Budgeting NYC"
+        welcome: "<center><img src=\"/img/sample-city-logo.png\" alt=\"Logo of Sample City\" /></center><br><p class='lead' style='text-align:center;'>Welcome to the digital voting interface for Participatory Budgeting in NYC</p>"
+      remote:
+        welcome: "<center><img src=\"/img/sample-city-logo.png\" alt=\"Logo of Sample City\" /></center><br><p class='lead'>Welcome to the NYC Participatory Budgeting sample digital ballot, courtesy of the <a href='%{about_url}'>Stanford Crowdsourced Democracy Team</a>.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $2.4 million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from September 27 to October 6. See all times and locations below.</p>"
 
     election:
       info: "<h3>Voting Locations</h3>

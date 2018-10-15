@@ -24,8 +24,8 @@ ht:
         <p class='lead'>Byenvini nan echantiyon Bidjè Patisipatif vòt nimerik la, yon koutwazi de Stanford Crowdsourced Democracy Team.</p>
         <p class='lead'>Sou sit sa, ou ka familyarize tèt ou avèk pwojè ane sa e avèk vòt nimerik la. Sit sa selman pou jwenn enfòmasyon, e ou <b>p'ap ka</b> vote sou sit sa.</p>
         <p class='lead'>Lè ou depoze bilten vòt ou, ou pral deside kòman ou vle yo repati $XXX milyon nan bidjè amelyorasyon kapital vil la. Pou ka vote, ou bezwen vini nan youn nan kote pou vote sa yo ki ap nan tout vil la. Vòt la ap kòmanse a pati de (Dat XXX) rive (Dat YYY). Gade tout lè epi kote yo anba'a.</p>
-      proceed_button: Gade yon echantiyon bilten vòt &gt;&gt;
-      remote_voting_button: Vote a distans kounya &gt;&gt;
+      proceed_button: Gade yon echantiyon bilten vòt >>
+      remote_voting_button: Vote a distans kounya >>
       code_verification_button: Antre kòd la
       other_verification_button: Vòt avèk lòt detay
       see_projects_button: Wè Pwojè yo
@@ -245,7 +245,7 @@ ht:
       ok: Kontinye
       exit: Sòti
   knapsack:
-    title: Valiz nan do
+    title: Bidjè Patisipatif
     popup:
       title: Enstriksyon yo
       body: "<p style='font-size: 20px;'>Yo pral mande ou kounya pou patisipe nan
@@ -304,8 +304,7 @@ ht:
     description:
       real: Mèsi paske ou te vote. Tanpri klike sou bouton 'Sòti' an ki anba.
       demo: 'Mèsi paske ou teste entèfas nimerik bidjè patisipatif la! <span style=''color:
-        red;''><strong>Tanpri sonje ke sa se sèlman yon <u>apèsi</u>.</strong></span>
-        Pou ka vote, tanpri vini nan yon kote pou vote nan youn nan kote sa yo:'
+        red;''><strong>Tanpri sonje ke sa se sèlman yon <u>apèsi</u>.</strong></span>'
     exit: Sòti
   about:
     title: Enfòmasyon

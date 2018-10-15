@@ -12,6 +12,12 @@
 .collapsed .moreFieldCollapsedChevron {
   display: inline-block;
 }
+
+#exampleCoordinatesModal img {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
+}
 </style>
 
 <%
@@ -60,9 +66,11 @@ multiple_locales = available_locales.length > 1
   <div class="form-group row">
     <%= f.label :cost, 'Cost*', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <div class="input-group">
-        <div class="input-group-prepend"><div class="input-group-text">$</div></div>
-        <%= f.number_field :cost, class: 'form-control' %>
+      <div class="form-inline">
+        <div class="input-group">
+          <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+          <%= f.number_field :cost, class: 'form-control' %>
+        </div>
       </div>
       <div class="checkbox">
         <label>
@@ -74,20 +82,24 @@ multiple_locales = available_locales.length > 1
 
   <div id="fields_for_adjustable_cost_project">
     <div class="form-group row">
-      <%= f.label :cost_min, 'Cost min*', class: 'col-sm-2 control-label' %>
+      <%= f.label :cost_min, 'Minimum cost*', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <div class="input-group">
-          <div class="input-group-prepend"><div class="input-group-text">$</div></div>
-          <%= f.text_field :cost_min, class: 'form-control' %>
+        <div class="form-inline">
+          <div class="input-group">
+            <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+            <%= f.text_field :cost_min, class: 'form-control' %>
+          </div>
         </div>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label :cost_step, 'Cost step*', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
-        <div class="input-group">
-          <div class="input-group-prepend"><div class="input-group-text">$</div></div>
-          <%= f.text_field :cost_step, class: 'form-control' %>
+        <div class="form-inline">
+          <div class="input-group">
+            <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+            <%= f.text_field :cost_step, class: 'form-control' %>
+          </div>
         </div>
         <div class="checkbox">
           <label>
@@ -110,7 +122,9 @@ multiple_locales = available_locales.length > 1
   <div class="form-group row">
     <%= f.label :category_id, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.collection_select(:category_id, @election.categories, :id, :name, {include_blank: 'Uncategorized'}, class: 'form-control') %>
+      <div class="form-inline">
+        <%= f.collection_select(:category_id, @election.categories, :id, :name, {include_blank: 'Uncategorized'}, class: 'form-control') %>
+      </div>
     </div>
   </div>
 
@@ -118,12 +132,22 @@ multiple_locales = available_locales.length > 1
     <%= f.label :image, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% if @project.image? %>
-        <img class="image" src="<%= @project.image.url %>"><br>
-        <%= f.check_box :remove_image %>
-        <%= f.label :remove_image, "Remove image" %>
+        <img class="image" src="<%= @project.image.url %>">
+        <div>
+          <%= f.check_box :remove_image %>
+          <%= f.label :remove_image, "Remove image" %>
+        </div>
       <% end %>
       <%= f.file_field :image, accept: 'image/*' %>
       <%= f.hidden_field :image_cache %>
+
+      <div class="mt-2" id="image_description_field" style="display: none;">
+        <div>Image description:</div>
+        <% available_locales.each do |locale| %>
+          <%= f.text_field 'image_description_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+        <% end %>
+        <div class="text-muted">Describe what is in the image for people with visual impairments.</div>
+      </div>
     </div>
   </div>
 
@@ -149,7 +173,7 @@ multiple_locales = available_locales.length > 1
       <%= f.label :map_geometry, 'Coordinates', class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <%= f.text_field :map_geometry, class: 'form-control' %>
-        <p class="text-muted">An array of points. A point is an array of a latitude and a longitude. For example, [[37.424107, -122.166077]]</p>
+        <p class="text-muted">A list of points. A point is a list of a latitude and a longitude. For example, [[37.424107, -122.166077]]. See <a href="#" data-toggle="modal" data-target="#exampleCoordinatesModal">more examples</a>.</p>
       </div>
     </div>
 
@@ -195,9 +219,49 @@ multiple_locales = available_locales.length > 1
 <% end %>
 <br><br>
 
-<script>
-var adjustableCostCheckbox = document.getElementById('project_adjustable_cost');
+<div class="modal" id="exampleCoordinatesModal" tabindex="-1" role="dialog" aria-labelledby="exampleCoordinatesModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleCoordinatesModalLabel">Examples for coordinates</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>
+            <b>Point</b><br>
+            <code>[[37.427488, -122.170262]]</code><br>
+            <img src="/img/map_geometry_point.png" alt="A map with a point">
+          </li>
+          <li>
+            <b>Multiple points</b><br>
+            <code>[[37.427488, -122.170262], [37.427615, -122.166970]]</code><br>
+            <img src="/img/map_geometry_points.png" alt="A map with two points">
+          </li>
+          <li>
+            <b>Line</b><br>
+            <code>[{"type": "LineString", "coordinates": [[42.001774, -87.668072], [42.005449, -87.668182]]}]</code><br>
+            <img src="/img/map_geometry_line.png" alt="A map with a line">
+          </li>
+          <li>
+            <b>Polygon</b><br>
+            <code>[{"type": "Polygon", "coordinates": [[42.001774, -87.668072], [42.005449, -87.668182], [42.003, -87.671]]}]</code><br>
+            <img src="/img/map_geometry_polygon.png" alt="A map with a polygon">
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+// Show some more fields if the cost is adjustable.
+var adjustableCostCheckbox = document.getElementById('project_adjustable_cost');
 function updateCostFields() {
   var adjustableCost = adjustableCostCheckbox.checked;
   document.getElementById('fields_for_adjustable_cost_project').style.display = adjustableCost ? 'block' : 'none';
@@ -207,7 +271,22 @@ function updateCostFields() {
     document.getElementById('project_uses_slider').checked = false;
   }
 }
-
 adjustableCostCheckbox.addEventListener('change', updateCostFields);
 updateCostFields();
+
+// Show the image description field when there is an image.
+var imageField = document.getElementById('project_image');
+var removeImageCheckbox = document.getElementById('project_remove_image');
+var imageDescriptionField = document.getElementById('image_description_field');
+function updateImageDescriptionField() {
+  var hasImage = <%= @project.image? %>;
+  if ((hasImage && !removeImageCheckbox.checked) || (imageField.value && imageField.value.length > 0)) {
+    imageDescriptionField.style.display = 'block';
+  } else {
+    imageDescriptionField.style.display = 'none';
+  }
+}
+imageField.addEventListener('change', updateImageDescriptionField);
+removeImageCheckbox.addEventListener('change', updateImageDescriptionField);
+updateImageDescriptionField();
 </script>

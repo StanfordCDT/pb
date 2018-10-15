@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :cost_with_delimiter
   before_action :set_locale
+  before_action :record_visitor
 
   private
 
@@ -46,20 +47,13 @@ class ApplicationController < ActionController::Base
     #   election = Election.find(params[:election_id])
     #   project = election.projects.find(params[:id])
 
-    no_access unless has_auth?(:admin?, false)
+    no_access unless has_auth?(:admin?)
   end
 
   # Only allows superadmins, admins, and volunteers of the current election.
   def require_admin_or_volunteer_auth
     # Note: The comment in require_admin_auth also applies to this method.
-    no_access unless has_auth?(:admin_or_volunteer?, false)
-  end
-
-  # Only allows superadmins and (admins with a special permission) of the current election.
-  # A "special permission" means that election.allow_admins_to_update_election is true.
-  def require_admin_auth_with_special_permission
-    # Note: The comment in require_admin_auth also applies to this method.
-    no_access unless has_auth?(:admin?, true)
+    no_access unless has_auth?(:admin_or_volunteer?)
   end
 
   # Only allows anyone with a user account, i.e.,
@@ -68,7 +62,7 @@ class ApplicationController < ActionController::Base
     no_access unless !current_user.nil?
   end
 
-  def has_auth?(status_checking_method, require_special_permission)
+  def has_auth?(status_checking_method)
     return false if current_user.nil?
     return true if current_user.superadmin?
 
@@ -80,7 +74,7 @@ class ApplicationController < ActionController::Base
     return false if election_id.nil?
 
     election = Election.find_by_id(election_id)
-    return election && current_user.send(status_checking_method, election) && (!require_special_permission || election.allow_admins_to_update_election?)
+    return election && current_user.send(status_checking_method, election)
   end
 
   def log_activity(activity, opts={})
@@ -112,6 +106,15 @@ class ApplicationController < ActionController::Base
   def set_locale
     # See http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-url-params
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def record_visitor
+    connection = ActiveRecord::Base.connection
+    ip = connection.quote(request.remote_ip)
+    user_agent = connection.quote(request.env['HTTP_USER_AGENT'])
+    referrer = connection.quote(request.referer)
+    url = connection.quote(request.url)
+    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, NOW())")
   end
 
   def cost_with_delimiter(cost)

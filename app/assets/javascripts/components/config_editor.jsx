@@ -171,20 +171,28 @@ class NumberInput extends React.Component {
       // This conforms to the HTML5 spec.
       //this.props.onChange(text);
     } else {
-      this.props.onChange(value);
+      const multiplier = (this.props.multiplier !== undefined) ? this.props.multiplier : 1;
+      this.props.onChange(value * multiplier);
     }
   }
 
   handleFocus() {
-    this.setState({ isEditing: true, text: this.props.value });
+    this.setState({ isEditing: true, text: this.stringValue() });
   }
 
   handleBlur() {
     this.setState({ isEditing: false });
   }
 
+  stringValue() {
+    if (this.props.value == 0 && this.props.showEmptyStringForZero)
+      return "";
+    const multiplier = (this.props.multiplier !== undefined) ? this.props.multiplier : 1;
+    return String(this.props.value / multiplier);
+  }
+
   render() {
-    const value = this.state.isEditing ? this.state.text : String(this.props.value);
+    const value = this.state.isEditing ? this.state.text : this.stringValue();
     return (
       <input type="number" className={this.props.className} onChange={this.handleInputChange} value={value} onFocus={this.handleFocus} onBlur={this.handleBlur} />
     );
@@ -193,7 +201,7 @@ class NumberInput extends React.Component {
 
 class NumberOption extends React.Component {
   render() {
-    const input = (<NumberInput className="form-control" onChange={value => { this.props.db.set(this.props.name, value); }} value={this.props.db.get(this.props.name)} />);
+    const input = (<NumberInput className="form-control" onChange={value => { this.props.db.set(this.props.name, value); }} value={this.props.db.get(this.props.name)} multiplier={this.props.multiplier} showEmptyStringForZero={this.props.showEmptyStringForZero} />);
     return (
       this.props.appendText === undefined ? (
         input
@@ -210,7 +218,7 @@ class NumberOption extends React.Component {
 class TextOption extends React.Component {
   render() {
     return (
-      <input type="text" className="form-control" onChange={event => { this.props.db.set(this.props.name, event.target.value); }} value={this.props.db.get(this.props.name)} />
+      <input type="text" className="form-control" onChange={event => { this.props.db.set(this.props.name, event.target.value); }} value={this.props.db.get(this.props.name)} placeholder={this.props.placeholder} />
     );
   }
 }
@@ -344,6 +352,37 @@ class LocalizedTextOption extends React.Component {
   }
 }
 
+// PseudoBoolean means the value is not a boolean (it's usually a text or a number),
+// but we use a checkbox for it.
+class PseudoBooleanOption extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const checked = event.target.checked;
+    this.props.db.set(this.props.name, checked ? this.props.defaultTrueValue : this.props.falseValue);
+  }
+
+  render() {
+    return (
+      <div className="form-check">
+        <input type="checkbox" className="form-check-input" checked={this.props.db.get(this.props.name) !== this.props.falseValue} onChange={this.handleChange} />
+        <label className="form-check-label">{this.props.label}</label>
+      </div>
+    );
+  }
+}
+
+class DateOption extends React.Component {
+  render() {
+    return (
+      <DateInput onChange={value => { this.props.db.set(this.props.name, value); }} value={this.props.db.get(this.props.name)} />
+    );
+  }
+}
+
 class AdvancedWorkflowOption extends React.Component {
   constructor(props) {
     super(props);
@@ -455,7 +494,17 @@ class WorkflowOption extends React.Component {
     if (this.isSimple()) {
       this.setState({isSimple: true});
     } else {
-      alert("The current workflow can't be edited using the simple workflow editor because it contains multiple voting methods or uses an advanced option.");
+      if (confirm("It looks like you are using multiple voting methods or the workflow contains a page that can't be edited with the simple workflow editor. Are you sure you still want to use it? WARNING: Some data may be lost.")) {
+        let workflow = this.props.db.get(this.props.name);
+        const hasSurvey = (workflow instanceof Array) && workflow.indexOf("survey") != -1;
+        if (hasSurvey) {
+          workflow = ["approval", "thanks_approval", "survey", "thanks"];
+        } else {
+          workflow = ["approval", "thanks"];
+        }
+        this.props.db.set(this.props.name, workflow);
+        this.setState({isSimple: true});
+      }
     }
   }
 
@@ -531,7 +580,7 @@ class WorkflowOption extends React.Component {
         <React.Fragment>
           <AdvancedWorkflowOption name={this.props.name} db={this.props.db} />
           {/* FIXME: Allow the first page to be subarray. (Not related to this code) */}
-          <div className="help-block"><a href="#" onClick={this.handleUseSimple}>Click here</a> to use the simple workflow editor.</div>
+          <div className="help-block">If you want to use only one voting method, you can use the <a href="#" onClick={this.handleUseSimple}>simple workflow editor</a>.</div>
         </React.Fragment>
       );
     }
@@ -552,7 +601,7 @@ class WorkflowOption extends React.Component {
         })}
 
         {/*<div className="help-block">This is the order of pages that voters see: ...</div>*/}
-        <div className="help-block mt-1">If you would like to use multiple voting methods, <a href="#" onClick={this.handleUseAdvanced}>click here</a> to use the advanced workflow editor.</div>
+        <div className="help-block mt-1">If you want to use multiple voting methods, use the <a href="#" onClick={this.handleUseAdvanced}>advanced workflow editor</a>.</div>
       </React.Fragment>
     );
   }
@@ -755,6 +804,17 @@ class ConfigEditor extends React.Component {
             </div>
           </td>
         </tr>
+        <tr>
+          <td>Dates</td>
+          <td>
+            <div className="form-inline">
+              <DateOption name="start_date" db={db} />
+              &nbsp;-&nbsp;
+              <DateOption name="end_date" db={db} />
+            </div>
+            {/* ((value)=>((value == '' || dateRegex.test(value)) ? null : (<div className="text-danger">The date must be in the MM/DD/YYYY format or blank.</div>) ))(db.get("start_date")) */}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -763,7 +823,7 @@ class ConfigEditor extends React.Component {
 {isCurrentUserSuperadmin && // FIXME: Weird hidden form.
   <div className="group">
     <span className="group-info">(Only superadmins can see this)</span>
-    <label className="group-title">Security / Privacy</label> 
+    <label className="group-title">Superadmin settings</label>
     <div className="group-body">
       <div className="form-check">
         <input name="election[allow_admins_to_update_election]" type="hidden" value="0" />
@@ -780,6 +840,21 @@ class ConfigEditor extends React.Component {
         <input type="checkbox" className="form-check-input" value="1" name="election[allow_admins_to_see_exact_results]" id="election_allow_admins_to_see_exact_results" defaultChecked={electionData.allow_admins_to_see_exact_results} />
         <label className="form-check-label" htmlFor="election_allow_admins_to_see_exact_results">Allow admins to see the exact vote results in the analytics. If not allowed, the results will be rounded to the nearest 10.</label>
       </div>
+
+      <div className="form-check">
+        <input name="election[show_link_on_home_page]" type="hidden" value="0" />
+        <input type="checkbox" className="form-check-input" value="1" name="election[show_link_on_home_page]" id="election_show_link_on_home_page" defaultChecked={electionData.show_link_on_home_page} />
+        <label className="form-check-label" htmlFor="election_show_link_on_home_page">It's OK to show a link to this PB on the home page of https://pbstanford.org</label>
+      </div>
+
+      <div className="form-check">
+        <input name="election[real_election]" type="hidden" value="0" />
+        <input type="checkbox" className="form-check-input" value="1" name="election[real_election]" id="election_real_election" defaultChecked={electionData.real_election} />
+        <label className="form-check-label" htmlFor="election_real_election">Real PB (not a demo or a test)</label>
+      </div>
+
+      <div className="mt-1">Remarks:</div>
+      <textarea rows="2" className="form-control" name="election[remarks]" defaultValue={electionData.remarks} />
     </div>
   </div>
 }
@@ -815,22 +890,17 @@ class ConfigEditor extends React.Component {
   <div className="group">
     <label className="group-title">Remote voter validation</label>
     <div className="group-body">
-      
+      <div>Choose how to validate people who vote from their home. (See the  <a href="#" data-toggle="modal" data-target="#remoteVoterValidationExplanationModal">explanation for each validation method</a>.)</div>
       <BooleanOption name="remote_voting_sms_verification" db={db} label="Remote voting using SMS confirmation" />
-      <div className="help-block">The remote voter enters their phone number. The system sends them a confirmation code through SMS. They enter the confirmation code. The system verifies that it's correct.</div>
-
       <BooleanOption name="remote_voting_other_verification" db={db} label="Remote voting using personal information" />
-      <div className="help-block">The remote voter enters their personal information, such as their ID number. The system verifies that it's correct. To use this method, you must send us (the Stanford team) the list of valid ID numbers.</div>
-
       <BooleanOption name="remote_voting_code_verification" db={db} label="Remote voting using generated codes" />
-      <div className="help-block">The remote voter emails or calls you. You send them an access code. They enter the access code. The system verifies that it's correct. Note: It is recommended that you enable this method if you use other validation methods. Some voters might not have a cell phone that can receive SMS.</div>
 
       {db.get("allow_remote_voting") && (
         (db.get("remote_voting_sms_verification") || db.get("remote_voting_other_verification") || db.get("remote_voting_code_verification")) ? null : (<div className="text-danger">Select at least one validation method.</div>)
       )}
 
       <Conditional condition={c('allow_remote_voting') && c('remote_voting_code_verification')} db={db}>
-        <div>Your email address or phone number that voters can call to get an access code:</div>
+        <div className="mt-1">Your email address or phone number that voters can call to get an access code:</div>
         <LocalizedTextOption name="code_signup.instruction" db={db} />
       </Conditional>
     </div>
@@ -886,24 +956,25 @@ class ConfigEditor extends React.Component {
     <div className="group-body">
       <div className="form-inline">
         <div className="mr-2">Minimum age:</div>
-        <NumberOption name="minimum_voting_age" db={db} appendText="years" />
+        <NumberOption name="minimum_voting_age" db={db} appendText="years" showEmptyStringForZero={true} />
       </div>
-      <div className="help-block">Use 0 for no mimimum voting age.</div>
+      <div className="help-block">Leave blank for no mimimum voting age.</div>
 
       <div className="form-inline">
         <div className="mr-2">Maximum age:</div>
-        <NumberOption name="maximum_voting_age" db={db} appendText="years" />
+        <NumberOption name="maximum_voting_age" db={db} appendText="years" showEmptyStringForZero={true} />
       </div>
-      <div className="help-block">Use 0 for no maximum voting age.</div>
+      <div className="help-block">Leave blank for no maximum voting age.</div>
 
       <Conditional condition={c('minimum_voting_age') > 0 || c('maximum_voting_age') > 0} name="age_as_of_date" db={db}>
-        
         <div className="form-inline">
           <div className="mr-2">As of date:</div>
-          <TextOption name="age_as_of_date" db={db} />
+          <DateOption name="age_as_of_date" db={db} />
         </div>
-        <div className="help-block">Check the voter's age as of specified date. The date <b>must</b> be in the MM/DD/YYYY format or blank. If blank, check the voter's age as of today.</div>
-        { ((value)=>((value == '' || /^(?:0?[1-9]|1[012])\/\d{1,2}\/\d{4}$/.test(value)) ? null : (<div className="text-danger">Value must be in the MM/DD/YYYY format or blank.</div>) ))(db.get("age_as_of_date")) }
+        <div className="help-block">Check the voter's age as of specified date. If blank, check the voter's age as of today.</div>
+        {/*
+        { ((value)=>((value == '' || dateRegex.test(value)) ? null : (<div className="text-danger">The date must be in the MM/DD/YYYY format or blank.</div>) ))(db.get("age_as_of_date")) }
+        */}
       </Conditional>
     </div>
   </div>
@@ -934,18 +1005,12 @@ class ConfigEditor extends React.Component {
   </div>
 </div>
 
+{/*
 <div className="group">
   <label className="group-title">External redirect URL</label>
   <div className="group-body">
     <TextOption name="external_redirect_url" db={db} />
     <div className="help-block">The URL to redirect the voter to after they reach the last page. If blank, the voter will return to the home page.</div>
-  </div>
-</div>
-
-<div className="group">
-  <label className="group-title">Show link on home page</label>
-  <div className="group-body">
-    <BooleanOption name="show_link_on_home_page" db={db} label="Show a link to this PB on the home page of https://pbstanford.org" />
   </div>
 </div>
 
@@ -957,6 +1022,27 @@ class ConfigEditor extends React.Component {
     </div>
     <div className="help-block">If the voter doesn't interact with the website (i.e., doesn't move their mouse) for this amount of time, return to the home page. Use 0 for no timeout.</div>
   </div>
+</div>
+*/}
+
+<div className="group">
+  <label className="group-title">Miscellaneous</label>
+  <div className="group-body">
+    <PseudoBooleanOption name="external_redirect_url" db={db} falseValue="" defaultTrueValue="https://" label={
+      <React.Fragment>
+        After a voter reaches the last page, redirect them to <div className="form-inline" style={{display: "inline-block", marginTop: "-4px"}}><TextOption name="external_redirect_url" db={db} placeholder="https://..." /></div> (If blank, return to the home page.)
+      </React.Fragment>
+    } />
+
+    {/*
+    <PseudoBooleanOption name="timeout" db={db} falseValue={0} defaultTrueValue={600} label={
+      <React.Fragment>
+        If a voter doesn't interact with the website (i.e., don't move their mouse)
+        for <div className="form-inline timeout" style={{display: "inline-block"}}><NumberOption name="timeout" db={db} multiplier={60} showEmptyStringForZero={true} /></div> minutes, end their session and return to the home page.
+      </React.Fragment>
+    } />
+    */}
+ </div>
 </div>
 
 <div className="group">
@@ -994,30 +1080,54 @@ class ConfigEditor extends React.Component {
 </Conditional>
 
 <div className="group">
-  <label className="group-title">Election info</label>
+  <label className="group-title">Buttons</label>
   <div className="group-body">
-    <div>Information about the voting places, locations, and any additional information:</div>
-    <LocalizedTextOption name="election.info" db={db} />
+    <BooleanOption name="index.show_explore_button" db={db} label="Show the button that lets people take a look at the ballot without voting. (There will be a text warning them that it's only a preview.)" />
+    <Conditional condition={c('index.show_explore_button')} db={db}>
+      <div>The text on the button:</div>
+      <LocalizedTextOption name="index.remote.proceed_button" db={db} isHTML={false} />
+    </Conditional>
+
+    <Conditional condition={c('allow_remote_voting') && c('remote_voting_sms_verification')} name="index.show_remote_voting_sms_button" db={db}>
+      <BooleanOption name="index.show_remote_voting_sms_button" db={db} label="Show the button for remote voting using SMS" />
+      <Conditional condition={c('index.show_remote_voting_sms_button')} db={db}>
+        <div>The text on the button:</div>
+        <LocalizedTextOption name="index.remote.remote_voting_button" db={db} isHTML={false} />
+      </Conditional>
+    </Conditional>
+
+    <Conditional condition={c('allow_remote_voting') && c('remote_voting_other_verification')} name="index.show_remote_voting_other_button" db={db}>
+      <BooleanOption name="index.show_remote_voting_other_button" db={db} label="Show the button for remote voting using personal information" />
+      <Conditional condition={c('index.show_remote_voting_other_button')} db={db}>
+        <div>The text on the button:</div>
+        <LocalizedTextOption name="index.remote.other_verification_button" db={db} isHTML={false} />
+      </Conditional>
+    </Conditional>
+
+    <Conditional condition={c('allow_remote_voting') && c('remote_voting_code_verification')} name="index.show_remote_voting_code_button" db={db}>
+      <BooleanOption name="index.show_remote_voting_code_button" db={db} label="Show the button for remote voting using generated codes" />
+      <Conditional condition={c('index.show_remote_voting_code_button')} db={db}>
+        <div>The text on the button:</div>
+        <LocalizedTextOption name="index.remote.code_verification_button" db={db} isHTML={false} />
+      </Conditional>
+    </Conditional>
+
+    <PseudoBooleanOption name="index.see_projects_url" db={db} falseValue="" defaultTrueValue="https://" label={
+      <React.Fragment>
+        Show the button for the external URL:&nbsp;
+        <div className="form-inline" style={{display: "inline-block", marginTop: "-4px"}}>
+          <TextOption name="index.see_projects_url" db={db} placeholder="https://..." />
+        </div>
+      </React.Fragment>
+    } />
+    <Conditional condition={c('index.see_projects_url') && c('index.see_projects_url').length > 0} db={db}>
+      <div>The text on the button:</div>
+      <LocalizedTextOption name="index.remote.see_projects_button" db={db} isHTML={false} />
+    </Conditional>
   </div>
 </div>
 
-<Conditional condition={c('allow_remote_voting')} name="index.show_remote_voting_button" db={db}>
-  <div className="group">
-    <label className="group-title">Remote voting button</label>
-    <div className="group-body">
-      <BooleanOption name="index.show_remote_voting_button" db={db} label="Show the remote voting button" />
-    </div>
-  </div>
-</Conditional>
-
-<div className="group">
-  <label className="group-title">"View sample ballot" button</label>
-  <div className="group-body">
-    <BooleanOption name="index.show_explore_button" db={db} label="Show the &quot;View sample ballot&quot; button" />
-    <div className="help-block">This button lets people take a look at the projects on the ballot without voting. There will be a text saying that "This is only a preview. Your vote will not be recorded."</div>
-  </div>
-</div>
-
+{/*
 <div className="group">
   <label className="group-title">Button for external URL</label>
   <div className="group-body">
@@ -1028,6 +1138,15 @@ class ConfigEditor extends React.Component {
       <div className="mt-2">The text on the button:</div>
       <LocalizedTextOption name="index.remote.see_projects_button" db={db} isHTML={false} />
     </Conditional>
+  </div>
+</div>
+*/}
+
+<div className="group">
+  <label className="group-title">Election info</label>
+  <div className="group-body">
+    <div>Information about the voting places, locations, and any additional information:</div>
+    <LocalizedTextOption name="election.info" db={db} />
   </div>
 </div>
 
@@ -1051,7 +1170,7 @@ class ConfigEditor extends React.Component {
         <Conditional condition={c('approval.shuffle_projects')} name="approval.show_shuffle_note" db={db}>
           <BooleanOption name="approval.show_shuffle_note" db={db} label="Let voters know that the order of projects is randomized" />
         </Conditional>
-        
+
         <div className="mt-1">Number of columns:</div>
         <NumberOption name="approval.n_cols" db={db} />
 
@@ -1191,27 +1310,25 @@ class ConfigEditor extends React.Component {
 
   {/*
   <div className="group">
-    <label className="group-title">Show disclaimer</label>
+    <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="approval.show_disclaimer" db={db} label="Show a disclaimer that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="approval.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Show help</label>
     <div className="group-body">
-      <BooleanOption name="approval.show_help" db={db} label="Show help" />
-      <div className="help-block">Show the Help link at the top-right corner.</div>
+      <BooleanOption name="approval.show_help" db={db} label="Show the Help link at the top-right corner" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Checkbox acknowledgment</label>
     <div className="group-body">
-      <BooleanOption name="approval.checkbox_acknowledgment" db={db} label="Before voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
+      <BooleanOption name="approval.checkbox_acknowledgment" db={db} label="Before a voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
     </div>
   </div>
-  */}
 
   <Conditional condition={c('approval.sidebar')} name="approval.allow_select_in_sidebar" db={db}>
     <div className="group">
@@ -1222,7 +1339,6 @@ class ConfigEditor extends React.Component {
     </div>
   </Conditional>
 
-  {/*
   <div className="group">
     <label className="group-title">Reverse order of radio buttons for adjustable cost projects</label>
     <div className="group-body">
@@ -1276,14 +1392,34 @@ class ConfigEditor extends React.Component {
   </div>
 
   <div className="group">
+    <label className="group-title">Project appearance</label>
+    <div className="group-body row">
+      <div className="col-sm-7">
+        {/*
+        <BooleanOption name="knapsack.show_cost" db={db} label="Show cost under the description" />
+        */}
+        <BooleanOption name="knapsack.show_numbers" db={db} label="Show project numbers" />
+        <BooleanOption name="knapsack.show_maps" db={db} label="Show maps (for projects that have coordinates)" />
+      </div>
+      <div className="col-sm-5">
+        <ProjectPreview
+          showMaps={db.get("knapsack.show_maps")}
+          showNumbers={db.get("knapsack.show_numbers")}
+          showCostInTitle={false}
+          showCost={db.get("knapsack.show_cost")}
+        />
+        <div className="previewCaption">Preview</div>
+      </div>
+    </div>
+  </div>
+
+  <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
     <div className="group-body">
       <BooleanOption name="knapsack.allow_selection_beyond_limits" db={db} label="While the voter is selecting projects, allow them to exceed the limit(s) temporarily" />
       <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
     </div>
   </div>
-
-  
 
   {/*
   <Conditional condition={c('knapsack.shuffle_projects')} name="knapsack.shuffle_probability" db={db}>
@@ -1297,24 +1433,6 @@ class ConfigEditor extends React.Component {
     </div>
   </Conditional>
   */}
-
-  {/*
-  <div className="group">
-    <label className="group-title">Show cost</label>
-    <div className="group-body">
-      <BooleanOption name="knapsack.show_cost" db={db} label="Show cost" />
-    </div>
-  </div>
-  */}
-
-  <div className="group">
-    <label className="group-title">Project appearance</label>
-    <div className="group-body">
-      <BooleanOption name="knapsack.show_numbers" db={db} label="Show project numbers" />
-
-      <BooleanOption name="knapsack.show_maps" db={db} label="Show maps (for projects that have coordinates)" />
-    </div>
-  </div>
 
   <div className="group">
     <label className="group-title">Popup</label>
@@ -1337,24 +1455,23 @@ class ConfigEditor extends React.Component {
   </div>
 
   <div className="group">
-    <label className="group-title">Show disclaimer</label>
+    <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="knapsack.show_disclaimer" db={db} label="Show a disclaimer that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="knapsack.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Show help</label>
     <div className="group-body">
-      <BooleanOption name="knapsack.show_help" db={db} label="Show help" />
-      <div className="help-block">Show the Help link at the top-right corner.</div>
+      <BooleanOption name="knapsack.show_help" db={db} label="Show the Help link at the top-right corner" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Checkbox acknowledgment</label>
     <div className="group-body">
-      <BooleanOption name="knapsack.checkbox_acknowledgment" db={db} label="Before voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
+      <BooleanOption name="knapsack.checkbox_acknowledgment" db={db} label="Before a voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
     </div>
   </div>
 
@@ -1500,27 +1617,27 @@ class ConfigEditor extends React.Component {
   </div>
 
   <div className="group">
-    <label className="group-title">Show disclaimer</label>
+    <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="ranking.show_disclaimer" db={db} label="Show a disclaimer that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="ranking.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Show help</label>
     <div className="group-body">
-      <BooleanOption name="ranking.show_help" db={db} label="Show help" />
-      <div className="help-block">Show the Help link at the top-right corner.</div>
+      <BooleanOption name="ranking.show_help" db={db} label="Show the Help link at the top-right corner" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Checkbox acknowledgment</label>
     <div className="group-body">
-      <BooleanOption name="ranking.checkbox_acknowledgment" db={db} label="Before voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
+      <BooleanOption name="ranking.checkbox_acknowledgment" db={db} label="Before a voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
     </div>
   </div>
 
+  {/*
   <Conditional condition={c('ranking.sidebar')} name="ranking.allow_select_in_sidebar" db={db}>
     <div className="group">
       <label className="group-title">Allow selection in sidebar</label>
@@ -1530,7 +1647,6 @@ class ConfigEditor extends React.Component {
     </div>
   </Conditional>
 
-  {/*
   <div className="group">
     <label className="group-title">Reverse order of radio buttons for adjustable cost projects</label>
     <div className="group-body">
@@ -1591,23 +1707,24 @@ class ConfigEditor extends React.Component {
   </div>
 
   <div className="group">
-    <label className="group-title">Show photos</label>
+    <label className="group-title">Project appearance</label>
     <div className="group-body">
       <BooleanOption name="comparison.show_photos" db={db} label="Show photos" />
+      <BooleanOption name="comparison.show_cost_bars" db={db} label="Show cost bars" />
     </div>
   </div>
 
   <div className="group">
     <label className="group-title">Show exit link</label>
     <div className="group-body">
-      <BooleanOption name="comparison.show_exit_link" db={db} label="Show exit link" />
+      <BooleanOption name="comparison.show_exit_link" db={db} label="Show the Exit link at the top-right corner to allow voters to skip the comparison voting." />
     </div>
   </div>
 
   <div className="group">
-    <label className="group-title">Show disclaimer</label>
+    <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="comparison.show_disclaimer" db={db} label="Show a disclaimer that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="comparison.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
@@ -1620,13 +1737,6 @@ class ConfigEditor extends React.Component {
         <div className="mt-2">The text in the popup:</div>
         <LocalizedTextOption name="comparison.popup.body" db={db} />
       </Conditional>
-    </div>
-  </div>
-
-  <div className="group">
-    <label className="group-title">Show cost bars</label>
-    <div className="group-body">
-      <BooleanOption name="comparison.show_cost_bars" db={db} label="Show cost bars" />
     </div>
   </div>
 
@@ -1656,7 +1766,7 @@ class ConfigEditor extends React.Component {
       </div>
       <Conditional condition={c('available_locales').length > 1} db={db}>
         <div className="help-block">
-          If you would like to use different URLs for different languages, leave the text field above blank and enter the URLs below.
+          If you want to use different URLs for different languages, leave the text field above blank and enter the URLs below.
         </div>
         <LocalizedTextOption name="survey.url" db={db} showReset={false} isHTML={false} />
       </Conditional>
@@ -1701,6 +1811,26 @@ class ConfigEditor extends React.Component {
 </Conditional>
           </div>
 
+        </div>
+
+        <div className="modal" id="remoteVoterValidationExplanationModal" tabIndex="-1" role="dialog" aria-labelledby="remoteVoterValidationExplanationModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="remoteVoterValidationExplanationModalLabel">Remote voter validation methods</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <ul>
+                  <li><b>Remote voting using SMS confirmation</b>: The remote voter enters their phone number. The system sends them a confirmation code through SMS. They enter the confirmation code. The system verifies that it's correct.</li>
+                  <li><b>Remote voting using personal information</b>: The remote voter enters their personal information, such as their ID number. The system verifies that it's correct. To use this method, you must send us (the Stanford team) the list of valid ID numbers.</li>
+                  <li><b>Remote voting using generated codes</b>: The remote voter emails or calls you. You send them an access code. They enter the access code. The system verifies that it's correct. Note: It is recommended that you enable this method if you use other validation methods. Some voters might not have a cell phone that can receive SMS.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );

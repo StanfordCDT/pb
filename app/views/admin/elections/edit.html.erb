@@ -3,15 +3,23 @@
 <% content_for :primary do %>
 <div class="container-fluid">
 
-      <% if params[:advanced] %>
-        <a href="<%= request.path %>" style="float: right;">Use Simple Settings</a>
-        <h2>Settings</h2>
-        <%= render partial: 'shared/election_form_advanced', locals: { is_creating: false } %>
-      <% else %>
-        <a href="?advanced=1" style="float: right;">Use Advanced Settings</a>
-        <h2>Settings</h2>
-        <%= render partial: 'shared/election_form', locals: { is_creating: false } %>
-      <% end %>
+  <% if params[:advanced] %>
+    <a href="<%= request.path %>" style="float: right;">Simple Settings</a>
+  <% else %>
+    <a href="?advanced=1" style="float: right;">Advanced Settings</a>
+  <% end %>
+
+  <h2>Settings</h2>
+
+  <% if !current_user.can_update_election?(@election) %>
+    <%= render partial: 'shared/cant_update_election_warning' %>
+  <% end %>
+
+  <% if params[:advanced] %>
+    <%= render partial: 'shared/election_form_advanced', locals: { is_creating: false } %>
+  <% else %>
+    <%= render partial: 'shared/election_form', locals: { is_creating: false } %>
+  <% end %>
 
 </div>
 <% end %>

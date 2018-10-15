@@ -21,14 +21,15 @@ function GMapGeometry(map, title, g, opts) {
       map: map
     }, opts));
   } else if (g.type == 'Polygon') {
-    var r = c[0]; // the exterior ring
+    //var r = c[0]; // the exterior ring
+    var r = c;
     var path = [];
     for (var i = 0; i < r.length; ++i)
       path.push( new google.maps.LatLng(r[i][0], r[i][1]) );
     this.gmapObject = new google.maps.Polygon($.extend({
       path: path,
-      strokeColor: '#ff0000',
-      strokeOpacity: 0.8,
+      strokeColor: '#428bca',
+      strokeOpacity: 1,
       strokeWeight: 2,
       map: map
     }, opts));
@@ -40,7 +41,11 @@ function GMapGeometry(map, title, g, opts) {
     } else if (g.type == 'LineString') {
       return new google.maps.LatLng(c[c.length-1][0], (c[0][1]+c[1][1])/2);
     } else if (g.type == 'Polygon') {
-      return new google.maps.LatLng(0, 0); // TODO: fix this
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < c.length; i++) {
+        bounds.extend(new google.maps.LatLng(c[i][0], c[i][1]));
+      }
+      return bounds.getCenter();
     }
   }
   this.isMarker = (g.type == 'Point');

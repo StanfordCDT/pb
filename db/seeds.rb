@@ -42,7 +42,7 @@ eu.save!
 
 # Add sample categories
 
-categories = ['Parks & Environment', 'Arts & Innovation', 'Bikes & Transit', 'Sidewalks, Streets and Alleys', 'Traffic and Public Safety'].map do |category_name|
+categories = ['Parks & Environment', 'Arts & Innovation', 'Bikes & Transit', 'Sidewalks, Streets and Alleys'].map do |category_name|
   category = Category.new
   category.election = election
   Globalize.with_locale(:en) do

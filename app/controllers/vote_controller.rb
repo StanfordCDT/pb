@@ -384,12 +384,12 @@ class VoteController < ApplicationController
     # Generate a 6-digit number whose first digit is not zero. (100000 - 999999)
     confirmation_code = (100000 + rand(900000)).to_s
 
-    twilio_info = Rails.application.secrets.twilio
+    twilio_info = Rails.application.secrets[:twilio]
     begin
       # set up a client to talk to the Twilio REST API
-      client = Twilio::REST::Client.new twilio_info['account_sid'], twilio_info['auth_token']
+      client = Twilio::REST::Client.new twilio_info[:account_sid], twilio_info[:auth_token]
       client.api.account.messages.create({
-        from: twilio_info['phone_number'],
+        from: twilio_info[:phone_number],
         to: @phone_number,
         body: 'Confirmation code for voting: ' + confirmation_code,
       })
@@ -715,12 +715,12 @@ class VoteController < ApplicationController
     record = voter.voter_registration_record
     phone_number = record.nil? ? nil : record.phone_number
     if !phone_number.nil?
-      twilio_info = Rails.application.secrets.twilio
+      twilio_info = Rails.application.secrets[:twilio]
       begin
         # set up a client to talk to the Twilio REST API
-        client = Twilio::REST::Client.new twilio_info['account_sid'], twilio_info['auth_token']
+        client = Twilio::REST::Client.new twilio_info[:account_sid], twilio_info[:auth_token]
         client.api.account.messages.create({
-          from: twilio_info['phone_number'],
+          from: twilio_info[:phone_number],
           to: phone_number,
           body: 'Thank you! Your vote has been succesfully recorded.',
         })

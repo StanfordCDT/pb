@@ -1,4 +1,4 @@
-<% if !is_allowed_to_see_exact_results? %>
+<% if !current_user.can_see_exact_results?(@election) %>
   <p class="alert alert-warning" role="alert">
     <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
     The allocation may not be accurate.
@@ -10,10 +10,74 @@ FIXME: Currently not working. Need to fix this.
 <a href="<%= url_for(format: :csv, table: 'knapsacks') %>">Export into Excel</a><br>
 -->
 
-<% if is_allowed_to_see_voter_data? %>
-  <a href="<%= url_for(format: :csv, table: 'knapsacks_individual') %>">Export individual votes into Excel</a>
+<% if current_user.can_see_voter_data?(@election) %>
+  <div style="float: right;">
+    <span class="dropdown">
+      <a class="dropdown-toggle" id="knapsackExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Export to Excel
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="knapsackExportDropdown">
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'knapsacks_individual') %>">Individual votes</a>
+      </div>
+    </span>
+  </div>
 <% end %>
 
+<div class="mb-2">
+  <ul class="nav formatSelector" role="tablist">
+    <li class="nav-item">
+      <a class="active" id="knapsack-table-tab" data-toggle="tab" href="#knapsack-table" role="tab" aria-controls="knapsack-table" aria-selected="true">Table</a> |
+    </li>
+    <li class="nav-item">
+      <a id="knapsack-chart-tab" data-toggle="tab" href="#knapsack-chart" role="tab" aria-controls="knapsack-chart" aria-selected="false">Chart</a> |
+    </li>
+    <!--
+    <li class="nav-item">
+      <a id="knapsack-pieChart-tab" data-toggle="tab" href="#knapsack-pieChart" role="tab" aria-controls="knapsack-pieChart" aria-selected="false">Pie chart</a> |
+    </li>
+    -->
+    <li class="nav-item">
+      <a id="knapsack-voteCountByDay-tab" data-toggle="tab" href="#knapsack-voteCountByDay" role="tab" aria-controls="knapsack-voteCountByDay" aria-selected="false">Vote count by day</a>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <div class="tab-pane show active" id="knapsack-table" role="tabpanel" aria-labelledby="knapsack-table-tab">
+  </div>
+  <div class="tab-pane" id="knapsack-chart" role="tabpanel" aria-labelledby="knapsack-chart-tab">
+  </div>
+  <!--
+  <div class="tab-pane" id="knapsack-pieChart" role="tabpanel" aria-labelledby="knapsack-pieChart-tab">
+  </div>
+  -->
+  <div class="tab-pane" id="knapsack-voteCountByDay" role="tabpanel" aria-labelledby="knapsack-voteCountByDay-tab">
+    <table class="table table-bordered table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th></th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @knapsack_voters_by_date.each do |v| %>
+          <tr>
+            <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
+            <td><%= number_with_delimiter(v.vote_count) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><b>Total</b></td>
+          <td><%= number_with_delimiter(@knapsack_total) %> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%
+=begin
+%>
 <table class="table table-bordered table-sm">
   <thead class="thead-light">
     <tr>
@@ -45,36 +109,10 @@ FIXME: Currently not working. Need to fix this.
     </tr>
   <tbody>
 </table>
+<%
+=end
+%>
 
-
-<svg id="knapsack-bar-chart"></svg>
-
-<!--
-<h4>Projects in the Knapsack</h4>
-<svg id="knapsack-pie-chart"></svg>
--->
-
-<h4>Knapsack - Vote counts</h4>
-<table class="table table-bordered table-sm">
-  <thead class="thead-light">
-    <tr>
-      <th></th>
-      <th>Votes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @knapsack_voters_by_date.each do |v| %>
-      <tr>
-        <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
-        <td><%= number_with_delimiter(v.vote_count) %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><b>Total</b></td>
-      <td><%= number_with_delimiter(@knapsack_total) %> </td>
-    </tr>
-  </tbody>
-</table>
 
 <style>
 .knapsack-bar-rect {
@@ -102,6 +140,76 @@ FIXME: Currently not working. Need to fix this.
 <script type="text/javascript">
 var knapsack_data = <%= @knapsack_data.to_json.html_safe %>;
 var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
+
+// Knapsack table.
+function reloadKnapsackTable() {
+  var table = document.createElement('table');
+  table.className = 'table table-bordered table-sm';
+
+  // Header
+  var thead = document.createElement('thead');
+  thead.className = 'thead-light';
+  {
+    var tr = document.createElement('tr');
+
+    {
+      var th = document.createElement('th');
+      th.textContent = 'Project';
+      tr.appendChild(th);
+
+      th = document.createElement('th');
+      th.textContent = 'Votes';
+      tr.appendChild(th);
+
+      th = document.createElement('th');
+      th.textContent = 'Allocation';
+      tr.appendChild(th);
+    }
+
+    thead.appendChild(tr);
+  }
+  table.appendChild(thead);
+
+  // Rows for projects
+  var tbody = document.createElement('tbody');
+  for (var i = 0; i < knapsack_data.length; ++i) {
+    var tr = document.createElement('tr');
+    var knapsack_row = knapsack_data[i];
+    var project = projects[idToIndex[knapsack_row.id]];
+
+    {
+      // Title
+      var td = document.createElement('td');
+      td.textContent = project.title;
+      tr.appendChild(td);
+
+      // Votes
+      td = document.createElement('td');
+      td.className = "text-right";
+      td.textContent = "a\nb";
+      var s = "";
+      for (var j = 0; j < knapsack_row.votes.length; ++j) {
+        s += ('$' + numberWithDelimiter(knapsack_row.votes[j][0])) + " - " + knapsack_row.votes[j][1] + "<br>";
+      }
+      td.innerHTML = s;
+      tr.appendChild(td);
+
+      // Allocation
+      td = document.createElement('td');
+      td.className = "text-right";
+      td.textContent = '$' + numberWithDelimiter(knapsack_row.allocation); // FIXME:
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+
+  document.getElementById('knapsack-table').innerHTML = '';
+  document.getElementById('knapsack-table').appendChild(table);
+}
+
+reloadKnapsackTable();
 
 (function() {
   // knapsack_data is an array of objects whose keys and values are
@@ -133,28 +241,28 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
     // Each vote is [cost, vote_count, cumulative_vote_count, cost_difference, project_id]
   });
 
+  var actualHeight = Math.min(700, knapsack_data.length * 40);
+
   var margin = {top: 30, right: 50, bottom: 50, left: 200},
-    width = 960 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
-  var svg = d3.select("#knapsack-bar-chart")
+    width = 960 - margin.left - margin.right;
+  var svg = d3.select("#knapsack-chart")
+    .append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("height", actualHeight + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var x = d3.scale.linear().range([0, width]);
-  var y = d3.scale.ordinal().rangeRoundBands([0, height], .3);
+  var x = d3.scaleLinear().range([0, width]);
+  var y = d3.scaleBand().rangeRound([0, actualHeight]).padding(.3);
 
   x.domain([0, d3.max(projects, function(project) { return project.cost; })]);
   y.domain(knapsack_data.map(function(d) { return d.id; }));
 
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+  var xAxis = d3.axisBottom()
+    .scale(x);
 
-  var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+  var yAxis = d3.axisLeft()
+    .scale(y);
 
   // SVG path data for the allocation.
   var allocationPathData = "";
@@ -163,9 +271,9 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
     if (knapsack_data[i].allocation == 0)
       break;
     var smooth = 8;
-    allocationPathData += "l0 " + y.rangeBand() + " ";
+    allocationPathData += "l0 " + y.bandwidth() + " ";
     if (i + 1 < knapsack_data.length) {
-      allocationPathData += "C" + x(knapsack_data[i].allocation) + " " + (y(knapsack_data[i].id) + y.rangeBand() + smooth) + " " +
+      allocationPathData += "C" + x(knapsack_data[i].allocation) + " " + (y(knapsack_data[i].id) + y.bandwidth() + smooth) + " " +
         x(knapsack_data[i + 1].allocation) + " " + (y(knapsack_data[i + 1].id) - smooth) + " " +
         x(knapsack_data[i + 1].allocation) + " " + y(knapsack_data[i + 1].id) + " ";
     }
@@ -194,7 +302,7 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
   // x-axis.
   svg.append("g")
       .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + actualHeight + ")")
       .call(xAxis)
     .append("text")
       .text("Cost")
@@ -221,7 +329,7 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
 
   // Cost line.
   costGroup.append("path")
-    .attr("d", "M" + x(0) + " 2 l0 " + height)
+    .attr("d", "M" + x(0) + " 2 l0 " + actualHeight)
     .style("stroke-dasharray", "4,4")
     .style("stroke", "black")
     .style("fill", "none")
@@ -251,7 +359,7 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
   // A rectangle for each bar.
   barEnter.append("rect")
     .attr("class", "knapsack-bar-rect")
-    .attr("height", y.rangeBand())
+    .attr("height", y.bandwidth())
     .attr("width", function(d) { return x(d[0]); })
     .style("fill", function(d) { return knapsackColor(d[2]); })
     .on("mouseover", handleMouseOver)
@@ -262,7 +370,7 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
   barEnter.append("text")
     .attr("class", function(d) { return "knapsack-bar-text" + ((d[3] >= 100) ? "" : " knapsack-bar-text-hidden"); }) // If the cost diff is too small, hide it.
     .attr("x", function(d) { return x(d[0]) - x(d[3])/2; })
-    .attr("dy", y.rangeBand() / 2 + 5)
+    .attr("dy", y.bandwidth() / 2 + 5)
     .text(function(d) { return numberWithDelimiter(d[2]); }); // Show the vote count.
 
   function update(highlighted, d, i) {
@@ -322,12 +430,13 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
   var w = 600;
   var h = 600;
   var r = 250;
-  var color = d3.scale.category20c();
-  var vis = d3.select('#knapsack-pie-chart').data([only_knapsack]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + (w/2) + "," + (h/2) + ")");
-  var pie = d3.layout.pie().value(function(d) { return d.cost; }).sort(null);
+  var color = d3.scaleOrdinal(d3.schemeCategory10);
+  var fundedProjects = knapsack_data.filter(function(project) { return project.allocation > 0; });
+  var vis = d3.select('#knapsack-pieChart').append("svg").data([fundedProjects]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + (w/2) + "," + (h/2) + ")");
+  var pie = d3.pie().value(function(d) { return d.allocation; }).sort(null);
 
   // declare an arc generator function
-  var arc = d3.svg.arc().innerRadius(0).outerRadius(r);
+  var arc = d3.arc().innerRadius(0).outerRadius(r);
 
   // select paths, use arc generator to draw
   var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
@@ -357,7 +466,7 @@ var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
       return ((r/2 - 30) * ((getAngle(d) > Math.PI) ? 1 : -1)) + "px";
     })
     .attr("dy", ".35em")
-    .text(function(d, i) { return only_knapsack[i].title; });
+    .text(function(d, i) { return projects[idToIndex[fundedProjects[i].id]].title; });
   */
 })();
 </script>

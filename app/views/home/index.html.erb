@@ -177,7 +177,7 @@
           <i class="fa fa-cog" aria-hidden="true"></i>
           <h4>Customizable</h4>
           <p>Our platform can be customized to suit your needs.
-          We support many voting methods, such as approval voting, <a href="https://web.stanford.edu/~anilesh/publications/knapsack_voting.pdf" target="_blank">knapsack voting</a>, and
+          We support many voting methods, such as approval voting, <a href="https://web.stanford.edu/~anilesh/files/knapsack_voting_full.pdf" target="_blank">knapsack voting</a>, and
           ranked voting.
           We also support remote voting.
           </p>
@@ -187,7 +187,7 @@
         <div class="feature">
           <i class="fa fa-globe" aria-hidden="true"></i>
           <h4>Language Support</h4>
-          <p>We currently support English, Spanish, French, and Chinese on the platform.
+          <p>We currently support English, Spanish, French, Chinese, and Finnish on the platform.
           Our editing tool lets you enter projects in multiple languages.</p>
         </div>
       </div>
@@ -227,29 +227,34 @@
     <div class="row justify-content-center">
       <div class="col-sm-10">
         <h2>Elections</h2>
-        <p class="lead">See some of the past PB elections below. Or <a href="#" data-toggle="modal" data-target="#electionModal">click here</a> to see the list of all the PB elections.</p>
+        <p class="lead">See some of the past PB elections below, or see the <a href="#" data-toggle="modal" data-target="#electionModal">list of cities</a> that have collaborated with us.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="ss">
-          <p><a href="/boston15" target="_blank"><img src="/img/ss_boston.png" alt="Screenshot of PB Boston"></a></p>
-          <h5><a href="/boston15" target="_blank">Boston, MA</a></h5>
+          <a href="/boston15" target="_blank">
+            <p><img src="/img/ss_boston.png" alt="Screenshot of PB Boston's approval voting"></p>
+            <h5>Boston, MA</h5>
+          </a>
           <p>Approval voting</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="ss">
-          <p><a href="/nyc8/knapsack" target="_blank"><img src="/img/ss_nyc8.png" alt="Screenshot of PB New York City's District 8"></a></p>
-          <h5><a href="/nyc8/knapsack" target="_blank">New York City's District 8</a></h5>
-          <p>Knapsack voting</p>
+          <a href="/nyc8/knapsack" target="_blank">
+            <p><img src="/img/ss_nyc8.png" alt="Screenshot of PB New York City's District 8's knapsack voting"></p>
+            <h5>New York City's District 8</h5>
           </a>
+          <p>Knapsack voting</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="ss">
-          <p><a href="/49_2015/approval" target="_blank"><img src="/img/ss_chicago.png" alt="Screenshot of PB Chicago's 49th Ward"></a></p>
-          <h5><a href="/49_2015/approval" target="_blank">Chicago's 49th Ward</a></h5>
+          <a href="/49_2015/approval" target="_blank">
+            <p><img src="/img/ss_chicago.png" alt="Screenshot of PB Chicago's 49th Ward's approval voting which shows a map visualization"></p>
+            <h5>Chicago's 49th Ward</h5>
+          </a>
           <p>Map visualization</p>
         </div>
       </div>
@@ -257,46 +262,55 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="ss">
-          <p><a href="/dieppe2015" target="_blank"><img src="/img/ss_dieppe.png" alt="Screenshot of PB Dieppe, Canada"></a></p>
-          <h5><a href="/dieppe2015" target="_blank">Dieppe, Canada</a></h5>
+          <a href="/dieppe2015" target="_blank">
+            <p><img src="/img/ss_dieppe.png" alt="Screenshot of PB Dieppe, Canada's ranked voting"></p>
+            <h5>Dieppe, Canada</h5>
+          </a>
           <p>Ranked voting</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="ss">
-          <p><a href="/nyc27/comparison" target="_blank"><img src="/img/ss_nyc27.png" alt="Screenshot of PB New York City's District 27"></a></p>
-          <h5><a href="/nyc27/comparison" target="_blank">New York City's District 27</a></h5>
+          <a href="/nyc27/comparison" target="_blank">
+            <p><img src="/img/ss_nyc27.png" alt="Screenshot of PB New York City's District 27's comparison voting"></p>
+            <h5>New York City's District 27</h5>
+          </a>
           <p>Comparison voting</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="ss">
-          <p><a href="/greensboro1_2016/approval" target="_blank"><img src="/img/ss_greensboro.png" alt="Screenshot of PB Greensboro, NC"></a></p>
-          <h5><a href="/greensboro1_2016/approval" target="_blank">Greensboro, NC</a></h5>
+          <a href="/greensboro1_2016/approval" target="_blank">
+            <p><img src="/img/ss_greensboro.png" alt="Screenshot of PB Greensboro, NC's approval voting"></p>
+            <h5>Greensboro, NC</h5>
+          </a>
           <p>Approval voting</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal" id="electionModal" tabindex="-1" role="dialog" aria-labelledby="electionModalLabel">
+  <div class="modal" id="electionModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-          <h4>Active Elections (Voting online)</h4>
+          <h4>In the US</h4>
           <ul>
-            <% @active_elections.each do |election| %>
-              <li><a href="/<%= election.slug %>" target="_blank"><%= election.name %></a></li>
-            <% end %>
+            <li><a href="/boston15">Boston, MA</a></li>
+            <li><a href="/cambridge2017">Cambridge, MA</a></li>
+            <li>Chicago, IL (Wards <a href="/chicago22_2015">22</a>, <a href="/chicago22_2015">25</a>, and <a href="/chicago49_2019">49</a>)</li>
+            <li><a href="/greensboro1">Greensboro, NC</a></li>
+            <li><a href="/longbeach2016">Long Beach, CA</a></li>
+            <li>Merced County, CA (District <a href="/peoplesbudgetmerced">2</a>)</li>
+            <li>New York City, NY (Districts <a href="/nyc5">5</a>, <a href="/nyc8">8</a>, <a href="/nyc27">27</a>, <a href="/nyc31">31</a>, <a href="/nyc38">38</a>, and <a href="/nyc39">39</a>)</li>
+            <li>Oakland, CA (Districts <a href="/oakland2017d1">1</a> and <a href="/oakland2017d2">2</a>)</li>
+            <li><a href="/seattle">Seattle, WA</a></li>
+            <li><a href="/vallejo2018">Vallejo, CA</a></li>
           </ul>
-
-          <h4>Past Elections (Voting ended)</h4>
+          <h4>Outside the US</h4>
           <ul>
-            <% @inactive_elections.each do |election| %>
-              <li><a href="/<%= election.slug %>" target="_blank"><%= election.name %></a></li>
-            <% end %>
+            <li><a href="/dieppe2018">Dieppe, Canada</a></li>
           </ul>
         </div>
       </div>
@@ -313,7 +327,7 @@
         <p>Stanford Participatory Budgeting Platform is a tool for participatory budgeting at the state, federal, and local levels. It will not only aid decision-makers in harnessing collective intelligence, but also lead to community members to be more informed and engaged. It was adopted from the earlier Widescope project. Read this Wall Street Journal <a href="https://www.wsj.com/articles/SB10001424053111904716604576542472754782288" target="_blank" rel="noopener noreferrer">article</a> to learn more about it: Crowdsourcing Deficit Reduction.</p>
         <p>To read more about our current work and publications, <a href="https://voxpopuli.stanford.edu/publications/" target="_blank">click here</a>.</p>
         <center>
-          <iframe id="slide" src="https://docs.google.com/presentation/d/1XXueoHPaj5mkCTavegoSZ9LQud7fOrhdArtiv3kUnig/embed?start=false&loop=false&delayms=3000" frameborder="0" width="600" height="366" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+          <iframe id="slide" src="https://docs.google.com/presentation/d/1XXueoHPaj5mkCTavegoSZ9LQud7fOrhdArtiv3kUnig/embed?start=false&loop=false&delayms=3000" frameborder="0" width="600" height="366" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" title="Participatory Budgeting Platform Overview slides"></iframe>
         </center>
       </div>
     </div>
@@ -325,7 +339,7 @@
     <div class="row justify-content-center">
       <div class="col-sm-10">
         <h2 class="text-center">Contact Us</h2>
-        <p class="lead text-center">Want to run a PB in your city or organization? Have a suggestion? Let us know below.</p>
+        <p class="lead text-center">Want to run a PB in your city or organization? Have a suggestion? Let us know below, or email us at contact@pbstanford.org</p>
 
         <%= form_tag '/contact' do %>
           <div class="form-group row">
@@ -364,8 +378,8 @@
         <p>
           Copyright &copy; 2018 <a href="https://voxpopuli.stanford.edu/" target="_blank">Stanford Crowdsourced Democracy Team</a>
           &nbsp; &nbsp;
-          <!--<a><img src="/img/facebook.png" width="33" height="33"></a>&nbsp;-->
-          <a href="https://twitter.com/stan_voxpopuli" target="_blank" rel="noopener noreferrer"><img src="/img/twitter.png" width="33" height="33"></a>
+          <!--<a><img src="/img/facebook.png" width="33" height="33" alt="Facebook icon"></a>&nbsp;-->
+          <a href="https://twitter.com/stan_voxpopuli" target="_blank" rel="noopener noreferrer"><img src="/img/twitter.png" width="33" height="33" alt="Twitter icon"></a>
         </p>
       </div>
     </div>

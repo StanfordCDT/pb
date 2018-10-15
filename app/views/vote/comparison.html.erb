@@ -14,9 +14,6 @@
 <% if conf[:comparison][:show_disclaimer] %>
   <div class="alert alert-info" role="alert">
     <b><%= t('general.experiment_disclaimer') %></b>
-    <% if conf[:comparison][:show_exit_link] %>
-      <a style="float:right; font-size:16px" href="<%= url_for(action: :done_comparison) %>"><%= t('navigation.exit') %></a>
-    <% end %>
   </div>
 <% end %>
 

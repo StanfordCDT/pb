@@ -1,7 +1,7 @@
 module Admin
   class ProjectsController < ApplicationController
     before_action :set_no_cache
-    before_action :require_admin_auth_with_special_permission
+    before_action :require_admin_auth
 
     def index
       @election = Election.find(params[:election_id])
@@ -11,11 +11,13 @@ module Admin
 
     def new
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @project = Project.new
     end
 
     def create
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @project = Project.new(project_params)
       @project.election = @election
       @project.sort_order = @election.projects.maximum(:sort_order).to_i + 1
@@ -28,11 +30,13 @@ module Admin
 
     def edit
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @project = @election.projects.find(params[:id])
     end
 
     def update
       @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
       @project = @election.projects.find(params[:id])
       if @project.update(project_params)
         redirect_to admin_election_projects_path(@election)
@@ -43,6 +47,7 @@ module Admin
 
     def destroy
       election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(election)
       project = election.projects.find(params[:id])
       project.destroy
       redirect_to admin_election_projects_path(election)
@@ -50,6 +55,7 @@ module Admin
 
     def reorder
       election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(election)
       project_ids = params[:project_ids].map(&:to_i)
       election.projects.each do |project|
         project.update_attribute(:sort_order, project_ids.index(project.id))

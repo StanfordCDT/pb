@@ -1,7 +1,7 @@
 module Admin
   class FilesController < ApplicationController
     before_action :set_no_cache
-    before_action :require_admin_auth_with_special_permission
+    before_action :require_admin_auth
 
     def index
       @election = Election.find(params[:election_id])
@@ -12,6 +12,7 @@ module Admin
 
     def create
       election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(election)
       dir = election.store_dir
       total_file_size = Dir.glob(File.join(dir, '*')).map { |path| File.size(path) }.sum
 
@@ -36,6 +37,7 @@ module Admin
 
     def destroy
       election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(election)
       filename = params[:id].strip.gsub(/\\|\//, '')
       raise "error" if filename == '.' || filename == '..'
       File.delete(File.join(election.store_dir, filename))

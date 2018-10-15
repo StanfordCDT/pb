@@ -8,7 +8,7 @@
 <% @adjustable_cost_projects.each do |project| %>
   <h2><%= project[:title] %></h2>
 
-  <% if !is_public && !is_allowed_to_see_exact_results? %>
+  <% if !is_public && !current_user.can_see_exact_results?(@election) %>
     <p class="alert alert-warning" role="alert">
       <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
     </p>

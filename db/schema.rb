@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,211 +10,227 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503040605) do
+ActiveRecord::Schema.define(version: 2018_04_09_103900) do
 
-  create_table "activity_logs", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "activity",   limit: 255,   null: false
-    t.string   "note",       limit: 255
-    t.string   "ip_address", limit: 255,   null: false
-    t.text     "user_agent", limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "activity_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "activity", null: false
+    t.string "note"
+    t.string "ip_address", null: false
+    t.text "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activity_logs_on_user_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.integer  "election_id",    limit: 4,                   null: false
-    t.string   "image",          limit: 255
-    t.integer  "sort_order",     limit: 4
-    t.boolean  "pinned",                     default: false
-    t.integer  "category_group", limit: 4,   default: 1
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.string "image"
+    t.integer "sort_order"
+    t.boolean "pinned", default: false
+    t.integer "category_group", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_categories_on_election_id"
   end
 
-  create_table "category_translations", force: :cascade do |t|
-    t.integer  "category_id", limit: 4,   null: false
-    t.string   "locale",      limit: 255, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "name",        limit: 255
+  create_table "category_translations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["category_id"], name: "index_category_translations_on_category_id"
+    t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
-  add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id", using: :btree
-  add_index "category_translations", ["locale"], name: "index_category_translations_on_locale", using: :btree
-
-  create_table "code_batches", force: :cascade do |t|
-    t.integer  "election_id", limit: 4, null: false
-    t.integer  "user_id",     limit: 4, null: false
-    t.integer  "status",      limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+  create_table "code_batches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_code_batches_on_election_id"
+    t.index ["user_id"], name: "index_code_batches_on_user_id"
   end
 
-  create_table "codes", force: :cascade do |t|
-    t.integer  "code_batch_id", limit: 4,   null: false
-    t.string   "code",          limit: 255, null: false
-    t.integer  "status",        limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "codes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "code_batch_id", null: false
+    t.string "code", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code_batch_id", "code"], name: "index_codes_on_code_batch_id_and_code", unique: true
+    t.index ["code_batch_id"], name: "index_codes_on_code_batch_id"
   end
 
-  add_index "codes", ["code_batch_id", "code"], name: "index_codes_on_code_batch_id_and_code", unique: true, using: :btree
-
-  create_table "election_users", force: :cascade do |t|
-    t.integer  "election_id", limit: 4,                null: false
-    t.integer  "user_id",     limit: 4,                null: false
-    t.integer  "status",      limit: 4,                null: false
-    t.boolean  "active",                default: true
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+  create_table "election_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_election_users_on_election_id"
+    t.index ["user_id"], name: "index_election_users_on_user_id"
   end
 
-  create_table "elections", force: :cascade do |t|
-    t.string   "name",                              limit: 255,                   null: false
-    t.string   "description",                       limit: 255
-    t.string   "slug",                              limit: 255,                   null: false
-    t.integer  "budget",                            limit: 4
-    t.string   "time_zone",                         limit: 255
-    t.text     "config_yaml",                       limit: 65535
-    t.boolean  "allow_admins_to_update_election",                 default: false, null: false
-    t.boolean  "allow_admins_to_see_voter_data",                  default: false, null: false
-    t.boolean  "allow_admins_to_see_exact_results",               default: false, null: false
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
+  create_table "elections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.string "slug", null: false
+    t.integer "budget"
+    t.string "time_zone"
+    t.text "config_yaml"
+    t.boolean "allow_admins_to_update_election", default: true, null: false
+    t.boolean "allow_admins_to_see_voter_data", default: true, null: false
+    t.boolean "allow_admins_to_see_exact_results", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "show_link_on_home_page", default: false, null: false
+    t.boolean "real_election", default: true, null: false
+    t.text "remarks"
+    t.index ["slug"], name: "index_elections_on_slug", unique: true
   end
 
-  add_index "elections", ["slug"], name: "index_elections_on_slug", unique: true, using: :btree
-
-  create_table "locations", force: :cascade do |t|
-    t.integer  "election_id", limit: 4,   null: false
-    t.string   "name",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_locations_on_election_id"
   end
 
-  create_table "project_translations", force: :cascade do |t|
-    t.integer  "project_id",  limit: 4,     null: false
-    t.string   "locale",      limit: 255,   null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "title",       limit: 255
-    t.string   "short_title", limit: 255
-    t.text     "description", limit: 65535
-    t.text     "details",     limit: 65535
-    t.string   "address",     limit: 255
-    t.string   "partner",     limit: 255
-    t.string   "committee",   limit: 255
-    t.string   "video_url",   limit: 255
+  create_table "project_translations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "description"
+    t.text "details"
+    t.string "address"
+    t.string "partner"
+    t.string "committee"
+    t.string "video_url"
+    t.text "image_description"
+    t.index ["locale"], name: "index_project_translations_on_locale"
+    t.index ["project_id"], name: "index_project_translations_on_project_id"
   end
 
-  add_index "project_translations", ["locale"], name: "index_project_translations_on_locale", using: :btree
-  add_index "project_translations", ["project_id"], name: "index_project_translations_on_project_id", using: :btree
-
-  create_table "projects", force: :cascade do |t|
-    t.integer  "election_id",         limit: 4,                     null: false
-    t.integer  "category_id",         limit: 4
-    t.string   "number",              limit: 255
-    t.integer  "cost",                limit: 4
-    t.boolean  "adjustable_cost",                   default: false
-    t.integer  "cost_min",            limit: 4,     default: 0
-    t.integer  "cost_step",           limit: 4,     default: 1
-    t.string   "map_geometry",        limit: 255
-    t.string   "image",               limit: 255
-    t.integer  "external_vote_count", limit: 4
-    t.integer  "sort_order",          limit: 4
-    t.text     "data",                limit: 65535
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.boolean  "uses_slider",                       default: false
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.bigint "category_id"
+    t.string "number"
+    t.integer "cost"
+    t.boolean "adjustable_cost", default: false
+    t.integer "cost_min", default: 0
+    t.integer "cost_step", default: 1
+    t.text "map_geometry"
+    t.string "image"
+    t.integer "external_vote_count"
+    t.integer "sort_order"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "uses_slider", default: false
+    t.index ["category_id"], name: "index_projects_on_category_id"
+    t.index ["election_id"], name: "index_projects_on_election_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "username",                   limit: 255,                 null: false
-    t.string   "password_digest",            limit: 255
-    t.string   "salt",                       limit: 255
-    t.boolean  "is_superadmin",                          default: false, null: false
-    t.boolean  "confirmed",                              default: false, null: false
-    t.string   "confirmation_id",            limit: 255
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "password_digest"
+    t.string "salt"
+    t.boolean "is_superadmin", default: false, null: false
+    t.boolean "confirmed", default: false, null: false
+    t.string "confirmation_id"
     t.datetime "confirmation_id_created_at"
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
-
-  create_table "vote_approvals", force: :cascade do |t|
-    t.integer  "voter_id",   limit: 4,             null: false
-    t.integer  "project_id", limit: 4,             null: false
-    t.integer  "cost",       limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "rank",       limit: 4, default: 1
+  create_table "visitors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "ip_address", null: false
+    t.text "user_agent"
+    t.text "referrer"
+    t.text "url"
+    t.datetime "created_at", null: false
   end
 
-  add_index "vote_approvals", ["project_id"], name: "index_vote_approvals_on_project_id", using: :btree
-  add_index "vote_approvals", ["voter_id"], name: "index_vote_approvals_on_voter_id", using: :btree
-
-  create_table "vote_comparisons", force: :cascade do |t|
-    t.integer  "voter_id",            limit: 4, null: false
-    t.integer  "first_project_id",    limit: 4, null: false
-    t.integer  "first_project_cost",  limit: 4
-    t.integer  "second_project_id",   limit: 4, null: false
-    t.integer  "second_project_cost", limit: 4
-    t.integer  "result",              limit: 4, null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+  create_table "vote_approvals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.bigint "project_id", null: false
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "rank", default: 1
+    t.index ["project_id"], name: "index_vote_approvals_on_project_id"
+    t.index ["voter_id"], name: "index_vote_approvals_on_voter_id"
   end
 
-  add_index "vote_comparisons", ["voter_id"], name: "index_vote_comparisons_on_voter_id", using: :btree
-
-  create_table "vote_knapsacks", force: :cascade do |t|
-    t.integer  "voter_id",   limit: 4, null: false
-    t.integer  "project_id", limit: 4, null: false
-    t.integer  "cost",       limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+  create_table "vote_comparisons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.integer "first_project_id", null: false
+    t.integer "first_project_cost"
+    t.integer "second_project_id", null: false
+    t.integer "second_project_cost"
+    t.integer "result", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["voter_id"], name: "index_vote_comparisons_on_voter_id"
   end
 
-  add_index "vote_knapsacks", ["project_id"], name: "index_vote_knapsacks_on_project_id", using: :btree
-  add_index "vote_knapsacks", ["voter_id"], name: "index_vote_knapsacks_on_voter_id", using: :btree
-
-  create_table "vote_plusminuses", force: :cascade do |t|
-    t.integer  "voter_id",   limit: 4, null: false
-    t.integer  "project_id", limit: 4, null: false
-    t.integer  "plusminus",  limit: 4, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+  create_table "vote_knapsacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.bigint "project_id", null: false
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_vote_knapsacks_on_project_id"
+    t.index ["voter_id"], name: "index_vote_knapsacks_on_voter_id"
   end
 
-  add_index "vote_plusminuses", ["project_id"], name: "index_vote_plusminuses_on_project_id", using: :btree
-  add_index "vote_plusminuses", ["voter_id"], name: "index_vote_plusminuses_on_voter_id", using: :btree
-
-  create_table "voter_registration_records", force: :cascade do |t|
-    t.integer  "election_id", limit: 4,     null: false
-    t.integer  "user_id",     limit: 4
-    t.integer  "voter_id",    limit: 4
-    t.text     "data",        limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "vote_plusminuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.bigint "project_id", null: false
+    t.integer "plusminus", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_vote_plusminuses_on_project_id"
+    t.index ["voter_id"], name: "index_vote_plusminuses_on_voter_id"
   end
 
-  create_table "voters", force: :cascade do |t|
-    t.integer  "election_id",                  limit: 4,                     null: false
-    t.integer  "location_id",                  limit: 4
-    t.string   "authentication_method",        limit: 255,                   null: false
-    t.string   "authentication_id",            limit: 255,                   null: false
-    t.string   "confirmation_code",            limit: 255
+  create_table "voter_registration_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.bigint "user_id"
+    t.bigint "voter_id"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_voter_registration_records_on_election_id"
+    t.index ["user_id"], name: "index_voter_registration_records_on_user_id"
+    t.index ["voter_id"], name: "index_voter_registration_records_on_voter_id"
+  end
+
+  create_table "voters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "election_id", null: false
+    t.bigint "location_id"
+    t.string "authentication_method", null: false
+    t.string "authentication_id", null: false
+    t.string "confirmation_code"
     t.datetime "confirmation_code_created_at"
-    t.string   "ip_address",                   limit: 255
-    t.text     "user_agent",                   limit: 65535
-    t.string   "stage",                        limit: 255
-    t.boolean  "void",                                       default: false, null: false
-    t.text     "data",                         limit: 65535
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.string "ip_address"
+    t.text "user_agent"
+    t.string "stage"
+    t.boolean "void", default: false, null: false
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id", "authentication_method", "authentication_id"], name: "index_voters_on_election_id_and_authentication", unique: true
+    t.index ["election_id"], name: "index_voters_on_election_id"
+    t.index ["location_id"], name: "index_voters_on_location_id"
   end
-
-  add_index "voters", ["election_id", "authentication_method", "authentication_id"], name: "index_voters_on_election_id_and_authentication", unique: true, using: :btree
 
 end

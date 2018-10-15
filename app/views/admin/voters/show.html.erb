@@ -46,12 +46,12 @@
       });
     }
 
-    var chart = d3.timeline()
+    var chart = d3.timelines()
       .width(700)
       .stack()
       .tickFormat({
-        format: d3.time.format.utc("%-I:%M %p"),
-        tickTime: d3.time.minutes,
+        format: d3.utcFormat("%-I:%M %p"),
+        tickTime: d3.timeMinute,
         tickSize: 6
       })
       .margin({left:120, right:30, top:0, bottom:0});

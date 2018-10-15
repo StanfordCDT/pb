@@ -21,8 +21,8 @@ en:
         <p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the Stanford Crowdsourced Democracy Team.</p>\n
         <p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p>\n
         <p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $XXX million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from (Date XXX) to (Date YYY). See all times and locations below.</p>"
-      proceed_button: "View sample ballot &gt;&gt;"
-      remote_voting_button: "Vote now &gt;&gt;"
+      proceed_button: "View sample ballot >>"
+      remote_voting_button: "Vote now >>"
       code_verification_button: "Enter code"
       other_verification_button: "Vote with other details"
       see_projects_button: "See Projects"  # Link to an external site that shows a list of projects.
@@ -221,7 +221,7 @@ Board at 650-723-2480.</p>"
       exit: "Exit"
 
   knapsack:
-    title: "Knapsack"
+    title: "Participatory Budgeting"
     popup:
       title: "Instructions"
       body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
@@ -280,7 +280,7 @@ Board at 650-723-2480.</p>"
     title: "Thank you"
     description:
       real: "Thank you for voting. Please click the 'Exit' button below."
-      demo: "Thank you for testing the digital participatory budgeting interface! <span style='color: red;'><strong>Please note that this is only a <u>preview</u>.</strong></span> In order to vote, please come to a voting location in one of the following places:"
+      demo: "Thank you for testing the digital participatory budgeting interface! <span style='color: red;'><strong>Please note that this is only a <u>preview</u>.</strong></span>"
     exit: "Exit"
 
   about:

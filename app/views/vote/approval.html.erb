@@ -26,6 +26,7 @@
     max_n_projects = <%= conf[:approval][:project_limits][@current_subpage] %>
   <% end %>
   var allow_selection_beyond_limits = <%= conf[current_action][:allow_selection_beyond_limits] %>;
+  var currency_symbol = "<%=j conf[:currency_symbol] %>";
   var adjustCostCallbacks = new Array(projects.length);
 
   var idToIndex = {};

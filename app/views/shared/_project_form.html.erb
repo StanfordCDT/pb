@@ -68,7 +68,7 @@ multiple_locales = available_locales.length > 1
     <div class="col-sm-10">
       <div class="form-inline">
         <div class="input-group">
-          <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+          <div class="input-group-prepend"><div class="input-group-text"><%= @election.config[:currency_symbol] %></div></div>
           <%= f.number_field :cost, class: 'form-control' %>
         </div>
       </div>
@@ -86,7 +86,7 @@ multiple_locales = available_locales.length > 1
       <div class="col-sm-10">
         <div class="form-inline">
           <div class="input-group">
-            <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+            <div class="input-group-prepend"><div class="input-group-text"><%= @election.config[:currency_symbol] %></div></div>
             <%= f.text_field :cost_min, class: 'form-control' %>
           </div>
         </div>
@@ -97,7 +97,7 @@ multiple_locales = available_locales.length > 1
       <div class="col-sm-10">
         <div class="form-inline">
           <div class="input-group">
-            <div class="input-group-prepend"><div class="input-group-text">$</div></div>
+            <div class="input-group-prepend"><div class="input-group-text"><%= @election.config[:currency_symbol] %></div></div>
             <%= f.text_field :cost_step, class: 'form-control' %>
           </div>
         </div>

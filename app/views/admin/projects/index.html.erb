@@ -37,9 +37,9 @@
 
               <b><%= project.number + '.' if !project.number.blank? %> <%= (!project.title.blank? ? project.title : "<span class='text-danger'>MISSING TITLE</span>".html_safe) %></b>
               <% if !project.adjustable_cost? %>
-                (<%= cost_with_delimiter(project.cost) %>)
+                (<%= cost_with_delimiter(project.cost, @election.config[:currency_symbol]) %>)
               <% else %>
-              (<%= cost_with_delimiter(project.cost_min) %> - <%= cost_with_delimiter(project.cost) %>)
+              (<%= cost_with_delimiter(project.cost_min, @election.config[:currency_symbol]) %> - <%= cost_with_delimiter(project.cost, @election.config[:currency_symbol]) %>)
               <% end %>
 
               <p><%= (!project.description.blank? ? sanitize(project.description) : "<span class='text-danger'>MISSING DESCRIPTION</span>").html_safe %></p>

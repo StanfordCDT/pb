@@ -693,7 +693,7 @@ function ProjectPreview(props) {
       <p><b>{props.showNumbers && "1. "}Project A {props.showCostInTitle && "($100,000)"}</b><br />
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
       {props.showCost &&
-        <p><b>Estimated Cost</b>: $100,000</p>
+        <p><b>Estimated Cost</b>: {props.currencySymbol}100,000</p>
       }
       <button className="btn btn-primary">Select</button>
     </div>
@@ -790,8 +790,9 @@ class ConfigEditor extends React.Component {
         <tr>
           <td><label htmlFor="election_budget">Budget</label></td>
           <td>
-            <div className="input-group">
-              <div className="input-group-prepend"><div className="input-group-text">$</div></div>
+            <div className="form-inline">
+              <SelectOption name="currency_symbol" db={db} values={[["$","$"],["€","€"],["£","£"],["¥","¥"]]} />
+              &nbsp;
               <input className="form-control" type="number" name="election[budget]" id="election_budget" defaultValue={electionData.budget} />
             </div>
           </td>
@@ -1232,6 +1233,7 @@ class ConfigEditor extends React.Component {
           showNumbers={db.get("approval.show_numbers")}
           showCostInTitle={db.get("approval.show_cost_in_title")}
           showCost={db.get("approval.show_cost")}
+          currencySymbol={db.get("currency_symbol")}
         />
         <div className="previewCaption">Preview</div>
       </div>
@@ -1407,6 +1409,7 @@ class ConfigEditor extends React.Component {
           showNumbers={db.get("knapsack.show_numbers")}
           showCostInTitle={false}
           showCost={db.get("knapsack.show_cost")}
+          currencySymbol={db.get("currency_symbol")}
         />
         <div className="previewCaption">Preview</div>
       </div>
@@ -1535,6 +1538,7 @@ class ConfigEditor extends React.Component {
           showNumbers={db.get("ranking.show_numbers")}
           showCostInTitle={db.get("ranking.show_cost_in_title")}
           showCost={db.get("ranking.show_cost")}
+          currencySymbol={db.get("currency_symbol")}
         />
         <div className="previewCaption">Preview</div>
       </div>

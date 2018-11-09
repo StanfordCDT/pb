@@ -355,11 +355,13 @@ module Admin
 
     def to_voting_machine
       @election = Election.find(params[:id])
+      raise "error" unless @election.config[:allow_local_voting]
       @locations = @election.locations.order(:name)
     end
 
     def post_to_voting_machine
       @election = Election.find(params[:id])
+      raise "error" unless @election.config[:allow_local_voting]
       @locations = @election.locations
 
       if @locations.length > 0 && !params.key?(:location_id)

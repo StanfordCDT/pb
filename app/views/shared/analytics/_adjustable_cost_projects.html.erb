@@ -24,7 +24,7 @@
     <tbody>
       <tr>
         <td>Average cost</td>
-        <td><%= project[:average_cost].nil? ? 'n/a' : cost_with_delimiter(project[:average_cost].round) %></td>
+        <td><%= project[:average_cost].nil? ? 'n/a' : cost_with_delimiter(project[:average_cost].round, @election.config[:currency_symbol]) %></td>
       </tr>
     </tbody>
   </table>
@@ -39,7 +39,7 @@
     <tbody>
       <% project[:vote_counts].sort.reverse.each do |cost, vote_count| %>
         <tr>
-          <td><%= cost_with_delimiter(cost) %></td>
+          <td><%= cost_with_delimiter(cost, @election.config[:currency_symbol]) %></td>
           <td>
             <div class="progress">
               <div class="progress-bar progress-bar-success"

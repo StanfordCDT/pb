@@ -62,7 +62,7 @@ es:
         summary:
           zero: "<span style='color: red;'>No ha elegido ningún proyecto.</span>"
           other: "Ha elegido los siguientes proyectos: %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Ha seleccionado solo un proyecto.</span>"
           less: "<span style='color: red;'>Ha seleccionado solo %{count} proyectos.</span>"
@@ -87,7 +87,7 @@ es:
     adjustable_cost_project:
       instructions: "Por favor seleccione una de las siguientes opciones:"
       not_adjusted_warning: "<span style='color:red'>Ha seleccionado 0 dólares para %{project}</span>"
-      message: "Ha seleccionado $%{cost} para %{project}"
+      message: "Ha seleccionado %{cost} para %{project}"
       table_headings:
         percentage_column: "Porcentaje del presupuesto gastado"
         cost_column: "Costo"
@@ -164,7 +164,7 @@ es:
         summary:
           zero: "<span style='color: red;'>No ha elegido ningún proyecto.</span>"
           other: "Ha elegido los siguientes proyectos: %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Ha seleccionado solo un proyecto.</span>"
           less: "<span style='color: red;'>Ha seleccionado solo %{count} proyectos.</span>"
@@ -175,7 +175,7 @@ es:
     adjustable_cost_project:
       instructions: "Por favor seleccionar uno de los siguientes opciones:"
       not_adjusted_warning: "<span style='color:red'>Ha seleccionado 0 dólares para %{project}</span>"
-      message: "Ha seleccionado $%{cost} para %{project}"
+      message: "Ha seleccionado %{cost} para %{project}"
 
   survey:
     title: "Encuesta"

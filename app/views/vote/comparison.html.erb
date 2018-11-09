@@ -116,6 +116,7 @@ var pairs = <%= @pairs.to_json %>;
 var curIndex = 0;
 var max_pairs = pairs.length;
 var budget = <%= @election.budget %>;
+var currency_symbol = "<%=j conf[:currency_symbol] %>";
 
 function render() {
 
@@ -129,7 +130,7 @@ function render() {
     var cost = pairs[curIndex][i-1][1];
     $('#photo' + i).html("<img src=\"" + project.image_url + "\" style='max-height: 200px; max-width: 300px' />");
     $('#description' + i).html(project.description);
-    $('#cost' + i).text('$' + numberWithDelimiter(cost));
+    $('#cost' + i).text(costWithDelimiter(cost, currency_symbol));
     $('#bar' + i).css('width',  (cost/budget*100) + '%')
   }
   var project1 = projects[pairs[curIndex][0][0]];
@@ -185,6 +186,10 @@ function numberWithDelimiter(val){
     val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
   }
   return val;
+}
+
+function costWithDelimiter(val, currencySymbol) {
+  return currencySymbol + numberWithDelimiter(val);
 }
 </script>
 

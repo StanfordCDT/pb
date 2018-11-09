@@ -9,12 +9,17 @@ var idToIndex = {};
 for (var i = 0; i < projects.length; ++i) {
   idToIndex[projects[i].id] = i;
 }
+var currency_symbol = "<%=j @election.config[:currency_symbol] %>";
 
 function numberWithDelimiter(val) {
   while (/(\d+)(\d{3})/.test(val.toString())) {
     val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
   }
   return val;
+}
+
+function costWithDelimiter(val, currencySymbol) {
+  return currencySymbol + numberWithDelimiter(val);
 }
 
 var reloadCallbacks = [];

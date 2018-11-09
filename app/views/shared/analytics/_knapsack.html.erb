@@ -189,7 +189,7 @@ function reloadKnapsackTable() {
       td.textContent = "a\nb";
       var s = "";
       for (var j = 0; j < knapsack_row.votes.length; ++j) {
-        s += ('$' + numberWithDelimiter(knapsack_row.votes[j][0])) + " - " + knapsack_row.votes[j][1] + "<br>";
+        s += (costWithDelimiter(knapsack_row.votes[j][0], currency_symbol)) + " - " + knapsack_row.votes[j][1] + "<br>";
       }
       td.innerHTML = s;
       tr.appendChild(td);
@@ -197,7 +197,7 @@ function reloadKnapsackTable() {
       // Allocation
       td = document.createElement('td');
       td.className = "text-right";
-      td.textContent = '$' + numberWithDelimiter(knapsack_row.allocation); // FIXME:
+      td.textContent = costWithDelimiter(knapsack_row.allocation, currency_symbol); // FIXME:
       tr.appendChild(td);
     }
 
@@ -394,7 +394,7 @@ reloadKnapsackTable();
       ;
     if (highlighted) {
       costGroup.style("opacity", 1).attr("transform", "translate(" + x(d[0]) + ",0)");
-      costText.text("$" + numberWithDelimiter(d[0]));
+      costText.text(costWithDelimiter(d[0], currency_symbol));
     } else {
       costGroup.style("opacity", 0);
     }

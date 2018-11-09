@@ -62,7 +62,7 @@ zh:
         summary:
           zero: "<span style='color: red;'>你还没有选择任何项目。</span>"
           other: "你已经选择以下项目： %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>您只选择了一个项目。</span>"
           less: "<span style='color: red;'>您只选择了 %{count} 个项目。</span>"
@@ -88,7 +88,7 @@ zh:
     adjustable_cost_project:
       instructions: "请选择下列选项之一:"
       not_adjusted_warning: "<span style='color:red'>您选择0美元的%{project}</span>"
-      message: "您已选择$%{cost}为%{project}"
+      message: "您已选择%{cost}为%{project}"
       table_headings:
         percentage_column: "预算中所占比例"
         cost_column: "费用"
@@ -164,7 +164,7 @@ zh:
         summary:
           zero: "<span style='color: red;'>你还没有选择任何项目。</span>"
           other: "你已经选择以下项目： %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>您只选择了一个项目。</span>"
           less: "<span style='color: red;'>您只选择了 %{count} 个项目。</span>"
@@ -175,7 +175,7 @@ zh:
     adjustable_cost_project:
       instructions: "请选择下列选项之一:"
       not_adjusted_warning: "<span style='color:red'>您选择0美元的%{project}</span>"
-      message: "您已选择$%{cost}为%{project}"
+      message: "您已选择%{cost}为%{project}"
 
   survey:
     title: "调查"

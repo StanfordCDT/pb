@@ -28,6 +28,10 @@ function numberWithDelimiter(val) {
   return val;
 }
 
+function costWithDelimiter(val, currencySymbol) {
+  return currencySymbol + numberWithDelimiter(val);
+}
+
 // --------------------------------- Views ---------------------------------
 
 function initializeViews() {
@@ -52,7 +56,7 @@ function initializeViews() {
         var slider = $("#slider" + id);
         slider.slider({
           formater: function(value) {
-            return '$' + numberWithDelimiter(value);
+            return costWithDelimiter(value, currency_symbol);
           }
         });
         slider.slider().on('slide', function(e){
@@ -264,7 +268,7 @@ function updateList() {
           $("#slider-wrapper" + id).show();
           //$("#slider" + id).slider('setRealMax', Math.min(projects[i].cost, budget - total + costs[i]));
           $("#slider" + id).slider('setValue', costs[i]);
-          $("#slider-value" + id).text("$" + numberWithDelimiter(costs[i]));
+          $("#slider-value" + id).text(costWithDelimiter(costs[i], currency_symbol));
         } else {
           $("#slider-wrapper" + id).hide();
         }
@@ -393,7 +397,7 @@ function updateBudgetbar() {
       return '';
     var photo_name = "";
     var title = "<span style='font-size: 14px'>" + projects[idToIndex[id]].title;
-    var content = "<%=j t('approval.estimated_cost') %>: $" + numberWithDelimiter(costs[idToIndex[id]]) + "<br>" +
+    var content = "<%=j t('approval.estimated_cost') %>: " + costWithDelimiter(costs[idToIndex[id]], currency_symbol) + "<br>" +
       "<button type='button' class='btn btn-secondary' onclick='removeProject(" + id + ")'><%=j t('approval.remove_button').html_safe %></button>" +
       (photo_name ? ("<br><img src='/project_images/" + photo_name + "' class='budgerbar-thumb' />") : '') + "</span>";
     return "<a class='progress-bar bg-" + cls + "' " +
@@ -403,7 +407,7 @@ function updateBudgetbar() {
         "</a>";
   }
 
-  $('#budgetbar-total').text(numberWithDelimiter(total));
+  $('#budgetbar-total').text(costWithDelimiter(total, currency_symbol));
 
   var s = "";
   for (var i = 0; i < projects.length; ++i) {
@@ -445,7 +449,7 @@ function updateBudgetbar() {
   if (total <= budget) {
     // FIXME: say something else when total == budget
     // FIXME: change the language if (has_n_project_limit && selectedProjectIDs.length >= max_n_projects)
-    description = "<%=j t('approval.budgetbar.under_budget').html_safe %>".replace('%{remaining_money}', "<span class='remaining-money'>$" + numberWithDelimiter(budget-total) + "</span>");
+    description = "<%=j t('approval.budgetbar.under_budget').html_safe %>".replace('%{remaining_money}', "<span class='remaining-money'>" + costWithDelimiter(budget-total, currency_symbol) + "</span>");
   } else if (!has_budget_limit && (!has_n_project_limit || selectedProjectIDs.length < max_n_projects)) {
     description = "<%=j t('approval.budgetbar.over_budget_but_can_add_projects').html_safe %>";
   } else {
@@ -515,7 +519,7 @@ function updateModal() {
       var project = projects[i];
       if (costs[i] > 0) {
         adjustable_cost_project_summary += '<%=j t("#{current_action}.adjustable_cost_project.message").html_safe %>'
-          .replace('%{cost}', numberWithDelimiter(costs[i]))
+          .replace('%{cost}', costWithDelimiter(costs[i], currency_symbol))
           .replace('%{project}', project.title) + '<br><br>';
       } else {
         adjustable_cost_project_summary += adjustable_cost_project_warning.replace('%{project}', project.title) + "<br><br>";
@@ -544,7 +548,7 @@ function updateModal() {
         var i = idToIndex[rankedProjectIds[j]];
         var project = projects[i];
         projects_s += '<li>' +
-          item.replace('%{cost}', numberWithDelimiter(costs[i]))
+          item.replace('%{cost}', costWithDelimiter(costs[i], currency_symbol))
           .replace('%{project}', project.title) + '</li>';
       }
       projects_s += '</ol>';
@@ -554,7 +558,7 @@ function updateModal() {
         var i = idToIndex[selectedProjectIDs[j]];
         var project = projects[i];
         projects_s += '<li>' +
-          item.replace('%{cost}', numberWithDelimiter(costs[i]))
+          item.replace('%{cost}', costWithDelimiter(costs[i], currency_symbol))
           .replace('%{project}', project.title) + '</li>';
       }
       projects_s += '</ul>';
@@ -630,7 +634,7 @@ function projectString(project) {
   if (<%= current_action == :ranking %>)
     return project.title;
   else
-    return project.title + " ($" + numberWithDelimiter(project.cost) + ")";
+    return project.title + " (" + costWithDelimiter(project.cost, currency_symbol) + ")";
 }
 
 function projectMinimumCost(id) {

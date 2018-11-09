@@ -105,6 +105,9 @@
   default: ''
   # description: "The URL to redirect the voter to after they reach the last page."
 
+- name: currency_symbol
+  default: $
+
 - name: index
   children:
 

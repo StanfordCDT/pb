@@ -70,7 +70,7 @@ ht:
         summary:
           zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
           other: 'Ou te seleksyone pwojè sa yo: %{projects}'
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Ou te seleksyone yon sèl pwojè sèlman.</span>"
           less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"
@@ -102,7 +102,7 @@ ht:
     adjustable_cost_project:
       instructions: 'Tanpri seleksyone youn nan opsyon ki anba yo:'
       not_adjusted_warning: "<span style='color:red'>Ou te seleksyone $0 pou %{project}</span>"
-      message: Ou te seleksyone $%{cost} pou %{project}
+      message: Ou te seleksyone %{cost} pou %{project}
       table_headings:
         percentage_column: Pousantaj ki depanse nan bidjè a
         cost_column: Pri
@@ -174,7 +174,7 @@ ht:
         summary:
           zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
           other: 'Ou te seleksyone pwojè sa yo: %{projects}'
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Ou te seleksyone sèlman yon pwojè.</span>"
           less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"
@@ -206,7 +206,7 @@ ht:
     adjustable_cost_project:
       instructions: 'Tanpri seleksyone youn nan opsyon sa yo ki anba''a:'
       not_adjusted_warning: "<span style='color:red'>Ou te seleksyone $0 pou %{project}</span>"
-      message: Ou te seleksyone $%{cost} pou %{project}
+      message: Ou te seleksyone %{cost} pou %{project}
       table_headings:
         percentage_column: Pousantaj ki depanse nan bidjè a
         cost_column: Pri
@@ -276,7 +276,7 @@ ht:
         summary:
           zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
           other: 'Ou te seleksyone pwojè sa yo: %{projects}'
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Ou te seleksyone sèlman yon pwojè.</span>"
           less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"

@@ -13,7 +13,7 @@
   <% end %>
   <%= (!project.title.blank? ? project.title : "<span class='text-danger'>MISSING TITLE</span>").html_safe %>
   <% if conf[current_action][:show_cost_in_title] %>
-    (<%= cost_with_delimiter(project.cost) %>)
+    (<%= cost_with_delimiter(project.cost, conf[:currency_symbol]) %>)
   <% end %>
 </p>
 
@@ -36,10 +36,10 @@
     <b><%= t('approval.estimated_cost') %></b>:
     <span class="text-nowrap">
       <% if project.adjustable_cost? %>
-        <%= cost_with_delimiter(project.cost_min) %> -
-        <%= cost_with_delimiter(project.cost) %>
+        <%= cost_with_delimiter(project.cost_min, conf[:currency_symbol]) %> -
+        <%= cost_with_delimiter(project.cost, conf[:currency_symbol]) %>
       <% else %>
-        <%= cost_with_delimiter(project.cost) %>
+        <%= cost_with_delimiter(project.cost, conf[:currency_symbol]) %>
       <% end %>
     </span>
   </p>
@@ -130,9 +130,9 @@
             onclick="adjustCost(<%= project.id %>, <%= cost %>)" <%= (cost == project.cost_min) ? 'checked="checked"' : '' %> />
           <label class="form-check-label" for="project-adjustable-cost<%= project.id %>-<%= index %>">
             <% if project.cost_min == 0  # Show percentage if cost_min is 0 %>
-              &nbsp;<%= (cost * 100) / project.cost %>%&nbsp;&nbsp;(<%= cost_with_delimiter(cost) %>)
+              &nbsp;<%= (cost * 100) / project.cost %>%&nbsp;&nbsp;(<%= cost_with_delimiter(cost, conf[:currency_symbol]) %>)
             <% else %>
-              &nbsp;<%= cost_with_delimiter(cost) %>
+              &nbsp;<%= cost_with_delimiter(cost, conf[:currency_symbol]) %>
             <% end %>
           </label>
         </div>
@@ -166,7 +166,7 @@
       <% costs.each do |cost| %>
         <tr>
           <td><%= (cost * 100) / project.cost %>%</td>
-          <td><%= cost_with_delimiter(cost) %></td>
+          <td><%= cost_with_delimiter(cost, conf[:currency_symbol]) %></td>
           <td><%= street_counts[(cost - project.cost_min) / project.cost_step] %></td>
         </tr>
       <% end %>

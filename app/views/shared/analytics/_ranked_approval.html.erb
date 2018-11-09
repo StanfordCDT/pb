@@ -84,7 +84,7 @@ function reloadRankedApprovalTable() {
       tr.appendChild(td);
 
       td = document.createElement('td');
-      td.textContent = '$' + numberWithDelimiter(project_ranked_votes[i][1]);
+      td.textContent = costWithDelimiter(project_ranked_votes[i][1], currency_symbol);
       tr.appendChild(td);
 
       for (var j = 0; j < max_n_projects; j++) {

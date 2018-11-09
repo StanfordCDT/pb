@@ -73,8 +73,8 @@
       <div id="budgetbar-offset">
         <span id="budgetbar-text">
           <%= t('approval.budgetbar.text',
-                total: '<span class="money">$<span id="budgetbar-total">0</span></span>',
-                budget: '<span class="money">$' + number_with_delimiter(@election.budget.to_i) + '</span>').html_safe %><br>
+                total: '<span class="money"><span id="budgetbar-total">' + cost_with_delimiter(0, @election.config[:currency_symbol]) + '</span></span>',
+                budget: '<span class="money">' + cost_with_delimiter(@election.budget.to_i, @election.config[:currency_symbol]) + '</span>').html_safe %><br>
           <span id="budgetbar-description"></span>
         </span>
         <div class="progress" id="budgetbar-progress"></div>

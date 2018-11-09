@@ -68,7 +68,7 @@ fi:
         summary:
           zero: "<span style='color: red;'>Et ole valinnut yhtäkään projektia.</span>"
           other: 'Olet valinnut seuraavat projektit: %{projects}'
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
           less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"
@@ -101,7 +101,7 @@ fi:
     adjustable_cost_project:
       instructions: 'Valitse yksi alla olevista vaihtoehdoista:'
       not_adjusted_warning: "<span style='color:red'>Olet valinnut $0 kohteeseen %{project}</span>"
-      message: Olet valinnut $%{cost} kohteeseen %{project}
+      message: Olet valinnut %{cost} kohteeseen %{project}
       table_headings:
         percentage_column: Prosenttia budjetista käytetty
         cost_column: Hinta
@@ -172,7 +172,7 @@ fi:
         summary:
           zero: "<span style='color: red;'>Et ole valinnut yhtäkään projektia.</span>"
           other: 'Olet valinnut seuraavat projektit: %{projects}'
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
           less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"
@@ -205,7 +205,7 @@ fi:
     adjustable_cost_project:
       instructions: 'Valitse yksi alla olevista vaihtoehdoista:'
       not_adjusted_warning: "<span style='color:red'>Olet valinnut $0 kohteeseen %{project}</span>"
-      message: Olet valinnut $%{cost} kohteeseen %{project}
+      message: Olet valinnut %{cost} kohteeseen %{project}
       table_headings:
         percentage_column: Prosenttia budjetista käytetty
         cost_column: Hinta
@@ -267,7 +267,7 @@ fi:
         summary:
           zero: "<span style='color: red;'>Et ole valinnut yhtään projektia.</span>"
           other: 'Olet valinnut seuraavat projektit: %{projects}'
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
           less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"

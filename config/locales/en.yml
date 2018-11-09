@@ -65,7 +65,7 @@ en:
         summary:
           zero: "<span style='color: red;'>You haven't selected any project.</span>"
           other: "You have selected the following projects: %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
@@ -90,7 +90,7 @@ en:
     adjustable_cost_project:
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected $%{cost} for %{project}"
+      message: "You have selected %{cost} for %{project}"
       table_headings:
         percentage_column: "Percentage of the budget spent"
         cost_column: "Cost"
@@ -157,7 +157,7 @@ en:
         summary:
           zero: "<span style='color: red;'>You haven't selected any project.</span>"
           other: "You have selected the following projects: %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
@@ -253,7 +253,7 @@ Board at 650-723-2480.</p>"
         summary:
           zero: "<span style='color: red;'>You haven't selected any projects.</span>"
           other: "You have selected the following projects: %{projects}"
-          item: "%{project} ($%{cost})"
+          item: "%{project} (%{cost})"
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
@@ -264,7 +264,7 @@ Board at 650-723-2480.</p>"
     adjustable_cost_project:
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected $%{cost} for %{project}"
+      message: "You have selected %{cost} for %{project}"
 
   survey:
     title: "Survey"

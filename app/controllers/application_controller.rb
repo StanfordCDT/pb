@@ -117,11 +117,11 @@ class ApplicationController < ActionController::Base
     connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, NOW())")
   end
 
-  def cost_with_delimiter(cost)
+  def cost_with_delimiter(cost, currency_symbol)
     if I18n.locale == :fr
-      number_with_delimiter(cost, delimiter: " ", separator: ",") + ' $'
+      number_with_delimiter(cost, delimiter: " ", separator: ",") + ' ' + currency_symbol
     else
-      '$' + number_with_delimiter(cost)
+      currency_symbol + number_with_delimiter(cost)
     end
   end
 end

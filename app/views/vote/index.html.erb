@@ -54,13 +54,13 @@
           <%# Remote voting button(s) %>
           <% if conf[:allow_remote_voting] && !conf[:voting_has_ended] %>
             <% if conf[:remote_voting_sms_verification] && conf[:index][:show_remote_voting_sms_button] %>
-              <a href="<%= url_for action: :sms_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.remote_voting_button').html_safe %></a>
+              <a href="<%= url_for action: :sms_signup %>" class="btn btn-primary btn-lg <%= conf[:stop_accepting_votes] ? 'disabled' : '' %>" style="margin: 0 15px 10px;"><%= t('index.remote.sms_verification_button').html_safe %></a>
             <% end %>
             <% if conf[:remote_voting_other_verification] && conf[:index][:show_remote_voting_other_button] %>
-              <a href="<%= url_for action: :other_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.other_verification_button').html_safe %></a>
+              <a href="<%= url_for action: :other_signup %>" class="btn btn-primary btn-lg <%= conf[:stop_accepting_votes] ? 'disabled' : '' %>" style="margin: 0 15px 10px;"><%= t('index.remote.other_verification_button').html_safe %></a>
             <% end %>
             <% if conf[:remote_voting_code_verification] && conf[:index][:show_remote_voting_code_button] %>
-              <a href="<%= url_for action: :code_signup %>" class="btn btn-primary btn-lg" style="margin: 0 15px 10px;"><%= t('index.remote.code_verification_button').html_safe %></a>
+              <a href="<%= url_for action: :code_signup %>" class="btn btn-primary btn-lg <%= conf[:stop_accepting_votes] ? 'disabled' : '' %>" style="margin: 0 15px 10px;"><%= t('index.remote.code_verification_button').html_safe %></a>
             <% end %>
           <% end %>
         </div>

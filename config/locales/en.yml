@@ -22,9 +22,9 @@ en:
         <p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p>\n
         <p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $XXX million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from (Date XXX) to (Date YYY). See all times and locations below.</p>"
       proceed_button: "View sample ballot >>"
-      remote_voting_button: "Vote now >>"
+      sms_verification_button: "Vote now >>"
       code_verification_button: "Enter code"
-      other_verification_button: "Vote with other details"
+      other_verification_button: "Vote now >>"
       see_projects_button: "See Projects"  # Link to an external site that shows a list of projects.
     voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "The voting has ended."
@@ -333,7 +333,7 @@ Board at 650-723-2480.</p>"
     zipcode_placeholder: "ZIP code"
     account_number_placeholder: "Account Number"
     vote_button: "Vote"
-    wrong_account_number: "Wrong account number"
+    wrong_account_number: "Wrong account number or ZIP code"
     used_account_number: "This account number has already been used"
 
   registration:

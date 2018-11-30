@@ -23,9 +23,9 @@ fi:
         <p class='lead'>Tällä nettisivulla voit tutustua tämän vuoden projekteihin ja digitaaliseen äänestykseen. Tämä nettisivu on vain tiedon tarjoamista varten, <b>etkä voi</b> äänestää täällä oikeasti.</p>
         <p class='lead'>Kun <u>äänestät oikeasti</u>, olet mukana päättämässä, mihin $XXX miljoonaa kaupungin kehitysbudjetista käytetään. Äänestääksesi sinun täytyy saapua yhdelle kaupungin monista äänestyspaikoista. Äänestys pidetään päivästä (Date XXX) päivään (Date YYY). Näet kaikki ajat ja paikat alta.</p>
       proceed_button: Katso esimerkkiäänestyslipuketta >>
-      remote_voting_button: "Äänestä nyt >>"
+      sms_verification_button: "Äänestä nyt >>"
       code_verification_button: Lisää koodi
-      other_verification_button: "Äänestä toisilla henkilötiedoilla"
+      other_verification_button: "Äänestä nyt >>"
       see_projects_button: Katso projektit
     voting_has_not_started: "Äänestäminen tällä sivustolla ei ole vielä alkanut. Alamme
       keräämään etä-ääniä niin pian kuin mahdollista. Kiitos kärsivällisyydestäsi."

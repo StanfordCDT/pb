@@ -19,9 +19,9 @@ zh:
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the Stanford Crowdsourced Democracy Team.</p><p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p><p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $... million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from ... to ... . See all times and locations below.</p>"
       proceed_button: "继续 >>"
-      remote_voting_button: "快来投票 >>"
+      sms_verification_button: "快来投票 >>"
       code_verification_button: "Enter code"
-      other_verification_button: "Vote with other details"
+      other_verification_button: "快来投票 >>"
       see_projects_button: "查看项目"  # button to go to the demo vote screen
     voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "The voting has ended."
@@ -110,6 +110,21 @@ zh:
       cue: "点击图片幻灯片放映"
     project_ranking:
       list_header: "您选择了以下项目。通过拖动在<span class='glyphicon glyphicon-sort'></span>图标改变自己的排名。"
+
+  ranking:
+    title: "Participatory Budgeting"
+    popup:
+      title: "Instructions"
+      body: "<ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+      ok: "OK"
+    instructions: "<h3>Instructions</h3>
+                   <ol>
+                     <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                   </ol>"
 
   thanks_approval:
     title: "谢谢"
@@ -245,7 +260,7 @@ zh:
     zipcode_placeholder: "Zip code"
     account_number_placeholder: "Account Number"
     vote_button: "Vote"
-    wrong_account_number: "Wrong account number or zip code"
+    wrong_account_number: "Wrong account number or ZIP code"
     used_account_number: "This account number has already been used"
 
   registration:

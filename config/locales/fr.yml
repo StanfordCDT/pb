@@ -19,9 +19,9 @@ fr:
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenue à l'échantillon de la ville de NYC budget participatif de vote numérique, gracieuseté de l'équipe pour la démocratie Crowdsourced Stanford.</p><p class='lead'>Sur ce site, vous pouvez vous familiariser avec les projets de cette année et le bulletin de vote numérique. Ce site est uniquement informatif, et vous ne pouvez pas voter réelle ici.</p><p class='lead'>Quand vous lancez votre bulletin de vote réel, vous sera de décider comment vous voulez allouer 2,4 millions $ du budget d'amélioration des immobilisations de la ville. Pour voter, vous devez venir à l'un des sites de vote de nombreux qui seront situés dans toute la ville.</p>"
       proceed_button: "Voir échantillon du bulletin de vote >>"
-      remote_voting_button: "Voter >>"
+      sms_verification_button: "Voter >>"
       code_verification_button: "Entrer le code"
-      other_verification_button: "Votez avec d'autres détails"
+      other_verification_button: "Voter >>"
       see_projects_button: "Voir les projets"  # Link to an external site
     voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "Le vote est terminé."
@@ -118,6 +118,21 @@ fr:
     send_vote_email: "(Facultatif) Je veux envoyer mon résultat du vote sur mon email:"
     email_placeholder: "Entrer email"
     next_button: "Suivant &gt;&gt;"
+
+  ranking:
+    title: "Participatory Budgeting"
+    popup:
+      title: "Instructions"
+      body: "<ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+      ok: "OK"
+    instructions: "<h3>Instructions</h3>
+                   <ol>
+                     <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                   </ol>"
 
   question:
     title: "Enquête"

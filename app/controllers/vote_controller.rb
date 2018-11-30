@@ -319,11 +319,7 @@ class VoteController < ApplicationController
       voter = Voter.find_by(election_id: @election.id, authentication_method: 'code', authentication_id: code.code)
       if voter
         if voter.stage == 'done' && !voter.test?
-          if code.status == 'personal_id'
-            flash.now[:error] = t('index.voting_machine.used_personal_id')
-          else
-            flash.now[:error] = t('index.voting_machine.used_code')
-          end
+          flash.now[:error] = t('index.voting_machine.used_code')
           render :index
           return
         end

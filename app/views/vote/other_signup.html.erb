@@ -1,25 +1,12 @@
 <% content_for :title, t('other_signup.title') %>
 
 <style>
-.panel {
-  background-color: #fafafa;
-}
-
-.panel-body {
-  font-size: 18px;
-}
-
-span.alert {
-  font-size: 16px;
-}
-
 input[type='text'] {
   display: inline-block;
   width: 500px;
   height: 50px;
   font-size: 16px;
 }
-
 </style>
 
 <div class="container-fluid">
@@ -31,8 +18,8 @@ input[type='text'] {
         <%= raw t('other_signup.instruction') %>
 
         <form action="<%= url_for(action: :post_other_signup) %>" method="post">
-          <div class="panel panel-default">
-            <div class="panel-body">
+          <div class="card bg-light">
+            <div class="card-body">
               <% if flash[:error] %>
                 <p style="font-size: 20px; color: red;"><%= flash[:error] %></p>
               <% end %>

@@ -39,7 +39,12 @@ Rails.application.routes.draw do
           get 'resend_confirmation'
         end
       end
-      resources :code_batches
+      resources :code_batches do
+        collection do
+          get 'import'
+          post 'post_import'
+        end
+      end
       resources :locations
       resources :voters
       resources :voter_registration_records

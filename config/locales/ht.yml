@@ -25,9 +25,9 @@ ht:
         <p class='lead'>Sou sit sa, ou ka familyarize tèt ou avèk pwojè ane sa e avèk vòt nimerik la. Sit sa selman pou jwenn enfòmasyon, e ou <b>p'ap ka</b> vote sou sit sa.</p>
         <p class='lead'>Lè ou depoze bilten vòt ou, ou pral deside kòman ou vle yo repati $XXX milyon nan bidjè amelyorasyon kapital vil la. Pou ka vote, ou bezwen vini nan youn nan kote pou vote sa yo ki ap nan tout vil la. Vòt la ap kòmanse a pati de (Dat XXX) rive (Dat YYY). Gade tout lè epi kote yo anba'a.</p>
       proceed_button: Gade yon echantiyon bilten vòt >>
-      remote_voting_button: Vote a distans kounya >>
+      sms_verification_button: Vote a distans kounya >>
       code_verification_button: Antre kòd la
-      other_verification_button: Vòt avèk lòt detay
+      other_verification_button: Vote a distans kounya >>
       see_projects_button: Wè Pwojè yo
     voting_has_not_started: Vòt sou sit sa poko kòmanse. Nou pral kòmanse kolekte
       vòt a distans yo nan yon ti tan ki pa two lwen. Mèsi pou pasyans ou.

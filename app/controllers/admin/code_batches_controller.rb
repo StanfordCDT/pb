@@ -70,7 +70,7 @@ module Admin
         end
         format.csv do
           data = @code_batch.codes.map(&:code).join("\n") + "\n"
-          send_data data, filename: "codes_#{id}.csv", type: Mime::CSV
+          send_data data, filename: "codes_#{id}.csv"
         end
       end
     end
@@ -79,42 +79,13 @@ module Admin
       @election = Election.find(params[:election_id])
     end
 
+    def import
+      @election = Election.find(params[:election_id])
+    end
+
     def create
       require 'set'
       @election = Election.find(params[:election_id])
-
-      # Import codes from a .txt file
-      if current_user.superadmin? && params[:code_batch][:import_file]
-        personal_id_codes = params[:code_batch][:personal_id].to_i != 0
-        ActiveRecord::Base.transaction do
-          code_batch = CodeBatch.new
-          code_batch.election = @election
-          code_batch.user = current_user
-          code_batch.save!
-
-          if true
-            # Use a single mass insert for the highest performance.
-            code_batch_id = code_batch.id.to_s
-            status = Code.statuses[personal_id_codes ? :personal_id : :ok].to_s
-            rows = params[:code_batch][:import_file].read.split("\n").map do |c|
-              c = sanitize_code(c)
-              c.empty? ? nil : ("(" + Code.sanitize(c) + "," + code_batch_id + "," + status + ",UTC_TIMESTAMP(),UTC_TIMESTAMP())")
-            end
-            sql_query = "INSERT INTO codes (`code`, `code_batch_id`, `status`, `created_at`, `updated_at`) VALUES " + rows.compact.join(",")
-            ActiveRecord::Base.connection.execute(sql_query)
-          else
-            params[:code_batch][:import_file].read.split("\n").each do |c|
-              code = Code.new
-              code.code = sanitize_code(c)
-              code.code_batch = code_batch
-              code.status = personal_id_codes ? :personal_id : :ok
-              code.save!
-            end
-          end
-        end
-        redirect_to action: :index
-        return
-      end
 
       n_codes = params[:code_batch][:n_codes].to_i
       if n_codes < 1 || n_codes > 20000
@@ -160,6 +131,48 @@ module Admin
           code.code_batch = code_batch
           code.status = (format == 'test_codes') ? :test : :ok
           code.save!
+        end
+      end
+      redirect_to action: :index
+    end
+
+    def post_import
+      require 'set'
+      @election = Election.find(params[:election_id])
+
+      # Import codes from a .txt file
+      import_file = params[:code_batch][:import_file] if !params[:code_batch].nil?
+      if import_file.nil?
+        redirect_to action: :import
+        return
+      end
+
+      personal_id_codes = params[:code_batch][:personal_id].to_i != 0
+      ActiveRecord::Base.transaction do
+        code_batch = CodeBatch.new
+        code_batch.election = @election
+        code_batch.user = current_user
+        code_batch.save!
+
+        if true
+          # Use a single mass insert for the highest performance.
+          # TODO: Validation
+          code_batch_id = code_batch.id.to_s
+          status = Code.statuses[personal_id_codes ? :personal_id : :ok].to_s
+          rows = import_file.read.split("\n").map do |c|
+            c = sanitize_code(c)
+            c.empty? ? nil : ("(" + ActiveRecord::Base.connection.quote(c) + "," + code_batch_id + "," + status + ",UTC_TIMESTAMP(),UTC_TIMESTAMP())")
+          end
+          sql_query = "INSERT INTO codes (`code`, `code_batch_id`, `status`, `created_at`, `updated_at`) VALUES " + rows.compact.join(",")
+          ActiveRecord::Base.connection.execute(sql_query)
+        else
+          import_file.read.split("\n").each do |c|
+            code = Code.new
+            code.code = sanitize_code(c)
+            code.code_batch = code_batch
+            code.status = personal_id_codes ? :personal_id : :ok
+            code.save!
+          end
         end
       end
       redirect_to action: :index

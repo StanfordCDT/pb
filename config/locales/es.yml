@@ -19,9 +19,9 @@ es:
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del Equipo Stanford Crowdsourced Democracy.</p><p class='lead'>En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class='lead'>Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
       proceed_button: "Boleta de muestra >>"
-      remote_voting_button: "Votar >>"
+      sms_verification_button: "Votar >>"
       code_verification_button: "Enter code"
-      other_verification_button: "Vote with other details"
+      other_verification_button: "Votar >>"
       see_projects_button: "Ver Proyectos"  # Link to an external site
     voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "The voting has ended."
@@ -118,6 +118,21 @@ es:
     send_vote_email: "(Opcional) Quiero enviar el resultado de mi votación a mi correo electrónico:"
     email_placeholder: "Introduzca el correo electrónico"
     next_button: "Siguiente &gt;&gt;"
+
+  ranking:
+    title: "Participatory Budgeting"
+    popup:
+      title: "Instructions"
+      body: "<ol>
+               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+             </ol>"
+      ok: "OK"
+    instructions: "<h3>Instructions</h3>
+                   <ol>
+                     <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
+                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                   </ol>"
 
   question:
     title: "Encuesta"
@@ -243,10 +258,10 @@ es:
     title: "Enter details to vote"
     instruction: ""
     no_account_number_instruction: "If you don't have an account number, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
-    zipcode_placeholder: "Zip code"
+    zipcode_placeholder: "ZIP code"
     account_number_placeholder: "Account Number"
     vote_button: "Vote"
-    wrong_account_number: "Wrong account number or zip code"
+    wrong_account_number: "Wrong account number or ZIP code"
     used_account_number: "This account number has already been used"
 
   registration:

@@ -18,14 +18,14 @@
             <div class="form-check">
               <%= f.radio_button :format, 'normal', checked: true, onclick: 'changeFormat();', class: 'form-check-input' %>
               <label class="form-check-label" for="code_batch_format_normal">
-                Normal (7 digits of numbers and lowercase letters)
+                7 digits of numbers and lowercase letters. (0, o, 1, l, q are excluded.)
               </label>
             </div>
            <div class="form-check">
               <%= f.radio_button :format, 'access_codes', onclick: 'changeFormat();', class: 'form-check-input' %>
               <label class="form-check-label" for="code_batch_format_access_codes">
-                Access codes (10 digits of numbers. Optionally with a prefix.)
-                <%= f.text_field :access_code_prefix, id: 'access_code_prefix', style: 'width:150px', placeholder: 'Prefix', class: 'form-control' %>
+                10 digits of numbers. (0 is excluded.) Optionally with a prefix.
+                <%= f.text_field :access_code_prefix, id: 'access_code_prefix', style: 'width:150px', placeholder: 'Prefix', oninput: 'updateExampleCode()', class: 'form-control' %>
               </label>
             </div>
             <div class="form-check">
@@ -34,25 +34,13 @@
                 Test codes ("_test" followed by a number.)
               </label>
             </div>
-          </div>
-        </div>
 
-        <% if current_user.superadmin? %>
-          <h2>Or import codes</h2>
-
-          <div class="form-group row">
-            <%= f.label :import_file, 'Text file', class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
-              <div><%= f.file_field :import_file, accept: 'text/plain' %></div>
-              <div class="form-check">
-                <%= f.check_box :personal_id, class: 'form-check-input' %>
-                <label class="form-check-label" for="code_batch_personal_id">
-                  Personal IDs (If the code the voter enters has been used, this option will tell them to contact us in case there is an error.)
-                </label>
-              </div>
+            <div style="border: 1px #ccc solid; border-radius: 4px; padding: 10px; display: inline-block; background-color: #fc9" class="mt-3">
+              <div style="font-size: 15px;">Example code (not a real code):</div>
+              <div id="example_code" style="font-family: 'Courier New', Courier; font-size: 20px; font-weight: bold"></div>
             </div>
           </div>
-        <% end %>
+        </div>
 
         <%= f.submit 'Generate', class: 'btn btn-primary' %>
       <% end %>
@@ -67,6 +55,21 @@
           prefix_field.disabled = true;
           prefix_field.value = "";
         }
+        updateExampleCode();
+      }
+      function updateExampleCode() {
+        var example_code = document.getElementById('example_code');
+        var format = document.querySelector('input[name="code_batch[format]"]:checked').value;
+        var code = "";
+        if (format == "normal") {
+          code = "k5r3vwp";
+        } else if (format == "access_codes") {
+          var prefix_field = document.getElementById('access_code_prefix');
+          code = prefix_field.value + "4279413481";
+        } else if (format == "test_codes") {
+          code = "_test123";
+        }
+        example_code.innerText = code;
       }
       changeFormat();
       </script>

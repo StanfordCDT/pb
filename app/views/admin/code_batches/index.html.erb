@@ -5,7 +5,10 @@
 
 <h2>Codes</h2>
 
-<p><a href="<%= url_for(action: :new) %>">Generate new codes</a></p>
+<p>
+  <a href="<%= url_for(action: :new) %>">Generate new codes</a> &nbsp;|&nbsp;
+  <a href="<%= url_for(action: :import) %>">Import existing codes</a>
+</p>
 
 <ul class="list-group">
   <% @code_batches.each do |batch| %>

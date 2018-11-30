@@ -899,6 +899,9 @@ class ConfigEditor extends React.Component {
       {db.get("allow_remote_voting") && (
         (db.get("remote_voting_sms_verification") || db.get("remote_voting_other_verification") || db.get("remote_voting_code_verification")) ? null : (<div className="text-danger">Select at least one validation method.</div>)
       )}
+      {db.get("allow_remote_voting") && (
+        (db.get("remote_voting_sms_verification") && !db.get("remote_voting_other_verification") && !db.get("remote_voting_code_verification")) ? (<div className="text-danger">It is recommended that you also use other validation methods in addition to SMS. Some voters might not have a cell phone that can receive SMS.</div>) : null
+      )}
 
       <Conditional condition={c('allow_remote_voting') && c('remote_voting_code_verification')} db={db}>
         <div className="mt-1">Your email address or phone number that voters can call to get an access code:</div>
@@ -1093,7 +1096,7 @@ class ConfigEditor extends React.Component {
       <BooleanOption name="index.show_remote_voting_sms_button" db={db} label="Show the button for remote voting using SMS" />
       <Conditional condition={c('index.show_remote_voting_sms_button')} db={db}>
         <div>The text on the button:</div>
-        <LocalizedTextOption name="index.remote.remote_voting_button" db={db} isHTML={false} />
+        <LocalizedTextOption name="index.remote.sms_verification_button" db={db} isHTML={false} />
       </Conditional>
     </Conditional>
 
@@ -1545,6 +1548,7 @@ class ConfigEditor extends React.Component {
     </div>
   </div>
 
+  {/*
   <div className="group">
     <label className="group-title">Has budget limit</label>
     <div className="group-body">
@@ -1552,36 +1556,28 @@ class ConfigEditor extends React.Component {
       <div className="help-block">Is there a limit on the total amount of money the voter can spend?</div>
     </div>
   </div>
+  */}
 
   <div className="group">
     <label className="group-title">Limit on number of projects</label>
     <div className="group-body">
       <BooleanOption name="ranking.has_n_project_limit" db={db} label="Impose a limit on the number of projects the voter can choose" />
-    </div>
-  </div>
+      <div className="help-block"></div>
 
-  <Conditional condition={c('ranking.has_n_project_limit')} name="ranking.max_n_projects" db={db}>
-    <div className="group">
-      <label className="group-title">Max n projects</label>
-      <div className="group-body">
+      <Conditional condition={c('ranking.has_n_project_limit')} name="ranking.max_n_projects" db={db}>
         <NumberOption name="ranking.max_n_projects" db={db} />
-        <div className="help-block">The maximum number of projects the voter can choose.</div>
         { ((value)=>((value >= 1) ? null : (<div className="text-danger">Value must be at least 1.</div>) ))(db.get("ranking.max_n_projects")) }
-      </div>
-    </div>
-  </Conditional>
+        <div className="help-block">The maximum number of projects the voter can choose.</div>
+      </Conditional>
 
-  <Conditional condition={c('ranking.has_n_project_limit')} name="ranking.min_n_projects" db={db}>
-    <div className="group">
-      <label className="group-title">Min n projects</label>
-      <div className="group-body">
+      <Conditional condition={c('ranking.has_n_project_limit')} name="ranking.min_n_projects" db={db}>
         <NumberOption name="ranking.min_n_projects" db={db} />
-        <div className="help-block">The minimum number of projects the voter must choose.</div>
         { ((value)=>((value >= 0) ? null : (<div className="text-danger">Value must be at least 0.</div>) ))(db.get("ranking.min_n_projects")) }
         { ((value)=>((value <= c('ranking.max_n_projects')) ? null : (<div className="text-danger">Value must not be greater than the maximum number of projects the voter can choose.</div>) ))(db.get("ranking.min_n_projects")) }
-      </div>
+        <div className="help-block">The minimum number of projects the voter must choose.</div>
+      </Conditional>
     </div>
-  </Conditional>
+  </div>
 
   <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
@@ -1617,6 +1613,19 @@ class ConfigEditor extends React.Component {
     <label className="group-title">Popup</label>
     <div className="group-body">
       <BooleanOption name="ranking.show_popup" db={db} label="Show a popup (dialog box) when the voter comes to this page" />
+
+      <Conditional condition={c('ranking.show_popup')} db={db}>
+        <div className="mt-2">The text in the popup:</div>
+        <LocalizedTextOption name="ranking.popup.body" db={db} />
+      </Conditional>
+    </div>
+  </div>
+
+  <div className="group">
+    <label className="group-title">Instructions</label>
+    <div className="group-body">
+      <div>The instructions on how to vote:</div>
+      <LocalizedTextOption name="ranking.instructions" db={db} />
     </div>
   </div>
 
@@ -1829,8 +1838,8 @@ class ConfigEditor extends React.Component {
               <div className="modal-body">
                 <ul>
                   <li><b>Remote voting using SMS confirmation</b>: The remote voter enters their phone number. The system sends them a confirmation code through SMS. They enter the confirmation code. The system verifies that it's correct.</li>
-                  <li><b>Remote voting using personal information</b>: The remote voter enters their personal information, such as their ID number. The system verifies that it's correct. To use this method, you must send us (the Stanford team) the list of valid ID numbers.</li>
-                  <li><b>Remote voting using generated codes</b>: The remote voter emails or calls you. You send them an access code. They enter the access code. The system verifies that it's correct. Note: It is recommended that you enable this method if you use other validation methods. Some voters might not have a cell phone that can receive SMS.</li>
+                  <li><b>Remote voting using personal information</b>: The remote voter enters their personal information, such as their ID number. The system verifies that it's correct. To use this method, you must import the list of valid ID numbers on the "Codes" page.</li>
+                  <li><b>Remote voting using generated codes</b>: The remote voter emails or calls you. You send them an access code. They enter the access code. The system verifies that it's correct.</li>
                 </ul>
               </div>
             </div>

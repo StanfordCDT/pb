@@ -239,7 +239,7 @@
 <script>
 var localeNames = <%= LOCALE_NAMES.to_json.html_safe %>; // FIXME: Hacky.
 
-var electionData = <%= @election.as_json(only: [:name, :slug, :budget, :time_zone] + (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :show_link_on_home_page, :real_election, :remarks] : [])).to_json.html_safe %>;
+var electionData = <%= @election.as_json(only: [:name, :slug, :budget, :time_zone] + (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :real_election, :remarks] : [])).to_json.html_safe %>;
 
 var timeZones = <%= ActiveSupport::TimeZone.all.map { |tz| [tz.to_s, tz.name] }.to_json.html_safe %>;
 var hostWithPort = "<%=j request.host_with_port %>";

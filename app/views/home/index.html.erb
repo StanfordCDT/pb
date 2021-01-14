@@ -22,7 +22,7 @@
     font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
     font-weight: 700;
   }
-  
+
   @media (min-width: 768px) {
     p { font-size: 16px }
     .lead { font-size: 20px }
@@ -144,7 +144,7 @@
       <div class="col-sm-10 text-center">
         <h2>Overview</h2>
         <p class="lead">Stanford Participatory Budgeting Platform allows cities, municipalities, states and foundations and other organizations to run a participatory budgeting (PB) election in which people can vote on the budget.
-          
+
         This project is made by the <a href="https://voxpopuli.stanford.edu/" target="_blank">Stanford Crowdsourced Democracy Team</a> at Stanford University.
         The project is open-source and free.</p>
         <p class="lead">Our platform has been used in many cities in the United States, such as Chicago, Seattle, Boston, and New York City.</p>
@@ -187,8 +187,8 @@
         <div class="feature">
           <i class="fa fa-globe" aria-hidden="true"></i>
           <h4>Language Support</h4>
-          <p>We currently support English, Spanish, French, Chinese, and Finnish on the platform.
-          Our editing tool lets you enter projects in multiple languages.</p>
+          <p>We currently support 13 languages on the platform, including Chinese, French, Hindi, and Spanish.
+          Our editing tool lets you enter projects in multiple languages. See the <a href="#" data-toggle="modal" data-target="#languageModal">list of supported languages</a>.</p>
         </div>
       </div>
     </div>
@@ -288,6 +288,13 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <p>
+          <a class="btn btn-outline-primary btn-md" href="#" data-toggle="modal" data-target="#electionModal">More Examples</a>
+        </p>
+      </div>
+    </div>
   </div>
 
   <div class="modal" id="electionModal" tabindex="-1" role="dialog">
@@ -299,12 +306,15 @@
           <ul>
             <li><a href="/boston15">Boston, MA</a></li>
             <li><a href="/cambridge2017">Cambridge, MA</a></li>
-            <li>Chicago, IL (Wards <a href="/chicago22_2015">22</a>, <a href="/chicago22_2015">25</a>, and <a href="/chicago49_2019">49</a>)</li>
+            <li>Chicago, IL (Wards <a href="/chicago10">10</a>, <a href="/chicago22_2015">22</a>, <a href="/chicago22_2015">25</a>, <a href="/pb352019">35</a>, <a href="/chicago36">36</a>, <a href="/pb452019">45</a>, and <a href="/chicago49_2019">49</a>)</li>
+            <li><a href="/durham2019">Durham, NC</a></li>
             <li><a href="/greensboro1">Greensboro, NC</a></li>
             <li><a href="/longbeach2016">Long Beach, CA</a></li>
-            <li>Merced County, CA (District <a href="/peoplesbudgetmerced">2</a>)</li>
+            <li>Louisville, KY (Districts <a href="/louisville2019-d6">6</a> and <a href="/louisville2019-d8">8</a>)</li>
+            <li>Merced County, CA (District <a href="/merced2019">2</a>)</li>
             <li>New York City, NY (Districts <a href="/nyc5">5</a>, <a href="/nyc8">8</a>, <a href="/nyc27">27</a>, <a href="/nyc31">31</a>, <a href="/nyc38">38</a>, and <a href="/nyc39">39</a>)</li>
             <li>Oakland, CA (Districts <a href="/oakland2017d1">1</a> and <a href="/oakland2017d2">2</a>)</li>
+            <li><a href="/rochester2019">Rochester, NY</a></li>
             <li><a href="/seattle">Seattle, WA</a></li>
             <li><a href="/vallejo2018">Vallejo, CA</a></li>
           </ul>
@@ -316,6 +326,33 @@
       </div>
     </div>
   </div>
+
+  <div class="modal" id="languageModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4>Supported Languages</h4>
+          <ul>
+            <li>English</li>
+            <li>Amharic</li>
+            <li>Arabic</li>
+            <li>Bengali</li>
+            <li>Chinese</li>
+            <li>Finnish</li>
+            <li>French</li>
+            <li>Haitian Creole</li>
+            <li>Hindi</li>
+            <li>Khmer</li>
+            <li>Polish</li>
+            <li>Portuguese</li>
+            <li>Spanish</li>
+          </ul>
+          <p>New language support can be added upon request. The translations should be provided by the city/organization. We suggest using volunteers or professional translation services such as <a href="https://gengo.com/" target="_blank" rel="noopener noreferrer">Gengo</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="mission">
@@ -323,7 +360,7 @@
     <div class="row justify-content-center">
       <div class="col-sm-10 text-center">
         <h2>Mission</h2>
-        <p>Our mission is to scale up collaboration and decision-making. We envision an era in which large communities can deliberate and brainstorm with one another on important issues with the aid of intelligently designed algorithms and digital communication platforms. We believe that this will not only aid decision-makers in harnessing collective intelligence, but also lead to community members who are more informed and engaged in making their communities better. As part of this mission, our team has begun to partner with cities and municipalities to help organize local partipicatory budgeting elections.</p>
+        <p>Our mission is to scale up collaboration and decision-making. We envision an era in which large communities can deliberate and brainstorm with one another on important issues with the aid of intelligently designed algorithms and digital communication platforms. We believe that this will not only aid decision-makers in harnessing collective intelligence, but also lead to community members who are more informed and engaged in making their communities better. As part of this mission, our team has begun to partner with cities and municipalities to help organize local participatory budgeting elections.</p>
         <p>Stanford Participatory Budgeting Platform is a tool for participatory budgeting at the state, federal, and local levels. It will not only aid decision-makers in harnessing collective intelligence, but also lead to community members to be more informed and engaged. It was adopted from the earlier Widescope project. Read this Wall Street Journal <a href="https://www.wsj.com/articles/SB10001424053111904716604576542472754782288" target="_blank" rel="noopener noreferrer">article</a> to learn more about it: Crowdsourcing Deficit Reduction.</p>
         <p>You can read more about <a href="https://voxpopuli.stanford.edu/publications/" target="_blank">our current work and publications</a> here.</p>
         <center>
@@ -339,7 +376,6 @@
     <div class="row justify-content-center">
       <div class="col-sm-10">
         <h2 class="text-center">Contact Us</h2>
-        <p class="lead text-center">A limited demo version of the admin interface is available at <a href="https://demo.pbstanford.org/" target="_blank" title="A demo of the admin interface">demo.pbstanford.org</a>. This gives an overview of what functionality is available and how much can be customized. If you want to test the full version, please let us know below.</p>
         <p class="lead text-center">Want to run a PB in your city or organization? Have a suggestion? Let us know below, or email us at contact@pbstanford.org</p>
 
         <%= form_tag '/contact' do %>
@@ -377,7 +413,7 @@
     <div class="row justify-content-center">
       <div class="col-sm-10 text-center">
         <p>
-          Copyright &copy; 2018 <a href="https://voxpopuli.stanford.edu/" target="_blank">Stanford Crowdsourced Democracy Team</a>
+          Copyright &copy; 2020 <a href="https://voxpopuli.stanford.edu/" target="_blank">Stanford Crowdsourced Democracy Team</a>
           &nbsp; &nbsp;
           <!--<a><img src="/img/facebook.png" width="33" height="33" alt="Facebook icon"></a>&nbsp;-->
           <a href="https://twitter.com/stan_voxpopuli" target="_blank" rel="noopener noreferrer"><img src="/img/twitter.png" width="33" height="33" alt="Twitter icon"></a>

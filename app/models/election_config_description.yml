@@ -72,6 +72,18 @@
   default: false
   # condition: "c('allow_remote_voting')"
 
+- name: remote_voting_free_verification
+  default: false
+  # condition: "c('allow_remote_voting')"
+
+- name: free_verification_multiline_text
+  default: false
+  # condition: "c('remote_voting_free_verification')"
+
+- name: free_verification_use_captcha
+  default: true
+  # condition: "c('remote_voting_free_verification')"
+
 - name: voter_registration
   default: false
   # description: "Ask voters some personal information questions before they vote."
@@ -122,6 +134,10 @@
     - name: show_remote_voting_code_button
       default: false
       # condition: "c('allow_remote_voting') && c('remote_voting_code_verification')"
+
+    - name: show_remote_voting_free_button
+      default: true
+      # condition: "c('allow_remote_voting') && c('remote_voting_free_verification')"
 
     - name: show_explore_button
       default: true

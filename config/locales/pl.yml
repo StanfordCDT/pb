@@ -1,0 +1,447 @@
+pl:
+  navigation:
+    brand: BP
+    home: Strona Główna
+    about: Informacje
+    help: Pomoc
+    exit: Wyjście
+  index:
+    title: Budżet Partycypacyjny
+    voting_machine:
+      welcome: '<img src=\"/img/sample-city-logo.png\" style=''margin-left: auto;
+        margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Witaj
+        na cyfrowej platformie do głosowania w Budżecie Partycypacyjnym</p>'
+      instruction: Proszę wprowadzić otrzymany kod.
+      code_placeholder: Kod
+      enter_code_button: Wprowadź
+      wrong_code: Niepoprawny kod
+      used_code: Ten kod został już wykorzystany.
+      used_personal_id: 'Ten identyfikator został już wykorzystany. W przypadku wystąpienia
+        błędu lub potrzeby ponownego oddania głosu prosimy o kontakt na adres e-mail:
+        voxpopuli@lists.stanford.edu'
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+        <p class='lead'>Witaj, oto przykładowa cyfrowa karta do głosowania w Budżecie Partycypacyjnym, powstała dzięki uprzejmości Stanford Crowdsourced Democracy Team.</p>
+        <p class='lead'>Na tej stronie możesz zaznajomić się z tegorocznymi projektami i cyfrową kartą do głosowania. Strona ta ma charakter wyłącznie informacyjny i <b>nie możesz</b> tu oddać swojego prawdziwego głosu.</p>
+        <p class='lead'>Oddając swój <u>prawdziwy głos</u>, będziesz decydować o tym, jak zostaną rozdysponowane pieniądze z budżetu miasta. W celu oddania głosu należy odwiedzić jedno z wielu dostępnych miejsc rozmieszczonych w całym mieście. Głosowanie odbędzie się od (Data XXX) do (Data YYY). Dokładny terminarz i lokalizacje są podane poniżej.</p>
+      proceed_button: Zobacz przykładową kartę do głosowania >>
+      sms_verification_button: Głosuj teraz >>
+      code_verification_button: Wprowadź kod
+      other_verification_button: Głosuj teraz >>
+      see_projects_button: Zobacz Projekty
+    voting_has_not_started: Głosowanie na tej stronie jeszcze się nie rozpoczęło.
+      Głosy zdalne zaczną być zbierane wkrótce. Dziękujemy za cierpliwość.
+    voting_ended: Głosowanie zostało zakończone.
+    public_results: Zobacz Wyniki Głosowania
+  approval:
+    title: Budżet Partycypacyjny
+    popup:
+      title: Instrukcje
+      body: |-
+        <ol>
+        <li>Wskaż projekty, na które chcesz zagłosować. Możesz zagłosować na maksymalnie <b>%{max_n_projects} ze wszystkich projektów.</b></li>
+        <li>Wybierz przycisk <b>"Zagłosuj"</b>, kiedy chcesz oddać swój głos.</li>
+        </ol>
+      ok: OK
+    instructions: |-
+      <h3>Instrukcje</h3>
+      <ol>
+      <li>Wskaż projekty, na które chcesz zagłosować. Możesz zagłosować na maksymalnie <b>%{max_n_projects} ze wszystkich projektów.</b></li>
+      <li>Wybierz przycisk <b>"Zagłosuj"</b>, kiedy chcesz oddać swój głos.</li>
+      </ol>
+    list_of_projects: Lista Projektów
+    estimated_cost: Szacunkowy Koszt
+    youtube_video: Film na YouTube
+    location: Lokalizacja
+    partner: Współpraca
+    committee: Komisja
+    read_details: Czytaj więcej…
+    select_button:
+      select: Wybierz
+      selected: Wybrany
+      not_enough_money: Pozostało za mało środków
+      more_projects: Nie możesz wybrać więcej niż %{max_n_projects} ze wszystkich
+        projektów
+    remove_button: Usuń
+    remove_button_tooltip: Kliknij tu, jeśli chcesz zrezygnować z wyboru tego projektu.
+    submit_button: Zagłosuj...
+    confirmation:
+      title: Czy na pewno chcesz oddać swój głos?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Nie wybrałeś/aś żadnego projektu.</span>"
+          other: 'Wybrałeś/aś następujące projekty: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Wybrałeś/aś tylko jeden projekt.</span>"
+          less: "<span style='color: red;'>Wybrałeś/aś tylko %{count} ze wszystkich
+            projektów.</span>"
+          limit: "<span style='color: red;'>Możesz zagłosować na maksymalnie %{max_n_projects}
+            ze wszystkich projektów.</span>"
+        warning: Po oddaniu głosu <strong>nie możesz</strong> już go zmienić. Jeśli
+          chcesz coś poprawić, wybierz przycisk 'Cofnij' poniżej. Jeśli wszystko się
+          zgadza i chcesz oddać głos, zaznacz pole poniżej, a następnie wybierz przycisk
+          'Zagłosuj'.
+        checkbox: Rozumiem, że po oddaniu głosu <strong>nie mogę</strong> już go zmienić.
+      ok: Zagłosuj
+      cancel: Cofnij
+    confirmation_over_limit:
+      title: Nie można oddać głosu
+      over_n_project_limit: "<span style='color:red'>Wybrałeś/aś <b>%{n_projects}</b>
+        ze wszystkich projektów. Możesz wybrać maksymalnie <b>%{max_n_projects}</b>.
+        Proszę usunąć <b>%{extra}</b> lub więcej z wybranych projektów.</span>"
+      over_budget_limit: "<span style='color:red'>Przekraczasz dostępną kwotę do wydania.</span>"
+      cancel: Cofnij
+    tracker:
+      text: Wybrałeś/aś %{count} ze wszystkich projektów.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Wykorzystano %{total} z %{budget} całkowitej dostępnej kwoty.
+      under_budget: Pozostało %{remaining_money} do wydania.
+      over_budget: Przekraczasz dostępną kwotę do wydania.
+      over_budget_but_can_add_projects: Przekraczasz dostępną kwotę do wydania, ale
+        możesz dalej wybierać projekty.
+    adjustable_cost_project:
+      instructions: 'Proszę wybrać jedną z poniższych opcji:'
+      not_adjusted_warning: "<span style='color:red'>Wybrałeś/aś 0 zł dla %{project}</span>"
+      message: Wybrałeś/aś %{cost} dla %{project}
+      table_headings:
+        percentage_column: Procent wykorzystanej kwoty
+        cost_column: Koszt
+        number_column: 'Ulice w remoncie - około #'
+    map:
+      street_resurfacing_count:
+        one: 1 ulica naprawiona
+        other: Ulice naprawione - %{count}
+      alley_resurfacing_count:
+        one: 1 alejka naprawiona
+        other: Alejki naprawione - %{count}
+      apron_resurfacing_count:
+        one: 1 płyta naprawiona
+        other: Płyty naprawione - %{count}
+      sidewalk_repairing_count:
+        one: 1 chodnik naprawiony
+        other: Chodniki naprawione - %{count}
+    image_gallery:
+      cue: Kliknij w obrazek, aby zobaczyć pokaz slajdów
+    project_ranking:
+      list_header: Wybrałeś/aś następujące projekty. Zmień ich ranking poprzez przeciągnięcie
+        symbolu <span class='glyphicon glyphicon-sort'></span>.
+      continue_button: Dalej
+  thanks_approval:
+    title: Dziękujemy
+    description:
+      real: "<p class='lead text-center'>Dziękujemy za oddany głos. Wybierz przycisk
+        'Dalej' poniżej, aby przejść do następnej strony.</p>"
+      demo: "<p class='lead'> Dziękujemy za oddany glos! <span style='color: red;'><strong>Pamiętaj,
+        że jest to jedynie <u>podgląd</u>.</strong></span> Wybierz przycisk 'Dalej'
+        poniżej, aby przejść do następnej strony.</p>"
+    send_vote_email: "(Opcjonalnie) Chcę otrzymać podsumowanie mojego głosowania na
+      mój adres e-mail:"
+    email_placeholder: Wprowadź adres e-mail
+    next_button: Dalej &gt;&gt;
+  ranking:
+    title: Budżet Partycypacyjny
+    popup:
+      title: Instrukcje
+      body: |-
+        <ol>
+        <li>Wskaż projekty, na które chcesz zagłosować. Możesz zagłosować na maksymalnie <b>%{max_n_projects} ze wszystkich projektów.</b></li>
+        <li>Wybierz przycisk <b>"Zagłosuj"</b>, kiedy chcesz oddać swój głos.</li>
+        </ol>
+      ok: OK
+    instructions: |-
+      <h3>Instrukcje</h3>
+      <ol>
+      <li>Wskaż projekty, na które chcesz zagłosować. Możesz zagłosować na maksymalnie <b>%{max_n_projects} ze wszystkich projektów.</b></li>
+      <li>Wybierz przycisk <b>"Zagłosuj"</b>, kiedy chcesz oddać swój głos.</li>
+      </ol>
+    list_of_projects: Lista Projektów
+    estimated_cost: Szacunkowy Koszt
+    youtube_video: Film na YouTube
+    location: Lokalizacja
+    partner: Współpraca
+    committee: Komisja
+    read_details: Czytaj więcej…
+    select_button:
+      select: Wybierz
+      selected: Wybrany
+      not_enough_money: Pozostało za mało środków
+      more_projects: Nie możesz wybrać więcej niż %{max_n_projects} ze wszystkich
+        projektów
+    remove_button: Usuń
+    remove_button_tooltip: Kliknij tu, jeśli chcesz zrezygnować z wyboru tego projektu.
+    submit_button: Zagłosuj...
+    confirmation:
+      title: Czy na pewno chcesz oddać swój głos?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Nie wybrałeś/aś żadnego projektu.</span>"
+          other: 'Wybrałeś/aś następujące projekty: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Wybrałeś/aś tylko jeden projekt.</span>"
+          less: "<span style='color: red;'>Wybrałeś/aś tylko %{count} ze wszystkich
+            projektów.</span>"
+          limit: "<span style='color: red;'>Możesz zagłosować na maksymalnie %{max_n_projects}
+            ze wszystkich projektów.</span>"
+        warning: Po oddaniu głosu <strong>nie możesz</strong> już go zmienić. Jeśli
+          chcesz coś poprawić, wybierz przycisk 'Cofnij' poniżej. Jeśli wszystko się
+          zgadza i chcesz oddać głos, zaznacz pole poniżej, a następnie wybierz przycisk
+          'Zagłosuj'.
+        checkbox: Rozumiem, że po oddaniu głosu <strong>nie mogę</strong> już go zmienić.
+      ok: Zagłosuj
+      cancel: Cofnij
+    confirmation_over_limit:
+      title: Nie można oddać głosu
+      over_n_project_limit: "<span style='color:red'>Wybrałeś/aś <b>%{n_projects}</b>
+        ze wszystkich projektów. Możesz wybrać maksymalnie <b>%{max_n_projects}</b>.
+        Proszę usunąć <b>%{extra}</b> lub więcej z wybranych projektów.</span>"
+      over_budget_limit: "<span style='color:red'>Przekraczasz dostępną kwotę do wydania.</span>"
+      cancel: Cofnij
+    tracker:
+      text: Wybrałeś/aś %{count} ze wszystkich projektów.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Wykorzystano %{total} z %{budget} całkowitej dostępnej kwoty.
+      under_budget: Pozostało %{remaining_money} do wydania.
+      over_budget: Przekraczasz dostępną kwotę do wydania.
+      over_budget_but_can_add_projects: Przekraczasz dostępną kwotę do wydania, ale
+        możesz dalej wybierać projekty.
+    adjustable_cost_project:
+      instructions: 'Proszę wybrać jedną z poniższych opcji:'
+      not_adjusted_warning: "<span style='color:red'>Wybrałeś/aś 0 zł dla %{project}</span>"
+      message: Wybrałeś/aś %{cost} dla %{project}
+      table_headings:
+        percentage_column: Procent wykorzystanej kwoty
+        cost_column: Koszt
+        number_column: 'Ulice w remoncie - około #'
+    image_gallery:
+      cue: Kliknij w obrazek, aby zobaczyć pokaz slajdów
+  question:
+    title: Ankieta
+    question: Czy masz ukończone 14 lat?
+    ok: Tak, mam ukończone 14 lat
+    alternative: Nie, nie mam ukończonych 14 lat
+  comparison:
+    title: Porównanie
+    header: Który z projektów oferuje najwyższą wartość w stosunku do swoich kosztów,
+      to znaczy przyniesie najwięcej korzyści dla społeczności w przeliczeniu na każdą
+      wydaną złotówkę?
+    estimated_cost: Szacunkowy koszt
+    this_project: Ten projekt
+    not_sure: Nie mam pewności
+    popup:
+      title: Instrukcje
+      body: |-
+        <p style='font-size: 20px;'>Chcielibyśmy poprosić Cię o wzięcie udziału w dodatkowym badaniu, które <u>nie</u> wpłynie na oddany głos, ale jest częścią projektu badawczego Stanford University mającego na celu usprawnianie procesu budżetu partycypacyjnego.</p>
+        <ul style='font-size: 20px;'><li>Twoje uczestnictwo jest opcjonalne i możesz zrezygnować w każdym momencie.</li>
+        <li>Badanie zajmie około 2-3 minuty.</li>
+        </ul>
+        <p style='font-size: 14px;'>Badanie nie wiąże się z żadnym ryzykiem. Nie otrzymasz wynagrodzenia pieniężnego i nie możemy zagwarantować ci żadnych korzyści z niego płynących. Masz prawo odmówić odpowiedzi na niektóre pytania. Prosimy o kontakt z prof. Ashish Goel na adres goel_admins@lists.stanford.edu w przypadku jakichkolwiek pytań, sugestii lub uwag. Można również skontaktować się ze Stanford Institutional Review
+        Board pod numerem 650-723-2480.</p>
+      ok: Dalej
+      exit: Wyjdź
+  knapsack:
+    title: Budżet Partycypacyjny
+    popup:
+      title: Instrukcje
+      body: |-
+        <p style='font-size: 20px;'>Chcielibyśmy poprosić Cię o wzięcie udziału w dodatkowym badaniu, które <u>nie</u> wpłynie na oddany głos, ale jest częścią projektu badawczego Stanford University mającego na celu usprawnianie procesu budżetu partycypacyjnego.</p>
+        <ul style='font-size: 20px;'><li>Twoje uczestnictwo jest opcjonalne i możesz zrezygnować w każdym momencie.</li>
+        <li>Badanie zajmie około 2-3 minuty.</li>
+        </ul>
+        <p style='font-size: 14px;'>Badanie nie wiąże się z żadnym ryzykiem. Nie otrzymasz wynagrodzenia pieniężnego i nie możemy zagwarantować ci żadnych korzyści z niego płynących. Masz prawo odmówić odpowiedzi na niektóre pytania. Prosimy o kontakt z prof. Ashish Goel na adres goel_admins@lists.stanford.edu w przypadku jakichkolwiek pytań, sugestii lub uwag. Można również skontaktować się ze Stanford Institutional Review
+        Board pod numerem 650-723-2480.</p>
+      ok: Dalej
+      exit: Wyjdź
+    instructions: |-
+      <h3>Instrukcje</h3>
+      <ol>
+      <li>Wskaż projekty, na które chcesz zagłosować. Ich łączny koszt nie może przekroczyć dostępnej kwoty <b>%{budget}</b>.</li>
+      <li>Łączny koszt wybranych projektów jest widoczny na pasku powyżej. Możesz usunąć dowolny wybrany wcześniej projekt korzystając z paska powyżej lub klikając bezpośrednio w wybrany projekt.</li>
+      <li>Wybierz przycisk <b>"Zagłosuj"</b>, kiedy chcesz oddać swój głos.</li>
+      </ol>
+    confirmation:
+      title: Czy na pewno chcesz oddać swój głos?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Nie wybrałeś/aś żadnego projektu.</span>"
+          other: 'Wybrałeś/aś następujące projekty: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Wybrałeś/aś tylko jeden projekt.</span>"
+          less: "<span style='color: red;'>Wybrałeś/aś tylko %{count} ze wszystkich
+            projektów.</span>"
+          limit: "<span style='color: red;'>Możesz zagłosować na maksymalnie %{max_n_projects}
+            ze wszystkich projektów.</span>"
+        warning: Po oddaniu głosu <strong>nie możesz</strong> już go zmienić.
+      ok: Zagłosuj
+      cancel: Cofnij
+    adjustable_cost_project:
+      instructions: 'Proszę wybrać jedną z poniższych opcji:'
+      not_adjusted_warning: "<span style='color:red'>Wybrałeś/aś 0 zł dla %{project}</span>"
+      message: Wybrałeś/aś %{cost} dla %{project}
+  survey:
+    title: Ankieta
+    header: Weź udział w ankiecie
+    question:
+      title: Dziękujemy
+      body: Dziękujemy za oddanie głosu. Czy masz ukończone 14 lat?
+      ok: Tak, mam ukończone 14 lat
+      alternative: Nie, nie mam ukończonych 14 lat
+    url: ''
+  thanks:
+    title: Dziękujemy
+    description:
+      real: Dziękujemy za oddanie głosu. Wybierz przycisk 'Wyjdź' poniżej.
+      demo: 'Dziękujemy za przetestowanie cyfrowej platformy budżetu partycypacyjnego!
+        <span style=''color: red;''><strong>Pamiętaj, że jest to tylko <u>podgląd</u>.</strong></span>'
+    exit: Wyjdź
+  about:
+    title: Informacje
+    description: |-
+      <center><h1 class='sub-header'>O cyfrowej platformie budżetu partycypacyjnego</h1></center>
+      <br><p class='lead'>Cyfrowa platforma budżetu partycypacyjnego została stworzona przez <a href='https://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. Mamy nadzieję, że strona wizualna platformy i bogactwo prezentowanych informacji pomogą lepiej zapoznać się z projektami i oddawać bardziej świadome głosy.</p>
+      <p class='lead'>Jest to projekt otwarty (open source) na licencji GNU GPL v3.0. Kod źródłowy dostępny jest na stronie <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
+      <p class='lead'>Problemy techniczne i inne uwagi prosimy kierować na adres e-mail <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> i postaramy się na nie odpowiadać tak szybko jak to możliwe.</p>
+  result:
+    title: Wyniki
+    vote_results: Wyniki Głosowania
+    description: Wyniki na podstawie głosów %{count} głosujących między %{start} a
+      %{end}.
+    proposed_project: Proponowane Projekty
+    votes: Głosy
+    projects: Projekty
+  election:
+    can_also_vote_in_person: 'Możesz również oddać swój głos osobiście w jednej z
+      poniższych lokalizacji:'
+    info: |-
+      <h3>Lokalizacje</h3>
+      <b>Sobota, 27 września </b> &nbsp; (12:00 - 16:00)<br>
+      Gdzieś<br>
+      <br>
+      <b>Wtorek, 30 września </b> &nbsp; (18:00 - 21:00)<br>
+      Gdzieś<br>
+      <br>
+      <p>Dodatkowe informacje są dostępne na stronie <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: Zweryfikuj swój numer telefonu
+    header: Zweryfikuj swój numer telefonu
+    instructions: "<p>Aby móc zagłosować przez internet, potrzebujesz telefonu z funkcją
+      odbierania wiadomości tekstowych w celu weryfikacji twojego numeru telefonu.</p><p>Wprowadź
+      swój numer telefonu, żebyśmy mogli wysłać kod potwierdzający.</p>"
+    phone_number_placeholder: Wprowadź numer telefonu
+    verify_button: Zweryfikuj
+    invalid_phone_number: \"%{phone_number}\" nie jest poprawnym numerem telefonu.
+    blacklisted_phone_number: Ten numer telefonu ma zablokowaną możliwość odbierania
+      od nas wiadomości tekstowych. Aby otrzymać kod potwierdzający, wyślij START
+      pod %{our_phone_number} , a następnie ponownie wprowadź tu swój numer telefonu.
+    no_cell_phone_instruction: Jeśli nie posiadasz telefonu komórkowego, <a href=\"%{code_signup_url}\">kliknij
+      tutaj</a>, aby wybrać inną metodę głosowania przez internet.
+  code_signup:
+    title: Wprowadź kod dostępu, aby zagłosować
+    instruction: Wyślij e-mail na adres XXX@stanford.edu lub zadzwoń pod numer XXX-XXX-XXX,
+      aby uzyskać kod dostępu. Po otrzymaniu kodu dostępu, wprowadź go poniżej i wybierz
+      przycisk <b>Głosuj</b>, aby kontynuować.
+    code_placeholder: Kod dostępu
+    vote_button: Głosuj
+    wrong_access_code: Niepoprawny kod dostępu
+    used_access_code: Ten kod został już wykorzystany
+  other_signup:
+    title: Wprowadź dane, aby zagłosować
+    instruction: ''
+    no_account_number_instruction: Jeśli nie masz numeru konta, <a href=\"%{code_signup_url}\">kliknij
+      tutaj</a>, aby wybrać inną metodę głosowania przez internet.
+    zipcode_placeholder: Kod pocztowy
+    account_number_placeholder: Numer Konta
+    vote_button: Głosuj
+    wrong_account_number: Niepoprawny numer konta lub kod pocztowy
+    used_account_number: Ten numer konta został już wykorzystany
+  free_signup:
+    title: Weryfikacja
+    instruction: Wprowadź swój kod pocztowy
+    placeholder: Kod pocztowy
+    captcha: Wpisz <b>%{captcha}</b> poniżej
+    vote_button: Głosuj
+  registration:
+    title: Informacje o głosującym
+    header: Informacje o głosującym
+    instructions: Wprowadź poniższe dane, aby przejść do głosowania. Pola oznaczone
+      * są wymagane.
+    proceed_button: Kontynuuj
+    no_phone_number: Nie posiadam numeru telefonu
+    name: Nazwisko
+    first_name: Imię
+    middle_initial: Drugie imię
+    last_name: Nazwisko
+    suffix: Sufiks
+    phone_number: Numer telefonu
+    email: Adres e-mail
+    address: Ulica
+    city: Miasto
+    zip_code: Kod pocztowy
+    birth_year: Rok urodzenia
+    date_of_birth: Data urodzenia
+    verify_age_label: Mam ukończone 16 lat
+    email_instruction_label: Czy chcesz otrzymać wyniki tego głosowania? Podaj swój
+      adres e-mail, aby być na bieżąco.
+    ward: Oddział
+    ward_do_not_know: Nie wiem
+    error: 'Popraw następujące błędy:'
+    not_voting_age_error: Musisz spełniać wymagane kryterium wieku, aby móc zagłosować
+    verify_age_error: "Please confirm \"%{checkbox_label}\""  # FIXME: Translate.
+  sms_signup_confirm:
+    title: Zweryfikuj swój numer telefonu
+    header: Zweryfikuj swój numer telefonu
+    instructions: "<p>Na numer <b>%{phone_number}</b> został wysłany kod potwierdzający.
+      Powinieneś/Powinnaś otrzymać swój kod w ciągu najbliższej minuty.</p><p>Wprowadź
+      kod potwierdzający, aby zweryfikować swój numer telefonu.</p>"
+    code_placeholder: Wprowadź kod
+    confirm_button: Potwierdź
+    wrong_code: Niepoprawny kod.
+    resend_code: Jeśli nie otrzymałeś/aś kodu w ciągu minuty, kliknij <a href=\"%{resend_code_url}\">tutaj</a>,
+      aby kod potwierdzający został przesłany ponownie.
+    make_sure_phone_number_is_correct: Upewnij się, że %{phone_number} to poprawny
+      numer twojego telefonu. Jeśli <u>nie</u> jest poprawny, kliknij <a href=\"%{signup_url}\">tutaj</a>,
+      aby go zmienić.
+    still_not_working: Jeśli po kilku próbach wciąż masz problem z otrzymaniem kodu
+      potwierdzającego, kliknij <a href=\"%{code_signup_url}\">tutaj</a>, aby wybrać
+      inną metodę głosowania przez internet.
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
+
+  general:
+    demo_warning: To jest jedynie podgląd. Twój głos nie będzie zarejestrowany.
+    experiment_disclaimer: To jest jedynie ankieta. Nie wpłynie ona na oddany głos.
+    shuffle_note: "<span style='font-size: 18px;'>Uwaga: Projekty są uporządkowane
+      w kolejności losowej.</span>"
+    project_string: Projekt
+    close_button: "Close"  # FIXME: Translate.
+    timeout:
+      body: Twoja sesja niedługo wygaśnie. Kliknij \"Dalej\", aby kontynuować korzystanie
+        ze strony.
+      continue_button: Dalej
+  date:
+    month_names:
+    -
+    - stycznia
+    - lutego
+    - marca
+    - kwietnia
+    - maja
+    - czerwca
+    - lipca
+    - sierpnia
+    - września
+    - października
+    - listopada
+    - grudnia
+    order:
+    - :day
+    - :month
+    - :year
+  errors:
+    messages:
+      blank: nie może być puste
+      invalid: jest nieprawidłowe

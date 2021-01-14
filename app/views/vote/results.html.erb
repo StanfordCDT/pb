@@ -1,4 +1,4 @@
-<% content_for :title, 'Results' %>
+<% content_for :title, t('navigation.brand') %>
 
 <script type="text/javascript" src="/js/d3.min.js"></script>
 <script type="text/javascript">
@@ -52,6 +52,15 @@ var margin = {top: 20, right: 150, bottom: 300, left: 40},
     <div class="col-sm-10 main">
 
       <h1 style="text-align:center">Results</h1>
+
+      <script type="text/javascript">
+      var currency_symbol = "<%=j @election.config[:currency_symbol] %>";
+      var analytics_data = <%= @analytics_data.to_json.html_safe %>;
+
+      function costWithDelimiter(val, currencySymbol) {
+        return currencySymbol + numberWithDelimiter(val);
+      }
+      </script>
 
       <!-- Section for the adjustable cost project -->
       <% if @has_adjustable_cost_projects %>

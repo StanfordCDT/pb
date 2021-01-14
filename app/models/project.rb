@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   belongs_to :election
   belongs_to :category, optional: true
   has_many :vote_approvals
+  has_many :vote_rankings
   has_many :vote_knapsacks
   has_many :vote_plusminuses
   translates :title, :description, :details, :address, :partner, :committee, :video_url, :partner, :image_description
@@ -17,6 +18,7 @@ class Project < ApplicationRecord
   validate :validate_map_geometry
   validate :validate_adjustable_cost
   validate :validate_data
+  before_save :sanitize_html
 
   def parsed_data
     if @parsed_data.nil?
@@ -61,8 +63,12 @@ class Project < ApplicationRecord
     if cost_step.blank?
       errors.add(:cost_step, :blank)
     end
-    if !cost_min.blank? and !cost.blank? and cost_min.to_i >= cost.to_i
-      errors.add(:cost_min, 'must be less than cost max')
+    if !cost_min.blank? and !cost.blank?
+      if cost_min.to_i >= cost.to_i
+        errors.add(:cost_min, 'must be less than maximum cost')
+      elsif !cost_step.blank? && (cost.to_i - cost_min.to_i) % cost_step.to_i != 0
+        errors.add(:cost_step, 'must be a divisor of (maximum cost - minimum cost)')
+      end
     end
     if !cost_step.blank? and !cost.blank? and !cost_min.blank? and !uses_slider and cost_step.to_i > 0 and (cost.to_i - cost_min.to_i) / cost_step.to_i > 20
       errors.add(:cost_step, "is too small for radio buttons. There can be at most 20 radio buttons.")
@@ -75,6 +81,21 @@ class Project < ApplicationRecord
       JSON.parse(data)
     rescue JSON::ParserError => exception
       errors.add(:data, "must be in the correct JSON format. Error message from the parser: \"#{exception.message}\"")
+    end
+  end
+
+  def sanitize_html
+    sanitizer = Rails::Html::SafeListSanitizer.new
+    allowed_tags = %w(b i u strong em s del ins a br p div span table th tr td thead tbody ol ul li img sup sub pre blockquote abbr)
+    allowed_attributes = %w(href src class style title alt target width height)
+    if !title.nil?
+      self.title = sanitizer.sanitize(title, tags: allowed_tags, attributes: allowed_attributes)
+    end
+    if !description.nil?
+      self.description = sanitizer.sanitize(description, tags: allowed_tags, attributes: allowed_attributes)
+    end
+    if !details.nil?
+      self.details = sanitizer.sanitize(details, tags: allowed_tags, attributes: allowed_attributes)
     end
   end
 end

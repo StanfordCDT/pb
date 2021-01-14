@@ -17,11 +17,12 @@ class Election < ApplicationRecord
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: true,
                    format: {with: /\A[a-z0-9\-_]+\z/, message: "must consist only of lowercase letters, numbers, hyphens, or underscores without any whitespace"},
-                   exclusion: {in: ['admin', 'about'], message: "'%{value}' is reserved." }
+                   exclusion: {in: ['admin', 'about', 'contact', 'done_survey', 'twilio_sms'], message: "'%{value}' is reserved." }
   validates :budget, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
   validate :validate_config_yaml
   after_update :clear_config_cache
   after_destroy :clear_config_cache
+  attribute :duplicate_projects, :boolean, default: true
 
   @@config_cache = {}
 

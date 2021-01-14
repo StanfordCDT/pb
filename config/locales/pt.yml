@@ -1,0 +1,442 @@
+pt:
+  navigation:
+    brand: PB
+    home: Página Inicial
+    about: Sobre
+    help: Ajuda
+    exit: Sair
+  index:
+    title: Orçamento participativo
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Bem-vindo(s)
+        à interface de votação digital do Orçamento participativo</p>'
+      instruction: Insira o código que você recebeu.
+      code_placeholder: Código
+      enter_code_button: Inserir
+      wrong_code: Código incorreto
+      used_code: Este código já está sendo usado
+      used_personal_id: Este ID já foi usado. Entre em contato com voxpopuli@lists.stanford.edu
+        caso seja um erro ou se precisar votar novamente.
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+         <p class='lead'>Bem-vindo(a) ao modelo de cédula digital do Orçamento participativo, cortesia da Stanford Crowdsourced Democracy Team.</p>
+         <p class='lead'>Neste site, você vai se familiarizar com os projetos deste ano e com a cédula digital. Este site é apenas informativo e você <b>não pode</b> votar aqui.</p>
+         <p class='lead'>Ao <u>votar</u>, você decidirá como deseja allocar $XXX milhões do orçamento de melhoria de capital da cidade. Para votar, você precisa comparecer a um dos muitos locais de votação localizados em toda a cidade. A votação será realizada entre (data XXX) a (data YYY). Veja todos os horários e locais abaixo.</p>
+      proceed_button: Ver amostra de cédula >>
+      sms_verification_button: Votar agora >>
+      code_verification_button: Inserir código
+      other_verification_button: Votar agora >>
+      see_projects_button: Ver projetos
+    voting_has_not_started: A votação neste site ainda não começou. Começaremos a
+      coletar votos remotos o mais rápido possível. Obrigado pela sua paciência.
+    voting_ended: A votação terminou
+    public_results: Ver resultados da eleição
+  approval:
+    title: Orçamento participativo
+    popup:
+      title: Instruções
+      body: <ol> <li>Selecione os projetos que deseja apoiar. Você pode votar em até
+        <b>%{max_n_projects} projetos.</b></li> <li>Clique no botão <b>"Enviar meu
+        voto"</b> quando estiver pronto para enviar.</li> </ol>
+      ok: OK
+    instructions: <h3>Instruções</h3> <ol> <li>Selecione os projetos que deseja apoiar.
+      Você pode votar em até <b>%{max_n_projects} projetos.</b></li> <li>Clique no
+      botão <b>"Enviar meu voto"</b> quando estiver pronto para enviar.</li> </ol>
+    list_of_projects: Lista de projetos
+    estimated_cost: Custo estimado
+    youtube_video: Vídeo do YouTube
+    location: Localização
+    partner: Parceiro
+    committee: Comitê
+    read_details: Saber mais...
+    select_button:
+      select: Selecionar
+      selected: Selecionado
+      not_enough_money: Dinheiro insuficiente
+      more_projects: Não é possível selecionar mais de %{max_n_projects} projetos
+    remove_button: Remover
+    remove_button_tooltip: Clique aqui se não quiser mais selecionar este projeto.
+    submit_button: Enviar meu voto...
+    confirmation:
+      title: Tem certeza de que deseja enviar seu voto?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Você não selecionou nenhum projeto.</span>"
+          other: 'Você seleiconou os seguintes projetos: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Você selecionou apenas um projeto.</span>"
+          less: "<span style='color: red;'>Você selecionou apenas %{count} projetos.</span>"
+          limit: "<span style='color: red;'>Você pode votar em até %{max_n_projects}
+            projetos.</span>"
+        warning: Depois de enviar seu voto, você <strong>não poderá</strong>mudá-lo.
+          Se você quiser alterar seu voto, clique em "Voltar" abaixo. Se desejar enviar
+          seu voto, marque a caixa abaixo e clique em "Enviar meu voto".
+        checkbox: Entendo que após enviar meu voto, <strong>não poderei</strong> mudá-lo.
+      ok: Enviar meu voto
+      cancel: Voltar
+    confirmation_over_limit:
+      title: Não foi possível enviar seu voto
+      over_n_project_limit: "<span style='color:red'>Você selecionou<b>%{n_projects}</b>
+        projetos. Você só pode selecionar um máximo de <b>%{max_n_projects}</b> projetos.
+        Remova <b>%{extra}</b> ou mais projetos.</span>"
+      over_budget_limit: "<span style='color:red'>Você está acima do orçamento.</span>"
+      cancel: Voltar
+    tracker:
+      text: Você selecionou %{count} projetos.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "%{total} de %{budget} orçamento total selecionado."
+      under_budget: Você ainda tem %{remaining_money} restante.
+      over_budget: Você está acima do orçamento no momento.
+      over_budget_but_can_add_projects: Você ultrapassou o orçamento, mas pode continuar
+        adicionando projetos.
+    adjustable_cost_project:
+      instructions: 'Selecione uma das seguintes opções:'
+      not_adjusted_warning: "<span style='color:red'>Você selecionou $0 para %{project}</span>"
+      message: Você selecionou %{cost} para %{project}
+      table_headings:
+        percentage_column: Porcentagem do orçamento gasto
+        cost_column: Custo
+        number_column: Nº aproximado de blocos restaurados
+    map:
+      street_resurfacing_count:
+        one: 1 rua repavimentada
+        other: "%{count} ruas repavimentadas"
+      alley_resurfacing_count:
+        one: 1 beco repavimentado
+        other: "%{count} becos repavimentados"
+      apron_resurfacing_count:
+        one: 1 placa reformada
+        other: "%{count} placas reformadas"
+      sidewalk_repairing_count:
+        one: 1 caçalda repavimentada
+        other: "%{count} caçaldas repavimentadas"
+    image_gallery:
+      cue: Clique na imagem para ver a apresentação de slides
+    project_ranking:
+      list_header: Você selecionou os seguintes projetos. Altere a classificação deles
+        arrastando os <span class='glyphicon glyphicon-sort'></span> ícones.
+      continue_button: Continuar
+  thanks_approval:
+    title: Obrigado
+    description:
+      real: <p class='lead text-center'>Obrigado por votar. Clique em "Próximo" abaixo
+        para ir até a próxima página.</p>
+      demo: '<p class=''lead''>Obrigado por votar! <span style=''color: red;''><strong>Observe
+        que esta é apenas uma <u>pré-visualização</u>.</strong></span> Clique em "Próximo"
+        abaixo para ir até a próxima página.</p>'
+    send_vote_email: "(Opcional) Quero enviar meu resultado de voto por e-mail:"
+    email_placeholder: Inserir e-mail
+    next_button: Próximo &gt;&gt;
+  ranking:
+    title: Orçamento participativo
+    popup:
+      title: Instruções
+      body: <ol> <li>Selecione os projetos que deseja apoiar. Você pode votar em até
+        <b>%{max_n_projects} projetos.</b></li> <li>Clique no botão <b>"Enviar meu
+        voto"</b> quando você estiver pronto para enviar.</li> </ol>
+      ok: OK
+    instructions: <h3>Instruções</h3> <ol> <li>Selecione os projetos que deseja apoiar.
+      Você pode votar em até <b>%{max_n_projects} projetos.</b></li> <li>Clique no
+      botão <b>"Enviar meu voto"</b> quando você estiver pronto para enviar.</li>
+      </ol>
+    list_of_projects: Lista de projetos
+    estimated_cost: Custo estimado
+    youtube_video: Vídeo do YouTube
+    location: Localização
+    partner: Parceiro
+    committee: Comitê
+    read_details: Ler mais...
+    select_button:
+      select: Selecionar
+      selected: Selecionado
+      not_enough_money: Dinheiro insuficiente
+      more_projects: Não é possível selecionar mais de %{max_n_projects} projetos
+    remove_button: Remover
+    remove_button_tooltip: Clique aqui se não quiser selecionar mais este projeto.
+    submit_button: Enviar meu voto...
+    confirmation:
+      title: Tem certeza de que deseja enviar seu voto?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Você não selecionou nenhum projeto.</span>"
+          other: 'Você selecionou os seguintes projetos: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Você só selecionou um projeto.</span>"
+          less: "<span style='color: red;'>Você só selecionou %{count} projetos.</span>"
+          limit: "<span style='color: red;'>Você pode votar em até %{max_n_projects}
+            projetos.</span>"
+        warning: Depois de enviar seu voto, você <strong>não poderá</strong> mudá-lo.
+          Se quiser mudar seu voto, clique em "Voltar" abaixo. Se desejar enviar seu
+          voto, marque a caixa abaixo e clique em "Enviar meu voto'.
+        checkbox: Entendo que depois de enviar meu voto, <strong>não poderei</strong>
+          mudá-lo.
+      ok: Enviar meu voto
+      cancel: Voltar
+    confirmation_over_limit:
+      title: Não foi possível enviar seu voto
+      over_n_project_limit: "<span style='color:red'>Você selecionou <b>%{n_projects}</b>
+        projetos. Você só pode selecionar um máximo de <b>%{max_n_projects}</b> projetos.
+        Remova <b>%{extra}</b> ou mais projetos.</span>"
+      over_budget_limit: "<span style='color:red'>Você está acima do orçamento no
+        momento.</span>"
+      cancel: Voltar
+    tracker:
+      text: Você selecionou %{count} projetos.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "%{total} de %{budget} orçamento total selecionado."
+      under_budget: Você ainda tem %{remaining_money} restante.
+      over_budget: Você está acima do orçamento no momento.
+      over_budget_but_can_add_projects: Você ultrapassou o orçamento, mas pode continuar
+        adicionando projetos.
+    adjustable_cost_project:
+      instructions: 'Selecione uma das seguintes opções:'
+      not_adjusted_warning: "<span style='color:red'>Você selecionou $0 para %{project}</span>"
+      message: Você selecionou $%{cost} para %{project}
+      table_headings:
+        percentage_column: Porcentagem do orçamento gasto
+        cost_column: Custo
+        number_column: Nº aproximado de quadras recuperadas
+    image_gallery:
+      cue: Clique na imagem para ver a apresentação de slides
+  question:
+    title: Pesquisa
+    question: Você é maior de 14 anos?
+    ok: Sim, sou maior de 14 anos
+    alternative: Não, sou menor de 14 anos
+  comparison:
+    title: Comparação
+    header: Qual projeto oferece a melhor relação custo-benefício, ou seja, fornece
+      o maior benefício para a comunidade por dólar gasto?
+    estimated_cost: Custo estimado
+    this_project: Este projeto
+    not_sure: Não tenho certeza
+    popup:
+      title: Instruções
+      body: "<p style='font-size: 20px;'>Você agora será solicitado a participar de
+        uma atividade que <u>not</u> afetará seu voto, mas que faz parte de um projeto
+        de pesquisa da Universidade de Stanford criado para nos ajudar a melhorar
+        a o processo de orçamento participativo.</p> <ul style='font-size: 20px;'><li>A
+        participação nesta atividade é opcional. Você pode sair a qualquer momento.</li>
+        <li>O tempo estimado para esta atividade é de 2 a 3 minutos.</li> </ul> <p
+        style='font-size: 14px;'>Este estudo não apresenta risco. Nenhum pagamento
+        será feito a você pela participação e não podemos garantir nenhum benefício.
+        Você tem o direito de se recusar a responder a perguntas específicas. Entre
+        em contato com o professor Ashish Goel em goel_admins@lists.stanford.edu se
+        tiver dúvidas ou sugestões. Você também pode entrar em contato com o Conselho
+        de Revisão Institucional de Stanford pelo telefone 650-723-2480.</p>"
+      ok: Continuar
+      exit: Sair
+  knapsack:
+    title: Orçamento participativo
+    popup:
+      title: Instruções
+      body: "<p style='font-size: 20px;'>Você agora será solicitado a participar de
+        uma atividade que <u>not</u> afetará seu voto, mas que faz parte de um projeto
+        de pesquisa da Universidade de Stanford criado para nos ajudar a melhorar
+        a o processo de orçamento participativo.</p> <ul style='font-size: 20px;'><li>A
+        participação nesta atividade é opcional. Você pode sair a qualquer momento.</li>
+        <li>O tempo estimado para esta atividade é de 2 a 3 minutos.</li> </ul> <p
+        style='font-size: 14px;'>Este estudo não apresenta risco. Nenhum pagamento
+        será feito a você pela participação e não podemos garantir nenhum benefício.
+        Você tem o direito de se recusar a responder a perguntas específicas. Entre
+        em contato com o professor Ashish Goel em goel_admins@lists.stanford.edu se
+        tiver dúvidas ou sugestões. Você também pode entrar em contato com o Conselho
+        de Revisão Institucional de Stanford pelo telefone 650-723-2480.</p>"
+      ok: Continuar
+      exit: Sair
+    instructions: <h3>Instruções</h3> <ol> <li>Selecione os projetos que deseja apoiar.
+      O custo total não pode exceder <b>%{budget}</b>.</li> <li>Você pode ver o valor
+      total alocado até agora na barra acima. É possível remover qualquer projeto
+      selecionado anteriormente clicando na barra ou no projeto escolhido.</li> <li>Clique
+      no botão <b>"Enviar meu voto"</b>quando estiver pronto para enviar.</li> </ol>
+    confirmation:
+      title: Tem certeza de que deseja enviar seu voto?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Você não selecionou nenhum projeto.</span>"
+          other: 'Você selecionou os seguintes projetos: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Você só selecionou um projeto.</span>"
+          less: "<span style='color: red;'>Você só selecionou %{count} projetos.</span>"
+          limit: "<span style='color: red;'>Você pode votar em um máximo de %{max_n_projects}
+            projetos.</span>"
+        warning: Depois de enviar seu voto, você <strong>não poderá</strong> mudá-lo.
+      ok: Enviar meu voto
+      cancel: Voltar
+    adjustable_cost_project:
+      instructions: 'Selecione uma das seguintes opções:'
+      not_adjusted_warning: "<span style='color:red'>Você selecionou $0 para %{project}</span>"
+      message: Você selecionou %{cost} para %{project}
+  survey:
+    title: Pesquisa
+    header: Responder a uma pesquisa
+    question:
+      title: Obrigado
+      body: Obrigado por votar. Você é maior de 14 anos?
+      ok: Sim, sou maior de 14 anos
+      alternative: Não, sou menor de 14 anos
+    url: ''
+  thanks:
+    title: Obrigado
+    description:
+      real: Obrigado por votar. Clique no botão "Sair" abaixo.
+      demo: 'Obrigado por testar a interface de orçamento participativo! <span style=''color:
+        red;''><strong>Observe que isso é apenas um D209<u>preview</u>.</strong></span>'
+    exit: Sair
+  about:
+    title: Sobre
+    description: "<center><h1 class='sub-header'>Sobre a interface digital de orçamento
+      participativo</h1></center> <br><p class='lead'>A interface digital de orçamento
+      participativo foi desenvolvida pela <a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>Stanford Crowdsourced Democracy Team</a>. Esperamos que a natureza
+      visual da interface e a riqueza das informações apresentadas ajudem você a aprender
+      sobre os projetos e a votar de forma mais informativa.</p> <p class='lead'>Este
+      é um projeto de código aberto sob a licença GNU GPL v3.0. Encontre o código
+      aberto em <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
+      <p class='lead'>Se tiver problemas técnicos para fornecer seu feedback, envie
+      um e-mail <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>
+      e tentaremos responder assim que possível.</p>"
+  result:
+    title: Resultados
+    vote_results: Resultados da votação
+    description: Os resultados com base nos votos de %{count} eleitores de %{start}
+      a %{end}.
+    proposed_project: Projetos propostos
+    votes: Votos
+    projects: Projetos propostos
+  election:
+    can_also_vote_in_person: 'Você também pode comparecer a um dos seguintes locais
+      para votar:'
+    info: <h3>Locais de votação</h3> <b>Sábado, 27 de setembro</b> &nbsp; (12h às
+      16h)<br> Em algum lugar<br> <br> <b>Terça-feira, 30 de setembro</b> &nbsp; (18h
+      às 21h)<br> Em algum lugar<br> <br> <p>Para saber mais, visite <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: Verifique seu número de telefone
+    header: Verifique seu número de telefone
+    instructions: "<p>Para votar on-line, será necessário um telefone celular que
+      receba mensagens de texto para que possamos verificar seu número de telefone.</p><p>Insira
+      o número de telefone do seu celular e enviar um código de confirmação por mensagem
+      de texto.</p>"
+    phone_number_placeholder: Inserir número de telefone
+    verify_button: Verificar
+    invalid_phone_number: '"%{phone_number}" não é um número de telefone válido.'
+    blacklisted_phone_number: Este número de telefone optou por não receber nossas
+      mensagens. Para receber o código de confirmação, envie INICIAR para %{our_phone_number}
+      e insira seu número de telefone aqui novamente.
+    no_cell_phone_instruction: Se você não tiver um telefone celular, <a href="%{code_signup_url}">clique
+      aqui</a>para usar outro método para votar on-line.
+  code_signup:
+    title: Inserir código de acesso para votar
+    instruction: Envie um e-mail para XXX@stanford.edu ou ligue para XXX-XXX-XXX para
+      receber um código de acesso. Quando recebê-lo, insira-o abaixo e pressione o
+      botão <b>Votar</b> para continuar.
+    code_placeholder: Código de acesso
+    vote_button: Votar
+    wrong_access_code: Código de acesso incorreto
+    used_access_code: Este código já está sendo usado
+  other_signup:
+    title: Inserir detalhes para votar
+    instruction: ''
+    no_account_number_instruction: Se você não tiver um número de conta, <a href="%{code_signup_url}">clique
+      aqui</a> para usar outro método para votar on-line.
+    zipcode_placeholder: CEP
+    account_number_placeholder: Número da conta
+    vote_button: Votar
+    wrong_account_number: Número da conta ou CEP incorreto
+    used_account_number: Este número de conta já está sendo usado
+  free_signup:
+    title: Validação
+    instruction: Insira seu CEP
+    placeholder: CEP
+    captcha: Digite <b>%{captcha}</b> abaixo
+    vote_button: Votar
+  registration:
+    title: Detalhes do eleitor
+    header: Detalhes do eleitor
+    instructions: Insira as seguintes informações para prosseguir para a cédula de
+      votação. Os campos marcados com * são obrigatórios.
+    proceed_button: Continuar
+    no_phone_number: Não tenho um número de telefone
+    name: Nome
+    first_name: Nome
+    middle_initial: Nome do meio
+    last_name: Sobrenome
+    suffix: Sufixo
+    phone_number: Número do telefone
+    email: E-mail
+    address: Endereço
+    city: Cidade
+    zip_code: CEP
+    birth_year: Data de nascimento
+    date_of_birth: Data de nascimento
+    verify_age_label: Sou maior de 16 anos
+    email_instruction_label: Quer saber o resultado desta votação? Digite seu e-mail
+      para acompanhar.
+    ward: Divisão
+    ward_do_not_know: Não sei
+    error: 'Corrija os seguintes erros:'
+    not_voting_age_error: Você deve ter a idade exigida para votar nesta eleição
+    verify_age_error: Confirme "%{checkbox_label}"
+  sms_signup_confirm:
+    title: Verifique seu número de telefone
+    header: Verifique seu número de telefone
+    instructions: "<p>Enviamos um código para <b>%{phone_number}</b>. Você deve receber
+      o código em um minuto.</p><p>Insira o código de confirmação para verificar seu
+      número de telefone.</p>"
+    code_placeholder: Inserir código
+    confirm_button: Confirmar
+    wrong_code: Código incorreto.
+    resend_code: Se você não receber o código em um minuto, clique <a href="%{resend_code_url}">aqui</a>
+      para reenviar o código de confirmação.
+    make_sure_phone_number_is_correct: Certifique-se de que %{phone_number} seja seu
+      número de telefone celular correto. Se <u>não</u> for, clique <a href="%{signup_url}">aqui</a>
+      para mudá-lo.
+    still_not_working: Se ainda estiver com problemas para receber o código de confirmação
+      após várias tentativas, <a href="%{code_signup_url}">clique aqui</a> para usar
+      outro método para votar on-line.
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
+
+  general:
+    demo_warning: Esta é apenas uma prévia. Seu voto não será registrado.
+    experiment_disclaimer: Esta é apenas uma pesquisa de opinião. Isso não afetará
+      seu voto.
+    shuffle_note: "<span style='font-size: 18px;'>Observação: esses projetos são organizados
+      em uma ordem aleatória.</span>"
+    project_string: Projeto
+    close_button: Fechar
+    timeout:
+      body: Sua sessão está prestes a expirar. Clique em "Continuar" para continuar
+        usando o site.
+      continue_button: Continuar
+  date:
+    month_names:
+    -
+    - janeiro
+    - fevereiro
+    - março
+    - abril
+    - maio
+    - junho
+    - julho
+    - agosto
+    - setembro
+    - outubro
+    - novembro
+    - dezembro
+    order:
+    - :day
+    - :month
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

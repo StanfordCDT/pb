@@ -52,7 +52,7 @@
       <span id="slider-value<%= project.id %>"></span>
     </p>
     <p>
-      <input id="slider<%= project.id %>" data-slider-tooltip="show" type="text" data-slider-min="0" data-slider-max="<%= project.cost %>" data-slider-step="<%= project.cost_step %>" data-slider-value="<%= project.cost_min %>" />
+      <input id="slider<%= project.id %>" data-slider-tooltip="show" type="text" data-slider-min="0" data-slider-min2="<%= project.cost_min %>" data-slider-max="<%= project.cost %>" data-slider-step="<%= project.cost_step %>" data-slider-value="<%= project.cost_min %>" />
     </p>
   </div>
 <% end %>
@@ -82,7 +82,7 @@
 <% if project.image_url %>
   <p>
     <div class="project-image-wrapper">
-      <img src="<%= project.image.url %>" class="project-image" id="project-image-<%= project.id %>" alt="<%= project.image_description.blank? ? 'Image for ' + project.title : project.image_description %>" />
+      <img src="<%= project.image.url %>" class="project-image" id="project-image-<%= project.id %>" alt="<%= !project.image_description.blank? ? project.image_description : !project.title.blank? ? 'Image for ' + project.title : 'Image for the project' %>" />
     </div>
   </p>
   <% if !project.parsed_data.nil? && project.parsed_data.key?('images_gallery') %>
@@ -98,15 +98,15 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"><%= project.title.html_safe %></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body" style="font-size: 16px;">
           <p><%= project.description.html_safe %></p>
           <div class="project-details"><%= project.details.html_safe %></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"><%= t('general.close_button') %></button>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :cost_with_delimiter
   before_action :set_locale
-  #before_action :record_visitor
+  before_action :record_visitor
 
   private
 
@@ -114,11 +114,12 @@ class ApplicationController < ActionController::Base
     user_agent = connection.quote(request.env['HTTP_USER_AGENT'])
     referrer = connection.quote(request.referer)
     url = connection.quote(request.url)
-    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, NOW())")
+    request_method = connection.quote(request.method)
+    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, NOW())")
   end
 
   def cost_with_delimiter(cost, currency_symbol)
-    if I18n.locale == :fr
+    if I18n.locale == :fr || I18n.locale == :pl
       number_with_delimiter(cost, delimiter: " ", separator: ",") + ' ' + currency_symbol
     else
       currency_symbol + number_with_delimiter(cost)

@@ -11,9 +11,9 @@
       Export to Excel
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="approvalExportDropdown">
-      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'project_ranked_votes') %>">Aggregate results</a>
+      <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'ranking') %>">Aggregate results</a>
       <% if current_user.can_see_voter_data?(@election) %>
-        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'ranking_approval_individual') %>">Individual votes</a>
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'ranking_individual') %>">Individual votes</a>
       <% end %>
     </div>
   </span>
@@ -30,7 +30,7 @@
 
 <!-- Code for the projects ranked-approval table -->
 <script type="text/javascript">
-var project_ranked_votes = <%= @project_ranked_votes.to_json.html_safe %>;
+var project_ranked_votes = analytics_data.ranking.project_ranked_votes;
 var max_n_projects = <%= @election.config[:ranking][:max_n_projects] %>;
 
 function reloadRankedApprovalTable() {

@@ -1,0 +1,52 @@
+<% content_for :title, t('navigation.brand') %>
+
+<style>
+input[type='text'] {
+  font-size: 16px;
+}
+</style>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 main">
+        <h2><%= t('free_signup.title') %></h2>
+        <br>
+
+        <form action="<%= url_for(action: :post_free_signup) %>" method="post">
+          <div class="card bg-light">
+            <div class="card-body">
+              <% if flash[:error] %>
+                <p style="font-size: 20px; color: red;"><%= flash[:error] %></p>
+              <% end %>
+              <div class="form-group">
+                <label for="freeform_text"><%= t('free_signup.instruction') %></label><br />
+                <% if conf[:free_verification_multiline_text] %>
+                  <textarea type="text" name="freeform_text" id="freeform_text" class="form-control" autofocus="autofocus" placeholder="<%= t('free_signup.placeholder') %>" required="required" rows="4" /></textarea>
+                <% else %>
+                  <input type="text" name="freeform_text" id="freeform_text" class="form-control" autocomplete="off" autofocus="autofocus" placeholder="<%= t('free_signup.placeholder') %>" required="required" />
+                <% end %>
+              </div>
+              <% if conf[:free_verification_use_captcha] %>
+                <div class="form-group">
+                  <label for="captcha"><%= raw t('free_signup.captcha', captcha: @captcha) %></label><br />
+                  <input type="hidden" name="original_captcha" value="<%= @captcha %>" />
+                  <input type="text" name="captcha" id="captcha" class="form-control" autocomplete="off" placeholder="" required="required" />
+                </div>
+              <% end %>
+              <input type="submit" value="<%= t('free_signup.vote_button') %>" class="btn-lg btn btn-primary" />
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+            </div>
+          </div>
+        </form>
+
+<%
+=begin
+%>
+      <p><%= t('election.can_also_vote_in_person').html_safe %></p>
+      <%= t('election.info').html_safe %>
+<%
+=end
+%>
+    </div>
+  </div>
+</div>

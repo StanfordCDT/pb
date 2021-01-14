@@ -26,7 +26,7 @@ FIXME: Currently not working. Need to fix this.
 <div class="mb-2">
   <ul class="nav formatSelector" role="tablist">
     <li class="nav-item">
-      <a class="active" id="knapsack-table-tab" data-toggle="tab" href="#knapsack-table" role="tab" aria-controls="knapsack-table" aria-selected="true">Table</a> |
+      <a id="knapsack-table-tab" class="active" data-toggle="tab" href="#knapsack-table-pane" role="tab" aria-controls="knapsack-table-pane" aria-selected="true">Table</a> |
     </li>
     <li class="nav-item">
       <a id="knapsack-chart-tab" data-toggle="tab" href="#knapsack-chart" role="tab" aria-controls="knapsack-chart" aria-selected="false">Chart</a> |
@@ -42,8 +42,27 @@ FIXME: Currently not working. Need to fix this.
   </ul>
 </div>
 
+<div class="form-inline">
+  <div class="form-group">
+    <label for="knapsack-tiebreaking">Tie-breaking method:</label>
+    &nbsp;
+    <select class="form-control" id="knapsack-tiebreaking">
+      <option value="increasing">Increasing cost</option>
+      <option value="fractional">Fractional</option>
+      <option value="equalizing">Equalizing</option>
+    </select>
+  </div>
+</div>
+
 <div class="tab-content">
-  <div class="tab-pane show active" id="knapsack-table" role="tabpanel" aria-labelledby="knapsack-table-tab">
+  <div class="tab-pane show active" id="knapsack-table-pane" role="tabpanel" aria-labelledby="knapsack-table-tab">
+    <div class="form-check" style="float: right;">
+      <input class="form-check-input" type="checkbox" value="" id="knapsack-show-details">
+      <label class="form-check-label" for="knapsack-show-details">
+        Show details
+      </label>
+    </div>
+    <div id="knapsack-table"></div>
   </div>
   <div class="tab-pane" id="knapsack-chart" role="tabpanel" aria-labelledby="knapsack-chart-tab">
   </div>
@@ -60,7 +79,7 @@ FIXME: Currently not working. Need to fix this.
         </tr>
       </thead>
       <tbody>
-        <% @knapsack_voters_by_date.each do |v| %>
+        <% @analytics_data[:knapsack][:knapsack_voters_by_date].each do |v| %>
           <tr>
             <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
             <td><%= number_with_delimiter(v.vote_count) %></td>
@@ -68,50 +87,13 @@ FIXME: Currently not working. Need to fix this.
         <% end %>
         <tr>
           <td><b>Total</b></td>
-          <td><%= number_with_delimiter(@knapsack_total) %> </td>
+          <td><%= number_with_delimiter(@analytics_data[:knapsack][:knapsack_total]) %> </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<%
-=begin
-%>
-<table class="table table-bordered table-sm">
-  <thead class="thead-light">
-    <tr>
-      <th>Project</th>
-      <th class="text-right">Votes</th>
-      <th class="text-right">Allocation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%
-    id_to_project = {}
-    @projects.each { |project| id_to_project[project[:id]] = project }
-    %>
-    <% @knapsack_data.each do |project| %>
-      <tr>
-        <td><%= id_to_project[project[:id]][:title] %></td>
-        <td class="text-right">
-          <% project[:votes].each do |v| %>
-            $<%= number_with_delimiter(v[0]) %> - <%= v[1].to_s %><br>
-          <% end %>
-        </td>
-        <td class="text-right">$<%= number_with_precision(project[:allocation], precision: 2, delimiter: ',') %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td>Total</td>
-      <td></td>
-      <td class="text-right">$<%= number_with_precision(@knapsack_data.map { |p| p[:allocation] }.sum, precision: 2, delimiter: ',') %></td>
-    </tr>
-  <tbody>
-</table>
-<%
-=end
-%>
 
 
 <style>
@@ -138,11 +120,16 @@ FIXME: Currently not working. Need to fix this.
 </style>
 
 <script type="text/javascript">
-var knapsack_data = <%= @knapsack_data.to_json.html_safe %>;
-var knapsack_max_vote_count = <%= @knapsack_max_vote_count.to_json %>;
+function roundToTwo(x) {
+  return Math.round(x * 100) / 100;
+}
+
+var showKnapsackDetails = false;
 
 // Knapsack table.
 function reloadKnapsackTable() {
+  var knapsack_data = analytics_data.knapsack.knapsack_data;
+
   var table = document.createElement('table');
   table.className = 'table table-bordered table-sm';
 
@@ -160,6 +147,16 @@ function reloadKnapsackTable() {
       th = document.createElement('th');
       th.textContent = 'Votes';
       tr.appendChild(th);
+
+      if (showKnapsackDetails) {
+        th = document.createElement('th');
+        th.textContent = 'Discrete';
+        tr.appendChild(th);
+
+        th = document.createElement('th');
+        th.textContent = 'Partial';
+        tr.appendChild(th);
+      }
 
       th = document.createElement('th');
       th.textContent = 'Allocation';
@@ -184,20 +181,51 @@ function reloadKnapsackTable() {
       tr.appendChild(td);
 
       // Votes
+      var cumulativeVoteCount = 0;
+      var first = true;
       td = document.createElement('td');
       td.className = "text-right";
-      td.textContent = "a\nb";
       var s = "";
       for (var j = 0; j < knapsack_row.votes.length; ++j) {
-        s += (costWithDelimiter(knapsack_row.votes[j][0], currency_symbol)) + " - " + knapsack_row.votes[j][1] + "<br>";
+        var voteCount = knapsack_row.votes[j][1];
+        cumulativeVoteCount += voteCount;
+        if (showKnapsackDetails && cumulativeVoteCount >= analytics_data.knapsack.knapsack_discrete_vote && first) {
+          s += "<b>";
+        }
+        s += (costWithDelimiter(knapsack_row.votes[j][0], currency_symbol)) + " - " + voteCount;
+        if (showKnapsackDetails && showKnapsackDetails) {
+          s += " (" + cumulativeVoteCount + ")";
+        }
+        if (cumulativeVoteCount >= analytics_data.knapsack.knapsack_discrete_vote && first) {
+          s += "</b>";
+          first = false;
+        }
+        s += "<br>";
       }
       td.innerHTML = s;
       tr.appendChild(td);
 
-      // Allocation
+      if (showKnapsackDetails) {
+        // Discrete allocation
+        td = document.createElement('td');
+        td.className = "text-right";
+        td.textContent = costWithDelimiter(roundToTwo(knapsack_row.discrete_allocation), currency_symbol);
+        tr.appendChild(td);
+
+        // Partial allocation
+        td = document.createElement('td');
+        td.className = "text-right";
+        td.textContent = costWithDelimiter(roundToTwo(knapsack_row.partial_allocation), currency_symbol);
+        if (analytics_data.knapsack.knapsack_partial_project_ids.indexOf(knapsack_row.id) == -1) {
+          td.style.color = "transparent";
+        }
+        tr.appendChild(td);
+      }
+
+      // Total allocation
       td = document.createElement('td');
       td.className = "text-right";
-      td.textContent = costWithDelimiter(knapsack_row.allocation, currency_symbol); // FIXME:
+      td.textContent = costWithDelimiter(roundToTwo(knapsack_row.allocation), currency_symbol);
       tr.appendChild(td);
     }
 
@@ -211,7 +239,21 @@ function reloadKnapsackTable() {
 
 reloadKnapsackTable();
 
-(function() {
+document.getElementById('knapsack-show-details').addEventListener('change', function(event) {
+  showKnapsackDetails = event.target.checked;
+  reloadKnapsackTable();
+});
+
+document.getElementById('knapsack-tiebreaking').addEventListener('change', function(event) {
+  reloadData({knapsack_partial: event.target.value});
+});
+
+
+
+function reloadKnapsackChart() {
+  var knapsack_data = analytics_data.knapsack.knapsack_data.slice(0);
+  var knapsack_max_vote_count = analytics_data.knapsack.knapsack_max_vote_count;
+
   // knapsack_data is an array of objects whose keys and values are
   // - id: project's id
   // - votes: an array of votes for the project. Each vote is an array of length 2: [cost, vote_count]
@@ -223,7 +265,7 @@ reloadKnapsackTable();
   // Sort the votes for each project by cost and calculate various values for each vote.
   knapsack_data.forEach(function(project) {
     var votes = project.votes;
-    votes.sort(function(a, b) { return b[0] - a[0]; }); // Larger cost to smaller cost.
+    // votes.sort(function(a, b) { return b[0] - a[0]; }); // Larger cost to smaller cost.
 
     var cumulativeVoteCount = 0;
     for (var i = 0; i < votes.length; ++i) {
@@ -245,6 +287,7 @@ reloadKnapsackTable();
 
   var margin = {top: 30, right: 50, bottom: 50, left: 200},
     width = 960 - margin.left - margin.right;
+  document.getElementById("knapsack-chart").innerHTML = "";
   var svg = d3.select("#knapsack-chart")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -468,5 +511,14 @@ reloadKnapsackTable();
     .attr("dy", ".35em")
     .text(function(d, i) { return projects[idToIndex[fundedProjects[i].id]].title; });
   */
-})();
+};
+
+reloadKnapsackChart();
+
+if (window.reloadCallbacks) {
+  reloadCallbacks.push(function () {
+    reloadKnapsackTable();
+    reloadKnapsackChart();
+  });
+}
 </script>

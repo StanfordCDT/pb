@@ -33,7 +33,7 @@
     <li class="nav-item">
       <a id="approval-chart-tab" data-toggle="tab" href="#approval-chart" role="tab" aria-controls="approval-chart" aria-selected="false">Chart</a>
     </li>
-    <% if current_user.can_see_voter_data?(@election) %>
+    <% if !is_public && current_user.can_see_voter_data?(@election) %>
       <li class="nav-item">
         | <a href="<%= analytics_cooccurrence_admin_election_path(@election) %>">Co-occurrence matrix</a>
       </li>
@@ -56,8 +56,8 @@
 </style>
 
 <script type="text/javascript">
-var approvals = <%= @approvals.to_json.html_safe %>;
-var max_approval_vote_count = <%= @max_approval_vote_count.to_json %>;
+var approvals = analytics_data.approval.approvals;
+var max_approval_vote_count = analytics_data.approval.max_approval_vote_count;
 var categorized = <%= @election.categorized? %>;
 
 // Approval table.

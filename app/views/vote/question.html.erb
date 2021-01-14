@@ -1,4 +1,4 @@
-<% content_for :title, t('question.title') %>
+<% content_for :title, t('navigation.brand') %>
 
 <div class="container-fluid">
   <div class="row justify-content-center">
@@ -10,7 +10,7 @@
         <p>
           <%
           alternative_page = {action: conf[:question][:alternative_page]}
-          if conf[:question][:alternative_params]
+          if conf[:question][:alternative_params] && !conf[:question][:alternative_params].blank?
             alternative_page.merge!(conf[:question][:alternative_params])
           end
           %>

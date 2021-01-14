@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :projects do
         collection do
           patch 'reorder'
+          get 'import'
+          post 'post_import'
         end
       end
       resources :categories do
@@ -78,6 +80,8 @@ Rails.application.routes.draw do
   end
 
   post 'contact' => 'home#contact'
+  get 'done_survey' => 'home#done_survey'
+  post 'twilio_sms' => 'home#twilio_sms'
 
   get ':election_slug(/:action(/:id))', controller: 'vote'
   post ':election_slug(/:action(/:id))', controller: 'vote'

@@ -218,7 +218,7 @@ class NumberOption extends React.Component {
 class TextOption extends React.Component {
   render() {
     return (
-      <input type="text" className="form-control" onChange={event => { this.props.db.set(this.props.name, event.target.value); }} value={this.props.db.get(this.props.name)} placeholder={this.props.placeholder} />
+      <input type="text" className="form-control" onChange={event => { this.props.db.set(this.props.name, event.target.value); }} value={this.props.db.get(this.props.name)} placeholder={this.props.placeholder} dir={this.props.dir} />
     );
   }
 }
@@ -236,6 +236,7 @@ class TinyMCEEditor extends React.Component {
       elementpath: false,
       //statusbar: false,
       menubar: false,
+      directionality: (this.props.dir == "rtl") ? "rtl" : "ltr",
 
       // https://www.tinymce.com/docs/advanced/editor-control-identifiers/#toolbarcontrols
       // styleselect formatselect
@@ -295,7 +296,7 @@ class HTMLOption extends React.Component {
     );
     */
     return (
-      <TinyMCEEditor onChange={value => { this.props.db.set(this.props.name, value); }} value={this.props.db.get(this.props.name)} />
+      <TinyMCEEditor onChange={value => { this.props.db.set(this.props.name, value); }} value={this.props.db.get(this.props.name)} dir={this.props.dir} />
     );
   }
 }
@@ -331,7 +332,7 @@ class LocalizedTextOption extends React.Component {
                 <tr key={locale}>
                   <td>{localeNames[locale]}</td>
                   <td>
-                    <Option name={"locales." + locale + "." + this.props.name} db={this.props.db} />
+                    <Option name={"locales." + locale + "." + this.props.name} db={this.props.db} dir={(locale == "ar") ? "rtl" : null} />
                   </td>
                 </tr>
               ))}
@@ -339,7 +340,7 @@ class LocalizedTextOption extends React.Component {
           </table>
         ) : (
           locales.map(locale => (
-            <Option key={locale} name={"locales." + locale + "." + this.props.name} db={this.props.db} />
+            <Option key={locale} name={"locales." + locale + "." + this.props.name} db={this.props.db} dir={(locale == "ar") ? "rtl" : null} />
           ))
         )}
         {showReset &&
@@ -791,7 +792,7 @@ class ConfigEditor extends React.Component {
           <td><label htmlFor="election_budget">Budget</label></td>
           <td>
             <div className="form-inline">
-              <SelectOption name="currency_symbol" db={db} values={[["$","$"],["€","€"],["£","£"],["¥","¥"]]} />
+              <SelectOption name="currency_symbol" db={db} values={[["$","$"],["€","€"],["£","£"],["¥","¥"],["₹","₹"],["zł","zł"]]} />
               &nbsp;
               <input className="form-control" type="number" name="election[budget]" id="election_budget" defaultValue={electionData.budget} />
             </div>
@@ -843,12 +844,6 @@ class ConfigEditor extends React.Component {
       </div>
 
       <div className="form-check">
-        <input name="election[show_link_on_home_page]" type="hidden" value="0" />
-        <input type="checkbox" className="form-check-input" value="1" name="election[show_link_on_home_page]" id="election_show_link_on_home_page" defaultChecked={electionData.show_link_on_home_page} />
-        <label className="form-check-label" htmlFor="election_show_link_on_home_page">It's OK to show a link to this PB on the home page of https://pbstanford.org</label>
-      </div>
-
-      <div className="form-check">
         <input name="election[real_election]" type="hidden" value="0" />
         <input type="checkbox" className="form-check-input" value="1" name="election[real_election]" id="election_real_election" defaultChecked={electionData.real_election} />
         <label className="form-check-label" htmlFor="election_real_election">Real PB (not a demo or a test)</label>
@@ -864,12 +859,12 @@ class ConfigEditor extends React.Component {
   <label className="group-title">Languages</label>
   <div className="group-body">
     <div>Available languages:</div>
-    <CheckboxOption name="available_locales" db={db} values={[["en","English"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["es","Spanish"]]} />
+    <CheckboxOption name="available_locales" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["hi","Hindi"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["es","Spanish"]]} />
     { ((value)=>((value.length >= 1) ? null : (<div className="text-danger">Select at least one language.</div>) ))(db.get("available_locales")) }
 
     <div className="form-inline">
       <span className="mr-2">Default language:</span>
-      <SelectOption name="default_locale" db={db} values={[["en","English"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["es","Spanish"]]} />
+      <SelectOption name="default_locale" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["hi","Hindi"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["es","Spanish"]]} />
     </div>
     { ((value)=>((c('available_locales').indexOf(value) != -1) ? null : (<div className="text-danger">Must be a language that is available.</div>) ))(db.get("default_locale")) }
   </div>
@@ -895,9 +890,10 @@ class ConfigEditor extends React.Component {
       <BooleanOption name="remote_voting_sms_verification" db={db} label="Remote voting using SMS confirmation" />
       <BooleanOption name="remote_voting_other_verification" db={db} label="Remote voting using personal information" />
       <BooleanOption name="remote_voting_code_verification" db={db} label="Remote voting using generated codes" />
+      <BooleanOption name="remote_voting_free_verification" db={db} label="Remote voting using free-form text field (no verification)" />
 
       {db.get("allow_remote_voting") && (
-        (db.get("remote_voting_sms_verification") || db.get("remote_voting_other_verification") || db.get("remote_voting_code_verification")) ? null : (<div className="text-danger">Select at least one validation method.</div>)
+        (db.get("remote_voting_sms_verification") || db.get("remote_voting_other_verification") || db.get("remote_voting_code_verification") || db.get("remote_voting_free_verification")) ? null : (<div className="text-danger">Select at least one validation method.</div>)
       )}
       {db.get("allow_remote_voting") && (
         (db.get("remote_voting_sms_verification") && !db.get("remote_voting_other_verification") && !db.get("remote_voting_code_verification")) ? (<div className="text-danger">It is recommended that you also use other validation methods in addition to SMS. Some voters might not have a cell phone that can receive SMS.</div>) : null
@@ -932,6 +928,25 @@ class ConfigEditor extends React.Component {
 
       <div className="mt-2">Error message for wrong account numbers:</div>
       <LocalizedTextOption name="other_signup.wrong_account_number" db={db} isHTML={false} />
+    </div>
+  </div>
+</Conditional>
+
+<Conditional condition={c('allow_remote_voting') && c('remote_voting_free_verification')} db={db}>
+  <div className="group">
+    <label className="group-title">Remote voting using using free-form text field</label>
+    <div className="group-body">
+      <div>Header:</div>
+      <LocalizedTextOption name="free_signup.title" db={db} isHTML={false} />
+
+      <div className="mt-2">Instructions:</div>
+      <LocalizedTextOption name="free_signup.instruction" db={db} isHTML={false} />
+
+      <div className="mt-2">Text field placeholder:</div>
+      <LocalizedTextOption name="free_signup.placeholder" db={db} isHTML={false} />
+
+      <BooleanOption name="free_verification_multiline_text" db={db} label="Accept multiline text" />
+      <BooleanOption name="free_verification_use_captcha" db={db} label="Use CAPTCHA" />
     </div>
   </div>
 </Conditional>
@@ -1111,6 +1126,14 @@ class ConfigEditor extends React.Component {
     <Conditional condition={c('allow_remote_voting') && c('remote_voting_code_verification')} name="index.show_remote_voting_code_button" db={db}>
       <BooleanOption name="index.show_remote_voting_code_button" db={db} label="Show the button for remote voting using generated codes" />
       <Conditional condition={c('index.show_remote_voting_code_button')} db={db}>
+        <div>The text on the button:</div>
+        <LocalizedTextOption name="index.remote.code_verification_button" db={db} isHTML={false} />
+      </Conditional>
+    </Conditional>
+
+    <Conditional condition={c('allow_remote_voting') && c('remote_voting_free_verification')} name="index.show_remote_voting_free_button" db={db}>
+      <BooleanOption name="index.show_remote_voting_free_button" db={db} label="Show the button for remote voting using free-form text field" />
+      <Conditional condition={c('index.show_remote_voting_free_button')} db={db}>
         <div>The text on the button:</div>
         <LocalizedTextOption name="index.remote.code_verification_button" db={db} isHTML={false} />
       </Conditional>
@@ -1317,7 +1340,7 @@ class ConfigEditor extends React.Component {
   <div className="group">
     <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="approval.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="approval.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
@@ -1463,7 +1486,7 @@ class ConfigEditor extends React.Component {
   <div className="group">
     <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="knapsack.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="knapsack.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
@@ -1632,7 +1655,7 @@ class ConfigEditor extends React.Component {
   <div className="group">
     <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="ranking.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="ranking.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
@@ -1692,18 +1715,35 @@ class ConfigEditor extends React.Component {
 <Conditional condition={flattenedWorkflow && flattenedWorkflow.indexOf('question') != -1} name="question" db={db}>
 
   <div className="group">
-    <label className="group-title">Alternative page</label>
+    <label className="group-title">Question</label>
     <div className="group-body">
-      <TextOption name="question.alternative_page" db={db} />
+      <div className="mt-2">The question to ask the voter:</div>
+      <LocalizedTextOption name="question.question" db={db} isHTML={false} />
+
+      <div className="mt-1">The text on the Yes button: (If the voter clicks this button, they go to the next page.)</div>
+      <LocalizedTextOption name="question.ok" db={db} isHTML={false} />
+
+      <div className="mt-1">The text on the No button: (If the voter clicks this button, they go to the alternative page, which you must set below.)</div>
+      <LocalizedTextOption name="question.alternative" db={db} isHTML={false} />
     </div>
   </div>
 
+  <div className="group">
+    <label className="group-title">Alternative page</label>
+    <div className="group-body">
+      <TextOption name="question.alternative_page" db={db} />
+      <div className="help-block">The page to go to if the voter clicks the No button.</div>
+    </div>
+  </div>
+
+  {/*
   <div className="group">
     <label className="group-title">Alternative params</label>
     <div className="group-body">
       <TextOption name="question.alternative_params" db={db} />
     </div>
   </div>
+  */}
 
 </Conditional>
           </div>
@@ -1737,7 +1777,7 @@ class ConfigEditor extends React.Component {
   <div className="group">
     <label className="group-title">Research ballot</label>
     <div className="group-body">
-      <BooleanOption name="comparison.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a survey. It will not affect your vote.&quot;" />
+      <BooleanOption name="comparison.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
     </div>
   </div>
 
@@ -1775,7 +1815,7 @@ class ConfigEditor extends React.Component {
       { ((value)=>((value.substring(0, 8) == 'https://') ? null : (<div className="text-danger">The URL of the survey website must start with "https://".</div>) ))(db.get("survey.url")) }
       <div className="help-block">
         <p>To protect the voter's privacy, the URL of the survey website <b>must</b> start with "https://", not "http://".</p>
-        <p>The survey website <b>must</b> redirect users to <span className="url">https://pbstanford.org/[<i>name_of_this_PB</i>]/done_survey</span> after they complete the survey. For example, if the URL of your website is <span className="url">https://pbstanford.org/chicago</span>, then you must redirect users to <span className="url">https://pbstanford.org/chicago/done_survey</span> after they complete the survey. (See the instructions for <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-termination/" target="_blank" rel="noopener noreferrer">Qualtrics</a> and <a href="https://help.surveymonkey.com/articles/en_US/kb/What-are-the-Survey-Completion-options" target="_blank" rel="noopener noreferrer">SurveyMonkey</a>.)</p>
+        <p>The survey website <b>must</b> redirect voters to <span className="url">https://pbstanford.org/done_survey{(db.get("default_locale") == "en") ? "" : ("?locale=" + db.get("default_locale"))}</span> after they complete the survey. (See the instructions for <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-termination/" target="_blank" rel="noopener noreferrer">Qualtrics</a> and <a href="https://help.surveymonkey.com/articles/en_US/kb/What-are-the-Survey-Completion-options" target="_blank" rel="noopener noreferrer">SurveyMonkey</a>.)</p>
       </div>
       <Conditional condition={c('available_locales').length > 1} db={db}>
         <div className="help-block">
@@ -1840,6 +1880,7 @@ class ConfigEditor extends React.Component {
                   <li><b>Remote voting using SMS confirmation</b>: The remote voter enters their phone number. The system sends them a confirmation code through SMS. They enter the confirmation code. The system verifies that it's correct.</li>
                   <li><b>Remote voting using personal information</b>: The remote voter enters their personal information, such as their ID number. The system verifies that it's correct. To use this method, you must import the list of valid ID numbers on the "Codes" page.</li>
                   <li><b>Remote voting using generated codes</b>: The remote voter emails or calls you. You send them an access code. They enter the access code. The system verifies that it's correct.</li>
+                  <li><b>Remote voting using free-form text field</b>: The remote voter enters their personal information, such as ZIP code. Then they get to vote. There is <b>no</b> verification. This method is <b>not</b> recommended.</li>
                 </ul>
               </div>
             </div>

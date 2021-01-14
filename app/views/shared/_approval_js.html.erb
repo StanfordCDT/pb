@@ -22,13 +22,19 @@
       {break}e="backgroundColor"}while(g=g.parentNode);return b(f)}var a={transparent:[255,255,255]}})(jQuery);
 
 function numberWithDelimiter(val) {
-  while (/(\d+)(\d{3})/.test(val.toString())) {
-    val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+  var locale = "<%=j I18n.locale.to_s %>";
+  var delimiter = (locale == "fr" || locale == "pl") ? " " : ",";
+  val = val.toString();
+  while (/(\d+)(\d{3})/.test(val)) {
+    val = val.replace(/(\d+)(\d{3})/, '$1' + delimiter + '$2');
   }
   return val;
 }
 
 function costWithDelimiter(val, currencySymbol) {
+  var locale = "<%=j I18n.locale.to_s %>";
+  if (locale == "fr" || locale == "pl")
+    return numberWithDelimiter(val) + " " + currencySymbol;
   return currencySymbol + numberWithDelimiter(val);
 }
 
@@ -190,6 +196,14 @@ function initializeViews() {
       fixedContentPos: false
     });
   }
+
+  $('.submitVoteButton').on('click', function(e) {
+    if (!isRankingEnabled() || selectedProjectIDs.length <= 1 || (has_n_project_limit && selectedProjectIDs.length > max_n_projects)) {
+      $('#submitModal').modal('show');
+    } else {
+      $('#rankingModal').modal('show');
+    }
+  });
 }
 
 function updateViews() {

@@ -1,4 +1,4 @@
-<% content_for :title, t('sms_signup.title') %>
+<% content_for :title, t('navigation.brand') %>
 
 <style>
 .card-body {
@@ -47,9 +47,11 @@ input[type='tel'], input[type='text'] {
             <p>
               <input type="tel" name="phone_number" id="phone_number" class="form-control" autocomplete="off" placeholder="<%= t('sms_signup.phone_number_placeholder') %>" autofocus="autofocus" />
               <% if @error %>
-                <span class="alert alert-danger" role="alert">
+                <span class="text-danger">
                   <% if @error.code == 21211 %>
                     <%= t('sms_signup.invalid_phone_number', phone_number: @phone_number) %>
+                  <% elsif @error.code == 21610 %>
+                    <%= t('sms_signup.blacklisted_phone_number', our_phone_number: @our_phone_number) %>
                   <% else %>
                     <%# FIXME: should not show this to the user. %>
                     <%= @error.message %>

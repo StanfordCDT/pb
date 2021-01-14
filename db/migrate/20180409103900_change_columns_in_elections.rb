@@ -1,6 +1,5 @@
 class ChangeColumnsInElections < ActiveRecord::Migration[5.2]
   def change
-    add_column :elections, :show_link_on_home_page, :boolean, default: false, null: false
     add_column :elections, :real_election, :boolean, default: true, null: false
     add_column :elections, :remarks, :text
 

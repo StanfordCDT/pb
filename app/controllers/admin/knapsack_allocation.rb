@@ -71,15 +71,13 @@ class KnapsackAllocation
   attr_reader :total_allocations
 
   # Other accessor methods
-  attr_reader :chunks
-  attr_reader :budget
   attr_reader :discrete_allocations
   attr_reader :partial_allocations
-  attr_reader :accumulated_budget
+  attr_reader :discrete_vote
+  attr_reader :partial_project_ids
 
   # The main function that does all the computation
-  def initialize(project_costs, budget, partial_allocation_method = method(:increasing_partial_allocation))
-    @budget = budget
+  def initialize(project_costs, budget, partial_allocation_method = KnapsackAllocation.method(:increasing_partial_allocation))
 
     # For any project, chunk it into discrete pieces such that each piece is the difference of two subsequent values that occur in the project_costs for that project. For each chunk, associate it with the number of users who voted for that chunk
     chunks = []
@@ -88,26 +86,36 @@ class KnapsackAllocation
     end
 
     # Now, transform it so that chunks are arranged by the number of votes received
-    @chunks = chunks
+    chunks = chunks
       .group_by { |vote| vote[2] }
       .sort { |x, y| y[0] <=> x[0] }
 
     # Now allocate funds to projects in decreasing order of votes received
     @discrete_allocations = Hash.new(0)
     @partial_allocations = Hash.new(0)
-    @accumulated_budget = 0
+    @discrete_vote = 0
+    @partial_project_ids = []
+    accumulated_budget = 0
     i = 0
-    n = @chunks.length
+    n = chunks.length
     while i < n do
-      next_chunks = @chunks[i][1]
+      next_chunks = chunks[i][1]
       next_cost = next_chunks.map { |chunk| chunk[1] }.sum
-      if next_cost + @accumulated_budget <= budget
-        @accumulated_budget += next_cost
+      if next_cost + accumulated_budget <= budget
+        accumulated_budget += next_cost
         next_chunks.each { |chunk| @discrete_allocations[chunk[0]] += chunk[1] }
+        @discrete_vote = chunks[i][0]
       else
-        partially_allocated_chunks = next_chunks.map{ |chunk| [chunk[0], chunk[1]] }
-        partial_allocation_method.call(partially_allocated_chunks, budget-accumulated_budget)
-          .each{|x| @partial_allocations[x[0]] += x[1]}
+        if next_chunks.length == 1
+          chunk = next_chunks[0]
+          @discrete_allocations[chunk[0]] += budget-accumulated_budget
+          @discrete_vote = chunks[i][0]
+        else
+          partially_allocated_chunks = next_chunks.map{ |chunk| [chunk[0], chunk[1]] }
+          partial_allocation_method.call(partially_allocated_chunks, budget-accumulated_budget, @discrete_allocations)
+            .each{|x| @partial_allocations[x[0]] += x[1]}
+          @partial_project_ids = next_chunks.map{ |chunk| chunk[0] }
+        end
         break
       end
       i += 1
@@ -148,14 +156,14 @@ class KnapsackAllocation
   end
 
   # A partial allocation method for residual budget where the projects are satisfied proportionally
-  def fractional_partial_allocation(chunks, budget)
+  def self.fractional_partial_allocation(chunks, budget, _)
     cost = chunks.map {|chunk| chunk[1]}.sum
     fraction = budget.to_f / cost
     chunks.map { |chunk| [chunk[0], chunk[1] * fraction] }
   end
 
   # A partial allocation method for residual budget where the projects are satisfied in increasing cost
-  def increasing_partial_allocation(chunks, budget)
+  def self.increasing_partial_allocation(chunks, budget, _)
     assigned_cost = 0
     chunks.sort { |x, y| x[1] <=> y[1] }.map do |chunk|
       if assigned_cost < budget
@@ -167,5 +175,42 @@ class KnapsackAllocation
         [chunk[0], cost]
       end
     end.compact
+  end
+
+  # A partial allocation method for residual budget that allocates budget to projects that receive the lowest allocations first, i.e. trying to equalize the allocations.
+  # Inspired by the maximum-entropy tie-breaking mechanism in the "Truthful Aggregation of Budget Proposals" paper by Freeman et al.
+  def self.equalizing_partial_allocation(chunks, budget, discrete_allocations)
+    events = []
+    chunks.each do |chunk|
+      project_id = chunk[0]
+      current_allocation = discrete_allocations[project_id]
+      events << [current_allocation, 0, project_id]
+      events << [current_allocation + chunk[1], 1, project_id]
+    end
+
+    current_level = 0
+    ps = []
+    allocations = Hash.new(0)
+    events.sort.each do |event|
+      level, event_type, project_id = event
+      if level != current_level and !ps.empty?
+        level_diff = level - current_level
+        if ps.length * level_diff >= budget
+          tmp = budget.to_f / ps.length
+          ps.each { |project_id| allocations[project_id] += tmp }
+          break
+        else
+          ps.each { |project_id| allocations[project_id] += level_diff }
+          budget -= ps.length * level_diff
+        end
+      end
+      current_level = level
+      if event_type == 0
+        ps << project_id
+      else
+        ps.delete(project_id)
+      end
+    end
+    allocations.to_a
   end
 end

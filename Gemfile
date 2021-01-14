@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Puma as the app server
@@ -62,7 +62,7 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mysql2'
-gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'globalize'
 gem 'activemodel-serializers-xml'
 gem 'globalize-accessors'
 gem 'prawn'
@@ -71,3 +71,5 @@ gem 'carrierwave'
 gem 'capistrano-rvm'
 gem 'jquery-rails'
 gem 'react-rails'
+gem 'roo'
+gem 'roo-xls'

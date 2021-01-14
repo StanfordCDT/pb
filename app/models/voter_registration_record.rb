@@ -57,7 +57,12 @@ class VoterRegistrationRecord < ApplicationRecord
     minimum_voting_age = election.config[:minimum_voting_age]
     maximum_voting_age = election.config[:maximum_voting_age]
     if minimum_voting_age != 0 || maximum_voting_age != 0
-      as_of_date = election.config[:age_as_of_date].blank? ? Date.today : Date.strptime(election.config[:age_as_of_date], '%Y-%m-%d')
+      as_of_date = election.config[:age_as_of_date]
+      if as_of_date.blank?
+        as_of_date = Date.today
+      elsif !as_of_date.is_a?(Date)
+        as_of_date = Date.strptime(as_of_date, '%Y-%m-%d')
+      end
       age = as_of_date.year - dob.year - ((as_of_date.month > dob.month || (as_of_date.month == dob.month && as_of_date.day >= dob.day)) ? 0 : 1)
       if (minimum_voting_age != 0 && age < minimum_voting_age) || (maximum_voting_age != 0 && age > maximum_voting_age)
         errors.add(:base, I18n.t('registration.not_voting_age_error'))

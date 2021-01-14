@@ -112,6 +112,7 @@ en:
       cue: "Click image for slide show"
     project_ranking:
       list_header: "You have selected the following projects. Change their ranking by dragging the <span class='glyphicon glyphicon-sort'></span> icons."
+      continue_button: "Continue"
 
   thanks_approval:
     title: "Thank you"
@@ -121,7 +122,7 @@ en:
     send_vote_email: "(Optional) I want to send my vote result to my email:"
     email_placeholder: "Enter email"
     next_button: "Next &gt;&gt;"
-  
+
   ranking:
     title: "Participatory Budgeting"
     popup:
@@ -189,8 +190,6 @@ en:
         number_column: "Approximate # of blocks resurfaced"
     image_gallery:
       cue: "Click image for slide show"
-    project_ranking:
-      list_header: "You have selected the following projects. Change their ranking by dragging the <span class='glyphicon glyphicon-sort'></span> icons."
 
   question:
     title: "Survey"
@@ -206,14 +205,16 @@ en:
     not_sure: "I am not sure"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 22px;'>You will now be asked to compare projects in terms of their community benefit for money spent. This comparison activity is part of a Stanford University research project meant to help us improve the participatory budgeting process, and is not part of your vote.</p>
-      <ul style='font-size: 22px;'><li>Participating in this activity is optional, and you can exit at any time.</li>
-      <li>The expected time for this activity is 2-3 minutes.</li></ul>
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
+will <u>not</u> affect your vote, but is part of a Stanford University research project meant
+to help us improve the participatory budgeting process.</p>
+<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
+<li>The expected time for this activity is 2-3 minutes.</li>
+</ul>
 <p style='font-size: 14px;'>This study poses no risk.
 No payment will be made to you for participation, and we
 cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. This study is funded partially by the US
-Department of Defense. Please contact Professor Ashish Goel at
+answer particular questions. Please contact Professor Ashish Goel at
 goel_admins@lists.stanford.edu if you have any questions, suggestions,
 or concerns. You may also contact the Stanford Institutional Review
 Board at 650-723-2480.</p>"
@@ -229,17 +230,15 @@ will <u>not</u> affect your vote, but is part of a Stanford University research 
 to help us improve the participatory budgeting process.</p>
 <ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
 <li>The expected time for this activity is 2-3 minutes.</li>
-<li>In this activity, you will be asked to choose an unlimited number of
-projects, but the total cost of the chosen projects cannot exceed %{budget}.</li></ul>
+</ul>
 <p style='font-size: 14px;'>This study poses no risk.
 No payment will be made to you for participation, and we
 cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. This study is funded partially by the US
-Department of Defense. Please contact Professor Ashish Goel at
+answer particular questions. Please contact Professor Ashish Goel at
 goel_admins@lists.stanford.edu if you have any questions, suggestions,
 or concerns. You may also contact the Stanford Institutional Review
 Board at 650-723-2480.</p>"
-      ok: "OK"
+      ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>
                    <ol>
@@ -316,6 +315,7 @@ Board at 650-723-2480.</p>"
     phone_number_placeholder: "Enter phone number"
     verify_button: "Verify"
     invalid_phone_number: "\"%{phone_number}\" is not a valid phone number."
+    blacklisted_phone_number: "This phone number has opted out of receiving messages from us. To receive the confirmation code, please send START to %{our_phone_number} and then enter your phone number here again."  # "START" is a fixed word and must NOT be translated.
     no_cell_phone_instruction: "If you don't have a cell phone, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
 
   code_signup:
@@ -335,6 +335,13 @@ Board at 650-723-2480.</p>"
     vote_button: "Vote"
     wrong_account_number: "Wrong account number or ZIP code"
     used_account_number: "This account number has already been used"
+
+  free_signup:
+    title: "Validation"
+    instruction: "Please enter your ZIP code"
+    placeholder: "ZIP code"
+    captcha: "Please type <b>%{captcha}</b> below"
+    vote_button: "Vote"
 
   registration:
     title: "Voter details"
@@ -360,6 +367,7 @@ Board at 650-723-2480.</p>"
     ward_do_not_know: "Do not know"
     error: "Please fix the following errors:"
     not_voting_age_error: "You must be between the age requirement in order to vote in this election"
+    verify_age_error: "Please confirm \"%{checkbox_label}\""
 
   sms_signup_confirm:
     title: "Verify your phone number"
@@ -371,18 +379,20 @@ Board at 650-723-2480.</p>"
     resend_code: "If you do not receive the code within a minute, click <a href=\"%{resend_code_url}\">here</a> to resend the confirmation code."
     make_sure_phone_number_is_correct: "Make sure that %{phone_number} is your correct cell phone number. If it is <u>not</u> correct, please click <a href=\"%{signup_url}\">here</a> to change it."
     still_not_working: "If you still have trouble receiving the confirmation code after several tries, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org"
 
   general:
     demo_warning: "This is only a preview. Your vote will not be recorded."
-    experiment_disclaimer: "This is only a survey. It will not affect your vote."
+    experiment_disclaimer: "This is only a research survey. It will not affect your vote."
     shuffle_note: "<span style='font-size: 18px;'>Note: These projects are arranged in a random order.</span>"
     project_string: "Project"
+    close_button: "Close"
     timeout:
       body: "Your session is about to expire. Click \"Continue\" to continue using the website."
       continue_button: "Continue"
 
   date:
-    #month_names: [~, January, February, March, April, May, June, Jul, August, September, October, November, December]
+    #month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
     order:
     - :month
     - :day
@@ -391,6 +401,8 @@ Board at 650-723-2480.</p>"
     attributes:
       election:
         slug: "URL"
+      project:
+        cost_min: "Minimum cost"
   #errors:
   #  messages:
   #    blank: "can't be blank"

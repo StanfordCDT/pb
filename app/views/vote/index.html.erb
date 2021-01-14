@@ -1,4 +1,4 @@
-<% content_for :title, t('index.title') %>
+<% content_for :title, t('navigation.brand') %>
 
 <div class="container-fluid">
   <div class="row justify-content-center">
@@ -29,7 +29,7 @@
           <% end %>
 
           <% if !conf[:stop_accepting_votes] %>
-            <%= f.text_field :code, placeholder: t('index.voting_machine.code_placeholder'), maxlength: 7, autocomplete: "off", autofocus: "autofocus", style: "font-size: 20px; width: 100px;" %>
+            <%= f.text_field :code, placeholder: t('index.voting_machine.code_placeholder'), maxlength: 10, autocomplete: "off", autofocus: "autofocus", style: "font-size: 20px; width: 150px;" %>
             <%= f.submit t('index.voting_machine.enter_code_button'), style: "font-size: 20px" %>
           <% end %>
 
@@ -37,7 +37,7 @@
         <% end %>
         </div>
       <% else %>
-        <%= raw t('index.remote.welcome', about_url: 'https://voxpopuli.stanford.edu/') %>
+        <%= raw t('index.remote.welcome', about_url: 'https://voxpopuli.stanford.edu/', campaign: h(params[:campaign])) %>
 
         <div class="text-center">
           <%# Explore button %>
@@ -61,6 +61,9 @@
             <% end %>
             <% if conf[:remote_voting_code_verification] && conf[:index][:show_remote_voting_code_button] %>
               <a href="<%= url_for action: :code_signup %>" class="btn btn-primary btn-lg <%= conf[:stop_accepting_votes] ? 'disabled' : '' %>" style="margin: 0 15px 10px;"><%= t('index.remote.code_verification_button').html_safe %></a>
+            <% end %>
+            <% if conf[:remote_voting_free_verification] && conf[:index][:show_remote_voting_free_button] %>
+              <a href="<%= url_for action: :free_signup %>" class="btn btn-primary btn-lg <%= conf[:stop_accepting_votes] ? 'disabled' : '' %>" style="margin: 0 15px 10px;"><%= t('index.remote.code_verification_button').html_safe %></a>
             <% end %>
           <% end %>
         </div>

@@ -1,0 +1,433 @@
+ar:
+  navigation:
+    brand: الموازنة التشاركية (PB)
+    home: الصفحة الرئيسية
+    about: نبذة عن
+    help: المساعدة
+    exit: خروج
+  index:
+    title: الموازنة التشاركية
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style="text-align:center;;text-align:right;direction:rtl">
+        مرحبًا بك في واجهة التصويت الرقمي للموازنة التشاركية</p>'
+      instruction: يرجى إدخال الرمز الذي تلقيته.
+      code_placeholder: الرمز
+      enter_code_button: إدخال
+      wrong_code: الرمز خطأ
+      used_code: هذا الرمز مُستخدم بالفعل.
+      used_personal_id: هذا المعرف مُستخدم بالفعل. لذا يرجى التواصل مع voxpopuli@lists.stanford.edu
+        في حالة وجود خطأ أو إذا كنت بحاجة للتصويت مرة أخرى.
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+         <p class='lead'>مرحبًا بك في نموذج التصويت الرقمي للموازنة التشاركية بإذن من فريق Stanford Crowdsourced Democracy.</p>
+         <p class='lead'يمكنك على موقع الويب هذا التعرف بنفسك على مشاريع هذا العام والتصويت الرقمي. علمًا بأن موقع الويب هذا معلوماتي فقط، و<b>لا يمكنك</b> الإدلاء بصوتك الفعلي هنا.</p>
+         <p class='lead'>وعندما تدلي <u>بصوتك الفعلي</u>، ستقرر الطريقة التي تريد بها تخصيص مبلغ XXX مليون دولار أمريكي من ميزانية تحسين رأس المال في المدينة. وللتصويت، يجب عليك الحضور إلى أحد مواقع الاقتراع العديدة المنتشرة في جميع أنحاء المدينة. وسيبدأ التصويت في (التاريخ XXX) وينتهي في (التاريخ YYY). ويمكنك الاطلاع على جميع الأوقات والمواقع أدناه.</p>
+      proceed_button: عرض نموذج التصويت >>
+      sms_verification_button: صوّت الآن >>
+      code_verification_button: أدخل الرمز
+      other_verification_button: صوّت الآن >>
+      see_projects_button: انظر المشاريع
+    voting_has_not_started: لم يبدأ التصويت على موقع الويب هذا حتى الآن. وسنبدأ في
+      جمع الأصوات عن بُعد في أقرب وقت ممكن. شكرًا لك على سعة صدرك.
+    voting_ended: لقد انتهى التصويت.
+    public_results: انظر نتائج الانتخابات
+  approval:
+    title: الموازنة التشاركية
+    popup:
+      title: التعليمات
+      body: <ol> <li>حدد المشاريع التي تريد دعمها. ويمكنك التصويت لعدد <b>%{max_n_projects}
+        من المشاريع كحد أقصى.</b></li> <li>انقر فوق الزر <b>"إرسال تصويتي"</b> عندما
+        تكون مستعدًا للإرسال.</li> </ol>
+      ok: موافق
+    instructions: <h3>التعليمات</h3> <ol> <li>حدد المشاريع التي تريد دعمها. ويمكنك
+      التصويت لعدد <b>%{max_n_projects} من المشاريع كحد أقصى.</b></li> <li>انقر فوق
+      الزر <b>"إرسال تصويتي"</b> عندما تكون مستعدًا للإرسال.</li> </ol>
+    list_of_projects: قائمة المشاريع
+    estimated_cost: التكلفة التقديرية
+    youtube_video: فيديو على YouTube
+    location: الموقع
+    partner: الشريك
+    committee: اللجنة
+    read_details: قراءة المزيد...
+    select_button:
+      select: تحديد
+      selected: مُحدد
+      not_enough_money: الأموال غير كافية
+      more_projects: لا يمكن اختيار أكثر من عدد %{max_n_projects} من المشاريع
+    remove_button: إزالة
+    remove_button_tooltip: انقر هنا إذا كنت لا تريد اختيار هذا المشروع بعد الآن.
+    submit_button: إرسال تصويتي...
+    confirmation:
+      title: هل تريد بالتأكيد إرسال تصويتك؟
+      body:
+        summary:
+          zero: "<span style='color: red;'>لم تحدد أي مشروع.</span>"
+          other: 'لقد حددت المشروعات التالية: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>لقد حددت مشروعًا واحدًا فقط.</span>"
+          less: "<span style='color: red;'>لقد حددت عدد %{count} من المشاريع فقط.</span>"
+          limit: "<span style='color: red;'>يمكنك التصويت لعدد %{max_n_projects} من
+            المشاريع كحد أقصى.</span>"
+        warning: بعد إرسال تصويتك، <strong>لا يمكنك</strong> تغييره. وإذا كنت تريد
+          تعديل تصويتك، فيرجى النقر فوق "الرجوع" أدناه. أما إذا كنت تريد إرسال تصويتك،
+          فيرجى تحديد المربع الموجود أدناه، ثم النقر فوق "إرسال تصويتي".
+        checkbox: أدرك أنه بعد إرسال تصويتي، <strong>لا يمكنني</strong> تغييره.
+      ok: إرسال تصويتي
+      cancel: الرجوع
+    confirmation_over_limit:
+      title: تعذر إرسال تصويتك
+      over_n_project_limit: "<span style='color:red'>لقد حددت عدد <b>%{n_projects}</b>
+        من المشاريع. ويمكنك تحديد عدد <b>%{max_n_projects}</b> من المشاريع كحد أقصى.
+        لذا يرجى إزالة عدد <b>%{extra}</b> من المشاريع أو أكثر."
+      over_budget_limit: "<span style='color:red'>لقد تجاوزت الميزانية حاليًا.</span>"
+      cancel: الرجوع
+    tracker:
+      text: لقد حددت عدد %{count} من المشاريع.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: تم تحديد %{total} من إجمالي الميزانية الذي يبلغ %{budget}.
+      under_budget: يتبقى لديك مبلغ %{remaining_money}.
+      over_budget: لقد تجاوزت الميزانية حاليًا.
+      over_budget_but_can_add_projects: لقد تجاوزت الميزانية حاليًا، ولكن يمكنك الاستمرار
+        في إضافة المشاريع.
+    adjustable_cost_project:
+      instructions: 'يرجى تحديد أحد الخيارات الواردة أدناه:'
+      not_adjusted_warning: "<span style='color:red'>Yلقد حددت 0 دولار أمريكي للمشروع
+        %{project}</span>"
+      message: لقد حددت مبلغ %{cost} للمشروع %{project}
+      table_headings:
+        percentage_column: نسبة الإنفاق من الميزانية
+        cost_column: التكلفة
+        number_column: العدد التقريبي للكتل التي ظهرت مجددًا
+    map:
+      street_resurfacing_count:
+        one: تمت إعادة رصف شارع واحد
+        other: تمت إعادة رصف عدد %{count} من الشوارع
+      alley_resurfacing_count:
+        one: تمت إعادة رصف حارة واحدة
+        other: تمت إعادة رصف عدد %{count} من الحارات
+      apron_resurfacing_count:
+        one: تمت إعادة رصف ساحة واحدة
+        other: تمت إعادة رصف عدد %{count} من الساحات
+      sidewalk_repairing_count:
+        one: تم إصلاح رصيف واحد
+        other: تم إصلاح عدد %{count} من الأرصفة
+    image_gallery:
+      cue: انقر فوق الصورة لعرض الشرائح
+    project_ranking:
+      list_header: لقد حددت المشاريع التالية. ويمكنك تغيير ترتيبها من خلال سحب الأيقونات
+        <span class='glyphicon glyphicon-sort'></span>.
+      continue_button: متابعة
+  thanks_approval:
+    title: شكرًا لك
+    description:
+      real: <p class='lead text-center'>شكرًا لك على تصويتك. ويرجى النقر فوق الزر
+        "التالي" أدناه للانتقال إلى الصفحة التالية.</p>
+      demo: '<p class=''lead''>شكرًا لك على تصويتك! <span style=''color: red;''><strong>يرجى
+        ملاحظة أن هذه مجرد <u>معاينة</u>.</strong></span> لذا يرجى النقر فوق الزر
+        "التالي" أدناه للانتقال إلى الصفحة التالية.</p>'
+    send_vote_email: "(اختياري) أريد إرسال نتيجة التصويت إلى بريدي الإلكتروني:"
+    email_placeholder: أدخل البريد الإلكتروني
+    next_button: التالي &gt;&gt;
+  ranking:
+    title: الموازنة التشاركية
+    popup:
+      title: التعليمات
+      body: <ol> <li>حدد المشاريع التي تريد دعمها. ويمكنك التصويت لعدد <b>%{max_n_projects}
+        من المشاريع كحد أقصى.</b></li> <li>وانقر فوق الزر <b>"إرسال تصويتي"</b> عندما
+        تكون مستعدًا للإرسال.</li> </ol>
+      ok: موافق
+    instructions: <h3>التعليمات</h3> <ol> <li>حدد المشاريع التي تريد دعمها. ويمكنك
+      التصويت لعدد <b>%{max_n_projects} من المشاريع كحد أقصى.</b></li> <li>وانقر فوق
+      الزر <b>"إرسال تصويتي"</b> عندما تكون مستعدًا للإرسال.</li> </ol>
+    list_of_projects: قائمة المشاريع
+    estimated_cost: التكلفة التقديرية
+    youtube_video: فيديو على YouTube
+    location: الموقع
+    partner: الشريك
+    committee: اللجنة
+    read_details: قراءة المزيد...
+    select_button:
+      select: تحديد
+      selected: مُحدد
+      not_enough_money: الأموال غير كافية
+      more_projects: لا يمكن اختيار أكثر من عدد %{max_n_projects} من المشاريع
+    remove_button: إزالة
+    remove_button_tooltip: انقر هنا إذا كنت لا تريد اختيار هذا المشروع بعد الآن.
+    submit_button: إرسال تصويتي...
+    confirmation:
+      title: هل تريد بالتأكيد إرسال تصويتك؟
+      body:
+        summary:
+          zero: "<span style='color: red;'>لم تحدد أي مشروع.</span>"
+          other: 'لقد حددت المشاريع التالية: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>لقد حددت مشروعًا واحدًا فقط.</span>"
+          less: "<span style='color: red;'>لقد حددت عدد %{count} من المشاريع فقط.</span>"
+          limit: "<span style='color: red;'>يمكنك التصويت لعدد  %{max_n_projects}
+            من المشاريع.</span>"
+        warning: بعد إرسال تصويتك، <strong>لا يمكنك</strong> تغييره. وإذا كنت تريد
+          تعديل تصويتك، فيرجى النقر فوق "الرجوع" أدناه. أما إذا كنت تريد إرسال تصويتك،
+          فيرجى تحديد المربع الموجود أدناه، ثم النقر فوق "إرسال تصويتي".
+        checkbox: أدرك أنه بعد إرسال تصويتي، <strong>لا يمكنني</strong> تغييره.
+      ok: إرسال تصويتي
+      cancel: الرجوع4
+    confirmation_over_limit:
+      title: تعذر إرسال تصويتك
+      over_n_project_limit: "<span style='color:red'>لقد حددت عدد <b>%{n_projects}</b>
+        من المشاريع. ولا يمكنك تحديد أكثر من <b>%{max_n_projects}</b> من المشاريع.
+        لذا يرجى إزالة عدد <b>%{extra}</b> من المشاريع أو أكثر."
+      over_budget_limit: "<span style='color:red'>لقد تجاوزت الميزانية حاليًا.</span>"
+      cancel: الرجوع
+    tracker:
+      text: لقد حددت عدد %{count} من المشاريع.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: تم تحديد %{total} من إجمالي الميزانية الذي يبلغ %{budget}.
+      under_budget: يتبقى لديك مبلغ %{remaining_money}.
+      over_budget: لقد تجاوزت الميزانية حاليًا.
+      over_budget_but_can_add_projects: لقد تجاوزت الميزانية حاليًا، ولكن يمكنك الاستمرار
+        في إضافة المشاريع.
+    adjustable_cost_project:
+      instructions: 'يرجى تحديد أحد الخيارات الواردة أدناه:'
+      not_adjusted_warning: "<span style='color:red'>Yلقد حددت 0 دولار أمريكي للمشروع
+        %{project}</span>"
+      message: لقد حددت مبلغ $%{cost} للمشروع %{project}
+      table_headings:
+        percentage_column: نسبة الإنفاق من الميزانية
+        cost_column: التكلفة
+        number_column: العدد التقريبي للكتل التي ظهرت مجددًا
+    image_gallery:
+      cue: انقر فوق الصورة لعرض الشرائح
+  question:
+    title: الاستطلاع
+    question: هل يبلغ عمرك 14 عامًا أو أكثر؟
+    ok: نعم، يبلغ عمري 14 عامًا أو أكثر
+    alternative: لا، عمري أقل من 14 عامًا
+  comparison:
+    title: عقد مقارنة
+    header: ما المشروع الذي يوفر أفضل قيمة مقابل المال، أي أنه يوفر أكبر فائدة للمجتمع
+      مقابل كل دولار يتم إنفاقه؟
+    estimated_cost: التكلفة التقديرية
+    this_project: هذا المشروع
+    not_sure: لستُ متأكدًا
+    popup:
+      title: التعليمات
+      body: "<p style='font-size: 20px;'>ستكون مطالبًا الآن بالمشاركة في نشاط <u>لن</u>
+        يؤثر على تصويتك، ولكنه يُعد جزءًا من مشروع بحثي في  Stanford University يهدف
+        إلى مساعدتنا في تحسين عملية إعداد الميزانية التشاركية.</p> <ul style='font-size:
+        20px;'><li>علمًا بأن المشاركة في هذا النشاط اختيارية. ويمكنك إنهاء المشاركة
+        في أي وقت.</li> <li>ويتراوح الوقت المتوقع لهذا النشاط بين دقيقتين إلى ثلاث
+        دقائق.</li> </ul> <p style='font-size: 14px;'>وهذه الدراسة لا تشكّل أي خطر.
+        كما لن يتم دفع أموال لك مقابل المشاركة، ولا يمكننا ضمان تحقيق أي فوائد لك.
+        ولديك الحق في رفض الإجابة عن أسئلة معينة. ويرجى التواصل مع الأستاذ أشيش جويل
+        من خلال goel_admins@lists.stanford.edu إذا كانت لديك أي أسئلة أو اقتراحات
+        أو مخاوف. كما يمكنك أيضًا الاتصال بمجلس المراجعة المؤسسية في ستانفورد من خلال
+        الرقم 650-723-2480.</p>"
+      ok: متابعة
+      exit: خروج
+  knapsack:
+    title: الموازنة التشاركية
+    popup:
+      title: التعليمات
+      body: "<p style='font-size: 20px;'>ستكون مطالبًا الآن بالمشاركة في نشاط <u>لن</u>
+        يؤثر على تصويتك، ولكنه يُعد جزءًا من مشروع بحثي في Stanford University يهدف
+        إلى مساعدتنا في تحسين عملية إعداد الميزانية التشاركية.</p> <ul style='font-size:
+        20px;'><li>علمًا بأن المشاركة في هذا النشاط اختيارية. ويمكنك إنهاء المشاركة
+        في أي وقت.</li> <li>ويتراوح الوقت المتوقع لهذا النشاط بين دقيقتين إلى ثلاث
+        دقائق.</li> </ul> <p style='font-size: 14px;'>وهذه الدراسة لا تشكّل أي خطر.
+        كما لن يتم دفع أموال لك مقابل المشاركة، ولا يمكننا ضمان تحقيق أي فوائد لك.
+        ولديك الحق في رفض الإجابة عن أسئلة معينة. ويرجى التواصل مع الأستاذ أشيش جويل
+        من خلال goel_admins@lists.stanford.edu إذا كانت لديك أي أسئلة أو اقتراحات
+        أو مخاوف. كما يمكنك أيضًا الاتصال بمجلس المراجعة المؤسسية في ستانفورد على
+        الرقم 650-723-2480.</p>"
+      ok: متابعة
+      exit: خروج
+    instructions: <h3>التعليمات</h3> <ol> <li>حدد المشاريع التي تريد دعمها. ولا يمكن
+      أن تتجاوز التكلفة الإجمالية <b>%{budget}</b>.</li> <li>ويمكنك الاطلاع على المبلغ
+      الإجمالي الذي خصصته حتى الآن في الشريط الموجود أعلاه. ويمكنك إزالة أي مشاريع
+      مُحددة مسبقًا عند النقر فوق الشريط أو مباشرة عند النقر فوق المشروع المُختار.</li>
+      <li>وانقر فوق الزر <b>"إرسال تصويتي"</b> عندما تكون مستعدًا للإرسال.</li> </ol>
+    confirmation:
+      title: هل تريد بالتأكيد إرسال تصويتك؟
+      body:
+        summary:
+          zero: "<span style='color: red;'>لم تحدد أي مشاريع.</span>"
+          other: 'لقد حددت المشاريع التالية: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>لقد حددت مشروعًا واحدًا فقط.</span>"
+          less: "<span style='color: red;'>لقد حددت عدد %{count} من المشاريع فقط.</span>"
+          limit: "<span style='color: red;'>يمكنك التصويت لعدد %{max_n_projects} من
+            المشاريع كحد أقصى.</span>"
+        warning: بعد إرسال تصويتك، <strong>لا يمكنك</strong> تغييره.
+      ok: إرسال تصويتي
+      cancel: الرجوع
+    adjustable_cost_project:
+      instructions: 'يرجى تحديد أحد الخيارات الواردة أدناه:'
+      not_adjusted_warning: "<span style='color:red'>Yلقد حددت 0 دولار أمريكي للمشروع
+        %{project}</span>"
+      message: لقد حددت مبلغ %{cost} للمشروع %{project}
+  survey:
+    title: الاستطلاع
+    header: إجراء استطلاع
+    question:
+      title: شكرًا لك
+      body: شكرًا على تصويتك. هل يبلغ عمرك 14 عامًا أو أكثر؟
+      ok: نعم، يبلغ عمري 14 عامًا أو أكثر
+      alternative: لا، عمري أقل من 14 عامًا
+    url: ''
+  thanks:
+    title: شكرًا لك
+    description:
+      real: شكرًا لك على تصويتك. ويرجى النقر فوق الزر "خروج" أدناه.
+      demo: 'شكرًا لك على اختبار واجهة الموازنة التشاركية الرقمية! <span style=''color:
+        red;''><strong>يرجى ملاحظة أن هذه مجرد <u>معاينة</u>.</strong></span>'
+    exit: خروج
+  about:
+    title: نبذة عنا
+    description: "<center><h1 class='sub-header'>نبذة عن واجهة الموازنة الرقمية التشاركية</h1></center>
+      <br><p class='lead'>تم تطوير واجهة الموازنة التشاركية الرقمية من خلال <a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>فريق Stanford Crowdsourced Democracy</a>. ونأمل أن تساعدك الطبيعة
+      المرئية للواجهة وثراء المعلومات المُقدمة في التعرف على المشاريع والإدلاء بالتصويت
+      بناءً على معلومات أكثر.</p> <p class='lead'>ويُعد هذا أحد المشاريع مفتوحة المصدر
+      والمُرخصة بموجب الترخيص GNU GPL v3.0. كما يمكنك العثور على رمز المصدر على <a
+      href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p> <p
+      class='lead'>وإذا كانت لديك أية مشكلات فنية أو كنت تريد تقديم الملاحظات، فيرجى
+      إرسال رسالة بالبريد الإلكتروني إلى <a href='mailto:feedback@pbstanford.org'
+      target='_blank'>feedback@pbstanford.org</a>، وسنحاول الرد عليك في أقرب وقت ممكن.</p>"
+  result:
+    title: النتائج
+    vote_results: نتائج التصويت
+    description: تستند النتائج إلى الأصوات التي أدلى بها عدد %{count} من الناخبين
+      اعتبارًا من %{start} إلى %{end}.
+    proposed_project: المشاريع المُقترحة
+    votes: الأصوات
+    projects: المشاريع
+  election:
+    can_also_vote_in_person: 'يمكنك أيضًا الحضور إلى أحد الأماكن التالية للإدلاء بصوتك:'
+    info: <h3>مواقع التصويت</h3> <b>السبت 27 سبتمبر</b> &nbsp; (12:00 ظهرًا - 4:00
+      عصرًا)<br> مكان ما<br> <br> <b>الثلاثاء 30 سبتمبر</b> &nbsp; (6:00 مساءً - 9:00
+      مساءً)<br> مكان ما<br> <br> <p>لمزيد من المعلومات، يرجى زيارة <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: التحقق من رقم هاتفك
+    header: التحقق من رقم هاتفك
+    instructions: "<p>للتصويت عبر الإنترنت، ستحتاج إلى هاتف خلوي يمكنه تلقي رسالة
+      نصية بحيث يمكننا التحقق من رقم هاتفك.</p><p>أدخل رقم هاتفك الخلوي وسنرسل إليك
+      رسالة نصية تتضمن رمز التأكيد.</p>"
+    phone_number_placeholder: أدخل رقم الهاتف
+    verify_button: تحقق
+    invalid_phone_number: '"%{phone_number}" ليس رقم هاتف صالحًا.'
+    blacklisted_phone_number: تم إلغاء اشتراك رقم الهاتف هذا في تلقي رسائل من جانبنا.
+      ولتلقي رمز التأكيد، يرجى إرسال كلمة START إلى %{our_phone_number}، ثم إدخال
+      رقم هاتفك هنا مرة أخرى.
+    no_cell_phone_instruction: إذا لم يكن لديك هاتف خلوي، فيرجى <a href="%{code_signup_url}">النقر
+      هنا</a> لاستخدام طريقة أخرى للتصويت عبر الإنترنت.
+  code_signup:
+    title: أدخل رمز الوصول للتصويت
+    instruction: يرجى إرسال رسالة بالبريد الإلكتروني إلى XXX@stanford.edu أو الاتصال
+      بالرقم XXX-XXX-XXX للحصول على رمز الوصول. وبمجرد الحصول على رمز الوصول، أدخله
+      أدناه واضغط على الزر <b>تصويت</b> للمتابعة.
+    code_placeholder: رمز الوصول
+    vote_button: تصويت
+    wrong_access_code: رمز الوصول خطأ
+    used_access_code: رمز الوصول هذا مُستخدم بالفعل
+  other_signup:
+    title: أدخل التفاصيل للتصويت
+    instruction: ''
+    no_account_number_instruction: إذا لم يكن لديك رقم حساب، فيرجى <a href="%{code_signup_url}">النقر
+      هنا</a> لاستخدام طريقة أخرى للتصويت عبر الإنترنت.
+    zipcode_placeholder: الرمز البريدي
+    account_number_placeholder: رقم الحساب
+    vote_button: تصويت
+    wrong_account_number: رقم الحساب أو الرمز البريدي خطأ
+    used_account_number: رقم الحساب هذا مُستخدم بالفعل
+  free_signup:
+    title: المصادقة
+    instruction: يرجى إدخال رمزك البريدي
+    placeholder: الرمز البريدي
+    captcha: يرجى إدخال <b>%{captcha}</b> أدناه
+    vote_button: تصويت
+  registration:
+    title: تفاصيل حول الناخب
+    header: تفاصيل حول الناخب
+    instructions: يرجى إدخال التفاصيل التالية لمتابعة التصويت والإدلاء بصوتك. علمًا
+      بأنه يلزم ملء الحقول المحددة بالعلامة *.
+    proceed_button: متابعة
+    no_phone_number: ليس لديّ رقم هاتف
+    name: الاسم
+    first_name: الاسم الأول
+    middle_initial: الحرف الأول من اسم الأب
+    last_name: اسم العائلة
+    suffix: اللاحقة
+    phone_number: رقم الهاتف
+    email: البريد الإلكتروني
+    address: عنوان الشارع
+    city: المدينة
+    zip_code: الرمز البريدي
+    birth_year: سنة الميلاد
+    date_of_birth: تاريخ الميلاد
+    verify_age_label: يبلغ عمري أكثر من 16 عامًا
+    email_instruction_label: هل تريد معرفة نتائج هذا التصويت؟ أدخل بريدك الإلكتروني
+      لتبقى على اطلاع بآخر الأخبار.
+    ward: الدائرة الانتخابية
+    ward_do_not_know: لا أعلم
+    error: 'يرجى تصحيح الأخطاء التالية:'
+    not_voting_age_error: يجب أن تكون في النطاق العمري اللازم للتصويت في هذه الانتخابات
+    verify_age_error: يرجى تأكيد "%{checkbox_label}"
+  sms_signup_confirm:
+    title: التحقق من رقم هاتفك
+    header: التحقق من رقم هاتفك
+    instructions: "<p>لقد أرسلنا رمز تأكيد إلى <b>%{phone_number}</b>. ومن المفترض
+      أن تتلقى الرمز في غضون دقيقة.</p><p>ويرجى إدخال رمز التأكيد للتحقق من رقم هاتفك.</p>"
+    code_placeholder: أدخل الرمز
+    confirm_button: تأكيد
+    wrong_code: الرمز خطأ.
+    resend_code: إذا لم تتلق الرمز في غضون دقيقة، فانقر <a href="%{resend_code_url}">هنا</a>
+      لإعادة إرسال رمز التأكيد.
+    make_sure_phone_number_is_correct: تأكد من أن %{phone_number} هو رقم هاتفك الخلوي
+      الصحيح. وإذا كان <u>غير</u> صحيح، فيرجى النقر < <a href="%{signup_url}">هنا</a>
+      لتغييره.
+    still_not_working: إذا كنت لا تزال تواجه مشكلة في تلقي رمز التأكيد بعد عدة محاولات،
+      فيرجى <a href="%{code_signup_url}">النقر هنا</a> لاستخدام طريقة أخرى للتصويت
+      عبر الإنترنت.
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
+
+  general:
+    demo_warning: هذه مجرد معاينة. ولن يتم تسجيل تصويتك.
+    experiment_disclaimer: هذا مجرد استطلاع بحثي. ولن يؤثر على تصويتك.
+    shuffle_note: "<span style='font-size: 18px;'>ملاحظة: هذه المشاريع مُرتبة عشوائيًا."
+    project_string: المشروع
+    close_button: إغلاق
+    timeout:
+      body: جلستك على وشك الانتهاء. لذا انقر فوق "متابعة" لمتابعة استخدام موقع الويب.
+      continue_button: متابعة
+  date:
+    month_names:
+    -
+    - يناير
+    - فبراير
+    - مارس
+    - أبريل
+    - مايو
+    - يونيو
+    - يوليو
+    - أغسطس
+    - سبتمبر
+    - أكتوبر
+    - نوفمبر
+    - ديسمبر
+    order:
+    - :day
+    - :month
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

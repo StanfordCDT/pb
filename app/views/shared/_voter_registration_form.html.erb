@@ -14,7 +14,7 @@ input[type='text'], input[type='tel'], input[type='email'] {
 function validate() {
   <% if @election.config[:voter_registration_questions].include?('age_verify') && filled_by_voter %>
     if (!document.getElementById('age_verify').checked) {
-      alert("Please check the checkbox that says \"<%=j strip_tags(t('registration.verify_age_label').html_safe) %>\"");
+      alert("<%=j t('registration.verify_age_error', checkbox_label: strip_tags(t('registration.verify_age_label'))).html_safe %>");
       return false;
     }
   <% end %>

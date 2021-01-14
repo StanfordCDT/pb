@@ -89,8 +89,15 @@
     font-size: 18px;
   }
 
-  #selected-project-list .handle {
+  #selected-project-list li {
     cursor: move;
+  }
+
+  #selected-project-list li:hover {
+    background-color: #eee;
+  }
+
+  #selected-project-list .handle {
     float: right;
   }
 
@@ -135,11 +142,9 @@
   <% end %>
   <br>
 
-  <% if !conf[current_action][:project_ranking] %>
-    <center>
-      <button type="button" class="btn btn-primary btn-lg submitVoteButton" data-toggle="modal" data-target="#submitModal"><%= t('approval.submit_button') %></button>
-    </center><br>
-  <% end %>
+  <center>
+    <button type="button" class="btn btn-primary btn-lg submitVoteButton"><%= t('approval.submit_button') %></button>
+  </center><br>
 
   <% n_cols = [conf[current_action][:n_cols], 1].max %>
 
@@ -150,7 +155,7 @@
         <% if category.image? %>
           <img src="<%= category.image.url %>" class="category-image" />
         <% end %>
-        <%= category.name.html_safe %>
+        <%= (!category.name.blank? ? category.name : "<span class='text-danger'>MISSING CATEGORY</span>").html_safe %>
       </h3>
     <% end %>
 
@@ -183,19 +188,29 @@
   <% end %>
 
   <% if conf[current_action][:project_ranking] %>
-    <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= raw t("#{current_action}.project_ranking.list_header") %>
+    <div class="modal" id="rankingModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><%= raw t("approval.project_ranking.list_header") %></h4>
+          </div>
+          <div class="modal-body">
+            <ul id="selected-project-list" class="list-group"></ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal"><%= t('approval.confirmation.cancel') %></button>
+
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitModal"><%= t('approval.project_ranking.continue_button') %></button>
+          </div>
+        </div>
       </div>
-      <ul id="selected-project-list" class="list-group"></ul>
     </div>
 
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/jquery.ui.touch-punch.min.js"></script>
     <script>
     $('#selected-project-list').sortable({
-      handle: ".handle",
+      //handle: ".handle",
       update: function(event, ui) {
         var projectRanks = $(this).sortable('toArray');
         updateRankings(projectRanks);
@@ -206,7 +221,13 @@
 
   <br>
   <center>
-    <button type="button" class="btn btn-primary btn-lg submitVoteButton" data-toggle="modal" data-target="#submitModal"><%= t('approval.submit_button') %></button>
+    <button type="button" class="btn btn-primary btn-lg submitVoteButton"><%= t('approval.submit_button') %></button>
   </center>
+
+  <% if conf[current_action][:show_disclaimer] %>
+    <div class="alert alert-info mt-4" role="alert">
+      <b><%= t('general.experiment_disclaimer') %></b>
+    </div>
+  <% end %>
   <br><br><br>
 </div>

@@ -1,4 +1,4 @@
-<% content_for :title, t('sms_signup_confirm.title') %>
+<% content_for :title, t('navigation.brand') %>
 
 <style>
 .card-body {
@@ -37,7 +37,7 @@ input[type='number'] {
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-8 main">
-      <h2><%= t('sms_signup_confirm.title') %></h2>
+      <h2><%= t('sms_signup_confirm.header') %></h2>
       <br>
       <div class="card bg-light">
         <div class="card-body">
@@ -45,7 +45,7 @@ input[type='number'] {
 
           <form action="<%= url_for(action: :post_sms_signup_confirm) %>" method="post">
             <p>
-              <input type="number" name="confirmation_code" class="form-control" autocomplete="off" placeholder="<%= t('sms_signup_confirm.code_placeholder') %>" autofocus="autofocus" />
+              <input type="number" name="confirmation_code" class="form-control" autocomplete="one-time-code" placeholder="<%= t('sms_signup_confirm.code_placeholder') %>" autofocus="autofocus" />
               <% if flash[:error] %>
                 <span class="alert alert-danger"><%= flash[:error]%></span>
               <% end %>

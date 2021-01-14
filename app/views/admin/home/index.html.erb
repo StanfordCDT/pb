@@ -13,7 +13,7 @@
       <h2>Elections</h2>
 
       <% if current_user.superadmin? %>
-        <a href="<%= new_admin_election_path %>">Add a new election</a><br><br>
+        <p><a href="<%= new_admin_election_path %>">Add a new election</a></p>
       <% end %>
 
       <table class="table table-sm election-table">

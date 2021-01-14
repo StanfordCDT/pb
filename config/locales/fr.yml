@@ -109,6 +109,7 @@ fr:
       cue: "Cliquez sur l'image pour le diaporama"
     project_ranking:
       list_header: "Vous avez sélectionné les projets suivants. Changer leur classement en faisant glisser les icônes <span class='glyphicon glyphicon-sort'></span>."
+      continue_button: "Continuer"
 
   thanks_approval:
     title: "Merci"
@@ -124,15 +125,38 @@ fr:
     popup:
       title: "Instructions"
       body: "<ol>
-               <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-               <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+               <li>Sélectionnez les projets que vous souhaitez soutenir. Vous pouvez voter pour un maximum de <b>%{max_n_projects} projets.</b></li>
+               <li>Cliquez sur le bouton <b>\"Soumettre mon vote\"</b> lorsque vous êtes prêt à soumettre.</li>
              </ol>"
       ok: "OK"
     instructions: "<h3>Instructions</h3>
                    <ol>
-                     <li>Select the projects you would like to support. You can vote for up to <b>%{max_n_projects} projects.</b></li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                     <li>Sélectionnez les projets que vous souhaitez soutenir. Vous pouvez voter pour un maximum de <b>%{max_n_projects} projets.</b></li>
+                     <li>Cliquez sur le bouton <b>\"Soumettre mon vote\"</b> lorsque vous êtes prêt à soumettre.</li>
                    </ol>"
+    confirmation:
+      title: "Êtes-vous sûr que vous voulez soumettre votre vote?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>Vous avez sélectionné aucun projet.</span>"
+          other: "Vous avez sélectionné les projets suivants: %{projects}"
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Vous avez sélectionné un seul projet.</span>"
+          less: "<span style='color: red;'>Vous avez choisi seulement %{count} projets.</span>"
+          limit: "<span style='color: red;'>Vous pouvez voter pour un maximum de %{max_n_projects} projets.</span>"
+        warning: "Après avoir soumis votre vote, vous ne pouvez pas changer votre vote. Si vous souhaitez modifier votre vote, s'il vous plaît cliquez sur \"Retour\" ci-dessous. Si vous voulez soumettre votre vote, s'il vous plaît cochez la case ci-dessous puis cliquez sur \"Soumettre mon vote\"."
+        checkbox: "Je comprends que quand je soumets mon vote, je ne peux pas le changer."
+      ok: "Soumettre mon vote"
+      cancel: "Retour"
+    confirmation_over_limit:
+      title: "Impossible de soumettre votre vote"
+      over_n_project_limit: "<span style='color:red'>Vous avez choisi <b>%{n_projects}</b> projets. Vous ne pouvez sélectionner au maximum <b>%{max_n_projects}</b> projets. S'il vous plaît enlever <b>%{extra}</b> ou plusieurs projets.</span>"
+      over_budget_limit: "<span style='color:red'>Vous êtes actuellement sur le budget.</span>"
+      cancel: "Retour"
+    tracker:
+      text: "Vous avez seulement %{count} projets."
+      x_out_of_y: "%{x} / %{y}"
 
   question:
     title: "Enquête"
@@ -148,10 +172,11 @@ fr:
     not_sure: "Je ne suis pas sûr"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 22px;'>Vous allez maintenant être invité à comparer les projets en fonction de leur contribution à la collectivité de l'argent dépensé. Cette activité de comparaison fait partie d'un projet de recherche de l'Université de Stanford pour but de nous aider à améliorer le processus de budgétisation participative, et ne fait pas partie de votre vote.</p>
-        <ul style='font-size: 22px;'><li>Participer à cette activité est facultative, et vous pouvez quitter à tout moment.</li>
-        <li>The expected time for this activity is 2-3 minutes.</li></ul>
-        <p style='font-size: 14px;'>Cette étude ne pose aucun risque. Aucun paiement ne sera fait à vous pour la participation, et nous ne peut pas garantir des avantages pour vous. Vous avez le droit de refuser de répondre à des questions particulières. Cette étude est financée en partie par les États-Unis Département de la Défense. S'il vous plaît contacter le professeur Ashish Goel au goel_admins@lists.stanford.edu si vous avez des questions, des suggestions, ou des préoccupations. Vous pouvez également communiquer avec l'Institutional Review Stanford Conseil au 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>Vous allez maintenant être invité à participer à une activité qui sera pas affecter votre vote, mais fait partie d'un projet de recherche Université de Stanford signifiait pour nous aider à améliorer le processus de budgétisation participative.</p>
+        <ul style='font-size: 20px;'><li>La participation à cette activité est facultative. Vous pouvez quitter à tout moment.</li>
+        <li>Participer à cette activité est facultative, et vous pouvez quitter à tout moment.</li>
+        <li>La durée prévue de cette activité est de 2-3 minutes.</li></ul>
+        <p style='font-size: 14px;'>Cette étude ne pose aucun risque. Aucun paiement ne sera fait à vous pour la participation, et nous ne peut pas garantir des avantages pour vous. Vous avez le droit de refuser de répondre à des questions particulières. S'il vous plaît contacter le professeur Ashish Goel au goel_admins@lists.stanford.edu si vous avez des questions, des suggestions, ou des préoccupations. Vous pouvez également communiquer avec l'Institutional Review Stanford Conseil au 650-723-2480.</p>"
       ok: "Continuer"
       exit: "Quitter"
 
@@ -160,11 +185,11 @@ fr:
     popup:
       title: "Instructions"
       body: "<p style='font-size: 20px;'>Vous allez maintenant être invité à participer à une activité qui sera pas affecter votre vote, mais fait partie d'un projet de recherche Université de Stanford signifiait pour nous aider à améliorer le processus de budgétisation participative.</p>
-        <ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
+        <ul style='font-size: 20px;'><li>La participation à cette activité est facultative. Vous pouvez quitter à tout moment.</li>
         <li>Participer à cette activité est facultative, et vous pouvez quitter à tout moment.</li>
-        <li>The expected time for this activity is 2-3 minutes.</li></ul>
-        <p style='font-size: 14px;'>Cette étude ne pose aucun risque. Aucun paiement ne sera fait à vous pour la participation, et nous ne peut pas garantir des avantages pour vous. Vous avez le droit de refuser de répondre à des questions particulières. Cette étude est financée en partie par les États-Unis Département de la Défense. S'il vous plaît contacter le professeur Ashish Goel au goel_admins@lists.stanford.edu si vous avez des questions, des suggestions, ou des préoccupations. Vous pouvez également communiquer avec l'Institutional Review Stanford Conseil au 650-723-2480.</p>"
-      ok: "OK"
+        <li>La durée prévue de cette activité est de 2-3 minutes.</li></ul>
+        <p style='font-size: 14px;'>Cette étude ne pose aucun risque. Aucun paiement ne sera fait à vous pour la participation, et nous ne peut pas garantir des avantages pour vous. Vous avez le droit de refuser de répondre à des questions particulières. S'il vous plaît contacter le professeur Ashish Goel au goel_admins@lists.stanford.edu si vous avez des questions, des suggestions, ou des préoccupations. Vous pouvez également communiquer avec l'Institutional Review Stanford Conseil au 650-723-2480.</p>"
+      ok: "Continuer"
       exit: "Quitter"
     instructions: "<h3>Instructions</h3>
                    <ol>
@@ -241,9 +266,8 @@ fr:
     phone_number_placeholder: "Entrez le numéro de téléphone"
     verify_button: "Vérifier"
     invalid_phone_number: "\"%{phone_number}\" est pas un numéro de téléphone valide."
-    no_cell_phone_instruction: "If you don't have a cell phone, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
-    #dont_have_cell_phone: "Ne pas avoir un téléphone cellulaire? Vous pouvez venir à l'un des endroits suivants pour voter:"
-
+    blacklisted_phone_number: "This phone number has opted out of receiving messages from us. To receive the confirmation code, please send START to %{our_phone_number} and then enter your phone number here again."  # FIXME: Translate this.
+    no_cell_phone_instruction: "Si vous n'avez pas de téléphone portable, veuillez <a href=\"%{code_signup_url}\">cliquer ici</a> pour utiliser une autre méthode pour voter en ligne."
   code_signup:
     title: "Entrez le code d'accès pour voter"
     instruction: "Please email XXX@stanford.edu or call XXX-XXX-XXX to get an access code. Once you get the access code, enter it below and press the <b>Vote</b> button to continue."
@@ -262,6 +286,13 @@ fr:
     vote_button: "Vote"
     wrong_account_number: "Mauvais numéro de compte ou un code postal"
     used_account_number: "Ce numéro de compte a déjà été utilisé"
+
+  free_signup:
+    title: "Validation"
+    instruction: "Please enter your ZIP code"
+    placeholder: "ZIP code"
+    captcha: "Please type <b>%{captcha}</b> below"
+    vote_button: "Vote"
 
   registration:
     title: "Détails des électeurs"
@@ -286,6 +317,7 @@ fr:
     ward_do_not_know: "Ne sais pas"
     error: "S'il vous plaît vérifier les erreurs ci-dessous:"
     not_voting_age_error: "You must be between the age requirement in order to vote in this election"
+    verify_age_error: "Please confirm \"%{checkbox_label}\""  # FIXME: Translate.
 
   sms_signup_confirm:
     title: "Vérifiez votre numéro de téléphone"
@@ -298,12 +330,14 @@ fr:
     make_sure_phone_number_is_correct: "Assurez-vous que %{phone_number} est votre numéro de téléphone cellulaire correcte. Si elle est incorrecte, s'il vous plaît cliquer <a href=\"%{signup_url}\">ici</a> pour changer."
     still_not_working: "If you still have trouble receiving the confirmation code after several tries, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
     #still_not_working: "Si vous avez encore des difficultés à recevoir le code de confirmation après plusieurs essais, vous pouvez venir à l'un des endroits suivants pour voter:"
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
 
   general:
     demo_warning: "Ceci est un essai. Votre vote ne sera pas enregistré."
     experiment_disclaimer: "Ceci est seulement une enquête. Il ne sera pas affecter votre vote."
     shuffle_note: "<span style='font-size: 18px;'>Note: Ces projets sont disposées dans un ordre aléatoire.</span>"
     project_string: "Projet"
+    close_button: "Close"  # FIXME: Translate.
     timeout:
       body: "Votre session est sur le point d'expirer. Cliquez sur \"Continuer\" pour continuer à utiliser le site."
       continue_button: "Continuer"

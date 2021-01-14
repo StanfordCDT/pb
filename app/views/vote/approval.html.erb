@@ -1,4 +1,4 @@
-<% content_for :title, t(current_action.to_s + '.title') %>
+<% content_for :title, t('navigation.brand') %>
 
 <% @y_offset = conf[current_action][:budgetbar] ? 51 : 0 %>
 
@@ -52,13 +52,15 @@
 
   #topbar {
     position: fixed;
-    height: 60px;
     width: 100%;
     margin-top: -20px;
-    padding: 5px;
-    display: none;
+    padding: 0;
     background-color: #ddd;
     z-index: 500;
+  }
+
+  #projects.projects-with-topbar {
+    padding-top: 40px;
   }
 
   div#projects ol {
@@ -67,6 +69,7 @@
   @media (min-width: 1000px) {
     #leftbar {
       display: block;
+      left: 0;
     }
     #projects.projects-with-leftbar {
       padding-left: 360px;
@@ -75,7 +78,7 @@
 
   @media (min-height: 500px) {
     #topbar {
-      display: block;
+      padding: 5px;
     }
     #projects.projects-with-topbar {
       padding-top: 50px;

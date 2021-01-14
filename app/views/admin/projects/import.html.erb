@@ -1,0 +1,32 @@
+<% content_for :title, 'Projects: Import' %>
+
+<% content_for :primary do %>
+<div class="container-fluid">
+      <h2>Import Projects</h2>
+
+      <div>Requirements:</div>
+      <ul>
+        <li>Projects must be in the CSV format or the Excel format.</li>
+        <li>The 1st row must be the header. The header must contain these columns: "<b>Title</b>", "<b>Description</b>", and "<b>Cost</b>". It may optionally contain these columns: "<b>Number</b>", "<b>Location</b>", "<b>Details</b>", and "<b>Category</b>". The columns can be in any order.</li>
+      </ul>
+      <p class="text-danger"><b>Warning:</b> The existing projects (if any) will be removed. If you have already received some votes, the votes will be removed.</p>
+
+      <%= form_for(:project, url: {action: :post_import}) do |f| %>
+
+        <div class="form-group row">
+
+          <div class="col-sm-10">
+            <div><%= f.file_field :import_file, accept: '.xlsx, .xls, .csv' %></div>
+          </div>
+        </div>
+
+        <%= f.submit 'Import', class: 'btn btn-primary' %>
+      <% end %>
+</div>
+<% end %>
+
+<%= render partial: 'shared/admin_template', locals: {items: [
+  @election,
+  ['Projects', admin_election_projects_path(@election)],
+  'New'
+]} %>

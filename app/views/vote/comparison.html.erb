@@ -1,4 +1,4 @@
-<% content_for :title, t('comparison.title') %>
+<% content_for :title, t('navigation.brand') %>
 
 <% if conf[:comparison][:show_exit_link] %>
   <% content_for :navbar_links do %>
@@ -105,6 +105,26 @@
 </table>
 <br /><br />
 
+<% (1..2).each do |i| %>
+  <div class="modal fade" id="detailModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body" style="font-size: 16px;">
+          <p class="project-description"></p>
+          <div class="project-details"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"><%= t('general.close_button') %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
     </div>
   </div>
 </div>
@@ -119,17 +139,21 @@ var budget = <%= @election.budget %>;
 var currency_symbol = "<%=j conf[:currency_symbol] %>";
 
 function render() {
-
-  //$('#progress').text( (curIndex+1) + ' / ' + max_pairs );
   $('#progress').css('width',  (curIndex/max_pairs*100) + '%')
 
   function update(i, project) {
-    //var project = projects[pairs[curIndex][i-1][0]];
-    $('#title' + i).text(project.title);
+    $('#title' + i).html(project.title);
 
     var cost = pairs[curIndex][i-1][1];
     $('#photo' + i).html("<img src=\"" + project.image_url + "\" style='max-height: 200px; max-width: 300px' />");
-    $('#description' + i).html(project.description);
+    var description = project.description;
+    if (project.details && project.details.trim().length > 0) {
+      description += "\n<a href=\"#\" data-toggle=\"modal\" data-target=\"#detailModal" + i + "\"><%= t('approval.read_details') %></a>";
+      $('#detailModal' + i + ' .modal-title').html(project.title);
+      $('#detailModal' + i + ' .project-description').html(project.description);
+      $('#detailModal' + i + ' .project-details').html(project.details);
+    }
+    $('#description' + i).html(description);
     $('#cost' + i).text(costWithDelimiter(cost, currency_symbol));
     $('#bar' + i).css('width',  (cost/budget*100) + '%')
   }
@@ -181,14 +205,20 @@ function vote(i) {
   }, 250);
 }
 
-function numberWithDelimiter(val){
-  while (/(\d+)(\d{3})/.test(val.toString())){
-    val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+function numberWithDelimiter(val) {
+  var locale = "<%=j I18n.locale.to_s %>";
+  var delimiter = (locale == "fr" || locale == "pl") ? " " : ",";
+  val = val.toString();
+  while (/(\d+)(\d{3})/.test(val)) {
+    val = val.replace(/(\d+)(\d{3})/, '$1' + delimiter + '$2');
   }
   return val;
 }
 
 function costWithDelimiter(val, currencySymbol) {
+  var locale = "<%=j I18n.locale.to_s %>";
+  if (locale == "fr" || locale == "pl")
+    return numberWithDelimiter(val) + " " + currencySymbol;
   return currencySymbol + numberWithDelimiter(val);
 }
 </script>

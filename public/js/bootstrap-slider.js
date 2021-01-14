@@ -69,6 +69,7 @@
     }
 
     this.min = this.element.data('slider-min')||options.min;
+    this.min2 = this.element.data('slider-min2')||options.min2; // For PB.
     this.max = this.element.data('slider-max')||options.max;
     this.step = this.element.data('slider-step')||options.step;
     this.value = this.element.data('slider-value')||options.value;
@@ -325,7 +326,8 @@
         ];
         this.value = val;
       } else {
-        val = (this.min + Math.round((this.diff * this.percentage[0]/100)/this.step)*this.step);
+        // val = (this.min + Math.round((this.diff * this.percentage[0]/100)/this.step)*this.step);
+        val = (this.min2 + Math.round((this.diff * this.percentage[0]/100 + this.min - this.min2)/this.step)*this.step); // For PB.
         this.value = [val, this.value[1]];
       }
       return val;
@@ -336,7 +338,8 @@
         ev = ev.touches[0];
       }
       var percentage = (ev[this.mousePos] - this.offset[this.stylePos])*100/this.size;
-      percentage = Math.round(percentage/this.percentage[2])*this.percentage[2];
+      // percentage = Math.round(percentage/this.percentage[2])*this.percentage[2];
+      percentage = (this.min2 - this.min + Math.round((percentage*this.diff/100 + this.min - this.min2)/this.step)*this.step) * 100/this.diff; // For PB.
       return Math.max(0, Math.min(100, percentage));
     },
 
@@ -393,6 +396,7 @@
 
   $.fn.slider.defaults = {
     min: 0,
+    min2: 0,
     max: 10,
     step: 1,
     orientation: 'horizontal',

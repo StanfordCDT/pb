@@ -1,0 +1,417 @@
+am:
+  navigation:
+    brand: PB
+    home: ቤት
+    about: ስለ
+    help: ድጋፍ
+    exit: መውጫ
+  index:
+    title: አሳታፊ የበጀት አመዳደብ
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>ለአሳታፊ
+        የበጀት አመዳደብ ወደ ዲጂታል ምርጫ ድምጽ መስጫ በይነገጽ እንኳን በደህና መጡ</p>'
+      instruction: እባክዎ የተቀበሉት ኮድ ያስገቡ።
+      code_placeholder: ኮድ
+      enter_code_button: ያስገቡ
+      wrong_code: የተሳሳተ ኮድ
+      used_code: ይህ ኮድ አስቀድሞ ጥቅም ላይ ውሏል።
+      used_personal_id: ይህ መታወቂያ አስቀድሞ ጥቅም ላይ ውሏል። ምናልባት ይህ ስህተት ከሆነ ወይም እንደገና መምረጥ
+        ከፈለጉ፣ እባክዎ voxpopuli@lists.stanford.edu ን ያነጋግሩ።
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' /> <p class='lead'>በስታንፎርድ የ Crowdsourced ዲሞክራሲ ቡድን መልካም ፈቃድ፣ ወደ አሳታፊ የበጀት አመዳደብ ናሙና ዲጂታል የድምጽ መስጫ እንኳን በደህና መጡ።</p><p class='lead'>በዚህ ድር ጣቢያ ላይ፣ ከዚህ ዓመት ፕሮጀክቶች እና ከዲጂታል የምርጫ ድምፅ መስጫ ጋር እራስዎን ማለማመድ ይችላሉ። ይህ ድረገፅ ለመረጃ ብቻ ነው፣ እናም ትክክለኛውን ድምጽዎን እዚህ መስጠት <b>አይችሉም</b>።</p>
+        <p class='lead'>የራስዎን <u>ትክክለኛ ድምጽ</u>ሲሰጡ፣ ከከተማው የካፒታል ማሻሻያ በጀት $XXX ሚሊዮን ዶላር እንዴት መመደብ እንደሚፈልጉ ይወስናሉ። ድምጽ ለመስጠት፣ በከተማው ውስጥ ከሚገኙት በርካታ የምርጫ ጣቢያዎች ወደ አንዱ መምጣት ያስፈልግዎታል። ድምጽ መስጠት የሚካሄደው ከ (ቀን XXX) እስከ (ቀን YYY) ባሉት ቀናት ነው። ሁሉንም ጊዜያት እና አካባቢዎች ከዚህ በታች ይመልከቱ።</p>
+      proceed_button: የድምጽ መስጫ ናሙና ይመልከቱ >>
+      sms_verification_button: አሁን ድምጽ ይስጡ >>
+      code_verification_button: ኮድ ያስገቡ
+      other_verification_button: አሁን ድምጽ ይስጡ >>
+      see_projects_button: ፕሮጀክቶችን ይመልከቱ
+    voting_has_not_started: በዚህ ድረገፅ ላይ ድምጽ መስጠት ገና አልተጀመረም። የርቀት ድምፆችን በተቻለ ፍጥነት
+      መሰብሰብ እንጀምራለን። ስለ ትእግስትዎ እናመሰግናለን።
+    voting_ended: ድምጽ መስጠት ተጠናቅቋል።
+    public_results: የምርጫ ውጤቶችን ይመልከቱ
+  approval:
+    title: አሳታፊ የበጀት አመዳደብ
+    popup:
+      title: መመሪያዎች
+      body: <ol> <li>እርስዎ ሊደግፏቸው የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። እስከ <b>%{max_n_projects} ፕሮጀክቶች
+        መምረጥ ይችላሉ።</b></li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን የምርጫ ድምጽ አስገባ"</b>የሚለውን አዝራር
+        ጠቅ ያድርጉ።</li> </ol>
+      ok: እሺ
+    instructions: <h3>መመሪያዎች</h3><ol> <li>መደገፍ የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። እስከ <b>%{max_n_projects}
+      ፕሮጀክቶች መምረጥ ይችላሉ።</b></li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን የምርጫ ድምጽ አስገባ"</b>የሚለውን
+      አዝራር ጠቅ ያድርጉ።</li> </ol>
+    list_of_projects: የፕሮጀክቶች ዝርዝር
+    estimated_cost: ግምታዊ ዋጋ
+    youtube_video: የ YouTube ቪድዮ
+    location: ቦታ
+    partner: አጋር
+    committee: ኮሚቴ
+    read_details: ተጨማሪ ያንብቡ...
+    select_button:
+      select: ምረጥ
+      selected: ተመርጧል
+      not_enough_money: በቂ ገንዘብ አይደለም
+      more_projects: ከ %{max_n_projects} በላይ ፕሮጀክቶችን መምረጥ አይችሉም
+    remove_button: አስወግድ
+    remove_button_tooltip: ይህንን ፕሮጀክት ከአሁን በኋላ መምረጥ የማይፈልጉ ከሆነ እዚህ ጠቅ ያድርጉ።
+    submit_button: የእኔን የምርጫ ድምጽ አስገባ...
+    confirmation:
+      title: እርግጠኛ ነዎት የእርስዎን የምርጫ ድምጽ ማስገባት ይፈልጋሉ?
+      body:
+        summary:
+          zero: "<span style='color: red;'>እርስዎ ምንም ፕሮጀክት አልመረጡም።</span>"
+          other: 'እርስዎ የሚከተሉትን ፕሮጀክቶች መርጠዋል: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>እርስዎ አንድ ፕሮጀክት ብቻ መርጠዋል።</span>"
+          less: "<span style='color: red;'>እርስዎ %{count} ፕሮጀክቶችን ብቻ መርጠዋል።</span>"
+          limit: "<span style='color: red;'>እስከ %{max_n_projects} የሚደርሱ ፕሮጀክቶችን መምረጥ
+            ይችላሉ</span>"
+        warning: የምርጫ ድምጽዎን ካስገቡ በኋላ ድምጽዎን መለወጥ <strong>አይችሉም</strong>። የምርጫ ድምጽዎን
+          ማሻሻል ከፈለጉ፣ እባክዎ ከዚህ በታች ‘ወደኋላ ይመለሱ’ የሚለውን ጠቅ ያድርጉ። የምርጫ ድምጽዎን ለማስገባት ከፈለጉ፣
+          እባክዎ ከዚህ በታች ባለው ሳጥን ላይ ምልክት ያድርጉ እና በመቀጠል 'የእኔን ድምጽ ኣስገባ’ የሚለውን ጠቅ ያድርጉ።
+        checkbox: የምርጫ ድምጼን ካስገባሁ በኋላ መለወጥ <strong>እንደማልችል</strong> እረዳለው።
+      ok: የእኔን የምርጫ ድምጽ አስገባ
+      cancel: ወደኋላ ይመለሱ
+    confirmation_over_limit:
+      title: የምርጫ ድምጽዎን ማስገባት አልተቻለም
+      over_n_project_limit: "<span style='color:red'>እርስዎ <b>%{n_projects}</b> ፕሮጀክቶችን
+        መርጠዋል። ቢበዛ እስከ <b>%{max_n_projects}</b> ፕሮጀክቶችን ብቻ መምረጥ ይችላሉ። እባክዎ <b>%{extra}</b>
+        ወይም ከዚያ በላይ ፕሮጀክቶችን ያስወግዱ።</span>"
+      over_budget_limit: "<span style='color:red'>አሁን ከበጀትዎ አልፈዋል።</span>"
+      cancel: ወደኋላ ይመለሱ
+    tracker:
+      text: እርስዎ %{count} ፕሮጀክቶችን መርጠዋል።
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: ከጠቅላላው %{budget} በጀት %{total} ተመርጧል።
+      under_budget: አሁንም %{remaining_money} ይቀርልዎታል።
+      over_budget: አሁን ከበጀትዎ አልፈዋል።
+      over_budget_but_can_add_projects: አሁን ከበጀትዎ አልፈዋል፣ ሆኖም ግን ፕሮጀክቶችን ማከል መቀጠል ይችላሉ።
+    adjustable_cost_project:
+      instructions: 'እባክዎ ከዚህ በታች ካሉት አማራጮች ውስጥ አንዱን ይምረጡ:'
+      not_adjusted_warning: "<span style='color:red'>እርስዎ ለ %{project} $0 ዶላር መርጠዋል</span>"
+      message: እርስዎ %{cost} ን ለ %{project} መርጠዋል
+      table_headings:
+        percentage_column: የወጣው በጀት በመቶኛ
+        cost_column: ዋጋ
+        number_column: 'የብሎኮች ግምቶች # እንደገና ታድሰዋል'
+    map:
+      street_resurfacing_count:
+        one: 1 ጎዳና ተስተካክሏል
+        other: "%{count} ጎዳና ተስተካክሏል"
+      alley_resurfacing_count:
+        one: 1 መተለላፊያ መንገድ ተስተካክሏል
+        other: "%{count} መተለላፊያ መንገድ ተስተካክሏል"
+      apron_resurfacing_count:
+        one: 1 የውስጥ ለውስጥ መንገድ ተስተካክሏል
+        other: "%{count} የውስጥ ለውስጥ መንገዶች ተስተካክለዋል"
+      sidewalk_repairing_count:
+        one: 1 የእግረኛ መንገድ ተጠግኗል
+        other: "%{count} የእግረኛ መንገድ ተስተካክሏል"
+    image_gallery:
+      cue: ለተንሸራታች እይታ ስእሉን ጠቅ ያድርጉ
+    project_ranking:
+      list_header: እርስዎ የሚከተሉትን ፕሮጀክቶች መርጠዋል። አዶዎቹን <span class='glyphicon glyphicon-sort'></span>
+        በመጎተት ደረጃቸውን ይለውጡ።
+      continue_button: ቀጥል
+  thanks_approval:
+    title: እናመሰግናለን
+    description:
+      real: "<p class='lead text-center'>ስለመረጡ እናመሰግናለን። ወደ ቀጣዩ ገጽ ለመሄድ እባክዎ ከዚህ በታች
+        'ቀጣይ’ የሚለውን ጠቅ ያድርጉ።</p>"
+      demo: "<p class='lead'>ስለመረጡ እናመሰግናለን! <span style='color: red;'><strong>እባክዎ
+        ይህ ለ <u>ቅድመ ማሳያ</u> ብቻ መሆኑን ልብ ይበሉ።</strong></span> ወደ ቀጣዩ ገጽ ለመሄድ እባክዎ ከዚህ
+        በታች 'ቀጣይ’ የሚለውን ጠቅ ያድርጉ።</p>"
+    send_vote_email: "(አማራጭ) የምርጫ ውጤቴን ወደራሴ ኢሜይል መላክ እፈልጋለሁ:"
+    email_placeholder: ኢሜይል ያስገቡ
+    next_button: ቀጣይ &gt;&gt;
+  ranking:
+    title: አሳታፊ የበጀት አመዳደብ
+    popup:
+      title: መመሪያዎች
+      body: <ol> <li>እርስዎ ሊደግፏቸው የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። እስከ <b>%{max_n_projects} ፕሮጀክቶች
+        መምረጥ ይችላሉ።</b></li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን የምርጫ ድምጽ አስገባ"</b>የሚለውን አዝራር
+        ጠቅ ያድርጉ።</li> </ol>
+      ok: እሺ
+    instructions: <h3>መመሪያዎች</h3><ol> <li>መደገፍ የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። እስከ <b>%{max_n_projects}
+      ፕሮጀክቶች መምረጥ ይችላሉ።</b></li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን የምርጫ ድምጽ አስገባ"</b>የሚለውን
+      አዝራር ጠቅ ያድርጉ።</li> </ol>
+    list_of_projects: የፕሮጀክቶች ዝርዝር
+    estimated_cost: ግምታዊ ዋጋ
+    youtube_video: የ YouTube ቪድዮ
+    location: ቦታ
+    partner: አጋር
+    committee: ኮሚቴ
+    read_details: ተጨማሪ ያንብቡ...
+    select_button:
+      select: ምረጥ
+      selected: ተመርጧል
+      not_enough_money: በቂ ገንዘብ አይደለም
+      more_projects: ከ %{max_n_projects} በላይ ፕሮጀክቶችን መምረጥ አይችሉም
+    remove_button: አስወግድ
+    remove_button_tooltip: ይህንን ፕሮጀክት ከአሁን በኋላ መምረጥ የማይፈልጉ ከሆነ እዚህ ጠቅ ያድርጉ።
+    submit_button: የእኔን የምርጫ ድምጽ አስገባ...
+    confirmation:
+      title: እርግጠኛ ነዎት የእርስዎን የምርጫ ድምጽ ማስገባት ይፈልጋሉ?
+      body:
+        summary:
+          zero: "<span style='color: red;'>እርስዎ ምንም ፕሮጀክት አልመረጡም።</span>"
+          other: 'እርስዎ የሚከተሉትን ፕሮጀክቶች መርጠዋል: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>እርስዎ አንድ ፕሮጀክት ብቻ መርጠዋል።</span>"
+          less: "<span style='color: red;'>እርስዎ %{count} ፕሮጀክቶችን ብቻ መርጠዋል።</span>"
+          limit: "<span style='color: red;'>እስከ %{max_n_projects} የሚደርሱ ፕሮጀክቶችን መምረጥ
+            ይችላሉ</span>"
+        warning: የምርጫ ድምጽዎን ካስገቡ በኋላ ድምጽዎን መለወጥ <strong>አይችሉም</strong>። የምርጫ ድምጽዎን
+          ማሻሻል ከፈለጉ፣ እባክዎ ከዚህ በታች ‘ወደኋላ ይመለሱ’ የሚለውን ጠቅ ያድርጉ። የምርጫ ድምጽዎን ለማስገባት ከፈለጉ፣
+          እባክዎ ከዚህ በታች ባለው ሳጥን ላይ ምልክት ያድርጉ እና በመቀጠል 'የእኔን ድምጽ ኣስገባ’ የሚለውን ጠቅ ያድርጉ።
+        checkbox: የምርጫ ድምጼን ካስገባሁ በኋላ መለወጥ <strong>እንደማልችል</strong> እረዳለው።
+      ok: የእኔን የምርጫ ድምጽ አስገባ
+      cancel: ወደኋላ ይመለሱ
+    confirmation_over_limit:
+      title: የምርጫ ድምጽዎን ማስገባት አልተቻለም
+      over_n_project_limit: "<span style='color:red'>እርስዎ <b>%{n_projects}</b> ፕሮጀክቶችን
+        መርጠዋል። ቢበዛ እስከ <b>%{max_n_projects}</b> ፕሮጀክቶችን ብቻ መምረጥ ይችላሉ። እባክዎ <b>%{extra}</b>
+        ወይም ከዚያ በላይ ፕሮጀክቶችን ያስወግዱ።</span>"
+      over_budget_limit: "<span style='color:red'>አሁን ከበጀትዎ አልፈዋል።</span>"
+      cancel: ወደኋላ ይመለሱ
+    tracker:
+      text: እርስዎ %{count} ፕሮጀክቶችን መርጠዋል።
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: ከጠቅላላው %{budget} በጀት %{total} ተመርጧል።
+      under_budget: አሁንም %{remaining_money} ይቀርልዎታል።
+      over_budget: አሁን ከበጀትዎ አልፈዋል።
+      over_budget_but_can_add_projects: አሁን ከበጀትዎ አልፈዋል፣ ሆኖም ግን ፕሮጀክቶችን ማከል መቀጠል ይችላሉ።
+    adjustable_cost_project:
+      instructions: 'እባክዎ ከዚህ በታች ካሉት አማራጮች ውስጥ አንዱን ይምረጡ:'
+      not_adjusted_warning: "<span style='color:red'>እርስዎ ለ %{project} $0 ዶላር መርጠዋል</span>"
+      message: እርስዎ ለ %{project} $%{cost} መርጠዋል
+      table_headings:
+        percentage_column: የወጣው በጀት በመቶኛ
+        cost_column: ዋጋ
+        number_column: 'የብሎኮች ግምቶች # እንደገና ታድሰዋል'
+    image_gallery:
+      cue: ለተንሸራታች እይታ ስእሉን ጠቅ ያድርጉ
+  question:
+    title: የዳሰሳ ጥናት
+    question: ዕድሜዎ 14 ዓመት ወይም ከዚያ በላይ ነው?
+    ok: አዎ፣ ዕድሜዬ 14 ዓመት ወይም ከዚያ በላይ ነው
+    alternative: አይ፣ ዕድሜዬ ከ 14 ዓመት በታች ነው
+  comparison:
+    title: ንፅፅር
+    header: የትኛው ፕሮጀክት ለገንዘብ ምርጡን ዋጋ ይሰጣል፣ ይህም፣ የትኛው ፕሮጀክት ነው በአንድ ዶላር ወጪ ለህብረተሰቡ
+      ከፍተኛ ጥቅም የሚሰጠው?
+    estimated_cost: ግምታዊ ዋጋ
+    this_project: ይህ ፕሮጀክት
+    not_sure: እርግጠኛ አይደለሁም
+    popup:
+      title: መመሪያዎች
+      body: "<p style='font-size: 20px;'>በድምጽዎ ላይ <u>ምንም</u> ተጽእኖ በማያሳድረው፣ ነገር ግን
+        አሳታፊ የበጀት አመዳደብ ሂደትን እንድናሻሽል የታሰበ የስታንፎርድ ዩኒቨርሲቲ የምርምር ፕሮጀክት አካል በሆነው እንቅስቃሴ
+        ውስጥ እንዲሳተፉ ይጠየቃሉ።</p> <ul style='font-size: 20px;'><li>በዚህ እንቅስቃሴ ውስጥ መሳተፍ
+        በምርጫ ላይ የተመሰረተ ነው። በማንኛውም ጊዜ መውጣት ይችላሉ።</li> <li>ለዚህ እንቅስቃሴ የሚጠበቀው ጊዜ በግምት
+        ከ 2-3 ደቂቃ ነው።</li> </ul> <p style='font-size: 14px;'>ይህ ጥናት ምንም አደጋ የለውም።
+        ለመሳተፍ ምንም ክፍያ አይሰጥዎትም፣ እና ለእርስዎ ምንም የጥቅማ ጥቅሞችን ዋስትና መስጠት አንችልም። ለአንዳንድ ጥያቄዎችን
+        መልስ ያለመስጠት መብት አለዎት። ማናቸውም ጥያቄዎች፣ አስተያየቶች ወይም ስጋቶች ካሉዎት፣ እባክዎ ፕሮፌሰር Ashish
+        Goel በ goel_admins@lists.stanford.edu ያነጋግሩ። እንዲሁም በ 650-723-2480 የስታንፎርድ
+        ተቋማዊ ግምገማ ቦርድ ማነጋገር ይችላሉ።</p>"
+      ok: ቀጥል
+      exit: መውጫ
+  knapsack:
+    title: አሳታፊ የበጀት አመዳደብ
+    popup:
+      title: መመሪያዎች
+      body: "<p style='font-size: 20px;'>በድምጽዎ ላይ <u>ምንም</u> ተጽእኖ በማያሳድረው፣ ነገር ግን
+        አሳታፊ የበጀት አመዳደብ ሂደትን እንድናሻሽል የታሰበ የስታንፎርድ ዩኒቨርሲቲ የምርምር ፕሮጀክት አካል በሆነው እንቅስቃሴ
+        ውስጥ እንዲሳተፉ ይጠየቃሉ።</p> <ul style='font-size: 20px;'><li>በዚህ እንቅስቃሴ ውስጥ መሳተፍ
+        በምርጫ ላይ የተመሰረተ ነው። በማንኛውም ጊዜ መውጣት ይችላሉ።</li> <li>ለዚህ እንቅስቃሴ የሚጠበቀው ጊዜ በግምት
+        ከ 2-3 ደቂቃ ነው።</li> </ul> <p style='font-size: 14px;'>ይህ ጥናት ምንም አደጋ የለውም።
+        ለመሳተፍ ምንም ክፍያ አይሰጥዎትም፣ እና ለእርስዎ ምንም የጥቅማ ጥቅሞችን ዋስትና መስጠት አንችልም። ለአንዳንድ ጥያቄዎችን
+        መልስ ያለመስጠት መብት አለዎት። ማናቸውም ጥያቄዎች፣ አስተያየቶች ወይም ስጋቶች ካሉዎት፣ እባክዎ ፕሮፌሰር Ashish
+        Goel በ goel_admins@lists.stanford.edu ያነጋግሩ። እንዲሁም በ 650-723-2480 የስታንፎርድ
+        ተቋማዊ ግምገማ ቦርድ ማነጋገር ይችላሉ።</p>"
+      ok: ቀጥል
+      exit: መውጫ
+    instructions: <h3>መመሪያዎች</h3><ol> <li>መደገፍ የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። አጠቃላይ ወጪው ከ <b>%{budget}</b>መብለጥ
+      አይችልም።</li> <li>እስካሁን ድረስ የመደቡትን ጠቅላላ መጠን ከላይ ባለው አሞሌ ውስጥ ማየት ይችላሉ። አሞሌውን ጠቅ
+      በማድረግ ወይም በቀጥታ በተመረጠው ፕሮጀክት ላይ ጠቅ በማድረግ ማንኛውንም ከዚህ በፊት የተመረጡትን ፕሮጀክቶች ማስወገድ
+      ይችላሉ።</li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን ድምጽ ኣስገባ"</b> የሚለውን ቁልፍ ጠቅ ያድርጉ።</li>
+      </ol>
+    confirmation:
+      title: እርግጠኛ ነዎት የእርስዎን የምርጫ ድምጽ ማስገባት ይፈልጋሉ?
+      body:
+        summary:
+          zero: "<span style='color: red;'>እርስዎ ምንም ፕሮጀክቶች አልመረጡም።</span>"
+          other: 'እርስዎ የሚከተሉትን ፕሮጀክቶች መርጠዋል: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>እርስዎ አንድ ፕሮጀክት ብቻ መርጠዋል።</span>"
+          less: "<span style='color: red;'>እርስዎ %{count} ፕሮጀክቶችን ብቻ መርጠዋል።</span>"
+          limit: "<span style='color: red;'>እስከ %{max_n_projects} የሚደርሱ ፕሮጀክቶችን መምረጥ
+            ይችላሉ</span>"
+        warning: የምርጫ ድምጽዎን ካስገቡ በኋላ ድምጽዎን መለወጥ <strong>አይችሉም</strong>።
+      ok: የእኔን የምርጫ ድምጽ አስገባ
+      cancel: ወደኋላ ይመለሱ
+    adjustable_cost_project:
+      instructions: 'እባክዎ ከዚህ በታች ካሉት አማራጮች ውስጥ አንዱን ይምረጡ:'
+      not_adjusted_warning: "<span style='color:red'>እርስዎ ለ %{project} $0 ዶላር መርጠዋል</span>"
+      message: እርስዎ %{cost} ን ለ %{project} መርጠዋል
+  survey:
+    title: የዳሰሳ ጥናት
+    header: የዳሰሳ ጥናት ይውሰዱ
+    question:
+      title: እናመሰግናለን
+      body: ስለመረጡ እናመሰግናለን። ዕድሜዎ 14 ዓመት ወይም ከዚያ በላይ ነው?
+      ok: አዎ፣ ዕድሜዬ 14 ዓመት ወይም ከዚያ በላይ ነው
+      alternative: አይ፣ ዕድሜዬ ከ 14 ዓመት በታች ነው
+    url: ''
+  thanks:
+    title: እናመሰግናለን
+    description:
+      real: ስለመረጡ እናመሰግናለን። እባክዎ ከዚህ በታች ያለውን 'መውጫ' ቁልፍን ጠቅ ያድርጉ።
+      demo: 'የዲጂታል አሳታፊ የበጀት አመዳደብ በይነገጽን ስለሞከሩ እናመሰግናለን! <span style=''color: red;''><strong>እባክዎ
+        ይህ ለ <u>ማሳያ</u> ብቻ መሆኑን ልብ ይበሉ።</strong></span>'
+    exit: መውጫ
+  about:
+    title: ስለ
+    description: "<center><h1 class='sub-header'>ስለ ዲጂታል አሳታፊ የበጀት አመዳደብ በይነገጽ</h1></center>
+      <br><p class='lead'>የዲጂታል አሳታፊ የበጀት አመዳደብ በይነገጽ የተዘጋጀው በ <a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>ስታንፎርድ Crowdsourced ዲሞክራሲ ቡድን ነው</a>። የበይነገጽ ምስላዊ እና የቀረበው መረጃ
+      ብዛት ስለ ፕሮጀክቶቹ ለማወቅ እና የበለጠ መረጃ ሰጭ ድምጾችን ለመስጠት ይረዳዎታል ብለን ተስፋ እናደርጋለን።</p> <p
+      class='lead'>ይህ በ GNU GPL v3.0 ፈቃድ ስር የተፈቀደ ክፍት ምንጭ ፕሮጀክት ነው። የምንጭ ኮዱን በ <a
+      href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a> ላይ ማግኘት
+      ይችላሉ።</p> <p class='lead'>ቴክኒካዊ ችግሮች ካጋጠሙዎት ወይም ግብረመልስ ለመስጠት ከፈለጉ፣ እባክዎ በኢሜይል
+      ይላኩ <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>
+      እና በተቻለ ፍጥነት ወደ እርስዎ ለመመለስ እንሞክራለን።</p>"
+  result:
+    title: ውጤቶች
+    vote_results: የምርጫ ድምጽ ውጤቶች
+    description: ከ %{count} መራጮች ከ %{start} እስከ %{end} በተገኙ የምርጫ ድምጾች ላይ ተመስርተው የወጡ
+      ውጤቶች።
+    proposed_project: የታቀዱ ፕሮጀክቶች
+    votes: የምርጫ ድምጾች
+    projects: ፕሮጀክቶች
+  election:
+    can_also_vote_in_person: 'እንዲሁም የምርጫ ድምጽ ለመስጠት ከሚከተሉት ቦታዎች ወደ አንዱ መምጣት ይችላሉ:'
+    info: <h3>የድምጽ መስጫ ቦታዎች</h3> <b>ቅዳሜ፣ ሴፕተምበር 27</b> &nbsp; (12:00 እኩለቀን - 4:00
+      p.m.)<br> የሆነቦታ<br> <br> <b>ማክሰኞ፣ ሴፕተምበር 30</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
+      የሆነ ቦታ<br> <br> <p>ለተጨማሪ መረጃ እባክዎ ይህንን ይጎብኙ <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: ስልክ ቁጥርዎን ያረጋግጡ
+    header: ስልክ ቁጥርዎን ያረጋግጡ
+    instructions: "<p>በመስመር ላይ ድምጽ ለመስጠት የጽሑፍ መልእክት የሚቀበል ሞባይል ያስፈልግዎታል፣ ይህም የስልክ
+      ቁጥርዎን ማረጋገጥ እንድንችል ነው።</p><p>የሞባይል ስልክ ቁጥርዎን ያስገቡና እኛ የማረጋገጫ ኮድ በፅሁፍ እንልክልዎታለን።</p>"
+    phone_number_placeholder: ስልክ ቁጥር ያስገቡ
+    verify_button: ያረጋግጡ
+    invalid_phone_number: "\"%{phone_number}” ትክክለኛ የስልክ ቁጥር አይደለም."
+    blacklisted_phone_number: ይህ የስልክ ቁጥር ከእኛ መልዕክቶችን እንዳይቀበል ተደርጓል። የማረጋገጫ ኮዱን ለመቀበል፣
+      እባክዎን START ብለው ወደ %{our_phone_number} ይላኩና ከዚያ የስልክ ቁጥርዎን እንደገና እዚህ ያስገቡ።
+    no_cell_phone_instruction: ሞባይል ከሌለዎት፣ እባክዎ በመስመር ላይ የምርጫ ድምጽ ለመስጠት ሌላ ዘዴ ለመጠቀም
+      <a href="%{code_signup_url}">እዚህ ላይ ጠቅ</a> ያድርጉ።
+  code_signup:
+    title: ለመምረጥ የይለፍ ኮድ ያስገቡ
+    instruction: የይለፍ ኮድ ለማግኘት እባክዎ ወደ XXX@stanford.edu ኢሜይል ይላኩ ወይም በ XXX-XXX-XXX
+      ይደውሉ። አንዴ የይለፍ ኮዱን ካገኙ በኋላ ከዚህ በታች ያስገቡትና ለመቀጠል የ <b>ይምረጡ</b> ቁልፍን ይጫኑ።
+    code_placeholder: የይለፍ ኮድ
+    vote_button: የምርጫ ድምጽ
+    wrong_access_code: የተሳሳተ የይለፍ ኮድ
+    used_access_code: ይህ የይለፍ ኮድ አስቀድሞ ጥቅም ላይ ውሏል።
+  other_signup:
+    title: የምርጫ ድምጽ ለመስጠት ዝርዝሮች ያስገቡ
+    instruction: ''
+    no_account_number_instruction: የመለያ ቁጥር ከሌለዎት፣ እባክዎን በመስመር ላይ የምርጫ ድምጽ ለመስጠት ሌላ
+      ዘዴ ለመጠቀም <a href="%{code_signup_url}">እዚህ ላይ ጠቅ</a> ያድርጉ።
+    zipcode_placeholder: ZIP ኮድ
+    account_number_placeholder: የመለያ ቁጥር
+    vote_button: የምርጫ ድምጽ
+    wrong_account_number: የተሳሳተ የመለያ ቁጥር ወይም ZIP ኮድ
+    used_account_number: ይህ የመለያ ቁጥር አስቀድሞ ጥቅም ላይ ውሏል።
+  free_signup:
+    title: ማረጋገጫ
+    instruction: እባክዎ የ ZIP ኮድዎን ያስገቡ
+    placeholder: ZIP ኮድ
+    captcha: እባክዎ <b>%{captcha}</b> ን ከታች ይጻፉ
+    vote_button: የምርጫ ድምጽ
+  registration:
+    title: የመራጭ ዝርዝሮች
+    header: የመራጭ ዝርዝሮች
+    instructions: ድምጽዎን ለመስጠት ወደ ምርጫው ለመቀጠል እባክዎ የሚከተሉትን ዝርዝሮች ያስገቡ። የ * ምልክት የተደረገባቸው
+      መስኮች ያስፈልጋሉ።
+    proceed_button: ይቀጥሉ
+    no_phone_number: የስልክ ቁጥር የለኝም
+    name: ስም
+    first_name: የመጀመሪያ ስም
+    middle_initial: የአባት ስም መነሻ ፊደል
+    last_name: የአያት ስም
+    suffix: የማዕረግ ስም
+    phone_number: ስልክ ቁጥር
+    email: ኢሜይል
+    address: የአድራሻ ጎዳና
+    city: ከተማ
+    zip_code: ZIP ኮድ
+    birth_year: የትውልድ አመት
+    date_of_birth: የትውልድ ቀን
+    verify_age_label: ከ 16 ዓመት በላይ ነኝ
+    email_instruction_label: የዚህን የምርጫ ድምጽ ውጤት ለማወቅ ይፈልጋሉ? ወቅታዊ መረጃን እያገኙ ለመቆየት ኢሜይልዎን
+      ያስገቡ።
+    ward: ወረዳ
+    ward_do_not_know: አላውቅም
+    error: 'እባክዎ የሚከተሉትን ስህተቶች ያስተካክሉ:'
+    not_voting_age_error: በዚህ ምርጫ ውስጥ ድምጽ ለመስጠት በሚጠየቀው የዕድሜ መስፈርት ውስጥ መሆን አለብዎ
+    verify_age_error: እባክዎ "%{checkbox_label}" ያረጋግጡ
+  sms_signup_confirm:
+    title: ስልክ ቁጥርዎን ያረጋግጡ
+    header: ስልክ ቁጥርዎን ያረጋግጡ
+    instructions: "<p>የማረጋገጫ ኮድ ወደ <b>%{phone_number}</b>ልከናል። ኮዱን በአንድ ደቂቃ ውስጥ መቀበል
+      አለብዎት።</p><p>እባክዎ የስልክ ቁጥርዎን ለማረጋገጥ የማረጋገጫ ኮዱን ያስገቡ።</p>"
+    code_placeholder: ኮድ ያስገቡ
+    confirm_button: ያረጋግጡ
+    wrong_code: የተሳሳተ ኮድ።
+    resend_code: ኮዱን በአንድ ደቂቃ ውስጥ ካልተቀበሉ፣ የማረጋገጫ ኮዱን እንደገና ለመላክ <a href="%{resend_code_url}">እዚህ</a>
+      ጠቅ ያድርጉ።
+    make_sure_phone_number_is_correct: ይህ %{phone_number} ትክክለኛ የሞባይል ስልክ ቁጥርዎ መሆኑን
+      ያረጋግጡ። ትክክል <u>ካልሆነ</u> እባክዎ ለመቀየር <a href="%{signup_url}">እዚህ</a> ጠቅ ያድርጉ።
+    still_not_working: ከብዙ ሙከራዎች በኋላም የማረጋገጫ ኮዱን ለመቀበል ችግር ከገጠመዎት፣ እባክዎ በመስመር ላይ ድምጽ
+      ለመስጠት ሌላ ዘዴን ለመጠቀም <a href="%{code_signup_url}">እዚህ ጠቅ</a> ያድርጉ።
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
+
+  general:
+    demo_warning: ይህ ቅድመ ማሳያ ብቻ ነው። የእርስዎ የምርጫ ድምጽ አይመዘገብም።
+    experiment_disclaimer: ይህ የምርምር ዳሰሳ ጥናት ብቻ ነው። በምርጫ ድምጽዎ ላይ ተጽዕኖ አይኖረውም።
+    shuffle_note: "<span style='font-size: 18px;'>ማስታወሻ: እነዚህ ፕሮጀክቶች በዘፈቀደ ቅደም ተከተል
+      የተዘረዘሩ ናቸው።</span>"
+    project_string: ፕሮጀክት
+    close_button: ዝጋው
+    timeout:
+      body: የእርስዎ ክፍለ ጊዜ ሊያበቃ ነው። ድረገፁን መጠቀምን ለመቀጠል "ቀጥል" የሚለውን ጠቅ ያድርጉ።
+      continue_button: ቀጥል
+  date:
+    month_names:
+    -
+    - ጃንዩዌሪ
+    - ፌብሩዋሪ
+    - ማርች
+    - ኤፕሪል
+    - መይ
+    - ጁን
+    - ጁላይ
+    - ኦገስት
+    - ሰፕቴምበር
+    - ኦክቶበር
+    - ኖቬምበር
+    - ዲሴምበር
+    order:
+    - :day
+    - :month
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

@@ -10,6 +10,7 @@ for (var i = 0; i < projects.length; ++i) {
   idToIndex[projects[i].id] = i;
 }
 var currency_symbol = "<%=j @election.config[:currency_symbol] %>";
+var analytics_data = <%= @analytics_data.to_json.html_safe %>;
 
 function numberWithDelimiter(val) {
   while (/(\d+)(\d{3})/.test(val.toString())) {
@@ -30,8 +31,9 @@ function reloadData(params) {
     url: '/admin/elections/<%= @election.id %>/analytics.json',
     data: params
   }).done(function(data) {
+    analytics_data = data.analytics_data;
     for (var i = 0; i < reloadCallbacks.length; ++i) {
-      reloadCallbacks[i](data);
+      reloadCallbacks[i]();
     }
   });
 }
@@ -144,12 +146,23 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
 
       <% workflow = @election.config[:workflow].flatten %>
 
-      <% if @election.config[:approval][:project_ranking] || workflow.include?('ranking') %>
-        <h3>Ranked Approval</h3>
-        <%= render partial: 'shared/analytics/ranked_approval' %>
-      <% elsif workflow.include?('approval') %>
-        <h3>Approval voting</h3>
-        <%= render partial: 'shared/analytics/approval', locals: {is_public: false} %>
+      <% if params[:legacy] %>
+        <% if @election.config[:approval][:project_ranking] || workflow.include?('ranking') %>
+          <h3>Ranked Approval</h3>
+          <%= render partial: 'shared/analytics/ranked_approval' %>
+        <% elsif workflow.include?('approval') %>
+          <h3>Approval voting</h3>
+          <%= render partial: 'shared/analytics/approval', locals: {is_public: false} %>
+        <% end %>
+      <% else %>
+        <% if workflow.include?('approval') %>
+          <h3>Approval voting</h3>
+          <%= render partial: 'shared/analytics/approval', locals: {is_public: false} %>
+        <% end %>
+        <% if workflow.include?('ranking') %>
+          <h3>Ranked Approval</h3>
+          <%= render partial: 'shared/analytics/ranked_approval' %>
+        <% end %>
       <% end %>
 
       <% if workflow.include?('knapsack') %>
@@ -165,6 +178,11 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
       <% if current_user.can_see_voter_data?(@election) && @voter_registration_exists %>
         <h3>Voter registration</h3>
         <a href="<%= url_for(format: :csv, table: 'voter_registration') %>">Export voter registration records</a>
+      <% end %>
+
+      <% if current_user.can_see_voter_data?(@election) && @election.config[:remote_voting_free_verification] %>
+        <h3>Voter data</h3>
+        <a href="<%= url_for(format: :csv, table: 'voter_data') %>">Export voter data</a>
       <% end %>
 
       <br><br>

@@ -49,7 +49,7 @@ multiple_locales = available_locales.length > 1
     <%= f.label :title, 'Title*', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_field 'title_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+        <%= f.text_field 'title_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '', dir: (locale == "ar") ? 'rtl' : nil %>
       <% end %>
     </div>
   </div>
@@ -58,7 +58,7 @@ multiple_locales = available_locales.length > 1
     <%= f.label :description, 'Description*', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_area 'description_' + locale, rows: 4, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+        <%= f.text_area 'description_' + locale, rows: 4, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '', dir: (locale == "ar") ? 'rtl' : nil %>
       <% end %>
     </div>
   </div>
@@ -114,7 +114,7 @@ multiple_locales = available_locales.length > 1
     <%= f.label :address, 'Location', class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_field 'address_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+        <%= f.text_field 'address_' + locale, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '', dir: (locale == "ar") ? 'rtl' : nil %>
       <% end %>
     </div>
   </div>
@@ -190,7 +190,7 @@ multiple_locales = available_locales.length > 1
       <%= f.label :details, class: 'col-sm-2 control-label' %>
       <div class="col-sm-10">
         <% available_locales.each do |locale| %>
-          <%= f.text_area 'details_' + locale, rows: 3, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '' %>
+          <%= f.text_area 'details_' + locale, rows: 3, class: 'form-control', placeholder: multiple_locales ? LOCALE_NAMES[locale.to_sym] : '', dir: (locale == "ar") ? 'rtl' : nil %>
         <% end %>
         <p class="text-muted">Details, unlike description, are hidden by default. Voters have to click a link that says "Read more" to read them.</p>
       </div>
@@ -278,8 +278,8 @@ updateCostFields();
 var imageField = document.getElementById('project_image');
 var removeImageCheckbox = document.getElementById('project_remove_image');
 var imageDescriptionField = document.getElementById('image_description_field');
+var hasImage = <%= @project.image? %>;
 function updateImageDescriptionField() {
-  var hasImage = <%= @project.image? %>;
   if ((hasImage && !removeImageCheckbox.checked) || (imageField.value && imageField.value.length > 0)) {
     imageDescriptionField.style.display = 'block';
   } else {
@@ -287,6 +287,7 @@ function updateImageDescriptionField() {
   }
 }
 imageField.addEventListener('change', updateImageDescriptionField);
-removeImageCheckbox.addEventListener('change', updateImageDescriptionField);
+if (hasImage)
+  removeImageCheckbox.addEventListener('change', updateImageDescriptionField);
 updateImageDescriptionField();
 </script>

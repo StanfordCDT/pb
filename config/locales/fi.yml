@@ -124,6 +124,7 @@ fi:
     project_ranking:
       list_header: Olet valinnut seuraavat projektit. Muuta niiden järjestystä raahaamalla<span
         class='glyphicon glyphicon-sort'></span> kuvakkeita.
+      continue_button: Jatka
   thanks_approval:
     title: Kiitos
     description:
@@ -212,9 +213,6 @@ fi:
         number_column: 'Noin # korttelia päällystetty uudelleen'
     image_gallery:
       cue: Klikkaa kuvaa aktivoidaksesi kuvaesityksen
-    project_ranking:
-      list_header: Olet valinnut seuraavat projektit. Muuta niiden järjestystä raahaamalla<span
-        class='glyphicon glyphicon-sort'></span> kuvakkeita.
   question:
     title: Kysely
     question: Oletko 14-vuotias tai vanhempi?
@@ -230,11 +228,12 @@ fi:
     popup:
       title: Ohjeet
       body: |-
-        <p style='font-size: 22px;'>Sinua pyydetään nyt arvioimaan projekteja niiden yhteisölle tarjoaman hyödyn perusteella käytettyyn rahaan verrattuna. Tämä vertailu on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia, eikä se ole osa ääntäsi.</p>
-        <ul style='font-size: 22px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
-        <li>Osallistuminen kestää noin 2-3 minuuttia.</li></ul>
+        <p style='font-size: 20px;'>Sinua <u>ei</u> pyydetä osallistumaan toimintaan, joka vaikuttaa ääneesi. Tämä on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia.</p>
+        <ul style='font-size: 20px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
+        <li>Osallistuminen kestää noin 2-3 minuuttia.</li>
+        </ul>
         <p style='font-size: 14px;'>Tutkimus ei sisällä minkäänlaista riskiä.
-        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Kyselyn rahoittaa osittain Yhdysvaltain puolustusministeriö. Otathan yhteyttä professori Ashish Goeliin osoitteessa
+        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Otathan yhteyttä professori Ashish Goeliin osoitteessa
         goel_admins@lists.stanford.edu jos sinulla on kysymyksiä, ehdotuksia tai huolia. Voit myös soittaa Stanford Institutional Review
         Boardille numeroon 650-723-2480.</p>
       ok: Jatka
@@ -247,9 +246,9 @@ fi:
         <p style='font-size: 20px;'>Sinua <u>ei</u> pyydetä osallistumaan toimintaan, joka vaikuttaa ääneesi. Tämä on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia.</p>
         <ul style='font-size: 20px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
         <li>Osallistuminen kestää noin 2-3 minuuttia.</li>
-        <li>Sinua pyydetään valitsemaan rajaton määrä projekteja, mutta projektien kokonaishinta ei voi ylittää %{budget}.</li></ul>
+        </ul>
         <p style='font-size: 14px;'>Tutkimus ei sisällä minkäänlaista riskiä.
-        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Kyselyn rahoittaa osittain Yhdysvaltain puolustusministeriö. Otathan yhteyttä professori Ashish Goeliin osoitteessa
+        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Otathan yhteyttä professori Ashish Goeliin osoitteessa
         goel_admins@lists.stanford.edu jos sinulla on kysymyksiä, ehdotuksia tai huolia. Voit myös soittaa Stanford Institutional Review
         Boardille numeroon 650-723-2480.</p>
       ok: OK
@@ -332,6 +331,7 @@ fi:
     phone_number_placeholder: Lisää puhelinnumero
     verify_button: Vahvista
     invalid_phone_number: '"%{phone_number}" ei ole kelvollinen puhelinnumero.'
+    blacklisted_phone_number: "This phone number has opted out of receiving messages from us. To receive the confirmation code, please send START to %{our_phone_number} and then enter your phone number here again."  # FIXME: Translate this.
     no_cell_phone_instruction: Jos sinulla ei ole matkapuhelinta, <a href="%{code_signup_url}">klikkaa
       tästä</a> käyttääksesi toista nettiäänestystapaa.
   code_signup:
@@ -353,6 +353,12 @@ fi:
     vote_button: "Äänestä"
     wrong_account_number: Väärä tilin numero
     used_account_number: Tämä tilin numero on jo käytetty
+  free_signup:
+    title: "Validation"
+    instruction: "Please enter your ZIP code"
+    placeholder: "ZIP code"
+    captcha: "Please type <b>%{captcha}</b> below"
+    vote_button: "Vote"
   registration:
     title: "Äänestäjän tiedot"
     header: "Äänestäjän tiedot"
@@ -379,6 +385,7 @@ fi:
     ward_do_not_know: En tiedä
     error: "Please fix the following errors:"
     not_voting_age_error: Sinun täytyy olla ikärajan sisällä voidaksesi äänestää
+    verify_age_error: "Please confirm \"%{checkbox_label}\""  # FIXME: Translate.
   sms_signup_confirm:
     title: Vahvista puhelinnumerosi
     header: Vahvista puhelinnumerosi
@@ -395,12 +402,15 @@ fi:
     still_not_working: Jos sinulla on vielä muutaman yrityksen jälkeen vaikeuksia
       saada vahvistuskoodi, <a href="%{code_signup_url}">klikkaa tästä</a> käyttääksesi
       toista nettiäänestystapaa.
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
+
   general:
     demo_warning: Tämä on vain esikatselu. Ääntäsi ei tallenneta.
     experiment_disclaimer: Tämä on vain kysely. Tämä ei vaikuta ääneesi.
     shuffle_note: "<span style='font-size: 18px;'>Huomio: nämä projektit ovat satunnaisessa
       järjestyksessä.</span>"
     project_string: Projekti
+    close_button: "Close"  # FIXME: Translate.
     timeout:
       body: Istuntosi on umpeutumassa. Klikkaa "Jatka" jatkaaksesi sivuston käyttöä.
       continue_button: Jatka

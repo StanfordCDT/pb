@@ -63,6 +63,128 @@ module Admin
       render json: {}
     end
 
+    def import
+      @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
+    end
+
+    def post_import
+      require 'roo'
+
+      @election = Election.find(params[:election_id])
+      raise "error" if !current_user.can_update_election?(@election)
+
+      import_file = params[:project][:import_file] if !params[:project].nil?
+      if import_file.nil?
+        redirect_to action: :import
+        return
+      end
+
+      # Read the file according to their format.
+      filename = import_file.original_filename
+      if filename.end_with?(".xlsx") || filename.end_with?(".xls")  # Excel
+        begin
+          xlsx = Roo::Spreadsheet.open(import_file, extension: filename.end_with?(".xls") ? :xls : :xlsx)
+        rescue
+          flash.now[:errors] = ["Cannot open the Excel file"]
+          render action: :import
+          return
+        end
+        sheet = xlsx.sheet(0)
+        header = sheet.row(1)
+        rows = (2..sheet.last_row).map { |i| sheet.row(i) }
+      else  # CSV
+        csv = CSV.new(import_file.read.force_encoding("UTF-8").encode)
+        table = csv.read
+        header = table[0]
+        rows = table[1...table.length]
+      end
+
+      # Find the indices of the columns.
+      header = header.map { |col| col.strip.downcase if col.is_a?(String) }
+      title_index = header.find_index { |col| col == "title" || col == "titles" }
+      description_index = header.find_index { |col| col == "description" || col == "descriptions" }
+      cost_index = header.find_index { |col| col == "cost" || col == "costs" }
+      number_index = header.find_index { |col| col == "number" || col == "numbers" }
+      details_index = header.find_index("details")
+      address_index = header.find_index { |col| col == "location" || col == "locations" }
+      category_index = header.find_index { |col| col == "category" || col == "categories" }
+
+      errors = []
+      if title_index.nil?
+        errors << "Cannot find the title column"
+      end
+      if description_index.nil?
+        errors << "Cannot find the description column"
+      end
+      if cost_index.nil?
+        errors << "Cannot find the cost column"
+      end
+
+      # Read the contents.
+      if !title_index.nil? && !description_index.nil? && !cost_index.nil?
+        ActiveRecord::Base.transaction do
+          @election.voters.destroy_all
+          @election.categories.destroy_all
+          @election.projects.destroy_all
+
+          category_sort_order = 0
+          category_map = {}
+          project_sort_order = 0
+
+          Globalize.with_locale(@election.config[:default_locale]) do
+            for row in rows
+              next if row.all?(&:nil?)
+
+              # Create a category (if needed).
+              category = nil
+              if !category_index.nil?
+                category_name = row[category_index]
+                if category_map.key?(category_name)
+                  category = category_map[category_name]
+                else
+                  category = Category.new
+                  category.name = category_name
+                  category.sort_order = category_sort_order
+                  category.election = @election
+                  if !category.save
+                    errors += category.errors.full_messages
+                    raise ActiveRecord::Rollback
+                  end
+                  category_sort_order += 1
+                  category_map[category_name] = category
+                end
+              end
+
+              # Create a project.
+              project = Project.new
+              project.title = row[title_index].to_s.strip
+              project.cost = row[cost_index].to_i
+              project.description = row[description_index].to_s.strip
+              project.number = row[number_index] if !number_index.nil?
+              project.details = row[details_index] if !details_index.nil?
+              project.address = row[address_index] if !address_index.nil?
+              project.sort_order = project_sort_order
+              project.election = @election
+              project.category = category if !category.nil?
+              if !project.save
+                errors += project.errors.full_messages
+                raise ActiveRecord::Rollback
+              end
+              project_sort_order += 1
+            end
+          end
+        end
+      end
+
+      if errors.empty?
+        redirect_to admin_election_projects_path(@election)
+      else
+        flash.now[:errors] = errors
+        render action: :import
+      end
+    end
+
     private
 
     def project_params

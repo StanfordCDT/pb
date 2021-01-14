@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_09_103900) do
+ActiveRecord::Schema.define(version: 2019_04_16_100000) do
 
   create_table "activity_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2018_04_09_103900) do
     t.boolean "allow_admins_to_see_exact_results", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "show_link_on_home_page", default: false, null: false
     t.boolean "real_election", default: true, null: false
     t.text "remarks"
     t.index ["slug"], name: "index_elections_on_slug", unique: true
@@ -157,6 +156,7 @@ ActiveRecord::Schema.define(version: 2018_04_09_103900) do
     t.text "referrer"
     t.text "url"
     t.datetime "created_at", null: false
+    t.string "method", null: false
   end
 
   create_table "vote_approvals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -200,6 +200,17 @@ ActiveRecord::Schema.define(version: 2018_04_09_103900) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_vote_plusminuses_on_project_id"
     t.index ["voter_id"], name: "index_vote_plusminuses_on_voter_id"
+  end
+
+  create_table "vote_rankings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.bigint "project_id", null: false
+    t.integer "cost"
+    t.integer "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_vote_rankings_on_project_id"
+    t.index ["voter_id"], name: "index_vote_rankings_on_voter_id"
   end
 
   create_table "voter_registration_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|

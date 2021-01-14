@@ -23,7 +23,7 @@
     <%= f.label :name, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <% available_locales.each do |locale| %>
-        <%= f.text_field 'name_' + locale, class: 'form-control localized locale-' + locale %>
+        <%= f.text_field 'name_' + locale, class: 'form-control localized locale-' + locale, dir: (locale == "ar") ? 'rtl' : nil %>
       <% end %>
     </div>
   </div>

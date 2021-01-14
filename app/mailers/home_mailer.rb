@@ -7,4 +7,10 @@ class HomeMailer < ActionMailer::Base
     @message = message
     mail(to: "cdt.no.reply@gmail.com", subject: 'Stanford CDT: New message from the Contact Us form')
   end
+
+  def sms(from, message)
+    @from = from
+    @message = message
+    mail(to: "cdt.no.reply@gmail.com", subject: 'Stanford CDT: New message from SMS')
+  end
 end

@@ -2,6 +2,7 @@ class Voter < ApplicationRecord
   belongs_to :election
   belongs_to :location, optional: true
   has_many :vote_approvals, dependent: :destroy
+  has_many :vote_rankings, dependent: :destroy
   has_many :vote_comparisons, dependent: :destroy
   has_many :vote_knapsacks, dependent: :destroy
   has_many :vote_plusminuses, dependent: :destroy

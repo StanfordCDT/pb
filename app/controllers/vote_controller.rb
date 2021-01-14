@@ -48,11 +48,6 @@ class VoteController < ApplicationController
               vote_approval.voter = voter
               vote_approval.project = project
               vote_approval.cost = cost
-              if conf[:approval][:project_ranking]
-                rank = params[:project_rank][project.id.to_s].to_i
-                vote_approval.rank = rank
-                ranks << rank
-              end
               vote_approval.save!
               total_cost += cost
               n_projects += 1 if !project.mandatory?
@@ -60,7 +55,6 @@ class VoteController < ApplicationController
           end
           raise 'error' if conf[:approval][:has_budget_limit] && total_cost > election.budget
           raise 'error' if conf[:approval][:has_n_project_limit] && (n_projects > conf[:approval][:max_n_projects] || n_projects < conf[:approval][:min_n_projects])
-          raise 'error' if conf[:approval][:project_ranking] && ranks.sort.each_with_index.any? { |rank, i| rank != i + 1 }
         end
 
         current_voter.update_data('locale' => I18n.locale)  # record the language the voter is using
@@ -86,8 +80,8 @@ class VoteController < ApplicationController
   def submit_ranking
     if !current_voter.nil? && !current_voter.test? && !conf[:stop_accepting_votes]
       # Check if vote already exists (from the same voter on the same approval page)
-      vote_exists = current_voter.vote_approvals
-        .joins('INNER JOIN projects ON vote_approvals.project_id = projects.id')
+      vote_exists = current_voter.vote_rankings
+        .joins('INNER JOIN projects ON vote_rankings.project_id = projects.id')
         .joins('INNER JOIN categories ON projects.category_id = categories.id')
         .where('categories.category_group = ?', conf[:ranking][:pages][current_subpage])
       if vote_exists.empty?
@@ -102,15 +96,15 @@ class VoteController < ApplicationController
             rank = params[:project_rank][project.id.to_s].to_i
             if rank > 0
               # Check if a similar vote already exists
-              vote_exists = VoteApproval.where('voter_id = ' + voter.id.to_s + ' AND project_id = ' + project.id.to_s)
+              vote_exists = VoteRanking.where('voter_id = ' + voter.id.to_s + ' AND project_id = ' + project.id.to_s)
               break if !vote_exists.empty?
 
-              vote_approval = VoteApproval.new
-              vote_approval.voter = voter
-              vote_approval.project = project
-              vote_approval.cost = cost
-              vote_approval.rank = rank
-              vote_approval.save!
+              vote_ranking = VoteRanking.new
+              vote_ranking.voter = voter
+              vote_ranking.project = project
+              vote_ranking.cost = cost
+              vote_ranking.rank = rank
+              vote_ranking.save!
               n_projects += 1
               ranks << rank
             end
@@ -154,7 +148,7 @@ class VoteController < ApplicationController
     @election = current_election
     projects = @election.projects.where(adjustable_cost: false) # TODO: Include adjustable cost projects in some way?
 
-    @projects_json = projects.as_json(only: [:id, :title, :description, :cost, :address, :partner, :committee], methods: :image_url)
+    @projects_json = projects.as_json(only: [:id, :title, :description, :cost, :details, :address, :partner, :committee], methods: :image_url)
 
     project_tuples = (0...@projects_json.length).map { |i| [i, @projects_json[i]['cost']] }
     @pairs = project_tuples.combination(2).to_a.sample(conf[:comparison][:n_pairs]).map { |pair| pair.shuffle }
@@ -258,9 +252,13 @@ class VoteController < ApplicationController
           vote_count: p.vote_count
         }
       end
-      @approvals = @projects  # hacky
 
-      @max_approval_vote_count = @projects.map { |p| p[:vote_count] }.max
+      @analytics_data = {
+        approval: {
+          approvals: @projects,  # hacky
+          max_approval_vote_count: @projects.map { |p| p[:vote_count] }.max
+        }
+      }
 
       @has_adjustable_cost_projects = @election.projects.exists?(adjustable_cost: true)
 
@@ -377,8 +375,16 @@ class VoteController < ApplicationController
       return
     end
 
-    # Generate a 6-digit number whose first digit is not zero. (100000 - 999999)
-    confirmation_code = (100000 + rand(900000)).to_s
+    if voter && !voter.confirmation_code.nil? && !voter.confirmation_code_created_at.nil? && Time.now.to_i - voter.confirmation_code_created_at.to_i < 10 * 60
+      # Send the same confirmation code if it was generated less than 10 minutes ago.
+      confirmation_code = voter.confirmation_code
+      confirmation_code_created_at = voter.confirmation_code_created_at
+    else
+      # Generate a 6-digit number without zeroes.
+      code_chars = ('1'..'9').to_a
+      confirmation_code = (0...6).map { |_| code_chars.sample }.join
+      confirmation_code_created_at = Time.now
+    end
 
     twilio_info = Rails.application.secrets[:twilio]
     begin
@@ -387,11 +393,14 @@ class VoteController < ApplicationController
       client.api.account.messages.create({
         from: twilio_info[:phone_number],
         to: @phone_number,
-        body: 'Confirmation code for voting: ' + confirmation_code,
+        body: t('sms_signup_confirm.confirmation_textmsg', confirmation_code: confirmation_code),
       })
     rescue Twilio::REST::RestError => e
       log_activity('sms_signup_failure', note: @phone_number)
       @error = e
+      if e.code == 21610  # The phone number is blacklisted.
+        @our_phone_number = twilio_info[:phone_number]
+      end
       render action: :sms_signup  # TODO: redirect_to
       return
     end
@@ -405,7 +414,7 @@ class VoteController < ApplicationController
       voter.user_agent = request.env['HTTP_USER_AGENT']
     end
     voter.confirmation_code = confirmation_code
-    voter.confirmation_code_created_at = Time.now
+    voter.confirmation_code_created_at = confirmation_code_created_at
     voter.save!
     log_activity('sms_signup_success', note: @phone_number)
     session[:tmp_voter_id] = voter.id
@@ -569,6 +578,59 @@ class VoteController < ApplicationController
     end
   end
 
+  # Free signup in remote voting (no verification whatsoever)
+  def free_signup
+    raise "Free signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_free_verification] && !conf[:stop_accepting_votes]
+    if conf[:free_verification_use_captcha]
+      @captcha = generate_captcha
+    end
+  end
+
+  def post_free_signup
+    raise "Free signup is not allowed" unless conf[:allow_remote_voting] && conf[:remote_voting_free_verification] && !conf[:stop_accepting_votes]
+    @election = current_election
+
+    if count_activity('remote_voting_signup_failure', 1.minute.ago, ip_address: request.remote_ip) >= 5
+      flash.now[:error] = 'Too many failed attempts. Please wait one minute and try again.'
+      @captcha = generate_captcha
+      render :free_signup
+      return
+    end
+
+    if params[:freeform_text].blank?
+      flash.now[:error] = "The field can't be blank"
+      @captcha = generate_captcha
+      render :free_signup
+      return
+    end
+
+    if conf[:free_verification_use_captcha] && !verify_captcha(params[:original_captcha], params[:captcha])
+      flash.now[:error] = "The number doesn't match"
+      @captcha = generate_captcha
+      render :free_signup
+      return
+    end
+
+    freeform_text = params[:freeform_text].strip
+
+    voter = Voter.new
+    voter.election = @election
+    voter.authentication_method = 'free'
+    voter.authentication_id = SecureRandom.hex(16)
+    voter.ip_address = request.remote_ip
+    voter.user_agent = request.env['HTTP_USER_AGENT']
+    voter.save!
+
+    voter.update_data(freeform_text: freeform_text)
+
+    session[:voter_id] = voter.id
+    if @election.config[:voter_registration]
+      redirect_to action: :registration
+    else
+      redirect_to action: conf[:workflow][0]
+    end
+  end
+
   def registration
     raise "Voter registration is not enabled" unless conf[:voter_registration]
 
@@ -584,8 +646,13 @@ class VoteController < ApplicationController
     voter = current_voter
     raise 'error' if voter.nil?
 
-    voter_registration_record_params = params.require(:voter_registration_record).permit(@election.config[:voter_registration_questions] - ["age_verify"])
-    @record = VoterRegistrationRecord.new(voter_registration_record_params)
+    permitted_fields = @election.config[:voter_registration_questions] - ["age_verify"]
+    if permitted_fields.empty?
+      @record = VoterRegistrationRecord.new
+    else
+      voter_registration_record_params = params.require(:voter_registration_record).permit(permitted_fields)
+      @record = VoterRegistrationRecord.new(voter_registration_record_params)
+    end
     @record.election_id = @election.id
     @record.voter_id = voter.id
     if @record.save
@@ -733,5 +800,15 @@ class VoteController < ApplicationController
   def sanitize_code(c)
     # Remove non-alphanumeric characters and strip leading zeros in the code.
     c.downcase.gsub(/[^0-9a-z_]/, '').sub(/^0+/, '')
+  end
+
+  def generate_captcha
+    captcha_chars = ('1'..'9').to_a
+    (0...4).map { |_| captcha_chars.sample }.join
+  end
+
+  def verify_captcha(original_captcha, captcha)
+    return false if original_captcha.blank? || original_captcha.length != 4
+    original_captcha == captcha.gsub(/[^1-9]/, '')
   end
 end

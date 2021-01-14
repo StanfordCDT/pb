@@ -43,18 +43,39 @@ module Admin
     end
 
     def post_duplicate
-      @election = Election.new(election_params)
       original_election = Election.find(params[:id])
-      @election.budget = original_election.budget
-      @election.time_zone = original_election.time_zone
-      @election.config_yaml = original_election.config_yaml
-      @election.allow_admins_to_update_election = original_election.allow_admins_to_update_election
-      @election.allow_admins_to_see_voter_data = original_election.allow_admins_to_see_voter_data
-      @election.allow_admins_to_see_exact_results = original_election.allow_admins_to_see_exact_results
-      if @election.save
-        redirect_to admin_election_path(@election)
-      else
-        render :duplicate
+      @election = original_election.dup
+      local_election_params = election_params
+      @election.name = local_election_params[:name]
+      @election.slug = local_election_params[:slug]
+      @election.duplicate_projects = params[:election][:duplicate_projects]
+      ActiveRecord::Base.transaction do
+        if @election.save
+          redirect_to admin_election_path(@election)
+        else
+          render :duplicate
+          raise ActiveRecord::Rollback
+        end
+
+        if @election.duplicate_projects
+          category_ids = {}
+          original_election.categories.each do |original_category|
+            category = original_category.dup
+            category.election_id = @election.id
+            category.image = original_category.image
+            category.save!
+            category_ids[original_category.id] = category.id
+          end
+          original_election.projects.each do |original_project|
+            project = original_project.dup
+            project.election_id = @election.id
+            project.image = original_project.image
+            if !original_project.category.nil?
+              project.category_id = category_ids[original_project.category_id]
+            end
+            project.save!
+          end
+        end
       end
     end
 
@@ -115,45 +136,60 @@ module Admin
       @authentication_method = params[:authentication_method]
       @location_name = Location.find(params[:location_id]).name if params.key?(:location_id)
 
-      @projects = @election.projects.map do |p|
-        {
-          id: p.id,
-          title: p.title,
-          cost: p.cost,
-          adjustable_cost: p.adjustable_cost,
-          category_name: p.category.nil? ? nil : p.category.name,
-        }
+      Globalize.with_locale(@election.config[:default_locale]) do
+        @projects = @election.projects.map do |p|
+          {
+            id: p.id,
+            title: p.title,
+            cost: p.cost,
+            adjustable_cost: p.adjustable_cost,
+            category_name: p.category.nil? ? nil : p.category.name,
+          }
+        end
       end
 
       # code for the vote count table
       @total_vote_count = @election.valid_voters.count
       @columns, @vote_counts, @totals = analytics_vote_count_table(@election, utc_offset)
 
+      @analytics_data = {}
+
       if workflow.include?('approval')
-        @approvals, @max_approval_vote_count, approvals_csv, approvals_individual_csv =
+        @analytics_data[:approval], approvals_csv, approvals_individual_csv =
           analytics_approval(@election, utc_offset, filter)
       end
 
       if workflow.include?('knapsack')
-        @knapsack_data, @knapsack_max_vote_count, knapsacks_csv, @knapsack_voters_by_date, @knapsack_total, knapsacks_individual_csv =
+        @analytics_data[:knapsack], knapsacks_csv, knapsacks_individual_csv =
           analytics_knapsack(@election, utc_offset)
       end
 
       if workflow.include?('comparison')
-        @comparison_data, @comparison_ordered_indices, comparison_losses_csv, comparison_ties_csv, comparison_wins_csv, comparison_ratios_csv, @comparison_voters_by_date, @comparison_total, comparisons_individual_csv =
+        @analytics_data[:comparison], comparison_losses_csv, comparison_ties_csv, comparison_wins_csv, comparison_ratios_csv, comparisons_individual_csv =
           analytics_comparison(@election, utc_offset, filter)
       end
 
       @voter_registration_exists, voter_registration_csv = analytics_voter_registration(@election)
 
-      if @election.config[:approval][:project_ranking] || workflow.include?('ranking')
-        @project_ranked_votes, project_ranked_votes_csv, ranking_approval_individual_csv = analytics_ranking_approval(@election)
+      if @election.config[:remote_voting_free_verification]
+        voter_data_csv = analytics_voter_data(@election)
+      end
+
+      if params[:legacy]
+        if @election.config[:approval][:project_ranking] || workflow.include?('ranking')
+          @analytics_data[:ranking], ranking_csv, ranking_individual_csv = analytics_ranking_legacy(@election)
+        end
+      else
+        if workflow.include?('ranking')
+          @analytics_data[:ranking], ranking_csv, ranking_individual_csv = analytics_ranking(@election)
+        end
       end
 
       respond_to do |format|
         format.html {}
         format.json do
           render json: {
+            analytics_data: @analytics_data
           }
         end
         format.csv do
@@ -170,8 +206,9 @@ module Admin
             when :knapsacks_individual then knapsacks_individual_csv.call
             when :comparisons_individual then comparisons_individual_csv.call
             when :voter_registration then voter_registration_csv.call
-            when :project_ranked_votes then project_ranked_votes_csv.call
-            when :ranking_approval_individual then ranking_approval_individual_csv.call
+            when :voter_data then voter_data_csv.call
+            when :ranking then ranking_csv.call
+            when :ranking_individual then ranking_individual_csv.call
             else raise 'error'
           end
           send_data csv_string, type: :csv, disposition: "attachment; filename=" + @election.slug + "-" + table + ".csv"
@@ -414,7 +451,7 @@ module Admin
     def election_params
       params.require(:election).permit(
         [:name, :slug, :budget, :time_zone, :config_yaml] +
-        (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :show_link_on_home_page, :real_election, :remarks] : [])
+        (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :real_election, :remarks] : [])
       )
     end
 
@@ -525,7 +562,10 @@ module Admin
         end
       end
 
-      [approvals, max_approval_vote_count, approvals_csv, approvals_individual_csv]
+      [{
+        approvals: approvals,
+        max_approval_vote_count: max_approval_vote_count
+      }, approvals_csv, approvals_individual_csv]
     end
 
     def analytics_comparison(election, utc_offset, filter)
@@ -594,7 +634,12 @@ module Admin
         end
       end
 
-      [comparison_data, comparison_ordered_indices, comparison_losses_csv, comparison_ties_csv, comparison_wins_csv, comparison_ratios_csv, comparison_voters_by_date, comparison_total, comparisons_individual_csv]
+      [{
+        comparison_data: comparison_data,
+        comparison_ordered_indices: comparison_ordered_indices,
+        comparison_voters_by_date: comparison_voters_by_date,
+        comparison_total: comparison_total
+      }, comparison_losses_csv, comparison_ties_csv, comparison_wins_csv, comparison_ratios_csv, comparisons_individual_csv]
     end
 
     def group_project_costs_by_id(knapsack_votes)
@@ -612,7 +657,7 @@ module Admin
     end
 
     def analytics_knapsack(election, utc_offset)
-      knapsack_projects = election.categorized? ? election.projects.joins(:category).where('category_group IN (?)', election.config[:knapsack][:pages]) : election.projects
+      knapsack_projects = election.categorized? ? election.projects.left_outer_joins(:category).where('category_group IN (?) OR category_id IS NULL', election.config[:knapsack][:pages]) : election.projects
 
       votes_by_project_and_cost = knapsack_projects
         .joins('LEFT OUTER JOIN vote_knapsacks ON vote_knapsacks.project_id = projects.id '\
@@ -631,15 +676,24 @@ module Admin
       votes_by_project_and_cost.group_by(&:id).map do |id, ps|
         project_costs[id] = ps.reject { |p| p.knapsack_cost.nil? || p.vote_count == 0 }.map { |p| [p.knapsack_cost] * p.vote_count }.flatten
       end
-      allocation = KnapsackAllocation.new(project_costs, election.budget)
+      partial_allocation_method = case params[:knapsack_partial]
+        when "fractional" then :fractional_partial_allocation
+        when "equalizing" then :equalizing_partial_allocation
+        else :increasing_partial_allocation
+      end
+      allocation = KnapsackAllocation.new(project_costs, election.budget, KnapsackAllocation.method(partial_allocation_method))
       total_allocations = allocation.total_allocations
+      discrete_allocations = allocation.discrete_allocations
+      partial_allocations = allocation.partial_allocations
       # ----------------
 
       knapsack_data = votes_by_project_and_cost.group_by(&:id).map do |id, ps|
         {
           id: id,
-          votes: ps.reject { |p| p.knapsack_cost.nil? || p.vote_count == 0 }.sort_by(&:knapsack_cost).map { |p| [p.knapsack_cost, p.vote_count] },
-          allocation: total_allocations[id]
+          votes: ps.reject { |p| p.knapsack_cost.nil? || p.vote_count == 0 }.sort_by(&:knapsack_cost).reverse.map { |p| [p.knapsack_cost, p.vote_count] },
+          allocation: total_allocations[id],
+          discrete_allocation: discrete_allocations[id],
+          partial_allocation: partial_allocations[id]
         }
       end
 
@@ -704,21 +758,144 @@ module Admin
         end
       end
 
-      [knapsack_data, knapsack_max_vote_count, knapsacks_csv, knapsack_voters_by_date, knapsack_total, knapsacks_individual_csv]
+      [{
+        knapsack_data: knapsack_data,
+        knapsack_max_vote_count: knapsack_max_vote_count,
+        knapsack_voters_by_date: knapsack_voters_by_date,
+        knapsack_total: knapsack_total,
+        knapsack_discrete_vote: allocation.discrete_vote,
+        knapsack_partial_project_ids: allocation.partial_project_ids
+      }, knapsacks_csv, knapsacks_individual_csv]
     end
 
-    # Analytics for ranking approval interface
-    def analytics_ranking_approval(election)
+    # Analytics for ranking interface
+    def analytics_ranking(election)
       projects_to_rank = election.projects
       # FIXME: This is wrong, if an election has both approval and ranking.
       if election.config[:workflow].flatten.include?('ranking') && election.categorized?
-        projects_to_rank = election.projects.joins(:category).where("category_group IN (?)", election.config[:ranking][:pages])
+        projects_to_rank = election.projects.left_outer_joins(:category).where("category_group IN (?) OR category_id IS NULL", election.config[:ranking][:pages])
       end
 
       n_projects = projects_to_rank.count
+      k = election.config[:ranking][:max_n_projects]
 
-      # 3 = 1 + 1 + 1: 1 for Project title, 1 for project cost, 1 for total score
-      n_cols = election.config[:ranking][:max_n_projects] + 3
+      # [title] [cost] [k projects] [total]
+      n_cols = k + 3
+
+      # Generate a 2D matrix mapping project to ranked votes
+      project_id_to_index = {}
+      project_ranked_votes = Array.new(n_projects) { Array.new(n_cols) { 0 } }
+
+      projects_to_rank.each_with_index do |p, index|
+        project_id_to_index[p.id] = index
+        project_ranked_votes[index][0] = projects_to_rank.find(p.id).title
+        project_ranked_votes[index][1] = projects_to_rank.find(p.id).cost
+      end
+
+      votes_by_project_and_rank = projects_to_rank
+        .joins('INNER JOIN vote_rankings ON vote_rankings.project_id = projects.id '\
+        'INNER JOIN voters ON voters.id = vote_rankings.voter_id AND voters.void = 0')
+        .select('vote_rankings.project_id, vote_rankings.rank, COUNT(voters.id) AS vote_count')
+        .group('vote_rankings.project_id, vote_rankings.rank')
+      if !current_user.can_see_exact_results?(election)
+        votes_by_project_and_rank.each { |v| v.vote_count = v.vote_count.round(-1) }
+      end
+      votes_by_project_and_rank.each do |v|
+        project_ranked_votes[project_id_to_index[v.project_id]][v.rank + 1] = v.vote_count
+      end
+
+      # Get the total count of the votes in the last column
+      for i in 0...n_projects do
+        sum_score = 0
+        for j in 0...k do
+          sum_score += project_ranked_votes[i][j + 2] * project_vote_score(n_projects, k, j + 1)
+        end
+        project_ranked_votes[i][k + 2] = sum_score
+      end
+
+      # Sort in decreasing order of the total count
+      project_ranked_votes.sort! { |a, b| b[n_cols - 1] <=> a[n_cols - 1] }
+
+      # The lambda function to generate the CSV for the project vote counts
+      ranking_csv = lambda do
+        # Generate the headers
+        headers = ['Project', 'Cost']
+        for i in 1..(n_cols - 3)
+          headers << 'Rank' + i.to_s
+        end
+        headers << 'Total Score'
+
+        CSV.generate do |csv|
+          csv << headers
+
+          # Add the rows for the projects
+          project_ranked_votes.each do |p|
+            csv << p
+          end
+        end
+      end
+
+      # The lambda function to generate the CSV file for the voter data
+      ranking_individual_csv = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+
+        ranking_approval_votes = election.valid_voters.joins('JOIN vote_rankings ON vote_rankings.voter_id = voters.id')
+          .select('voters.id, vote_rankings.project_id, vote_rankings.rank')
+          .order('voters.id, vote_rankings.rank')
+
+        # Get the project title + cost to print
+        project_data = {}
+        election.projects.each do |p|
+          project_data[p.id] = p.title + ' ($' + p.cost.to_s + ')'
+        end
+
+        # Generate the headers
+        headers = ['Voter ID']
+
+        # Add headers for the ranked projects
+        for i in 1..(election.config[:ranking][:max_n_projects])
+          headers += ['Rank' + i.to_s]
+        end
+
+        # Generate the CSV
+        CSV.generate do |csv|
+          # Add the headers
+          csv << headers
+          # Store the current voter and current row so that the projects can be aggregated
+          current_voter = -1
+          current_row = []
+          ranking_approval_votes.each do |r|
+            if current_voter != r.id
+              csv << current_row if !current_row.empty?
+              current_voter = r.id
+              current_row = [r.id]
+            end
+            # Add the project details
+            current_row << project_data[r.project_id]
+          end
+          # Add the last row to the CSV
+          csv << current_row if !current_row.empty?
+        end
+      end
+
+      [{
+        project_ranked_votes: project_ranked_votes
+      }, ranking_csv, ranking_individual_csv]
+    end
+
+    # Analytics for ranking interface (It's legacy because it stores votes in the approval table.)
+    def analytics_ranking_legacy(election)
+      projects_to_rank = election.projects
+      # FIXME: This is wrong, if an election has both approval and ranking.
+      if election.config[:workflow].flatten.include?('ranking') && election.categorized?
+        projects_to_rank = election.projects.left_outer_joins(:category).where("category_group IN (?) OR category_id IS NULL", election.config[:ranking][:pages])
+      end
+
+      n_projects = projects_to_rank.count
+      k = election.config[:ranking][:max_n_projects]
+
+      # [title] [cost] [k projects] [total]
+      n_cols = k + 3
 
       # Generate a 2D matrix mapping project to ranked votes
       project_id_to_index = {}
@@ -743,19 +920,19 @@ module Admin
       end
 
       # Get the total count of the votes in the last column
-      start_j = 2
       for i in 0...n_projects do
-        for j in start_j..(n_cols - 2) do
-          project_ranked_votes[i][n_cols - 1] +=
-            project_ranked_votes[i][j] * project_vote_score(n_projects, n_cols - 3, j - 1)
+        sum_score = 0
+        for j in 0...k do
+          sum_score += project_ranked_votes[i][j + 2] * project_vote_score(n_projects, k, j + 1)
         end
+        project_ranked_votes[i][k + 2] = sum_score
       end
 
       # Sort in decreasing order of the total count
       project_ranked_votes.sort! { |a, b| b[n_cols - 1] <=> a[n_cols - 1] }
 
       # The lambda function to generate the CSV for the project vote counts
-      project_ranked_votes_csv = lambda do
+      ranking_csv = lambda do
         # Generate the headers
         headers = ['Project', 'Cost']
         for i in 1..(n_cols - 3)
@@ -774,7 +951,7 @@ module Admin
       end
 
       # The lambda function to generate the CSV file for the voter data
-      ranking_approval_individual_csv = lambda do
+      ranking_individual_csv = lambda do
         raise 'error' unless current_user.can_see_voter_data?(election)
 
         ranking_approval_votes = election.valid_voters.joins('JOIN vote_approvals ON vote_approvals.voter_id = voters.id')
@@ -816,7 +993,9 @@ module Admin
         end
       end
 
-      [project_ranked_votes, project_ranked_votes_csv, ranking_approval_individual_csv]
+      [{
+        project_ranked_votes: project_ranked_votes
+      }, ranking_csv, ranking_individual_csv]
     end
 
     # Helper method for ranking approval analytics
@@ -859,6 +1038,32 @@ module Admin
       end
 
       [voter_registration_exists, voter_registration_csv]
+    end
+
+    # Analytics for the voter data. Currently only used by free verification.
+    def analytics_voter_data(election)
+      voter_data_csv = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+        raise 'error' unless election.config[:remote_voting_free_verification]
+
+        voters = election.voters.where('void = 0').order(:id)
+
+        # Generate the column headers
+        headers = (!current_user.superadmin? ? ['voter_id'] : []) + ['text_field_value']
+
+        # Generate the CSV
+        id = 1
+        CSV.generate do |csv|
+          csv << headers
+          voters.each do |voter|
+            row = (!current_user.superadmin? ? [voter.id] : []) + [voter.data["freeform_text"]]
+            csv << row
+            id += 1
+          end
+        end
+      end
+
+      voter_data_csv
     end
 
     # The detailed results for each poll site.

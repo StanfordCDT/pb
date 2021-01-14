@@ -54,7 +54,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @comparison_voters_by_date.each do |v| %>
+        <% @analytics_data[:comparison][:comparison_voters_by_date].each do |v| %>
           <tr>
             <td><%= v.date.strftime('%a, %B %e, %Y') %></td>
             <td><%= number_with_delimiter(v.vote_count) %></td>
@@ -62,7 +62,7 @@
         <% end %>
         <tr>
           <td><b>Total</b></td>
-          <td><%= number_with_delimiter(@comparison_total) %> </td>
+          <td><%= number_with_delimiter(@analytics_data[:comparison][:comparison_total]) %> </td>
         </tr>
       </tbody>
     </table>
@@ -103,8 +103,8 @@
 </style>
 
 <script type="text/javascript">
-var comparison_data = <%= @comparison_data.to_json %>;
-var comparison_ordered_indices = <%= @comparison_ordered_indices.to_json %>;
+var comparison_data = analytics_data.comparison.comparison_data;
+var comparison_ordered_indices = analytics_data.comparison.comparison_ordered_indices;
 
 (function() {
   var table = document.createElement('table');
@@ -257,10 +257,10 @@ var comparison_ordered_indices = <%= @comparison_ordered_indices.to_json %>;
   reloadComparisonTable();
 })();
 
-if (window.reloadCallbacks) {
-  reloadCallbacks.push(function(data) {
-    comparison_data = data.comparison_data;
-    reloadComparisonTable();
-  });
-}
+// if (window.reloadCallbacks) {
+//   reloadCallbacks.push(function(data) {
+//     comparison_data = data.comparison_data;
+//     reloadComparisonTable();
+//   });
+// }
 </script>

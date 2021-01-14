@@ -1,0 +1,450 @@
+bn:
+  navigation:
+    brand: PB
+    home: হোম
+    about: সম্পর্কে
+    help: সহায়তা
+    exit: প্রস্থান করুন
+  index:
+    title: অংশগ্রহণমূলক বাজেটিং
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>অংশগ্রহণমূলক
+        বাজেটিং-এর ডিজিট্যাল ভোটিং ইন্টারফেসে স্বাগতম</p>'
+      instruction: অনুগ্রহ করে আপনার প্রাপ্ত কোডটি লিখুন।
+      code_placeholder: কোড
+      enter_code_button: প্রবেশ করুন
+      wrong_code: ভুল কোড
+      used_code: এই কোডটি ইতিমধ্যেই ব্যবহৃত হয়েছে।
+      used_personal_id: এই আইডিটি ইতিমধ্যেই ব্যবহৃত হয়েছে। সমস্যা হলে বা আপনাকে আবার
+        ভোট দিতে হলে voxpopuli@lists.stanford.edu-এর সঙ্গে যোগাযোগ করুন।
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+         <p class='lead'>স্ট্যান্ডফোর্ড ক্রাউডসোর্সড ডেমোক্রেসি টিমের সৌজন্যে, অংশগ্রহণমূলক বাজেটিংয়ের নমুন ডিজিট্যাল ব্যালটে স্বাগতম।</p>
+         <p class='lead'>এই ওয়েবসাইটে, আপনি এই বছরের€™s প্রকল্প ও ডিজিট্যাল ব্যালটের সঙ্গে নিজেকে পরিচিত করে নিতে পারেন। এই ওয়েবসাইটটি কেবল তথ্যের উদ্দেশ্যে, আপনি এখানে আসলেই ভোট দিতে <b>পারবেন না</b>।</p>
+         <p class='lead'>যখন <u>আসল ব্যালেটে</u> ভোট দেবেন, তখন সিটির রাজধানী উন্নয়নের বাজেটের $XXX মিলিয়ন কিসে বরাদ্দ করবেন সেই নিয়ে সিদ্ধান্ত নেবেন। ভোট দিতে, সিটিতে উপলভ্য ভোট কেন্দ্রগুলোর একটিতে আপনাকে যেতে হবে। (Date XXX) থেকে (Date YYY) পর্যন্ত ভোট হবে। নীচে সমস্ত সময় ও অবস্থান দেখুন।</p>
+      proceed_button: নমুনা ব্যালেট দেখুন >>
+      sms_verification_button: এখনই ভোট দিন >>
+      code_verification_button: কোড লিখুন
+      other_verification_button: এখনই ভোট দিন >>
+      see_projects_button: প্রকল্পগুলো দেখুন
+    voting_has_not_started: এই ওয়েবসাইটে ভোটিং এখনও শুরু হয়নি। আমরা যত তাড়াতাড়ি সম্ভব
+      রিমোট ভোট সংগ্রহ করা শুরু করব। আপনার ধৈর্য্যের জন্য ধন্যবাদ।
+    voting_ended: ভোটিং শেষ হয়েছে।
+    public_results: ভোটের ফলাফল দেখুন
+  approval:
+    title: অংশগ্রহণমূলক বাজেটিং
+    popup:
+      title: নির্দেশনা
+      body: <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান সেগুলো বেছে নিন। আপনি <b>%{max_n_projects}টি
+        পর্যন্ত প্রকল্পের জন্য ভোট করতে পারেন। জমা দেয়ার জন্য প্রস্তুত হলে </b></li>
+        <li><b>"আমার ভোট জমা দিন"</b> বোতামটি ক্লিক করুন।</li> </ol>
+      ok: ঠিক আছে
+    instructions: <h3>নির্দেশনা</h3> <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান
+      সেগুলো বেছে নিন। আপনি <b>%{max_n_projects}টি পর্যন্ত প্রকল্পের জন্য ভোট করতে
+      পারেন। জমা দেয়ার জন্য প্রস্তুত হলে </b></li> <li><b>"আমার ভোট জমা দিন"</b> বোতামটি
+      ক্লিক করুন।</li> </ol>
+    list_of_projects: প্রকল্পের তালিকা
+    estimated_cost: আনুমানিক খরচ
+    youtube_video: YouTube ভিডিও
+    location: স্থান
+    partner: পার্টনার
+    committee: কমিটি
+    read_details: আরো জানুন...
+    select_button:
+      select: নির্বাচন করুন
+      selected: নির্বাচিত
+      not_enough_money: পর্যাপ্ত অর্থ নেই
+      more_projects: "%{max_n_projects}-এর বেশি প্রকল্প বেছে নিতে পারবেন না"
+    remove_button: অপসারণ করুন
+    remove_button_tooltip: এই প্রকল্পটি আর বেছে নিতে না চাইলে এখানে ক্লিক করুন।
+    submit_button: আমার ভোট জমা দিন...
+    confirmation:
+      title: আপনি কি আপনার ভোট জমা দেয়ার ব্যাপারে নিশ্চিত?
+      body:
+        summary:
+          zero: "<span style='color: red;'>আপনি কোনো প্রকল্প নির্বাচন করেননি।</span>"
+          other: 'আপনি নিম্নলিখিত প্রকল্প নির্বাচন করেছেন: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>আপনি কেবল একটি প্রকল্প নির্বাচন করেছেন।</span>"
+          less: "<span style='color: red;'>আপনি কেবল %{count}টি প্রকল্প নির্বাচন করেছেন।</span>"
+          limit: "<span style='color: red;'>আপনি %{max_n_projects}টি প্রকল্পের জন্য
+            ভোট দিতে পারবেন।</span>"
+        warning: আপনার ভোট জমা দেয়ার পর সেটি আর বদলাতে <strong>পারবেন না</strong>।
+          যদি আপনি আপনার ভোট সংশোধন করতে চান, তাহলে অনুগ্রহ করে ‘ফিরে যান’ বিকল্পে
+          ক্লিক করুন। যদি আপনি আপনার ভোট জমা দিতে চান, তাহলে অনুগ্রহ করে নীচের বাক্সে
+          টিক দিয়ে 'আমার ভোট জমা দিন’ বিকল্পে ক্লিক করুন।
+        checkbox: আমি বুঝেছি যে আমার ভোট জমা দেয়ার পর, আমি আর সেটিকে বদলাতে <strong>পারব
+          না</strong>।
+      ok: আমার ভোট জমা দিন
+      cancel: ফিরে যান
+    confirmation_over_limit:
+      title: আপনার ভোট জমা দেয়া গেল না
+      over_n_project_limit: "<span style='color:red'>আপনি <b>%{n_projects}</b>টি প্রকল্প
+        নির্বাচন করেছেন। আপনি সর্বোচ্চ <b>%{max_n_projects}</b>টি প্রকল্প নির্বাচন
+        করতে পারেন। অনুগ্রহ করে <b>%{extra}</b> বা তার বেশি প্রকল্প অপসারণ করুন।</span>"
+      over_budget_limit: "<span style='color:red'>বর্তমানে আপনার বাজেট অনেক বেশি।</span>"
+      cancel: ফিরে যান
+    tracker:
+      text: আপনি %{count}টি প্রকল্প নির্বাচন করেছেন।
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: মোট বাজেটের %{budget} থেকে %{total} নির্বাচিত।
+      under_budget: এখনও আপনার %{remaining_money} বাকি আছে।
+      over_budget: বর্তমানে আপনার বাজেট অনেক বেশি।
+      over_budget_but_can_add_projects: বর্তমানে আপনার বাজেট অনেক বেশি, কিন্তু আপনি
+        প্রকল্প যোগ করতে পারেন।
+    adjustable_cost_project:
+      instructions: 'অনুগ্রহ করে নিম্নলিখিতের মধ্যে একটি চয়ন করুন:'
+      not_adjusted_warning: "<span style='color:red'>আপনি %{project}</span> এর জন্য
+        $0 বেছে নিয়েছেন"
+      message: আপনি %{project}-এর জন্য %{cost} নির্বাচন করেছেন
+      table_headings:
+        percentage_column: বাজেট খরচের শতকরা হার
+        cost_column: খরচ
+        number_column: 'আনুমানিক #টি ব্লক নতুন করে করা হয়েছে'
+    map:
+      street_resurfacing_count:
+        one: 1টি রাস্তা পুনর্নির্মাণ করা হয়েছে
+        other: "%{count}টি রাস্তা পুনর্নির্মাণ করা হয়েছে"
+      alley_resurfacing_count:
+        one: 1টি গলি পুনর্নির্মাণ করা হয়েছে
+        other: "%{count}টি গলি পুনর্নির্মাণ করা হয়েছে"
+      apron_resurfacing_count:
+        one: 1টি এপ্রোন পুনর্নির্মাণ করা হয়েছে
+        other: "%{count}টি এপ্রোন পুনর্নির্মাণ করা হয়েছে"
+      sidewalk_repairing_count:
+        one: 1টি ফুটপাথ মেরামত করা হয়েছে
+        other: "%{count}টি ফুটপাথ মেরামত করা হয়েছে"
+    image_gallery:
+      cue: স্লাইড শোয়ের জন্য ছবি তুলুন
+    project_ranking:
+      list_header: 'আপনি নিম্নলিখিত প্রকল্প নির্বাচন করেছেন: <span class=''glyphicon
+        glyphicon-sort''></span> টি আইকন টেনে এনে সেগুলির রেঙ্কিং বদলান।'
+      continue_button: চালিয়ে যান
+  thanks_approval:
+    title: ধন্যবাদ
+    description:
+      real: "<p class='lead text-center'>আপনার ভোটের জন্য ধন্যবাদ। পরের পাতায় যেতে
+        অনুগ্রহ করে নীচের ‘পরবর্তীতে’ ক্লিক করুন।</p>"
+      demo: "<p class='lead'>আপনার ভোটের জন্য ধন্যবাদ। <span style='color: red;'><strong>অনুগ্রহ
+        করে মনে রাখবেন যে, এটি কেবলমাত্র <u>প্রিভিউ</u>।</strong></span> পরের পাতায়
+        যেতে অনুগ্রহ করে নীচের ‘পরবর্তীতে’ ক্লিক করুন।</p>"
+    send_vote_email: "(ঐচ্ছিক) আমি আমার ইমেইলে ভোটের ফলাফল পাঠাতে চাই:"
+    email_placeholder: ইমেইল ঠিকানা লিখুন
+    next_button: পরবর্তী&gt;&gt;
+  ranking:
+    title: অংশগ্রহণমূলক বাজেটিং
+    popup:
+      title: নির্দেশনা
+      body: <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান সেগুলো বেছে নিন। আপনি <b>%{max_n_projects}টি
+        পর্যন্ত প্রকল্পের জন্য ভোট করতে পারেন। জমা দেয়ার জন্য প্রস্তুত হলে </b></li>
+        <li><b>"আমার ভোট জমা দিন"</b> বোতামটি ক্লিক করুন।</li> </ol>
+      ok: ঠিক আছে
+    instructions: <h3>নির্দেশনা</h3> <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান
+      সেগুলো বেছে নিন। আপনি <b>%{max_n_projects}টি পর্যন্ত প্রকল্পের জন্য ভোট করতে
+      পারেন। জমা দেয়ার জন্য প্রস্তুত হলে </b></li> <li><b>"আমার ভোট জমা দিন"</b> বোতামটি
+      ক্লিক করুন।</li> </ol>
+    list_of_projects: প্রকল্পের তালিকা
+    estimated_cost: আনুমানিক খরচ
+    youtube_video: YouTube ভিডিও
+    location: স্থান
+    partner: পার্টনার
+    committee: কমিটি
+    read_details: আরো জানুন...
+    select_button:
+      select: নির্বাচন করুন
+      selected: নির্বাচিত
+      not_enough_money: পর্যাপ্ত অর্থ নেই
+      more_projects: "%{max_n_projects}-এর বেশি প্রকল্প বেছে নিতে পারবেন না"
+    remove_button: অপসারণ করুন
+    remove_button_tooltip: এই প্রকল্পটি আর বেছে নিতে না চাইলে এখানে ক্লিক করুন।
+    submit_button: আমার ভোট জমা দিন...
+    confirmation:
+      title: আপনি কি আপনার ভোট জমা দেয়ার ব্যাপারে নিশ্চিত?
+      body:
+        summary:
+          zero: "<span style='color: red;'>আপনি কোনো প্রকল্প নির্বাচন করেননি।</span>"
+          other: 'আপনি নিম্নলিখিত প্রকল্প নির্বাচন করেছেন: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>আপনি কেবল একটি প্রকল্প নির্বাচন করেছেন।</span>"
+          less: "<span style='color: red;'>আপনি কেবল %{count}টি প্রকল্প নির্বাচন করেছেন।</span>"
+          limit: "<span style='color: red;'>আপনি %{max_n_projects}টি প্রকল্পের জন্য
+            ভোট দিতে পারবেন।</span>"
+        warning: আপনার ভোট জমা দেয়ার পর সেটি আর বদলাতে <strong>পারবেন না</strong>।
+          যদি আপনি আপনার ভোট সংশোধন করতে চান, তাহলে অনুগ্রহ করে ‘ফিরে যান’ বিকল্পে
+          ক্লিক করুন। যদি আপনি আপনার ভোট জমা দিতে চান, তাহলে অনুগ্রহ করে নীচের বাক্সে
+          টিক দিয়ে 'আমার ভোট জমা দিন’ বিকল্পে ক্লিক করুন।
+        checkbox: আমি বুঝেছি যে আমার ভোট জমা দেয়ার পর, আমি আর সেটিকে বদলাতে <strong>পারব
+          না</strong>।
+      ok: আমার ভোট জমা দিন
+      cancel: ফিরে যান
+    confirmation_over_limit:
+      title: আপনার ভোট জমা দেয়া গেল না
+      over_n_project_limit: "<span style='color:red'>আপনি <b>%{n_projects}</b>টি প্রকল্প
+        নির্বাচন করেছেন। আপনি সর্বোচ্চ <b>%{max_n_projects}</b>টি প্রকল্প নির্বাচন
+        করতে পারেন। অনুগ্রহ করে <b>%{extra}</b> বা তার বেশি প্রকল্প অপসারণ করুন।</span>"
+      over_budget_limit: "<span style='color:red'>বর্তমানে আপনার বাজেট অনেক বেশি।</span>"
+      cancel: ফিরে যান
+    tracker:
+      text: আপনি %{count}টি প্রকল্প নির্বাচন করেছেন।
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: মোট বাজেটের %{budget} থেকে %{total} নির্বাচিত।
+      under_budget: এখনও আপনার %{remaining_money} বাকি আছে।
+      over_budget: বর্তমানে আপনার বাজেট অনেক বেশি।
+      over_budget_but_can_add_projects: বর্তমানে আপনার বাজেট অনেক বেশি, কিন্তু আপনি
+        প্রকল্প যোগ করতে পারেন।
+    adjustable_cost_project:
+      instructions: 'দয়া করে নিম্নলিখিতের মধ্যে একটি চয়ন করুন:'
+      not_adjusted_warning: "<span style='color:red'>আপনি %{project}</span> এর জন্য
+        $0 বেছে নিয়েছেন"
+      message: আপনি %{project}-এর জন্য %{cost} নির্বাচন করেছেন
+      table_headings:
+        percentage_column: বাজেট খরচের শতকরা হার
+        cost_column: খরচ
+        number_column: 'আনুমানিক #টি ব্লক নতুন করে করা হয়েছে'
+    image_gallery:
+      cue: স্লাইড শোয়ের জন্য ছবি তুলুন
+  question:
+    title: জরিপ
+    question: আপনার বয়স কি 14 বছর বা তার বেশী?
+    ok: হ্যাঁ, আমার বয়স 14 বছর বা তার বেশি
+    alternative: না, আমার বয়স 14 বছরের কম
+  comparison:
+    title: তুলনা
+    header: কোন প্রকল্পটি পয়সা উশুল, প্রতি ডলার খরচের হিসেবে কমিউনিটিতে সবথেকে বেশি
+      সুবিধা প্রদান করে?
+    estimated_cost: আনুমানিক খরচ
+    this_project: এই প্রকল্পটি
+    not_sure: আমি নিশ্চিত নই
+    popup:
+      title: নির্দেশনা
+      body: "<p style='font-size: 20px;'>আপনাকে এমন একটি কর্মকাণ্ডে অংশ নিতে বলা হবে
+        যেটি আপনার ভোটে প্রভাব ফেলবে <u>না</u>, কিন্তু স্ট্যান্ডফোর্ড বিশ্ববিদ্যালয়ের
+        রিসার্চ প্রকল্পের অংশ হিসেবে অংশগ্রহণমূলক বাজেটিং প্রক্রিয়ার উন্নতির ক্ষেত্রে
+        আমাদের সাহায্য করে।</p> <ul style='font-size: 20px;'><li>এই কর্মকাণ্ডে যুক্ত
+        হওয়া ঐচ্ছিক। আপনি যে কোনো সময় প্রস্থান করতে পারেন।</li> <li>এই কর্মকাণ্ডের
+        প্রত্যাশিত সময় 2-3 মিনিট।</li> </ul> <p style='font-size: 14px;'>এই অধ্যয়নে
+        কোনো ঝুঁকি নেই। অংশগ্রহণ করার জন্য আপনাকে কোনো অর্থ দেয়া হবে না এবং এর থেকে
+        আপনি যে সুবিধা পাবেন তা আমরা নিশ্চিত করে বলতে পারব না। নির্দিষ্ট প্রশ্নের
+        উত্তর দিতে অস্বীকার করার অধিকার আপনার আছে। যদি আপনার কোনো প্রশ্ন, প্রস্তাব
+        বা উদ্বেগ থাকে, তাহলে অনুগ্রহ করে প্রোফেসর আশিস গোয়েলের (Ashish Goel) সঙ্গে
+        goel_admins@lists.stanford.edu-এর মাধ্যমে যোগাযোগ করুন। এছাড়াও আপনি 650-723-2480
+        নম্বরে কল করে স্ট্যান্ডফোর্ড ইনস্টিটিউশনাল রিভিউ বোর্ডের সঙ্গে যোগাযোগ করতে
+        পারেন।</p>"
+      ok: চালিয়ে যান
+      exit: প্রস্থান করুন
+  knapsack:
+    title: অংশগ্রহণমূলক বাজেটিং
+    popup:
+      title: নির্দেশনা
+      body: "<p style='font-size: 20px;'>আপনাকে এমন একটি কর্মকাণ্ডে অংশ নিতে বলা হবে
+        যেটি আপনার ভোটে প্রভাব ফেলবে <u>না</u>, কিন্তু স্ট্যান্ডফোর্ড বিশ্ববিদ্যালয়ের
+        রিসার্চ প্রকল্পের অংশ হিসেবে অংশগ্রহণমূলক বাজেটিং প্রক্রিয়ার উন্নতির ক্ষেত্রে
+        আমাদের সাহায্য করে।</p> <ul style='font-size: 20px;'><li>এই কর্মকাণ্ডে যুক্ত
+        হওয়া ঐচ্ছিক। আপনি যে কোনো সময় প্রস্থান করতে পারেন।</li> <li>এই কর্মকাণ্ডের
+        প্রত্যাশিত সময় 2-3 মিনিট।</li> </ul> <p style='font-size: 14px;'>এই অধ্যয়নে
+        কোনো ঝুঁকি নেই। অংশগ্রহণ করার জন্য আপনাকে কোনো অর্থ দেয়া হবে না এবং এর থেকে
+        আপনি যে সুবিধা পাবেন তা আমরা নিশ্চিত করে বলতে পারব না। নির্দিষ্ট প্রশ্নের
+        উত্তর দিতে অস্বীকার করার অধিকার আপনার আছে। যদি আপনার কোনো প্রশ্ন, প্রস্তাব
+        বা উদ্বেগ থাকে, তাহলে অনুগ্রহ করে প্রোফেসর আশিস গোয়েলের (Ashish Goel) সঙ্গে
+        goel_admins@lists.stanford.edu-এর মাধ্যমে যোগাযোগ করুন। এছাড়াও আপনি 650-723-2480
+        নম্বরে কল করে স্ট্যান্ডফোর্ড ইনস্টিটিউশনাল রিভিউ বোর্ডের সঙ্গে যোগাযোগ করতে
+        পারেন।</p>"
+      ok: চালিয়ে যান
+      exit: প্রস্থান করুন
+    instructions: <h3>নির্দেশনা</h3> <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান
+      সেগুলো বেছে নিন। মোট খরচ <b>%{budget}</b> এর বেশ হবে না।</li> <li>আপনি উপরের
+      বারে আপনার বরাদ্দ মোট পরিমাণ দেখতে পাবেন। আপনি বারে ক্লিক করে বা সরসারি নির্বাচিত
+      প্রকল্পে ক্লিক করে আগের নির্বাচিত যে কোনো প্রকল্প সরাতে পারেন।</li> <li>আপনি
+      প্রস্তুত থাকলে <b>"আমার ভোট জমা দিন"</b> বোতামে ক্লিক করতে পারেন।</li> </ol>
+    confirmation:
+      title: আপনি কি আপনার ভোট জমা দেয়ার ব্যাপারে নিশ্চিত?
+      body:
+        summary:
+          zero: "<span style='color: red;'>আপনি কোনো প্রকল্প নির্বাচন করেননি।</span>"
+          other: 'আপনি নিম্নলিখিত প্রকল্প নির্বাচন করেছেন: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>আপনি কেবল একটি প্রকল্প নির্বাচন করেছেন।</span>"
+          less: "<span style='color: red;'>আপনি কেবল %{count}টি প্রকল্প নির্বাচন করেছেন।</span>"
+          limit: "<span style='color: red;'>আপনি %{max_n_projects}টি প্রকল্পের জন্য
+            ভোট দিতে পারবেন।</span>"
+        warning: আপনার ভোট জমা দেয়ার পর সেটি আর বদলাতে <strong>পারবেন না</strong>।
+      ok: আমার ভোট জমা দিন
+      cancel: ফিরে যান
+    adjustable_cost_project:
+      instructions: 'দয়া করে নিম্নলিখিতের মধ্যে একটি চয়ন করুন:'
+      not_adjusted_warning: "<span style='color:red'>আপনি %{project}</span> এর জন্য
+        $0 বেছে নিয়েছেন"
+      message: আপনি %{project}-এর জন্য %{cost} নির্বাচন করেছেন
+  survey:
+    title: জরিপ
+    header: জরিপে অংশ নিন
+    question:
+      title: ধন্যবাদ
+      body: ভোট দেয়ার জন্য আপনাকে ধন্যবাদ। আপনার বয়স কি 14 বছর বা তার বেশী?
+      ok: হ্যাঁ, আমার বয়স 14 বছর বা তার বেশি
+      alternative: না, আমার বয়স 14 বছরের কম
+    url: ''
+  thanks:
+    title: ধন্যবাদ
+    description:
+      real: ভোট দেয়ার জন্য আপনাকে ধন্যবাদ। অনুগ্রহ করে নীচের 'প্রস্থান করুন' বোতামটি
+        ক্লিক করুন।
+      demo: 'ডিজিট্যাল অংশগ্রহণমূলক বাজেটিং ইন্টারফেস পরীক্ষা করার জন্য ধন্যবাদ! <span
+        style=''color: red;''><strong>অনুগ্রহ করে মনে রাখবেন যে, এটি কেবলমাত্র <u>প্রিভিউ</u>।</strong></span>'
+    exit: প্রস্থান করুন
+  about:
+    title: সম্পর্কে
+    description: "<center><h1 class='sub-header'>ডিজিট্যাল অংশগ্রহণমূলক বাজেটিং ইন্টারফেস
+      সম্পর্কে</h1></center> <br><p class='lead'>ডিজিট্যাল অংশগ্রহণমূলক বাজেটিং ইন্টারফেস
+      তৈরি করেছে<a href='https://voxpopuli.stanford.edu/' target='_blank'>স্ট্যান্ডফোর্ড
+      ক্রাউডসোর্সড ডেমোক্রেসি টিম</a>। আমরা আশা করি যে ইন্টারফেসের চাক্ষুষ প্রকৃতি
+      এবং উপস্থাপিত তথ্যের সমৃদ্ধতা আপনাকে প্রকল্পগুলি সম্পর্কে জানতে এবং জেনে শুনে
+      ভেবে ভোট দিতে সহায়তা করবে।</p> <p class='lead'>এটি একটি ওপেন সোর্স প্রকল্প,
+      যা GNU GPL v3.0 লাইসেন্সের অধীনে লাইসেন্সকৃত। আপনি <a href='https://github.com/StanfordCDT/pb'
+      target='_blank'>GitHub</a> এ সোর্স কোড পাবেন।</p> <p class='lead'>যদি আপনি প্রযুক্তিগত
+      সমস্যার সম্মুখীন হন এবং আপনার যদি কোনো মতামত থাকে, তাহলে <a href='mailto:feedback@pbstanford.org'
+      target='_blank'>feedback@pbstanford.org</a>এ ইমেল করুন। আমরা যত শীঘ্র সম্ভব
+      আপনার সঙ্গে যোগাযোগ করব।</p>"
+  result:
+    title: ফলাফল
+    vote_results: ভোটের ফলাফল
+    description: ফলাফল %{start} থেকে %{end} এর %{count} জন ভোটার উপর নির্ভর করবে।
+    proposed_project: প্রস্তাবিত প্রকল্পগুলো
+    votes: ভোট
+    projects: প্রকল্পগুলি
+  election:
+    can_also_vote_in_person: 'আপনার ভোট দিতে নীচের স্থানগুলোর মধ্যে একটিতে আসতে পারেন:'
+    info: '<h3>ভোট দেয়ার স্থান</h3> <b>শনিবার, সেপ্টেম্বর 27</b> &nbsp; (12:00 p.m.
+      - 4:00 p.m.)<br> কোথায় একটা<br> <br> <b>মঙ্গলবার, সেপ্টেম্বর 30</b> &nbsp; (6:00
+      p.m. - 9:00 p.m.)<br> কোথায় একটা<br> <br> <p>আরো তথ্যের জন্য এখানে যান: <a href="http://www.example.com/">http://www.example.com/</a></p>'
+  sms_signup:
+    title: আপনার ফোন নম্বর যাচাই করুন
+    header: আপনার ফোন নম্বর যাচাই করুন
+    instructions: "<p>অনলাইনে ভোট দিতে, আপনার একটি ফোন দরকার যেখানে আপনি টেক্সট মেসেজ
+      পাবেন, যাতে আমরা আপনার ফোন নম্বর যাচাই করতে পারি।</p><p>এখানে আপনার ফোন নম্বর
+      লিখুন। আমরা একটি কনফার্মেশন আপনাকে পাঠাব।</p>"
+    phone_number_placeholder: ফোন নম্বর লিখুন
+    verify_button: যাচাই করুন
+    invalid_phone_number: '"%{phone_number}" বৈধ ফোন নম্বর নয়।'
+    blacklisted_phone_number: এই ফোন নম্বরটিতে আমাদের থেকে মেসেজ পাওয়া বন্ধ করা আছে।
+      কনফার্মেশন কোড পেতে START লিখে %{our_phone_number} এ পাঠান। তারপর আবার আপনার
+      ফোন নম্বর লিখুন।
+    no_cell_phone_instruction: যদি আপনার মোবাইল না থাকে, তাহলে অনলাইনে ভোট দিতে অন্য
+      পদ্ধতি বেছে নিতে অনুগ্রহ করে <a href="%{code_signup_url}">এখানে ক্লিক করুন</a>।
+  code_signup:
+    title: ভোট দিতে অ্যাক্সেস কোড লিখুন
+    instruction: অ্যাক্সেস কোড পেতে XXX@stanford.edu এ ইমেল করুন বা XXX-XXX-XXX নম্বরে
+      কল করুন। অ্যাক্সেস কোড পেয়ে গেলে, নীচে লিখুন এবং চালিয়ে যেতে <b>ভোট দিন</b>
+      বোতামটি টিপুন।
+    code_placeholder: অ্যাক্সেস কোড
+    vote_button: ভোট দিন
+    wrong_access_code: ভুল অ্যাক্সেস কোড
+    used_access_code: এই অ্যাক্সেস কোডটি ইতিমধ্যেই ব্যবহার করা হয়ে গেছে
+  other_signup:
+    title: ভোট দিতে বিশদ বিবরণ দিন
+    instruction: ''
+    no_account_number_instruction: যদি আপনার অ্যাকাউন্ট নম্বর না থাকে, তাহলে অনলাইনে
+      ভোট দিতে অন্য পদ্ধতি বেছে নিতে অনুগ্রহ করে <a href="%{code_signup_url}">এখানে
+      ক্লিক করুন</a>।
+    zipcode_placeholder: জিপ কোড
+    account_number_placeholder: অ্যাকাউন্ট নম্বর
+    vote_button: ভোট দিন
+    wrong_account_number: ভুল অ্যাকাউন্ট নম্বর বা জিপ কোড
+    used_account_number: এই অ্যাকাউন্ট নম্বরটি ইতিমধ্যেই ব্যবহার করা হয়ে গেছে
+  free_signup:
+    title: বৈধতা
+    instruction: অনুগ্রহ করে আপনার জিপ কোড লিখুন
+    placeholder: জিপ কোড
+    captcha: অনুগ্রহ করে নীচে <b>%{captcha}</b> লিখুন
+    vote_button: ভোট দিন
+  registration:
+    title: ভোটদাতার বিশদ বিবরণ
+    header: ভোটদাতার বিশদ বিবরণ
+    instructions: আপনার ভোট দেয়ার জন্য ব্যালটে অগ্রসর করতে অনুগ্রহ করে নিম্নলিখিত
+      বিবরণ দিন। * থাকা ক্ষেত্রগুলো আবশ্যিক।
+    proceed_button: এগিয়ে যান
+    no_phone_number: আমার কোনো ফোন নম্বর নেই
+    name: নাম
+    first_name: নাম
+    middle_initial: মাঝের আদ্যক্ষর
+    last_name: পদবি
+    suffix: সম্বোধন
+    phone_number: ফোন নম্বর
+    email: ইমেল
+    address: রাস্তার ঠিকানা
+    city: সিটি
+    zip_code: জিপ কোড
+    birth_year: জন্মের বছর
+    date_of_birth: জন্ম তারিখ
+    verify_age_label: আমার বয়স 16 বছরের বেশি
+    email_instruction_label: আপনি কি এই ভোটের ফলাফল জানতে চান? আপডেট থাকতে আপনার ইমেল
+      লিখুন।
+    ward: ওয়ার্ড
+    ward_do_not_know: জানি না
+    error: 'অনুগ্রহ করে নিম্নলিখিত সমস্যার সমাধান করুন:'
+    not_voting_age_error: এই নির্বাচনে ভোট দিতে আপনাকে অবশ্যই বয়সের প্রয়োজনীয়তা পূরণ
+      করতে হবে
+    verify_age_error: অনুগ্রহ করে নিশ্চিত করুন "%{checkbox_label}"
+  sms_signup_confirm:
+    title: আপনার ফোন নম্বর যাচাই করুন
+    header: আপনার ফোন নম্বর যাচাই করুন
+    instructions: "<p>আমরা <b>%{phone_number}</b> এ একটি কনফার্মেশন কোড পাঠিয়েছি।
+      এক মিনিটের মধ্যেই আপনি কোডটি পাবেন।</p><p>আপনার ফোন নম্বর যাচাই করতে অনুগ্রহ
+      করে কনফার্মেশন কোডটি দিন।</p>"
+    code_placeholder: কোড লিখুন
+    confirm_button: নিশ্চিত করুন
+    wrong_code: ভুল কোড।
+    resend_code: যদি এক মিনিটের মধ্যে কোডটি না পান, তাহলে কনফার্মেশন কোড আবার পাঠাতে
+      <a href="%{resend_code_url}">এখানে</a> ক্লিক করুন।
+    make_sure_phone_number_is_correct: '%{phone_number} আপনার সঠিক মোবাইল ফোন নম্বর
+      কিনা নিশ্চিত করুন। যদি এটি সঠিক <u>না</u> হয়, তাহলে এটিকে পরিবর্তন করতে অনুগ্রহ
+      করে <a href="%{signup_url}">এখানে</a> ক্লিক করুন।'
+    still_not_working: যদি একাধিক প্রচেষ্টার পর কনফার্মেশন কোড পেতে সমস্যা হয়, তাহলে
+      ভোট দেয়ার অন্য পদ্ধতি ব্যবহার করতে <a href="%{code_signup_url}">এখানে ক্লিক
+      করুন</a>।
+    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
+
+  general:
+    demo_warning: এটি কেবলমাত্র প্রিভিউ। আপনার ভোট রেকর্ড করা হবে না।
+    experiment_disclaimer: এটি কেবলমাত্র গবেষনা জরিপ। এর ফলে আপনার ভোটে কোনো প্রভাব
+      পরবে না।
+    shuffle_note: "<span style='font-size: 18px;'>দ্রষ্টব্য: এইসব প্রকল্প এলোমেলোভাবে
+      সাজানো।</span>"
+    project_string: প্রকল্প
+    close_button: বন্ধ করুন
+    timeout:
+      body: আপনার সেশনের মেয়াদ শেষ হতে চলেছে এই ওয়েবসাইটটি ব্যবহার করে চালিয়ে যেতে
+        "চালিয়ে যান" এ ক্লিক করুন।
+      continue_button: চালিয়ে যান
+  date:
+    month_names:
+    -
+    - জানুয়ারি
+    - ফেব্রুয়ারি
+    - মার্চ
+    - এপ্রিল
+    - মে
+    - জুন
+    - জুলাই
+    - অগাস্ট
+    - সেপ্টেম্বর
+    - অক্টোবর
+    - নভেম্বর
+    - ডিসেম্বর
+    order:
+    - :year
+    - :month
+    - :day
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

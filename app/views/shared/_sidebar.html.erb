@@ -86,7 +86,7 @@
 
 <% @categories.each do |category| %>
   <% if @election.categorized? %>
-    <a class="sidebar-category-name" href="#category<%= category.id %>"><%= category.name.html_safe %></a>
+    <a class="sidebar-category-name" href="#category<%= category.id %>"><%= (!category.name.blank? ? category.name : "<span class='text-danger'>MISSING CATEGORY</span>").html_safe %></a>
   <% end %>
   <div class="sidebar-category-group">
     <% category.ordered_projects.each do |project| %>

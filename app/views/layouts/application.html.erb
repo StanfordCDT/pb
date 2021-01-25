@@ -62,7 +62,7 @@
         <% else  # if there are more than 3 languages, show a dropdown for changing languages  %>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link nav-locale dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Languages <span class="caret"></span></a>
-            <div class="dropdown-menu" role="menu">
+            <div class="dropdown-menu dropdown-menu-right" role="menu">
               <% locales.each do |locale| %>
                 <a href="<%= url_for(permitted_params.merge(locale: locale)) %>" class="dropdown-item">
                   <span class="glyphicon glyphicon-ok" style="font-size: 0.8em; margin-left: -1em; margin-right: 4px; <%= (I18n.locale != locale) ? 'visibility: hidden;' : '' %>"></span>

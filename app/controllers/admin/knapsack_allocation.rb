@@ -106,11 +106,7 @@ class KnapsackAllocation
         next_chunks.each { |chunk| @discrete_allocations[chunk[0]] += chunk[1] }
         @discrete_vote = chunks[i][0]
       else
-        if next_chunks.length == 1
-          chunk = next_chunks[0]
-          @discrete_allocations[chunk[0]] += budget-accumulated_budget
-          @discrete_vote = chunks[i][0]
-        else
+        if accumulated_budget < budget
           partially_allocated_chunks = next_chunks.map{ |chunk| [chunk[0], chunk[1]] }
           partial_allocation_method.call(partially_allocated_chunks, budget-accumulated_budget, @discrete_allocations)
             .each{|x| @partial_allocations[x[0]] += x[1]}

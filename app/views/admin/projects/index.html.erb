@@ -19,6 +19,10 @@
         <p>
           <a href="<%= new_admin_election_project_path(@election) %>">Add a new project</a> &nbsp;|&nbsp;
           <a href="<%= import_admin_election_projects_path(@election) %>">Import projects</a>
+          <% if !@projects.empty? %>
+            &nbsp;|&nbsp;
+            <a href="<%= export_admin_election_projects_path(@election, format: :csv) %>">Export projects</a>
+          <% end %>
         </p>
       <% end %>
 

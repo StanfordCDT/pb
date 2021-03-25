@@ -140,19 +140,21 @@ module Admin
               category = nil
               if !category_index.nil?
                 category_name = row[category_index]
-                if category_map.key?(category_name)
-                  category = category_map[category_name]
-                else
-                  category = Category.new
-                  category.name = category_name
-                  category.sort_order = category_sort_order
-                  category.election = @election
-                  if !category.save
-                    errors += category.errors.full_messages
-                    raise ActiveRecord::Rollback
+                if !category_name.blank?
+                  if category_map.key?(category_name)
+                    category = category_map[category_name]
+                  else
+                    category = Category.new
+                    category.name = category_name
+                    category.sort_order = category_sort_order
+                    category.election = @election
+                    if !category.save
+                      errors += category.errors.full_messages
+                      raise ActiveRecord::Rollback
+                    end
+                    category_sort_order += 1
+                    category_map[category_name] = category
                   end
-                  category_sort_order += 1
-                  category_map[category_name] = category
                 end
               end
 
@@ -182,6 +184,45 @@ module Admin
       else
         flash.now[:errors] = errors
         render action: :import
+      end
+    end
+
+    def export
+      election = Election.find(params[:election_id])
+      projects = election.projects.order(:sort_order)
+
+      rows = []
+      Globalize.with_locale(election.config[:default_locale]) do
+        use_number = projects.any? { |p| !p.number.blank? }
+        use_address = projects.any? { |p| !p.address.blank? }
+        use_details = projects.any? { |p| !p.details.blank? }
+        use_category = projects.any? { |p| !p.category.nil? }
+
+        header = []
+        header << "Number" if use_number
+        header += ["Title", "Description", "Cost"]
+        header << "Location" if use_address
+        header << "Details" if use_details
+        header << "Category" if use_category
+        rows << header
+        projects.each do |p|
+          row = []
+          row << p.number if use_number
+          row += [p.title, p.description, p.cost]
+          row << p.address if use_address
+          row << p.details if use_details
+          row << (p.category.nil? ? "" : p.category.name) if use_category
+          rows << row
+        end
+      end
+
+      respond_to do |format|
+        format.csv do
+          csv_string = CSV.generate do |csv|
+            rows.each { |row| csv << row }
+          end
+          send_data csv_string, type: :csv, disposition: "attachment; filename=projects.csv"
+        end
       end
     end
 

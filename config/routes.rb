@@ -28,6 +28,7 @@ Rails.application.routes.draw do
           patch 'reorder'
           get 'import'
           post 'post_import'
+          get 'export'
         end
       end
       resources :categories do

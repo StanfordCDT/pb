@@ -121,6 +121,16 @@ module Admin
         errors << "Cannot find the cost column"
       end
 
+      def parse_cost(str)
+        # Remove currency symbols.
+        str = str.sub(/^(\$|€|£|¥|₹|zł)/, "").sub(/(\$|€|£|¥|₹|zł)$/, "")
+        begin
+          Integer(str)
+        rescue ArgumentError
+          nil
+        end
+      end
+
       # Read the contents.
       if !title_index.nil? && !description_index.nil? && !cost_index.nil?
         ActiveRecord::Base.transaction do
@@ -161,7 +171,12 @@ module Admin
               # Create a project.
               project = Project.new
               project.title = row[title_index].to_s.strip
-              project.cost = row[cost_index].to_i
+              cost = parse_cost(row[cost_index])
+              if cost.nil?
+                errors << "Cannot parse \"" + row[cost_index] + "\" as a cost. Make sure to remove all the digit group separators such as commas from the cost."
+                raise ActiveRecord::Rollback
+              end
+              project.cost = cost
               project.description = row[description_index].to_s.strip
               project.number = row[number_index] if !number_index.nil?
               project.details = row[details_index] if !details_index.nil?

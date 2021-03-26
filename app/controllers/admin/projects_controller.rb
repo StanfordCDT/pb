@@ -94,7 +94,7 @@ module Admin
         header = sheet.row(1)
         rows = (2..sheet.last_row).map { |i| sheet.row(i) }
       else  # CSV
-        csv = CSV.new(import_file.read.force_encoding("UTF-8").encode)
+        csv = CSV.new(import_file.read.force_encoding("UTF-8").sub(/^\xEF\xBB\xBF/, "").encode)  # Remove UTF-8 BOM.
         table = csv.read
         header = table[0]
         rows = table[1...table.length]

@@ -119,7 +119,7 @@ en:
     description:
       real: "<p class='lead text-center'>Thank you for voting. Please click 'Next' below to go to the next page.</p>"
       demo: "<p class='lead'>Thank you for voting! <span style='color: red;'><strong>Please note that this is only a <u>preview</u>.</strong></span> Please click 'Next' below to go to the next page.</p>"
-    send_vote_email: "(Optional) I want to send my vote result to my email:"
+    send_vote_email: "(Optional) I want to send a copy of my vote to my email:"
     email_placeholder: "Enter email"
     next_button: "Next &gt;&gt;"
 

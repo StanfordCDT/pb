@@ -13,6 +13,6 @@ class UserMailer < ActionMailer::Base
 
   def vote_result_email(email, result)
     @result = result
-    mail(to: email, subject: "Here is your vote result")
+    mail(to: email, subject: "Here is a copy of your vote")
   end
 end

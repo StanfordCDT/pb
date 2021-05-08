@@ -88,14 +88,25 @@ class Project < ApplicationRecord
     sanitizer = Rails::Html::SafeListSanitizer.new
     allowed_tags = %w(b i u strong em s del ins a br p div span table th tr td thead tbody ol ul li img sup sub pre blockquote abbr)
     allowed_attributes = %w(href src class style title alt target width height)
-    if !title.nil?
-      self.title = sanitizer.sanitize(title, tags: allowed_tags, attributes: allowed_attributes)
-    end
-    if !description.nil?
-      self.description = sanitizer.sanitize(description, tags: allowed_tags, attributes: allowed_attributes)
-    end
-    if !details.nil?
-      self.details = sanitizer.sanitize(details, tags: allowed_tags, attributes: allowed_attributes)
+
+    I18n.available_locales.each do |locale|
+      title = send('title_' + locale.to_s)
+      if !title.nil?
+        title = sanitizer.sanitize(title, tags: allowed_tags, attributes: allowed_attributes)
+        send('title_' + locale.to_s + '=', title)
+      end
+
+      description = send('description_' + locale.to_s)
+      if !description.nil?
+        description = sanitizer.sanitize(description, tags: allowed_tags, attributes: allowed_attributes)
+        send('description_' + locale.to_s + '=', description)
+      end
+
+      details = send('details_' + locale.to_s)
+      if !details.nil?
+        details = sanitizer.sanitize(details, tags: allowed_tags, attributes: allowed_attributes)
+        send('details_' + locale.to_s + '=', details)
+      end
     end
   end
 end

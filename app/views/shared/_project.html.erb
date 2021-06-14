@@ -3,7 +3,7 @@
 <% end %>
 
 <%# Div for showing a map for the project %>
-<% if conf[:approval][:show_maps] && !project.map_geometry.blank? %>
+<% if conf[current_action][:show_maps] && !project.map_geometry.blank? %>
   <div class="project-map" id="project-map-<%= project.id %>"></div>
 <% end %>
 
@@ -116,7 +116,7 @@
 <% if project.adjustable_cost? && !project.uses_slider? %>
   <%# Div for showing the radio buttons for the adjustable cost project %>
   <%
-  show_street_map = conf[:approval][:show_maps] && !project.parsed_data.nil? && project.parsed_data.key?('ward_center')
+  show_street_map = conf[current_action][:show_maps] && !project.parsed_data.nil? && project.parsed_data.key?('ward_center')
   show_cost_table = !project.parsed_data.nil? && project.parsed_data.key?('cost_table')
   %>
   <div style="<%= (show_street_map || show_cost_table) ? 'width:26%; float:right;' : '' %>">

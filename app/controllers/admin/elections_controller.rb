@@ -723,13 +723,15 @@ module Admin
       knapsacks_individual_csv = lambda do
         raise 'error' unless current_user.can_see_voter_data?(election)
 
-        vote_knapsacks = election.valid_voters.joins('LEFT OUTER JOIN vote_knapsacks ON vote_knapsacks.voter_id = voters.id')
-          .select('voters.id, vote_knapsacks.project_id, vote_knapsacks.cost').order(:id)
+        valid_voters = election.voters.where("void = 0 AND stage IS NOT NULL")
 
-        voter_count = election.valid_voters.count
+        vote_knapsacks = valid_voters.joins('LEFT OUTER JOIN vote_knapsacks ON vote_knapsacks.voter_id = voters.id')
+          .select('voters.id, voters.stage, vote_knapsacks.project_id, vote_knapsacks.cost').order(:id)
+
+        voter_count = valid_voters.count
         projects = knapsack_projects
         vote_knapsacks_matrix = Array.new(voter_count) { Array.new(projects.count) { 0 } }
-        voter_id_matrix = Array.new(voter_count) { 0 }
+        voter_id_matrix = Array.new(voter_count) { [0, ''] }
 
         project_id_to_index = {}
         projects.each_with_index { |p, index| project_id_to_index[p.id] = index }
@@ -744,16 +746,16 @@ module Admin
           if v.id != current_voter
             index += 1
             current_voter = v.id
-            voter_id_matrix[index] = current_voter
+            voter_id_matrix[index] = [current_voter, v.stage]
           end
           vote_knapsacks_matrix[index][project_id_to_index[v.project_id]] = v.cost if !v.project_id.nil?
         end
 
         CSV.generate do |csv|
-          csv << ['Voter ID'] + projects.map(&:title)
-          csv << ['Allocation'] + projects.map { |p| total_allocations[p.id] }
+          csv << ['Voter ID', 'Voter Stage'] + projects.map(&:title)
+          csv << ['Allocation', ''] + projects.map { |p| total_allocations[p.id] }
           vote_knapsacks_matrix.each_with_index do |r, index|
-            csv << [voter_id_matrix[index]] + r
+            csv << voter_id_matrix[index] + r
           end
         end
       end

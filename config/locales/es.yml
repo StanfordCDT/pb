@@ -20,7 +20,7 @@ es:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del Equipo Stanford Crowdsourced Democracy.</p><p class='lead'>En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class='lead'>Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
       proceed_button: "Boleta de muestra >>"
       sms_verification_button: "Votar >>"
-      code_verification_button: "Enter code"
+      code_verification_button: "Introduzca el código"
       other_verification_button: "Votar >>"
       see_projects_button: "Ver Proyectos"  # Link to an external site
     voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
@@ -272,7 +272,7 @@ es:
 
   code_signup:
     title: "Introduzca el código de voto"
-    instruction: "Please email XXX@stanford.edu or call XXX-XXX-XXX to get an access code. Once you get the access code, enter it below and press the <b>Votar</b> button to continue."
+    instruction: "Envíe un correo electrónico a XXX@XXX.com o llame XXX-XXX-XXX para obtener un código de acceso. Una vez que obtenga el código de acceso, ingréselo a continuación y presione el botón <b>Votar</b> para continuar."
     #no_code_instruction: "Si usted no tiene un código de acceso, obtener de la Ciudad"
     code_placeholder: "Código de acceso"
     vote_button: "Votar"

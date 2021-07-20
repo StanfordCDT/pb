@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 # This script converts a Gengo file to a .yml file to be used in config/locales.
+# Run with ruby script/gengo_to_yaml.rb <filename.csv> <language code>
+# Make sure that the csv has only the column with translated text.
 
 require "yaml"
 

@@ -446,5 +446,5 @@ tl:
         cost_min: Minimum cost
   errors: # TODO: translate
     messages:
-      blank: "can't be blank"
-      invalid: "is invalid"
+      blank: "hindi maaaring walang laman"
+      invalid: "hindi wasto"

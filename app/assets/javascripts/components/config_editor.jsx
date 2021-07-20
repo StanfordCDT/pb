@@ -859,7 +859,7 @@ class ConfigEditor extends React.Component {
   <label className="group-title">Languages</label>
   <div className="group-body">
     <div>Available languages:</div>
-    <CheckboxOption name="available_locales" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["hi","Hindi"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["es","Spanish"]]} />
+    <CheckboxOption name="available_locales" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["hi","Hindi"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["es","Spanish"],["tl","Tagalog"]]} />
     { ((value)=>((value.length >= 1) ? null : (<div className="text-danger">Select at least one language.</div>) ))(db.get("available_locales")) }
 
     <div className="form-inline">

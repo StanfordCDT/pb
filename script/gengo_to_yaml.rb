@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 # This script converts a Gengo file to a .yml file to be used in config/locales.
+# Run with ruby script/gengo_to_yaml.rb <filename.csv> <language code>
+# Make sure that the csv has only the original column, but with translated text instead of English.
 
 require "yaml"
 
@@ -77,6 +79,9 @@ puts "Success. The output is at " + locale_code + ".yml\n"
 puts "To complete the translation, you must update these keys:"
 puts "- date.month_names"
 puts "- date.order"
-puts "- errors.message.blank"
-puts "- errors.message.invalid"
-puts "Use https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale for reference."
+puts "- errors.message.blank (copy from en.yml)"
+puts "- errors.message.invalid (copy from en.yml)"
+puts "Use https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale for reference of these keys."
+puts "Add the new language to available_locales in config_editor.jsx"
+puts "Add the new language name to locale_names.rb"
+puts "Once you are done, copy the YML file to [Rails root]/config/locales"

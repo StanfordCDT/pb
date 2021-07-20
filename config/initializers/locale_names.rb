@@ -14,6 +14,7 @@ LOCALE_NAMES = {
   km: 'Khmer',
   pl: 'Polish',
   pt: 'Portuguese',
+  tl: 'Tagalog/Filipino',
   zh: 'Chinese',
 }
 
@@ -31,5 +32,6 @@ LOCAL_LOCALE_NAMES = {
   km: 'ភាសាខ្មែរ',
   pl: 'Polski',
   pt: 'Português',
+  tl: 'Tagalog/Filipino',
   zh: '中文',
 }

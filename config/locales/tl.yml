@@ -8,9 +8,9 @@ tl:
   index:
     title: Participatory Budgeting
     voting_machine:
-      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
+      welcome: "<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
         margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Welcome
-        sa digital voting interface para sa Participatory Budgeting</p>"'
+        sa digital voting interface para sa Participatory Budgeting</p>"
       instruction: Mangyari lang ilagay ang code na natanggap mo.
       code_placeholder: Code
       enter_code_button: Enter
@@ -39,15 +39,15 @@ tl:
     title: Participatory Budgeting
     popup:
       title: Mga Instruksyon
-      body: '"<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
+      body: "<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
         bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li> <li>I-click ang
         <b>""Submit Ng Vote""</b> na button kapag handa ka nang isumite ito.</li>
-        </ol>"'
+        </ol>"
       ok: OK
-    instructions: '"<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
+    instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
       mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
       <li>I-click ang <b>""Isumite ang Aking Boto""</b> na button kapag handa ka nang
-      isumite ito.</li> </ol>"'
+      isumite ito.</li> </ol>"
     list_of_projects: Listahan ng Mga Proyekto
     estimated_cost: Tinatantiyang Halaga
     youtube_video: YouTube video
@@ -76,11 +76,11 @@ tl:
           less: "<span style='color: red;'>Pumili ka ng %{count} proyekto lang.</span>"
           limit: "<span style='color: red;'>Puwede kang bumoto ng hanggang %{max_n_projects}
             proyekto.</span>"
-        warning: '"Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo
+        warning: "Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo
           na ito puwede baguhin. Kung gusto mong baguhin ang iyong boto, mangyaring
           i-click ang ‘Bumalik’ sa ibaba. Kung gusto mong isumite ang iyong boto,
           pakilagyan ng tsek ang kahon sa ibaba at tapos ay i-click ang ‘Isumite ang
-          Aking Boto’"'
+          Aking Boto’"
         checkbox: Nauunawaan ko na pagkatapos ko isumite ang aking boto <strong>hindi</strong>
           ko na ito mababago.
       ok: Isumite ang Aking Boto
@@ -146,15 +146,15 @@ tl:
     title: Participatory Budgeting
     popup:
       title: Mga Instruksyon
-      body: '"<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
+      body: "<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
         bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li> <li>I-click ang
         <b>""Isumite ang Aking Boto""</b> na button kapag handa ka nang isumite ito.</li>
-        </ol>"'
+        </ol>"
       ok: OK
-    instructions: '"<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
+    instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
       mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
       <li>I-click ang <b>""Isumite ang Aking Boto""</b> na button kapag handa ka nang
-      isumite ito.</li> </ol>"'
+      isumite ito.</li> </ol>"
     list_of_projects: Listahan ng Mga Proyekto
     estimated_cost: Tinatantiyang Halaga
     youtube_video: YouTube video
@@ -183,11 +183,11 @@ tl:
           less: "<span style='color: red;'>Pumili ka ng %{count} proyekto lang.</span>"
           limit: "<span style='color: red;'>Puwede kang bumoto ng hanggang %{max_n_projects}
             proyekto.</span>"
-        warning: '"Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo
+        warning: "Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo
           na ito puwede baguhin. Kung gusto mong baguhin ang iyong boto, mangyaring
           i-click ang ‘Bumalik’ sa ibaba. Kung gusto mong isumite ang iyong boto,
           pakilagyan ng tsek ang kahon sa ibaba at tapos ay i-click ang ‘Isumite ang
-          Aking Boto’"'
+          Aking Boto’"
         checkbox: Nauunawaan ko na pagkatapos ko isumite ang aking boto <strong>hindi</strong>
           ko na ito mababago.
       ok: Isumite ang Aking Boto
@@ -232,35 +232,35 @@ tl:
     not_sure: Hindi ako sigurado
     popup:
       title: Mga Instruksyon
-      body: '"<p style=''font-size: 20px;''>Ngayon ay hihilinging sa iyo na sumali
+      body: "<p style=''font-size: 20px;''>Ngayon ay hihilinging sa iyo na sumali
         sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
         matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
         sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
         Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
         mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
-        Review Board sa 650-723-2480.</p>"'
+        Review Board sa 650-723-2480.</p>"
       ok: Magpatuloy
       exit: Exit
   knapsack:
     title: Participatory Budgeting
     popup:
       title: Mga Instruksyon
-      body: '"<p style=''font-size: 20px;''>Ngayon ay hihilinging sa iyo na sumali
+      body: "<p style=''font-size: 20px;''>Ngayon ay hihilinging sa iyo na sumali
         sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
         matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
         sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
         Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
         mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
-        Review Board sa 650-723-2480.</p>"'
+        Review Board sa 650-723-2480.</p>"
       ok: Magpatuloy
       exit: Exit
-    instructions: '"<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
+    instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
       mong suportahan. Ang total na halaga na hindi puwedeng lumampas sa <b>%{budget}</b>.</li>
       <li>Makikita mo ang total na halaga a nailaan mo hanggang sa ngayon sa bar sa
       itaas. Maaari mong alisin ang anumang naunang napiling mga proyekto sa pamamagitan
       ng pag-click sa bar o direktang pag-click sa napiling proyekto.</li> <li>I-click
       ang <b>""Isumite ang Aking Boto""</b> na button kapag handa mo na itong isumite.</li>
-      </ol>"'
+      </ol>"
     confirmation:
       title: Sigurado ka bang gusto mong isumite ang iyong boto?
       body:
@@ -321,15 +321,15 @@ tl:
   election:
     can_also_vote_in_person: 'Maaari ka rin magpunta sa isa sa mga sumusunod na lugar
       para bumoto:'
-    info: '"<h3>Mga Lokasyon para Makaboto</h3> <b>Sabado, Setyembre 30</b> &nbsp;
+    info: "<h3>Mga Lokasyon para Makaboto</h3> <b>Sabado, Setyembre 30</b> &nbsp;
       (6:00 p.m. - 9:00 p.m.)<br> Sa isang lugar<br> <br> <p>Para sa karagdagang impormasyon,
-      mangyaring bumisita sa <a href=""http://www.example.com/"">http://www.example.com/</a></p>"'
+      mangyaring bumisita sa <a href=""http://www.example.com/"">http://www.example.com/</a></p>"
   sms_signup:
     title: I-verify ang iyong numero ng telepono
     header: I-verify ang iyong numero ng telepono
-    instructions: '"<p>Para makaboto online, para ma-verify namin ang iyong numero
+    instructions: "<p>Para makaboto online, para ma-verify namin ang iyong numero
       ng telepono.</p><p>Ilagay ang numero ng iyong cell phone,  at ite-text namin
-      ang confirmation code sa iyo.</p>"'
+      ang confirmation code sa iyo.</p>"
     phone_number_placeholder: Ilagay ang numero ng telepono
     verify_button: I-verify
     invalid_phone_number: |-
@@ -390,7 +390,7 @@ tl:
     error: 'Mangyaring ayusin ang mga sumusunod na error:'
     not_voting_age_error: Kailangan na ang edad mo ay nasa pagitan ng hinihiling na
       edad para makaboto sa eleksyon na ito.
-    verify_age_error: '"Mangyaring kumpirmahin ang ""%{checkbox_label}"""'
+    verify_age_error: "Mangyaring kumpirmahin ang ""%{checkbox_label}"""
   sms_signup_confirm:
     title: I-verify ang iyong numero ng telepono
     header: I-verify ang iyong numero ng telepono

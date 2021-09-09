@@ -8,20 +8,20 @@ tl:
   index:
     title: Participatory Budgeting
     voting_machine:
-      welcome: "<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
-        margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Welcome
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto;
+        margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>Welcome
         sa digital voting interface para sa Participatory Budgeting</p>"
-      instruction: Mangyari lang ilagay ang code na natanggap mo.
+      instruction: Mangyari lang ilagay ang code na natanggap mao.
       code_placeholder: Code
       enter_code_button: Enter
       wrong_code: Maling code
       used_code: Ang code na ito ay nagamit na.
       used_personal_id: Ang ID na ito ay nagamit na. Mangyari lang makipag-ugnayan
-        sa voxpopuli@lists.stanford.edu sa kaganapan na ito ay isang error o kailangan
+        sa voxpopuli@lists.stanford.edu sa kaganapan na ito ay isang errorå o kailangan
         mong bumoto muli.
     remote:
       welcome: |-
-        "<img src=""/img/sample-city-logo.png"" style='margin-left: auto; margin-right: auto; display: block;' />"
+        "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' />"
         <p class='lead'>Welcome sa Participatory Budgeting sample digital ballot mula sa Stanford Crowdsourced Democracy Team.</p>
         <p class='lead'>Sa website na ito ay maaaring lubos ka pang mabigyang impormasyon sa mga proyekto ngayong taon at tungkol sa digital ballot. Ang website na ito ay nagbibigay lang ng impormasyon sa iyo at <b>hindi ka </b> puwedeng bumoto dito mismo.</p>
         "<p class='lead'>Kapag ikaw ay <u>aktuwal na bumoto</u> , magpapasya ka kung paano mo nais na ilaan ang  $XXX milyon na budget ng lungsod para sa pagpapaganda ng capital. Para makaboto, kailangan mong magpunta sa isa sa maraming mga voting site na matatagpuan sa kabuuan ng lungsod. Ang panahon ng botohan ay magaganap mula (Petsa XXX) hanggang  (Petsa YYY). Basahin ang lahat ng mga oras at lokasyon sa ibaba</p>"
@@ -41,12 +41,12 @@ tl:
       title: Mga Instruksyon
       body: "<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
         bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li> <li>I-click ang
-        <b>""Submit Ng Vote""</b> na button kapag handa ka nang isumite ito.</li>
+        <b>\"Submit Ng Vote\"</b> na button kapag handa ka nang isumite ito.</li>
         </ol>"
       ok: OK
     instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
       mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
-      <li>I-click ang <b>""Isumite ang Aking Boto""</b> na button kapag handa ka nang
+      <li>I-click ang <b>\"Isumite ang Aking Boto\"</b> na button kapag handa ka nang
       isumite ito.</li> </ol>"
     list_of_projects: Listahan ng Mga Proyekto
     estimated_cost: Tinatantiyang Halaga
@@ -148,12 +148,12 @@ tl:
       title: Mga Instruksyon
       body: "<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
         bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li> <li>I-click ang
-        <b>""Isumite ang Aking Boto""</b> na button kapag handa ka nang isumite ito.</li>
+        <b>\"Isumite ang Aking Boto\"</b> na button kapag handa ka nang isumite ito.</li>
         </ol>"
       ok: OK
     instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
       mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
-      <li>I-click ang <b>""Isumite ang Aking Boto""</b> na button kapag handa ka nang
+      <li>I-click ang <b>\"Isumite ang Aking Boto\"</b> na button kapag handa ka nang
       isumite ito.</li> </ol>"
     list_of_projects: Listahan ng Mga Proyekto
     estimated_cost: Tinatantiyang Halaga
@@ -232,7 +232,7 @@ tl:
     not_sure: Hindi ako sigurado
     popup:
       title: Mga Instruksyon
-      body: "<p style=''font-size: 20px;''>Ngayon ay hihilinging sa iyo na sumali
+      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
         sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
         matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
         sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
@@ -245,7 +245,7 @@ tl:
     title: Participatory Budgeting
     popup:
       title: Mga Instruksyon
-      body: "<p style=''font-size: 20px;''>Ngayon ay hihilinging sa iyo na sumali
+      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
         sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
         matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
         sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
@@ -259,7 +259,7 @@ tl:
       <li>Makikita mo ang total na halaga a nailaan mo hanggang sa ngayon sa bar sa
       itaas. Maaari mong alisin ang anumang naunang napiling mga proyekto sa pamamagitan
       ng pag-click sa bar o direktang pag-click sa napiling proyekto.</li> <li>I-click
-      ang <b>""Isumite ang Aking Boto""</b> na button kapag handa mo na itong isumite.</li>
+      ang <b>\"Isumite ang Aking Boto\"</b> na button kapag handa mo na itong isumite.</li>
       </ol>"
     confirmation:
       title: Sigurado ka bang gusto mong isumite ang iyong boto?
@@ -294,9 +294,9 @@ tl:
     title: Salamat
     description:
       real: Salamat sa iyong pagboto. Mangyaring i-click ang ‘Exit’ na button sa ibaba.
-      demo: 'Salamat sa pagsubok mo sa digital participatory budgeting interface!
-        <span style=''color: red;''><strong>Mangyaring tandaan na ito ay isang <u>preview</u>
-        lang.</strong></span>'
+      demo: "Salamat sa pagsubok mo sa digital participatory budgeting interface!
+        <span style='color: red;'><strong>Mangyaring tandaan na ito ay isang <u>preview</u>
+        lang.</strong></span>"
     exit: Exit
   about:
     title: Tungkol dito
@@ -323,7 +323,7 @@ tl:
       para bumoto:'
     info: "<h3>Mga Lokasyon para Makaboto</h3> <b>Sabado, Setyembre 30</b> &nbsp;
       (6:00 p.m. - 9:00 p.m.)<br> Sa isang lugar<br> <br> <p>Para sa karagdagang impormasyon,
-      mangyaring bumisita sa <a href=""http://www.example.com/"">http://www.example.com/</a></p>"
+      mangyaring bumisita sa <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
   sms_signup:
     title: I-verify ang iyong numero ng telepono
     header: I-verify ang iyong numero ng telepono
@@ -334,7 +334,7 @@ tl:
     verify_button: I-verify
     invalid_phone_number: |-
       %{phone_number} ay hindi isang balidong numero ng telepono.
-      "+sms_signup.blacklisted_phone_number  # ""START"" is a fixed word and must NOT be translated."
+      "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."
       Ang numero ng teleponong ito ay piniling hindi tumanggap ng mga mensahe mula sa amin. Para makuha ang confirmation code
     blacklisted_phone_number: This phone number has opted out of receiving messages
       from us. To receive the confirmation code, please send START to %{our_phone_number}
@@ -390,7 +390,7 @@ tl:
     error: 'Mangyaring ayusin ang mga sumusunod na error:'
     not_voting_age_error: Kailangan na ang edad mo ay nasa pagitan ng hinihiling na
       edad para makaboto sa eleksyon na ito.
-    verify_age_error: "Mangyaring kumpirmahin ang ""%{checkbox_label}"""
+    verify_age_error: "Mangyaring kumpirmahin ang \"%{checkbox_label}\"."
   sms_signup_confirm:
     title: I-verify ang iyong numero ng telepono
     header: I-verify ang iyong numero ng telepono

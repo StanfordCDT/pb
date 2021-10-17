@@ -20,10 +20,7 @@ The platform is built with Ruby on Rails, Bootstrap, jQuery, and React.
 6. You can access the admin interface by going to ``http://localhost:3000/admin`` and logging in with the email "s@s" and password "superadmin123". **Change the password** to something more secure immediately after the first login.
 
 ## **Contributing** ##
-Improvements are always welcome. Please follow these steps to contribute
-
-1. Submit a **Pull Request** with a detailed explaination of changes.
-2. We will review the changes and merge them if approved.
+We currently **do not** accept pull requests. If you have any questions or suggestions, please contact us at contact@pbstanford.org
 
 ## **License** ##
 Participatory Budgeting Platform is released under the GNU General Public License, version 3.

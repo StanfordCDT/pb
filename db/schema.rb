@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_100000) do
+ActiveRecord::Schema.define(version: 2021_11_19_100000) do
 
   create_table "activity_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_100000) do
     t.string "slug", null: false
     t.integer "budget"
     t.string "time_zone"
-    t.text "config_yaml"
+    t.text "config_yaml", limit: 4294967295
     t.boolean "allow_admins_to_update_election", default: true, null: false
     t.boolean "allow_admins_to_see_voter_data", default: true, null: false
     t.boolean "allow_admins_to_see_exact_results", default: true, null: false

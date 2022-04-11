@@ -864,7 +864,7 @@ class ConfigEditor extends React.Component {
 
     <div className="form-inline">
       <span className="mr-2">Default language:</span>
-      <SelectOption name="default_locale" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["hi","Hindi"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["es","Spanish"],["tl","Tagalog/Filipino"]]} />
+      <SelectOption name="default_locale" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["ht","Haitian Creole"],["hi","Hindi"],["km","Khmer"],["mww", "Hmong (Hmong Daw)"],["pl","Polish"],["pt","Portuguese"],["es","Spanish"],["tl","Tagalog/Filipino"]]} />
     </div>
     { ((value)=>((c('available_locales').indexOf(value) != -1) ? null : (<div className="text-danger">Must be a language that is available.</div>) ))(db.get("default_locale")) }
   </div>

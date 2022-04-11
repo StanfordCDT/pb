@@ -1,0 +1,448 @@
+mww:
+  navigation:
+    brand: PB
+    home: Home
+    about: Qhia Txog
+    help: Kev Pab
+    exit: Tawm
+  index:
+    title: Participatory Budgeting (Kev Koomtes Siv Nyiaj)
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Welcome
+        to the digital voting interface for Participatory Budgeting</p>'
+      instruction: |-
+        Thov ntau qhov code koj tau txais.
+      code_placeholder: Qhov Code
+      enter_code_button: Enter
+      wrong_code: Code Phiv
+      used_code: Qhov code no twb siv lawm.
+      used_personal_id: Qhov ID no twb siv lawm. Thos sau mus rau voxpopuli@lists.stanford.edu
+        yog muaj dab tsis yog los koj yuav xaiv ntxiv.
+    remote:
+      welcome: |-
+        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
+        <p class='lead'>Zoosiab txais tos nej tuaj nrog peb sim qhov digital ballot rau qhov Participatory Budget, uas yog ua los ntawm Stanford Crowdsource Demacrocy pab pawg.</p>
+        <p class='lead'>Hauv lub website no, koj yuav paub txog cov projects rau xyoo no thiab qhia koj tus kheeb siv qhov digital ballot. Lub website no tsua yog qhia xwb, thiab koj <b>tso tsis tau</b> koj daim npav tiag tiag rau qhov chaw no. Pov koj qhov vote rau nov</p>
+        <p class='lead'>Thaum koj tso koj <u>daim npav tiag tiag</u>, koj yuav xaiv tias koj xav kom peb lub zos siv cov $XXX laab nyiab li cas. Yog koj xav pov npav, koj yuav tsum tuaj mus rau cov chaws nyob rau haum peb lub zos uas pub pov npav. Qhov yuav mus xaiv/npov npav yuav pib (Date XXX) mus rau hnub (Date YYY). Txhua cov sijhawm mus xaiv nyob hauv qab.</p>
+      proceed_button: Saib daim ntawv piv txwv. >>
+      sms_verification_button: Xaiv tam sim no >>
+      code_verification_button: Ntau koj qhov code
+      other_verification_button: Xaiv tam sim no >>
+      see_projects_button: Saib cov Projects
+    voting_has_not_started: Qhov mus xaiv cov projects hauv lub website no tseem tsis
+      tau pib. Peb yuav pib sau cov nej xaiv sai sai nov. Ua tsaug rau nej lub siab
+      ntev.
+    voting_ended: Kev pov npav tag lawm.
+    public_results: Saib Kev Xaiv Mus Zoo Li Cas
+  approval:
+    title: Participatory Budgeting
+    popup:
+      title: Cov lus qhia
+      body: <ol> <li>Xaiv cov projects koj xav txhawb.  Koj xaiv tau  <b>%{max_n_projects}
+        projects.</b></li> <li>Ntau qhov <b>"Submit My Vote"</b> thaum koj txiav txim
+        siab yam koj xav tau.</li> </ol>
+      ok: OK
+    instructions: <h3>Cov lus qhia</h3> <ol> <li>Xaiv cov projects koj xav txhawb.
+      Koj xaiv tau li <b>%{max_n_projects} projects.</b></li> <li>Ntau lub <b>"Submit
+      My Vote"</b> thaum koj txiav txim siab yam koj xav tau.</li> </ol>
+    list_of_projects: Cov Projects
+    estimated_cost: Raug Li Cas
+    youtube_video: YouTube video
+    location: Chaw
+    partner: Cov Sij Koom Tes
+    committee: Pab Pawg
+    read_details: Nyeem ntxiv...
+    select_button:
+      select: Xaiv
+      selected: Xaiv Lawm
+      not_enough_money: Tsis muaj nyiaj txaus
+      more_projects: Xaiv tsis tau ntau tshaj %{max_n_projects} cov projects
+    remove_button: Muab tshev
+    remove_button_tooltip: Niam no yog koj tsis xav xaiv qhov project no lawm.
+    submit_button: Xa Qhov Kuv Xaiv...
+    confirmation:
+      title: Koj puas xav xa koj qhov koj xaiv tiag tiag?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Koj tsis tau xaiv ib qhov project.</span>"
+          other: 'Koj xaiv cov projects no: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Koj xaiv tau ib qho project.</span>"
+          less: "<span style='color: red;'>Koj xaiv tau %{count}cov projects.</span>"
+          limit: "<span style='color: red;'>Koj tsuas xaiv tau %{max_n_projects} cov
+            projects.</span>"
+        warning: Thaum koj xa cov koj xaiv, koj<strong>pauv</strong> tsi tau cov koj
+          xiav lawm. Yog koj xav pauv, thov ntau qhov 'Go Back' uas nyob hauv qab.
+          Yog koj xav xab cov koj xaiv, nias lub box hauv qab, cev nias lub 'Submit
+          My Vote.'
+        checkbox: Kuv totau tias thaum kuv xa cov kuv xaiv tag, kuv <strong>muab</strong>
+          pauv tsis tau.
+      ok: Submit My Vote
+      cancel: Go Back
+    confirmation_over_limit:
+      title: Xa tsis tau yam koj xaiv
+      over_n_project_limit: "<span style='color:red'>Koj xiav tau <b>%{n_projects}</b>
+        cov projects. Koj tsuas yog xaiv tau <b>%{max_n_projects}</b> cov projects.
+        Thov tshev <b>%{extra}</b> los ntau tshaj cov projects.</span>"
+      over_budget_limit: "<span style='color:red'>Cov nyiab siv dhau qhov siv tau.</span>"
+      cancel: Go Back (mus rov qab)
+    tracker:
+      text: Koj xaiv tau %{count} cov projects.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Xaiv%{total} ntawm%{budget} tag nrog cov nyiab siv.
+      under_budget: Koj tseem tshuav %{remaining_money} cov nyiab seem.
+      over_budget: Cov nyiab siv dhau qhov siv tau.
+      over_budget_but_can_add_projects: Cov nyiab siv dhau tshaj lawm, tiamsis koj
+        xaiv ib cov projects ntxiv los tau.
+    adjustable_cost_project:
+      instructions: 'Xaiv ib cov nyob hauv qab:'
+      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
+      message: Koj xaiv tau %{cost} rau%{project}
+      table_headings:
+        percentage_column: Ib feem puab ntawm cov nyiab siv
+        cost_column: Raug pes tsawg
+        number_column: 'Ntawm cov # of blocks rov tshwmsim'
+    map:
+      street_resurfacing_count:
+        one: 1 txoj kev raug kho
+        other: "%{count} cov kev raug kho"
+      alley_resurfacing_count:
+        one: 1 qhov alley raug kho
+        other: "%{count} cov alleys raug kho"
+      apron_resurfacing_count:
+        one: 1 apron raug kho
+        other: "%{count} cov aprons raug kho"
+      sidewalk_repairing_count:
+        one: 1 txoj kev taugkev (sidewalk) raug kho
+        other: "%{count} cov kev taugkev raug kho"
+    image_gallery:
+      cue: Niav daim duab mus saib qhov slide show
+    project_ranking:
+      list_header: Koj xaiv tau cov project. Pauv yam tseemceeb rau koj, txav cov<span
+        class='glyphicon glyphicon-sort'></span> icons.
+      continue_button: Mus ntxi (Continue)
+  thanks_approval:
+    title: Ua tsaug
+    description:
+      real: "<p class='lead text-center'>Ua tsaug rau cov koj xaiv. Thov nias lub
+        'Next' hauv qab thiab li coj koj mus rau daim ntawv tom nteb.</p>"
+      demo: "<p class='lead'>Ua tsaub rau cov koj xaiv! <span style='color: red;'><strong>Nco
+        ntsoov qhov no tsua yog <u>saib</u>.</strong></span> Thov nias lub 'Next'
+        hauv qab thiab li coj koj mus rau daim ntawv tom nteb.</p>"
+    send_vote_email: "(Nyob ntawm koj) Kuv xav kom nwj xav ib daig copy qhia yam kuv
+      xaiv rau kuv qhov email:"
+    email_placeholder: Ntau koj qhov email
+    next_button: Next &gt;&gt;
+  ranking:
+    title: Participatory Budgeting
+    popup:
+      title: Cov lus qhia
+      body: <ol> <li>Select the projects you would like to support. You can vote for
+        up to <b>%{max_n_projects} projects.</b></li> <li>Click the <b>"Submit My
+        Vote"</b> button when you're ready to submit.</li> </ol>
+      ok: OK
+    instructions: <h3>Instructions</h3> <ol> <li>Select the projects you would like
+      to support. You can vote for up to <b>%{max_n_projects} projects.</b></li> <li>Click
+      the <b>"Submit My Vote"</b> button when you're ready to submit.</li> </ol>
+    list_of_projects: Cov Projects
+    estimated_cost: Raug Pes Tshawg
+    youtube_video: YouTube video
+    location: Chaw
+    partner: Cov sibkoom tes
+    committee: Pab pawg
+    read_details: Nyeem ntxiv...
+    select_button:
+      select: Xaiv
+      selected: Xaiv ta lawm
+      not_enough_money: Tsis muaj nyiab txaus
+      more_projects: Xaiv tsis tau ntau tshaj %{max_n_projects} cov projects
+    remove_button: Muaj tsev
+    remove_button_tooltip: Nias no yog koj tsis xav xaiv qhov no lawm.
+    submit_button: Xav qhov kuv xaiv...
+    confirmation:
+      title: Koj puas xav xa yam koj xaiv tiag tiag?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Koj tsis tau xaiv ib qho project.</span>"
+          other: 'Cov projects koj xaiv yog cov no: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Koj tsuas yog xaiv tau ib qho project.</span>"
+          less: "<span style='color: red;'>Koj tsuas yog xaiv tau %{count} cov projects.</span>"
+          limit: "<span style='color: red;'>Koj xaiv tau ntau npaum li %{max_n_projects}
+            cov projects.</span>"
+        warning: Thaum koj xav cov koj xaiv tag, koj <strong>pauv</strong> tsi tau
+          yam koj xaiv lawm. Yog koj xav pauv, thov nias  'Go Back' hauv qab. Yog
+          koj xav xa cov koj xaiv, thov nias lub 'Submit My Vote.'
+        checkbox: Kuv totaub tias thaum kuv xa cov kuv xaiv, kuv <strong>pauv</strong>
+          tsis tau lawm.
+      ok: Submit My Vote
+      cancel: Go Back
+    confirmation_over_limit:
+      title: Xa tsis tau cov koj xaiv.
+      over_n_project_limit: "<span style='color:red'>Koj xaiv tau <b>%{n_projects}</b>
+        cov projects. Koj tsuas xaiv tau <b>%{max_n_projects}</b> cov projects. Thov
+        tshev <b>%{extra}</b> los ntau tshaj projects.</span>"
+      over_budget_limit: "<span style='color:red'>Cov nyiab siv dhau tshaj qhov siv
+        tau.</span>"
+      cancel: Go Back
+    tracker:
+      text: Koj xaiv tau %{count} cov projects.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: Xaiv%{total} ntawm %{budget} cov nyiab siv tag nrho.
+      under_budget: Koj tseem tshua%{remaining_money} seem.
+      over_budget: Cov nyiaj siv dhau tshaj qhov siv tau.
+      over_budget_but_can_add_projects: Cov nyiaj siv dhau cov uas siv tau, tiamsis
+        koj xaiv tau ib cov projects ntxiv los tau.
+    adjustable_cost_project:
+      instructions: 'Thov xaiv ib qho haum qab:'
+      not_adjusted_warning: "<span style='color:red'>Koj xaiv tau $0 rau%{project}</span>"
+      message: Koj xaiv tau $%{cost} rau %{project}
+      table_headings:
+        percentage_column: Ib feem pua ntawm cov nyiab siv
+        cost_column: Daug pes tsawg
+        number_column: 'Ntawm cov # of blocks uas rov tshwmsim'
+    image_gallery:
+      cue: Nias daim duab mus siab qhov slide show
+  question:
+    title: Survey
+    question: Koj puas mauj 14 xyoo rov sauv?
+    ok: Yog, kuv muaj 14 rov sauv
+    alternative: Tsis tau muaj, kuv yau tshaj 14 xyoo
+  comparison:
+    title: Sib piv
+    header: Cov projects twg thiab li tseem tseem siv nyiab rau, uas yuav lov pab
+      tagnrhog peb cov pejxeem?
+    estimated_cost: Cov nyiab kwsyees daug siv
+    this_project: Qhov project no
+    not_sure: Kuv tsis paub
+    popup:
+      title: Cov lus qhia
+      body: "<p style='font-size: 20px;'>Tamsim no koj yuav pab koomtes ua ib qhov
+        activity<u>not</u> uas yuav raug yam koj xaiv, tiamsis yog ib yam uas yuav
+        pab Stanford University tshawb fawb los mus pab txhawb txoj kev ua cov participatory
+        budgeting.</p> <ul style='font-size: 20px;'><li>Peb tsis quab yuam koj ua
+        qhov no. Koj tawm thaum twg los tau.</li> <li>Yuav siv sijhawm li 2-3 nathi.</li>
+        </ul> <p style='font-size: 14px;'>Qhov ua no tsis phomsij rau dab tsi. Peb
+        yuav tsis them nyiaj rau koj yog koj xav koom tes, thiab peb muaj tsis tau
+        dabtsi rau koj. Koj muaj txoj cais los mus tsis teb tej lus nug. Thov sau
+        ntawm mus rau Professor Ashish Goel at goel_admins@lists.stanford.edu yog
+        koj muaj lus nug, lus pab kho, los tej yam koj txhawj xeeb txog. Koj kuj hu
+        rau tom Stanford Institutional Review Board tom 650-723-2480.</p>"
+      ok: Mus ntxiv (Continue)
+      exit: Tawm (Exit)
+  knapsack:
+    title: Participatory Budgeting
+    popup:
+      title: Luv Qhia
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an
+        activity that will <u>not</u> affect your vote, but is part of a Stanford
+        University research project meant to help us improve the participatory budgeting
+        process.</p> <ul style='font-size: 20px;'><li>Participating in this activity
+        is optional. You can exit at any time.</li> <li>The expected time for this
+        activity is 2-3 minutes.</li> </ul> <p style='font-size: 14px;'>This study
+        poses no risk. No payment will be made to you for participation, and we cannot
+        guarantee any benefits to you. You have the right to refuse to answer particular
+        questions. Please contact Professor Ashish Goel at goel_admins@lists.stanford.edu
+        if you have any questions, suggestions, or concerns. You may also contact
+        the Stanford Institutional Review Board at 650-723-2480.</p>"
+      ok: Mus Ntxiv (Continue)
+      exit: Tawm (Exit)
+    instructions: <h3>Lus qhia</h3> <ol> <li>Xaiv cov projects koj xav txhawb. Cov
+      nyiaj siv tag tsis pub dhau <b>%{budget}</b>.</li> <li>Koj pom tau cov nyiab
+      uas koj tau xaiv nyob rau saum toj. Koj tshem tau cov koj tsis xav yuav, nias
+      qhov bar saum toj los yog niam qhov project koj twb tau xaiv lawm. </li> <li>Nias
+      lub<b>"Submit My Vote"</b> thaum koj xav xa cov koj xaiv.</li> </ol>
+    confirmation:
+      title: Koj puas xav xa tiag tiag?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Koj tsis tau xaiv ib cov projects.</span>"
+          other: 'Koj xaiv tau cov projects: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Koj tsuas yog xaiv tau ib qho project.</span>"
+          less: "<span style='color: red;'>Koj tsuas yog xaiv %{count} cov projects.</span>"
+          limit: "<span style='color: red;'>Koj xaiv tau ntau npaum li %{max_n_projects}
+            cov projects.</span>"
+        warning: Thaum koj xa tag, koj <strong>paum</strong> tsis tau yam koj xaiv.
+      ok: Submit My Vote
+      cancel: Go Back
+    adjustable_cost_project:
+      instructions: 'Thov xaiv ib qho haum qab:'
+      not_adjusted_warning: "<span style='color:red'>Koj xaiv tau $0 rau %{project}</span>"
+      message: Koj xaiv tau %{cost} rau %{project}
+  survey:
+    title: Survey
+    header: Ua Qhov Survey
+    question:
+      title: Ua tsaug
+      body: Ua tsaug koj tuaj xaiv. Koj puas muaj 14 xyoo rov sauv?
+      ok: Yog, kuv mauj 14 xyoo rov sauv
+      alternative: Tsis muaj, Kuv yau tsaj 14 xyoo
+    url: ''
+  thanks:
+    title: Ua Tsaug
+    description:
+      real: Ua tsaug koj tuaj xaiv. Thov nias lub 'Exit' hauv qab.
+      demo: 'Ua tsaug koj tuaj pab siv qhov digitial participatory budgeting interface!
+        <span style=''color: red;''><strong>Thov nco ntsoom qho no yog ib qho <u>tuaj
+        siab</u>.</strong></span>'
+    exit: Tawm (Exit)
+  about:
+    title: Qhia Txog
+    description: "<center><h1 class='sub-header'>Qhia txog qhov digital participatory
+      budgeting interface</h1></center> <br><p class='lead'>Qhov digital participatory
+      budgeting interface pib los ntawm <a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>Stanford Crowdsourced Democracy pab pawg</a>. Peb ciasiab tias
+      yam nej pom thiab yam peb qhia yuav pab koj kawm txog cov projects thiab yauv
+      coj nej los mus xaiv.</p> <p class='lead'>Qhov no nyob rau haum daim licensed
+      GNU GPL v3.0 license. Koj dhia tau qhov source code rau hauv <a href='https://github.com/StanfordCDT/pb'
+      target='_blank'>GitHub</a>.</p> <p class='lead'>Yog koj ua tsis tau los xav
+      qhia yam koj xav txog, thom email rau <a href='mailto:feedback@pbstanford.org'
+      target='_blank'>feedback@pbstanford.org</a> thiab peb mam li tej koj rov qab
+      kom sai li sai tau.</p>"
+  result:
+    title: Results
+    vote_results: Vote Results
+    description: Qhia txog cov uas neeg xaiv, %{count} cov uas xaiv thuam %{start}
+      mus rau hnub %{end}.
+    proposed_project: Cov Projects ua tshajtawm
+    votes: Cov Xaiv (Votes)
+    projects: Cov Projects
+  election:
+    can_also_vote_in_person: 'Koj tuaj los mus rau ib qhov chaw no los mus xaiv:'
+    info: <h3>Cov Chaws Mus Xaiv</h3> <b>Saturday, September 27</b> &nbsp; (12:00
+      noon - 4:00 p.m.)<br> Lwm Chaws<br> <br> <b>Tuesday, September 30</b> &nbsp;
+      (6:00 p.m. - 9:00 p.m.)<br> Lwm Chaw <br> <br> <p>Yog koj xav paub ntxiv, thov
+      mus saib <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: Qhia koj tus xovtooj
+    header: Qhia koj tus xovtooj
+    instructions: "<p>Yog koj xav mus xai online, koj lub xovtooj yuav tsum txais
+      tau cov text, li ntawv peb thiaj li paub tias tus xovtooj ntawm yog koj tus.</p><p>Ntaus
+      koj tus xovtooj, ces peb mam li xa ib tug lej (confirmation code) rau koj.</p>"
+    phone_number_placeholder: Ntaus koj tus xovtooj
+    verify_button: Verify
+    invalid_phone_number: '"%{phone_number}" yog ib tug xovtooj siv tsis tau.'
+    blacklisted_phone_number: Tus xovtooj no tsis xav txais lus tshabxo lawm ntawm
+      peb. Yog koj xa txaiv qhov confirmation code, START mus rau %{our_phone_number}
+      ces ntaus koj tus xovtooj rau ntawm no ntxiv.
+    no_cell_phone_instruction: Yog koj tsis muaj xovtooj, thov <a href="%{code_signup_url}">nias
+      no</a> los mus siv lwm yam los mus xaiv online.
+  code_signup:
+    title: Ntaus koj tus access code los mus xaiv
+    instruction: Thov email XXX@stanford.edu los hu XXX-XXX-XXX los mus txais koj
+      qhov access code. Thaum koj tau koj tus access code, muaj ntaus rau hauv qab
+      thaib nias lub <b>Xaiv (Vote)</b> los mus pib.
+    code_placeholder: Access code
+    vote_button: Xaiv (Vote)
+    wrong_access_code: Tus access code tsis yog
+    used_access_code: Tus access code twb siv lawm
+  other_signup:
+    title: Ntaus cov lus teb los mus xaiv
+    instruction: ''
+    no_account_number_instruction: Yog koj muaj ib tug account number, thov<a href="%{code_signup_url}">nias
+      no</a> los mus siv lwm yam los mus xaiv online.
+    zipcode_placeholder: ZIP code
+    account_number_placeholder: Account Number
+    vote_button: Xaiv (Vote)
+    wrong_account_number: Tus account number los ZIP code tsis yog
+    used_account_number: Tus account number twb raug siv lawm
+  free_signup:
+    title: Validation
+    instruction: Thov ntaus koj tus ZIP code
+    placeholder: ZIP code
+    captcha: Thov ntaus <b>%{captcha}</b> hauv qab
+    vote_button: Xaiv (Vote)
+  registration:
+    title: Qhia txog tus xaiv
+    header: Qhia txog tus xaiv
+    instructions: Thov teb cov lus los mus xaiv. Cov uas muaj * yog cov koj yuav tsum
+      tej.
+    proceed_button: Mus Tom Ntej (Proceed)
+    no_phone_number: Kuv tsis muaj ib tug xov tooj
+    name: Npe
+    first_name: Npe
+    middle_initial: Lub npe haum nrab
+    last_name: Xeem
+    suffix: Suffix
+    phone_number: Xom tooj
+    email: Email
+    address: Chaw nyob
+    city: Zos
+    zip_code: ZIP code
+    birth_year: Xyoo yug
+    date_of_birth: Hnub yug
+    verify_age_label: Kuv muaj 16 xyoo rov sauv
+    email_instruction_label: Koj puas xav puab txog kev xaiv mus zoo li cas? Qhia
+      koj tus email, peb mam li xa qhia rau koj.
+    ward: Ward
+    ward_do_not_know: Kuv tsis paub
+    error: 'Thov khov cov uas phiv:'
+    not_voting_age_error: Koj yuav tsum muaj raws li hnug yug koj thiab lis xaiv tau.
+    verify_age_error: Thov saib kom meej "%{checkbox_label}"
+  sms_signup_confirm:
+    title: Tus no yog koj tus xovtooj
+    header: Tus no yog koj tus xovtooj
+    instructions: "<p>Peb xa ib tug confirmation code rau <b>%{phone_number}</b>.
+      Koj yuav txais ib tug code li ntawm ib nathi. </p><p>Thov ntau tus confirmation
+      code los mus qhia tias yog koj tus xovtooj.</p>"
+    code_placeholder: Ntaus tus code
+    confirm_button: Yog
+    wrong_code: Tus code tsis yog
+    resend_code: Yog ntawm ib nathi, koj tsis tau txais tus code, nias<a href="%{resend_code_url}">no</a>
+      los mus txhais ib tug confirmation code tshiab.
+    make_sure_phone_number_is_correct: Thov saib tias %{phone_number} yog koj tus
+      xov tooj. Yog <u>tsis</u> yog, thov nias <a href="%{signup_url}">no</a> los
+      mus muaj pauv.
+    still_not_working: Yog koj ua ntau zaus, thiab tsis laib tus confirmation code,
+      thov <a href="%{code_signup_url}">nias no</a> los mus siv lwm yam txoj kev mus
+      xaiv online.
+    confirmation_textmsg: Siv %{confirmation_code} tus code no los mus xaiv rau qhov
+      Participatory Budgeting hauv PBStanford.org
+  general:
+    demo_warning: Qhov no yog rau nej xyaum. Qhov nej xaiv yuav tsis muab sau cia.
+    experiment_disclaimer: Qhov no yog ib qhov survey. Yuav tsis los txuam rau cov
+      nej xaiv.
+    shuffle_note: "<span style='font-size: 18px;'>Qhia Txog: Cov projects no tsis
+      muaj tso rau yam uas muaj nuj nqi tshaj.</span>"
+    project_string: Project
+    close_button: Kaw (Close)
+    timeout:
+      body: Qhov koj ua no yuav kaw. Nias qhov "Ua Ntxiv (Continue)" los mus ua tauj
+        ntxiv.
+      continue_button: Ua Nxiv (Continue)
+  date:
+    month_names:
+    -
+    - Ib Hlis
+    - Ob Hlis
+    - Peb Hlis
+    - Plaub Hlis
+    - Tsib Hlis
+    - Rau Hlis
+    - Xya Hlis
+    - Yim Hlis
+    - Cuaj Hlis
+    - Kaum Hlis
+    - Kaum Ib Hlis
+    - Kaum Ob Hlis
+    order:
+    - :month
+    - :day
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: tus nqi tsawg kawg nkaus
+  errors:
+   messages:
+     blank: "Qhov no yuav tsum tau sau"
+     invalid: "Qhov no tsis yog"

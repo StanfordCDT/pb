@@ -792,7 +792,7 @@ class ConfigEditor extends React.Component {
           <td><label htmlFor="election_budget">Budget</label></td>
           <td>
             <div className="form-inline">
-              <SelectOption name="currency_symbol" db={db} values={[["$","$"],["€","€"],["£","£"],["¥","¥"],["₹","₹"],["zł","zł"]]} />
+              <SelectOption name="currency_symbol" db={db} values={[["$","$"],["€","€"],["£","£"],["¥","¥"],["₹","₹"],["Fr","Fr"],["zł","zł"]]} />
               &nbsp;
               <input className="form-control" type="number" name="election[budget]" id="election_budget" defaultValue={electionData.budget} />
             </div>

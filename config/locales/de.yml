@@ -1,0 +1,464 @@
+de:
+  navigation:
+    brand: PB
+    home: Home
+    about: Über
+    help: Hilfe
+    exit: Beenden
+  index:
+    title: Partizipatives Budget
+    voting_machine:
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Willkommen
+        beim digitalen Abstimmungs-Interface fürs partizipative Budget</p>'
+      instruction: Bitte geben Sie den Code ein, den Sie erhalten haben.
+      code_placeholder: Code
+      enter_code_button: Enter
+      wrong_code: Falscher Code
+      used_code: Dieser Code wurde bereits verwendet.
+      used_personal_id: Diese ID wurde bereits verwendet. Bitte kontaktieren Sie voxpopuli@lists.stanford.edu
+        falls es sich dabei um einen Fehler handelt oder falls Sie noch einmal abstimmen
+        müssen.
+    remote:
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right:
+        auto; display: block;' />\n <p class='lead'>Willkommen zur digitalen Beispielsabstimmung
+        zum partizipativen Budget, mit freundlicher Genehmigung des Stanford Crowdsourced
+        Democracy Teams.</p>\n <p class='lead'>Auf dieser Webseite können Sie sich
+        mit den diesjährigen Projekten und der digitalen Abstimmung bekannt machen.
+        Diese Webseite dient nur zur Information und Sie können hier <b>nicht</b>
+        tatsächlich abstimmen. \n <p class='lead'>Wenn Sie Ihre <u>tatsächliche Wahl</u>
+        abgeben, werden Sie entscheiden, wie Sie 50'000 CHF des Stadtbudgets einsetzen
+        möchten. Um abstimmen zu können, müssen Sie bei der offiziellen digitalen
+        Abstimmung teilnehmen, die von der Stadt zur Verfügung gestellt werden wird.
+        Die Abstimmung wird vom 12.06.2023 bis am 25.06.2023 stattfinden.</p>"
+      proceed_button: Beispielsabstimmung anzeigen >>
+      sms_verification_button: Jetzt abstimmen >>
+      code_verification_button: Code eingeben
+      other_verification_button: Jetzt abstimmen >>
+      see_projects_button: Projekte anzeigen
+    voting_has_not_started: Die Stimmabgabe auf dieser Website hat noch nicht begonnen.
+      Wir werden so bald wie möglich mit der Erhebung von Online-Stimmen beginnen.
+      Wir danken Ihnen für Ihre Geduld.
+    voting_ended: Die Abstimmung ist beendet.
+    public_results: Abstimmungsresultate anzeigen
+  approval:
+    title: Partizipatives Budget
+    popup:
+      title: Erklärung
+      body: <ol> <li>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
+        Sie können Ihre Stimme für bis zu <b>%{max_n_projects} Projekte abgeben.</b></li>
+        <li>Klicken Sie auf das <b>"Meine Stimme abgeben"</b> Feld, sobald Sie bereit
+        sind, Ihre Wahl abzugeben.</li> </ol>
+      ok: OK
+    instructions: <h3>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
+      Sie können Ihre Stimme für bis zu <b>%{max_n_projects} Projekte abgeben.</b></li>
+      <li>Klicken Sie auf das <b>"Meine Stimme abgeben"</b> Feld, sobald Sie bereit
+      sind, Ihre Wahl abzugeben.</li> </ol>
+    list_of_projects: Projektliste
+    estimated_cost: Geschätzte Kosten
+    youtube_video: YouTube-Video
+    location: Standort
+    partner: Partner
+    committee: Komitee
+    read_details: Mehr erfahren...
+    select_button:
+      select: Auswählen
+      selected: Ausgewählt
+      not_enough_money: Nicht genug Geld
+      more_projects: Sie können nicht mehr als %{max_n_projects} Projekte auswählen
+    remove_button: Entfernen
+    remove_button_tooltip: Klicken Sie hier, wenn Sie dieses Projekt nicht mehr wählen
+      möchten.
+    submit_button: Meine Stimme abgeben...
+    confirmation:
+      title: Sind Sie sicher, dass Sie Ihre Stimme abgeben möchten?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Sie haben kein Projekt ausgewählt.</span>"
+          other: 'Sie haben folgende Projekte ausgewählt: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt.</span>"
+          less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
+          limit: "<span style='color: red;'>Sie können maximal für %{max_n_projects}
+            Projekte abstimmen.</span>"
+        warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
+          mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
+          unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte
+          das untenstehende Kästchen an und klicken Sie dann auf "Meine Stimme abgeben".
+        checkbox: Ich verstehe, dass ich meine Stimme nach der Abgabe <strong>nicht
+          mehr</strong> ändern kann.
+      ok: Meine Stimme abgeben
+      cancel: Zurück
+    confirmation_over_limit:
+      title: Ihre Stimme konnte nicht abgegeben werden
+      over_n_project_limit: "<span style='color:red'>Sie haben <b>%{n_projects}</b>
+        Projekte ausgewählt. Sie können höchstens <b>%{max_n_projects}</b> Projekte
+        auswählen. Bitte etfernen Sie <b>%{extra}</b> oder mehr Projekte.</span>"
+      over_budget_limit: "<span style='color:red'>Aktuell sind Sie über dem Budget.</span>"
+      cancel: Zurück
+    tracker:
+      text: Sie haben %{count} Projekte ausgewählt.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "%{total} vom %{budget} Gesamtbudget ausgewählt."
+      under_budget: Ihnen stehen noch %{remaining_money} zur Verfügung.
+      over_budget: Sie sind aktuell über dem Budget.
+      over_budget_but_can_add_projects: Sie sind aktuell über dem Budget, aber Sie
+        können noch Projekte hinzufügen.
+    adjustable_cost_project:
+      instructions: 'Bitte wählen Sie eine der untenstehenden Optionen:'
+      not_adjusted_warning: "<span style='color:red'>Sie haben 0 CHF für %{project}</span>
+        ausgewählt"
+      message: Sie haben %{cost} für %{project} ausgewählt
+      table_headings:
+        percentage_column: Prozentsatz des ausgegebenen Budgets
+        cost_column: Kosten
+        number_column: Ungefähre Anzahl der neu gestalteten Blöcke
+    map:
+      street_resurfacing_count:
+        one: 1 Strasse saniert
+        other: "%{count} Strassen saniert"
+      alley_resurfacing_count:
+        one: 1 Gasse saniert
+        other: "%{count} Gassen saniert"
+      apron_resurfacing_count:
+        one: 1 Vorplatz saniert
+        other: "%{count} Vorplätze saniert"
+      sidewalk_repairing_count:
+        one: 1 Trottoir repariert
+        other: "%{count} Trottoirs repariert"
+    image_gallery:
+      cue: Klicken Sie auf das Bild für die Slide-Show
+    project_ranking:
+      list_header: Sie haben die folgenden Projekte ausgewählt. Ändern Sie ihre Rangfolge,
+        indem Sie die <span class='glyphicon glyphicon-sort'></span> Icons an die
+        gewünschte Stelle ziehen.
+      continue_button: Fortfahren
+  thanks_approval:
+    title: Vielen Dank
+    description:
+      real: <p class='lead text-center'>Danke für Ihre Stimme. Bitte klicken Sie unten
+        auf "weiter", um auf die nächste Seite zu gelangen.</p>
+      demo: '<p class=''lead''>Danke fürs Abstimmen! <span style=''color: red;''><strong>Bitte
+        beachten Sie, dass dies nur eine <u>Vorschau</u>.</strong></span> ist. Bitte
+        klicken Sie unten auf "weiter", um auf die nächste Seite zu gelangen.</p>'
+    send_vote_email: "(Optional) I want to send a copy of my vote to my email:"
+    email_placeholder: E-Mail eingeben
+    next_button: Weiter &gt;&gt;
+  ranking:
+    title: Partizipatives Budget
+    popup:
+      title: Erklärung
+      body: <ol> <li>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
+        Sie können bis zu <b>%{max_n_projects} Projekte wählen.</b></li> <li>Klicken
+        Sie auf <b>"Meine Stimme abgeben"</b> , sobald Sie bereit sind, Ihre Stimme
+        abzugeben.</li> </ol>
+      ok: OK
+    instructions: <h3>Instructions</h3> <ol> <li>Wählen Sie die Projekte, die Sie
+      gerne unterstützen möchten. Sie können bis zu <b>%{max_n_projects} Projekte
+      wählen.</b></li> <li>Klicken Sie auf <b>"Meine Stimme abgeben"</b> , sobald
+      Sie bereit sind, Ihre Stimme abzugeben.</li> </ol>
+    list_of_projects: Projektliste
+    estimated_cost: Geschätzte Kosten
+    youtube_video: YouTube-Video
+    location: Standort
+    partner: Partner
+    committee: Komitee
+    read_details: Mehr erfahren...
+    select_button:
+      select: Auswählen
+      selected: Ausgewählt
+      not_enough_money: Nicht genug Geld
+      more_projects: Sie können nicht mehr als %{max_n_projects} Projekte auswählen
+    remove_button: Entfernen
+    remove_button_tooltip: Klicken Sie hier, wenn Sie dieses Projekt nicht mehr wählen
+      möchten.
+    submit_button: Meine Stimme abgeben...
+    confirmation:
+      title: Sind Sie sicher, dass Sie Ihre Stimme abgeben möchten?
+      body:
+        summary:
+          zero: "<span style='color: red;'>Sie haben kein Projekt ausgewählt</span>"
+          other: 'Sie haben die folgenden Projekte ausgewählt: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt .</span>"
+          less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
+          limit: "<span style='color: red;'>Sie können für bis zu %{max_n_projects}
+            Projekten abstimmen.</span>"
+        warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
+          mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
+          unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte
+          das untenstehende Kästchen an und klicken Sie dann auf "Meine Stimme abgeben".
+        checkbox: Ich verstehe, dass ich meine Stimme nach der Abgabe <strong>nicht
+          mehr</strong> ändern kann.
+      ok: Meine Stimme abgeben
+      cancel: Zurück
+    confirmation_over_limit:
+      title: Ihre Stimme konnte nicht abgegeben werden
+      over_n_project_limit: "<span style='color:red'>Sie haben <b>%{n_projects}</b>
+        Projekte ausgewählt. Sie können höchstens <b>%{max_n_projects}</b> Projekte
+        auswählen. Bitte etfernen Sie <b>%{extra}</b> oder mehr Projekte.</span>"
+      over_budget_limit: "<span style='color:red'>Aktuell sind Sie über dem Budget.</span>"
+      cancel: Zurück
+    tracker:
+      text: Sie haben %{count} Projekte ausgewählt.
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "%{total} vom %{budget} Gesamtbudget ausgewählt."
+      under_budget: Ihnen stehen noch %{remaining_money} zur Verfügung.
+      over_budget: Sie sind aktuell über dem Budget.
+      over_budget_but_can_add_projects: Sie sind aktuell über dem Budget, aber Sie
+        können noch Projekte hinzufügen.
+    adjustable_cost_project:
+      instructions: 'Bitte wählen Sie eine der untenstehenden Optionen:'
+      not_adjusted_warning: "<span style='color:red'>Sie haben 0 CHF für %{project}</span>
+        ausgewählt"
+      message: Sie haben %{cost} für %{project} ausgewählt
+      table_headings:
+        percentage_column: Prozentsatz des ausgegebenen Budgets
+        cost_column: Kosten
+        number_column: Ungefähre Anzahl der neu gestalteten Blöcke
+    image_gallery:
+      cue: Klicken Sie auf das Bild für die Slide-Show
+  question:
+    title: Befragung
+    question: Sind Sie 14 Jahre alt oder älter?
+    ok: Ja, ich bin 14 Jahre alt oder älter
+    alternative: Nein, ich bin jünger als 14 Jahre
+  comparison:
+    title: Vergleich
+    header: Welches Projekt bringt den grössten Nutzen fürs Geld, das heisst, bringt
+      den grössten Vorteil für die Allgemeinheit pro ausgegebenem Franken?
+    estimated_cost: Geschätzte Kosten
+    this_project: Dieses Projekt
+    not_sure: Ich bin mir nicht sicher
+    popup:
+      title: Erklärung
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität
+        teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil
+        eines nationalen Forschungsprojekts ist, das zum Ziel hat, uns dabei zu helfen,
+        den partizipatorischen Budgetprozess zu verbessern.</p> <ul style='font-size:
+        20px;'><li>Bei dieser Aktivität teilzunehmen ist freiwillig.<li>Die erwartete
+        Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> <p style='font-size:
+        14px;'>"
+      ok: Fortfahren
+      exit: Beenden
+  knapsack:
+    title: Partizipatives Budget
+    popup:
+      title: Erklärung
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität
+        teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil
+        eines nationalen Forschungsprojekts ist, das zum Ziel hat, uns dabei zu helfen,
+        den partizipatorischen Budgetprozess zu verbessern.</p> <ul style='font-size:
+        20px;'><li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit
+        abbrechen.</li> <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li>
+        </ul> <p style='font-size: 14px;'>"
+      ok: Fortfahren
+      exit: Beenden
+    instructions: <h3>Erklärung</h3> <ol> <li>Wählen Sie die Projekte, die Sie gerne
+      unterstützen möchten. Die Gesamtkosten dürfen <b>%{budget}</b> nicht überschreiten.</li>
+      <li>Oben im Balken sehen Sie den Gesamtbetrag, den sie bereits ausgegeben haben.
+      Zuvor ausgewählte Projekte können Sie entfernen, indem Sie auf den Balken klicken
+      oder direkt, indem Sie auf das ausgewählte Projekt klicken.</li> <li>Klicken
+      Sie auf<b>"Meine Stimme abgeben"</b> , sobald Sie bereit sind, Ihre Stimme abzugeben.</li>
+      </ol>
+    confirmation:
+      title: Are you sure you want to submit your vote?
+      body:
+        summary:
+          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
+          other: 'Sie haben folgende Projekte ausgewählt: %{projects}'
+          item: "%{project} (%{cost})"
+        under_n_project_limit:
+          one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt.</span>"
+          less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
+          limit: "<span style='color: red;'>Sie können maximal für %{max_n_projects}
+            Projekte abstimmen.</span>"
+        warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
+          mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
+          unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte
+          das untenstehende Kästchen an und klicken Sie dann auf "Meine Stimme abgeben".
+      ok: Meine Stimme abgeben
+      cancel: Zurück
+    adjustable_cost_project:
+      instructions: 'Bitte wählen Sie eine der untenstehenden Optionen:'
+      not_adjusted_warning: "<span style='color:red'>Sie haben 0 CHF für {project}
+        ausgewählt </span>"
+      message: Sie haben %{cost} für %{project} ausgewählt
+  survey:
+    title: Befragung
+    header: Bei einer Befragung teilnehmen
+    question:
+      title: Vielen Dank
+      body: Danke für Ihre Stimme. Sind Sie 14 Jahre alt oder älter?
+      ok: Ja, ich bin 14 Jahre alt oder älter
+      alternative: Nein, ich bin jünger als 14 Jahre
+    url: ''
+  thanks:
+    title: Vielen Dank
+    description:
+      real: Danke für Ihre Stimme. Bitte klicken Sie unten auf "Beenden".
+      demo: 'Danke, dass Sie das digitale Interface für das partizipative Budget getestet
+        haben.<span style=''color: red;''><strong>Bitte beachten Sie, dass dies nur
+        eine <u>Vorschau</u> ist.</strong></span>'
+    exit: Beenden
+  about:
+    title: Über
+    description: "<center><h1 class='sub-header'>Über das digitale Interface für partizipative
+      Budgetprozesse</h1></center> <br><p class='lead'>Das digitale Interface für
+      partizipative Budgetprozesse wurde vom <a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>Stanford Crowdsourced Democracy Team</a> entwickelt. Wir hoffen,
+      dass Ihnen die visuelle Art und die Menge der gezeigten Informationen helfen,
+      sich mit den Projekten vertraut zu machen und Ihre Abstimmung auf mehr Informationen
+      zu stützen. .</p> <p class='lead'>Dies ist ein Open-Source-Projekt, lizenziert
+      unter der GNU GPL v3.0 Lizenz. Den Source-Code finden Sie unter <a href='https://github.com/StanfordCDT/pb'
+      target='_blank'>GitHub</a>.</p> <p class='lead'>Falls Sie technische Probleme
+      haben oder Feedback geben wollen, senden Sie bitte eine E-Mail an <a href='mailto:feedback@pbstanford.org'
+      target='_blank'>feedback@pbstanford.org</a> and we will try to get back to you
+      as soon as possible.</p>"
+  result:
+    title: Resultate
+    vote_results: Abstimmungsresultate
+    description: Resultate basierend auf den Stimmen von %{count} Teilnehmenden vom
+      %{start} bis %{end}.
+    proposed_project: Vorgeschlagene Projekte
+    votes: Stimmen
+    projects: Projekte
+  election:
+    can_also_vote_in_person: 'You can also come to one of the following places to
+      cast your vote:'
+    info: <h3>Voting Locations</h3> <b>Saturday, September 27</b> &nbsp; (12:00 noon
+      - 4:00 p.m.)<br> Somewhere<br> <br> <b>Tuesday, September 30</b> &nbsp; (6:00
+      p.m. - 9:00 p.m.)<br> Somewhere<br> <br> <p>For more information, please visit
+      <a href="http://www.example.com/">http://www.example.com/</a></p>
+  sms_signup:
+    title: Verifizieren Sie Ihre Telefonnummer
+    header: Verifizieren Sie Ihre Telefonnummer
+    instructions: "<p>Um online abstimmen zu können, brauchen Sie ein Telefon, das
+      eine Textnachricht empfangen kann, damit wir Ihre Nummer verifizieren können.</p><p>Geben
+      Sie Ihre Handynummer ein und wir senden Ihnen einen Bestätigungscode.</p>"
+    phone_number_placeholder: Telefonnummer eingeben
+    verify_button: Verifizieren
+    invalid_phone_number: '"%{phone_number}" ist keine gültige Telefonnummer.'
+    blacklisted_phone_number: Diese Nummer kann keine Nachrichten von uns empfangen.
+      Um den Bestätigungscode zu erhalten, senden Sie bitte START an %{our_phone_number}
+      und geben Sie Ihre Nummer erneut ein.
+    no_cell_phone_instruction: Falls Sie kein Mobiltelefon besitzen, "%{code_signup_url}">klicken
+      Sie bitte hier</a>, um eine andere Methode für die Online-Abstimmung zu verwenden.
+  code_signup:
+    title: Zugangscode eingeben, um abzustimmen
+    instruction: Bitte Senden Sie eine E-Mail an XXX oder rufen Sie XXX-XXX-XXX an,
+      um einen Zugangscode zu erhalten. Sobald Sie einen Zugangscode haben, geben
+      Sie ihn bitte unten ein und klicken auf <b>Abstimmen</b>, um fortzufahren.
+    code_placeholder: Zugangscode
+    vote_button: Abstimmen
+    wrong_access_code: Falscher Zugangscode
+    used_access_code: Dieser Zugangscode wurde bereits verwendet
+  other_signup:
+    title: Geben Sie die Angaben ein, um abstimmen zu können
+    instruction: ''
+    no_account_number_instruction: Falls Sie keine Account-Nummer haben, <a href="%{code_signup_url}">klicken
+      Sie bitte hier</a>, um eine andere Methode für die Online-Abstimmung zu verwenden.
+    zipcode_placeholder: Postleitzahl
+    account_number_placeholder: Account-Nummer
+    vote_button: Abstimmen
+    wrong_account_number: Falsche Account-Nummer oder Postleitzahl
+    used_account_number: Diese Account-Nummer wurde bereits verwendet
+  free_signup:
+    title: Validierung
+    instruction: Bitte geben Sie Ihre Postleitzahl ein
+    placeholder: Postleitzahl
+    captcha: Bitte tippen Sie <b>%{captcha}</b> unten ein
+    vote_button: Abstimmen
+  registration:
+    title: Persönliche Angaben
+    header: Persönliche Angaben
+    instructions: Bitte geben Sie die folgenden Angaben ein, um mit der Abstimmung
+      fortzufahren und Ihre Stimme abzugeben. Pflichtfelder sind mit * markiert.
+    proceed_button: Fortfahren
+    no_phone_number: Ich habe keine Telefonnummer
+    name: Name
+    first_name: Vorname
+    middle_initial: Mittlere Initiale
+    last_name: Nachname
+    suffix: Namenszusatz
+    phone_number: Telefonnummer
+    email: E-Mail
+    address: Adresse (Strasse)
+    city: Stadt
+    zip_code: Postleitzahl
+    birth_year: Geburtsjahr
+    date_of_birth: Geburtsdatum
+    verify_age_label: Ich bin älter als 16 Jahre
+    email_instruction_label: Wollen Sie die Ergebnisse der Abstimmung erfahren? Geben
+      Sie Ihre E-Mail-Adresse an, um auf dem Laufenden zu bleiben.
+    ward: Wahlbezirk
+    ward_do_not_know: Weiss nicht
+    error: 'Beheben Sie bitte folgende Fehler:'
+    not_voting_age_error: Sie müssen die Altersvorgaben erfüllen, um bei dieser Abstimmung
+      abstimmen zu können.
+    verify_age_error: Bitte bestätigen "%{checkbox_label}"
+  sms_signup_confirm:
+    title: Verifizieren Sie Ihre Telefonnummer
+    header: Verifizieren Sie Ihre Telefonnummer
+    instructions: "<p>Wir haben einen Bestätigungscode an <b>%{phone_number}</b> gesendet.
+      Sie sollten den Code innerhalb einer Minute erhalten.</p><p>Bitte geben Sie
+      den Bestätigungscode ein, um Ihre Telefonnummer zu bestätigen.</p>"
+    code_placeholder: Code eingeben
+    confirm_button: Bestätigen
+    wrong_code: Falscher Code
+    resend_code: Falls Sie den Code nicht innerhalb einer Minute erhalten, klicken
+      Sie <a href="%{resend_code_url}">hier</a>, um den Bestätigungscode erneut zu
+      senden.
+    make_sure_phone_number_is_correct: Vergewissern Sie sich, dass %{phone_number}
+      Ihre korrekte Handynummer ist. Falls sie <u>nicht</u> korrekt ist , klicken
+      Sie bitte <a href="%{signup_url}">hier</a>, um sie zu ändern.
+    still_not_working: Falls Sie nach mehreren Versuchen immer noch Probleme haben,
+      den Bestätigungscode zu erhalten, klicken Sie bitte <a href="%{code_signup_url}">hier</a>,
+      um eine andere Methode für die Online-Abstimmung zu verwenden.
+    confirmation_textmsg: Verwenden Sie %{confirmation_code} als Code, um für das
+      partizipative Budget unter PBStanford.org abzustimmen.
+  general:
+    demo_warning: Dies ist nur eine Vorschau. Ihre Stimme wird nicht gezählt.
+    experiment_disclaimer: Dies ist nur eine wissenschaftliche Befragung. Sie hat
+      keinen Einfluss auf Ihre Stimme.
+    shuffle_note: "<span style='font-size: 18px;'>Note: Diese Projekte sind in einer
+      zufälligen Reihenfolge angeordnet.</span>"
+    project_string: Projekt
+    close_button: Schliessen
+    timeout:
+      body: Ihre Sitzung wird bald ablaufen. Klicken Sie auf "Forfahren", um die Webseite
+        weiterhin zu verwenden.
+      continue_button: Fortfahren
+  date:
+    month_names:
+    -
+    - Januar
+    - Februar
+    - März
+    - April
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    - Oktober
+    - November
+    - Dezember
+    order:
+    - :day
+    - :month
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost
+  errors:
+   messages:
+     blank: "darf nicht leer sein"
+     invalid: "ist ungültig"

@@ -46,15 +46,33 @@
 <% end %>
 
 <% if project.adjustable_cost? && project.uses_slider? %>
-  <div id="slider-wrapper<%= project.id %>" class="slider-wrapper">
+  <% if current_action == :token %>
+    <div id="slider-wrapper<%= project.id %>" class="slider-wrapper">
+      <p>
+        <b>Tokens</b>:
+        <span id="slider-value<%= project.id %>"></span>
+      </p>
+    </div>
     <p>
-      <b>Currently Selected Cost</b>:
-      <span id="slider-value<%= project.id %>"></span>
+      <button type="button" class="btn btn-primary btn-lg" id="plus-button<%= project.id %>">
+        +
+      </button>
+      &nbsp; &nbsp;
+      <button type="button" class="btn btn-secondary btn-lg" id="minus-button<%= project.id %>">
+        &minus;
+      </button>
     </p>
-    <p>
-      <input id="slider<%= project.id %>" data-slider-tooltip="show" type="text" data-slider-min="0" data-slider-min2="<%= project.cost_min %>" data-slider-max="<%= project.cost %>" data-slider-step="<%= project.cost_step %>" data-slider-value="<%= project.cost_min %>" />
-    </p>
-  </div>
+  <% else %>
+    <div id="slider-wrapper<%= project.id %>" class="slider-wrapper">
+      <p>
+        <b>Currently Selected Cost</b>:
+        <span id="slider-value<%= project.id %>"></span>
+      </p>
+      <p>
+        <input id="slider<%= project.id %>" data-slider-tooltip="show" type="text" data-slider-min="0" data-slider-min2="<%= project.cost_min %>" data-slider-max="<%= project.cost %>" data-slider-step="<%= project.cost_step %>" data-slider-value="<%= project.cost_min %>" />
+      </p>
+    </div>
+  <% end %>
 <% end %>
 
 <% if !project.address.blank? %>
@@ -67,7 +85,7 @@
   <p class="project-partner"><b><%= t('approval.partner') %></b>: <%= project.partner.html_safe %></p>
 <% end %>
 
-<% if !project.mandatory? %>
+<% if !project.mandatory? && current_action != :token %>
   <p>
     <button type="button" class="btn btn-primary btn-lg select-button" id="select-button<%= project.id %>">
       Select
@@ -113,7 +131,7 @@
   </div>
 <% end %>
 
-<% if project.adjustable_cost? && !project.uses_slider? %>
+<% if project.adjustable_cost? && !project.uses_slider? && current_action != :token %>
   <%# Div for showing the radio buttons for the adjustable cost project %>
   <%
   show_street_map = conf[current_action][:show_maps] && !project.parsed_data.nil? && project.parsed_data.key?('ward_center')

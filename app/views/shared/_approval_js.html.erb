@@ -57,6 +57,36 @@ function initializeViews() {
         removeProject(id);
       });
 
+      if (isTokenVoting()) {
+        $('#plus-button' + id).click(function() {
+          console.log("XXX", id);
+          if (getTotal() + 1 > budget)
+            return;
+          if (selectedProjectIDs.indexOf(id) == -1) {
+            selectedProjectIDs.push(id);
+          }
+          var i = idToIndex[id];
+          costs[i]++;
+          updateViews();
+
+          console.log("XXX", selectedProjectIDs);
+
+          return true;
+        });
+        $('#minus-button' + id).click(function() {
+          var i = idToIndex[id];
+          if (costs[i] == 0)
+            return;
+          costs[i]--;
+          if (costs[i] == 0) {
+            var j = selectedProjectIDs.indexOf(id);
+            selectedProjectIDs.splice(j, 1);
+          }
+          updateViews();
+          return true;
+        });
+      }
+
       // Initialize the sliders
       if (isAdjustableCostProject(id) && usesSlider(id)) {
         var slider = $("#slider" + id);
@@ -289,6 +319,13 @@ function updateList() {
       } else {
         updateRadioButtons(id);
       }
+    }
+
+    if (isTokenVoting()) {
+      var $plus_button = $('#plus-button' + id);
+      var $minus_button = $('#minus-button' + id);
+      $plus_button.prop('disabled', getTotal() >= budget);
+      $minus_button.prop('disabled', costs[idToIndex[id]] == 0);
     }
 
     $('#project-cell'+id).stop();
@@ -721,6 +758,10 @@ function backgroundColorForProject(id) {
 
 function isRankingEnabled() {
   return <%= conf[current_action][:project_ranking] %>;
+}
+
+function isTokenVoting() {
+  return <%= current_action == :token %>;
 }
 
 function checkSelectedProjectCount() {

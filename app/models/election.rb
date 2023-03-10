@@ -152,6 +152,8 @@ class Election < ApplicationRecord
         "Comparison"
       when "plusminus"
         "Plus/minus"
+      when "token"
+        "Token"
       else
         page.is_a?(Array) ? "[" + workflow_summary_helper(page) + "]" : nil
       end

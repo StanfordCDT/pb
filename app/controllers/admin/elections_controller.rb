@@ -164,6 +164,11 @@ module Admin
           analytics_knapsack(@election, utc_offset)
       end
 
+      if workflow.include?('token')
+        @analytics_data[:token], tokens_csv, tokens_individual_csv =
+          analytics_token(@election, utc_offset, filter)
+      end
+
       if workflow.include?('comparison')
         @analytics_data[:comparison], comparison_losses_csv, comparison_ties_csv, comparison_wins_csv, comparison_ratios_csv, comparisons_individual_csv =
           analytics_comparison(@election, utc_offset, filter)
@@ -198,12 +203,14 @@ module Admin
             when :all then analytics_all_csv_string
             when :approvals then approvals_csv.call
             when :knapsacks then knapsacks_csv.call
+            when :tokens then tokens_csv.call
             when :comparison_wins then comparison_wins_csv.call
             when :comparison_ties then comparison_ties_csv.call
             when :comparison_losses then comparison_losses_csv.call
             when :comparison_ratios then comparison_ratios_csv.call
             when :approvals_individual then approvals_individual_csv.call
             when :knapsacks_individual then knapsacks_individual_csv.call
+            when :tokens_individual then tokens_individual_csv.call
             when :comparisons_individual then comparisons_individual_csv.call
             when :voter_registration then voter_registration_csv.call
             when :voter_data then voter_data_csv.call
@@ -699,7 +706,7 @@ module Admin
 
       knapsack_max_vote_count = knapsack_data.map { |p| p[:votes].map { |v| v[1] }.sum }.max
 
-      knapsacks_csv = lambda do
+      tokens_csv = lambda do
 =begin
         CSV.generate do |csv|
           csv << ["Project", "Votes"]
@@ -768,6 +775,75 @@ module Admin
         knapsack_discrete_vote: allocation.discrete_vote,
         knapsack_partial_project_ids: allocation.partial_project_ids
       }, knapsacks_csv, knapsacks_individual_csv]
+    end
+
+    def analytics_token(election, utc_offset, filter)
+      tokens = election.projects.joins('LEFT OUTER JOIN vote_tokens ON vote_tokens.project_id = projects.id ' \
+        'LEFT OUTER JOIN voters ON voters.id = vote_tokens.voter_id AND ' \
+        'voters.void = 0' + (filter.empty? ? '' : (' AND ' + filter)))
+        .select('projects.*, COALESCE(SUM(vote_tokens.cost), 0) AS vote_count')
+        .group('projects.id').order('vote_count DESC').map do |p|
+        {
+          id: p.id,
+          title: p.title,
+          vote_count: p.vote_count
+        }
+      end
+
+      if !current_user.can_see_exact_results?(election)
+        tokens.each { |p| p[:vote_count] = p[:vote_count].round(-1) }
+      end
+
+      max_token_vote_count = tokens.map { |p| p[:vote_count] }.max
+
+      tokens_csv = lambda do
+        CSV.generate do |csv|
+          csv << ["Project", "Votes"]
+          tokens.each do |p|
+            csv << [p[:title], p[:vote_count]]
+          end
+        end
+      end
+
+      tokens_individual_csv = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+
+        vote_tokens = election.valid_voters.joins('LEFT OUTER JOIN vote_tokens ON vote_tokens.voter_id = voters.id')
+          .select('voters.id, voters.authentication_id, vote_tokens.project_id, vote_tokens.cost').order(:id)
+
+        voter_count = election.valid_voters.count
+        vote_tokens_matrix = Array.new(voter_count) { Array.new(election.projects.count) { 0 } }
+        voter_id_matrix = Array.new(voter_count)
+        authentication_id_matrix = Array.new(voter_count)
+
+        projects = election.projects
+        project_id_to_index = {}
+        projects.each_with_index { |p, index| project_id_to_index[p.id] = index }
+
+        index = -1
+        current_voter = -1
+        vote_tokens.each do |v|
+          if v.id != current_voter
+            index += 1
+            current_voter = v.id
+            voter_id_matrix[index] = current_voter
+            authentication_id_matrix[index] = v.authentication_id
+          end
+          vote_tokens_matrix[index][project_id_to_index[v.project_id]] = v.cost if !v.project_id.nil?
+        end
+
+        CSV.generate do |csv|
+          csv << ['Voter ID'] + ['Authentication ID'] + projects.map(&:title)
+          vote_tokens_matrix.each_with_index do |r, index|
+            csv << [voter_id_matrix[index]] + [authentication_id_matrix[index]] + r
+          end
+        end
+      end
+
+      [{
+        tokens: tokens,
+        max_token_vote_count: max_token_vote_count
+      }, tokens_csv, tokens_individual_csv]
     end
 
     # Analytics for ranking interface

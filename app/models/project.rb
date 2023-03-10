@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :vote_rankings
   has_many :vote_knapsacks
   has_many :vote_plusminuses
+  has_many :vote_tokens
   translates :title, :description, :details, :address, :partner, :committee, :video_url, :partner, :image_description
   globalize_accessors
   mount_uploader :image, ImageUploader

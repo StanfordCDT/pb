@@ -1,6 +1,6 @@
 class VoteController < ApplicationController
   before_action :set_no_cache, if: :real_voting?
-  before_action :check_voter, only: [:approval, :submit_approval, :ranking, :submit_ranking, :knapsack, :submit_knapsack, :comparison, :submit_comparison, :thanks_approval, :question, :survey, :done_survey, :thanks]
+  before_action :check_voter, only: [:approval, :submit_approval, :ranking, :submit_ranking, :knapsack, :submit_knapsack, :token, :submit_token, :comparison, :submit_comparison, :thanks_approval, :question, :survey, :done_survey, :thanks]
   helper_method :conf, :voting_machine?, :real_voting?, :next_page, :current_action
   before_action :update_locales_with_config
 
@@ -209,6 +209,39 @@ class VoteController < ApplicationController
     end
 
     redirect_to next_page(:knapsack)
+  end
+
+  # Token voting
+  def token  # just approval + budgetbar
+    return if !update_stage(:token)
+    load_projects_and_categories
+    @submit_url = url_for(action: :submit_token)
+    render action: :approval
+  end
+
+  # Save token vote to the database
+  def submit_token
+    if !current_voter.nil? && !current_voter.test? && !conf[:stop_accepting_votes] && current_voter.vote_tokens.empty?  # TODO: the last clause is hacky
+      voter = current_voter
+      election = current_election
+      ActiveRecord::Base.transaction do
+        total_cost = 0
+        election.projects.each do |project|
+          cost = params[:project][project.id.to_s].to_i
+          if cost != 0
+            vote_token = VoteToken.new
+            vote_token.voter = voter
+            vote_token.project = project
+            vote_token.cost = cost
+            vote_token.save!
+            total_cost += cost
+          end
+        end
+        raise 'error' if conf[:token][:has_budget_limit] && total_cost > election.budget
+      end
+    end
+
+    redirect_to next_page(:token)
   end
 
   # Survey (just an <iframe> to an external website, e.g. Qualtrics)

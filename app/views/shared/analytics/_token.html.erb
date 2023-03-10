@@ -1,0 +1,205 @@
+<% if !current_user.can_see_exact_results?(@election) %>
+  <p class="alert alert-warning" role="alert">
+    <b>Note:</b> The vote counts below have been rounded to protect the voters' privacy.
+  </p>
+<% end %>
+
+<div style="float: right;">
+  <% if current_user.can_see_voter_data?(@election) %>
+    <span class="dropdown">
+      <a class="dropdown-toggle" id="tokenExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Export to Excel
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="tokenExportDropdown">
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'tokens') %>">Aggregate results</a>
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'tokens_individual') %>">Individual votes</a>
+      </div>
+    </span>
+  <% else %>
+    <a href="<%= url_for(format: :csv, table: 'tokens') %>">Export to Excel</a>
+  <% end %>
+</div>
+
+<div class="mb-2">
+  <ul class="nav formatSelector" role="tablist">
+    <li class="nav-item">
+      <a class="active" id="token-table-tab" data-toggle="tab" href="#token-table" role="tab" aria-controls="token-table" aria-selected="true">Table</a> |
+    </li>
+    <li class="nav-item">
+      <a id="token-chart-tab" data-toggle="tab" href="#token-chart" role="tab" aria-controls="token-chart" aria-selected="false">Chart</a>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <div class="tab-pane show active" id="token-table" role="tabpanel" aria-labelledby="token-table-tab">
+  </div>
+  <div class="tab-pane" id="token-chart" role="tabpanel" aria-labelledby="token-chart-tab">
+  </div>
+</div>
+
+<style>
+#token-table .progress {
+  margin-bottom: 0;
+  background-color: #bbbbbb;
+}
+</style>
+
+<script type="text/javascript">
+var tokens = analytics_data.token.tokens;
+var max_token_vote_count = analytics_data.token.max_token_vote_count;
+var categorized = <%= @election.categorized? %>;
+
+// Token table.
+function reloadTokenTable() {
+  var table = document.createElement('table');
+  table.setAttribute("id", "token-table");
+  table.className = 'table table-bordered table-sm';
+
+  // Header
+  var thead = document.createElement('thead');
+  thead.className = 'thead-light';
+  {
+    var tr = document.createElement('tr');
+
+    {
+      var th = document.createElement('th');
+      th.textContent = 'Project';
+      tr.appendChild(th);
+
+      if (categorized) {
+        var th = document.createElement('th');
+        th.textContent = 'Category';
+        tr.appendChild(th);
+      }
+
+      th = document.createElement('th');
+      th.textContent = 'Votes';
+      tr.appendChild(th);
+    }
+
+    thead.appendChild(tr);
+  }
+  table.appendChild(thead);
+
+  // Rows for projects
+  var tbody = document.createElement('tbody');
+  for (var i = 0; i < tokens.length; ++i) {
+    var tr = document.createElement('tr');
+    var project = projects[idToIndex[tokens[i].id]];
+
+    {
+      // Title
+      var td = document.createElement('td');
+      td.textContent = project.title;
+      tr.appendChild(td);
+
+      if (categorized) {
+        // Category name
+        var td = document.createElement('td');
+        td.textContent = project.category_name;
+        tr.appendChild(td);
+      }
+
+      // Votes
+      td = document.createElement('td');
+      {
+        var progressDiv = document.createElement('div');
+        progressDiv.className = 'progress';
+        {
+          var progressBarDiv = document.createElement('div');
+          progressBarDiv.className = 'progress-bar bg-success';
+          progressBarDiv.style.width = (tokens[i].vote_count / max_token_vote_count * 100) + '%';
+
+          progressBarDiv.textContent = numberWithDelimiter(tokens[i].vote_count);
+          progressDiv.appendChild(progressBarDiv);
+        }
+        td.appendChild(progressDiv);
+      }
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+
+  document.getElementById('token-table').innerHTML = '';
+  document.getElementById('token-table').appendChild(table);
+}
+
+reloadTokenTable();
+
+if (window.reloadCallbacks) {
+  reloadCallbacks.push(function(data) {
+    tokens = data.tokens;
+    max_token_vote_count = data.max_token_vote_count;
+    reloadTokenTable();
+  });
+}
+
+// Token bar chart.
+(function() {
+  var data = tokens;
+
+  var actualWidth = Math.min(45 * data.length, width);
+  var svg = d3.select("#token-chart")
+    .append("svg")
+      .attr("width", actualWidth + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var x = d3.scaleBand().rangeRound([0, actualWidth]).padding(.2);
+  var y = d3.scaleLinear().range([height, 0]);
+
+  x.domain(data.slice(0).sort(function(a, b){ return b.vote_count - a.vote_count }).map(function(p) { return p.id; }));
+  y.domain([0, d3.max(data, function(p) { return p.vote_count; })]);
+
+  var xAxis = d3.axisBottom()
+    .scale(x);
+
+  var yAxis = d3.axisLeft()
+    .scale(y);
+
+  // x-axis.
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .selectAll("text")
+        .text(function (id) { return projects[idToIndex[id]].title; })
+        .style("text-anchor", "start")
+        .attr("dx", "0.8em")
+        .attr("dy", "0.8em")
+        .attr("transform", "rotate(45)");
+
+  // y-axis.
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("dy", "-.71em")
+      .style("text-anchor", "end")
+      .text("Votes");
+
+  // Bars.
+  var bar = svg.selectAll(".bar")
+      .data(data).enter()
+
+  bar.append("rect")
+    .attr("class", "bar")
+    .attr("x", function(p) { return x(p.id); })
+    .attr("width", x.bandwidth())
+    .attr("y", function(p) { return y(p.vote_count); })
+    .attr("height", function(p) { return height - y(p.vote_count); });
+
+  // Text above each bar.
+  bar.append("text")
+    .attr("x", function(p) { return x(p.id) + x.bandwidth() / 2; })
+    .attr("y", function(p) { return y(p.vote_count); })
+    .attr("dy", "-.4em")
+    .style("text-anchor", "middle")
+    .style("font-size", "13")
+    .text(function(p) { return numberWithDelimiter(p.vote_count); });
+})();
+</script>

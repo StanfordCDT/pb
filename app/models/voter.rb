@@ -6,6 +6,7 @@ class Voter < ApplicationRecord
   has_many :vote_comparisons, dependent: :destroy
   has_many :vote_knapsacks, dependent: :destroy
   has_many :vote_plusminuses, dependent: :destroy
+  has_many :vote_tokens, dependent: :destroy
   has_one :voter_registration_record, dependent: :destroy
   serialize :data, JSON
   validates :authentication_id, presence: true, uniqueness: {scope: [:election_id, :authentication_method]}

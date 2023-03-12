@@ -1446,6 +1446,7 @@ class ConfigEditor extends React.Component {
     </div>
   </div>
 
+{/*
   <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
     <div className="group-body">
@@ -1453,6 +1454,7 @@ class ConfigEditor extends React.Component {
       <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
     </div>
   </div>
+*/}
 
   {/*
   <Conditional condition={c('knapsack.shuffle_projects')} name="knapsack.shuffle_probability" db={db}>
@@ -1575,6 +1577,7 @@ class ConfigEditor extends React.Component {
     </div>
   </div>
 
+{/*
   <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
     <div className="group-body">
@@ -1582,6 +1585,7 @@ class ConfigEditor extends React.Component {
       <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
     </div>
   </div>
+*/}
 
   <div className="group">
     <label className="group-title">Popup</label>

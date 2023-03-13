@@ -1445,7 +1445,8 @@ class ConfigEditor extends React.Component {
       </div>
     </div>
   </div>
-
+  
+  
 
   <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
@@ -1454,6 +1455,7 @@ class ConfigEditor extends React.Component {
       <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
     </div>
   </div>
+  
 
 
   {/*

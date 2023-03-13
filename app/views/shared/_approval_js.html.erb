@@ -60,7 +60,8 @@ function initializeViews() {
       if (isTokenVoting()) {
         $('#plus-button' + id).click(function() {
           console.log("XXX", id);
-          if (getTotal() + 1 > budget)
+          if (getTotal() + 1 > budget && !allow_selection_beyond_limits)
+            //console.log("here testing",selectedProjectIDs);
             return;
           if (selectedProjectIDs.indexOf(id) == -1) {
             selectedProjectIDs.push(id);
@@ -97,8 +98,16 @@ function initializeViews() {
         });
         slider.slider().on('slide', function(e){
           var value = slider.data('slider').getValue();
+          //console.log("XXX",value);
           var realCostMax = Math.floor((budget - getTotal() + costs[i]) / project.cost_step) * project.cost_step;
-          costs[i] = Math.max(project.cost_min, Math.min(realCostMax, value));
+          if (!allow_selection_beyond_limits){
+            costs[i] = Math.max(project.cost_min, Math.min(realCostMax, value));
+          }
+
+          
+          else{
+            costs[i] = Math.max(project.cost_min, value);
+          }  
           updateViews();
         });
       }
@@ -324,7 +333,7 @@ function updateList() {
     if (isTokenVoting()) {
       var $plus_button = $('#plus-button' + id);
       var $minus_button = $('#minus-button' + id);
-      $plus_button.prop('disabled', getTotal() >= budget);
+      $plus_button.prop('disabled', getTotal() >= budget && !allow_selection_beyond_limits);
       $minus_button.prop('disabled', costs[idToIndex[id]] == 0);
     }
 

@@ -706,7 +706,7 @@ module Admin
 
       knapsack_max_vote_count = knapsack_data.map { |p| p[:votes].map { |v| v[1] }.sum }.max
 
-      tokens_csv = lambda do
+      knapsacks_csv = lambda do
 =begin
         CSV.generate do |csv|
           csv << ["Project", "Votes"]

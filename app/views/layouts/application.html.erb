@@ -26,11 +26,17 @@
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 
+
+
 <div class="navbarWrapper fixed-top">
+ 
   <%= yield :fixed %>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <span class="navbar-brand"><%= params[:controller] == 'vote' ? t('navigation.brand') : 'Stanford PB' %></span>
+    <span class="navbar-brand"><%= params[:controller] == 'vote' ? t('navigation.brand') : "Stanford PB" %></span>
+
+    <span class="navbar-brand"><%= t("warning_update").html_safe %></span>
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -44,6 +50,7 @@
         <% end %>
 
         <% if current_user %>
+          
           <li class="nav-item"><a href="/admin/users/profile" class="nav-link">Profile</a></li>
           <li class="nav-item"><a href="/admin/users/logout" class="nav-link">Log Out</a></li>
         <% end %>

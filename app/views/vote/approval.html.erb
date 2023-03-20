@@ -1,6 +1,9 @@
 <% content_for :title, t('navigation.brand') %>
 
-<% @y_offset = conf[current_action][:budgetbar] ? 51 : 0 %>
+<% @y_offset = conf[current_action][:budgetbar]||conf[current_action][:tokenbar] ? 51 : 0 %>
+
+//<% @y_offset2 = conf[current_action][:tokenbar] ? 51 : 0 %>
+
 
 <% if conf[current_action][:show_maps] %>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_maps_api_key %>"></script>
@@ -17,8 +20,12 @@
   var costs = new Array(projects.length);
   var ranks = new Array(projects.length);
   var has_budget_limit = <%= conf[current_action][:has_budget_limit] %>;
+  var has_token_limit = <%= conf[current_action][:has_token_limit] %>;
   var has_n_project_limit = <%= conf[current_action][:has_n_project_limit] %>;
   var budget = <%= @election.budget.to_i %>;
+  
+  //var budget = <%= current_action == :token ? conf[current_action][:total_tokens] : @election.budget.to_i%>;
+  var total_tokens = <%= conf[current_action][:total_tokens] %>;
   var max_n_projects = <%= conf[current_action][:max_n_projects] %>;
   var min_n_projects = <%= conf[current_action][:min_n_projects] %>;
   // For multiple approval pages, select the project limit from the project_limits array
@@ -49,6 +56,8 @@
     padding: 20px 0;
     overflow: auto;
   }
+
+
 
   #topbar {
     position: fixed;
@@ -102,12 +111,24 @@
   <% end %>
 <% end %>
 
+
 <% if conf[current_action][:budgetbar] %>
-  <% content_for :fixed do %>
-    <%= render 'shared/budgetbar' %>
+ <% content_for :fixed do %>
+   <%= render 'shared/budgetbar' %>
   <% end %>
   <div style="height: <%= @y_offset %>px"></div>
 <% end %>
+
+<% if conf[current_action][:tokenbar] %>
+ <% content_for :fixed do %>
+   <%= render 'shared/tokenbar' %>
+  <% end %>
+  <div style="height: <%= @y_offset %>px"></div>
+<% end %>
+
+
+
+
 
 <% if conf[current_action][:sidebar] || conf[current_action][:tracker] %>
   <div id="leftbar">

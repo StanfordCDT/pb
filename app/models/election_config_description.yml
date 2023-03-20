@@ -154,10 +154,18 @@
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
 
+    - name: has_token_limit
+      default: false
+
     - name: has_n_project_limit
       default: true
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+
+    - name: total_tokens
+      default: 15
+      required: true
+      #description : "Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -203,7 +211,11 @@
     - name: budgetbar
       default: false
       # description: "Show a budget bar at the top of the page."
-
+    
+    - name: tokenbar
+      default: false
+      # description: "Show a token bar at the top of the page."
+    
     - name: tracker
       default: true
       # description: "Show a text at the top-left corner of the page that indicates how many projects the voter has selected."
@@ -287,11 +299,19 @@
       default: true
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
+    
+    - name: has_token_limit
+      default: false
 
     - name: has_n_project_limit
       default: false
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+
+    - name: total_tokens
+      default: 15
+      required: true
+      #description :"Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -316,6 +336,9 @@
       default: true
       required: true
 
+    - name: show_cost_in_title
+      default: false
+
     - name: shuffle_probability
       default: 1.0
       # description: "Probability that the projects are shuffled. Use 1 for \"always shuffled.\" Use 0.5 for \"shuffled half of the time.\""
@@ -328,6 +351,10 @@
     - name: budgetbar
       default: true
       # description: "Show a budget bar at the top of the page."
+    
+    - name: tokenbar
+      default: false
+      # description: "Show a token bar at the top of the page."
 
     - name: tracker
       default: false
@@ -361,7 +388,7 @@
       default: true
 
     - name: show_disclaimer
-      default: true
+      default: false
 
     - name: show_shuffle_note
       default: false
@@ -388,14 +415,22 @@
   children:
 
     - name: has_budget_limit
-      default: true
+      default: false
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
+    
+    - name: has_token_limit
+      default: true
 
     - name: has_n_project_limit
       default: false
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+    
+    - name: total_tokens
+      default: 15
+      required: true
+      #description :"Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -430,8 +465,12 @@
       # description: "Show a list of projects on the left side of the page."
 
     - name: budgetbar
-      default: true
+      default: false
       # description: "Show a budget bar at the top of the page."
+    
+    - name: tokenbar
+      default: true
+      # description: "Show a token bar at the top of the page."
 
     - name: tracker
       default: false
@@ -463,9 +502,12 @@
 
     - name: show_popup
       default: true
+    
+    - name: show_cost_in_title
+      default: false
 
     - name: show_disclaimer
-      default: true
+      default: false
 
     - name: show_shuffle_note
       default: false
@@ -495,11 +537,19 @@
       default: false
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
+    
+    - name: has_token_limit
+      default: false
 
     - name: has_n_project_limit
       default: true
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+    
+    - name: total_tokens
+      default: 15
+      required: true
+      #description :"Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -540,6 +590,10 @@
     - name: budgetbar
       default: false
       # description: "Show a budget bar at the top of the page."
+    
+    - name: tokenbar
+      default: false
+      # description: "Show a token bar at the top of the page."
 
     - name: tracker
       default: true
@@ -655,7 +709,7 @@
       default: true
 
     - name: show_disclaimer
-      default: true
+      default: false
 
     - name: show_popup
       default: true

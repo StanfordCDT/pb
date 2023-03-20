@@ -45,13 +45,14 @@
   </p>
 <% end %>
 
-<% if project.adjustable_cost? && project.uses_slider? %>
-  <% if current_action == :token %>
+
+<% if current_action == :token %>
     <div id="slider-wrapper<%= project.id %>" class="slider-wrapper">
       <p>
         <b>Tokens used</b>:
         <span id="slider-value<%= project.id %>"></span>
       </p>
+      
     </div>
     <p>
       <button type="button" class="btn btn-primary btn-lg" id="plus-button<%= project.id %>">
@@ -62,7 +63,8 @@
         &minus;
       </button>
     </p>
-  <% else %>
+<% else %>
+  <% if project.adjustable_cost? && project.uses_slider? %>
     <div id="slider-wrapper<%= project.id %>" class="slider-wrapper">
       <p>
         <b>Currently Selected Cost</b>:

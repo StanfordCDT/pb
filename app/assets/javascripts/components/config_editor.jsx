@@ -617,6 +617,16 @@ function PagePreview(props) {
     <div className="preview-wrapper">
       <table className={"preview preview-theme" + props.theme}>
         <tbody>
+        {props.tokenbar &&
+            <tr>
+              <td colSpan="2" className="preview-tokenbar">
+                Selected 8 out of 20 tokens.
+                <div className="progress">
+                  <div className="progress-bar bg-success"></div>
+                </div>
+              </td>
+            </tr>
+        }
           {props.budgetbar &&
             <tr>
               <td colSpan="2" className="preview-budgetbar">
@@ -627,6 +637,7 @@ function PagePreview(props) {
               </td>
             </tr>
           }
+          
           <tr>
             {(props.sidebar || props.tracker) &&
               <td className="preview-leftbar">
@@ -1301,6 +1312,14 @@ class ConfigEditor extends React.Component {
   */}
 
   <div className="group">
+    <label className="group-title">Research ballot</label>
+    <div className="group-body">
+      <BooleanOption name="approval.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
+    </div>
+  </div>
+
+
+  <div className="group">
     <label className="group-title">Limit on number of projects</label>
     <div className="group-body">
       <BooleanOption name="approval.has_n_project_limit" db={db} label="Impose a limit on the number of projects the voter can choose" />
@@ -1331,6 +1350,7 @@ class ConfigEditor extends React.Component {
     </div>
   </Conditional>
 
+  
   {/*
   <div className="group">
     <label className="group-title">Project ranking</label>
@@ -1427,9 +1447,9 @@ class ConfigEditor extends React.Component {
     <label className="group-title">Project appearance</label>
     <div className="group-body row">
       <div className="col-sm-7">
-        {/*
+        
         <BooleanOption name="knapsack.show_cost" db={db} label="Show cost under the description" />
-        */}
+        <BooleanOption name="knapsack.show_cost_in_title" db={db} label="Show cost in the title" />
         <BooleanOption name="knapsack.show_numbers" db={db} label="Show project numbers" />
         <BooleanOption name="knapsack.show_maps" db={db} label="Show maps (for projects that have coordinates)" />
       </div>
@@ -1437,7 +1457,7 @@ class ConfigEditor extends React.Component {
         <ProjectPreview
           showMaps={db.get("knapsack.show_maps")}
           showNumbers={db.get("knapsack.show_numbers")}
-          showCostInTitle={false}
+          showCostInTitle={db.get("knapsack.show_cost_in_title")}
           showCost={db.get("knapsack.show_cost")}
           currencySymbol={db.get("currency_symbol")}
         />
@@ -1523,7 +1543,7 @@ class ConfigEditor extends React.Component {
     <label className="group-title">Page appearance</label>
     <div className="group-body row">
       <div className="col-sm-7">
-        <BooleanOption name="token.budgetbar" db={db} label="Show the budget bar" />
+        <BooleanOption name="token.tokenbar" db={db} label="Show the token count" />
 
         <BooleanOption name="token.sidebar" db={db} label="Show the project list on the left side" />
 
@@ -1543,6 +1563,7 @@ class ConfigEditor extends React.Component {
 
         <PagePreview
           budgetbar={db.get("token.budgetbar")}
+          tokenbar={db.get("token.tokenbar")}
           shuffleProjects={db.get("token.shuffle_projects")}
           nCols={db.get("token.n_cols")}
           theme={db.get("token.theme")}
@@ -1557,21 +1578,45 @@ class ConfigEditor extends React.Component {
   </div>
 
   <div className="group">
+    <label className="group-title">Total number of tokens</label>
+    
+        
+      <NumberOption name="token.total_tokens" db={db} label="total_tokens" />
+
+     
+  </div>
+
+  <div className="group">
     <label className="group-title">Project appearance</label>
     <div className="group-body row">
       <div className="col-sm-7">
-        {/*
+        
         <BooleanOption name="token.show_cost" db={db} label="Show cost under the description" />
-        */}
+        <BooleanOption name="token.show_cost_in_title" db={db} label="Show cost in the title" />
+        
         <BooleanOption name="token.show_numbers" db={db} label="Show project numbers" />
         <BooleanOption name="token.show_maps" db={db} label="Show maps (for projects that have coordinates)" />
+
+        
       </div>
       <div className="col-sm-5">
         <ProjectPreview
           showMaps={db.get("token.show_maps")}
           showNumbers={db.get("token.show_numbers")}
-          showCostInTitle={false}
+          showCostInTitle={db.get("token.show_cost_in_title")}
           showCost={db.get("token.show_cost")}
+          currencySymbol={db.get("currency_symbol")}
+        />
+        <div className="previewCaption">Preview</div>
+      </div>
+
+
+      <div className="col-sm-5">
+        <ProjectPreview
+          showMaps={db.get("knapsack.show_maps")}
+          showNumbers={db.get("knapsack.show_numbers")}
+          showCostInTitle={false}
+          showCost={db.get("knapsack.show_cost")}
           currencySymbol={db.get("currency_symbol")}
         />
         <div className="previewCaption">Preview</div>

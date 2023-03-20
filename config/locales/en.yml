@@ -66,10 +66,19 @@ en:
           zero: "<span style='color: red;'>You haven't selected any project.</span>"
           other: "You have selected the following projects: %{projects}"
           item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
           limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+        
         warning: "After submitting your vote, you <strong>cannot</strong> change your vote. If you want to modify your vote, please click 'Go Back' below. If you want to submit your vote, please check the box below and then click 'Submit My Vote.'"
         checkbox: "I understand that after I submit my vote, I <strong>cannot</strong> change it."
       ok: "Submit My Vote"
@@ -78,6 +87,7 @@ en:
       title: "Could not submit your vote"
       over_n_project_limit: "<span style='color:red'>You have selected <b>%{n_projects}</b> projects. You can only select at most <b>%{max_n_projects}</b> projects. Please remove <b>%{extra}</b> or more projects.</span>"
       over_budget_limit: "<span style='color:red'>You're currently over budget.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>"
       cancel: "Go Back"
     tracker:
       text: "You have selected %{count} projects."
@@ -87,11 +97,22 @@ en:
       under_budget: "You still have %{remaining_money} left."
       over_budget: "You're currently over budget."
       over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    tokenbar:
+      text: "Selected %{total} of %{budget} total tokens."
+      under_token: "You still have %{remaining_money} tokens left."
+      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
+      
+
     adjustable_cost_project:
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
       message: "You have selected %{cost} for %{project}"
-      table_headings:
+    adjustable_token_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
+    table_headings:
         percentage_column: "Percentage of the budget spent"
         cost_column: "Cost"
         number_column: "Approximate # of blocks resurfaced"
@@ -159,10 +180,19 @@ en:
           zero: "<span style='color: red;'>You haven't selected any project.</span>"
           other: "You have selected the following projects: %{projects}"
           item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
           limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+
         warning: "After submitting your vote, you <strong>cannot</strong> change your vote. If you want to modify your vote, please click 'Go Back' below. If you want to submit your vote, please check the box below and then click 'Submit My Vote.'"
         checkbox: "I understand that after I submit my vote, I <strong>cannot</strong> change it."
       ok: "Submit My Vote"
@@ -180,11 +210,20 @@ en:
       under_budget: "You still have %{remaining_money} left."
       over_budget: "You're currently over budget."
       over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    tokenbar:
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
       message: "You have selected $%{cost} for %{project}"
-      table_headings:
+    adjustable_token_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"  
+    table_headings:
         percentage_column: "Percentage of the budget spent"
         cost_column: "Cost"
         number_column: "Approximate # of blocks resurfaced"
@@ -253,10 +292,20 @@ Board at 650-723-2480.</p>"
           zero: "<span style='color: red;'>You haven't selected any projects.</span>"
           other: "You have selected the following projects: %{projects}"
           item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
           limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+
+
         warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
       ok: "Submit My Vote"
       cancel: "Go Back"
@@ -264,6 +313,11 @@ Board at 650-723-2480.</p>"
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
       message: "You have selected %{cost} for %{project}"
+    
+    adjustable_token_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
 
   token:
     title: "Participatory Budgeting"
@@ -286,7 +340,7 @@ Board at 650-723-2480.</p>"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>
                    <ol>
-                     <li>Select the projects you would like to support. The total cost cannot exceed <b>%{budget}</b>.</li>
+                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
                      <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
                      <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
                    </ol>"
@@ -297,10 +351,20 @@ Board at 650-723-2480.</p>"
           zero: "<span style='color: red;'>You haven't selected any projects.</span>"
           other: "You have selected the following projects: %{projects}"
           item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
+          
         under_n_project_limit:
           one: "<span style='color: red;'>You have selected only one project.</span>"
           less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
           limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+
         warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
       ok: "Submit My Vote"
       cancel: "Go Back"
@@ -308,6 +372,11 @@ Board at 650-723-2480.</p>"
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
       message: "You have selected %{cost} for %{project}"
+    
+    adjustable_token_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
 
   survey:
     title: "Survey"

@@ -60,7 +60,7 @@ function initializeViews() {
       if (isTokenVoting()) {
         $('#plus-button' + id).click(function() {
           console.log("XXX", id);
-          if (getTotal() + 1 > budget && !allow_selection_beyond_limits)
+          if (getTotal() + 1 > total_tokens && !allow_selection_beyond_limits)
             //console.log("here testing",selectedProjectIDs);
             return;
           if (selectedProjectIDs.indexOf(id) == -1) {
@@ -257,6 +257,7 @@ function updateViews() {
 
   updateSidebar();
   updateBudgetbar();
+  updateTokenbar();
   updateTracker();
   updateModal();
 
@@ -315,25 +316,40 @@ function updateList() {
     }
 
     // Update the sliders or radio buttons for the adjustable cost projects
-    if (isAdjustableCostProject(id)) {
-      if (usesSlider(id)) {
-        if (isProjectSelected(id)) {
-          $("#slider-wrapper" + id).show();
+    if (isTokenVoting()) {
+
+      
+      $("#slider-wrapper" + id).show();
           //$("#slider" + id).slider('setRealMax', Math.min(projects[i].cost, budget - total + costs[i]));
-          $("#slider" + id).slider('setValue', costs[i]);
-          $("#slider-value" + id).text(costWithDelimiter(costs[i], currency_symbol));
+      $("#slider" + id).slider('setValue', costs[i]);
+      $("#slider-value" + id).text(costWithDelimiter(costs[i], ' '));
+        
+
+
+    }
+
+    else{
+
+      if (isAdjustableCostProject(id)) {
+        if (usesSlider(id)) {
+          if (isProjectSelected(id)) {
+            $("#slider-wrapper" + id).show();
+            //$("#slider" + id).slider('setRealMax', Math.min(projects[i].cost, budget - total + costs[i]));
+            $("#slider" + id).slider('setValue', costs[i]);
+            $("#slider-value" + id).text(costWithDelimiter(costs[i], currency_symbol));
+          } else {
+            $("#slider-wrapper" + id).hide();
+          }
         } else {
-          $("#slider-wrapper" + id).hide();
+          updateRadioButtons(id);
         }
-      } else {
-        updateRadioButtons(id);
       }
     }
 
     if (isTokenVoting()) {
       var $plus_button = $('#plus-button' + id);
       var $minus_button = $('#minus-button' + id);
-      $plus_button.prop('disabled', getTotal() >= budget && !allow_selection_beyond_limits);
+      $plus_button.prop('disabled', getTotal() >= total_tokens && !allow_selection_beyond_limits);
       $minus_button.prop('disabled', costs[idToIndex[id]] == 0);
     }
 
@@ -468,6 +484,7 @@ function updateBudgetbar() {
   }
 
   $('#budgetbar-total').text(costWithDelimiter(total, currency_symbol));
+  $('#tokenbar-total').text(costWithDelimiter(total, ' '));
 
   var s = "";
   for (var i = 0; i < projects.length; ++i) {
@@ -518,10 +535,85 @@ function updateBudgetbar() {
   $('#budgetbar-description').html(description);
 }
 
+function updateTokenbar() {
+  var total = getTotal();
+  var cls = (total <= total_tokens) ? 'success' : 'danger'; // TODO: use other colors
+  var budget2 = (total <= total_tokens) ? total_tokens : total;
+  var progressBarForProject = function(id) {
+    var width = costs[idToIndex[id]] / budget2 * 100;
+    if (width <= 0)
+      return '';
+    var photo_name = "";
+    var title = "<span style='font-size: 14px'>" + projects[idToIndex[id]].title;
+    var content = "<%=j t('approval.estimated_cost') %>: " + costWithDelimiter(costs[idToIndex[id]], currency_symbol) + "<br>" +
+      "<button type='button' class='btn btn-secondary' onclick='removeProject(" + id + ")'><%=j t('approval.remove_button').html_safe %></button>" +
+      (photo_name ? ("<br><img src='/project_images/" + photo_name + "' class='budgerbar-thumb' />") : '') + "</span>";
+    return "<a class='progress-bar bg-" + cls + "' " +
+      "style='width: " + width + "%;' data-toggle='popover' " +
+      "title=\"" + title + "\" data-content=\"" + content + "\" href='javascript:showProject(" + id + ")'>" +
+        //"<div style='background-color:white; width: 40px; height: 40px;'></div>" +
+        "</a>";
+  }
+
+  $('#budgetbar-total').text(costWithDelimiter(total, currency_symbol));
+  $('#tokenbar-total').text(costWithDelimiter(total, ' '));
+
+  var s = "";
+  for (var i = 0; i < projects.length; ++i) {
+    if (isMandatoryProject(projects[i].id))
+      s += progressBarForProject(projects[i].id);
+  }
+  for (var i = 0; i < selectedProjectIDs.length; ++i) {
+    s += progressBarForProject(selectedProjectIDs[i]);
+  }
+
+  $("[data-toggle='popover']").popover("hide");
+  $('#tokenbar-progress').html(s);
+  $('#tokenbar-progress .progress-bar').popover({
+    animation: false,
+    html: true,
+    placement: 'bottom',
+    trigger: 'manual'
+  })
+  .on("mouseenter", function () {
+    //console.log("mouse enter");
+    var _this = this;
+    $(this).popover("show");
+    //$(this).siblings(".popover").on("mouseleave", function () {
+    $(".popover").on("mouseleave", function () {
+      //console.log("mouse leave2");
+      $(_this).popover("hide");
+    });
+  }).on("mouseleave", function () {
+    //console.log("mouse leave");
+    var _this = this;
+    setTimeout(function () {
+      if (!$(".popover:hover").length) {
+        $(_this).popover("hide")
+      }
+    }, 100);
+  });
+
+  var description = '';
+  if (total <= total_tokens) {
+    // FIXME: say something else when total == budget
+    // FIXME: change the language if (has_n_project_limit && selectedProjectIDs.length >= max_n_projects)
+    description = "<%=j t('approval.tokenbar.under_token').html_safe %>".replace('%{remaining_money}', "<span class='remaining-money'>" + costWithDelimiter(total_tokens-total, ' ') + "</span>");
+  } else if (!has_token_limit && (!has_n_project_limit || selectedProjectIDs.length < max_n_projects)) {
+    description = "<%=j t('approval.tokenbar.over_budget_but_can_add_projects').html_safe %>";
+  } else {
+    description = "<%=j t('approval.tokenbar.over_token').html_safe %>";
+  }
+  $('#tokenbar-description').html(description);
+}
+
+
+
+
 function updateTracker() {
   var n = selectedProjectIDs.length;
   var trackerCount;
-  if (has_n_project_limit) {
+  if (has_n_project_limit||isTokenVoting()) {
     trackerCount = "<%=j t('approval.tracker.x_out_of_y').html_safe %>".replace('%{x}', n).replace('%{y}', max_n_projects);
   } else {
     trackerCount = n;
@@ -554,7 +646,14 @@ function updateModal() {
       .replace('%{extra}', selectedProjectIDs.length - max_n_projects));
     $('#ack-frame').hide();
     $('#submitModal .submit').hide();
-  } else {
+  } else if (has_token_limit && getTotal() > total_tokens) {
+  $('#submitModal .modal-title').html("<%=j t('approval.confirmation_over_limit.title').html_safe %>");
+  $('#confirmation-body').html("<%=j t('approval.confirmation_over_limit.over_token_limit').html_safe %>");
+  $('#ack-frame').hide();
+  $('#submitModal .submit').hide();
+  }
+
+  else {
     <% if conf[:approval][:categories_in_popups] %>
       $('#submitModal .modal-title').html("<%=j t("#{current_action}.confirmation.title", category: @categories.first.name).html_safe %>");
     <% else %>
@@ -563,28 +662,63 @@ function updateModal() {
 
     var summary_zero = "<%=j t("#{current_action}.confirmation.body.summary.zero").html_safe %>";
     var summary_other = "<%=j t("#{current_action}.confirmation.body.summary.other").html_safe %>";
+
+    var summary_token_zero = "<%=j t("#{current_action}.confirmation.body.summary_token.zero").html_safe %>";
+    var summary_token_other = "<%=j t("#{current_action}.confirmation.body.summary_token.other").html_safe %>";
+
+
     var item = "<%=j t("#{current_action}.confirmation.body.summary.item").html_safe %>";
+    var token_item =  "<%=j t("#{current_action}.confirmation.body.summary_token.item").html_safe %>";
     var under_n_project_limit = "<%=j t("#{current_action}.confirmation.body.under_n_project_limit.limit").html_safe %>";
     var under_n_project_limit_one = "<%=j t("#{current_action}.confirmation.body.under_n_project_limit.one").html_safe %>";
     var under_n_project_limit_less = "<%=j t("#{current_action}.confirmation.body.under_n_project_limit.less").html_safe %>";
+    var under_token_limit = "<%=j t("#{current_action}.confirmation.body.under_token_limit.limit").html_safe %>";
+    var under_token_limit_one = "<%=j t("#{current_action}.confirmation.body.under_token_limit.one").html_safe %>";
+    var under_token_limit_less = "<%=j t("#{current_action}.confirmation.body.under_token_limit.less").html_safe %>";
+
+
+
     var warning = "<%=j t("#{current_action}.confirmation.body.warning").html_safe %>";
 
     // For the mandatory projects.
     var adjustable_cost_project_warning = "<%=j t("#{current_action}.adjustable_cost_project.not_adjusted_warning").html_safe %>";
+    var adjustable_token_project_warning = "<%=j t("#{current_action}.adjustable_token_project.not_adjusted_warning").html_safe %>";
+ 
+
     var adjustable_cost_project_summary = '';
 
-    for (var i = 0; i < projects.length; ++i) {
-      if (!isMandatoryProject(projects[i].id))
-        continue;
-      var project = projects[i];
-      if (costs[i] > 0) {
-        adjustable_cost_project_summary += '<%=j t("#{current_action}.adjustable_cost_project.message").html_safe %>'
-          .replace('%{cost}', costWithDelimiter(costs[i], currency_symbol))
-          .replace('%{project}', project.title) + '<br><br>';
-      } else {
-        adjustable_cost_project_summary += adjustable_cost_project_warning.replace('%{project}', project.title) + "<br><br>";
+    if (isTokenVoting()){
+      for (var i = 0; i < projects.length; ++i) {
+        if (!isMandatoryProject(projects[i].id))
+          continue;
+        var project = projects[i];
+        if (costs[i] > 0) {
+          adjustable_cost_project_summary += '<%=j t("#{current_action}.adjustable_token_project.message").html_safe %>'
+            .replace('%{cost}', costWithDelimiter(costs[i], ' '))
+            .replace('%{project}', project.title) + '<br><br>';
+        } else {
+          adjustable_cost_project_summary += adjustable_token_project_warning.replace('%{project}', project.title) + "<br><br>";
+        }
       }
-    }
+
+    } 
+    else{
+
+      for (var i = 0; i < projects.length; ++i) {
+        if (!isMandatoryProject(projects[i].id))
+          continue;
+        var project = projects[i];
+        if (costs[i] > 0) {
+          adjustable_cost_project_summary += '<%=j t("#{current_action}.adjustable_cost_project.message").html_safe %>'
+            .replace('%{cost}', costWithDelimiter(costs[i], currency_symbol))
+            .replace('%{project}', project.title) + '<br><br>';
+        } else {
+          adjustable_cost_project_summary += adjustable_cost_project_warning.replace('%{project}', project.title) + "<br><br>";
+        }
+      }
+    }  
+
+
 
     // If ranking is enabled, show the ranks
     // Else have an unordered list
@@ -612,7 +746,22 @@ function updateModal() {
           .replace('%{project}', project.title) + '</li>';
       }
       projects_s += '</ol>';
-    } else {
+    } else if (isTokenVoting()) {
+      projects_s += '<ul>';
+      for (var j = 0; j < selectedProjectIDs.length; ++j) {
+        var i = idToIndex[selectedProjectIDs[j]];
+        var project = projects[i];
+        projects_s += '<li>' +
+          token_item.replace('%{cost}', costWithDelimiter(costs[i], ''))
+          .replace('%{project}', project.title) + '</li>';
+      }
+      projects_s += '</ul>';
+      
+      
+    }
+
+    else{
+
       projects_s += '<ul>';
       for (var j = 0; j < selectedProjectIDs.length; ++j) {
         var i = idToIndex[selectedProjectIDs[j]];
@@ -622,9 +771,15 @@ function updateModal() {
           .replace('%{project}', project.title) + '</li>';
       }
       projects_s += '</ul>';
-    }
 
-    var summary = (selectedProjectIDs.length == 0) ? summary_zero : summary_other;
+    }
+    if (isTokenVoting()){
+      var summary = (selectedProjectIDs.length == 0) ? summary_token_zero : summary_token_other;
+    }
+    else{
+      var summary = (selectedProjectIDs.length == 0) ? summary_zero : summary_other;
+    }
+    
     summary = summary.replace('%{projects}', projects_s);
     var under_limit_warning = '';
     if (has_n_project_limit && selectedProjectIDs.length < max_n_projects) {
@@ -635,6 +790,21 @@ function updateModal() {
       }
       under_limit_warning += under_n_project_limit.replace('%{max_n_projects}', max_n_projects);
     }
+
+    else if (has_token_limit && getTotal()< total_tokens){
+
+      if (getTotal()== 1){
+        under_limit_warning += under_token_limit_one + ' ';
+      } else if (getTotal ()>0){
+        under_limit_warning += under_token_limit_less.replace('%{count}', getTotal()) + ' ';
+      }
+      
+      under_limit_warning += under_token_limit.replace('%{total_tokens}',total_tokens);
+
+
+    }
+
+    
 
     $('#confirmation-body').html(adjustable_cost_project_summary + ' ' + summary + ' ' + under_limit_warning + ' ' + warning);
     $('#ack-frame').show();

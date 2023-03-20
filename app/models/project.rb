@@ -19,6 +19,7 @@ class Project < ApplicationRecord
   validate :validate_map_geometry
   validate :validate_adjustable_cost
   validate :validate_data
+  
   before_save :sanitize_html
 
   def parsed_data

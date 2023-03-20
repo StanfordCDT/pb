@@ -238,6 +238,8 @@ class VoteController < ApplicationController
           end
         end
         raise 'error' if conf[:token][:has_budget_limit] && total_cost > election.budget
+        raise 'error' if conf[:token][:has_token_limit] && total_cost > conf[:token][:total_tokens]
+        
       end
     end
 

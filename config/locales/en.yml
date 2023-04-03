@@ -30,8 +30,6 @@ en:
     voting_ended: "The voting has ended."
     public_results: "See Election Results"
 
-  warning_update: "<span style='color: red;'> Site maybe down for maintanance on 14,15 and 16 April. </span>"
-
   approval:
     title: "Participatory Budgeting"
     popup:

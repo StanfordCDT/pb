@@ -10,8 +10,11 @@ gem 'rails', '~> 7.0'
 # gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 5.5'
+##gem 'sprockets-railtie'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+#gem 'sass-rails', '~> 5.0'
+#Added sprockets for higher version of Rails
+gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

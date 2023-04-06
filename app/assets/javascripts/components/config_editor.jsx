@@ -486,7 +486,7 @@ class WorkflowOption extends React.Component {
       ["approval", "Approval voting", "Voters select a set of projects. There is a limit on the number of projects, but there is <em>no</em> limit on the total cost."],
       ["knapsack", "Knapsack voting", "Voters select a set of projects. There is <em>no</em> limit on the number of projects, but there is a limit on the total cost."],
       ["ranking", "Ranked voting", "Voters select a set of projects and then rank them."],
-      ["token", "Token voting", "Voters select a set of projects and assign them a number of tokens. There is a limit on the total tokens available."],
+      ["token", "Token voting", "Voters select a set of projects and assign them a number of tokens. There is a limit on the total tokens available. (Experimental method)"],
       ["comparison", "Comparison voting", "Voters compare pairs of projects that are randomly chosen."]
     ];
   }

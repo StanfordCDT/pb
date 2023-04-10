@@ -651,9 +651,7 @@ function updateModal() {
   $('#confirmation-body').html("<%=j t('approval.confirmation_over_limit.over_token_limit').html_safe %>");
   $('#ack-frame').hide();
   $('#submitModal .submit').hide();
-  }
-
-  else {
+  } else {
     <% if conf[:approval][:categories_in_popups] %>
       $('#submitModal .modal-title').html("<%=j t("#{current_action}.confirmation.title", category: @categories.first.name).html_safe %>");
     <% else %>

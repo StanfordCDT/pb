@@ -2,7 +2,7 @@
 
 <% @y_offset = conf[current_action][:budgetbar]||conf[current_action][:tokenbar] ? 51 : 0 %>
 
-//<% @y_offset2 = conf[current_action][:tokenbar] ? 51 : 0 %>
+
 
 
 <% if conf[current_action][:show_maps] %>
@@ -113,8 +113,8 @@
 
 
 <% if conf[current_action][:budgetbar] %>
- <% content_for :fixed do %>
-   <%= render 'shared/budgetbar' %>
+  <% content_for :fixed do %>
+    <%= render 'shared/budgetbar' %>
   <% end %>
   <div style="height: <%= @y_offset %>px"></div>
 <% end %>

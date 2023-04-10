@@ -1610,7 +1610,7 @@ class ConfigEditor extends React.Component {
         <div className="previewCaption">Preview</div>
       </div>
 
-
+      {/*
       <div className="col-sm-5">
         <ProjectPreview
           showMaps={db.get("knapsack.show_maps")}
@@ -1621,6 +1621,7 @@ class ConfigEditor extends React.Component {
         />
         <div className="previewCaption">Preview</div>
       </div>
+      */}
     </div>
   </div>
 

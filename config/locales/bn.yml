@@ -119,6 +119,10 @@ bn:
         percentage_column: বাজেট খরচের শতকরা হার
         cost_column: খরচ
         number_column: 'আনুমানিক #টি ব্লক নতুন করে করা হয়েছে'
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: 1টি রাস্তা পুনর্নির্মাণ করা হয়েছে

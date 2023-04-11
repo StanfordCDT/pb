@@ -106,6 +106,10 @@ fr:
         percentage_column: "Pourcentage du budget dépensé"
         cost_column: "Coût"
         number_column: "Nombre approximatif de blocs refait surface"
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: "1 street repaved"

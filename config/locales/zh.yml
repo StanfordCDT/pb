@@ -108,6 +108,10 @@ zh:
         percentage_column: "预算中所占比例"
         cost_column: "费用"
         number_column: "街道近似＃复出"
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: "1重铺街道"

@@ -124,6 +124,10 @@ pl:
         percentage_column: Procent wykorzystanej kwoty
         cost_column: Koszt
         number_column: 'Ulice w remoncie - około #'
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: 1 ulica naprawiona

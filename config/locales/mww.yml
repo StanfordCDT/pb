@@ -119,6 +119,10 @@ mww:
         percentage_column: Ib feem puab ntawm cov nyiab siv
         cost_column: Raug pes tsawg
         number_column: 'Ntawm cov # of blocks rov tshwmsim'
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: 1 txoj kev raug kho

@@ -116,6 +116,10 @@ km:
         percentage_column: ភាគរយនៃថវិកាដែលបានចំណាយ
         cost_column: ថ្លៃចំណាយ
         number_column: ចំនួនប្រហាក់ប្រហែលនៃផ្លូវ ដែលត្រូវអ៊ុតកៅស៊ូឡើងវិញ
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: ផ្លូវចំនួន 1 ដែលត្រូវបានជួសជុល និងកា្រលកៅស៊ូឡើងវិញ

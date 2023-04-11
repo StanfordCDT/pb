@@ -68,11 +68,19 @@ mww:
           zero: "<span style='color: red;'>Koj tsis tau xaiv ib qhov project.</span>"
           other: 'Koj xaiv cov projects no: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Koj xaiv tau ib qho project.</span>"
           less: "<span style='color: red;'>Koj xaiv tau %{count}cov projects.</span>"
           limit: "<span style='color: red;'>Koj tsuas xaiv tau %{max_n_projects} cov
             projects.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Thaum koj xa cov koj xaiv, koj<strong>pauv</strong> tsi tau cov koj
           xiav lawm. Yog koj xav pauv, thov ntau qhov 'Go Back' uas nyob hauv qab.
           Yog koj xav xab cov koj xaiv, nias lub box hauv qab, cev nias lub 'Submit
@@ -87,6 +95,7 @@ mww:
         cov projects. Koj tsuas yog xaiv tau <b>%{max_n_projects}</b> cov projects.
         Thov tshev <b>%{extra}</b> los ntau tshaj cov projects.</span>"
       over_budget_limit: "<span style='color:red'>Cov nyiab siv dhau qhov siv tau.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Go Back (mus rov qab)
     tracker:
       text: Koj xaiv tau %{count} cov projects.
@@ -97,6 +106,11 @@ mww:
       over_budget: Cov nyiab siv dhau qhov siv tau.
       over_budget_but_can_add_projects: Cov nyiab siv dhau tshaj lawm, tiamsis koj
         xaiv ib cov projects ntxiv los tau.
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_token: "You still have %{remaining_money} tokens left."
+      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
     adjustable_cost_project:
       instructions: 'Xaiv ib cov nyob hauv qab:'
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
@@ -105,6 +119,10 @@ mww:
         percentage_column: Ib feem puab ntawm cov nyiab siv
         cost_column: Raug pes tsawg
         number_column: 'Ntawm cov # of blocks rov tshwmsim'
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
     map:
       street_resurfacing_count:
         one: 1 txoj kev raug kho
@@ -169,11 +187,19 @@ mww:
           zero: "<span style='color: red;'>Koj tsis tau xaiv ib qho project.</span>"
           other: 'Cov projects koj xaiv yog cov no: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Koj tsuas yog xaiv tau ib qho project.</span>"
           less: "<span style='color: red;'>Koj tsuas yog xaiv tau %{count} cov projects.</span>"
           limit: "<span style='color: red;'>Koj xaiv tau ntau npaum li %{max_n_projects}
             cov projects.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Thaum koj xav cov koj xaiv tag, koj <strong>pauv</strong> tsi tau
           yam koj xaiv lawm. Yog koj xav pauv, thov nias  'Go Back' hauv qab. Yog
           koj xav xa cov koj xaiv, thov nias lub 'Submit My Vote.'
@@ -198,6 +224,11 @@ mww:
       over_budget: Cov nyiaj siv dhau tshaj qhov siv tau.
       over_budget_but_can_add_projects: Cov nyiaj siv dhau cov uas siv tau, tiamsis
         koj xaiv tau ib cov projects ntxiv los tau.
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: 'Thov xaiv ib qho haum qab:'
       not_adjusted_warning: "<span style='color:red'>Koj xaiv tau $0 rau%{project}</span>"
@@ -206,6 +237,10 @@ mww:
         percentage_column: Ib feem pua ntawm cov nyiab siv
         cost_column: Daug pes tsawg
         number_column: 'Ntawm cov # of blocks uas rov tshwmsim'
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"  
     image_gallery:
       cue: Nias daim duab mus siab qhov slide show
   question:
@@ -264,11 +299,19 @@ mww:
           zero: "<span style='color: red;'>Koj tsis tau xaiv ib cov projects.</span>"
           other: 'Koj xaiv tau cov projects: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Koj tsuas yog xaiv tau ib qho project.</span>"
           less: "<span style='color: red;'>Koj tsuas yog xaiv %{count} cov projects.</span>"
           limit: "<span style='color: red;'>Koj xaiv tau ntau npaum li %{max_n_projects}
             cov projects.</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Thaum koj xa tag, koj <strong>paum</strong> tsis tau yam koj xaiv.
       ok: Submit My Vote
       cancel: Go Back
@@ -276,6 +319,70 @@ mww:
       instructions: 'Thov xaiv ib qho haum qab:'
       not_adjusted_warning: "<span style='color:red'>Koj xaiv tau $0 rau %{project}</span>"
       message: Koj xaiv tau %{cost} rau %{project}
+    
+    adjustable_token_project: ##fixme language
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
+
+  token:
+    title: "Participatory Budgeting"
+    popup:
+      title: "Instructions"
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
+will <u>not</u> affect your vote, but is part of a Stanford University research project meant
+to help us improve the participatory budgeting process.</p>
+<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
+<li>The expected time for this activity is 2-3 minutes.</li>
+</ul>
+<p style='font-size: 14px;'>This study poses no risk.
+No payment will be made to you for participation, and we
+cannot guarantee any benefits to you. You have the right to refuse to
+answer particular questions. Please contact Professor Ashish Goel at
+goel_admins@lists.stanford.edu if you have any questions, suggestions,
+or concerns. You may also contact the Stanford Institutional Review
+Board at 650-723-2480.</p>"
+      ok: "Continue"
+      exit: "Exit"
+    instructions: "<h3>Instructions</h3>
+                   <ol>
+                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
+                     <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
+                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                   </ol>"
+    confirmation:
+      title: "Are you sure you want to submit your vote?"
+      body:
+        summary:
+          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
+          other: "You have selected the following projects: %{projects}"
+          item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
+
+        under_n_project_limit:
+          one: "<span style='color: red;'>You have selected only one project.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
+          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+
+        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
+      ok: "Submit My Vote"
+      cancel: "Go Back"
+    adjustable_cost_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
+      message: "You have selected %{cost} for %{project}"
+
+    adjustable_token_project:
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"
   survey:
     title: Survey
     header: Ua Qhov Survey

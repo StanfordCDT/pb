@@ -77,6 +77,10 @@ mww:
           less: "<span style='color: red;'>Koj xaiv tau %{count}cov projects.</span>"
           limit: "<span style='color: red;'>Koj tsuas xaiv tau %{max_n_projects} cov
             projects.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Thaum koj xa cov koj xaiv, koj<strong>pauv</strong> tsi tau cov koj
           xiav lawm. Yog koj xav pauv, thov ntau qhov 'Go Back' uas nyob hauv qab.
           Yog koj xav xab cov koj xaiv, nias lub box hauv qab, cev nias lub 'Submit

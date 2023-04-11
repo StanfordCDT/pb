@@ -86,6 +86,10 @@ de:
           less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
           limit: "<span style='color: red;'>Sie können maximal für %{max_n_projects}
             Projekte abstimmen.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
           mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
           unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte

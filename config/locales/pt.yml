@@ -75,6 +75,10 @@ pt:
           less: "<span style='color: red;'>Você selecionou apenas %{count} projetos.</span>"
           limit: "<span style='color: red;'>Você pode votar em até %{max_n_projects}
             projetos.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Depois de enviar seu voto, você <strong>não poderá</strong>mudá-lo.
           Se você quiser alterar seu voto, clique em "Voltar" abaixo. Se desejar enviar
           seu voto, marque a caixa abaixo e clique em "Enviar meu voto".

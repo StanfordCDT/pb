@@ -71,6 +71,11 @@ zh:
           one: "<span style='color: red;'>您只选择了一个项目。</span>"
           less: "<span style='color: red;'>您只选择了 %{count} 个项目。</span>"
           limit: "<span style='color: red;'>你最多可以投票支持%{max_n_projects}个项目。</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+
         warning: "在提交你的投票后，你<strong>不能</strong> 修改你的投票。如果你想更改你的投票，请点击下面的‘返回’。
 如果你想要提交你的投票，请选中下列的复选框并点击‘提交我的投票’。"
         checkbox: "我了解在我提交我的投票后，我<strong>不能</strong> 修改它。"
@@ -88,7 +93,7 @@ zh:
       text: "选择%{budget} 总预算中的%{total}。"
       under_budget: "你还剩下%{remaining_money}。"
       over_budget: "你目前已经超出预算。"
-      over_budget_but_can_add_projects: "你目前已经超出预算，但是还可以继续添加项目。"
+      over_budget_but_can_add_projects: "你目前已经超出预算，但是还可以继续添加项目。
     adjustable_cost_project:
       instructions: "请选择下列选项之一:"
       not_adjusted_warning: "<span style='color:red'>您选择0美元的%{project}</span>"

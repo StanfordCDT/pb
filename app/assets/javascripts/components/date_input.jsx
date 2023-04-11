@@ -213,13 +213,13 @@ class DateInput extends React.Component {
     const to2Digits = (x) => ((x == "") ? "" : ("0" + x).slice(-2));
     const hour = ((o.hour | 0) % 12) + ((o.ampm == "PM") ? 12 : 0);
     const tmp =  o.year + "-" + to2Digits(o.month) + "-" + to2Digits(o.day) + "T" + to2Digits(hour) + ":" + to2Digits(o.minute);
-    //console.log(tmp);
+    
     return tmp;
   }
 
   render() {
     const o = this.parseDate(this.props.value);
-    //console.log(o);
+    
 
     const dayOptions = [];
     for (let i = 1; i <= 31; ++i) {

@@ -708,7 +708,27 @@ function ProjectPreview(props) {
       {props.showCost &&
         <p><b>Estimated Cost</b>: {props.currencySymbol}100,000</p>
       }
-      <button className="btn btn-primary">Select</button>
+      {props.isToken &&
+        <p><b>Tokens used</b>:  5</p>
+        
+      }
+      {props.isToken &&
+        <button type="button" class="btn btn-primary btn-lg" id="plus-button20">+ </button>
+        
+      }
+
+      {props.isToken &&
+        <b>&nbsp; &nbsp;</b>
+      }
+
+
+      {props.isToken &&
+        <button type="button" class="btn btn-secondary btn-lg" id="minus-button20">&minus; </button>
+      }
+      {!props.isToken &&
+        <button className="btn btn-primary">Select</button>
+      
+      }
     </div>
   );
 }
@@ -1275,6 +1295,7 @@ class ConfigEditor extends React.Component {
           showCostInTitle={db.get("approval.show_cost_in_title")}
           showCost={db.get("approval.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {false}
         />
         <div className="previewCaption">Preview</div>
       </div>
@@ -1460,6 +1481,7 @@ class ConfigEditor extends React.Component {
           showCostInTitle={db.get("knapsack.show_cost_in_title")}
           showCost={db.get("knapsack.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {false}
         />
         <div className="previewCaption">Preview</div>
       </div>
@@ -1606,22 +1628,12 @@ class ConfigEditor extends React.Component {
           showCostInTitle={db.get("token.show_cost_in_title")}
           showCost={db.get("token.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {true}
         />
         <div className="previewCaption">Preview</div>
       </div>
 
-      {/*
-      <div className="col-sm-5">
-        <ProjectPreview
-          showMaps={db.get("knapsack.show_maps")}
-          showNumbers={db.get("knapsack.show_numbers")}
-          showCostInTitle={false}
-          showCost={db.get("knapsack.show_cost")}
-          currencySymbol={db.get("currency_symbol")}
-        />
-        <div className="previewCaption">Preview</div>
-      </div>
-      */}
+      
     </div>
   </div>
 
@@ -1736,6 +1748,7 @@ class ConfigEditor extends React.Component {
           showCostInTitle={db.get("ranking.show_cost_in_title")}
           showCost={db.get("ranking.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {false}
         />
         <div className="previewCaption">Preview</div>
       </div>

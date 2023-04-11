@@ -59,9 +59,9 @@ function initializeViews() {
 
       if (isTokenVoting()) {
         $('#plus-button' + id).click(function() {
-          console.log("XXX", id);
+          
           if (getTotal() + 1 > total_tokens && !allow_selection_beyond_limits)
-            //console.log("here testing",selectedProjectIDs);
+            
             return;
           if (selectedProjectIDs.indexOf(id) == -1) {
             selectedProjectIDs.push(id);
@@ -70,7 +70,7 @@ function initializeViews() {
           costs[i]++;
           updateViews();
 
-          console.log("XXX", selectedProjectIDs);
+          
 
           return true;
         });
@@ -98,7 +98,7 @@ function initializeViews() {
         });
         slider.slider().on('slide', function(e){
           var value = slider.data('slider').getValue();
-          //console.log("XXX",value);
+          
           var realCostMax = Math.floor((budget - getTotal() + costs[i]) / project.cost_step) * project.cost_step;
           if (!allow_selection_beyond_limits){
             costs[i] = Math.max(project.cost_min, Math.min(realCostMax, value));
@@ -504,16 +504,16 @@ function updateBudgetbar() {
     trigger: 'manual'
   })
   .on("mouseenter", function () {
-    //console.log("mouse enter");
+    
     var _this = this;
     $(this).popover("show");
     //$(this).siblings(".popover").on("mouseleave", function () {
     $(".popover").on("mouseleave", function () {
-      //console.log("mouse leave2");
+      
       $(_this).popover("hide");
     });
   }).on("mouseleave", function () {
-    //console.log("mouse leave");
+    
     var _this = this;
     setTimeout(function () {
       if (!$(".popover:hover").length) {
@@ -576,16 +576,16 @@ function updateTokenbar() {
     trigger: 'manual'
   })
   .on("mouseenter", function () {
-    //console.log("mouse enter");
+    
     var _this = this;
     $(this).popover("show");
     //$(this).siblings(".popover").on("mouseleave", function () {
     $(".popover").on("mouseleave", function () {
-      //console.log("mouse leave2");
+     
       $(_this).popover("hide");
     });
   }).on("mouseleave", function () {
-    //console.log("mouse leave");
+    
     var _this = this;
     setTimeout(function () {
       if (!$(".popover:hover").length) {

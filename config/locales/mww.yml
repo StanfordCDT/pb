@@ -308,6 +308,10 @@ mww:
           less: "<span style='color: red;'>Koj tsuas yog xaiv %{count} cov projects.</span>"
           limit: "<span style='color: red;'>Koj xaiv tau ntau npaum li %{max_n_projects}
             cov projects.</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Thaum koj xa tag, koj <strong>paum</strong> tsis tau yam koj xaiv.
       ok: Submit My Vote
       cancel: Go Back

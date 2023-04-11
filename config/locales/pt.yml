@@ -306,6 +306,10 @@ pt:
           less: "<span style='color: red;'>Você só selecionou %{count} projetos.</span>"
           limit: "<span style='color: red;'>Você pode votar em um máximo de %{max_n_projects}
             projetos.</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Depois de enviar seu voto, você <strong>não poderá</strong> mudá-lo.
       ok: Enviar meu voto
       cancel: Voltar

@@ -77,6 +77,7 @@ am:
           one: "<span style='color: red;'>You have selected only one token.</span>"
           less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
           limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+
         warning: የምርጫ ድምጽዎን ካስገቡ በኋላ ድምጽዎን መለወጥ <strong>አይችሉም</strong>። የምርጫ ድምጽዎን
           ማሻሻል ከፈለጉ፣ እባክዎ ከዚህ በታች ‘ወደኋላ ይመለሱ’ የሚለውን ጠቅ ያድርጉ። የምርጫ ድምጽዎን ለማስገባት ከፈለጉ፣
           እባክዎ ከዚህ በታች ባለው ሳጥን ላይ ምልክት ያድርጉ እና በመቀጠል 'የእኔን ድምጽ ኣስገባ’ የሚለውን ጠቅ ያድርጉ።
@@ -293,6 +294,10 @@ am:
           less: "<span style='color: red;'>እርስዎ %{count} ፕሮጀክቶችን ብቻ መርጠዋል።</span>"
           limit: "<span style='color: red;'>እስከ %{max_n_projects} የሚደርሱ ፕሮጀክቶችን መምረጥ
             ይችላሉ</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: የምርጫ ድምጽዎን ካስገቡ በኋላ ድምጽዎን መለወጥ <strong>አይችሉም</strong>።
       ok: የእኔን የምርጫ ድምጽ አስገባ
       cancel: ወደኋላ ይመለሱ

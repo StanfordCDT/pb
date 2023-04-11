@@ -303,6 +303,10 @@ ar:
           less: "<span style='color: red;'>لقد حددت عدد %{count} من المشاريع فقط.</span>"
           limit: "<span style='color: red;'>يمكنك التصويت لعدد %{max_n_projects} من
             المشاريع كحد أقصى.</span>"
+        under_token_limit: ##fixme langauge
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: بعد إرسال تصويتك، <strong>لا يمكنك</strong> تغييره.
       ok: إرسال تصويتي
       cancel: الرجوع

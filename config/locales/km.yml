@@ -303,6 +303,10 @@ km:
           less: "<span style='color: red;'>អ្នកបានជ្រើសរើសគម្រោងចំនួន %{count} ប៉ុណ្ណោះ។</span>"
           limit: "<span style='color: red;'>អ្នកអាចបោះឆ្នោតឲ្យគម្រោងរហូតដល់ %{max_n_projects}
             គម្រោង។</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: ក្រោយលោកអ្នកដាក់បញ្ចូលសន្លឹកឆ្នោតរបស់អ្នក អ្នកមិនអាច <strong>មិនអាច</strong>
           ផ្លាស់ប្តូរសន្លឹកឆ្នោតរបស់អ្នកបានទេ។
       ok: ដាក់បញ្ចូលសន្លឹកឆ្នោតរបស់ខ្ញុំ

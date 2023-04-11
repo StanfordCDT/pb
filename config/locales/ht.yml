@@ -318,6 +318,10 @@ ht:
           less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"
           limit: "<span style='color: red;'>Ou ka vote pou pi plis %{max_n_projects}
             pwojè.</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Aprè ou fin voye vòt ou a, ou <strong>paka</strong> chanje vòt ou
           a.
       ok: Voye Vòt Mwen an

@@ -267,6 +267,10 @@ es:
           one: "<span style='color: red;'>Ha seleccionado solo un proyecto.</span>"
           less: "<span style='color: red;'>Ha seleccionado solo %{count} proyectos.</span>"
           limit: "<span style='color: red;'>Puedes votar por hasta %{max_n_projects} proyectos.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: "Después de enviar su voto, <strong>no podrá</strong> cambiarlo."
       ok: "Enviar Mi Voto"
       cancel: "Regresar"

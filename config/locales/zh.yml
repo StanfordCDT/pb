@@ -261,6 +261,10 @@ zh:
           one: "<span style='color: red;'>您只选择了一个项目。</span>"
           less: "<span style='color: red;'>您只选择了 %{count} 个项目。</span>"
           limit: "<span style='color: red;'>你最多可以投票支持%{max_n_projects}个项目。</span>"
+        under_token_limit: ##fixme language
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: "在提交你的投票后，你<strong>不能</strong> 修改你的投票。"
       ok: "提交我的投票"
       cancel: "返回"

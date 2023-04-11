@@ -196,6 +196,10 @@ tl:
           zero: "<span style='color: red;'>Hindi ka pa nakakapili ng anumang proyekto.</span>"
           other: 'Napili mo ang mga sumusunod na proyekto: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Isang proyekto lang ang napili mo.</span>"
           less: "<span style='color: red;'>Pumili ka ng %{count} proyekto lang.</span>"

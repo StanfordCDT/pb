@@ -194,6 +194,10 @@ ht:
           zero: "<span style='color: red;'>Ou pa't seleksyone pyès pwojè.</span>"
           other: 'Ou te seleksyone pwojè sa yo: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Ou te seleksyone sèlman yon pwojè.</span>"
           less: "<span style='color: red;'>Ou te seleksyone sèlman %{count} pwojè.</span>"

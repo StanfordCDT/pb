@@ -200,6 +200,10 @@ de:
           zero: "<span style='color: red;'>Sie haben kein Projekt ausgewählt</span>"
           other: 'Sie haben die folgenden Projekte ausgewählt: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt .</span>"
           less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"

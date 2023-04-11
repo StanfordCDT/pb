@@ -183,6 +183,10 @@ ar:
           zero: "<span style='color: red;'>لم تحدد أي مشروع.</span>"
           other: 'لقد حددت المشاريع التالية: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>لقد حددت مشروعًا واحدًا فقط.</span>"
           less: "<span style='color: red;'>لقد حددت عدد %{count} من المشاريع فقط.</span>"

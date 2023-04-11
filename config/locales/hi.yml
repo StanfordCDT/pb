@@ -192,6 +192,10 @@ hi:
           zero: "<span style='color: red;'> आपने कोई योजना नहीं चुना है। </span>"
           other: "आपने निम्न योजना चुने हैं: %{projects}"
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'> आपने केवल एक योजना चुना है। </span>"
           less: "<span style='color: red;'> आपने केवल %{count} योजना चुने हैं।

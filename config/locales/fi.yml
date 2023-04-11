@@ -192,6 +192,10 @@ fi:
           zero: "<span style='color: red;'>Et ole valinnut yhtäkään projektia.</span>"
           other: 'Olet valinnut seuraavat projektit: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>Olet valinnut vain yhden projektin.</span>"
           less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"

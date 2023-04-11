@@ -111,6 +111,11 @@ tl:
       over_budget: Kasalukuyan kang sobra sa budget na nakalaan.
       over_budget_but_can_add_projects: Kasalukuyan kang sobra sa budhet pero puwede
         ka pa rin patuloy na magdagdag ng mga proyekto.
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_token: "You still have %{remaining_money} tokens left."
+      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
     adjustable_cost_project:
       instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
       not_adjusted_warning: "<span style='color:red'>Pinili mo ang $0 para sa %{project}</span>"

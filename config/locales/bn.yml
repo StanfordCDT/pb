@@ -105,6 +105,11 @@ bn:
       over_budget: বর্তমানে আপনার বাজেট অনেক বেশি।
       over_budget_but_can_add_projects: বর্তমানে আপনার বাজেট অনেক বেশি, কিন্তু আপনি
         প্রকল্প যোগ করতে পারেন।
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_token: "You still have %{remaining_money} tokens left."
+      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
     adjustable_cost_project:
       instructions: 'অনুগ্রহ করে নিম্নলিখিতের মধ্যে একটি চয়ন করুন:'
       not_adjusted_warning: "<span style='color:red'>আপনি %{project}</span> এর জন্য

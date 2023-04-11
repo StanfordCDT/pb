@@ -93,6 +93,11 @@ fr:
       under_budget: "Vous avez encore %{remaining_money} gauche."
       over_budget: "Vous êtes actuellement sur le budget."
       over_budget_but_can_add_projects: "Vous êtes actuellement sur le budget, mais pouvez continuer à ajouter des projets."
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_token: "You still have %{remaining_money} tokens left."
+      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
     adjustable_cost_project:
       instructions: "S'il vous plaît sélectionnez l'une des options ci-dessous:"
       not_adjusted_warning: "<span style='color:red'>Vous avez sélectionné $ 0 pour %{project}</span>"

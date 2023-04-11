@@ -94,7 +94,12 @@ zh:
       text: "选择%{budget} 总预算中的%{total}。"
       under_budget: "你还剩下%{remaining_money}。"
       over_budget: "你目前已经超出预算。"
-      over_budget_but_can_add_projects: "你目前已经超出预算，但是还可以继续添加项目。
+      over_budget_but_can_add_projects: "你目前已经超出预算，但是还可以继续添加项目"
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_token: "You still have %{remaining_money} tokens left."
+      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
     adjustable_cost_project:
       instructions: "请选择下列选项之一:"
       not_adjusted_warning: "<span style='color:red'>您选择0美元的%{project}</span>"

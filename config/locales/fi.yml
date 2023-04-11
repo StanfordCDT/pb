@@ -201,6 +201,10 @@ fi:
           less: "<span style='color: red;'>Olet valinnut vain %{count} projektia.</span>"
           limit: "<span style='color: red;'>Voit äänestää enintään %{max_n_projects}
             projektia.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Kun olet lähettänyt äänesi, <strong>et voi</strong> muuttaa sitä
           enää. Jos haluat muuttaa ääntäsi, klikkaa ’Palaa takaisin’ -nappulaa alapuolella.
           Jos haluat lähettää äänesi, rastita alapuolella oleva ruutu ja klikkaa sitten

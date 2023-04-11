@@ -194,6 +194,10 @@ km:
           less: "<span style='color: red;'>អ្នកបានជ្រើសរើសគម្រោងតែ %{count} ប៉ុណ្ណោះ។</span>"
           limit: "<span style='color: red;'>អ្នកអាចបោះឆ្នោតជ្រើសរើសរហូតដល់ %{max_n_projects}
             គម្រោង។</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: ក្រោយពេលអ្នកដាក់បញ្ចូលសន្លឹកឆ្នោតរបស់អ្នក អ្នក <strong>មិនអាច</strong> ផ្លាស់ប្តូរសន្លឹកឆ្នោតនោះបានទេ។ ប្រសិនបើអ្នកចង់កែប្រែសន្លឹកឆ្នោត សូមចុច "ត្រឡប់ក្រោយ" ខាងក្រោម។ ប្រសិនបើអ្នកចង់ដាក់បញ្ចូលសន្លឹកឆ្នោត សូមចុចប្រអប់ខាងក្រោម ហើយបន្ទាប់មក សូមចុច "ដាក់បញ្ចូលសន្លឹកឆ្នោតរបស់ខ្ញុំ"។
         checkbox: ខ្ញុំដឹងច្បាស់ថា ក្រោយពេលដែលខ្ញុំដាក់បញ្ចូលសន្លឹកឆ្នោតរបស់ខ្ញុំ
           ខ្ញុំ <strong>មិនអាច</strong> កែប្រែបាននោះទេ។

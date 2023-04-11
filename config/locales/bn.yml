@@ -196,6 +196,10 @@ bn:
           less: "<span style='color: red;'>আপনি কেবল %{count}টি প্রকল্প নির্বাচন করেছেন।</span>"
           limit: "<span style='color: red;'>আপনি %{max_n_projects}টি প্রকল্পের জন্য
             ভোট দিতে পারবেন।</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: আপনার ভোট জমা দেয়ার পর সেটি আর বদলাতে <strong>পারবেন না</strong>।
           যদি আপনি আপনার ভোট সংশোধন করতে চান, তাহলে অনুগ্রহ করে ‘ফিরে যান’ বিকল্পে
           ক্লিক করুন। যদি আপনি আপনার ভোট জমা দিতে চান, তাহলে অনুগ্রহ করে নীচের বাক্সে

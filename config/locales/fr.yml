@@ -167,6 +167,10 @@ fr:
           one: "<span style='color: red;'>Vous avez sélectionné un seul projet.</span>"
           less: "<span style='color: red;'>Vous avez choisi seulement %{count} projets.</span>"
           limit: "<span style='color: red;'>Vous pouvez voter pour un maximum de %{max_n_projects} projets.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: "Après avoir soumis votre vote, vous ne pouvez pas changer votre vote. Si vous souhaitez modifier votre vote, s'il vous plaît cliquez sur \"Retour\" ci-dessous. Si vous voulez soumettre votre vote, s'il vous plaît cochez la case ci-dessous puis cliquez sur \"Soumettre mon vote\"."
         checkbox: "Je comprends que quand je soumets mon vote, je ne peux pas le changer."
       ok: "Soumettre mon vote"

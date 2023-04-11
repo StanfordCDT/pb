@@ -208,6 +208,10 @@ pl:
             projektów.</span>"
           limit: "<span style='color: red;'>Możesz zagłosować na maksymalnie %{max_n_projects}
             ze wszystkich projektów.</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: Po oddaniu głosu <strong>nie możesz</strong> już go zmienić. Jeśli
           chcesz coś poprawić, wybierz przycisk 'Cofnij' poniżej. Jeśli wszystko się
           zgadza i chcesz oddać głos, zaznacz pole poniżej, a następnie wybierz przycisk

@@ -156,10 +156,10 @@ zh:
           zero: "<span style='color: red;'>You haven't selected any project.</span>"
           other: "You have selected tokens for the following projects: %{projects}"
           item: "%{project} (%{cost} tokens)"
-        under_n_project_limit:
-          one: "<span style='color: red;'>您只选择了一个项目。</span>"
-          less: "<span style='color: red;'>您只选择了 %{count} 个项目。</span>"
-          limit: "<span style='color: red;'>你最多可以投票支持%{max_n_projects}个项目。</span>"
+        under_token_limit: #FIXME: translate
+          one: "<span style='color: red;'>You have selected only one token.</span>"
+          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
+          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: "在提交你的投票后，你<strong>不能</strong> 修改你的投票。如果你想更改你的投票，请点击下面的‘返回’。
 如果你想要提交你的投票，请选中下列的复选框并点击‘提交我的投票’。"
         checkbox: "我了解在我提交我的投票后，我<strong>不能</strong> 修改它。"

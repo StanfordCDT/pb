@@ -69,6 +69,10 @@ km:
           zero: "<span style='color: red;'> អ្នកមិនបានជ្រើសរើសគម្រោងណាមួយនៅឡើយទេ។</span>"
           other: អ្នកបានជ្រើសរើសគម្រោងខាងក្រោម៖ %{projects}
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>អ្នកបានជ្រើសរើសគម្រោងតែមួយប៉ុណ្ណោះ។</span>"
           less: "<span style='color: red;'>អ្នកបានជ្រើសរើសតែ %{count} គម្រោង</span>"

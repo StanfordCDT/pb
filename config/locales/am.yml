@@ -64,6 +64,10 @@ am:
           zero: "<span style='color: red;'>እርስዎ ምንም ፕሮጀክት አልመረጡም።</span>"
           other: 'እርስዎ የሚከተሉትን ፕሮጀክቶች መርጠዋል: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate 
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>እርስዎ አንድ ፕሮጀክት ብቻ መርጠዋል።</span>"
           less: "<span style='color: red;'>እርስዎ %{count} ፕሮጀክቶችን ብቻ መርጠዋል።</span>"

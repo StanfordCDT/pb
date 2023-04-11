@@ -63,6 +63,10 @@ zh:
           zero: "<span style='color: red;'>你还没有选择任何项目。</span>"
           other: "你已经选择以下项目： %{projects}"
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>您只选择了一个项目。</span>"
           less: "<span style='color: red;'>您只选择了 %{count} 个项目。</span>"

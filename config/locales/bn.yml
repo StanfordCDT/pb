@@ -67,6 +67,10 @@ bn:
           zero: "<span style='color: red;'>আপনি কোনো প্রকল্প নির্বাচন করেননি।</span>"
           other: 'আপনি নিম্নলিখিত প্রকল্প নির্বাচন করেছেন: %{projects}'
           item: "%{project} (%{cost})"
+        summary_token: #FIXME: translate
+          zero: "<span style='color: red;'>You haven't selected any project.</span>"
+          other: "You have selected tokens for the following projects: %{projects}"
+          item: "%{project} (%{cost} tokens)"
         under_n_project_limit:
           one: "<span style='color: red;'>আপনি কেবল একটি প্রকল্প নির্বাচন করেছেন।</span>"
           less: "<span style='color: red;'>আপনি কেবল %{count}টি প্রকল্প নির্বাচন করেছেন।</span>"

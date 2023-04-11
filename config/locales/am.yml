@@ -226,6 +226,10 @@ am:
         percentage_column: የወጣው በጀት በመቶኛ
         cost_column: ዋጋ
         number_column: 'የብሎኮች ግምቶች # እንደገና ታድሰዋል'
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"  
     image_gallery:
       cue: ለተንሸራታች እይታ ስእሉን ጠቅ ያድርጉ
   question:

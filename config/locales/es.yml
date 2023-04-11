@@ -83,6 +83,7 @@ es:
       title: "No se ha podido enviar su voto"
       over_n_project_limit: "<span style='color:red'>Ha seleccionado <b>%{n_projects}</b> proyectos. Solo puede seleccionar un máximo de <b>%{max_n_projects}</b> proyectos. Por favor elimine <b>%{extra}</b> o más proyectos.</span>"
       over_budget_limit: "<span style='color:red'>Ha sobrepasado el presupuesto.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: "Regresar"
     tracker:
       text: "Usted ha seleccionado %{count} proyectos."

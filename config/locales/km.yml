@@ -93,6 +93,7 @@ km:
         គម្រោង។ អ្នកអាចជ្រើសរើសគម្រោងច្រើនបំផុត <b>%{max_n_projects}</b> ប៉ុណ្ណោះ។
         សូមដកគម្រោង <b>%{extra}</b> ឬ ច្រើន ចេញ។</span>"
       over_budget_limit: "<span style='color:red'>នៅពេលនេះ អ្នកចំណាយលើសថវិកា។</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: ត្រឡប់ក្រោយ។
     tracker:
       text: អ្នកបានជ្រើសរើស %{count} គម្រោង។

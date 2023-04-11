@@ -94,6 +94,7 @@ bn:
         নির্বাচন করেছেন। আপনি সর্বোচ্চ <b>%{max_n_projects}</b>টি প্রকল্প নির্বাচন
         করতে পারেন। অনুগ্রহ করে <b>%{extra}</b> বা তার বেশি প্রকল্প অপসারণ করুন।</span>"
       over_budget_limit: "<span style='color:red'>বর্তমানে আপনার বাজেট অনেক বেশি।</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: ফিরে যান
     tracker:
       text: আপনি %{count}টি প্রকল্প নির্বাচন করেছেন।

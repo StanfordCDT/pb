@@ -96,6 +96,7 @@ fi:
         projektia. Voit valita enintään <b>%{max_n_projects}</b> projektia. Poista
         <b>%{extra}</b> tai useampi projekti.</span>"
       over_budget_limit: "<span style='color:red'>Olet ylittänyt budjetin.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Palaa takaisin
     tracker:
       text: Olet valinnut %{count} projektia.

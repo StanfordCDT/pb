@@ -95,6 +95,7 @@ mww:
         cov projects. Koj tsuas yog xaiv tau <b>%{max_n_projects}</b> cov projects.
         Thov tshev <b>%{extra}</b> los ntau tshaj cov projects.</span>"
       over_budget_limit: "<span style='color:red'>Cov nyiab siv dhau qhov siv tau.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Go Back (mus rov qab)
     tracker:
       text: Koj xaiv tau %{count} cov projects.

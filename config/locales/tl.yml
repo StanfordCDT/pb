@@ -100,6 +100,7 @@ tl:
         Mangyaring alisin ang <b>%{extra}</b> o higit pang mga proyekto.</span>"
       over_budget_limit: "<span style='color:red'>Kasalukuyan kang sobra sa budget
         na nakalaan.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Bumalik
     tracker:
       text: Napili mo ang %{count} proyekto.

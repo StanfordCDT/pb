@@ -104,6 +104,7 @@ de:
         Projekte ausgewählt. Sie können höchstens <b>%{max_n_projects}</b> Projekte
         auswählen. Bitte etfernen Sie <b>%{extra}</b> oder mehr Projekte.</span>"
       over_budget_limit: "<span style='color:red'>Aktuell sind Sie über dem Budget.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Zurück
     tracker:
       text: Sie haben %{count} Projekte ausgewählt.

@@ -91,6 +91,7 @@ ar:
         من المشاريع. ويمكنك تحديد عدد <b>%{max_n_projects}</b> من المشاريع كحد أقصى.
         لذا يرجى إزالة عدد <b>%{extra}</b> من المشاريع أو أكثر."
       over_budget_limit: "<span style='color:red'>لقد تجاوزت الميزانية حاليًا.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: الرجوع
     tracker:
       text: لقد حددت عدد %{count} من المشاريع.

@@ -98,6 +98,7 @@ hi:
         हैं। कृपया <b>% {अतिरिक्त} </b> या अधिक योजनाएं निकालें। </span>"
       over_budget_limit: "<span style='color: red'> आप वर्तमान में बजट से अधिक हैं।
         </span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: वापस जाएँ
     tracker:
       text: आपने %{count} योजनाएं चुना है।

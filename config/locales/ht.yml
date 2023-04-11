@@ -97,6 +97,7 @@ ht:
         pwojè. Ou ka seleksyone sèlman pou pi plis <b>%{max_n_projects}</b> pwojè.
         Tanpri retire <b>%{extra}</b> oswa plis pwojè.</span>"
       over_budget_limit: "<span style='color:red'>Ou apèn sot depase bidjè a.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Retounen
     tracker:
       text: Ou te seleksyone %{count} pwojè.

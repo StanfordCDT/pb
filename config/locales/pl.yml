@@ -100,6 +100,7 @@ pl:
         ze wszystkich projektów. Możesz wybrać maksymalnie <b>%{max_n_projects}</b>.
         Proszę usunąć <b>%{extra}</b> lub więcej z wybranych projektów.</span>"
       over_budget_limit: "<span style='color:red'>Przekraczasz dostępną kwotę do wydania.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Cofnij
     tracker:
       text: Wybrałeś/aś %{count} ze wszystkich projektów.

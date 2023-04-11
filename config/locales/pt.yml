@@ -91,6 +91,7 @@ pt:
         projetos. Você só pode selecionar um máximo de <b>%{max_n_projects}</b> projetos.
         Remova <b>%{extra}</b> ou mais projetos.</span>"
       over_budget_limit: "<span style='color:red'>Você está acima do orçamento.</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: Voltar
     tracker:
       text: Você selecionou %{count} projetos.

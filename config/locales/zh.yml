@@ -85,6 +85,7 @@ zh:
       title: "不能提交你的投票"
       over_n_project_limit: "<span style='color:red'>你已经选择了<b>%{n_projects}</b>个项目。你最多只能选择<b>%{max_n_projects}</b>个项目。请移除<b>%{extra}</b>个或更多个项目。</span>"
       over_budget_limit: "<span style='color:red'>你目前已超出预算。</span>"
+      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
       cancel: "返回"
     tracker:
       text: "你已经选择了%{count}个项目。"

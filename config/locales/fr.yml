@@ -197,14 +197,14 @@ fr:
       instructions: "Please select one of the options below:"
       not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
       message: "You have selected $%{cost} for %{project}"
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"  
       table_headings:
         percentage_column: "Percentage of the budget spent"
         cost_column: "Cost"
         number_column: "Approximate # of blocks resurfaced"
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"  
     image_gallery: #FIXME: translate
       cue: "Click image for slide show"
 

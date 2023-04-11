@@ -12,7 +12,7 @@
 - name: workflow
   default: [approval, thanks]
   required: true
-  # description: "An array of pages that each voter sees. Allowed pages are <ul><li>approval</li><li>thanks_approval</li><li>comparison</li><li>knapsack</li><li>ranking</li><li>question</li><li>survey</li><li>thanks</li></ul> When workflow contains a subarray, one of the pages in the subarray will be randomly chosen to show to the voter. For example, if you use \"[approval, thanks_approval, [comparison, knapsack], survey, thanks]\", one interface out of comparison and knapsack will be chosen randomly."
+  # description: "An array of pages that each voter sees. Allowed pages are <ul><li>approval</li><li>thanks_approval</li><li>comparison</li><li>knapsack</li><li>ranking</li><li>token</li><li>question</li><li>survey</li><li>thanks</li></ul> When workflow contains a subarray, one of the pages in the subarray will be randomly chosen to show to the voter. For example, if you use \"[approval, thanks_approval, [comparison, knapsack], survey, thanks]\", one interface out of comparison and knapsack will be chosen randomly."
 
 #- name: categorized
 #  default: false
@@ -154,10 +154,18 @@
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
 
+    - name: has_token_limit
+      default: false
+
     - name: has_n_project_limit
       default: true
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+
+    - name: total_tokens
+      default: 15
+      required: true
+      #description : "Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -203,7 +211,11 @@
     - name: budgetbar
       default: false
       # description: "Show a budget bar at the top of the page."
-
+    
+    - name: tokenbar
+      default: false
+      # description: "Show a token bar at the top of the page."
+    
     - name: tracker
       default: true
       # description: "Show a text at the top-left corner of the page that indicates how many projects the voter has selected."
@@ -287,11 +299,19 @@
       default: true
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
+    
+    - name: has_token_limit
+      default: false
 
     - name: has_n_project_limit
       default: false
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+
+    - name: total_tokens
+      default: 15
+      required: true
+      #description :"Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -316,6 +336,9 @@
       default: true
       required: true
 
+    - name: show_cost_in_title
+      default: false
+
     - name: shuffle_probability
       default: 1.0
       # description: "Probability that the projects are shuffled. Use 1 for \"always shuffled.\" Use 0.5 for \"shuffled half of the time.\""
@@ -328,6 +351,10 @@
     - name: budgetbar
       default: true
       # description: "Show a budget bar at the top of the page."
+    
+    - name: tokenbar
+      default: false
+      # description: "Show a token bar at the top of the page."
 
     - name: tracker
       default: false
@@ -361,7 +388,7 @@
       default: true
 
     - name: show_disclaimer
-      default: true
+      default: false
 
     - name: show_shuffle_note
       default: false
@@ -376,6 +403,128 @@
       default: false
       # description: "Before the voter submits their vote, they must click a checkbox that says that they understand that they cannot change their vote afterwards."
 
+    - name: allow_select_in_sidebar
+      default: true
+
+    - name: theme
+      default: 2
+      # values: [[0, "Light"], [1, "Gray"], [2, "Dark"]]
+
+- name: token
+  # condition: "(c('workflow') instanceof Array) && c('workflow').indexOf('token') != -1"
+  children:
+
+    - name: has_budget_limit
+      default: false
+      required: true
+      # description: "Is there a limit on the total amount of money the voter can spend?"
+    
+    - name: has_token_limit
+      default: true
+
+    - name: has_n_project_limit
+      default: false
+      required: true
+      # description: "Is there a limit on the number of projects the voter can choose?"
+    
+    - name: total_tokens
+      default: 15
+      required: true
+      #description :"Total number of tokens that voter can use"
+
+    - name: max_n_projects
+      default: 4
+      required: true
+      # description: "The maximum number of projects the voter can choose."
+      # condition: "c('token.has_n_project_limit')"
+
+    - name: min_n_projects
+      default: 0
+      # description: "The minimum number of projects the voter must choose."
+      # condition: "c('token.has_n_project_limit')"
+
+    - name: allow_selection_beyond_limits
+      default: false
+      # description: "While the voter is selecting projects, should we allow them to temporarily exceed the limit(s)? (We won't let them submit their vote anyway if it exceeds the limit.)"
+
+    - name: pages
+      default: [1]
+      # description: "An array whose length is equal to the number of subpages. Each element corresponds to the category group to be shown on that subpage."
+
+    - name: shuffle_projects
+      default: true
+      required: true
+
+    - name: shuffle_probability
+      default: 1.0
+      # description: "Probability that the projects are shuffled. Use 1 for \"always shuffled.\" Use 0.5 for \"shuffled half of the time.\""
+      # condition: "c('token.shuffle_projects')"
+
+    - name: sidebar
+      default: true
+      # description: "Show a list of projects on the left side of the page."
+
+    - name: budgetbar
+      default: false
+      # description: "Show a budget bar at the top of the page."
+    
+    - name: tokenbar
+      default: true
+      # description: "Show a token bar at the top of the page."
+
+    - name: tracker
+      default: false
+      # description: "Show a text at the top-left corner of the page that indicates how many projects the voter has selected."
+
+    - name: n_cols
+      default: 2
+
+    - name: show_cost
+      default: false
+
+    - name: show_numbers
+      default: false
+
+    - name: show_numbers_when_shuffled
+      default: true
+      # condition: "c('token.shuffle_projects') && c('token.show_numbers')"
+
+    - name: show_numbers_in_description_when_shuffled
+      default: false
+      # condition: "c('token.shuffle_projects')"
+
+    - name: show_numbers_on_top_when_shuffled
+      default: false
+      # condition: "c('token.shuffle_projects')"
+
+    - name: show_maps
+      default: false
+
+    - name: show_popup
+      default: true
+    
+    - name: show_cost_in_title
+      default: false
+
+    - name: show_disclaimer
+      default: false
+
+    - name: show_shuffle_note
+      default: false
+      # description: "Inform the voter when the order of projects is randomized."
+      # condition: "c('token.shuffle_projects')"
+
+    - name: show_help
+      default: true
+      # description: "Show the Help link at the top-right corner."
+
+    - name: checkbox_acknowledgment
+      default: false
+      # description: "Before the voter submits their vote, they must click a checkbox that says that they understand that they cannot change their vote afterwards."
+
+    - name: allow_select_in_sidebar
+      default: false
+
     - name: theme
       default: 2
       # values: [[0, "Light"], [1, "Gray"], [2, "Dark"]]
@@ -388,11 +537,19 @@
       default: false
       required: true
       # description: "Is there a limit on the total amount of money the voter can spend?"
+    
+    - name: has_token_limit
+      default: false
 
     - name: has_n_project_limit
       default: true
       required: true
       # description: "Is there a limit on the number of projects the voter can choose?"
+    
+    - name: total_tokens
+      default: 15
+      required: true
+      #description :"Total number of tokens that voter can use"
 
     - name: max_n_projects
       default: 4
@@ -433,6 +590,10 @@
     - name: budgetbar
       default: false
       # description: "Show a budget bar at the top of the page."
+    
+    - name: tokenbar
+      default: false
+      # description: "Show a token bar at the top of the page."
 
     - name: tracker
       default: true
@@ -548,7 +709,7 @@
       default: true
 
     - name: show_disclaimer
-      default: true
+      default: false
 
     - name: show_popup
       default: true

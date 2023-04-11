@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :vote_rankings
   has_many :vote_knapsacks
   has_many :vote_plusminuses
+  has_many :vote_tokens
   translates :title, :description, :details, :address, :partner, :committee, :video_url, :partner, :image_description
   globalize_accessors
   mount_uploader :image, ImageUploader
@@ -18,6 +19,7 @@ class Project < ApplicationRecord
   validate :validate_map_geometry
   validate :validate_adjustable_cost
   validate :validate_data
+  
   before_save :sanitize_html
 
   def parsed_data

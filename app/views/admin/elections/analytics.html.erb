@@ -170,6 +170,11 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
         <%= render partial: 'shared/analytics/knapsack' %>
       <% end %>
 
+      <% if workflow.include?('token') %>
+        <h3>Token voting</h3>
+        <%= render partial: 'shared/analytics/token' %>
+      <% end %>
+
       <% if workflow.include?('comparison') %>
         <h3>Comparison voting</h3>
         <%= render partial: 'shared/analytics/comparison' %>

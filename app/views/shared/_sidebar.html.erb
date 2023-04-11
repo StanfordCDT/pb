@@ -94,7 +94,7 @@
         <table>
           <tr>
             <td class="checkmark-wrapper">
-              <% if conf[:approval][:allow_select_in_sidebar] %>
+              <% if conf[current_action][:allow_select_in_sidebar] %>
                 <a href="javascript:selectOrRemoveProject(<%= project.id %>)">
                   <span class="glyphicon glyphicon-ok checkmark" id="sidebar-checkmark<%= project.id %>"></span>
                 </a>

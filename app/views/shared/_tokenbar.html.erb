@@ -1,0 +1,89 @@
+<% content_for :head do %>
+    <style>
+    @media (max-width: 768px) {
+      #tokenbar-offset {
+        margin-top: 40px;
+      }
+      #projects {
+        margin-top: 60px;
+      }
+    }
+    
+    #tokenbar-text {
+      font-size: 20px;
+      color: #ccc;
+      background-color: rgba(52, 58, 64, 0.7);
+    }
+
+    #tokenbar-text .money {
+      color: white; 
+    }
+
+    #tokenbar-text .remaining-money {
+      color: #a1ff00;
+    }
+
+    #tokenbar-progress {
+      background-color: white;
+      pointer-events: auto;
+    }
+
+    #tokenbar-progress .progress-bar {
+      border-right: 1px #f5f5f5 solid;
+    }
+
+    #tokenbar-progress .progress-bar:last-child {
+      border-right: none;
+    }
+
+    #tokenbar-progress .progress-bar:hover {
+      background-color: #3fb83f;
+    }
+
+    .budgerbar-thumb {
+      max-width: 160px;
+    }
+
+    
+    
+    
+    #tokenbar {
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      min-height: 107px;
+      pointer-events: none;
+    }
+    
+    .navbar {
+      background-color: transparent !important;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+    }
+    
+    .navbarWrapper {
+      background-color: #343a40;
+    }
+    </style>
+<% end %>
+    
+    <div id="tokenbar">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-sm-8">
+          <div id="tokenbar-offset">
+            <span id="tokenbar-text">
+              <%= t('approval.tokenbar.text',
+                    total: '<span class="money"><span id="tokenbar-total">' + cost_with_delimiter(0, @election.config[:currency_symbol]) + '</span></span>',
+                    budget: '<span class="money">' + cost_with_delimiter(conf[current_action][:total_tokens], " ") + '</span>').html_safe %><br>
+              <span id="tokenbar-description"></span>
+            </span>
+            <div class="progress" id="tokenbar-progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    

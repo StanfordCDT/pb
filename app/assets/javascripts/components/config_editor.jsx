@@ -430,7 +430,7 @@ class AdvancedWorkflowOption extends React.Component {
   }
 
   checkError(value) {
-    const pages = ["approval", "thanks_approval", "question", "comparison", "knapsack", "ranking", "survey", "thanks"];
+    const pages = ["approval", "thanks_approval", "question", "comparison", "knapsack", "token", "ranking", "survey", "thanks"];
     if (!(value instanceof Array))
       return "Workflow must be an array of allowed pages. For example, [approval, thanks]";
     for (let x of value) {
@@ -461,7 +461,7 @@ class AdvancedWorkflowOption extends React.Component {
         {error ? (<div className="text-danger">{error}</div>) : null}
         <div className="help-block">
           An array of pages that each voter sees. Allowed pages are
-          <ul><li>approval</li><li>thanks_approval</li><li>comparison</li><li>knapsack</li><li>ranking</li><li>question</li><li>survey</li><li>thanks</li></ul>
+          <ul><li>approval</li><li>thanks_approval</li><li>comparison</li><li>knapsack</li><li>ranking</li><li>token</li><li>question</li><li>survey</li><li>thanks</li></ul>
           If workflow contains a subarray, one of the pages in the subarray will be randomly chosen to show to the voter. For example, if you use "[approval, thanks_approval, [comparison, knapsack], survey, thanks]", one interface out of comparison and knapsack will be chosen randomly.
         </div>
       </React.Fragment>
@@ -486,6 +486,7 @@ class WorkflowOption extends React.Component {
       ["approval", "Approval voting", "Voters select a set of projects. There is a limit on the number of projects, but there is <em>no</em> limit on the total cost."],
       ["knapsack", "Knapsack voting", "Voters select a set of projects. There is <em>no</em> limit on the number of projects, but there is a limit on the total cost."],
       ["ranking", "Ranked voting", "Voters select a set of projects and then rank them."],
+      ["token", "Token voting", "Voters select a set of projects and assign them a number of tokens. There is a limit on the total tokens available. (Experimental method)"],
       ["comparison", "Comparison voting", "Voters compare pairs of projects that are randomly chosen."]
     ];
   }
@@ -533,11 +534,11 @@ class WorkflowOption extends React.Component {
 
   isSimple() {
     // "Simple" workflow can be defined in terms of regular expressions as
-    // "(approval|knapsack|ranking|comparison) (thanks_approval survey)? thanks"
+    // "(approval|knapsack|ranking|token|comparison) (thanks_approval survey)? thanks"
     const workflow = this.props.db.get(this.props.name);
     if (!(workflow instanceof Array) || workflow.length < 2)
       return false;
-    if (["approval", "knapsack", "ranking", "comparison"].indexOf(workflow[0]) == -1)
+    if (["approval", "knapsack", "ranking", "token", "comparison"].indexOf(workflow[0]) == -1)
       return false;
     let i = 1;
     if (workflow[i] == "thanks_approval") {
@@ -616,6 +617,16 @@ function PagePreview(props) {
     <div className="preview-wrapper">
       <table className={"preview preview-theme" + props.theme}>
         <tbody>
+        {props.tokenbar &&
+            <tr>
+              <td colSpan="2" className="preview-tokenbar">
+                Selected 8 out of 20 tokens.
+                <div className="progress">
+                  <div className="progress-bar bg-success"></div>
+                </div>
+              </td>
+            </tr>
+        }
           {props.budgetbar &&
             <tr>
               <td colSpan="2" className="preview-budgetbar">
@@ -626,6 +637,7 @@ function PagePreview(props) {
               </td>
             </tr>
           }
+          
           <tr>
             {(props.sidebar || props.tracker) &&
               <td className="preview-leftbar">
@@ -696,7 +708,27 @@ function ProjectPreview(props) {
       {props.showCost &&
         <p><b>Estimated Cost</b>: {props.currencySymbol}100,000</p>
       }
-      <button className="btn btn-primary">Select</button>
+      {props.isToken &&
+        <p><b>Tokens used</b>:  5</p>
+        
+      }
+      {props.isToken &&
+        <button type="button" class="btn btn-primary btn-lg" id="plus-button20">+ </button>
+        
+      }
+
+      {props.isToken &&
+        <b>&nbsp; &nbsp;</b>
+      }
+
+
+      {props.isToken &&
+        <button type="button" class="btn btn-secondary btn-lg" id="minus-button20">&minus; </button>
+      }
+      {!props.isToken &&
+        <button className="btn btn-primary">Select</button>
+      
+      }
     </div>
   );
 }
@@ -754,6 +786,9 @@ class ConfigEditor extends React.Component {
           )}
           {flattenedWorkflow && flattenedWorkflow.indexOf('knapsack') != -1 && (
             <li className="nav-item"><a className="nav-link" data-toggle="tab" href="#knapsack-tab" role="tab">Knapsack Voting</a></li>
+          )}
+          {flattenedWorkflow && flattenedWorkflow.indexOf('token') != -1 && (
+            <li className="nav-item"><a className="nav-link" data-toggle="tab" href="#token-tab" role="tab">Token Voting</a></li>
           )}
           {flattenedWorkflow && flattenedWorkflow.indexOf('ranking') != -1 && (
             <li className="nav-item"><a className="nav-link" data-toggle="tab" href="#ranking-tab" role="tab">Ranked Voting</a></li>
@@ -1260,6 +1295,7 @@ class ConfigEditor extends React.Component {
           showCostInTitle={db.get("approval.show_cost_in_title")}
           showCost={db.get("approval.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {false}
         />
         <div className="previewCaption">Preview</div>
       </div>
@@ -1297,6 +1333,14 @@ class ConfigEditor extends React.Component {
   */}
 
   <div className="group">
+    <label className="group-title">Research ballot</label>
+    <div className="group-body">
+      <BooleanOption name="approval.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
+    </div>
+  </div>
+
+
+  <div className="group">
     <label className="group-title">Limit on number of projects</label>
     <div className="group-body">
       <BooleanOption name="approval.has_n_project_limit" db={db} label="Impose a limit on the number of projects the voter can choose" />
@@ -1327,6 +1371,7 @@ class ConfigEditor extends React.Component {
     </div>
   </Conditional>
 
+  
   {/*
   <div className="group">
     <label className="group-title">Project ranking</label>
@@ -1423,9 +1468,9 @@ class ConfigEditor extends React.Component {
     <label className="group-title">Project appearance</label>
     <div className="group-body row">
       <div className="col-sm-7">
-        {/*
+        
         <BooleanOption name="knapsack.show_cost" db={db} label="Show cost under the description" />
-        */}
+        <BooleanOption name="knapsack.show_cost_in_title" db={db} label="Show cost in the title" />
         <BooleanOption name="knapsack.show_numbers" db={db} label="Show project numbers" />
         <BooleanOption name="knapsack.show_maps" db={db} label="Show maps (for projects that have coordinates)" />
       </div>
@@ -1433,14 +1478,17 @@ class ConfigEditor extends React.Component {
         <ProjectPreview
           showMaps={db.get("knapsack.show_maps")}
           showNumbers={db.get("knapsack.show_numbers")}
-          showCostInTitle={false}
+          showCostInTitle={db.get("knapsack.show_cost_in_title")}
           showCost={db.get("knapsack.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {false}
         />
         <div className="previewCaption">Preview</div>
       </div>
     </div>
   </div>
+  
+  
 
   <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
@@ -1449,6 +1497,8 @@ class ConfigEditor extends React.Component {
       <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
     </div>
   </div>
+  
+
 
   {/*
   <Conditional condition={c('knapsack.shuffle_projects')} name="knapsack.shuffle_probability" db={db}>
@@ -1508,6 +1558,139 @@ class ConfigEditor extends React.Component {
           </div>
 
 
+          <div className="tab-pane" id="token-tab" role="tabpanel">
+<Conditional condition={flattenedWorkflow && flattenedWorkflow.indexOf('token') != -1} name="token" db={db}>
+
+  <div className="group">
+    <label className="group-title">Page appearance</label>
+    <div className="group-body row">
+      <div className="col-sm-7">
+        <BooleanOption name="token.tokenbar" db={db} label="Show the token count" />
+
+        <BooleanOption name="token.sidebar" db={db} label="Show the project list on the left side" />
+
+        <BooleanOption name="token.shuffle_projects" db={db} label="Randomize the order of projects" />
+
+        <Conditional condition={c('token.shuffle_projects')} name="token.show_shuffle_note" db={db}>
+          <BooleanOption name="token.show_shuffle_note" db={db} label="Let voters know that the order of projects is randomized" />
+        </Conditional>
+
+        <div className="mt-1">Number of columns:</div>
+        <NumberOption name="token.n_cols" db={db} />
+
+        <div className="mt-1">Theme:</div>
+        <SelectOption name="token.theme" db={db} values={[[0,"Light"],[1,"Gray"],[2,"Dark"]]} />
+      </div>
+      <div className="col-sm-5">
+
+        <PagePreview
+          budgetbar={db.get("token.budgetbar")}
+          tokenbar={db.get("token.tokenbar")}
+          shuffleProjects={db.get("token.shuffle_projects")}
+          nCols={db.get("token.n_cols")}
+          theme={db.get("token.theme")}
+          sidebar={db.get("token.sidebar")}
+          tracker={db.get("token.tracker")}
+          showShuffleNote={db.get("token.show_shuffle_note")}
+        />
+        <div className="previewCaption">Preview</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div className="group">
+    <label className="group-title">Total number of tokens</label>
+    
+        
+      <NumberOption name="token.total_tokens" db={db} label="total_tokens" />
+
+     
+  </div>
+
+  <div className="group">
+    <label className="group-title">Project appearance</label>
+    <div className="group-body row">
+      <div className="col-sm-7">
+        
+        <BooleanOption name="token.show_cost" db={db} label="Show cost under the description" />
+        <BooleanOption name="token.show_cost_in_title" db={db} label="Show cost in the title" />
+        
+        <BooleanOption name="token.show_numbers" db={db} label="Show project numbers" />
+        <BooleanOption name="token.show_maps" db={db} label="Show maps (for projects that have coordinates)" />
+
+        
+      </div>
+      <div className="col-sm-5">
+        <ProjectPreview
+          showMaps={db.get("token.show_maps")}
+          showNumbers={db.get("token.show_numbers")}
+          showCostInTitle={db.get("token.show_cost_in_title")}
+          showCost={db.get("token.show_cost")}
+          currencySymbol={db.get("currency_symbol")}
+          isToken = {true}
+        />
+        <div className="previewCaption">Preview</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+
+  <div className="group">
+    <label className="group-title">Allow selection beyond limits</label>
+    <div className="group-body">
+      <BooleanOption name="token.allow_selection_beyond_limits" db={db} label="While the voter is selecting projects, allow them to exceed the limit(s) temporarily" />
+      <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
+    </div>
+  </div>
+
+
+  <div className="group">
+    <label className="group-title">Popup</label>
+    <div className="group-body">
+      <BooleanOption name="token.show_popup" db={db} label="Show a popup (dialog box) when the voter comes to this page" />
+
+      <Conditional condition={c('token.show_popup')} db={db}>
+        <div className="mt-2">The text in the popup:</div>
+        <LocalizedTextOption name="token.popup.body" db={db} />
+      </Conditional>
+    </div>
+  </div>
+
+  <div className="group">
+    <label className="group-title">Instructions</label>
+    <div className="group-body">
+      <div>The instructions on how to vote:</div>
+      <LocalizedTextOption name="token.instructions" db={db} />
+    </div>
+  </div>
+
+  <div className="group">
+    <label className="group-title">Research ballot</label>
+    <div className="group-body">
+      <BooleanOption name="token.show_disclaimer" db={db} label="Mark this as a research ballot, and show a disclaimer that says that &quot;This is only a research survey. It will not affect your vote.&quot;" />
+    </div>
+  </div>
+
+  <div className="group">
+    <label className="group-title">Show help</label>
+    <div className="group-body">
+      <BooleanOption name="token.show_help" db={db} label="Show the Help link at the top-right corner" />
+    </div>
+  </div>
+
+  <div className="group">
+    <label className="group-title">Checkbox acknowledgment</label>
+    <div className="group-body">
+      <BooleanOption name="token.checkbox_acknowledgment" db={db} label="Before a voter submits their vote, they must click a checkbox that says that they understand that they can't change their vote afterwards" />
+    </div>
+  </div>
+
+</Conditional>
+          </div>
+
           <div className="tab-pane" id="ranking-tab" role="tabpanel">
 <Conditional condition={flattenedWorkflow && flattenedWorkflow.indexOf('ranking') != -1} name="ranking" db={db}>
 
@@ -1565,6 +1748,7 @@ class ConfigEditor extends React.Component {
           showCostInTitle={db.get("ranking.show_cost_in_title")}
           showCost={db.get("ranking.show_cost")}
           currencySymbol={db.get("currency_symbol")}
+          isToken = {false}
         />
         <div className="previewCaption">Preview</div>
       </div>
@@ -1602,6 +1786,7 @@ class ConfigEditor extends React.Component {
     </div>
   </div>
 
+  <Conditional condition={c('ranking.has_n_project_limit') || c('ranking.has_budget_limit')} name="ranking.allow_selection_beyond_limits" db={db}>
   <div className="group">
     <label className="group-title">Allow selection beyond limits</label>
     <div className="group-body">
@@ -1609,6 +1794,7 @@ class ConfigEditor extends React.Component {
       <div className="help-block">Even if this is enabled, we won't let them submit their vote anyway if it exceeds the limit.</div>
     </div>
   </div>
+  </Conditional>
 
   {/*
   <div className="group">

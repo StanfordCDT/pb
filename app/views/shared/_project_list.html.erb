@@ -134,7 +134,8 @@
   <% end %>
   <%= raw t("#{current_action}.instructions",
     max_n_projects: (current_action == :approval && conf[:approval][:pages].length > 1 && conf[:approval][:project_limits][@current_subpage]) ? conf[:approval][:project_limits][@current_subpage] : @election.config[current_action][:max_n_projects],
-    budget: '$' + number_with_delimiter(@election.budget.to_i)
+    budget: '$' + number_with_delimiter(@election.budget.to_i),
+    total_tokens: conf[:token][:total_tokens]
   ) %>
 
   <% if conf[current_action][:show_shuffle_note] && @shuffled %>

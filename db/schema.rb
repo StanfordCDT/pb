@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_100000) do
+ActiveRecord::Schema.define(version: 2023_03_01_010000) do
 
   create_table "activity_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id"
@@ -211,6 +211,16 @@ ActiveRecord::Schema.define(version: 2021_11_19_100000) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_vote_rankings_on_project_id"
     t.index ["voter_id"], name: "index_vote_rankings_on_voter_id"
+  end
+
+  create_table "vote_tokens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "voter_id", null: false
+    t.bigint "project_id", null: false
+    t.integer "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_vote_tokens_on_project_id"
+    t.index ["voter_id"], name: "index_vote_tokens_on_voter_id"
   end
 
   create_table "voter_registration_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|

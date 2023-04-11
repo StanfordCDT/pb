@@ -104,6 +104,22 @@
   width: 40%;
 }
 
+.preview-tokenbar {
+  padding: 8px;
+  text-align: center;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.preview-tokenbar .progress {
+  width: 80%;
+  height: 12px;
+  margin: 0 auto;
+}
+.preview-tokenbar .progress-bar {
+  width: 40%;
+}
+
 .preview-leftbar {
   padding: 8px;
   width: 100px;
@@ -300,7 +316,7 @@ const DB = function(configDescription) {
           hidden: false
         }
         if (o.default === null) {
-          //console.log(o); // FIXME: need to fix alternative_params
+          
         }
       }
     }

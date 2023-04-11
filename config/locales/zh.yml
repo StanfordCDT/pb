@@ -173,6 +173,30 @@ zh:
     tracker:
       text: "你已经选择了%{count}个项目。"
       x_out_of_y: "%{x} / %{y}"
+    budgetbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total budget."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You're currently over budget."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    adjustable_cost_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
+      message: "You have selected $%{cost} for %{project}"
+    adjustable_token_project: #FIXME: translate
+      instructions: "Please select one of the options below:"
+      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
+      message: "You have selected %{cost} tokens for %{project}"  
+      table_headings:
+        percentage_column: "Percentage of the budget spent"
+        cost_column: "Cost"
+        number_column: "Approximate # of blocks resurfaced"
+    image_gallery: #FIXME: translate
+      cue: "Click image for slide show"
 
   thanks_approval:
     title: "谢谢"

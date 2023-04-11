@@ -218,6 +218,11 @@ km:
       under_budget: អ្នកនៅសល់ថវិកាចំនួន %{remaining_money} ទៀត។
       over_budget: ឥឡូវនេះ អ្នកចំណាយលើសថវិកា
       over_budget_but_can_add_projects: ឥឡូវនេះ អ្នកចំណាយលើសថវិកា ប៉ុន្តែអ្នកអាចបន្តជ្រើសរើសគម្រោងបន្ថែមបាន។
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: សូមជ្រើសរើសជម្រើសណាមួយខាងក្រោម៖
       not_adjusted_warning: "<span style='color:red'>អ្នកបានជ្រើសរើស $0 សម្រាប់ %{project}</span>"

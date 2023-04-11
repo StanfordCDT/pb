@@ -229,6 +229,11 @@ hi:
       over_budget: आपके वर्त्तमान पैसे निश्चित किये गए बजट से ज़्यादा है
       over_budget_but_can_add_projects: आपके वर्त्तमान पैसे निश्चित किये गए बजट से
         ज़्यादा है, फिर भी आप और योजनाए चुन सकते है
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: कृपया नीचे दिए गए ऑप्शन में से एक को चुने
       not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 चुने हैं</span>"

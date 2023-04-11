@@ -213,6 +213,11 @@ am:
       under_budget: አሁንም %{remaining_money} ይቀርልዎታል።
       over_budget: አሁን ከበጀትዎ አልፈዋል።
       over_budget_but_can_add_projects: አሁን ከበጀትዎ አልፈዋል፣ ሆኖም ግን ፕሮጀክቶችን ማከል መቀጠል ይችላሉ።
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: 'እባክዎ ከዚህ በታች ካሉት አማራጮች ውስጥ አንዱን ይምረጡ:'
       not_adjusted_warning: "<span style='color:red'>እርስዎ ለ %{project} $0 ዶላር መርጠዋል</span>"

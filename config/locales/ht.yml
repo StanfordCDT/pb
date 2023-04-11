@@ -230,6 +230,11 @@ ht:
       over_budget: Ou apèn sot depase bidjè a.
       over_budget_but_can_add_projects: Ou apèn sot depase bidjè a, men ou ka toujou
         kontinye ajoute pwojè.
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: 'Tanpri seleksyone youn nan opsyon sa yo ki anba''a:'
       not_adjusted_warning: "<span style='color:red'>Ou te seleksyone $0 pou %{project}</span>"

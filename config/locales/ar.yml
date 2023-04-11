@@ -218,6 +218,11 @@ ar:
       over_budget: لقد تجاوزت الميزانية حاليًا.
       over_budget_but_can_add_projects: لقد تجاوزت الميزانية حاليًا، ولكن يمكنك الاستمرار
         في إضافة المشاريع.
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: 'يرجى تحديد أحد الخيارات الواردة أدناه:'
       not_adjusted_warning: "<span style='color:red'>Yلقد حددت 0 دولار أمريكي للمشروع

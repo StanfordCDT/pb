@@ -224,6 +224,11 @@ mww:
       over_budget: Cov nyiaj siv dhau tshaj qhov siv tau.
       over_budget_but_can_add_projects: Cov nyiaj siv dhau cov uas siv tau, tiamsis
         koj xaiv tau ib cov projects ntxiv los tau.
+    tokenbar: #FIXME: translate
+      text: "Selected %{total} of %{budget} total tokens."
+      under_budget: "You still have %{remaining_money} left."
+      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
+      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
     adjustable_cost_project:
       instructions: 'Thov xaiv ib qho haum qab:'
       not_adjusted_warning: "<span style='color:red'>Koj xaiv tau $0 rau%{project}</span>"

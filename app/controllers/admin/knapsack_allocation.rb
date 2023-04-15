@@ -67,6 +67,7 @@ Example:
 
 =end
 
+module Admin
 class KnapsackAllocation
   attr_reader :total_allocations
 
@@ -209,4 +210,5 @@ class KnapsackAllocation
     end
     allocations.to_a
   end
+end
 end

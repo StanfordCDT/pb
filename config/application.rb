@@ -14,7 +14,7 @@ Bundler.require(*Rails.groups)
 module Pb
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 5.2
     ##config.active_record.yaml_column_permitted_classes = [Symbol]
     
     ##config.active_record.yaml_column_permitted_classes = [Symbol, Hash, Array, Date,ActiveSupport::HashWithIndifferentAccess]

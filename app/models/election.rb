@@ -28,7 +28,7 @@ class Election < ApplicationRecord
 
   def config
     if !@@config_cache.key?(id)
-      self_config = (YAML.load(config_yaml,permitted_classes: [Matrix, Date, OpenStruct, Symbol]) || {}).deep_symbolize_keys
+      self_config = (YAML.load(config_yaml,permitted_classes: [Date]) || {}).deep_symbolize_keys
       @@config_cache[id] = deep_freeze(Election.default_config.deep_merge(self_config))
     else
       @@config_cache[id]

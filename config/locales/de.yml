@@ -116,7 +116,7 @@ de:
       over_budget_but_can_add_projects: Sie sind aktuell über dem Budget, aber Sie
         können noch Projekte hinzufügen.
     tokenbar: #FIXME: translate
-      text: "%{total} von %{budget} der Gesamttokens ausgewählt."
+      text: "%{total} von %{budget} der Gesamt Punkte ausgewählt."
       under_token: "Sie haben noch %{remaining_money} Punkte übrig."
       over_token: "Sie haben derzeit mehr Punkte verwendet als verfügbar. Bitte reduzieren Sie die ausgegebenen Punkte auf weniger als das Maximum."
       over_budget_but_can_add_tokens: "Sie sind derzeit über dem Budget, können jedoch weiterhin Punkte hinzufügen."

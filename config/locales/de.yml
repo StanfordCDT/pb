@@ -104,7 +104,7 @@ de:
         Projekte ausgewählt. Sie können höchstens <b>%{max_n_projects}</b> Projekte
         auswählen. Bitte etfernen Sie <b>%{extra}</b> oder mehr Projekte.</span>"
       over_budget_limit: "<span style='color:red'>Aktuell sind Sie über dem Budget.</span>"
-      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
+      over_token_limit: "<span style= 'color:red'> Sie haben derzeit mehr Punkte verwendet als verfügbar. Bitte reduzieren Sie die ausgegebenen Punkte auf weniger als das Maximum.</span>" #FIXME: translate
       cancel: Zurück
     tracker:
       text: Sie haben %{count} Projekte ausgewählt.
@@ -301,10 +301,10 @@ de:
       Sie auf<b>"Meine Stimme abgeben"</b> , sobald Sie bereit sind, Ihre Stimme abzugeben.</li>
       </ol>
     confirmation:
-      title: Are you sure you want to submit your vote?
+      title: Sind Sie sicher, dass Sie Ihre Stimme abgeben möchten?
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
+          zero: "<span style='color: red;'>Sie haben keine Projekte ausgewählt.</span>"
           other: 'Sie haben folgende Projekte ausgewählt: %{projects}'
           item: "%{project} (%{cost})"
         summary_token: #FIXME: translate
@@ -339,30 +339,23 @@ de:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
+      title: "Anleitung"
+      body: "<p style='font-size: 20px;'>Sie werden nun aufgefordert, an einer Aktivität teilzunehmen, die Ihre Abstimmung <u>nicht</u> beeinflusst,
+sondern Teil eines Forschungsprojekts der Stanford University ist, das uns helfen soll, den partizipatorischen Budgetprozess zu verbessern.</p>
+<ul style='font-size: 20px;'><li>Die Teilnahme an dieser Aktivität ist optional. Sie können sie jederzeit beenden.</li>
+<li>Die erwartete Dauer für diese Aktivität beträgt 2-3 Minuten.</li>
 </ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
-      ok: "Continue"
-      exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+<p style='font-size: 14px;'></p>"
+      ok: "Weiter"
+      exit: "Beenden"
+    instructions: "<h3>Anleitung</h3>
                    <ol>
-                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
-                     <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                     <li>Wählen Sie die Projekte aus, die Sie unterstützen möchten. Die Gesamtanzahl der Punkte darf %{total_tokens} <b>nicht</b> überschreiten.</li>
+                     <li>Sie können den Gesamtbetrag, den Sie bisher zugewiesen haben, in der oberen Leiste sehen. Sie können zuvor ausgewählte Projekte entfernen, indem Sie auf die Leiste oder direkt auf das ausgewählte Projekt klicken.</li>
+                     <li>Klicken Sie auf die Schaltfläche <b>\"Meine Stimme abgeben\"</b>, wenn Sie bereit sind, abzustimmen.</li>
                    </ol>"
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "Sind Sie sicher, dass Sie Ihre Stimme abgeben möchten?"
       body:
         summary:
           zero: "<span style='color: red;'>You haven't selected any projects.</span>"

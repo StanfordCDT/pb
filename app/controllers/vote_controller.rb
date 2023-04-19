@@ -425,11 +425,11 @@ class VoteController < ApplicationController
     begin
       # set up a client to talk to the Twilio REST API
       client = Twilio::REST::Client.new twilio_info[:account_sid], twilio_info[:auth_token]
-      client.api.account.messages.create(
+      client.api.account.messages.create({
         from: twilio_info[:phone_number],
         to: @phone_number,
         body: t('sms_signup_confirm.confirmation_textmsg', confirmation_code: confirmation_code),
-      )
+      })
     rescue Twilio::REST::RestError => e
       log_activity('sms_signup_failure', note: @phone_number)
       @error = e

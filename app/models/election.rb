@@ -28,7 +28,7 @@ class Election < ApplicationRecord
 
   def config
     if !@@config_cache.key?(id)
-      self_config = (YAML.load(config_yaml,permitted_classes: [Date]) || {}).deep_symbolize_keys
+      self_config = (YAML.load(config_yaml) || {}).deep_symbolize_keys
       @@config_cache[id] = deep_freeze(Election.default_config.deep_merge(self_config))
     else
       @@config_cache[id]
@@ -117,7 +117,7 @@ class Election < ApplicationRecord
 
   def validate_config_yaml
     begin
-      YAML.load(config_yaml,permitted_classes: [Date])
+      YAML.load(config_yaml)
     rescue => exception
       errors.add(:config, "must be in the correct YAML format. Error message from the parser: \"#{exception.message}\"")
     end

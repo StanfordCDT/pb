@@ -52,7 +52,7 @@ de:
       ok: OK
     instructions: <h3>Anweisungen</h3>
       Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
-      Sie können Ihre Stimme für bis zu <b>%{max_n_projects} Projekte abgeben.</b></li>
+      <li>Sie können Ihre Stimme für bis zu <b>%{max_n_projects} Projekte abgeben.</b></li>
       <li>Klicken Sie auf das <b>"Meine Stimme abgeben"</b> Feld, sobald Sie bereit
       sind, Ihre Wahl abzugeben.</li> </ol>
     list_of_projects: Projektliste

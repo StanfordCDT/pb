@@ -21,10 +21,10 @@ tl:
         mong bumoto muli.
     remote:
       welcome: |-
-        "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' />"
+        "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' />
         <p class='lead'>Welcome sa Participatory Budgeting sample digital ballot mula sa Stanford Crowdsourced Democracy Team.</p>
         <p class='lead'>Sa website na ito ay maaaring lubos ka pang mabigyang impormasyon sa mga proyekto ngayong taon at tungkol sa digital ballot. Ang website na ito ay nagbibigay lang ng impormasyon sa iyo at <b>hindi ka </b> puwedeng bumoto dito mismo.</p>
-        "<p class='lead'>Kapag ikaw ay <u>aktuwal na bumoto</u> , magpapasya ka kung paano mo nais na ilaan ang  $XXX milyon na budget ng lungsod para sa pagpapaganda ng capital. Para makaboto, kailangan mong magpunta sa isa sa maraming mga voting site na matatagpuan sa kabuuan ng lungsod. Ang panahon ng botohan ay magaganap mula (Petsa XXX) hanggang  (Petsa YYY). Basahin ang lahat ng mga oras at lokasyon sa ibaba</p>"
+        <p class='lead'>Kapag ikaw ay <u>aktuwal na bumoto</u> , magpapasya ka kung paano mo nais na ilaan ang  $XXX milyon na budget ng lungsod para sa pagpapaganda ng capital. Para makaboto, kailangan mong magpunta sa isa sa maraming mga voting site na matatagpuan sa kabuuan ng lungsod. Ang panahon ng botohan ay magaganap mula (Petsa XXX) hanggang  (Petsa YYY). Basahin ang lahat ng mga oras at lokasyon sa ibaba</p>"
       proceed_button: Tingnan ang sample ballot >>
       sms_verification_button: Bumoto na ngayon>>
       code_verification_button: Ilagay ang code

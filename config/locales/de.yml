@@ -50,7 +50,7 @@ de:
         <li>Klicken Sie auf das <b>"Meine Stimme abgeben"</b> Feld, sobald Sie bereit
         sind, Ihre Wahl abzugeben.</li> </ol>
       ok: OK
-    instructions: <h3>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
+    instructions: <h3>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.</h3>
       Sie können Ihre Stimme für bis zu <b>%{max_n_projects} Projekte abgeben.</b></li>
       <li>Klicken Sie auf das <b>"Meine Stimme abgeben"</b> Feld, sobald Sie bereit
       sind, Ihre Wahl abzugeben.</li> </ol>

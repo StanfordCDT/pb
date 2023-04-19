@@ -117,7 +117,7 @@ class Election < ApplicationRecord
 
   def validate_config_yaml
     begin
-      YAML.load(config_yaml)
+      YAML.load(config_yaml,permitted_classes: [Date])
     rescue => exception
       errors.add(:config, "must be in the correct YAML format. Error message from the parser: \"#{exception.message}\"")
     end

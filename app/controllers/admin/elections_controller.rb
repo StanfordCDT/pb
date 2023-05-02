@@ -781,7 +781,7 @@ module Admin
       tokens = election.projects.joins('LEFT OUTER JOIN vote_tokens ON vote_tokens.project_id = projects.id ' \
         'LEFT OUTER JOIN voters ON voters.id = vote_tokens.voter_id AND ' \
         'voters.void = 0' + (filter.empty? ? '' : (' AND ' + filter)))
-        .select('projects.*, COALESCE(SUM(vote_tokens.cost), 0) AS vote_count')
+        .select('projects.*, COALESCE(SUM(vote_tokens.cost*(1-voters.void)), 0) AS vote_count')
         .group('projects.id').order('vote_count DESC').map do |p|
         {
           id: p.id,

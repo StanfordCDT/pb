@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
   post 'contact' => 'home#contact'
   get 'done_survey' => 'home#done_survey'
+  get 'terms' => 'home#terms'
   post 'twilio_sms' => 'home#twilio_sms'
 
   get ':election_slug(/:action(/:id))', controller: 'vote'

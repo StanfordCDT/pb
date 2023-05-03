@@ -8,7 +8,7 @@ pl:
   index:
     title: Budżet Partycypacyjny
     voting_machine:
-      welcome: '<img src=\"/img/sample-city-logo.png\" style=''margin-left: auto;
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto;
         margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Witaj
         na cyfrowej platformie do głosowania w Budżecie Partycypacyjnym</p>'
       instruction: Proszę wprowadzić otrzymany kod.

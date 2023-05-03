@@ -18,7 +18,7 @@
 
       <ul>
       <% @files.each do |file| %>
-        <% path = "/uploads/election/file/" + @election.id.to_s + "/" + URI.escape(file[:filename]) %>
+        <% path = "/uploads/election/file/" + @election.id.to_s + "/" + CGI.escape(file[:filename]) %>
         <li>
           <a href="<%= path %>" target="_blank"><%= file[:filename] %></a>
           (<%= number_to_human_size(file[:size]) %>)<br>

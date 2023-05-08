@@ -26,6 +26,11 @@ class HomeController < ApplicationController
     end
   end
 
+  def terms
+    
+  end  
+
+
   # When we send confirmation codes to voters via SMS, they sometimes respond to
   # our messages. We have configured Twilio to call this method when that happens.
   # (It's called "webhook.") This method forwards the SMS to our email and also

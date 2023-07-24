@@ -1,6 +1,6 @@
 ru:
   navigation:
-    brand: Инициативное бюджетирование (Participatory Budgeting, PB)
+    brand: Инициативное бюджетирование
     home: Главная страница
     about: Информация
     help: Справка
@@ -583,21 +583,21 @@ ru:
   date:
     month_names:
     -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - Jul
-    - August
-    - September
-    - October
-    - November
-    - December
+    - Январь
+    - Февраль
+    - Март
+    - Апрель
+    - Май
+    - Июнь
+    - Июль
+    - Август
+    - Сентябрь
+    - Октябрь
+    - Ноябрь
+    - Декабрь
     order:
-    - :month
     - :day
+    - :month
     - :year
   activerecord:
     attributes:

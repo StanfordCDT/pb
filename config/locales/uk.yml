@@ -1,6 +1,6 @@
 uk:
   navigation:
-    brand: Громадське бюджетування (Participatory Budgeting, PB)
+    brand: Громадське бюджетування
     home: Головна сторінка
     about: Інформація
     help: Довідка
@@ -591,21 +591,21 @@ uk:
   date:
     month_names:
     -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - Jul
-    - August
-    - September
-    - October
-    - November
-    - December
+    - Січень
+    - Лютий
+    - Березень
+    - Квітень
+    - Травень
+    - Червень
+    - Липень
+    - Серпень
+    - Вересень
+    - Жовтень
+    - Листопад
+    - Грудень
     order:
-    - :month
     - :day
+    - :month
     - :year
   activerecord:
     attributes:

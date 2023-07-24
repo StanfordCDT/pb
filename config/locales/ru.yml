@@ -1,0 +1,607 @@
+ru:
+  navigation:
+    brand: Инициативное бюджетирование (Participatory Budgeting, PB)
+    home: Главная страница
+    about: Информация
+    help: Справка
+    exit: Выход
+  index:
+    title: Инициативное бюджетирование
+    voting_machine:
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right:
+        auto; display: block;' /><p class='lead' style='text-align:center;'>\nВас
+        приветствует интерфейс цифрового голосования для инициативного бюджетирования!
+        \n</p>"
+      instruction: Введите полученный вами код.
+      code_placeholder: Код
+      enter_code_button: Ввести
+      wrong_code: Неправильный код
+      used_code: Этот код уже использован.
+      used_personal_id: Этот идентификатор уже использован. Если это ошибка или вам
+        нужно проголосовать еще раз, напишите на электронную почту voxpopuli@lists.stanford.edu.
+    remote:
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right:
+        auto; display: block;' />\n<p class='lead'>\nОзнакомьтесь с образцом цифрового
+        бюллетеня для инициативного бюджетирования, любезно предоставленного Стэнфордской
+        краудсорсинговой группой развития демократии (Stanford Crowdsourced Democracy
+        Team). \n</p>\n<p class='lead'>\nНа этом сайте вы сможете ознакомиться с проектами
+        этого года и цифровым бюллетенем. Этот сайт предназначен только для информирования,
+        вы\n <b>\nне можете \n</b> \nпроголосовать здесь по-настоящему. \n</p>\n<p
+        class='lead'>\nПри подаче своего \n<u>\nреального бюллетеня \n</u>\nвы будете
+        решать, как хотели бы потратить XXX млн долл. США из бюджета города на благоустройство.
+        Чтобы проголосовать, вам понадобится прийти на один из множества пунктов для
+        голосования, которые будут размещены по всему городу. Голосование продлится
+        с (Date XXX) до (Date YYY). Все сроки и адреса указаны ниже. \n</p>"
+      proceed_button: Посмотреть образец бюллетеня >>
+      sms_verification_button: Проголосовать сейчас >>
+      code_verification_button: Ввести код
+      other_verification_button: Проголосовать сейчас >>
+      see_projects_button: Просмотреть проекты
+    voting_has_not_started: Голосование на этом сайте еще не началось. Мы начнем принимать
+      голоса дистанционно, как только это будет возможно. Спасибо за терпение!
+    voting_ended: Голосование окончено.
+    public_results: Просмотр результатов голосования
+  approval:
+    title: Инициативное бюджетирование
+    popup:
+      title: Инструкции
+      body: "<ol> <li>\nВыберите проекты, которые хотели бы поддержать. Проголосовать
+        можно за не более чем \n<b>%{max_n_projects} \nиз проектов. \n</b></li> <li>\nНажмите
+        кнопку \n<b>\n«Отправить голос», \n</b>\nкогда сделаете выбор. \n</li> </ol>"
+      ok: OK
+    instructions: "<h3>\nИнструкции \n</h3> <ol> <li>\nВыберите проекты, которые хотели
+      бы поддержать. Проголосовать можно за не более чем \n<b>%{max_n_projects} \nиз
+      проектов. \n</b></li> <li>\nНажмите кнопку \n<b>\n«Отправить голос», \n</b>
+      \nкогда сделаете выбор. \n</li> </ol>"
+    list_of_projects: Список проектов
+    estimated_cost: Оценочная стоимость
+    youtube_video: Видео на YouTube
+    location: Место
+    partner: Партнер
+    committee: Комитет
+    read_details: Подробнее...
+    select_button:
+      select: Выбрать
+      selected: Выбрано
+      not_enough_money: Недостаточно средств
+      more_projects: "Нельзя выбрать более \n%{max_n_projects} \nиз проектов"
+    remove_button: Удалить
+    remove_button_tooltip: Если вы больше не хотите выбирать этот проект, щелкните
+      здесь.
+    submit_button: Отправить голос...
+    confirmation:
+      title: Вы уверены, что хотите отправить свой голос?
+      body:
+        summary:
+          zero: |-
+            <span style='color: red;'>
+            Вы не выбрали ни одного проекта.
+            </span>
+          other: "Вы выбрали следующие проекты: \n%{projects}"
+          item: "%{project} \n(\n%{cost}\n)"
+        summary_token:
+          zero: "<span style='color: red;'>\nВы не выбрали ни одного проекта. \n</span>"
+          other: |-
+            Вы выбрали токены для следующих проектов:
+             %{projects}
+          item: "%{project} \n(\n%{cost} \nток.)"
+        under_n_project_limit:
+          one: "<span style='color: red;'>\nВы выбрали только один проект. \n</span>"
+          less: "<span style='color: red;'>\nВы выбрали только \n%{count} \nиз проектов.
+            \n</span>"
+          limit: "<span style='color: red;'>\nПроголосовать можно за не более чем
+            \n%{max_n_projects} \nиз проектов. \n</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>\nВы выбрали только один токен. \n</span>"
+          less: "<span style='color: red;'>\nВы выбрали только \n%{count} \nток. \n</span>"
+          limit: "<span style='color: red;'>\nМожно выбрать до\n %{total_tokens} \nток.
+            \n</span>"
+        warning: "После отправки голоса выбор будет \n<strong>\nневозможно \n</strong>
+          \nизменить. Если вы хотите изменить свой выбор, нажмите кнопку «Назад» ниже.
+          Если вы хотите отправить голос, установите флажок ниже и нажмите кнопку
+          «Отправить голос»."
+        checkbox: "Я понимаю, что после отправки голоса выбор \n<strong>\nневозможно
+          \n</strong> \nбудет изменить."
+      ok: Отправить голос
+      cancel: Назад
+    confirmation_over_limit:
+      title: Отправить голос не удалось
+      over_n_project_limit: "<span style='color:red'>\nВы выбрали \n<b>%{n_projects}</b>
+        \nиз проектов. Можно выбрать не более \n<b>%{max_n_projects}</b> \nиз проектов.
+        Удалите \n<b>%{extra}</b> \nили более проектов. \n</span>"
+      over_budget_limit: "<span style='color:red'>\nВы вышли за рамки бюджета. \n</span>"
+      over_token_limit: "<span style= 'color:red'> \nСейчас у вас использовано больше
+        токенов, чем доступно. Уменьшите количество израсходованных токенов, чтобы
+        их количество было меньше максимального. \n</span>"
+      cancel: Назад
+    tracker:
+      text: "Вы выбрали \n%{count} \nиз проектов."
+      x_out_of_y: "%{x} \n/ \n%{y}"
+    budgetbar:
+      text: "Выбрано \n%{total} \nиз \n%{budget} \nобщего бюджета."
+      under_budget: "У вас есть еще \n%{remaining_money} \nв запасе."
+      over_budget: Вы вышли за рамки бюджета.
+      over_budget_but_can_add_projects: Вы вышли за рамки бюджета, но можете продолжить
+        добавлять проекты.
+    tokenbar:
+      text: "Выбрано \n%{total} \nиз \n%{budget} \n(общего количества токенов)."
+      under_token: "У вас есть еще \n%{remaining_money} \nток. в запасе."
+      over_token: Сейчас у вас использовано больше токенов, чем доступно. Уменьшите
+        количество израсходованных токенов, чтобы их количество было меньше максимального.
+      over_budget_but_can_add_tokens: Вы вышли за рамки бюджета, но можете продолжить
+        добавлять токены.
+    adjustable_cost_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'>\nВы выбрали 0 долл. США на следующее:
+        \n%{project}</span>"
+      message: "Вы выбрали \n%{cost} \nна следующее: \n%{project}"
+      table_headings:
+        percentage_column: Процент расхода бюджета
+        cost_column: Затраты
+        number_column: Примерное количество кварталов с новым покрытием
+    adjustable_token_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'>\nВы выбрали 0 токенов на следующее:
+        \n%{project}</span>"
+      message: "Вы выбрали \n%{cost} \nток. на следующее: \n%{project}"
+    map:
+      street_resurfacing_count:
+        one: 1 улица с обновленным дорожным покрытием
+        other: "%{count} \nул. с обновленным дорожным покрытием"
+      alley_resurfacing_count:
+        one: 1 аллея с обновленным дорожным покрытием
+        other: "%{count} \nалл. с обновленным дорожным покрытием"
+      apron_resurfacing_count:
+        one: 1 выезд с обновленным дорожным покрытием
+        other: "%{count} \nвыезд. с обновленным дорожным покрытием"
+      sidewalk_repairing_count:
+        one: 1 тротуар с обновленным дорожным покрытием
+        other: "%{count} \nтрот. с обновленным дорожным покрытием"
+    image_gallery:
+      cue: Нажмите на изображение для показа слайдов.
+    project_ranking:
+      list_header: "Вы выбрали следующие проекты. Чтобы изменить их порядок в рейтинге,
+        используйте значки \n<span class='glyphicon glyphicon-sort'></span> \nicons."
+      continue_button: Продолжить
+  thanks_approval:
+    title: Спасибо!
+    description:
+      real: "<p class='lead text-center'>\nСпасибо за участие в голосовании! Чтобы
+        перейти на следующую страницу, нажмите «Далее». \n</p>"
+      demo: "<p class='lead'>\nСпасибо за участие в голосовании! \n<span style='color:
+        red;'><strong>\nОбратите внимание: это лишь \n<u>\nпредварительный просмотр.
+        \n</u>.</strong></span> \nЧтобы перейти на следующую страницу, нажмите «Далее».
+        \n</p>"
+    send_vote_email: "(Необязательно) Я хочу получить информацию о своем выборе на
+      электронную почту:"
+    email_placeholder: Введите адрес электронной почты
+    next_button: Далее    &gt;&gt;
+  ranking:
+    title: Инициативное бюджетирование
+    popup:
+      title: Инструкции
+      body: "<ol> <li>\nВыберите проекты, которые хотели бы поддержать. Проголосовать
+        можно за не более чем \n<b>%{max_n_projects} \nиз проектов .\n</b></li> <li>\nНажмите
+        кнопку \n<b>\n«Отправить голос», \n</b> \nкогда сделаете выбор. \n</li> </ol>"
+      ok: OK
+    instructions: "<h3>\nИнструкции \n</h3> <ol> <li>\nВыберите проекты, которые хотели
+      бы поддержать. Проголосовать можно за не более чем \n<b>%{max_n_projects} \nиз
+      проектов. \n</b></li> <li>\nНажмите кнопку \n<b>\n«Отправить голос», \n</b>
+      \nкогда сделаете выбор. \n</li> </ol>"
+    list_of_projects: Список проектов
+    estimated_cost: Оценочная стоимость
+    youtube_video: Видео на YouTube
+    location: Место
+    partner: Партнер
+    committee: Комитет
+    read_details: Подробнее...
+    select_button:
+      select: Выбрать
+      selected: Выбрано
+      not_enough_money: Недостаточно средств
+      more_projects: "Нельзя выбрать более \n%{max_n_projects} \nиз проектов"
+    remove_button: Удалить
+    remove_button_tooltip: Если вы больше не хотите выбирать этот проект, щелкните
+      здесь.
+    submit_button: Отправить голос...
+    confirmation:
+      title: Вы уверены, что хотите отправить свой голос?
+      body:
+        summary:
+          zero: |-
+            <span style='color: red;'>
+            Вы не выбрали ни одного проекта.
+            </span>
+          other: "Вы выбрали следующие проекты: \n%{projects}"
+          item: "%{project} \n(\n%{cost}\n)"
+        summary_token:
+          zero: "<span style='color: red;'>\nВы не выбрали ни одного проекта. \n</span>"
+          other: "Вы выбрали токены для следующих проектов: \n%{projects}"
+          item: "%{project} \n(\n%{cost} \nток.)"
+        under_n_project_limit:
+          one: "<span style='color: red;'>\nВы выбрали только один проект. \n</span>"
+          less: "<span style='color: red;'>\nВы выбрали только \n%{count} \nиз проектов.
+            \n</span>"
+          limit: "<span style='color: red;'>\nПроголосовать можно за не более чем
+            \n%{max_n_projects} \nиз проектов. \n</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>\nВы выбрали только один токен. \n</span>"
+          less: "<span style='color: red;'>\nВы выбрали только \n%{count} \nток. \n</span>"
+          limit: "<span style='color: red;'>\nМожно выбрать до \n%{total_tokens} \nток.
+            \n</span>"
+        warning: "После отправки голоса выбор будет \n\n\n<strong>\nневозможно \n</strong>
+          \nизменить. Если вы хотите изменить свой выбор, нажмите кнопку «Назад» ниже.
+          Если вы хотите отправить голос, установите флажок ниже и нажмите кнопку
+          «Отправить голос»."
+        checkbox: "Я понимаю, что после отправки голоса выбор \n<strong>\nневозможно
+          \n</strong> \nбудет изменить."
+      ok: Отправить голос
+      cancel: Назад
+    confirmation_over_limit:
+      title: Отправить голос не удалось
+      over_n_project_limit: "<span style='color:red'>\nВы выбрали \n<b>%{n_projects}</b>
+        \nиз проектов. Можно выбрать не более \n<b>%{max_n_projects}</b> \nиз проектов.
+        Удалите \n<b>%{extra}</b> \nили более проектов.\n.</span>"
+      over_budget_limit: "<span style='color:red'>\nВы вышли за рамки бюджета. \n</span>"
+      cancel: Назад
+    tracker:
+      text: "Вы выбрали \n%{count} \nиз проектов."
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: "Выбрано \n%{total} \nиз \n%{budget} \nобщего бюджета."
+      under_budget: "У вас есть еще \n%{remaining_money} \nв запасе."
+      over_budget: Вы вышли за рамки бюджета.
+      over_budget_but_can_add_projects: Вы вышли за рамки бюджета, но можете продолжить
+        добавлять проекты.
+    tokenbar:
+      text: "Выбрано \n%{total} \nиз \n%{budget} \n(общего количества токенов)."
+      under_budget: "У вас есть еще \n%{remaining_money} \nв запасе."
+      over_budget: Сейчас у вас использовано больше токенов, чем доступно. Уменьшите
+        количество израсходованных токенов, чтобы их количество было меньше максимального.
+      over_budget_but_can_add_projects: Вы вышли за рамки бюджета, но можете продолжить
+        добавлять проекты.
+    adjustable_cost_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'>\nВы выбрали 0 долл. США на следующее:
+        \n%{project}</span>"
+      message: "Вы выбрали \n%{cost} \nдолл. США на следующее: \n%{project}"
+      table_headings:
+        percentage_column: Процент расхода бюджета
+        cost_column: Затраты
+        number_column: Примерное количество кварталов с новым покрытием
+    adjustable_token_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'>\nВы выбрали 0 токенов на следующее:
+        \n%{project}</span>"
+      message: "Вы выбрали \n%{cost} \nток. на следующее: \n%{project}"
+    image_gallery:
+      cue: Нажмите на изображение для показа слайдов.
+  question:
+    title: Опрос
+    question: Исполнилось ли вам 14 лет?
+    ok: Да, мне исполнилось 14 лет
+    alternative: Нет, мне еще не исполнилось 14 лет
+  comparison:
+    title: Сравнение
+    header: У какого проекта лучшее соотношение цены и эффективности? Иными словами,
+      какой из них принесет наибольшую пользу сообществу в пересчете на каждый потраченный
+      доллар?
+    estimated_cost: Оценочная стоимость
+    this_project: Этот проект
+    not_sure: Сложно сказать
+    popup:
+      title: Инструкции
+      body: "<p style='font-size: 20px;'>\nТеперь вас попросят принять участие в действиях,
+        которые \n<u>\nне \n</u> \nповлияют на ваш голос, но являются частью исследовательского
+        проекта Стэнфордского университета (Stanford University), призванного помочь
+        нам улучшить процедуру инициативного бюджетирования. \n</p> <ul style='font-size:
+        20px;'><li>\nУчастие необязательно. Вы можете выйти в любое время. \n</li>
+        <li>\nОжидается, что на эти действия уйдет 2–3 минуты. \n</li> </ul> <p style='font-size:
+        14px;'>\nЭто исследование не несет рисков. Участие не оплачивается, вам не
+        гарантируются какие-либо преимущества. У вас есть право отказаться отвечать
+        на определенные вопросы. Если у вас есть вопросы, предложения или опасения,
+        обратитесь к проф. Ashish Goel по адресу электронной почты goel_admins@lists.stanford.edu.
+        Кроме того, вы можете связаться с институциональным экспертным советом Стэнфордского
+        университета (Stanford Institutional Review Board) по номеру 650-723-2480.
+        \n\n</p>"
+      ok: Продолжить
+      exit: Выход
+  knapsack:
+    title: Инициативное бюджетирование
+    popup:
+      title: Инструкции
+      body: "<p style='font-size: 20px;'>\nТеперь вас попросят принять участие в действиях,
+        которые \n<u>\nне \n</u> \nповлияют на ваш голос, но являются частью исследовательского
+        проекта Стэнфордского университета (Stanford University), призванного помочь
+        нам улучшить процедуру инициативного бюджетирования.\n</p> <ul style='font-size:
+        20px;'><li>\nУчастие необязательно. Вы можете выйти в любое время. \n</li>
+        <li>\nОжидается, что на эти действия уйдет 2–3 минуты. \n</li> </ul> <p style='font-size:
+        14px;'>\nЭто исследование не несет рисков. Участие не оплачивается, вам не
+        гарантируются какие-либо преимущества. У вас есть право отказаться отвечать
+        на определенные вопросы. Если у вас есть вопросы, предложения или опасения,
+        обратитесь к проф. Ashish Goel по адресу электронной почты goel_admins@lists.stanford.edu.
+        Кроме того, вы можете связаться с институциональным экспертным советом Стэнфордского
+        университета (Stanford Institutional Review Board) по номеру 650-723-2480.
+        \n</p>"
+      ok: Продолжить
+      exit: Выход
+    instructions: "<h3>\nИнструкции \n</h3> <ol> <li>\nВыберите проекты, которые хотели
+      бы поддержать. Превышать общую сумму затрат нельзя. \n<b>%{budget}</b>\n.\n</li>
+      <li>\nОбщую сумму, распределенную вами на данный момент, можно увидеть на панели
+      вверху. Вы можете убрать любые из ранее выбранных проектов, нажав на панель
+      или непосредственно на выбранный проект. \n</li> <li>\nНажмите кнопку \n<b>\n«Отправить
+      голос», \n</b> \nкогда сделаете выбор. \n</li> </ol>"
+    confirmation:
+      title: Вы уверены, что хотите отправить свой голос?
+      body:
+        summary:
+          zero: |-
+            <span style='color: red;'>
+            Вы не выбрали ни одного проекта.
+            </span>
+          other: "Вы выбрали следующие проекты: \n%{projects}"
+          item: "%{project} \n(\n%{cost}\n)"
+        summary_token:
+          zero: "<span style='color: red;'>\nВы не выбрали ни одного проекта. \n</span>"
+          other: "Вы выбрали токены для следующих проектов: \n%{projects}"
+          item: "%{project} \n(\n%{cost} \nток.)"
+        under_n_project_limit:
+          one: "<span style='color: red;'>\nВы выбрали только один проект. \n</span>"
+          less: "<span style='color: red;'>\nВы выбрали только \n%{count} \nиз проектов.
+            \n</span>"
+          limit: "<span style='color: red;'>\nПроголосовать можно за не более чем
+            \n%{max_n_projects} \nиз проектов. \n</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>\nВы выбрали только один токен. \n</span>"
+          less: "<span style='color: red;'>\nВы выбрали только \n%{count} \nток. \n</span>"
+          limit: "<span style='color: red;'>\nМожно выбрать до \n%{total_tokens} \nток.
+            \n</span>"
+        warning: "После отправки голоса выбор будет \n<strong>\nневозможно \n</strong>
+          \nизменить."
+      ok: Отправить голос
+      cancel: Назад
+    adjustable_cost_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'>\nВы выбрали 0 долл. США на следующее:
+        \n%{project}</span>"
+      message: "Вы выбрали \n%{cost} \nна следующее: \n%{project}"
+    adjustable_token_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'>\nВы выбрали 0 токенов на следующее:
+        \n%{project}</span>"
+      message: "Вы выбрали \n%{cost} \nток. на следующее: \n%{project}"
+  token:
+    title: Инициативное бюджетирование
+    popup:
+      title: Инструкции
+      body: "<p style='font-size: 20px;'>\nТеперь вас попросят принять участие в действиях,
+        которые \n<u>\nне \n</u> \nповлияют на ваш голос, но являются частью исследовательского
+        проекта Стэнфордского университета (Stanford University), призванного помочь
+        нам улучшить процедуру инициативного бюджетирования. \n</p> <ul style='font-size:
+        20px;'><li>\nУчастие необязательно. Вы можете выйти в любое время. \n</li>
+        <li>\nОжидается, что на эти действия уйдет 2–3 минуты.\n</li> </ul> <p style='font-size:
+        14px;'>\nЭто исследование не несет рисков. Участие не оплачивается, вам не
+        гарантируются какие-либо преимущества. У вас есть право отказаться отвечать
+        на определенные вопросы. Если у вас есть вопросы, предложения или опасения,
+        обратитесь к проф. Ashish Goel по адресу электронной почты goel_admins@lists.stanford.edu.
+        Кроме того, вы можете связаться с институциональным экспертным советом Стэнфордского
+        университета (Stanford Institutional Review Board) по номеру 650-723-2480.
+        \n</p>"
+      ok: Продолжить
+      exit: Выход
+    instructions: "<h3>\nИнструкции \n</h3> <ol> <li>\nВыберите проекты, которые хотели
+      бы поддержать. Общее количество токенов нельзя превышать. \n<b>%{total_tokens}</b>.</li>
+      <li>\nОбщую сумму, распределенную вами на данный момент, можно увидеть на панели
+      вверху. Вы можете убрать любые из ранее выбранных проектов, нажав на панель
+      или непосредственно на выбранный проект. \n</li> <li>\nНажмите кнопку \n<b>\n«Отправить
+      голос», \n</b> \nкогда сделаете выбор. \n</li> </ol>"
+    confirmation:
+      title: Вы уверены, что хотите отправить свой голос?
+      body:
+        summary:
+          zero: "<span style='color: red;'>\nВы не выбрали ни одного проекта. \n</span>"
+          other: "Вы выбрали следующие проекты: \n%{projects}"
+          item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>\nВы не выбрали ни одного проекта. \n</span>"
+          other: |-
+            Вы выбрали токены для следующих проектов:
+             %{projects}
+          item: "%{project} \n( \n%{cost} \nток.)"
+        under_n_project_limit:
+          one: "<span style='color: red;'> \nВы выбрали только один проект. \n</span>"
+          less: "<span style='color: red;'> \nВы выбрали только  \n%{count} \nиз проектов.
+            \n</span>"
+          limit: "<span style='color: red;'> \nПроголосовать можно за не более чем
+            \n%{max_n_projects} \nиз проектов. \n</span>"
+        under_token_limit:
+          one: "<span style='color: red;'> \nВы выбрали только один токен. \n</span>"
+          less: "<span style='color: red;'> \nВы выбрали только \n%{count}  \nток.
+            \n</span>"
+          limit: "<span style='color: red;'> \nМожно выбрать до \n%{total_tokens}
+            \nток. \n</span>"
+        warning: "После отправки голоса выбор будет \n<strong> \nневозможно \n</strong>
+          \nизменить."
+      ok: Отправить голос
+      cancel: Назад
+    adjustable_cost_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'> \nВы выбрали 0 долл. США на
+        следующее:  \n%{project}</span>"
+      message: "Вы выбрали \n%{cost}  \nна следующее:  \n%{project}"
+    adjustable_token_project:
+      instructions: Выберите один из вариантов ниже.
+      not_adjusted_warning: "<span style='color:red'> \nВы выбрали 0 токенов на следующее:
+        \ \n%{project}</span>"
+      message: "Вы выбрали \n%{cost}  \nток. на следующее:  \n%{project}"
+  survey:
+    title: Опрос
+    header: Пройти опрос
+    question:
+      title: Спасибо!
+      body: Спасибо за участие в голосовании! Исполнилось ли вам 14 лет?
+      ok: Да, мне исполнилось 14 лет
+      alternative: Нет, мне еще не исполнилось 14 лет
+    url: ''
+  thanks:
+    title: Спасибо!
+    description:
+      real: Спасибо за участие в голосовании! Нажмите кнопку «Выход» ниже.
+      demo: "Спасибо за тестирование нашего цифрового интерфейса для инициативного
+        бюджетирования! \n <span style='color: red;'><strong>  \nОбратите внимание:
+        это лишь \n<u> \nпредварительный просмотр\n</u>\n. \n</strong></span>"
+    exit: Выход
+  about:
+    title: Информация
+    description: "<center><h1 class='sub-header'> \nО цифровом интерфейсе для инициативного
+      бюджетирования \n</h1></center> <br><p class='lead'> \nЦифровой интерфейс для
+      инициативного бюджетирования разработан \n<a href='https://voxpopuli.stanford.edu'
+      target='_blank'>  \nСтэнфордской краудсорсинговой группой развития демократии.
+      \n</a>. \nНадеемся, что наглядность интерфейса и обилие представленной информации
+      помогут вам узнать о проектах и принимать обоснованные решения при голосовании.
+      \n</p> <p class='lead'>  \nЭто проект с открытым исходным кодом и лицензией
+      GNU GPL v3.0. Исходный код можно найти на \n<a href='https://github.com' target='_blank'>
+      \nGitHub\n</a>\n. \n</p> <p class='lead'> \nЕсли у вас возникли технические
+      проблемы или вы хотите оставить отзыв, напишите на электронную почту  \n<a href='mailto:feedback@pbstanford.org'
+      target='_blank'>  \nfeedback@pbstanford.org \n</a> \nмы постараемся ответить
+      как можно быстрее. \n</p>"
+  result:
+    title: Результаты
+    vote_results: Результаты голосования
+    description: "Результаты голосования основаны на голосах  \n%{count} \nчел. с
+      \ \n%{start} \nпо  \n%{end}."
+    proposed_project: Предлагаемые проекты
+    votes: Голоса
+    projects: Проекты
+  election:
+    can_also_vote_in_person: 'Кроме того, вы можете прийти в одно из следующих мест,
+      чтобы отдать свой голос:'
+    info: "<h3>  \nМеста голосования \n</h3> <b> \nSaturday, September 27 \n</b>  \n(с
+      12:00 p.m. до 4:00 p.m.)  \n<br>  \nГде-то  \n<br> <br> <b>  \nTuesday, September
+      30  \n</b> \n(с 6:00 p.m. до 9:00 p.m.)  \n<br>  \nГде-то  \n<br> <br> <p>  \nЧтобы
+      получить больше информации, посетите сайт \n<a href=\"https:// example.com\">
+      \nexample.com \n[</a></p>"
+  sms_signup:
+    title: Подтвердите свой номер телефона
+    header: Подтвердите свой номер телефона
+    instructions: "<p>  \nДля голосования онлайн вам понадобится мобильный телефон,
+      способный принимать текстовые сообщения, чтобы мы могли подтвердить ваш номер
+      телефона.  \n</p><p>  \nВведите номер своего мобильного телефона, и мы отправим
+      вам код подтверждения.  \n</p>"
+    phone_number_placeholder: Введите номер телефона
+    verify_button: Подтвердить
+    invalid_phone_number: "\" %{phone_number} \" \n— не действительный номер телефона."
+    blacklisted_phone_number: "Для этого номера телефона отключено получение сообщений
+      от нас. Чтобы получить код подтверждения, отправьте сообщение START на номер
+      \ \n%{our_phone_number}  \nи введите свой номер телефона еще раз."
+    no_cell_phone_instruction: "Если у вас нет мобильного телефона,\n <a href=\"%{code_signup_url}\">
+      \ \nнажмите здесь  \n</a>  \nдля использования другого способа голосования онлайн."
+  code_signup:
+    title: Введите код доступа, чтобы проголосовать
+    instruction: "Чтобы получить код доступа, отправьте сообщение на электронную почту
+      XXX@stanford.edu или позвоните по номеру XXX-XXX-XXX. Получив код доступа, введите
+      его ниже и нажмите кнопку \n<b>  \n«Голосовать»  \n</b>  \nдля продолжения."
+    code_placeholder: Код доступа
+    vote_button: Голосовать
+    wrong_access_code: Неправильный код доступа
+    used_access_code: Этот код доступа уже использован.
+  other_signup:
+    title: Введите данные для голосования
+    instruction: ''
+    no_account_number_instruction: "Если у вас нет номера лицевого счета,   \n<a href=\"%{code_signup_url}\">
+      \ \nнажмите здесь  \n</a> \nдля использования другого способа голосования онлайн."
+    zipcode_placeholder: Почтовый индекс
+    account_number_placeholder: Номер лицевого счета
+    vote_button: Голосовать
+    wrong_account_number: Неправильный номер лицевого счета или почтовый индекс
+    used_account_number: Этот номер лицевого счета уже использован.
+  free_signup:
+    title: Подтверждение
+    instruction: Введите свой почтовый индекс
+    placeholder: Почтовый индекс
+    captcha: "Введите \n<b>%{captcha}</b>   \nниже."
+    vote_button: Голосовать
+  registration:
+    title: Данные о голосующем
+    header: Данные о голосующем
+    instructions: Введите следующие данные, чтобы перейти к бюллетеню и отдать свой
+      голос. Поля со значком «*» являются обязательными.
+    proceed_button: Продолжить
+    no_phone_number: У меня нет номера телефона
+    name: Полное имя
+    first_name: Имя
+    middle_initial: Инициал второго имени
+    last_name: Фамилия
+    suffix: Суффикс имени
+    phone_number: Номер телефона
+    email: Адрес электронной почты
+    address: Улица и номер дома
+    city: Город
+    zip_code: Почтовый индекс
+    birth_year: Год рождения
+    date_of_birth: Дата рождения
+    verify_age_label: Мне исполнилось 16 лет
+    email_instruction_label: Хотите узнать результаты этого голосования? Введите свой
+      адрес электронной почты, чтобы получать новости.
+    ward: Участок
+    ward_do_not_know: Не знаю
+    error: 'Исправьте следующие ошибки:'
+    not_voting_age_error: Чтобы принять участие в голосовании, ваш возраст должен
+      соответствовать требованиям.
+    verify_age_error: 'Подтвердите: «  %{checkbox_label}   »'
+  sms_signup_confirm:
+    title: Подтвердите свой номер телефона
+    header: Подтвердите свой номер телефона
+    instructions: "<p>  \nМы отправили код подтверждения сюда:   \n<b>%{phone_number}</b>
+      \ . \nКод должен прийти в течение минуты.  \n</p><p>  \nВведите код подтверждения,
+      чтобы подтвердить свой номер телефона.  \n</p>"
+    code_placeholder: Ввести код
+    confirm_button: Подтвердить
+    wrong_code: Неправильный код.
+    resend_code: "Если вы не получили код в течение минуты, нажмите \n<a href=\"%{resend_code_url}\">
+      \ \nздесь\n </a>   \nдля повторной отправки кода подтверждения."
+    make_sure_phone_number_is_correct: "Убедитесь, что\n %{phone_number}   \n— ваш
+      правильный номер мобильного телефона. Если это \n<u>  \nне  \n</u>   \nтак,
+      нажмите  \n<a href=\"%{signup_url}\">  \nздесь  \n</a> \nдля внесения изменений."
+    still_not_working: "Если вам не удается получить код подтверждения после нескольких
+      попыток, \n  <a href=\"%{code_signup_url}\">   \nнажмите здесь  \n</a> \nдля
+      использования другого способа голосования онлайн."
+    confirmation_textmsg: "Используйте \n%{confirmation_code}   \nв качестве кода
+      для голосования в рамках инициативного бюджетирования на сайте https://pbstanford.org."
+  general:
+    demo_warning: Это лишь предварительный просмотр. Ваш голос не будет записан.
+    experiment_disclaimer: Это лишь исследовательский опрос. Он не повлияет на ваше
+      голосование.
+    shuffle_note: "<span style='font-size: 18px;'> \nПримечание. Эти проекты расположены
+      в случайном порядке.  \n</span>"
+    project_string: Проект
+    close_button: Закрыть
+    timeout:
+      body: Время вашего сеанса почти истекло. Нажмите «Продолжить», чтобы использовать
+        этот сайт дальше.
+      continue_button: Продолжить
+  date:
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - Jul
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :month
+    - :day
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

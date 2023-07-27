@@ -21,12 +21,12 @@ de:
         müssen.
     remote:
       welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right:
-        auto; display: block;' />\n <p class='lead'>Willkommen zur digitalen Beispielsabstimmung
+        auto; display: block;' /> <p class='lead'>Willkommen zur digitalen Beispielsabstimmung
         zum partizipativen Budget, mit freundlicher Genehmigung des Stanford Crowdsourced
-        Democracy Teams.</p>\n <p class='lead'>Auf dieser Webseite können Sie sich
+        Democracy Teams.</p> <p class='lead'>Auf dieser Webseite können Sie sich
         mit den diesjährigen Projekten und der digitalen Abstimmung bekannt machen.
         Diese Webseite dient nur zur Information und Sie können hier <b>nicht</b>
-        tatsächlich abstimmen. \n <p class='lead'>Wenn Sie Ihre <u>tatsächliche Wahl</u>
+        tatsächlich abstimmen.  <p class='lead'>Wenn Sie Ihre <u>tatsächliche Wahl</u>
         abgeben, werden Sie entscheiden, wie Sie 50'000 CHF des Stadtbudgets einsetzen
         möchten. Um abstimmen zu können, müssen Sie bei der offiziellen digitalen
         Abstimmung teilnehmen, die von der Stadt zur Verfügung gestellt werden wird.

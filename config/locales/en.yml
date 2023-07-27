@@ -17,9 +17,9 @@ en:
       used_code: "This code has already been used."
       used_personal_id: "This ID has already been used. Please contact voxpopuli@lists.stanford.edu in case this is an error or you need to vote again."
     remote:
-      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' />\n
-        <p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the Stanford Crowdsourced Democracy Team.</p>\n
-        <p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p>\n
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' />
+        <p class='lead'>Welcome to the Participatory Budgeting sample digital ballot, courtesy of the Stanford Crowdsourced Democracy Team.</p>
+        <p class='lead'>On this website, you can familiarize yourself with this year’s projects and the digital ballot. This website is only informational, and you <b>cannot</b> cast your actual vote here.</p>
         <p class='lead'>When you cast your <u>actual ballot</u>, you will be deciding how you want to allocate $XXX million of the city's capital improvement budget. In order to vote, you need to come to one of the many voting sites that will be located throughout the city. The voting will be held from (Date XXX) to (Date YYY). See all times and locations below.</p>"
       proceed_button: "View sample ballot >>"
       sms_verification_button: "Vote now >>"

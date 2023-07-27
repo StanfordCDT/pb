@@ -73,17 +73,12 @@ ru:
       title: Вы уверены, что хотите отправить свой голос?
       body:
         summary:
-          zero: |-
-            <span style='color: red;'>
-            Вы не выбрали ни одного проекта.
-            </span>
+          zero: "<span style='color: red;'> Вы не выбрали ни одного проекта. </span>"
           other: "Вы выбрали следующие проекты: %{projects}"
           item: "%{project} (%{cost})"
         summary_token:
           zero: "<span style='color: red;'>Вы не выбрали ни одного проекта. </span>"
-          other: |-
-            Вы выбрали токены для следующих проектов:
-             %{projects}
+          other: "Вы выбрали токены для следующих проектов: %{projects}"
           item: "%{project} (%{cost} ток.)"
         under_n_project_limit:
           one: "<span style='color: red;'>Вы выбрали только один проект. </span>"
@@ -208,10 +203,7 @@ ru:
       title: Вы уверены, что хотите отправить свой голос?
       body:
         summary:
-          zero: |-
-            <span style='color: red;'>
-            Вы не выбрали ни одного проекта.
-            </span>
+          zero: "<span style='color: red;'> Вы не выбрали ни одного проекта. </span>"
           other: "Вы выбрали следующие проекты: %{projects}"
           item: "%{project} (%{cost})"
         summary_token:
@@ -335,10 +327,7 @@ ru:
       title: Вы уверены, что хотите отправить свой голос?
       body:
         summary:
-          zero: |-
-            <span style='color: red;'>
-            Вы не выбрали ни одного проекта.
-            </span>
+          zero: "<span style='color: red;'> Вы не выбрали ни одного проекта. </span>"
           other: "Вы выбрали следующие проекты: %{projects}"
           item: "%{project} (%{cost})"
         summary_token:

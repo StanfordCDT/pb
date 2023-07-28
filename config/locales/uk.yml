@@ -283,15 +283,15 @@ uk:
           item: "%{project} (%{cost})"
         summary_token:
           zero: "<span style='color: red;'>Ви не вибрали жодного проєкту. </span>"
-          other: "Ви вибрали маркери для таких проєктів: %{projects}"   item: "%{project} ( %{cost} марк.)"
+          other: "Ви вибрали маркери для таких проєктів: %{projects}"   
+          item: "%{project} ( %{cost} марк.)"
         under_n_project_limit:
           one: "<span style='color: red;'> Ви вибрали лише один проєкт. </span>"
           less: "<span style='color: red;'> Ви вибрали лише таку кількість проєктів: %{count} projects. </span>"
           limit: "<span style='color: red;'> Ви можете проголосувати за таку кількість проєктів: %{max_n_projects} projects. </span>"
         under_token_limit:
           one: "<span style='color: red;'> Ви вибрали лише один маркер. </span>"
-          less: "<span style='color: red;'> Ви вибрали лише таку кількість маркерів:
-            %{count} tokens.</span>"
+          less: "<span style='color: red;'> Ви вибрали лише таку кількість маркерів: %{count} tokens.</span>"
           limit: "<span style='color: red;'> Ви можете вибрати таку кількість маркерів: %{total_tokens} tokens. </span>"
         warning: "Після відправлення голосу ви <strong> не зможете </strong> змінити вибір."
       ok: Відправити голос

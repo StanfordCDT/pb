@@ -6,7 +6,7 @@
 
 
 <% if conf[current_action][:show_maps] %>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_maps_api_key %>"></script>
+  <script asynch type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_maps_api_key %>"></script>
   <script type="text/javascript" src="/js/gmap.js"></script>
 <% end %>
 

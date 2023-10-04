@@ -16,7 +16,9 @@ LOCALE_NAMES = {
   mww: 'Hmong Daw',
   pl: 'Polish',
   pt: 'Portuguese',
+  ru: 'Russian',
   tl: 'Tagalog/Filipino',
+  uk: 'Ukrainian',
   zh: 'Chinese',
 }
 
@@ -36,6 +38,8 @@ LOCAL_LOCALE_NAMES = {
   km: 'ភាសាខ្មែរ',
   pl: 'Polski',
   pt: 'Português',
+  ru: 'Русский',
   tl: 'Tagalog/Filipino',
+  uk: 'Українська',
   zh: '中文',
 }

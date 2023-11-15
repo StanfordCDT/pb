@@ -113,7 +113,7 @@ function initializeViews() {
       }
 
       // Draw a map
-      if (typeof google != 'undefined') {
+      if (typeof L != 'undefined') {
         if ($('#project-map-' + id).length) {
           drawMap('project-map-' + id, JSON.parse(project.map_geometry));
         }

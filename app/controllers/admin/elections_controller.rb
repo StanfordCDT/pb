@@ -473,9 +473,11 @@ module Admin
 
     def analytics_vote_count_table(election, utc_offset)
       has_external_vote_count = !election.projects.where('external_vote_count > 0').empty?
+      workflow_first = @election.config[:workflow].flatten[0]
 
       voters_by_date_and_origin = election.valid_voters
         .select("DATE(CONVERT_TZ(created_at, '+00:00', '#{utc_offset}')) AS date, authentication_method, location_id, COUNT(*) AS vote_count")
+        .where.not(stage: workflow_first)
         .group(:date, :authentication_method, :location_id)
       origins = voters_by_date_and_origin.map(&:origin).uniq
       columns = origins + (has_external_vote_count ? ['External Votes'] : []) + ['Total']

@@ -13,39 +13,7 @@ function GMapGeometry(map, title, g, opts) {
   if (typeof opts === 'undefined')
     opts = {};
 
-  /*
-  if (g.type == 'Point') {
-    this.gmapObject = new L.marker($.extend({
-      position: new L.latLng(c[0], c[1]),
-      map: map
-    }, opts));
-  } else if (g.type == 'LineString') {
-    var path = [];
-    for (var i = 0; i < c.length; ++i)
-      path.push( new L.latLng(c[i][0], c[i][1]) );
-    this.gmapObject = new L.polyline($.extend({
-      path: path,
-      strokeColor: '#428bca',
-      strokeOpacity: 1,
-      strokeWeight: 6,
-      map: map
-    }, opts));
-  } else if (g.type == 'Polygon') {
-    //var r = c[0]; // the exterior ring
-    var r = c;
-    var path = [];
-    for (var i = 0; i < r.length; ++i)
-      path.push( new L.latLng(r[i][0], r[i][1]) );
-    this.gmapObject = new L.polygon($.extend({
-      path: path,
-      strokeColor: '#428bca',
-      strokeOpacity: 1,
-      strokeWeight: 2,
-      map: map
-    }, opts));
-  }
-  */
-
+  
   if (g.type == 'Point') {
     this.gmapObject = L.marker(new L.latLng(c[0], c[1]),opts).addTo(map);
   } else if (g.type == 'LineString') {
@@ -82,7 +50,7 @@ function GMapGeometry(map, title, g, opts) {
   this.isMarker = (g.type == 'Point');
   this.title = title;
 
-  //this.gmapObject.bindPopup(title);
+  
 }
 
 // Maps for projects that have adjustable costs
@@ -98,9 +66,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
     mapOpts = {};
   var currentCost = 0;
 
-  //let description = L.control({position: "topright"});
-
-  //this.description = null;
+ 
 
   let description = L.control({position: "topright"});
 
@@ -119,30 +85,8 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
 
   function initialize() {
 
-    /*
-    var mapOptions = $.extend({
-      center: new L.maps.LatLng(data.ward_center[0], data.ward_center[1]),
-      minZoom: 6,
-      zoom: zoom ? zoom : 14,
-      panControl: false,
-      streetViewControl: false,
-      mapTypeControl: false,
-      scrollwheel: false,
-      fullscreenControl: false
-    }, mapOpts);
-    */
-
-    
-
-    //var map = new L.map(document.getElementById(id), mapOptions);
-    //obj.map = map;
-
+   
     var styles = [
-  //     {
-  //       stylers: [
-  //         { saturation: -20 }
-  //       ]
-  //     },
       {
         featureType: "road",
         elementType: "geometry",
@@ -163,12 +107,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
       center: new L.latLng(data.ward_center[0], data.ward_center[1]),
       minZoom: 6,
       zoom: zoom ? zoom : 14,
-      //panControl: false,
-      //streetViewControl: false,
-      //mapTypeControl: false,
       scrollwheelZoom: false
-      //fullscreenControl: false,
-      //styles: styles,
     }, mapOpts);
 
     
@@ -201,27 +140,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
       }
     };
 
-    //var infowindow = new google.maps.InfoWindow();
-    /*
-    google.maps.event.addListener(map, 'mouseout', function() {
-      infowindow.close();
-      unhighlightStreet();
-    });
-    */
-
-    /*
-    google.maps.event.addListener(map, 'mousemove', function() {
-      infowindow.close();
-      unhighlightStreet();
-    });
-    */
-
-
-    /*
-    google.maps.event.addListener(map.getStreetView(), 'visible_changed', function() {
-      //$('#resurfaced').css('display', map.getStreetView().getVisible() ? 'none' : 'block');
-    });
-    */
+    
 
 
     map.on("mouseout",function(){
@@ -244,8 +163,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
 
         
 
-        //clearTimeout(timeout);
-        //timeout = setTimeout(()=>{runScript(e)},1);
+
         
     });
 
@@ -257,25 +175,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
     
 
     var addMouseOverListener = function(gmapgeometry) {
-      /*
       
-      google.maps.event.addListener(gmapgeometry.gmapObject, 'mouseover', function() {
-        infowindow.setOptions({
-          content: gmapgeometry.title,
-          position: gmapgeometry.center(),
-        });
-
-      
-
-        if (gmapgeometry.isMarker) {
-          infowindow.open(map, gmapgeometry.gmapObject);
-        } else {
-          infowindow.open(map);
-          highlightStreet(gmapgeometry.gmapObject);
-        }
-      });
-
-      */
 
       gmapgeometry.gmapObject.on("mouseover",function(){
 
@@ -286,14 +186,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
               gmapgeometry.gmapObject.openPopup(); //does not matter as popup can be attached to marker or path
           }
 
-          
       });
-
-      
-
-
-
-
 
     };
 
@@ -339,32 +232,10 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
         var c = wardBorder[i];
         path.push(new L.latLng(c[0], c[1]));
       }
-      /*
-      new google.maps.Polyline({
-        path: path,
-        strokeColor: '#666666',
-        strokeOpacity: 1,
-        strokeWeight: 2,
-        clickable: false,
-        map: map
-      });
-      */
+      
       console.log(path,outerPath);
 
       L.polyline(path,{color:'#666666',opacity:1,weight:2}).addTo(map);
-
-      /*
-
-      new google.maps.Polygon({
-        paths: [outerPath, path],
-        strokeWeight: 0,
-        fillColor: '#ffffff',
-        fillOpacity: 0.5,
-        clickable: false,
-        map: map
-      });
-
-      */
 
       L.polygon([outerPath, path],{weight:0.5,fillColor:'#666666',fillOpacity:0.2}).addTo(map); //adjust color accordingly
     }
@@ -390,7 +261,6 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
     // update objects' visibility
     if (obj.map) {
       if (cost > 0) {
-        //google.maps.event.fire(obj.map, 'resize');
         obj.map.panTo(new L.latLng(data.ward_center[0], data.ward_center[1]));
         obj.map.setZoom(zoom ? zoom : 14);
       }
@@ -401,7 +271,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
         else{
             obj.map.removeLayer(streets.street_resurfacing[k].gmapObject);
         }
-        //streets.street_resurfacing[k].gmapObject.setStyle({visible: k < n_street_resurfacing});
+        
       }
       for (var k = 0; k < data.alley_resurfacing.length; ++k) {
         if (k < n_alley_resurfacing){
@@ -410,7 +280,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
         else{
           obj.map.removeLayer(streets.alley_resurfacing[k].gmapObject); 
         }
-        //streets.alley_resurfacing[k].gmapObject.setOptions({visible: k < n_alley_resurfacing});
+       
       }
       for (var k = 0; k < data.apron_resurfacing.length; ++k) {
         if (k < n_apron_resurfacing){
@@ -419,7 +289,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
         else{
           obj.map.removeLayer(streets.apron_resurfacing[k].gmapObject);
         }
-        //streets.apron_resurfacing[k].gmapObject.setOptions({visible: k < n_apron_resurfacing});
+       
       }
       for (var k = 0; k < data.sidewalk_repairing.length; ++k) {
         if (k < n_sidewalk_repairing){
@@ -428,7 +298,7 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
         else{
           obj.map.removeLayer(streets.sidewalk_repairing[k].gmapObject);
         }
-        //streets.sidewalk_repairing[k].gmapObject.setOptions({visible: k < n_sidewalk_repairing});
+        
       }
 
     }
@@ -470,21 +340,10 @@ function GMap(id, info_id, data, zoom, templates, mapOpts) {
       html = "No streets resurfaced";
     }
 
-    
-
-
-  
-
     description.update(html);
 
-
-
-    //document.getElementById(info_id).innerHTML = html;
-    
   }
 
-
-  //google.maps.event.addDomListener(window, 'load', initialize);
   initialize();
 }
 
@@ -514,17 +373,7 @@ function drawMap(id, objects) {
   var mapOptions = {
     center: map_center,
     zoom: 14,
-    //panControl: false, --not supported in leaflet
-    //streetViewControl: false, --not supported in leaflet
-    //mapTypeControl: false, --not supported in leaflet
     scrollwheelZoom: false
-    //fullscreenControl: false, --not supported in leaflet
-    //featureType: "road",
-    //elementType: "geometry",
-      //stylers: [
-        //{ visibility: "simplified" }
-      //]
-    //styles: mapStyles,
   };
 
 
@@ -533,12 +382,10 @@ function drawMap(id, objects) {
 
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-      //styles:mapStyles,
-      //maxZoom: 18,
-    }).addTo(map);
+  }).addTo(map);
 
 
-  //L.setOptions(map,{styles: mapStyles});
+  
 
   // Reduce the zoom
   if (objects.length > 1)
@@ -554,10 +401,6 @@ function drawMap(id, objects) {
     if ($.isArray(object)) {
       var coordinates = object;
       var markerLocation = new L.latLng(coordinates[0], coordinates[1]);
-      //new L.marker({
-      //  map: map,
-      //  position: markerLocation
-      //});
       marker = L.marker(markerLocation).addTo(map);
       
       markerBounds.extend(markerLocation);
@@ -570,16 +413,8 @@ function drawMap(id, objects) {
     }
   }
 
-  //console.log(points);
-
-  //var markerBounds = new L.latLngBounds(points); 
-  //console.log(markerBounds.getCenter());
-
-  // Center the map at the center of the locations
-  //map = L.setCenter(map,markerBounds.getCenter());
-  //map.setCenter(markerBounds.getCenter())
-  //marker = L.marker(markerBounds.getCenter()).addTo(map);
+  
   map.panTo(markerBounds.getCenter()).fitBounds(markerBounds.getCenter().toBounds(500));
 
-  //map.setView(markerBounds.getCenter(), 25);
+  
 }

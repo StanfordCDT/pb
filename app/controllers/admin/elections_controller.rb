@@ -154,17 +154,17 @@ module Admin
       @analytics_data = {}
 
       if workflow.include?('approval')
-        @analytics_data[:approval], approvals_csv, approvals_individual_csv =
+        @analytics_data[:approval], approvals_csv, approvals_individual_csv, approvals_pb =
           analytics_approval(@election, utc_offset, filter)
       end
 
       if workflow.include?('knapsack')
-        @analytics_data[:knapsack], knapsacks_csv, knapsacks_individual_csv =
+        @analytics_data[:knapsack], knapsacks_csv, knapsacks_individual_csv, knapsacks_pb =
           analytics_knapsack(@election, utc_offset)
       end
 
       if workflow.include?('token')
-        @analytics_data[:token], tokens_csv, tokens_individual_csv =
+        @analytics_data[:token], tokens_csv, tokens_individual_csv, tokens_pb =
           analytics_token(@election, utc_offset, filter)
       end
 
@@ -185,7 +185,7 @@ module Admin
         end
       else
         if workflow.include?('ranking')
-          @analytics_data[:ranking], ranking_csv, ranking_individual_csv = analytics_ranking(@election)
+          @analytics_data[:ranking], ranking_csv, ranking_individual_csv, ranking_pb = analytics_ranking(@election)
         end
       end
 
@@ -219,6 +219,17 @@ module Admin
           end
           send_data csv_string, type: :csv, disposition: "attachment; filename=" + @election.slug + "-" + table + ".csv"
           # render plain: csv_string  # for debugging
+        end
+        format.pb do
+          table = params[:table]
+          text = case table.to_sym
+            when :approvals then approvals_pb.call
+            when :knapsacks then knapsacks_pb.call
+            when :tokens then tokens_pb.call
+            when :ranking then ranking_pb.call
+            else raise 'error'
+          end
+          send_data text, type: :pb, disposition: "attachment; filename=" + @election.slug + "-" + table + ".pb"
         end
       end
     end
@@ -514,8 +525,10 @@ module Admin
         {
           id: p.id,
           title: p.title,
+          description: p.description,
           cost: p.cost,
-          vote_count: p.vote_count
+          vote_count: p.vote_count,
+          category_name: p.category.name
         }
       end
 
@@ -570,10 +583,33 @@ module Admin
         end
       end
 
+      approvals_pb = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+
+        vote_approvals = election.valid_voters.joins('JOIN vote_approvals ON vote_approvals.voter_id = voters.id')
+                                 .select('voters.id, vote_approvals.project_id').order(:id)
+
+        voter_count = election.valid_voters.count
+        vote_approvals_matrix = Array.new(voter_count) { Array.new }
+        voter_ids = Array.new(voter_count)
+
+        group_votes(vote_approvals, voter_ids, vote_approvals_matrix, nil)
+
+        CSV.generate(:col_sep => ";") do |csv|
+          generate_pb_header(csv, election, approvals.length, 'approval')
+          if election.config[:approval][:has_n_project_limit]
+            csv << ['min_length'] + [election.config[:approval][:min_n_projects] == nil ? '0' : election.config[:approval][:min_n_projects]]
+            csv << ['max_length'] + [election.config[:approval][:max_n_projects]]
+          end
+          generate_pb_projects(csv, approvals, false)
+          generate_pb_approval_votes(csv, voter_ids, vote_approvals_matrix)
+        end
+      end
+
       [{
         approvals: approvals,
         max_approval_vote_count: max_approval_vote_count
-      }, approvals_csv, approvals_individual_csv]
+      }, approvals_csv, approvals_individual_csv, approvals_pb]
     end
 
     def analytics_comparison(election, utc_offset, filter)
@@ -768,6 +804,31 @@ module Admin
         end
       end
 
+      knapsacks_pb = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+
+        vote_knapsacks = election.valid_voters.joins('JOIN vote_knapsacks ON vote_knapsacks.voter_id = voters.id')
+          .select('voters.id, vote_knapsacks.project_id').order(:id)
+        projects = election.projects.joins('LEFT OUTER JOIN vote_knapsacks ON vote_knapsacks.project_id = projects.id '\
+          'LEFT OUTER JOIN voters ON voters.id = vote_knapsacks.voter_id AND voters.void = 0 ' \
+          'LEFT OUTER JOIN category_translations ON category_translations.category_id = projects.category_id')
+          .select('projects.*, vote_knapsacks.cost AS cost, category_translations.name AS category_name, COUNT(voters.id) AS vote_count')
+          .group('projects.id, category_name, vote_knapsacks.cost')
+          .order('vote_count DESC, projects.sort_order')
+
+        voter_count = election.valid_voters.count
+        vote_approvals_matrix = Array.new(voter_count) { Array.new }
+        voter_ids = Array.new(voter_count)
+
+        group_votes(vote_knapsacks, voter_ids, vote_approvals_matrix, nil)
+
+        CSV.generate(:col_sep => ";") do |csv|
+          generate_pb_header(csv, election, projects.length, 'approval')
+          generate_pb_projects(csv, projects, false)
+          generate_pb_approval_votes(csv, voter_ids, vote_approvals_matrix)
+        end
+      end
+
       [{
         knapsack_data: knapsack_data,
         knapsack_max_vote_count: knapsack_max_vote_count,
@@ -775,7 +836,7 @@ module Admin
         knapsack_total: knapsack_total,
         knapsack_discrete_vote: allocation.discrete_vote,
         knapsack_partial_project_ids: allocation.partial_project_ids
-      }, knapsacks_csv, knapsacks_individual_csv]
+      }, knapsacks_csv, knapsacks_individual_csv, knapsacks_pb]
     end
 
     def analytics_token(election, utc_offset, filter)
@@ -841,10 +902,38 @@ module Admin
         end
       end
 
+      tokens_pb = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+
+        project_scores = election.projects.joins('LEFT OUTER JOIN vote_tokens ON vote_tokens.project_id = projects.id ' \
+           'LEFT OUTER JOIN voters ON voters.id = vote_tokens.voter_id AND voters.void = 0' + (filter.empty? ? '' : (' AND ' + filter)) + ' '\
+           'LEFT OUTER JOIN category_translations ON category_translations.category_id = projects.category_id')
+           .select('projects.*, category_translations.name AS category_name, COUNT(vote_tokens.cost) AS vote_count, ' \
+           'COALESCE(SUM(vote_tokens.cost*(1-voters.void)), 0) AS score')
+           .group('projects.id, category_name').order('score DESC')
+        vote_tokens = election.valid_voters.joins('JOIN vote_tokens ON vote_tokens.voter_id = voters.id')
+          .select('voters.id, vote_tokens.project_id, vote_tokens.cost').order(:id)
+
+        voter_count = election.valid_voters.count
+        voter_ids = Array.new(voter_count)
+        vote_project_matrix = Array.new(voter_count) { Array.new }
+        vote_scores_matrix = Array.new(voter_count) { Array.new }
+
+        group_votes(vote_tokens, voter_ids, vote_project_matrix, vote_scores_matrix)
+
+        CSV.generate(:col_sep => ";") do |csv|
+          generate_pb_header(csv, election, project_scores.length, 'cumulative')
+          csv << ['min_sum_points'] + ['0']
+          csv << ['max_sum_points'] + [election.config[:token][:total_tokens]]
+          generate_pb_projects(csv, project_scores, true)
+          generate_pb_score_votes(csv, voter_ids, vote_project_matrix, vote_scores_matrix)
+        end
+      end
+
       [{
         tokens: tokens,
         max_token_vote_count: max_token_vote_count
-      }, tokens_csv, tokens_individual_csv]
+      }, tokens_csv, tokens_individual_csv, tokens_pb]
     end
 
     # Analytics for ranking interface
@@ -957,9 +1046,39 @@ module Admin
         end
       end
 
+      ranking_pb = lambda do
+        raise 'error' unless current_user.can_see_voter_data?(election)
+
+        project_scores = election.projects.joins('LEFT OUTER JOIN vote_rankings ON vote_rankings.project_id = projects.id ' \
+          'LEFT OUTER JOIN category_translations ON category_translations.category_id = projects.category_id ' \
+          'LEFT OUTER JOIN voters ON voters.id = vote_rankings.voter_id AND voters.void = 0')
+          .select('projects.*, category_translations.name AS category_name, COUNT(vote_rankings.cost) AS vote_count, ' \
+          ' COALESCE(SUM(' + (k+1).to_s + '-vote_rankings.rank), 0) AS score')
+          .group('projects.id, category_name').order('score DESC')
+        ranking_votes = election.valid_voters.joins('JOIN vote_rankings ON vote_rankings.voter_id = voters.id')
+          .select('voters.id, vote_rankings.project_id, vote_rankings.rank')
+          .order('voters.id, vote_rankings.rank')
+
+        voter_count = election.valid_voters.count
+        voter_ids = Array.new(voter_count)
+        vote_project_matrix = Array.new(voter_count) { Array.new }
+
+        group_votes(ranking_votes, voter_ids, vote_project_matrix, nil)
+
+        CSV.generate(:col_sep => ";") do |csv|
+          generate_pb_header(csv, election, project_scores.length, 'ordinal')
+          if election.config[:ranking][:has_n_project_limit]
+            csv << ['min_length'] + [election.config[:ranking][:min_n_projects] == nil ? '0' : election.config[:approval][:min_n_projects]]
+            csv << ['max_length'] + [election.config[:ranking][:max_n_projects]]
+          end
+          generate_pb_projects(csv, project_scores, true)
+          generate_pb_approval_votes(csv, voter_ids, vote_project_matrix)
+        end
+      end
+
       [{
         project_ranked_votes: project_ranked_votes
-      }, ranking_csv, ranking_individual_csv]
+      }, ranking_csv, ranking_individual_csv, ranking_pb]
     end
 
     # Analytics for ranking interface (It's legacy because it stores votes in the approval table.)
@@ -1181,6 +1300,65 @@ module Admin
         end
       end
       csv_string
+    end
+
+    def group_votes(votes, voter_ids, vote_project_matrix, vote_scores_matrix)
+      index = -1
+      current_voter = -1
+      votes.each do |v|
+        if v.id != current_voter
+          index += 1
+          current_voter = v.id
+          voter_ids[index] = current_voter
+        end
+        vote_project_matrix[index].append(v.project_id)
+        if vote_scores_matrix != nil
+          vote_scores_matrix[index].append(v.cost)
+        end
+      end
+    end
+
+    def generate_pb_header(csv, election, project_count, type)
+      csv << ['META']
+      csv << %w[key value]
+      csv << ['description'] + [election[:name]]
+      csv << ['num_projects'] + [project_count]
+      csv << ['num_votes'] + [election.valid_voters.count]
+      csv << ['budget'] + [election[:budget]]
+      csv << ['vote_type'] + [type]
+    end
+
+    def generate_pb_projects(csv, projects, scored)
+      csv << ['PROJECTS']
+      csv << %w[project_id name cost category votes] + (scored ? ["score"] : []) + ['description']
+      projects.each do |p|
+        csv << [p[:id], pb_clean_string(p[:title], "Untitled"), p[:cost], pb_clean_string(p[:category_name], "Uncategorized"),
+                p[:vote_count]] + (scored ? [p[:score]] : []) + [pb_clean_string(p[:description], "No description")]
+      end
+    end
+
+    def generate_pb_approval_votes(csv, voters, vote_approvals)
+      csv << ['VOTES']
+      csv << %w[voter_id vote]
+      vote_approvals.each_with_index do |va, idx|
+        unless vote_approvals[idx].empty?
+          csv << [voters[idx]] + [va.join(',')]
+        end
+      end
+    end
+
+    def generate_pb_score_votes(csv, voter_ids, votes, vote_scores)
+      csv << ['VOTES']
+      csv << %w[voter_id vote points]
+      voter_ids.each_with_index do |vo, idx|
+        unless votes[idx].empty?
+          csv << [vo] + [votes[idx].join(',')] + [vote_scores[idx].join(',')]
+        end
+      end
+    end
+
+    def pb_clean_string(text, default)
+      text == nil ? default : text.gsub("&amp;", "&").gsub(";", ",")
     end
   end
 end

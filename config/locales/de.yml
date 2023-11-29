@@ -79,18 +79,18 @@ de:
           other: 'Sie haben folgende Projekte ausgewählt: %{projects}'
           item: "%{project} (%{cost})"
         summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+          zero: "<span style='color: red;'>Sie haben kein Projekt ausgewählt.</span>"
+          other: "Sie haben Punkte für folgende Projekte ausgewählt: %{projects}"
+          item: "%{project} (%{cost} Punkte)"
         under_n_project_limit:
           one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt.</span>"
           less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
           limit: "<span style='color: red;'>Sie können maximal für %{max_n_projects}
             Projekte abstimmen.</span>"
         under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: "<span style='color: red;'>Sie haben nur ein Punkt ausgewählt.</span>"
+          less: "<span style='color: red;'>Sie haben nur %{count} Punkte ausgewählt.</span>"
+          limit: "<span style='color: red;'>Sie können bis zu %{total_tokens} Punkte auswählen.</span>"
         warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
           mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
           unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte
@@ -105,7 +105,7 @@ de:
         Projekte ausgewählt. Sie können höchstens <b>%{max_n_projects}</b> Projekte
         auswählen. Bitte etfernen Sie <b>%{extra}</b> oder mehr Projekte.</span>"
       over_budget_limit: "<span style='color:red'>Aktuell sind Sie über dem Budget.</span>"
-      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
+      over_token_limit: "<span style= 'color:red'> Sie haben derzeit mehr Punkte verwendet als verfügbar. Bitte reduzieren Sie die ausgegebenen Punkte auf weniger als das Maximum.</span>" #FIXME: translate
       cancel: Zurück
     tracker:
       text: Sie haben %{count} Projekte ausgewählt.
@@ -117,10 +117,10 @@ de:
       over_budget_but_can_add_projects: Sie sind aktuell über dem Budget, aber Sie
         können noch Projekte hinzufügen.
     tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_token: "You still have %{remaining_money} tokens left."
-      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
+      text: "%{total} von %{budget} der Gesamt Punkte ausgewählt."
+      under_token: "Sie haben noch %{remaining_money} Punkte übrig."
+      over_token: "Sie haben derzeit mehr Punkte verwendet als verfügbar. Bitte reduzieren Sie die ausgegebenen Punkte auf weniger als das Maximum."
+      over_budget_but_can_add_tokens: "Sie sind derzeit über dem Budget, können jedoch weiterhin Punkte hinzufügen."
     adjustable_cost_project:
       instructions: 'Bitte wählen Sie eine der untenstehenden Optionen:'
       not_adjusted_warning: "<span style='color:red'>Sie haben 0 CHF für %{project}</span>
@@ -131,9 +131,9 @@ de:
         cost_column: Kosten
         number_column: Ungefähre Anzahl der neu gestalteten Blöcke
     adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+      instructions: "Bitte wählen Sie eine der folgenden Optionen:"
+      not_adjusted_warning: "<span style='color:red'>Sie haben 0 Punkte für %{project} ausgewählt.</span>"
+      message: "Sie haben %{cost} Punkte für %{project} ausgewählt."
     map:
       street_resurfacing_count:
         one: 1 Strasse saniert
@@ -202,18 +202,18 @@ de:
           other: 'Sie haben die folgenden Projekte ausgewählt: %{projects}'
           item: "%{project} (%{cost})"
         summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+          zero: "<span style='color: red;'>Sie haben kein Projekt ausgewählt.</span>"
+          other: "Sie haben Punkte für folgende Projekte ausgewählt: %{projects}"
+          item: "%{project} (%{cost} Punkte)"
         under_n_project_limit:
           one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt .</span>"
           less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
           limit: "<span style='color: red;'>Sie können für bis zu %{max_n_projects}
             Projekten abstimmen.</span>"
         under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: "<span style='color: red;'>Sie haben nur ein Punkt ausgewählt.</span>"
+          less: "<span style='color: red;'>Sie haben nur %{count} Punkte ausgewählt.</span>"
+          limit: "<span style='color: red;'>Sie können bis zu %{total_tokens} Punkte auswählen.</span>"
         warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
           mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
           unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte
@@ -239,10 +239,10 @@ de:
       over_budget_but_can_add_projects: Sie sind aktuell über dem Budget, aber Sie
         können noch Projekte hinzufügen.
     tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+      text: "%{total} von %{budget} der Gesamt Punkte ausgewählt."
+      under_budget: "Sie haben noch %{remaining_money} übrig."
+      over_budget: "Sie haben derzeit mehr Punkte verwendet als verfügbar. Bitte reduzieren Sie die ausgegebenen Punkte auf weniger als das Maximum."
+      over_budget_but_can_add_projects: "Sie sind derzeit über dem Budget, können jedoch weiterhin Projekte hinzufügen."
     adjustable_cost_project:
       instructions: 'Bitte wählen Sie eine der untenstehenden Optionen:'
       not_adjusted_warning: "<span style='color:red'>Sie haben 0 CHF für %{project}</span>
@@ -253,9 +253,9 @@ de:
         cost_column: Kosten
         number_column: Ungefähre Anzahl der neu gestalteten Blöcke
     adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"  
+      instructions: "Bitte wählen Sie eine der folgenden Optionen:"
+      not_adjusted_warning: "<span style='color:red'>Sie haben 0 Punkte für %{project} ausgewählt.</span>"
+      message: "Sie haben %{cost} Punkte für %{project} ausgewählt."  
     image_gallery:
       cue: Klicken Sie auf das Bild für die Slide-Show
   question:
@@ -272,26 +272,20 @@ de:
     not_sure: Ich bin mir nicht sicher
     popup:
       title: Erklärung
-      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität
-        teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil
-        eines nationalen Forschungsprojekts ist, das zum Ziel hat, uns dabei zu helfen,
-        den partizipatorischen Budgetprozess zu verbessern.</p> <ul style='font-size:
-        20px;'><li>Bei dieser Aktivität teilzunehmen ist freiwillig.<li>Die erwartete
-        Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> <p style='font-size:
-        14px;'>"
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
       ok: Fortfahren
       exit: Beenden
   knapsack:
     title: Partizipatives Budget
     popup:
       title: Erklärung
-      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität
-        teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil
-        eines nationalen Forschungsprojekts ist, das zum Ziel hat, uns dabei zu helfen,
-        den partizipatorischen Budgetprozess zu verbessern.</p> <ul style='font-size:
-        20px;'><li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit
-        abbrechen.</li> <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li>
-        </ul> <p style='font-size: 14px;'>"
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
       ok: Fortfahren
       exit: Beenden
     instructions: <h3>Erklärung</h3> <ol> <li>Wählen Sie die Projekte, die Sie gerne
@@ -302,25 +296,25 @@ de:
       Sie auf<b>"Meine Stimme abgeben"</b> , sobald Sie bereit sind, Ihre Stimme abzugeben.</li>
       </ol>
     confirmation:
-      title: Are you sure you want to submit your vote?
+      title: Sind Sie sicher, dass Sie Ihre Stimme abgeben möchten?
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
+          zero: "<span style='color: red;'>Sie haben keine Projekte ausgewählt.</span>"
           other: 'Sie haben folgende Projekte ausgewählt: %{projects}'
           item: "%{project} (%{cost})"
         summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+          zero: "<span style='color: red;'>Sie haben kein Projekt ausgewählt.</span>"
+          other: "Sie haben Punkte für folgende Projekte ausgewählt: %{projects}"
+          item: "%{project} (%{cost} Punkte)"
         under_n_project_limit:
           one: "<span style='color: red;'>Sie haben nur ein Projekt ausgewählt.</span>"
           less: "<span style='color: red;'>Sie haben nur %{count} Projekte ausgewählt.</span>"
           limit: "<span style='color: red;'>Sie können maximal für %{max_n_projects}
             Projekte abstimmen.</span>"
         under_token_limit: ##fixme language
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: "<span style='color: red;'>Sie haben nur ein Punkt ausgewählt.</span>"
+          less: "<span style='color: red;'>Sie haben nur %{count} Punkte ausgewählt.</span>"
+          limit: "<span style='color: red;'>Sie können bis zu %{total_tokens} Punkte auswählen.</span>"
         warning: Nachdem Sie Ihre Stimme abgegeben haben, können Sie Ihre Stimme <strong>nicht
           mehr</strong> ändern. Wenn Sie Ihre Stimme ändern wollen, klicken Sie bitte
           unten auf "zurück". Wenn Sie Ihre Stimme abgeben wollen, kreuzen Sie bitte
@@ -333,37 +327,28 @@ de:
         ausgewählt </span>"
       message: Sie haben %{cost} für %{project} ausgewählt
     adjustable_token_project: ##fixme language
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+      instructions: "Bitte wählen Sie eine der folgenden Optionen:"
+      not_adjusted_warning: "<span style='color:red'>Sie haben 0 Punkte für %{project} ausgewählt.</span>"
+      message: "Sie haben %{cost} Punkte für %{project} ausgewählt."
 
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
-      ok: "Continue"
-      exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+      title: "Anleitung"
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
+      ok: "Weiter"
+      exit: "Beenden"
+    instructions: "<h3>Anleitung</h3>
                    <ol>
-                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
-                     <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
+                     <li>Wählen Sie die Projekte aus, die Sie unterstützen möchten. Die Gesamtanzahl der Punkte darf %{total_tokens} <b>nicht</b> überschreiten.</li>
+                     <li>Sie können den Gesamtbetrag, den Sie bisher zugewiesen haben, in der oberen Leiste sehen. Sie können zuvor ausgewählte Projekte entfernen, indem Sie auf die Leiste oder direkt auf das ausgewählte Projekt klicken.</li>
+                     <li>Klicken Sie auf die Schaltfläche <b>\"Meine Stimme abgeben\"</b>, wenn Sie bereit sind, abzustimmen.</li>
                    </ol>"
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "Sind Sie sicher, dass Sie Ihre Stimme abgeben möchten?"
       body:
         summary:
           zero: "<span style='color: red;'>You haven't selected any projects.</span>"

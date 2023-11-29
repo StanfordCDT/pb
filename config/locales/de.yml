@@ -272,26 +272,20 @@ de:
     not_sure: Ich bin mir nicht sicher
     popup:
       title: Erklärung
-      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität
-        teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil
-        eines nationalen Forschungsprojekts ist, das zum Ziel hat, uns dabei zu helfen,
-        den partizipatorischen Budgetprozess zu verbessern.</p> <ul style='font-size:
-        20px;'><li>Bei dieser Aktivität teilzunehmen ist freiwillig.<li>Die erwartete
-        Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> <p style='font-size:
-        14px;'>"
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
       ok: Fortfahren
       exit: Beenden
   knapsack:
     title: Partizipatives Budget
     popup:
       title: Erklärung
-      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität
-        teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil
-        eines nationalen Forschungsprojekts ist, das zum Ziel hat, uns dabei zu helfen,
-        den partizipatorischen Budgetprozess zu verbessern.</p> <ul style='font-size:
-        20px;'><li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit
-        abbrechen.</li> <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li>
-        </ul> <p style='font-size: 14px;'>"
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
       ok: Fortfahren
       exit: Beenden
     instructions: <h3>Erklärung</h3> <ol> <li>Wählen Sie die Projekte, die Sie gerne
@@ -341,12 +335,10 @@ de:
     title: "Participatory Budgeting"
     popup:
       title: "Anleitung"
-      body: "<p style='font-size: 20px;'>Sie werden nun aufgefordert, an einer Aktivität teilzunehmen, die Ihre Abstimmung <u>nicht</u> beeinflusst,
-sondern Teil eines Forschungsprojekts der Stanford University ist, das uns helfen soll, den partizipatorischen Budgetprozess zu verbessern.</p>
-<ul style='font-size: 20px;'><li>Die Teilnahme an dieser Aktivität ist optional. Sie können sie jederzeit beenden.</li>
-<li>Die erwartete Dauer für diese Aktivität beträgt 2-3 Minuten.</li>
-</ul>
-<p style='font-size: 14px;'></p>"
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
       ok: "Weiter"
       exit: "Beenden"
     instructions: "<h3>Anleitung</h3>

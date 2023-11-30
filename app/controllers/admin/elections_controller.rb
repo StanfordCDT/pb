@@ -528,7 +528,7 @@ module Admin
           description: p.description,
           cost: p.cost,
           vote_count: p.vote_count,
-          category_name: p.category.name
+          category_name: if p.category; p.category.name else nil end
         }
       end
 
@@ -593,7 +593,7 @@ module Admin
         vote_approvals_matrix = Array.new(voter_count) { Array.new }
         voter_ids = Array.new(voter_count)
 
-        group_votes(vote_approvals, voter_ids, vote_approvals_matrix, nil)
+        group_votes(vote_approvals, vote_approvals_matrix, nil)
 
         CSV.generate(:col_sep => ";") do |csv|
           generate_pb_header(csv, election, approvals.length, 'approval')
@@ -602,7 +602,7 @@ module Admin
             csv << ['max_length'] + [election.config[:approval][:max_n_projects]]
           end
           generate_pb_projects(csv, approvals, false)
-          generate_pb_approval_votes(csv, voter_ids, vote_approvals_matrix)
+          generate_pb_approval_votes(csv, vote_approvals_matrix)
         end
       end
 
@@ -813,19 +813,19 @@ module Admin
           'LEFT OUTER JOIN voters ON voters.id = vote_knapsacks.voter_id AND voters.void = 0 ' \
           'LEFT OUTER JOIN category_translations ON category_translations.category_id = projects.category_id')
           .select('projects.*, vote_knapsacks.cost AS cost, category_translations.name AS category_name, COUNT(voters.id) AS vote_count')
+          .where('category_translations.locale IS NULL OR category_translations.locale = ?', election.config[:default_locale])
           .group('projects.id, category_name, vote_knapsacks.cost')
           .order('vote_count DESC, projects.sort_order')
 
         voter_count = election.valid_voters.count
         vote_approvals_matrix = Array.new(voter_count) { Array.new }
-        voter_ids = Array.new(voter_count)
 
-        group_votes(vote_knapsacks, voter_ids, vote_approvals_matrix, nil)
+        group_votes(vote_knapsacks, vote_approvals_matrix, nil)
 
         CSV.generate(:col_sep => ";") do |csv|
           generate_pb_header(csv, election, projects.length, 'approval')
           generate_pb_projects(csv, projects, false)
-          generate_pb_approval_votes(csv, voter_ids, vote_approvals_matrix)
+          generate_pb_approval_votes(csv, vote_approvals_matrix)
         end
       end
 
@@ -911,22 +911,22 @@ module Admin
            .select('projects.*, category_translations.name AS category_name, COUNT(vote_tokens.cost) AS vote_count, ' \
            'COALESCE(SUM(vote_tokens.cost*(1-voters.void)), 0) AS score')
            .group('projects.id, category_name').order('score DESC')
+           .where('category_translations.locale IS NULL OR category_translations.locale = ?', election.config[:default_locale])
         vote_tokens = election.valid_voters.joins('JOIN vote_tokens ON vote_tokens.voter_id = voters.id')
           .select('voters.id, vote_tokens.project_id, vote_tokens.cost').order(:id)
 
         voter_count = election.valid_voters.count
-        voter_ids = Array.new(voter_count)
         vote_project_matrix = Array.new(voter_count) { Array.new }
         vote_scores_matrix = Array.new(voter_count) { Array.new }
 
-        group_votes(vote_tokens, voter_ids, vote_project_matrix, vote_scores_matrix)
+        group_votes(vote_tokens, vote_project_matrix, vote_scores_matrix)
 
         CSV.generate(:col_sep => ";") do |csv|
           generate_pb_header(csv, election, project_scores.length, 'cumulative')
           csv << ['min_sum_points'] + ['0']
           csv << ['max_sum_points'] + [election.config[:token][:total_tokens]]
           generate_pb_projects(csv, project_scores, true)
-          generate_pb_score_votes(csv, voter_ids, vote_project_matrix, vote_scores_matrix)
+          generate_pb_score_votes(csv, vote_project_matrix, vote_scores_matrix)
         end
       end
 
@@ -1054,16 +1054,17 @@ module Admin
           'LEFT OUTER JOIN voters ON voters.id = vote_rankings.voter_id AND voters.void = 0')
           .select('projects.*, category_translations.name AS category_name, COUNT(vote_rankings.cost) AS vote_count, ' \
           ' COALESCE(SUM(' + (k+1).to_s + '-vote_rankings.rank), 0) AS score')
-          .group('projects.id, category_name').order('score DESC')
+          .group('projects.id, category_name')
+          .where('category_translations.locale IS NULL OR category_translations.locale = ?', election.config[:default_locale])
+          .order('score DESC')
         ranking_votes = election.valid_voters.joins('JOIN vote_rankings ON vote_rankings.voter_id = voters.id')
           .select('voters.id, vote_rankings.project_id, vote_rankings.rank')
           .order('voters.id, vote_rankings.rank')
 
         voter_count = election.valid_voters.count
-        voter_ids = Array.new(voter_count)
         vote_project_matrix = Array.new(voter_count) { Array.new }
 
-        group_votes(ranking_votes, voter_ids, vote_project_matrix, nil)
+        group_votes(ranking_votes, vote_project_matrix, nil)
 
         CSV.generate(:col_sep => ";") do |csv|
           generate_pb_header(csv, election, project_scores.length, 'ordinal')
@@ -1072,7 +1073,7 @@ module Admin
             csv << ['max_length'] + [election.config[:ranking][:max_n_projects]]
           end
           generate_pb_projects(csv, project_scores, true)
-          generate_pb_approval_votes(csv, voter_ids, vote_project_matrix)
+          generate_pb_approval_votes(csv, vote_project_matrix)
         end
       end
 
@@ -1302,14 +1303,13 @@ module Admin
       csv_string
     end
 
-    def group_votes(votes, voter_ids, vote_project_matrix, vote_scores_matrix)
+    def group_votes(votes, vote_project_matrix, vote_scores_matrix)
       index = -1
       current_voter = -1
       votes.each do |v|
         if v.id != current_voter
           index += 1
           current_voter = v.id
-          voter_ids[index] = current_voter
         end
         vote_project_matrix[index].append(v.project_id)
         if vote_scores_matrix != nil
@@ -1326,6 +1326,7 @@ module Admin
       csv << ['num_votes'] + [election.valid_voters.count]
       csv << ['budget'] + [election[:budget]]
       csv << ['vote_type'] + [type]
+      csv << ['language'] + [election.config[:default_locale]]
     end
 
     def generate_pb_projects(csv, projects, scored)
@@ -1337,22 +1338,23 @@ module Admin
       end
     end
 
-    def generate_pb_approval_votes(csv, voters, vote_approvals)
+    def generate_pb_approval_votes(csv, vote_approvals)
       csv << ['VOTES']
       csv << %w[voter_id vote]
-      vote_approvals.each_with_index do |va, idx|
+      vote_approvals.shuffle().each_with_index do |va, idx|
         unless vote_approvals[idx].empty?
-          csv << [voters[idx]] + [va.join(',')]
+          csv << [idx] + [va.join(',')]
         end
       end
     end
 
-    def generate_pb_score_votes(csv, voter_ids, votes, vote_scores)
+    def generate_pb_score_votes(csv, votes, vote_scores)
       csv << ['VOTES']
       csv << %w[voter_id vote points]
-      voter_ids.each_with_index do |vo, idx|
-        unless votes[idx].empty?
-          csv << [vo] + [votes[idx].join(',')] + [vote_scores[idx].join(',')]
+      votes_and_scores = votes.zip(vote_scores)
+      votes_and_scores.shuffle().each_with_index do |vas, idx|
+        unless vas[0].empty?
+          csv << [idx] + [vas[0].join(',')] + [vas[1].join(',')]
         end
       end
     end

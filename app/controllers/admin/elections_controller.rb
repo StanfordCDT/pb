@@ -149,7 +149,6 @@ module Admin
       end
 
       # code for the vote count table
-      @total_vote_count = @election.valid_voters.count
       @columns, @vote_counts, @totals = analytics_vote_count_table(@election, utc_offset)
 
       @analytics_data = {}
@@ -471,11 +470,13 @@ module Admin
       end
     end
 
-    def analytics_vote_count_table(election, utc_offset)
+    def analytics_vote_count_table(election, utc_offset) # fixme: edge case not accounted for. When multiple voting methods are added as a primary ballot, only the first one is considered a primary ballot
       has_external_vote_count = !election.projects.where('external_vote_count > 0').empty?
+      workflow_first = @election.config[:workflow][0]  
 
       voters_by_date_and_origin = election.valid_voters
         .select("DATE(CONVERT_TZ(created_at, '+00:00', '#{utc_offset}')) AS date, authentication_method, location_id, COUNT(*) AS vote_count")
+        .where.not(stage: workflow_first)
         .group(:date, :authentication_method, :location_id)
       origins = voters_by_date_and_origin.map(&:origin).uniq
       columns = origins + (has_external_vote_count ? ['External Votes'] : []) + ['Total']

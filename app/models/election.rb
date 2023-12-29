@@ -2,7 +2,7 @@ class Election < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :voters, dependent: :destroy
-  has_many :valid_voters, -> { where("void = 0 AND stage IS NOT NULL") }, class_name: 'Voter' ###AND stage != 'approval'
+  has_many :valid_voters, -> { where("void = 0 AND stage IS NOT NULL") }, class_name: 'Voter' 
   has_many :voter_registration_records, dependent: :destroy
   has_many :code_batches, dependent: :destroy
   has_many :codes, through: :code_batches

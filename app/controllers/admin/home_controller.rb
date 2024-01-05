@@ -6,7 +6,7 @@ module Admin
       if current_user
         elections = Election
           .select("elections.*, COUNT(voters.id) AS voter_count")
-          .joins("LEFT OUTER JOIN voters ON voters.election_id = elections.id AND voters.void = 0")
+          .joins("LEFT OUTER JOIN voters ON voters.election_id = elections.id AND voters.void = false")
           .group("elections.id")
           .select { |election| current_user.admin?(election) || current_user.volunteer?(election) }
         elections = elections.natural_sort_by(&:name)

@@ -4,7 +4,7 @@ The Stanford Participatory Budgeting Platform has been developed by the [Stanfor
 The platform is built with Ruby on Rails, Bootstrap, jQuery, and React.
 
 ## **Requirements** ##
-* **Ruby**: >= 2.2.2
+* **Ruby**: >= 3.2.1
 * **Database**: MySQL, PostgreSQL or SQLite
 
 ## **Getting Started** ##

@@ -1107,7 +1107,7 @@ class ConfigEditor extends React.Component {
 
     <BooleanOption name="voting_has_ended" db={db} label="Show the text &quot;The voting has ended&quot; on the home page" />
 
-    <BooleanOption name="show_public_results" db={db} label="Show the voting results on the home page" />
+    <BooleanOption name="show_public_results" db={db} label="Show the voting results on the home page (Works only for approval)" />
   </div>
 </div>
           </div>

@@ -5,7 +5,7 @@ The platform is built with Ruby on Rails, Bootstrap, jQuery, and React.
 
 ## **Requirements** ##
 * **Ruby**: >= 3.2.1
-* **Database**: MySQL, PostgreSQL or SQLite
+* **Database**: MySQL, PostgreSQL or SQLite (Preferrred: MySQl) 
 
 ## **Getting Started** ##
 1. Download the project to your local machine.

@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 # This script converts en.yml to a CSV file.
+# Run with ruby script/yaml_to_csv.rb <filename.csv> <language code>
+# This file (edited) can serve as input for the script csv_to_yaml.rb 
 
 require "yaml"
 require "csv"

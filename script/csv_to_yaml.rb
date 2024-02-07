@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 
 # This script converts a .csv file to a .yml file to be used in config/locales.
+# Run with ruby script/csv_to_yaml.rb <filename.csv> <language code>
+# Make sure that the csv has only the original column, but with translated text instead of English.
+
 
 require "yaml"
 require "csv"

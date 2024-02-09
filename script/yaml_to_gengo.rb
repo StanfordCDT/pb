@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
 # This script converts en.yml to a Gengo file.
+# Run with ruby script/yaml_to_gengo.rb <filename.csv>
+# This file (translated) can serve as input for the script gengo_to_yaml.rb 
 
 require "yaml"
 

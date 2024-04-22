@@ -578,7 +578,7 @@ module Admin
           csv << ['Voter ID'] + ['Authentication ID'] + projects.map(&:title)
           csv << [''] + [''] + projects.map { |p| '$' + p.cost.to_s }
           indices = (0..(vote_approvals_matrix.length - 1)).to_a.shuffle
-          indices.each_with_index do | data_idx, new_voter_idx |
+          indices.each_with_index do |data_idx, new_voter_idx|
             csv << [new_voter_idx] + [authentication_id_matrix[data_idx]] + vote_approvals_matrix[data_idx]
           end
         end

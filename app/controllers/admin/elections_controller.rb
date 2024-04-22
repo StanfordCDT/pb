@@ -577,8 +577,9 @@ module Admin
         CSV.generate do |csv|
           csv << ['Voter ID'] + ['Authentication ID'] + projects.map(&:title)
           csv << [''] + [''] + projects.map { |p| '$' + p.cost.to_s }
-          vote_approvals_matrix.each_with_index do |r, index|
-            csv << [voter_id_matrix[index]] + [authentication_id_matrix[index]] + r
+          indices = (0..(vote_approvals_matrix.length - 1)).to_a.shuffle
+          indices.each_with_index do | data_idx, new_voter_idx |
+            csv << [new_voter_idx] + [authentication_id_matrix[data_idx]] + vote_approvals_matrix[data_idx]
           end
         end
       end
@@ -798,8 +799,9 @@ module Admin
         CSV.generate do |csv|
           csv << ['Voter ID', 'Voter Stage'] + projects.map(&:title)
           csv << ['Allocation', ''] + projects.map { |p| total_allocations[p.id] }
-          vote_knapsacks_matrix.each_with_index do |r, index|
-            csv << voter_id_matrix[index] + r
+          indices = (0..(vote_knapsacks_matrix.length - 1)).to_a.shuffle
+          indices.each_with_index do |data_index, new_voter_idx|
+            csv << [new_voter_idx] + vote_knapsacks_matrix[data_index]
           end
         end
       end
@@ -896,8 +898,9 @@ module Admin
 
         CSV.generate do |csv|
           csv << ['Voter ID'] + ['Authentication ID'] + projects.map(&:title)
-          vote_tokens_matrix.each_with_index do |r, index|
-            csv << [voter_id_matrix[index]] + [authentication_id_matrix[index]] + r
+          indices = (0..(vote_tokens_matrix.length - 1)).to_a.shuffle
+          indices.each_with_index do |data_idx, new_voter_idx|
+            csv << [new_voter_idx] + [authentication_id_matrix[data_idx]] + vote_tokens_matrix[data_idx]
           end
         end
       end
@@ -1032,17 +1035,22 @@ module Admin
           # Store the current voter and current row so that the projects can be aggregated
           current_voter = -1
           current_row = []
+          aggregated_rows = []
           ranking_approval_votes.each do |r|
             if current_voter != r.id
-              csv << current_row if !current_row.empty?
+              aggregated_rows.append(current_row) unless current_row.empty?
               current_voter = r.id
-              current_row = [r.id]
+              current_row = []
             end
             # Add the project details
             current_row << project_data[r.project_id]
           end
-          # Add the last row to the CSV
-          csv << current_row if !current_row.empty?
+          # Add the last aggregated row
+          aggregated_rows.append(current_row) unless current_row.empty?
+
+          aggregated_rows.shuffle.each_with_index do |row, new_voter_index|
+            csv << [new_voter_index] + row
+          end
         end
       end
 
@@ -1341,7 +1349,7 @@ module Admin
     def generate_pb_approval_votes(csv, vote_approvals)
       csv << ['VOTES']
       csv << %w[voter_id vote]
-      vote_approvals.shuffle().each_with_index do |va, idx|
+      vote_approvals.shuffle.each_with_index do |va, idx|
         unless vote_approvals[idx].empty?
           csv << [idx] + [va.join(',')]
         end
@@ -1352,7 +1360,7 @@ module Admin
       csv << ['VOTES']
       csv << %w[voter_id vote points]
       votes_and_scores = votes.zip(vote_scores)
-      votes_and_scores.shuffle().each_with_index do |vas, idx|
+      votes_and_scores.shuffle.each_with_index do |vas, idx|
         unless vas[0].empty?
           csv << [idx] + [vas[0].join(',')] + [vas[1].join(',')]
         end

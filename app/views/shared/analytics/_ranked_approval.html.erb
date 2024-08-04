@@ -6,8 +6,9 @@
 <% end %>
 
 <div style="float: right;" class="mb-2">
+  <a href="<%= url_for(format: :pb, table: 'ranking') %>">Export to PB file</a>
   <span class="dropdown">
-    <a class="dropdown-toggle" id="approvalExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    | <a class="dropdown-toggle" id="approvalExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       Export to Excel
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="approvalExportDropdown">

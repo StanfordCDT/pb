@@ -12,8 +12,9 @@ FIXME: Currently not working. Need to fix this.
 
 <% if current_user.can_see_voter_data?(@election) %>
   <div style="float: right;">
+    <a href="<%= url_for(format: :pb, table: 'knapsacks') %>">Export to PB file</a>
     <span class="dropdown">
-      <a class="dropdown-toggle" id="knapsackExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      | <a class="dropdown-toggle" id="knapsackExportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Export to Excel
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="knapsackExportDropdown">

@@ -151,11 +151,21 @@ km:
     title: ការចូលរួមរៀបចំបែងចែកថវិកា
     popup:
       title: ការណែនាំ
-      body: |-
-        <ol>
-        <li>ជ្រើសរើសគម្រោងដែលអ្នកចង់គាំទ្រ។ អ្នកអាចបោះឆ្នោតជ្រើសរើសរហូតដល់ <b>%{max_n_projects} គម្រោង។</b></li>
-        <li>សូមចុច ប៊ូតុង <b>"ដាក់បញ្ចូលសន្លឹកឆ្នោតរបស់ខ្ញុំ"</b> នៅពេលដែលអ្នកបានសម្រេចចិត្តរួចរាល់។</li>
-        </ol>
+      body: "<p style='font-size: 20px;'>ឥឡូវនេះ អ្នកនឹងត្រូវបានស្នើសុំឲ្យចូលរួមក្នុងសកម្មភាពមួយ
+        ដែលនឹង <u>មិន</u> ប៉ះពាល់ដល់ការបោះឆ្នោតរបស់អ្នកនោះទេ ប៉ុន្តែសកម្មភាពនេះគឺជាផ្នែកមួយនៃគម្រោងស្រាវជ្រាវរបស់សាកលវិទ្យាល័យ
+        ស្តេនហ្វ័ដ (Stanford University) ដែលបង្កើតឡើងដើម្បីជួយយើងខ្ញុំក្នុងការបង្កើនប្រសិទ្ធភាពនៃដំណើរការចូលរួមរៀបចំបែងចែកថវិកានេះ។</p>
+        <ul style='font-size: 20px;'>
+        <li>ការចូលរួមនៅក្នុងសកម្មភាពនេះគឺមិនមែនតម្រូវឲ្យចូលរួមនោះទេ។
+        អ្នកអាចដកខ្លួនចេញ បានគ្រប់ពេល។</li>
+        <li>រយៈពេលរំពឹងទុកសម្រាប់សកម្មភាពនេះ
+        គឺប្រមាណ ២-៣ នាទី។</li>
+        </ul>
+        <p style='font-size: 14px;'>ការសិក្សានេះមិនបង្កឲ្យមានហានិភ័យអ្វីឡើយ។
+        អ្នកនឹងមិនទទួលបានប្រាក់ឧបត្ថម្ភអ្វីឡើយ ហើយពួកយើងក៏មិនអាចធានាថា អ្នកនឹងទទួលបានផលប្រយោជន៍អ្វីនោះដែរ។
+        អ្នកមានសិទ្ធិបដិសេធមិនឆ្លើយសំណួរនានា។ សូមទាក់ទងលោកសាស្ត្រាចារ្យ Ashish Goel
+        តាមរយៈអ៊ីមែល goel_admins@lists.stanford.edu ប្រសិនបើអ្នកមានសំណួរ  សំណូមពរ
+        ឬបញ្ចេញការបារម្ភផ្សេងៗ។ អ្នកក៏អាចទាក់ទងគណៈកម្មការត្រួតពិនិត្យដែលមានឈ្នោះថា
+        Stanford Institutional Review Board តាមរយៈទូរស័ព្ទ 650-723-2480 ផងដែរ។</p>"
       ok: យល់ព្រម
     instructions: |-
       <h3>ការណែនាំ</h3>
@@ -324,23 +334,25 @@ km:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "ការណែនាំ"
+      body: "<p style='font-size: 20px;'>ឥឡូវនេះ អ្នកនឹងត្រូវបានស្នើសុំឲ្យចូលរួមក្នុងសកម្មភាពមួយ
+        ដែលនឹង <u>មិន</u> ប៉ះពាល់ដល់ការបោះឆ្នោតរបស់អ្នកនោះទេ ប៉ុន្តែសកម្មភាពនេះគឺជាផ្នែកមួយនៃគម្រោងស្រាវជ្រាវរបស់សាកលវិទ្យាល័យ
+        ស្តេនហ្វ័ដ (Stanford University) ដែលបង្កើតឡើងដើម្បីជួយយើងខ្ញុំក្នុងការបង្កើនប្រសិទ្ធភាពនៃដំណើរការចូលរួមរៀបចំបែងចែកថវិកានេះ។</p>
+        <ul style='font-size: 20px;'>
+        <li>ការចូលរួមនៅក្នុងសកម្មភាពនេះគឺមិនមែនតម្រូវឲ្យចូលរួមនោះទេ។
+        អ្នកអាចដកខ្លួនចេញ បានគ្រប់ពេល។</li>
+        <li>រយៈពេលរំពឹងទុកសម្រាប់សកម្មភាពនេះ
+        គឺប្រមាណ ២-៣ នាទី។</li>
+        </ul>
+        <p style='font-size: 14px;'>ការសិក្សានេះមិនបង្កឲ្យមានហានិភ័យអ្វីឡើយ។
+        អ្នកនឹងមិនទទួលបានប្រាក់ឧបត្ថម្ភអ្វីឡើយ ហើយពួកយើងក៏មិនអាចធានាថា អ្នកនឹងទទួលបានផលប្រយោជន៍អ្វីនោះដែរ។
+        អ្នកមានសិទ្ធិបដិសេធមិនឆ្លើយសំណួរនានា។ សូមទាក់ទងលោកសាស្ត្រាចារ្យ Ashish Goel
+        តាមរយៈអ៊ីមែល goel_admins@lists.stanford.edu ប្រសិនបើអ្នកមានសំណួរ  សំណូមពរ
+        ឬបញ្ចេញការបារម្ភផ្សេងៗ។ អ្នកក៏អាចទាក់ទងគណៈកម្មការត្រួតពិនិត្យដែលមានឈ្នោះថា
+        Stanford Institutional Review Board តាមរយៈទូរស័ព្ទ 650-723-2480 ផងដែរ។</p>"
       ok: "Continue"
       exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+    instructions: "<h3>ការណែនាំ</h3>
                    <ol>
                      <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
                      <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>

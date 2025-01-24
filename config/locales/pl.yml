@@ -163,11 +163,12 @@ pl:
     title: Budżet Partycypacyjny
     popup:
       title: Instrukcje
-      body: |-
-        <ol>
-        <li>Wskaż projekty, na które chcesz zagłosować. Możesz zagłosować na maksymalnie <b>%{max_n_projects} ze wszystkich projektów.</b></li>
-        <li>Wybierz przycisk <b>"Zagłosuj"</b>, kiedy chcesz oddać swój głos.</li>
-        </ol>
+      body: "<p style='font-size: 20px;'>Chcielibyśmy poprosić Cię o wzięcie udziału w dodatkowym badaniu, które <u>nie</u> wpłynie na oddany głos, ale jest częścią projektu badawczego Stanford University mającego na celu usprawnianie procesu budżetu partycypacyjnego.</p>
+        <ul style='font-size: 20px;'><li>Twoje uczestnictwo jest opcjonalne i możesz zrezygnować w każdym momencie.</li>
+        <li>Badanie zajmie około 2-3 minuty.</li>
+        </ul>
+        <p style='font-size: 14px;'>Badanie nie wiąże się z żadnym ryzykiem. Nie otrzymasz wynagrodzenia pieniężnego i nie możemy zagwarantować ci żadnych korzyści z niego płynących. Masz prawo odmówić odpowiedzi na niektóre pytania. Prosimy o kontakt z prof. Ashish Goel na adres goel_admins@lists.stanford.edu w przypadku jakichkolwiek pytań, sugestii lub uwag. Można również skontaktować się ze Stanford Institutional Review
+        Board pod numerem 650-723-2480.</p>"
       ok: OK
     instructions: |-
       <h3>Instrukcje</h3>
@@ -334,23 +335,16 @@ pl:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "Instrukcje"
+      body: "<p style='font-size: 20px;'>Chcielibyśmy poprosić Cię o wzięcie udziału w dodatkowym badaniu, które <u>nie</u> wpłynie na oddany głos, ale jest częścią projektu badawczego Stanford University mającego na celu usprawnianie procesu budżetu partycypacyjnego.</p>
+        <ul style='font-size: 20px;'><li>Twoje uczestnictwo jest opcjonalne i możesz zrezygnować w każdym momencie.</li>
+        <li>Badanie zajmie około 2-3 minuty.</li>
+        </ul>
+        <p style='font-size: 14px;'>Badanie nie wiąże się z żadnym ryzykiem. Nie otrzymasz wynagrodzenia pieniężnego i nie możemy zagwarantować ci żadnych korzyści z niego płynących. Masz prawo odmówić odpowiedzi na niektóre pytania. Prosimy o kontakt z prof. Ashish Goel na adres goel_admins@lists.stanford.edu w przypadku jakichkolwiek pytań, sugestii lub uwag. Można również skontaktować się ze Stanford Institutional Review
+        Board pod numerem 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+    instructions: "<h3>Instrukcje</h3>
                    <ol>
                      <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
                      <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>

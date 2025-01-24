@@ -283,19 +283,11 @@ fr:
     title: "Participatory Budgeting"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>Vous allez maintenant être invité à participer à une activité qui sera pas affecter votre vote, mais fait partie d'un projet de recherche Université de Stanford signifiait pour nous aider à améliorer le processus de budgétisation participative.</p>
+        <ul style='font-size: 20px;'><li>La participation à cette activité est facultative. Vous pouvez quitter à tout moment.</li>
+        <li>Participer à cette activité est facultative, et vous pouvez quitter à tout moment.</li>
+        <li>La durée prévue de cette activité est de 2-3 minutes.</li></ul>
+        <p style='font-size: 14px;'>Cette étude ne pose aucun risque. Aucun paiement ne sera fait à vous pour la participation, et nous ne peut pas garantir des avantages pour vous. Vous avez le droit de refuser de répondre à des questions particulières. S'il vous plaît contacter le professeur Ashish Goel au goel_admins@lists.stanford.edu si vous avez des questions, des suggestions, ou des préoccupations. Vous pouvez également communiquer avec l'Institutional Review Stanford Conseil au 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>

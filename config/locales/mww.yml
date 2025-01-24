@@ -38,12 +38,12 @@ mww:
   approval:
     title: Participatory Budgeting
     popup:
-      title: Cov lus qhia
+      title: Luv Qhia
       body: <ol> <li>Xaiv cov projects koj xav txhawb.  Koj xaiv tau  <b>%{max_n_projects}
         projects.</b></li> <li>Ntau qhov <b>"Submit My Vote"</b> thaum koj txiav txim
         siab yam koj xav tau.</li> </ol>
       ok: OK
-    instructions: <h3>Cov lus qhia</h3> <ol> <li>Xaiv cov projects koj xav txhawb.
+    instructions: <h3>Luv Qhia</h3> <ol> <li>Xaiv cov projects koj xav txhawb.
       Koj xaiv tau li <b>%{max_n_projects} projects.</b></li> <li>Ntau lub <b>"Submit
       My Vote"</b> thaum koj txiav txim siab yam koj xav tau.</li> </ol>
     list_of_projects: Cov Projects
@@ -157,12 +157,20 @@ mww:
   ranking:
     title: Participatory Budgeting
     popup:
-      title: Cov lus qhia
-      body: <ol> <li>Select the projects you would like to support. You can vote for
-        up to <b>%{max_n_projects} projects.</b></li> <li>Click the <b>"Submit My
-        Vote"</b> button when you're ready to submit.</li> </ol>
+      title: Luv Qhia
+      body: "<p style='font-size: 20px;'>Tamsim no koj yuav pab koomtes ua ib qhov
+        activity<u>not</u> uas yuav raug yam koj xaiv, tiamsis yog ib yam uas yuav
+        pab Stanford University tshawb fawb los mus pab txhawb txoj kev ua cov participatory
+        budgeting.</p> <ul style='font-size: 20px;'><li>Peb tsis quab yuam koj ua
+        qhov no. Koj tawm thaum twg los tau.</li> <li>Yuav siv sijhawm li 2-3 nathi.</li>
+        </ul> <p style='font-size: 14px;'>Qhov ua no tsis phomsij rau dab tsi. Peb
+        yuav tsis them nyiaj rau koj yog koj xav koom tes, thiab peb muaj tsis tau
+        dabtsi rau koj. Koj muaj txoj cais los mus tsis teb tej lus nug. Thov sau
+        ntawm mus rau Professor Ashish Goel at goel_admins@lists.stanford.edu yog
+        koj muaj lus nug, lus pab kho, los tej yam koj txhawj xeeb txog. Koj kuj hu
+        rau tom Stanford Institutional Review Board tom 650-723-2480.</p>"
       ok: OK
-    instructions: <h3>Instructions</h3> <ol> <li>Select the projects you would like
+    instructions: <h3>Luv Qhia</h3> <ol> <li>Select the projects you would like
       to support. You can vote for up to <b>%{max_n_projects} projects.</b></li> <li>Click
       the <b>"Submit My Vote"</b> button when you're ready to submit.</li> </ol>
     list_of_projects: Cov Projects
@@ -256,7 +264,7 @@ mww:
     this_project: Qhov project no
     not_sure: Kuv tsis paub
     popup:
-      title: Cov lus qhia
+      title: Luv Qhia
       body: "<p style='font-size: 20px;'>Tamsim no koj yuav pab koomtes ua ib qhov
         activity<u>not</u> uas yuav raug yam koj xaiv, tiamsis yog ib yam uas yuav
         pab Stanford University tshawb fawb los mus pab txhawb txoj kev ua cov participatory
@@ -274,17 +282,17 @@ mww:
     title: Participatory Budgeting
     popup:
       title: Luv Qhia
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an
-        activity that will <u>not</u> affect your vote, but is part of a Stanford
-        University research project meant to help us improve the participatory budgeting
-        process.</p> <ul style='font-size: 20px;'><li>Participating in this activity
-        is optional. You can exit at any time.</li> <li>The expected time for this
-        activity is 2-3 minutes.</li> </ul> <p style='font-size: 14px;'>This study
-        poses no risk. No payment will be made to you for participation, and we cannot
-        guarantee any benefits to you. You have the right to refuse to answer particular
-        questions. Please contact Professor Ashish Goel at goel_admins@lists.stanford.edu
-        if you have any questions, suggestions, or concerns. You may also contact
-        the Stanford Institutional Review Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>Tamsim no koj yuav pab koomtes ua ib qhov
+        activity<u>not</u> uas yuav raug yam koj xaiv, tiamsis yog ib yam uas yuav
+        pab Stanford University tshawb fawb los mus pab txhawb txoj kev ua cov participatory
+        budgeting.</p> <ul style='font-size: 20px;'><li>Peb tsis quab yuam koj ua
+        qhov no. Koj tawm thaum twg los tau.</li> <li>Yuav siv sijhawm li 2-3 nathi.</li>
+        </ul> <p style='font-size: 14px;'>Qhov ua no tsis phomsij rau dab tsi. Peb
+        yuav tsis them nyiaj rau koj yog koj xav koom tes, thiab peb muaj tsis tau
+        dabtsi rau koj. Koj muaj txoj cais los mus tsis teb tej lus nug. Thov sau
+        ntawm mus rau Professor Ashish Goel at goel_admins@lists.stanford.edu yog
+        koj muaj lus nug, lus pab kho, los tej yam koj txhawj xeeb txog. Koj kuj hu
+        rau tom Stanford Institutional Review Board tom 650-723-2480.</p>"
       ok: Mus Ntxiv (Continue)
       exit: Tawm (Exit)
     instructions: <h3>Lus qhia</h3> <ol> <li>Xaiv cov projects koj xav txhawb. Cov
@@ -329,19 +337,17 @@ mww:
     title: "Participatory Budgeting"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>Tamsim no koj yuav pab koomtes ua ib qhov
+        activity<u>not</u> uas yuav raug yam koj xaiv, tiamsis yog ib yam uas yuav
+        pab Stanford University tshawb fawb los mus pab txhawb txoj kev ua cov participatory
+        budgeting.</p> <ul style='font-size: 20px;'><li>Peb tsis quab yuam koj ua
+        qhov no. Koj tawm thaum twg los tau.</li> <li>Yuav siv sijhawm li 2-3 nathi.</li>
+        </ul> <p style='font-size: 14px;'>Qhov ua no tsis phomsij rau dab tsi. Peb
+        yuav tsis them nyiaj rau koj yog koj xav koom tes, thiab peb muaj tsis tau
+        dabtsi rau koj. Koj muaj txoj cais los mus tsis teb tej lus nug. Thov sau
+        ntawm mus rau Professor Ashish Goel at goel_admins@lists.stanford.edu yog
+        koj muaj lus nug, lus pab kho, los tej yam koj txhawj xeeb txog. Koj kuj hu
+        rau tom Stanford Institutional Review Board tom 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>

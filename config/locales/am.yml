@@ -151,9 +151,15 @@ am:
     title: አሳታፊ የበጀት አመዳደብ
     popup:
       title: መመሪያዎች
-      body: <ol> <li>እርስዎ ሊደግፏቸው የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። እስከ <b>%{max_n_projects} ፕሮጀክቶች
-        መምረጥ ይችላሉ።</b></li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን የምርጫ ድምጽ አስገባ"</b>የሚለውን አዝራር
-        ጠቅ ያድርጉ።</li> </ol>
+      body: "<p style='font-size: 20px;'>በድምጽዎ ላይ <u>ምንም</u> ተጽእኖ በማያሳድረው፣ ነገር ግን
+        አሳታፊ የበጀት አመዳደብ ሂደትን እንድናሻሽል የታሰበ የስታንፎርድ ዩኒቨርሲቲ የምርምር ፕሮጀክት አካል በሆነው እንቅስቃሴ
+        ውስጥ እንዲሳተፉ ይጠየቃሉ።</p> <ul style='font-size: 20px;'><li>በዚህ እንቅስቃሴ ውስጥ መሳተፍ
+        በምርጫ ላይ የተመሰረተ ነው። በማንኛውም ጊዜ መውጣት ይችላሉ።</li> <li>ለዚህ እንቅስቃሴ የሚጠበቀው ጊዜ በግምት
+        ከ 2-3 ደቂቃ ነው።</li> </ul> <p style='font-size: 14px;'>ይህ ጥናት ምንም አደጋ የለውም።
+        ለመሳተፍ ምንም ክፍያ አይሰጥዎትም፣ እና ለእርስዎ ምንም የጥቅማ ጥቅሞችን ዋስትና መስጠት አንችልም። ለአንዳንድ ጥያቄዎችን
+        መልስ ያለመስጠት መብት አለዎት። ማናቸውም ጥያቄዎች፣ አስተያየቶች ወይም ስጋቶች ካሉዎት፣ እባክዎ ፕሮፌሰር Ashish
+        Goel በ goel_admins@lists.stanford.edu ያነጋግሩ። እንዲሁም በ 650-723-2480 የስታንፎርድ
+        ተቋማዊ ግምገማ ቦርድ ማነጋገር ይችላሉ።</p>"
       ok: እሺ
     instructions: <h3>መመሪያዎች</h3><ol> <li>መደገፍ የሚፈልጓቸውን ፕሮጀክቶች ይምረጡ። እስከ <b>%{max_n_projects}
       ፕሮጀክቶች መምረጥ ይችላሉ።</b></li> <li>ለማስረከብ ዝግጁ ሲሆኑ <b>"የእኔን የምርጫ ድምጽ አስገባ"</b>የሚለውን
@@ -314,20 +320,16 @@ am:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "መመሪያዎች"
+      body: "<p style='font-size: 20px;'>በድምጽዎ ላይ <u>ምንም</u> ተጽእኖ በማያሳድረው፣ ነገር ግን
+        አሳታፊ የበጀት አመዳደብ ሂደትን እንድናሻሽል የታሰበ የስታንፎርድ ዩኒቨርሲቲ የምርምር ፕሮጀክት አካል በሆነው እንቅስቃሴ
+        ውስጥ እንዲሳተፉ ይጠየቃሉ።</p> <ul style='font-size: 20px;'><li>በዚህ እንቅስቃሴ ውስጥ መሳተፍ
+        በምርጫ ላይ የተመሰረተ ነው። በማንኛውም ጊዜ መውጣት ይችላሉ።</li> <li>ለዚህ እንቅስቃሴ የሚጠበቀው ጊዜ በግምት
+        ከ 2-3 ደቂቃ ነው።</li> </ul> <p style='font-size: 14px;'>ይህ ጥናት ምንም አደጋ የለውም።
+        ለመሳተፍ ምንም ክፍያ አይሰጥዎትም፣ እና ለእርስዎ ምንም የጥቅማ ጥቅሞችን ዋስትና መስጠት አንችልም። ለአንዳንድ ጥያቄዎችን
+        መልስ ያለመስጠት መብት አለዎት። ማናቸውም ጥያቄዎች፣ አስተያየቶች ወይም ስጋቶች ካሉዎት፣ እባክዎ ፕሮፌሰር Ashish
+        Goel በ goel_admins@lists.stanford.edu ያነጋግሩ። እንዲሁም በ 650-723-2480 የስታንፎርድ
+        ተቋማዊ ግምገማ ቦርድ ማነጋገር ይችላሉ።</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>

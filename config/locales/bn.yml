@@ -157,9 +157,19 @@ bn:
     title: অংশগ্রহণমূলক বাজেটিং
     popup:
       title: নির্দেশনা
-      body: <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান সেগুলো বেছে নিন। আপনি <b>%{max_n_projects}টি
-        পর্যন্ত প্রকল্পের জন্য ভোট করতে পারেন। জমা দেয়ার জন্য প্রস্তুত হলে </b></li>
-        <li><b>"আমার ভোট জমা দিন"</b> বোতামটি ক্লিক করুন।</li> </ol>
+      body: "<p style='font-size: 20px;'>আপনাকে এমন একটি কর্মকাণ্ডে অংশ নিতে বলা হবে
+        যেটি আপনার ভোটে প্রভাব ফেলবে <u>না</u>, কিন্তু স্ট্যান্ডফোর্ড বিশ্ববিদ্যালয়ের
+        রিসার্চ প্রকল্পের অংশ হিসেবে অংশগ্রহণমূলক বাজেটিং প্রক্রিয়ার উন্নতির ক্ষেত্রে
+        আমাদের সাহায্য করে।</p> <ul style='font-size: 20px;'><li>এই কর্মকাণ্ডে যুক্ত
+        হওয়া ঐচ্ছিক। আপনি যে কোনো সময় প্রস্থান করতে পারেন।</li> <li>এই কর্মকাণ্ডের
+        প্রত্যাশিত সময় 2-3 মিনিট।</li> </ul> <p style='font-size: 14px;'>এই অধ্যয়নে
+        কোনো ঝুঁকি নেই। অংশগ্রহণ করার জন্য আপনাকে কোনো অর্থ দেয়া হবে না এবং এর থেকে
+        আপনি যে সুবিধা পাবেন তা আমরা নিশ্চিত করে বলতে পারব না। নির্দিষ্ট প্রশ্নের
+        উত্তর দিতে অস্বীকার করার অধিকার আপনার আছে। যদি আপনার কোনো প্রশ্ন, প্রস্তাব
+        বা উদ্বেগ থাকে, তাহলে অনুগ্রহ করে প্রোফেসর আশিস গোয়েলের (Ashish Goel) সঙ্গে
+        goel_admins@lists.stanford.edu-এর মাধ্যমে যোগাযোগ করুন। এছাড়াও আপনি 650-723-2480
+        নম্বরে কল করে স্ট্যান্ডফোর্ড ইনস্টিটিউশনাল রিভিউ বোর্ডের সঙ্গে যোগাযোগ করতে
+        পারেন।</p>"
       ok: ঠিক আছে
     instructions: <h3>নির্দেশনা</h3> <ol> <li>আপনি যে প্রকল্পগুলিকে সমর্থন করতে চান
       সেগুলো বেছে নিন। আপনি <b>%{max_n_projects}টি পর্যন্ত প্রকল্পের জন্য ভোট করতে
@@ -333,20 +343,20 @@ bn:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "নির্দেশনা"
+      body: "<p style='font-size: 20px;'>আপনাকে এমন একটি কর্মকাণ্ডে অংশ নিতে বলা হবে
+        যেটি আপনার ভোটে প্রভাব ফেলবে <u>না</u>, কিন্তু স্ট্যান্ডফোর্ড বিশ্ববিদ্যালয়ের
+        রিসার্চ প্রকল্পের অংশ হিসেবে অংশগ্রহণমূলক বাজেটিং প্রক্রিয়ার উন্নতির ক্ষেত্রে
+        আমাদের সাহায্য করে।</p> <ul style='font-size: 20px;'><li>এই কর্মকাণ্ডে যুক্ত
+        হওয়া ঐচ্ছিক। আপনি যে কোনো সময় প্রস্থান করতে পারেন।</li> <li>এই কর্মকাণ্ডের
+        প্রত্যাশিত সময় 2-3 মিনিট।</li> </ul> <p style='font-size: 14px;'>এই অধ্যয়নে
+        কোনো ঝুঁকি নেই। অংশগ্রহণ করার জন্য আপনাকে কোনো অর্থ দেয়া হবে না এবং এর থেকে
+        আপনি যে সুবিধা পাবেন তা আমরা নিশ্চিত করে বলতে পারব না। নির্দিষ্ট প্রশ্নের
+        উত্তর দিতে অস্বীকার করার অধিকার আপনার আছে। যদি আপনার কোনো প্রশ্ন, প্রস্তাব
+        বা উদ্বেগ থাকে, তাহলে অনুগ্রহ করে প্রোফেসর আশিস গোয়েলের (Ashish Goel) সঙ্গে
+        goel_admins@lists.stanford.edu-এর মাধ্যমে যোগাযোগ করুন। এছাড়াও আপনি 650-723-2480
+        নম্বরে কল করে স্ট্যান্ডফোর্ড ইনস্টিটিউশনাল রিভিউ বোর্ডের সঙ্গে যোগাযোগ করতে
+        পারেন।</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>

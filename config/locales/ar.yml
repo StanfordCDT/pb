@@ -154,9 +154,17 @@ ar:
     title: الموازنة التشاركية
     popup:
       title: التعليمات
-      body: <ol> <li>حدد المشاريع التي تريد دعمها. ويمكنك التصويت لعدد <b>%{max_n_projects}
-        من المشاريع كحد أقصى.</b></li> <li>وانقر فوق الزر <b>"إرسال تصويتي"</b> عندما
-        تكون مستعدًا للإرسال.</li> </ol>
+      body: "<p style='font-size: 20px;'>ستكون مطالبًا الآن بالمشاركة في نشاط <u>لن</u>
+        يؤثر على تصويتك، ولكنه يُعد جزءًا من مشروع بحثي في Stanford University يهدف
+        إلى مساعدتنا في تحسين عملية إعداد الميزانية التشاركية.</p> <ul style='font-size:
+        20px;'><li>علمًا بأن المشاركة في هذا النشاط اختيارية. ويمكنك إنهاء المشاركة
+        في أي وقت.</li> <li>ويتراوح الوقت المتوقع لهذا النشاط بين دقيقتين إلى ثلاث
+        دقائق.</li> </ul> <p style='font-size: 14px;'>وهذه الدراسة لا تشكّل أي خطر.
+        كما لن يتم دفع أموال لك مقابل المشاركة، ولا يمكننا ضمان تحقيق أي فوائد لك.
+        ولديك الحق في رفض الإجابة عن أسئلة معينة. ويرجى التواصل مع الأستاذ أشيش جويل
+        من خلال goel_admins@lists.stanford.edu إذا كانت لديك أي أسئلة أو اقتراحات
+        أو مخاوف. كما يمكنك أيضًا الاتصال بمجلس المراجعة المؤسسية في ستانفورد على
+        الرقم 650-723-2480.</p>"
       ok: موافق
     instructions: <h3>التعليمات</h3> <ol> <li>حدد المشاريع التي تريد دعمها. ويمكنك
       التصويت لعدد <b>%{max_n_projects} من المشاريع كحد أقصى.</b></li> <li>وانقر فوق
@@ -324,23 +332,21 @@ ar:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "التعليمات"
+      body: "<p style='font-size: 20px;'>ستكون مطالبًا الآن بالمشاركة في نشاط <u>لن</u>
+        يؤثر على تصويتك، ولكنه يُعد جزءًا من مشروع بحثي في Stanford University يهدف
+        إلى مساعدتنا في تحسين عملية إعداد الميزانية التشاركية.</p> <ul style='font-size:
+        20px;'><li>علمًا بأن المشاركة في هذا النشاط اختيارية. ويمكنك إنهاء المشاركة
+        في أي وقت.</li> <li>ويتراوح الوقت المتوقع لهذا النشاط بين دقيقتين إلى ثلاث
+        دقائق.</li> </ul> <p style='font-size: 14px;'>وهذه الدراسة لا تشكّل أي خطر.
+        كما لن يتم دفع أموال لك مقابل المشاركة، ولا يمكننا ضمان تحقيق أي فوائد لك.
+        ولديك الحق في رفض الإجابة عن أسئلة معينة. ويرجى التواصل مع الأستاذ أشيش جويل
+        من خلال goel_admins@lists.stanford.edu إذا كانت لديك أي أسئلة أو اقتراحات
+        أو مخاوف. كما يمكنك أيضًا الاتصال بمجلس المراجعة المؤسسية في ستانفورد على
+        الرقم 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+    instructions: "<h3>التعليمات</h3>
                    <ol>
                      <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
                      <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>

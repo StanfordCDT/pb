@@ -158,11 +158,14 @@ fi:
     title: Osallistava budjetointi
     popup:
       title: Ohjeet
-      body: |-
-        <ol>
-        <li>Valitse projektit, joita haluat tukea. Voit valita enintään <b>%{max_n_projects} projektia.</b></li>
-        <li>Klikkaa <b>"Äänestä"</b> -nappulaa, kun olet valmis lähettämään äänesi.</li>
-        </ol>
+      body: "<p style='font-size: 20px;'>Sinua <u>ei</u> pyydetä osallistumaan toimintaan, joka vaikuttaa ääneesi. Tämä on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia.</p>
+        <ul style='font-size: 20px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
+        <li>Osallistuminen kestää noin 2-3 minuuttia.</li>
+        </ul>
+        <p style='font-size: 14px;'>Tutkimus ei sisällä minkäänlaista riskiä.
+        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Otathan yhteyttä professori Ashish Goeliin osoitteessa
+        goel_admins@lists.stanford.edu jos sinulla on kysymyksiä, ehdotuksia tai huolia. Voit myös soittaa Stanford Institutional Review
+        Boardille numeroon 650-723-2480.</p>"
       ok: OK
     instructions: |-
       <h3>Instructions</h3>
@@ -332,20 +335,15 @@ fi:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "Ohjeet"
+      body: "<p style='font-size: 20px;'>Sinua <u>ei</u> pyydetä osallistumaan toimintaan, joka vaikuttaa ääneesi. Tämä on osa Stanfordin yliopiston tutkimusprojektia, joka auttaa meitä kehittämään osallistavaa budjetointia.</p>
+        <ul style='font-size: 20px;'><li>Osallistuminen tähän on vapaaehtoista. Voit poistua missä vaiheessa tahansa.</li>
+        <li>Osallistuminen kestää noin 2-3 minuuttia.</li>
+        </ul>
+        <p style='font-size: 14px;'>Tutkimus ei sisällä minkäänlaista riskiä.
+        Sinulle ei makseta osallistumisesta, emmekä voi taata siitä olevan sinulle hyötyä. Voit kieltäytyä vastaamasta tiettyihin kysymyksiin. Otathan yhteyttä professori Ashish Goeliin osoitteessa
+        goel_admins@lists.stanford.edu jos sinulla on kysymyksiä, ehdotuksia tai huolia. Voit myös soittaa Stanford Institutional Review
+        Boardille numeroon 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>

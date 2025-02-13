@@ -164,10 +164,13 @@ tl:
     title: Participatory Budgeting
     popup:
       title: Mga Instruksyon
-      body: "<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
-        bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li> <li>I-click ang
-        <b>\"Isumite ang Aking Boto\"</b> na button kapag handa ka nang isumite ito.</li>
-        </ol>"
+      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
+        sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
+        matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
+        sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
+        Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
+        mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
+        Review Board sa 650-723-2480.</p>"
       ok: OK
     instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
       mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
@@ -331,23 +334,17 @@ tl:
   token:
     title: "Participatory Budgeting"
     popup:
-      title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      title: "Mga Instruksyon"
+      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
+        sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
+        matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
+        sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
+        Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
+        mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
+        Review Board sa 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
-    instructions: "<h3>Instructions</h3>
+    instructions: "<h3>Mga Instruksyon</h3>
                    <ol>
                      <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
                      <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>

@@ -44,7 +44,7 @@ de:
   approval:
     title: Partizipatives Budget
     popup:
-      title: Erklärung
+      title: Anleitung
       body: <ol> <li>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
         Sie können Ihre Stimme für bis zu <b>%{max_n_projects} Projekte abgeben.</b></li>
         <li>Klicken Sie auf das <b>"Meine Stimme abgeben"</b> Feld, sobald Sie bereit
@@ -168,11 +168,11 @@ de:
   ranking:
     title: Partizipatives Budget
     popup:
-      title: Erklärung
-      body: <ol> <li>Wählen Sie die Projekte, die Sie gerne unterstützen möchten.
-        Sie können bis zu <b>%{max_n_projects} Projekte wählen.</b></li> <li>Klicken
-        Sie auf <b>"Meine Stimme abgeben"</b> , sobald Sie bereit sind, Ihre Stimme
-        abzugeben.</li> </ol>
+      title: Anleitung
+      body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
+      <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
+      <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 
+      <p style='font-size: 14px;'> Dieses Forschungsprojekt birgt kein Risiko. Für die Teilnahme wird Ihnen kein Entgelt gezahlt und wir können Ihnen keine Vorteile garantieren. Sie haben das Recht, die Beantwortung bestimmter Fragen zu verweigern. Bitte wenden Sie sich an Professor Ashish Goel unter goel_admins@lists.stanford.edu, wenn Sie Fragen, Vorschläge oder Bedenken haben. Sie können sich auch an das Stanford Institutional Review Board unter +1 650-723-2480 wenden.</p>"
       ok: OK
     instructions: <h3>Instructions</h3> <ol> <li>Wählen Sie die Projekte, die Sie
       gerne unterstützen möchten. Sie können bis zu <b>%{max_n_projects} Projekte
@@ -271,7 +271,7 @@ de:
     this_project: Dieses Projekt
     not_sure: Ich bin mir nicht sicher
     popup:
-      title: Erklärung
+      title: Anleitung
       body: "<p style='font-size: 20px;'>Sie werden nun gebeten, bei einer Aktivität teilnehmen, die Ihre Abstimmung <u>nicht</u> beeinflussen wird, sondern Teil eines Forschungsprojekts der Stanford Universität ist, das zum Ziel hat, uns dabei zu helfen, den partizipatorischen Budgetprozess zu verbessern.</p> 
       <ul style='font-size: 20px;'> <li>Bei dieser Aktivität teilzunehmen ist freiwillig. Sie können jederzeit aussteigen. 
       <li>Die erwartete Dauer dieser Aktivität beträgt 2-3 Minuten.</li> </ul> 

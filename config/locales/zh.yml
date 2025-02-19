@@ -31,6 +31,7 @@ zh:
     voting_has_not_started: 本网站的投票尚未开始。我们将尽快开始收集远程投票。感谢您的耐心等待。
     voting_ended: 投票已结束。
     public_results: 查看投票结果
+
   approval:
     title: Participatory Budgeting
     popup:
@@ -128,6 +129,7 @@ zh:
     project_ranking:
       list_header: 您已选择以下项目。拖动 <span class='glyphicon glyphicon-sort'></span> 图标可更改项目排名。
       continue_button: 继续
+
   thanks_approval:
     title: 谢谢
     description:
@@ -136,6 +138,7 @@ zh:
     send_vote_email: "（选填）我想将我的投票副本发送至我的电子邮箱："
     email_placeholder: 输入电子邮箱
     next_button: 下一页 >>
+
   ranking:
     title: Participatory Budgeting
     popup:
@@ -220,11 +223,13 @@ zh:
       message: "%{cost}您已为%{project}项目选择 ** 个代币"
     image_gallery:
       cue: 点击图片查看幻灯片
+
   question:
     title: 调查
     question: 您是否已年满 14 岁？
     ok: 是，我已年满 14 岁。
     alternative: 否，我未年满 14 岁。
+
   comparison:
     title: 对比
     header: 哪个项目最物有所值？即花费的每一美元都能给社区带来最大利益。
@@ -241,6 +246,7 @@ zh:
         Institutional Review Board（斯坦福大学机构审查委员会）。</p>"
       ok: 继续
       exit: 退出
+
   knapsack:
     title: Participatory Budgeting
     popup:
@@ -286,6 +292,7 @@ zh:
       instructions: 请从以下选项中选择一项：
       not_adjusted_warning: "<span style='color:red'>您已为%{project}</span>项目选择 0 个代币"
       message: "%{cost}您已为%{project}项目选择 ** 个代币"
+      
   token:
     title: Participatory Budgeting
     popup:
@@ -344,7 +351,7 @@ zh:
     title: 谢谢
     description:
       real: 感谢您的投票。请点击下方的“退出”按钮。
-      demo: '感谢您参与测试 Prticipatory Budgeting 电子界面！<span style='color: red;'><strong>请注意，这只是<u>预览</u>。</strong></span>'
+      demo: "感谢您参与测试 Prticipatory Budgeting 电子界面！<span style='color: red;'><strong>请注意，这只是<u>预览</u>。</strong></span>"
     exit: 退出
   about:
     title: 简介
@@ -450,27 +457,18 @@ zh:
       body: 您的会话即将到期。请点击“继续”以继续使用此网站。
       continue_button: 继续
   date:
-    month_names:
-    -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - Jul
-    - August
-    - September
-    - October
-    - November
-    - December
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
     order:
+    - :year
     - :month
     - :day
-    - :year
   activerecord:
     attributes:
       election:
         slug: URL
       project:
         cost_min: Minimum cost
+  errors:
+    messages:
+      blank: 不能为空字符
+      invalid: 是无效的

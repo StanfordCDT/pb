@@ -1,0 +1,475 @@
+ja:
+  navigation:
+    brand: PB
+    home: ホーム
+    about: 概要
+    help: ヘルプ
+    exit: 終了する
+  index:
+    title: Participatory Budgeting
+    voting_machine:
+      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
+        margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Participatory
+        Budgetingのデジタル投票インターフェースへようこそ</p>"'
+      instruction: 受け取ったコードを入力してください。
+      code_placeholder: コード
+      enter_code_button: 入力する
+      wrong_code: 間違ったコード
+      used_code: このコードはすでに使用されています。
+      used_personal_id: このIDはすでに使用されています。エラーが発生した場合、または再再度投票する必要がある場合は、voxpopuli@lists.stanford.eduまでご連絡ください。
+    remote:
+      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
+        margin-right: auto; display: block;'' /> <p class=''lead''>Stanford Crowdsourced
+        Democracy Teamの厚意により提供された、Participatory Budgetingのデジタル投票用紙のサンプルへようこそ。</p>
+        <p class=''lead''>このウェブサイトでは、今年のプロジェクトとデジタル投票について詳しく知ることができます。このウェブサイトは情報提供のみを目的としており、ここで実際に<b>投票することはできません</b>。</p>
+        <p class=''lead''> <u>実際に投票する</u>際には、市の資本改善予算の$XXXミリオンをどのように配分するかを決定することになります。投票するには、市内各地に設置される多数の投票場所のいずれかに来る必要があります。投票は（日付XXX）から（日付YYY）まで行われます。すべての時間と場所は以下をご覧ください。</p>"'
+      proceed_button: 投票用紙のサンプルを見る>>
+      sms_verification_button: 今すぐ投票してください>>
+      code_verification_button: コードを入力してください
+      other_verification_button: 今すぐ投票してください>>
+      see_projects_button: プロジェクトを見る
+    voting_has_not_started: このウェブサイトでの投票はまだ開始されていません。できるだけ早く遠隔投票の収集を開始する予定です。しばらくお待ちください。
+    voting_ended: 投票は終了しました。
+    public_results: 選挙結果を見る
+  approval:
+    title: Participatory Budgeting
+    popup:
+      title: 手順
+      body: "<ol> <li>あなたが支援したいプロジェクトを選択してください。最大<b>%{max_n_projects}件のプロジェクトに投票することができます。</b></li>
+        <li>送信する準備ができたら、<b>「私の投票を送信する」</b>ボタンをクリックしてください。</li> </ol>"
+      ok: OK
+    instructions: "<h3>手順</h3> <ol> <li>あなたが支援したいプロジェクトを選択してください。最大<b>%{max_n_projects}件のプロジェクトに投票することができます。</b></li>
+      <li>送信する準備ができたら、<b>「私の投票を送信する」</b>ボタンをクリックしてください。</li> </ol>"
+    list_of_projects: プロジェクト一覧
+    estimated_cost: 推定コスト
+    youtube_video: YouTube動画
+    location: 場所
+    partner: パートナー
+    committee: 委員会
+    read_details: 続きを読む…
+    select_button:
+      select: 選択する
+      selected: 選択済み
+      not_enough_money: 資金が足りません
+      more_projects: "%{max_n_projects}件以上のプロジェクトは選択できません"
+    remove_button: 削除する
+    remove_button_tooltip: このプロジェクトをもう選択したくない場合は、ここをクリックしてください。
+    submit_button: 私の投票を送信する…
+    confirmation:
+      title: 本当に投票を送信してよろしいですか？
+      body:
+        summary:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトを選択しました：%{projects}
+          item: "%{project}（%{cost}）"
+        summary_token:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトのために、トークンを選択しました：%{projects}
+          item: "%{project}（%{cost}個のトークン）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>あなたはプロジェクトを1件だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}件のプロジェクトだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{max_n_projects}件のプロジェクトに投票することができます。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>あなたはトークンを1個だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}個のトークンだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{total_tokens}個のトークンを選択することができます。</span>"
+        warning: 投票を送信した後は、投票を<strong>変更することはできません</strong>。投票内容を変更したい場合は、下の「戻る」をクリックしてください。投票内容を送信したい場合は、下のボックスにチェックを入れてから「私の投票を送信する」をクリックしてください。
+        checkbox: 私は、自分の投票を送信した後は、それを<strong>変更できない</strong>ことを理解しています。
+      ok: 私の投票を送信する
+      cancel: 戻る
+    confirmation_over_limit:
+      title: あなたの投票を送信できませんでした
+      over_n_project_limit: "<span style='color:red'>あなたは<b>%{n_projects}</b>件のプロジェクトを選択しました。最大<b>%{max_n_projects}</b>件のプロジェクトを選択することができます。<b>%{extra}</b>個以上のプロジェクトを削除してください。</span>"
+      over_budget_limit: "<span style='color:red'>あなたは現在、予算を超過しています。</span>"
+      over_token_limit: "<span style= 'color:red'>あなたは現在、使用可能なトークンよりも多くのトークンを使用しています。使用したトークンを最大数未満に減らしてください。</span>"
+      cancel: 戻る
+    tracker:
+      text: あなたは%{count}件のプロジェクトを選択しました。
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: 合計予算%{total}のうち%{budget}を選択しました。
+      under_budget: あなたにはまだ%{remaining_money}が残っています。
+      over_budget: あなたは現在、予算を超過しています。
+      over_budget_but_can_add_projects: あなたは現在予算を超過していますが、プロジェクトを追加し続けることができます。
+    tokenbar:
+      text: 合計%{total}個のトークンのうち、%{budget}個を選択しました。
+      under_token: あなたにはまだ%{remaining_money}個のトークンが残っています。
+      over_token: あなたは現在、使用可能なトークンよりも多くのトークンを使用しています。使用したトークンを最大数未満に減らしてください。
+      over_budget_but_can_add_tokens: あなたは現在予算を超過していますが、トークンを追加し続けることができます。
+    adjustable_cost_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、$0を選択しました"
+      message: あなたは%{cost}のために、%{project}を選択しました
+      table_headings:
+        percentage_column: 使われた予算の割合
+        cost_column: コスト
+        number_column: 再舗装されたブロックの概数
+    adjustable_token_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
+      message: あなたは%{cost}のために、%{project}個のトークンを選択しました
+    map:
+      street_resurfacing_count:
+        one: 1つの再舗装された道路
+        other: "%{count}の再舗装された道路"
+      alley_resurfacing_count:
+        one: 1つの再舗装されたアレー
+        other: "%{count}の再舗装されたアレー"
+      apron_resurfacing_count:
+        one: 1つの再舗装されたエプロン
+        other: "%{count}の再舗装されたエプロン"
+      sidewalk_repairing_count:
+        one: 1つの補修された歩道
+        other: "%{count}の補修された歩道"
+    image_gallery:
+      cue: スライドショーのために、画像をクリックしてください
+    project_ranking:
+      list_header: あなたは以下のプロジェクトを選択しました。<span class='glyphicon glyphicon-sort'></span>アイコンをドラッグして順位を変更してください。
+      continue_button: 続ける
+  thanks_approval:
+    title: ありがとうございました
+    description:
+      real: "<p class='lead text-center'>ご投票ありがとうございました。次のページに進むには、下の「次へ」をクリックしてください。</p>"
+      demo: "<p class='lead'>ご投票ありがとうございました！<span style='color: red;'><strong>これは<u>プレビュー</u>に過ぎないことにご注意ください。</strong></span>次のページに進むには、下の「次へ」をクリックしてください。</p>"
+    send_vote_email: "（任意）私のEメールアドレスに投票のコピーを送信してください："
+    email_placeholder: Eメールアドレスを入力してください
+    next_button: 次へ
+  ranking:
+    title: Participatory Budgeting
+    popup:
+      title: 手順
+      body: "<p style='font-size: 20px;'>これから、あなたの投票には<u>影響しません</u>が、Participatory
+        Budgetingプロセスの改善に役立つStanford Universityの研究プロジェクトの一環である活動に参加するよう求められます。</p>
+        <ul style='font-size: 20px;'><li>この活動へのご参加は任意です。いつでも終了できます。</li> <li>この活動にかかる予想時間は2～3分です。</li>
+        </ul> <p style='font-size: 14px;'>この研究は危険を伴うものではありません。参加に対して報酬は支払われません。また、参加される方に何らかの利益を保証することもできません。あなたには、特定の質問に対する回答を拒否する権利があります。何かご質問、ご提案、ご懸念がございましたら、Professor
+        Ashish Goel（goel_admins@lists.stanford.edu）までご連絡ください。また、Stanford Institutional
+        Review Board（スタンフォード倫理審査委員会）（650-723-2480）にもご連絡ください。</p>"
+      ok: OK
+    instructions: "<h3>手順</h3> <ol> <li>あなたが支援したいプロジェクトを選択してください。最大<b>%{max_n_projects}件のプロジェクトに投票することができます。</b></li>
+      <li>送信する準備ができたら、<b>「私の投票を送信する」</b>ボタンをクリックしてください。</li> </ol>"
+    list_of_projects: プロジェクト一覧
+    estimated_cost: 推定コスト
+    youtube_video: YouTube動画
+    location: 場所
+    partner: パートナー
+    committee: 委員会
+    read_details: 続きを読む…
+    select_button:
+      select: 選択する
+      selected: 選択済み
+      not_enough_money: 資金が足りません
+      more_projects: "%{max_n_projects}件以上のプロジェクトは選択できません"
+    remove_button: 削除する
+    remove_button_tooltip: このプロジェクトをもう選択したくない場合は、ここをクリックしてください。
+    submit_button: 私の投票を送信する…
+    confirmation:
+      title: 本当に投票を送信してよろしいですか？
+      body:
+        summary:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトを選択しました：%{projects}
+          item: "%{project}（%{cost}）"
+        summary_token:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトのために、トークンを選択しました：%{projects}
+          item: "%{project}（%{cost}個のトークン）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>あなたはプロジェクトを1件だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}件のプロジェクトだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{max_n_projects}件のプロジェクトに投票することができます。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>あなたはトークンを1個だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}個のトークンだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{total_tokens}個のトークンを選択することができます。</span>"
+        warning: 投票を送信した後は、投票を<strong>変更することはできません</strong>。投票内容を変更したい場合は、下の「戻る」をクリックしてください。投票内容を送信したい場合は、下のボックスにチェックを入れてから「私の投票を送信する」をクリックしてください。
+        checkbox: 私は、自分の投票を送信した後は、それを<strong>変更できない</strong>ことを理解しています。
+      ok: 私の投票を送信する
+      cancel: 戻る
+    confirmation_over_limit:
+      title: あなたの投票を送信できませんでした
+      over_n_project_limit: "<span style='color:red'>あなたは<b>%{n_projects}</b>件のプロジェクトを選択しました。最大<b>%{max_n_projects}</b>件のプロジェクトを選択することができます。<b>%{extra}</b>個以上のプロジェクトを削除してください。</span>"
+      over_budget_limit: "<span style='color:red'>あなたは現在、予算を超過しています。</span>"
+      cancel: 戻る
+    tracker:
+      text: あなたは%{count}件のプロジェクトを選択しました。
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: 合計予算%{total}のうち%{budget}を選択しました。
+      under_budget: あなたにはまだ%{remaining_money}が残っています。
+      over_budget: あなたは現在、予算を超過しています。
+      over_budget_but_can_add_projects: あなたは現在予算を超過していますが、プロジェクトを追加し続けることができます。
+    tokenbar:
+      text: 合計%{total}個のトークンのうち、%{budget}個を選択しました。
+      under_budget: あなたにはまだ%{remaining_money}が残っています。
+      over_budget: あなたは現在、使用可能なトークンよりも多くのトークンを使用しています。使用したトークンを最大数未満に減らしてください。
+      over_budget_but_can_add_projects: あなたは現在予算を超過していますが、プロジェクトを追加し続けることができます。
+    adjustable_cost_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、$0を選択しました"
+      message: あなたは%{cost}のために、$%{project}を選択しました
+      table_headings:
+        percentage_column: 使われた予算の割合
+        cost_column: コスト
+        number_column: 再舗装されたブロックの概数
+    adjustable_token_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
+      message: あなたは%{cost}のために、%{project}個のトークンを選択しました
+    image_gallery:
+      cue: スライドショーのために、画像をクリックしてください
+  question:
+    title: 調査
+    question: あなたは14歳以上ですか？
+    ok: はい、私は14歳以上です
+    alternative: いいえ、私は14歳未満です
+  comparison:
+    title: 比較
+    header: どのプロジェクトが最も費用対効果が高いか、つまり、使った$1当たりにコミュニティに最も利益をもたらすでしょうか？
+    estimated_cost: 推定コスト
+    this_project: このプロジェクト
+    not_sure: よくわかりません
+    popup:
+      title: 手順
+      body: "<p style='font-size: 20px;'>これから、あなたの投票には<u>影響しません</u>が、Participatory
+        Budgetingプロセスの改善に役立つStanford Universityの研究プロジェクトの一環である活動に参加するよう求められます。</p>
+        <ul style='font-size: 20px;'><li>この活動へのご参加は任意です。いつでも終了できます。</li> <li>この活動にかかる予想時間は2～3分です。</li>
+        </ul> <p style='font-size: 14px;'>この研究は危険を伴うものではありません。参加に対して報酬は支払われません。また、参加される方に何らかの利益を保証することもできません。あなたには、特定の質問に対する回答を拒否する権利があります。何かご質問、ご提案、ご懸念がございましたら、Professor
+        Ashish Goel（goel_admins@lists.stanford.edu）までご連絡ください。また、Stanford Institutional
+        Review Board（スタンフォード倫理審査委員会）（650-723-2480）にもご連絡ください。</p>"
+      ok: 続ける
+      exit: 終了する
+  knapsack:
+    title: Participatory Budgeting
+    popup:
+      title: 手順
+      body: "<p style='font-size: 20px;'>これから、あなたの投票には<u>影響しません</u>が、Participatory
+        Budgetingプロセスの改善に役立つStanford Universityの研究プロジェクトの一環である活動に参加するよう求められます。</p>
+        <ul style='font-size: 20px;'><li>この活動へのご参加は任意です。いつでも終了できます。</li> <li>この活動にかかる予想時間は2～3分です。</li>
+        </ul> <p style='font-size: 14px;'>この研究は危険を伴うものではありません。参加に対して報酬は支払われません。また、参加される方に何らかの利益を保証することもできません。あなたには、特定の質問に対する回答を拒否する権利があります。何かご質問、ご提案、ご懸念がございましたら、Professor
+        Ashish Goel（goel_admins@lists.stanford.edu）までご連絡ください。また、Stanford Institutional
+        Review Board（スタンフォード倫理審査委員会）（650-723-2480）にもご連絡ください。</p>"
+      ok: 続ける
+      exit: 終了する
+    instructions: "<h3>手順</h3> <ol> <li>あなたが支援したいプロジェクトを選択してください。合計コストは<b>%{budget}</b>を超えることはできません。</li>
+      <li>あなたがこれまでに割り当てた合計金額は、上のバーで確認できます。バーをクリックするか、選択したプロジェクトを直接クリックすることで、以前に選択したプロジェクトを削除することができます。</li>
+      <li>送信する準備ができたら、<b>「私の投票を送信する」</b>ボタンをクリックしてください。</li> </ol>"
+    confirmation:
+      title: 本当に投票を送信してよろしいですか？
+      body:
+        summary:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトを選択しました：%{projects}
+          item: "%{project}（%{cost}）"
+        summary_token:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトのために、トークンを選択しました：%{projects}
+          item: "%{project}（%{cost}個のトークン）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>あなたはプロジェクトを1件だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}件のプロジェクトだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{max_n_projects}件のプロジェクトに投票することができます。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>あなたはトークンを1個だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}個のトークンだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{total_tokens}個のトークンを選択することができます。</span>"
+        warning: 投票を送信した後は、投票を<strong>変更することはできません</strong>。
+      ok: 私の投票を送信する
+      cancel: 戻る
+    adjustable_cost_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、$0を選択しました"
+      message: あなたは%{cost}のために、%{project}を選択しました
+    adjustable_token_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
+      message: あなたは%{cost}のために、%{project}個のトークンを選択しました
+  token:
+    title: Participatory Budgeting
+    popup:
+      title: 手順
+      body: "<p style='font-size: 20px;'>これから、あなたの投票には<u>影響しません</u>が、Participatory
+        Budgetingプロセスの改善に役立つStanford Universityの研究プロジェクトの一環である活動に参加するよう求められます。</p>
+        <ul style='font-size: 20px;'><li>この活動へのご参加は任意です。いつでも終了できます。</li> <li>この活動にかかる予想時間は2～3分です。</li>
+        </ul> <p style='font-size: 14px;'>この研究は危険を伴うものではありません。参加に対して報酬は支払われません。また、参加される方に何らかの利益を保証することもできません。あなたには、特定の質問に対する回答を拒否する権利があります。何かご質問、ご提案、ご懸念がございましたら、Professor
+        Ashish Goel（goel_admins@lists.stanford.edu）までご連絡ください。また、Stanford Institutional
+        Review Board（スタンフォード倫理審査委員会）（650-723-2480）にもご連絡ください。</p>"
+      ok: 続ける
+      exit: 終了する
+    instructions: "<h3>手順</h3> <ol> <li>あなたが支援したいプロジェクトを選択してください。トークンの合計数は<b>%{total_tokens}</b>を超えることはできません。</li>
+      <li>あなたがこれまでに割り当てた合計金額は、上のバーで確認できます。バーをクリックするか、選択したプロジェクトを直接クリックすることで、以前に選択したプロジェクトを削除することができます。</li>
+      <li>送信する準備ができたら、<b>「私の投票を送信する」</b>ボタンをクリックしてください。</li> </ol>"
+    confirmation:
+      title: 本当に投票を送信してよろしいですか？
+      body:
+        summary:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトを選択しました：%{projects}
+          item: "%{project}（%{cost}）"
+        summary_token:
+          zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
+          other: あなたは以下のプロジェクトのために、トークンを選択しました：%{projects}
+          item: "%{project}（%{cost}個のトークン）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>あなたはプロジェクトを1件だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}件のプロジェクトだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{max_n_projects}件のプロジェクトに投票することができます。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>あなたはトークンを1個だけ選択しました。</span>"
+          less: "<span style='color: red;'>あなたは%{count}個のトークンだけを選択しました。</span>"
+          limit: "<span style='color: red;'>あなたは最大%{total_tokens}個のトークンを選択することができます。</span>"
+        warning: 投票を送信した後は、投票を<strong>変更することはできません</strong>。
+      ok: 私の投票を送信する
+      cancel: 戻る
+    adjustable_cost_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、$0を選択しました"
+      message: あなたは%{cost}のために、%{project}を選択しました
+    adjustable_token_project:
+      instructions: 以下のオプションから1つを選択してください：
+      not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
+      message: あなたは%{cost}のために、%{project}個のトークンを選択しました
+  survey:
+    title: 調査
+    header: 調査に回答する
+    question:
+      title: ありがとうございました
+      body: ご投票ありがとうございました。あなたは14歳以上ですか？
+      ok: はい、私は14歳以上です
+      alternative: いいえ、私は14歳未満です
+    url: ''
+  thanks:
+    title: ありがとうございました
+    description:
+      real: ご投票ありがとうございました。下の「終了する」ボタンをクリックしてください。
+      demo: 'Participatory Budgetingのデジタルインターフェースをテストしていただき、ありがとうございました！<span style=''color:
+        red;''><strong>これは<u>プレビュー</u>に過ぎないことにご注意ください。</strong></span>'
+    exit: 終了する
+  about:
+    title: 概要
+    description: "<center><h1 class='sub-header'>Participatory Budgetingのデジタルインターフェースについて</h1></center>
+      <br><p class='lead'>Participatory Budgetingのデジタルインターフェースは、<a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>Stanford Crowdsourced Democracy Team</a>によって開発されました。私たちは、インターフェースの視覚的な性のと提示される情報の豊富さが、各プロジェクトについて理解し、より有益な投票を行う上で役立つことを願っています。</p>
+      <p class='lead'>これは、GNU GPL v3.0ライセンスでに基づいてライセンスされたオープンソースプロジェクトです。ソースコードは<a
+      href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>にあります。</p>
+      <p class='lead'>技術的な問題がある場合、またはフィードバックを提供したい場合は、<a href='mailto:feedback@pbstanford.org'
+      target='_blank'>feedback@pbstanford.org</a>にEメールを送信してください。できるだけ早くご連絡いたします。</p>"
+  result:
+    title: 結果
+    vote_results: 投票結果
+    description: "%{count}から%{start}までの%{end}投票者による投票に基づく結果。"
+    proposed_project: 提案プロジェクト
+    votes: 投票
+    projects: プロジェクト
+  election:
+    can_also_vote_in_person: また、以下のいずれかの場所に来て投票することもできます：
+    info: '"<h3>投票場所</h3> <b>9月27日（土）</b>（正午12:00～午後4:00）<br>どこかで<br> <br> <b>9月30日（火）</b>（午後6:00～午後9:00）<br>どこかで<br>
+      <br> <p>詳細については、<a href=""http://www.example.com/"">http://www.example.com/</a></p>をご覧ください"'
+  sms_signup:
+    title: 電話番号を確認してください
+    header: 電話番号を確認してください
+    instructions: "<p>オンラインで投票するには、あなたの電話番号の確認ができるよう、テキストメッセージを受信できる携帯電話が必要です。</p><p>携帯電話番号を入力してください。確認コードをテキストでお送りします。</p>"
+    phone_number_placeholder: 電話番号を入力してください
+    verify_button: 確認する
+    invalid_phone_number: |-
+      %{phone_number}は有効な電話番号ではありません。
+
+      "+sms_signup.blacklisted_phone_number  # ""START"" is a fixed word and must NOT be translated."
+      この電話番号は、当社からのメッセージの受信をオプトアウトしています。確認コードを受け取るには、「START」を%{our_phone_number}に送信し、ここで電話番号をもう一度入力してください。
+    blacklisted_phone_number: This phone number has opted out of receiving messages
+      from us. To receive the confirmation code, please send START to %{our_phone_number}
+      and then enter your phone number here again.
+    no_cell_phone_instruction: '"携帯電話をお持ちでない場合は、<a href=""%{code_signup_url}"">ここをクリックして</a>、別の方法でオンライン投票してください。"'
+  code_signup:
+    title: 投票するには、アクセスコードを入力してください
+    instruction: アクセスコードを取得するには、XXX@stanford.eduにEメールを送信するか、XXX-XXX-XXXに電話してください。アクセスコードを取得したら、それを以下に入力し、<b>「投票」</b>ボタンを押して続行してください。
+    code_placeholder: アクセスコード
+    vote_button: 投票
+    wrong_access_code: 間違ったアクセスコード
+    used_access_code: このアクセスコードはすでに使用されています
+  other_signup:
+    title: 投票するには、詳細を入力してください
+    instruction: ''
+    no_account_number_instruction: '"アカウント番号をお持ちでない場合は、<a href=""%{code_signup_url}"">ここをクリックして</a>、別の方法でオンライン投票してください。"'
+    zipcode_placeholder: ZIPコード
+    account_number_placeholder: アカウント番号
+    vote_button: 投票
+    wrong_account_number: 間違ったアカウント番号/ZIPコード
+    used_account_number: このアカウント番号はすでに使用されています
+  free_signup:
+    title: 検証
+    instruction: ZIPコードを入力してください
+    placeholder: ZIPコード
+    captcha: 以下に<b>%{captcha}</b>を入力してください
+    vote_button: 投票
+  registration:
+    title: 投票者の詳細
+    header: 投票者の詳細
+    instructions: 投票に進むには、以下の詳細を入力してください。「*」マークの付いたフィールドは必須です。
+    proceed_button: 進む
+    no_phone_number: 電話番号を持っていません
+    name: 氏名
+    first_name: 名
+    middle_initial: ミドルネーム
+    last_name: 姓
+    suffix: サフィックス
+    phone_number: 電話番号
+    email: Eメールアドレス
+    address: ストリートアドレス
+    city: 都市
+    zip_code: ZIPコード
+    birth_year: 生年
+    date_of_birth: 生年月日
+    verify_age_label: 私は16歳以上です
+    email_instruction_label: この投票の結果を知りたいですか？最新情報を受け取るには、Eメールアドレスを入力してください。
+    ward: 区
+    ward_do_not_know: 分かりません
+    error: 以下のエラーを修正してください：
+    not_voting_age_error: この選挙で投票するには、年齢要件を満たしている必要があります
+    verify_age_error: "「%{checkbox_label}」を確認してください"
+  sms_signup_confirm:
+    title: 電話番号を確認してください
+    header: 電話番号を確認してください
+    instructions: "<p>確認コードが<b>%{phone_number}</b>に送信されました。1分以内にコードが届くはずです。</p><p>電話番号を確認するには、確認コードを入力してください。</p>"
+    code_placeholder: コードを入力してください
+    confirm_button: 確認する
+    wrong_code: コードが間違っています。
+    resend_code: '"1分以内にコードが届かない場合は、<a href=""%{resend_code_url}"">ここ</a>をクリックして確認コードを再送信してください。"'
+    make_sure_phone_number_is_correct: '"%{phone_number}があなたの正しい携帯電話番号であることを確認してください。もし<u>正しくない</u>場合は、<a
+      href=""%{signup_url}"">ここ</a>をクリックして変更してください。"'
+    still_not_working: '"何度試みても確認コードを受信できない場合は、<a href=""%{code_signup_url}"">ここをクリックして</a>、別の方法でオンライン投票してください。"'
+    confirmation_textmsg: PBStanford.orgでParticipatory Budgetingに投票するには、コードとして%{confirmation_code}を使用してください
+  general:
+    demo_warning: これはプレビューに過ぎません。あなたの投票は記録されません。
+    experiment_disclaimer: これは研究調査に過ぎません。あなたの投票に影響することはありません。
+    shuffle_note: "<span style='font-size: 18px;'>注意：これらのプロジェクトはランダムな順序で並べられています。</span>"
+    project_string: プロジェクト
+    close_button: 閉じる
+    timeout:
+      body: セッションの有効期限が間もなく切れます。ウェブサイトの使用を続行するには、「続ける」をクリックしてください。
+      continue_button: 続ける
+  date:
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - Jul
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :month
+    - :day
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

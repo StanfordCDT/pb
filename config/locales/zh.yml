@@ -8,9 +8,9 @@ zh:
   index:
     title: Participatory Budgeting
     voting_machine:
-      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
-        margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>欢迎来到
-        Participatory Budgeting 的电子投票界面</p>"'
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto;
+        margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>欢迎来到
+        Participatory Budgeting 的电子投票界面</p>"
       instruction: 请输入收到的代码。
       code_placeholder: 代码
       enter_code_button: 确认
@@ -18,11 +18,11 @@ zh:
       used_code: 此代码已使用。
       used_personal_id: 此 ID 已使用。如提示有误或需要重新投票，请联系 voxpopuli@lists.stanford.edu。
     remote:
-      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
-        margin-right: auto; display: block;'' /> <p class=''lead''>欢迎访问由 Stanford
-        Crowdsourced Democracy Team 提供的 Participatory Budgeting 电子选票样本。</p> <p class=''lead''>您可通过本网站了解今年的项目和电子选票。本网站仅供参考，您<b>不能</b>在此投出实际选票。</p>
-        <p class=''lead''>当您投出<u>实际选票</u>时，您将决定如何分配城市资本改善预算中的 $XXX 百万。您需要前往遍布全市的众多投票地点之一进行投票。投票时间为（XXX
-        日）至（YYY 日）。下方可查看所有投票时间和地点。</p>"'
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto;
+        margin-right: auto; display: block;' /> <p class='lead'>欢迎访问由 Stanford
+        Crowdsourced Democracy Team 提供的 Participatory Budgeting 电子选票样本。</p> <p class='lead'>您可通过本网站了解今年的项目和电子选票。本网站仅供参考，您<b>不能</b>在此投出实际选票。</p>
+        <p class='lead'>当您投出<u>实际选票</u>时，您将决定如何分配城市资本改善预算中的 $XXX 百万。您需要前往遍布全市的众多投票地点之一进行投票。投票时间为（XXX
+        日）至（YYY 日）。下方可查看所有投票时间和地点。</p>"
       proceed_button: 查看选票样本 >>
       sms_verification_button: 立即投票 >>
       code_verification_button: 输入代码
@@ -339,12 +339,12 @@ zh:
       body: 感谢您的投票。您是否已年满 14 岁？
       ok: 是，我已年满 14 岁。
       alternative: 否，我未年满 14 岁。
-    url: ''
+    url: ""
   thanks:
     title: 谢谢
     description:
       real: 感谢您的投票。请点击下方的“退出”按钮。
-      demo: '感谢您参与测试 Prticipatory Budgeting 电子界面！<span style=''color: red;''><strong>请注意，这只是<u>预览</u>。</strong></span>'
+      demo: '感谢您参与测试 Prticipatory Budgeting 电子界面！<span style='color: red;'><strong>请注意，这只是<u>预览</u>。</strong></span>'
     exit: 退出
   about:
     title: 简介
@@ -363,8 +363,8 @@ zh:
     projects: 项目
   election:
     can_also_vote_in_person: 您也可以前往以下地点进行投票：
-    info: '"<h3>投票地点</h3> <b>9 月 27 日（星期六）</b>;（中午 12:00 - 下午 4:00） <br>某地<br> <br>
-      <b>9 月 30 日（星期二）</b>;（下午 6:00 - 晚上 9:00）<br>某地<br> <br> <p>如需更多信息，请访问 <a href=""http://www.example.com/"">http://www.example.com/。</a></p>"'
+    info: "<h3>投票地点</h3> <b>9 月 27 日（星期六）</b>;（中午 12:00 - 下午 4:00） <br>某地<br> <br>
+      <b>9 月 30 日（星期二）</b>;（下午 6:00 - 晚上 9:00）<br>某地<br> <br> <p>如需更多信息，请访问 <a href=\"http://www.example.com/\">http://www.example.com/。</a></p>"
   sms_signup:
     title: 电话号码验证
     header: 电话号码验证
@@ -374,12 +374,12 @@ zh:
     invalid_phone_number: |-
       %{phone_number} 电话号码无效。
 
-      "+sms_signup.blacklisted_phone_number  # ""START"" is a fixed word and must NOT be translated."
+      "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."
       此电话号码已选择不接收我们的信息。如需接收确认码，请编辑 START 发送至 %{our_phone_number}，然后在此处再次输入您的电话号码。
     blacklisted_phone_number: This phone number has opted out of receiving messages
       from us. To receive the confirmation code, please send START to %{our_phone_number}
       and then enter your phone number here again.
-    no_cell_phone_instruction: '"如没有手机，请<a href=""%{code_signup_url}"">点击此处</a>使用其他方式进行在线投票。"'
+    no_cell_phone_instruction: "如没有手机，请<a href=\"%{code_signup_url}\">点击此处</a>使用其他方式进行在线投票。"
   code_signup:
     title: 输入访问代码进行投票
     instruction: 请发送电子邮件至 XXX@stanford.edu 或致电 XXX-XXX-XXX 获取访问代码。获得访问代码后，请将其输入在下方，然后点击<b>投票</b>按钮继续。
@@ -389,8 +389,8 @@ zh:
     used_access_code: 此访问代码已使用
   other_signup:
     title: 输入详细信息进行投票
-    instruction: ''
-    no_account_number_instruction: '"如没有账号，请<a href=""%{code_signup_url}"">点击此处</a>使用其他方式进行在线投票。"'
+    instruction: ""
+    no_account_number_instruction: "如没有账号，请<a href=\"%{code_signup_url}\">点击此处</a>使用其他方式进行在线投票。"
     zipcode_placeholder: 邮政编码
     account_number_placeholder: 账号
     vote_button: 投票
@@ -434,10 +434,10 @@ zh:
     code_placeholder: 输入代码
     confirm_button: 确认
     wrong_code: 代码错误。
-    resend_code: '"如在一分钟内没有收到确认码，请点击<a href=""%{resend_code_url}"">此处</a>重新发送。"'
-    make_sure_phone_number_is_correct: '"请确保 %{phone_number} 是正确的手机号码。如<u>有误</u>，请点击<a
-      href=""%{signup_url}"">此处</a>进行更改。"'
-    still_not_working: '"如多次尝试后仍无法收到确认码，请<a href=""%{code_signup_url}"">点击此处</a>使用其他方式进行在线投票。"'
+    resend_code: "如在一分钟内没有收到确认码，请点击<a href=\"%{resend_code_url}\">此处</a>重新发送。"
+    make_sure_phone_number_is_correct: "请确保 %{phone_number} 是正确的手机号码。如<u>有误</u>，请点击<a
+      href=\"%{signup_url}\">此处</a>进行更改。"
+    still_not_working: "如多次尝试后仍无法收到确认码，请<a href=\"%{code_signup_url}\">点击此处</a>使用其他方式进行在线投票。"
     confirmation_textmsg: 使用 %{confirmation_code} 作为代码在 PBStanford.org 上为 Participatory
       Budgeting 投票
   general:

@@ -1,0 +1,477 @@
+zh_hant:
+  navigation:
+    brand: PB
+    home: 首頁
+    about: 簡介
+    help: 幫助
+    exit: 退出
+  index:
+    title: Participatory Budgeting
+    voting_machine:
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto;
+        margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>歡迎來到
+        Participatory Budgeting 的電子投票界面</p>"
+      instruction: 請輸入收到的代碼。
+      code_placeholder: 代碼
+      enter_code_button: 確認
+      wrong_code: 代碼錯誤
+      used_code: 此代碼已使用。
+      used_personal_id: 此 ID 已使用。如提示有誤或需要重新投票，請聯絡 voxpopuli@lists.stanford.edu。
+    remote:
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto;
+        margin-right: auto; display: block;' /> <p class='lead'>歡迎造訪由 Stanford
+        Crowdsourced Democracy Team 提供的 Participatory Budgeting 電子選票樣本。</p> <p class='lead'>您可透過本網站了解今年的項目和電子選票。本網站僅供參考，您<b>不能</b>在此投出實際選票。</p>
+        <p class='lead'>當您投出<u>實際選票</u>時，您將決定如何分配城市資本改善預算中的 $XXX 百萬。您需要前往遍布全市的眾多投票地點之一進行投票。投票時間為（XXX
+        日）至（YYY 日）。下方可查看所有投票時間和地點。</p>"
+      proceed_button: 查看選票樣本 >>
+      sms_verification_button: 立即投票 >>
+      code_verification_button: 輸入代碼
+      other_verification_button: 立即投票 >>
+      see_projects_button: 查看項目
+    voting_has_not_started: 本網站的投票尚未開始。我們將盡快開始收集遠端投票。感謝您的耐心等待。
+    voting_ended: 投票已結束。
+    public_results: 查看投票結果
+  approval:
+    title: Participatory Budgeting
+    popup:
+      title: 操作說明
+      body: "<ol> <li>選擇自己想要支持的項目。最多可為 <b>%{max_n_projects} 個項目投票。</b></li> <li>准備好提交時，點擊<b>「提交我的投票」</b>按鈕。</li>
+        </ol>"
+      ok: 確定
+    instructions: "<h3>操作說明</h3> <ol> <li>選擇自己想要支持的項目。最多可為 <b>%{max_n_projects} 個項目投票。</b></li>
+      <li>准備好提交時，點擊<b>「提交我的投票」</b>按鈕。</li> </ol>"
+    list_of_projects: 項目列表
+    estimated_cost: 預算費用
+    youtube_video: Youtube 視頻
+    location: 地點
+    partner: 合作夥伴
+    committee: 委員會
+    read_details: 查看更多...
+    select_button:
+      select: 選擇
+      selected: 已選擇
+      not_enough_money: 資金不足
+      more_projects: 不能選擇多於 %{max_n_projects} 個項目
+    remove_button: 移除
+    remove_button_tooltip: 如不想再選擇此項目，請點擊此處。
+    submit_button: 提交我的投票...
+    confirmation:
+      title: 是否確定要提交投票？
+      body:
+        summary:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已選擇以下項目：%{projects}
+          item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已為以下項目選擇代幣：%{projects}
+          item: "%{project}（%{cost} 代幣）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>您僅選擇了一個項目。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個項目。</span>"
+          limit: "<span style='color: red;'>您最多可為 %{max_n_projects} 個項目投票。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>您僅選擇了一個代幣。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個代幣。</span>"
+          limit: "<span style='color: red;'>您最多可選擇 %{total_tokens} 個代幣。</span>"
+        warning: 提交投票後<strong>不能</strong>更改。如需更改投票，請點擊下方的「返回」。如需提交投票，請勾選下方復選框後點擊「提交我的投票」。
+        checkbox: 我了解提交投票後<strong>無法</strong>更改。
+      ok: 提交我的投票
+      cancel: 返回
+    confirmation_over_limit:
+      title: 無法提交投票
+      over_n_project_limit: "<span style='color:red'>您已選擇 <b>%{n_projects}</b> 個項目。您最多只能選擇
+        <b>%{max_n_projects}</b> 個項目。請移除 <b>%{extra}</b> 個或更多項目。</span>"
+      over_budget_limit: "<span style='color:red'>目前的預算已超支。</span>"
+      over_token_limit: "<span style= 'color:red'>您當前使用的代幣數量已超過可用數量。請減少已使用的代幣數量，使其低於最大值。</span>"
+      cancel: 返回
+    tracker:
+      text: 您已選擇 %{count} 個項目。
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: 已選擇 %{total} 預算（共 %{budget}）。
+      under_budget: 還剩下 %{remaining_money}。
+      over_budget: 目前的預算已超支。
+      over_budget_but_can_add_projects: 目前的預算已超支，但可以繼續添加項目。
+    tokenbar:
+      text: 已選擇 %{total} 個代幣（共 %{budget} 個）。
+      under_token: 還剩下 %{remaining_money} 個代幣。
+      over_token: 您當前使用的代幣數量已超過可用數量。請減少已使用的代幣數量，使其低於最大值。
+      over_budget_but_can_add_tokens: 目前的預算已超支，但可以繼續添加代幣。
+    adjustable_cost_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 $0"
+      message: "%{cost}您已為%{project}項目選擇 **"
+      table_headings:
+        percentage_column: 預算支出百分比
+        cost_column: 費用
+        number_column: '已重新鋪設的街區數量為 #'
+    adjustable_token_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 0 個代幣"
+      message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
+    map:
+      street_resurfacing_count:
+        one: 已重新鋪設 1 條街道
+        other: 已重新鋪設 %{count} 條街道
+      alley_resurfacing_count:
+        one: 已重新鋪設 1 條小巷
+        other: 已重新鋪設 %{count} 條小巷
+      apron_resurfacing_count:
+        one: 已重新鋪設 1 個停機坪
+        other: 已重新鋪設 %{count} 個停機坪
+      sidewalk_repairing_count:
+        one: 已修復 1 條人行道
+        other: 已修復 %{count} 條人行道
+    image_gallery:
+      cue: 點擊圖片查看幻燈片
+    project_ranking:
+      list_header: 您已選擇以下項目。拖動 <span class='glyphicon glyphicon-sort'></span> 圖標可更改項目排名。
+      continue_button: 繼續
+  thanks_approval:
+    title: 謝謝
+    description:
+      real: "<p class='lead text-center'>感謝您的投票。請點擊下方的「下一頁」進入下一個頁面。</p>"
+      demo: "<p class='lead'>感謝您的投票！<span style='color: red;'><strong>請注意，這只是<u>預覽</u>。</strong></span>請點擊下方的「下一頁」進入下一個頁面。</p>"
+    send_vote_email: "（選填）我想將我的投票副本發送至我的電子郵箱："
+    email_placeholder: 輸入電子郵箱
+    next_button: 下一頁 >>
+  ranking:
+    title: Participatory Budgeting
+    popup:
+      title: 操作說明
+      body: "<p style='font-size: 20px;'>現在。您將受邀參加一項活動。此活動<u>不會</u>影響您的投票，但屬於 Stanford
+        University 研究項目的一部分，旨在幫助我們改進 Participatory Budgeting 流程。</p> <ul style='font-size:
+        20px;'><li>是否參與活動以自願為原則，可隨時退出。</li> <li>活動預計耗時 2~3 分鐘。</li> </ul> <p style='font-size:
+        14px;'>這項研究沒有任何風險。我們不會向您支付任何參與費用，也不保證您能從中獲益。您有權拒絕回答特定問題。如有任何問題、建議或疑慮，請發送電子郵件至
+        goel_admins@lists.stanford.edu 聯絡 Ashish Goel 教授。您也可以致電 650-723-2480 聯絡 Stanford
+        Institutional Review Board（斯坦福大學機構審查委員會）。</p>"
+      ok: 確定
+    instructions: "<h3>操作說明</h3> <ol> <li>選擇自己想要支持的項目。最多可為 <b>%{max_n_projects} 個項目投票。</b></li>
+      <li>准備好提交時，點擊<b>「提交我的投票」</b>按鈕。</li> </ol>"
+    list_of_projects: 項目列表
+    estimated_cost: 預算費用
+    youtube_video: Youtube 視頻
+    location: 地點
+    partner: 合作夥伴
+    committee: 委員會
+    read_details: 查看更多...
+    select_button:
+      select: 選擇
+      selected: 已選擇
+      not_enough_money: 資金不足
+      more_projects: 不能選擇多於 %{max_n_projects} 個項目
+    remove_button: 移除
+    remove_button_tooltip: 如不想再選擇此項目，請點擊此處。
+    submit_button: 提交我的投票...
+    confirmation:
+      title: 是否確定要提交投票？
+      body:
+        summary:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已選擇以下項目：%{projects}
+          item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已為以下項目選擇代幣：%{projects}
+          item: "%{project}（%{cost} 代幣）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>您僅選擇了一個項目。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個項目。</span>"
+          limit: "<span style='color: red;'>您最多可為 %{max_n_projects} 個項目投票。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>您僅選擇了一個代幣。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個代幣。</span>"
+          limit: "<span style='color: red;'>您最多可選擇 %{total_tokens} 個代幣。</span>"
+        warning: 提交投票後<strong>不能</strong>更改。如需更改投票，請點擊下方的「返回」。如需提交投票，請勾選下方復選框後點擊「提交我的投票」。
+        checkbox: 我了解提交投票後<strong>無法</strong>更改。
+      ok: 提交我的投票
+      cancel: 返回
+    confirmation_over_limit:
+      title: 無法提交投票
+      over_n_project_limit: "<span style='color:red'>您已選擇 <b>%{n_projects}</b> 個項目。您最多只能選擇
+        <b>%{max_n_projects}</b> 個項目。請移除 <b>%{extra}</b> 個或更多項目。</span>"
+      over_budget_limit: "<span style='color:red'>目前的預算已超支。</span>"
+      cancel: 返回
+    tracker:
+      text: 您已選擇 %{count} 個項目。
+      x_out_of_y: "%{x} / %{y}"
+    budgetbar:
+      text: 已選擇 %{total} 預算（共 %{budget}）。
+      under_budget: 還剩下 %{remaining_money}。
+      over_budget: 目前的預算已超支。
+      over_budget_but_can_add_projects: 目前的預算已超支，但可以繼續添加項目。
+    tokenbar:
+      text: 已選擇 %{total} 個代幣（共 %{budget} 個）。
+      under_budget: 還剩下 %{remaining_money}。
+      over_budget: 您當前使用的代幣數量已超過可用數量。請減少已使用的代幣數量，使其低於最大值。
+      over_budget_but_can_add_projects: 目前的預算已超支，但可以繼續添加項目。
+    adjustable_cost_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 $0"
+      message: "%{cost}您已為%{project}項目選擇 $0"
+      table_headings:
+        percentage_column: 預算支出百分比
+        cost_column: 費用
+        number_column: '已重新鋪設的街區數量為 #'
+    adjustable_token_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 0 個代幣"
+      message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
+    image_gallery:
+      cue: 點擊圖片查看幻燈片
+  question:
+    title: 調查
+    question: 您是否已年滿 14 歲？
+    ok: 是，我已年滿 14 歲。
+    alternative: 否，我未年滿 14 歲。
+  comparison:
+    title: 對比
+    header: 哪個項目最物有所值？即花費的每一美元都能給社區帶來最大利益。
+    estimated_cost: 預算費用
+    this_project: 這個項目
+    not_sure: 我不確定
+    popup:
+      title: 操作說明
+      body: "<p style='font-size: 20px;'>現在。您將受邀參加一項活動。此活動<u>不會</u>影響您的投票，但屬於 Stanford
+        University 研究項目的一部分，旨在幫助我們改進 Participatory Budgeting 流程。</p> <ul style='font-size:
+        20px;'><li>是否參與活動以自願為原則，可隨時退出。</li> <li>活動預計耗時 2~3 分鐘。</li> </ul> <p style='font-size:
+        14px;'>這項研究沒有任何風險。我們不會向您支付任何參與費用，也不保證您能從中獲益。您有權拒絕回答特定問題。如有任何問題、建議或疑慮，請發送電子郵件至
+        goel_admins@lists.stanford.edu 聯絡 Ashish Goel 教授。您也可以致電 650-723-2480 聯絡 Stanford
+        Institutional Review Board（斯坦福大學機構審查委員會）。</p>"
+      ok: 繼續
+      exit: 退出
+  knapsack:
+    title: Participatory Budgeting
+    popup:
+      title: 操作說明
+      body: "<p style='font-size: 20px;'>現在。您將受邀參加一項活動。此活動<u>不會</u>影響您的投票，但屬於 Stanford
+        University 研究項目的一部分，旨在幫助我們改進 Participatory Budgeting 流程。</p> <ul style='font-size:
+        20px;'><li>是否參與活動以自願為原則，可隨時退出。</li> <li>活動預計耗時 2~3 分鐘。</li> </ul> <p style='font-size:
+        14px;'>這項研究沒有任何風險。我們不會向您支付任何參與費用，也不保證您能從中獲益。您有權拒絕回答特定問題。如有任何問題、建議或疑慮，請發送電子郵件至
+        goel_admins@lists.stanford.edu 聯絡 Ashish Goel 教授。您也可以致電 650-723-2480 聯絡 Stanford
+        Institutional Review Board（斯坦福大學機構審查委員會）。</p>"
+      ok: 繼續
+      exit: 退出
+    instructions: "<h3>操作說明</h3> <ol> <li>選擇自己想要支持的項目，總費用不能超過 <b>%{budget}</b>。</li>
+      <li>頁面上方的欄中可查看到目前為止分配的總金額。點擊欄或直接點擊已選項目可移除先前選擇的任何項目。</li> <li>准備好提交時，點擊<b>「提交我的投票」</b>按鈕。</li>
+      </ol>"
+    confirmation:
+      title: 是否確定要提交投票？
+      body:
+        summary:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已選擇以下項目：%{projects}
+          item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已為以下項目選擇代幣：%{projects}
+          item: "%{project}（%{cost} 代幣）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>您僅選擇了一個項目。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個項目。</span>"
+          limit: "<span style='color: red;'>您最多可為 %{max_n_projects} 個項目投票。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>您僅選擇了一個代幣。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個代幣。</span>"
+          limit: "<span style='color: red;'>您最多可選擇 %{total_tokens} 個代幣。</span>"
+        warning: 提交投票後<strong>不能</strong>更改。
+      ok: 提交我的投票
+      cancel: 返回
+    adjustable_cost_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 $0"
+      message: "%{cost}您已為%{project}項目選擇 **"
+    adjustable_token_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 0 個代幣"
+      message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
+  token:
+    title: Participatory Budgeting
+    popup:
+      title: 操作說明
+      body: "<p style='font-size: 20px;'>現在。您將受邀參加一項活動。此活動<u>不會</u>影響您的投票，但屬於 Stanford
+        University 研究項目的一部分，旨在幫助我們改進 Participatory Budgeting 流程。</p> <ul style='font-size:
+        20px;'><li>是否參與活動以自願為原則，可隨時退出。</li> <li>活動預計耗時 2~3 分鐘。</li> </ul> <p style='font-size:
+        14px;'>這項研究沒有任何風險。我們不會向您支付任何參與費用，也不保證您能從中獲益。您有權拒絕回答特定問題。如有任何問題、建議或疑慮，請發送電子郵件至
+        goel_admins@lists.stanford.edu 聯絡 Ashish Goel 教授。您也可以致電 650-723-2480 聯絡 Stanford
+        Institutional Review Board（斯坦福大學機構審查委員會）。</p>"
+      ok: 繼續
+      exit: 退出
+    instructions: "<h3>操作說明</h3> <ol> <li>選擇自己想要支持的項目，代幣總數不能超過 <b>%{total_tokens}</b>。</li>
+      <li>頁面上方的欄中可查看到目前為止分配的總金額。點擊欄或直接點擊已選項目可移除先前選擇的任何項目。</li> <li>准備好提交時，點擊<b>「提交我的投票」</b>按鈕。</li>
+      </ol>"
+    confirmation:
+      title: 是否確定要提交投票？
+      body:
+        summary:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已選擇以下項目：%{projects}
+          item: "%{project} (%{cost})"
+        summary_token:
+          zero: "<span style='color: red;'>您尚未選擇任何項目。</span>"
+          other: 您已為以下項目選擇代幣：%{projects}
+          item: "%{project}（%{cost} 代幣）"
+        under_n_project_limit:
+          one: "<span style='color: red;'>您僅選擇了一個項目。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個項目。</span>"
+          limit: "<span style='color: red;'>您最多可為 %{max_n_projects} 個項目投票。</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>您僅選擇了一個代幣。</span>"
+          less: "<span style='color: red;'>您僅選擇了 %{count} 個代幣。</span>"
+          limit: "<span style='color: red;'>您最多可選擇 %{total_tokens} 個代幣。</span>"
+        warning: 提交投票後<strong>不能</strong>更改。
+      ok: 提交我的投票
+      cancel: 返回
+    adjustable_cost_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 $0"
+      message: "%{cost}您已為%{project}項目選擇 **"
+    adjustable_token_project:
+      instructions: 請從以下選項中選擇一項：
+      not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 0 個代幣"
+      message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
+  survey:
+    title: 調查
+    header: 參加調查
+    question:
+      title: 謝謝
+      body: 感謝您的投票。您是否已年滿 14 歲？
+      ok: 是，我已年滿 14 歲。
+      alternative: 否，我未年滿 14 歲。
+    url: ""
+  thanks:
+    title: 謝謝
+    description:
+      real: 感謝您的投票。請點擊下方的「退出」按鈕。
+      demo: '感謝您參與測試 Prticipatory Budgeting 電子界面！<span style='color: red;'><strong>請注意，這只是<u>預覽</u>。</strong></span>'
+    exit: 退出
+  about:
+    title: 簡介
+    description: "<center><h1 class='sub-header'> 關於 Participatory Budgeting 電子界面</h1></center>
+      <br><p class='lead'>Prticipatory Budgeting 電子界面由 <a href='https://voxpopuli.stanford.edu/'
+      target='_blank'>Stanford Crowdsourced Democracy Team</a> 開發。我們希望此界面的可視化特性及其提供的豐富資訊能夠幫助您了解這些項目，從而投出更具參考價值的選票。</p>
+      <p class='lead'>這是采用 GNU GPL v3.0 許可證授權的開源項目。您可以在 <a href='https://github.com/StanfordCDT/pb'
+      target='_blank'>GitHub</a> 上找到源代碼。</p> <p class='lead'>如遇技術問題或希望提出意見回饋，請發送電子郵件至
+      <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>，我們會盡快給您回復。</p>"
+  result:
+    title: 結果
+    vote_results: 投票結果
+    description: 根據 %{count} 至 %{start} 的 %{end} 名投票者得出的投票結果。
+    proposed_project: 擬議項目
+    votes: 投票
+    projects: 項目
+  election:
+    can_also_vote_in_person: 您也可以前往以下地點進行投票：
+    info: "<h3>投票地點</h3> <b>9 月 27 日（星期六）</b>&nbsp;（中午 12:00 - 下午 4:00） <br>某地<br>
+      <br> <b>9 月 30 日（星期二）</b>&nbsp;（下午 6:00 - 晚上 9:00）<br>某地<br> <br> <p>如需更多資訊，請造訪
+      <a href=\"http://www.example.com/\">http://www.example.com/。</a></p>"
+  sms_signup:
+    title: 電話號碼驗證
+    header: 電話號碼驗證
+    instructions: "<p>為進行在線投票，您需要一部可以接收簡訊的手機來進行電話號碼驗證。</p><p>輸入電話號碼後，我們將透過簡訊向您發送確認碼。</p>"
+    phone_number_placeholder: 輸入電話號碼
+    verify_button: 驗證
+    invalid_phone_number: |-
+      %{phone_number} 電話號碼無效。
+
+      "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."
+      此電話號碼已選擇不接收我們的資訊。如需接收確認碼，請編輯 START 發送至 %{our_phone_number}，然後在此處再次輸入您的電話號碼。
+    blacklisted_phone_number: This phone number has opted out of receiving messages
+      from us. To receive the confirmation code, please send START to %{our_phone_number}
+      and then enter your phone number here again.
+    no_cell_phone_instruction: "如沒有手機，請<a href=\"%{code_signup_url}\">點擊此處</a>使用其他方式進行在線投票。"
+  code_signup:
+    title: 輸入造訪代碼進行投票
+    instruction: 請發送電子郵件至 XXX@stanford.edu 或致電 XXX-XXX-XXX 獲取造訪代碼。獲得造訪代碼後，請將其輸入在下方，然後點擊<b>投票</b>按鈕繼續。
+    code_placeholder: 造訪代碼
+    vote_button: 投票
+    wrong_access_code: 造訪代碼錯誤
+    used_access_code: 此造訪代碼已使用
+  other_signup:
+    title: 輸入詳細資訊進行投票
+    instruction: ""
+    no_account_number_instruction: "如沒有賬號，請<a href=\"%{code_signup_url}\">點擊此處</a>使用其他方式進行在線投票。"
+    zipcode_placeholder: 郵遞區號
+    account_number_placeholder: 賬號
+    vote_button: 投票
+    wrong_account_number: 賬號或郵遞區號錯誤
+    used_account_number: 此賬號已使用
+  free_signup:
+    title: 驗證
+    instruction: 請輸入您的郵遞區號
+    placeholder: 郵遞區號
+    captcha: 請在下方輸入<b>%{captcha}</b>
+    vote_button: 投票
+  registration:
+    title: 投票者詳細資訊
+    header: 投票者詳細資訊
+    instructions: 請輸入以下詳細資訊，以進入投票頁面進行投票。標有 * 的字段為必填項。
+    proceed_button: 繼續
+    no_phone_number: 我沒有電話號碼
+    name: 姓名
+    first_name: 名
+    middle_initial: 中間名首字母
+    last_name: 姓
+    suffix: 後綴
+    phone_number: 電話號碼
+    email: 電子郵件
+    address: 街道地址
+    city: 城市
+    zip_code: 郵遞區號
+    birth_year: 出生年份
+    date_of_birth: 出生日期
+    verify_age_label: 我已年滿 16 歲
+    email_instruction_label: 您希望了解此次投票結果嗎？請輸入您的電子郵箱以獲取最新資訊。
+    ward: 轄區
+    ward_do_not_know: 不知道
+    error: 請更正以下錯誤：
+    not_voting_age_error: 您必須符合年齡要求才能進行投票
+    verify_age_error: 請確認「%{checkbox_label}」
+  sms_signup_confirm:
+    title: 電話號碼驗證
+    header: 電話號碼驗證
+    instructions: "<p>我們已將確認碼發送至 <b>%{phone_number}</b>。您將在一分鐘內收到代碼。</p><p>請輸入確認碼進行電話號碼驗證。</p>"
+    code_placeholder: 輸入代碼
+    confirm_button: 確認
+    wrong_code: 代碼錯誤。
+    resend_code: "如在一分鐘內沒有收到確認碼，請點擊<a href=\"%{resend_code_url}\">此處</a>重新發送。"
+    make_sure_phone_number_is_correct: "請確保 %{phone_number} 是正確的手機號碼。如<u>有誤</u>，請點擊<a
+      href=\"%{signup_url}\">此處</a>進行更改。"
+    still_not_working: "如多次嘗試後仍無法收到確認碼，請<a href=\"%{code_signup_url}\">點擊此處</a>使用其他方式進行在線投票。"
+    confirmation_textmsg: 使用 %{confirmation_code} 作為代碼在 PBStanford.org 上為 Participatory
+      Budgeting 投票
+  general:
+    demo_warning: 這只是預覽，不會記錄您的投票。
+    experiment_disclaimer: 這只是一項研究調查，不會影響您的投票。
+    shuffle_note: "<span style='font-size: 18px;'>注：這些項目是按隨機順序排列的。</span>"
+    project_string: 項目
+    close_button: 關閉
+    timeout:
+      body: 您的會話即將到期。請點擊「繼續」以繼續使用此網站。
+      continue_button: 繼續
+  date:
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - Jul
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :month
+    - :day
+    - :year
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: Minimum cost

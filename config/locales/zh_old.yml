@@ -77,7 +77,7 @@ zh:
           limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
 
         warning: "在提交你的投票后，你<strong>不能</strong> 修改你的投票。如果你想更改你的投票，请点击下面的‘返回’。
-如果你想要提交你的投票，请选中下列的复选框并点击‘提交我的投票’。"
+          如果你想要提交你的投票，请选中下列的复选框并点击‘提交我的投票’。"
         checkbox: "我了解在我提交我的投票后，我<strong>不能</strong> 修改它。"
       ok: "提交我的投票"
       cancel: "返回"
@@ -136,10 +136,10 @@ zh:
     popup:
       title: "使用说明"
       body: "<p style='font-size: 20px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-      <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-      <li>此活动的预计时间是2-3分钟。</li>
-      </ul>
-<p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
+        <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
+        <li>此活动的预计时间是2-3分钟。</li>
+        </ul>
+        <p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
       ok: "OK"
     instructions: "<h3>Instructions</h3>
                    <ol>
@@ -162,7 +162,7 @@ zh:
           less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
           limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
         warning: "在提交你的投票后，你<strong>不能</strong> 修改你的投票。如果你想更改你的投票，请点击下面的‘返回’。
-如果你想要提交你的投票，请选中下列的复选框并点击‘提交我的投票’。"
+          如果你想要提交你的投票，请选中下列的复选框并点击‘提交我的投票’。"
         checkbox: "我了解在我提交我的投票后，我<strong>不能</strong> 修改它。"
       ok: "提交我的投票"
       cancel: "返回"
@@ -223,10 +223,10 @@ zh:
     popup:
       title: "使用说明"
       body: "<p style='font-size: 20px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-      <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-      <li>此活动的预计时间是2-3分钟。</li>
-      </ul>
-<p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
+        <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
+        <li>此活动的预计时间是2-3分钟。</li>
+        </ul>
+        <p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
       ok: "继续"
       exit: "退出"
 
@@ -235,10 +235,10 @@ zh:
     popup:
       title: "使用说明"
       body: "<p style='font-size: 20px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-      <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-      <li>此活动的预计时间是2-3分钟。</li>
-      </ul>
-<p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
+        <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
+        <li>此活动的预计时间是2-3分钟。</li>
+        </ul>
+        <p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
       ok: "继续"
       exit: "退出"
     instructions: "<h3>使用说明</h3>
@@ -283,10 +283,10 @@ zh:
     popup:
       title: "使用说明"
       body: "<p style='font-size: 20px;'>现在你将被要求参与一个活动，它不会影响你的投票，但是它是斯坦福大学研究项目的一部分，旨在帮助我们改进这个参与式预算进程。</p>
-      <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
-      <li>此活动的预计时间是2-3分钟。</li>
-      </ul>
-<p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
+        <ul style='font-size: 20px;'><li>参与这个活动是可选择的。你可以随时退出。</li>
+        <li>此活动的预计时间是2-3分钟。</li>
+        </ul>
+        <p style='font-size: 14px;'>这项研究不构成任何风险。参与此研究不会向你支付款项，并且我们也不能保证你受益。你有权拒绝回答特定的问题。如果你有任何疑问、建议或者担忧，请联系斯坦福大学的Ashish Goel 教授，电子邮箱 goel_admins@lists.stanford.edu。你也可以联系斯坦福机构审查委员会，电话号码是650-723-2480。</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>使用说明</h3>

@@ -23,10 +23,10 @@ zh_hant:
         Crowdsourced Democracy Team 提供的 Participatory Budgeting 電子選票樣本。</p> <p class='lead'>您可透過本網站了解今年的項目和電子選票。本網站僅供參考，您<b>不能</b>在此投出實際選票。</p>
         <p class='lead'>當您投出<u>實際選票</u>時，您將決定如何分配城市資本改善預算中的 $XXX 百萬。您需要前往遍布全市的眾多投票地點之一進行投票。投票時間為（XXX
         日）至（YYY 日）。下方可查看所有投票時間和地點。</p>"
-      proceed_button: 查看選票樣本 >>
-      sms_verification_button: 立即投票 >>
+      proceed_button: "查看選票樣本 >>"
+      sms_verification_button: "立即投票 >>"
       code_verification_button: 輸入代碼
-      other_verification_button: 立即投票 >>
+      other_verification_button: "立即投票 >>"
       see_projects_button: 查看項目
     voting_has_not_started: 本網站的投票尚未開始。我們將盡快開始收集遠端投票。感謝您的耐心等待。
     voting_ended: 投票已結束。
@@ -128,6 +128,7 @@ zh_hant:
     project_ranking:
       list_header: 您已選擇以下項目。拖動 <span class='glyphicon glyphicon-sort'></span> 圖標可更改項目排名。
       continue_button: 繼續
+
   thanks_approval:
     title: 謝謝
     description:
@@ -135,7 +136,8 @@ zh_hant:
       demo: "<p class='lead'>感謝您的投票！<span style='color: red;'><strong>請注意，這只是<u>預覽</u>。</strong></span>請點擊下方的「下一頁」進入下一個頁面。</p>"
     send_vote_email: "（選填）我想將我的投票副本發送至我的電子郵箱："
     email_placeholder: 輸入電子郵箱
-    next_button: 下一頁 >>
+    next_button: "下一頁 >>"
+
   ranking:
     title: Participatory Budgeting
     popup:
@@ -220,6 +222,7 @@ zh_hant:
       message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
     image_gallery:
       cue: 點擊圖片查看幻燈片
+
   question:
     title: 調查
     question: 您是否已年滿 14 歲？
@@ -241,6 +244,7 @@ zh_hant:
         Institutional Review Board（斯坦福大學機構審查委員會）。</p>"
       ok: 繼續
       exit: 退出
+
   knapsack:
     title: Participatory Budgeting
     popup:
@@ -286,6 +290,7 @@ zh_hant:
       instructions: 請從以下選項中選擇一項：
       not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 0 個代幣"
       message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
+
   token:
     title: Participatory Budgeting
     popup:
@@ -331,6 +336,7 @@ zh_hant:
       instructions: 請從以下選項中選擇一項：
       not_adjusted_warning: "<span style='color:red'>您已為%{project}</span>項目選擇 0 個代幣"
       message: "%{cost}您已為%{project}項目選擇 ** 個代幣"
+      
   survey:
     title: 調查
     header: 參加調查
@@ -344,7 +350,7 @@ zh_hant:
     title: 謝謝
     description:
       real: 感謝您的投票。請點擊下方的「退出」按鈕。
-      demo: '感謝您參與測試 Prticipatory Budgeting 電子界面！<span style='color: red;'><strong>請注意，這只是<u>預覽</u>。</strong></span>'
+      demo: "感謝您參與測試 Prticipatory Budgeting 電子界面！<span style='color: red;'><strong>請注意，這只是<u>預覽</u>。</strong></span>"
     exit: 退出
   about:
     title: 簡介
@@ -451,27 +457,18 @@ zh_hant:
       body: 您的會話即將到期。請點擊「繼續」以繼續使用此網站。
       continue_button: 繼續
   date:
-    month_names:
-    -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - Jul
-    - August
-    - September
-    - October
-    - November
-    - December
+    month_names: [~, 一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
     order:
+    - :year
     - :month
     - :day
-    - :year
   activerecord:
     attributes:
       election:
         slug: URL
       project:
         cost_min: Minimum cost
+  errors: # TODO: fix translation, this is simplified Chinese
+    messages:
+      blank: 不能为空字符
+      invalid: 是无效的

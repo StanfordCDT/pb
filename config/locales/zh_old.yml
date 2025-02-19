@@ -349,9 +349,9 @@ zh:
   about:
     title: "关于"
     description: "<center><h1 class='sub-header'>关于数字预算界面</h1></center>
-    <br><p class='lead'>该数字预算界面是由<a href='https://voxpopuli.stanford.edu/' target='_blank'>斯坦福众包民主团队</a>开发的。<br>我们希望该界面的视觉性及其展现的丰富信息能帮助你了解这些项目并投出更具信息性的投票。</p>
-    <p class='lead'><b>这是使用GNU GPL V3.0许可证授权的开源项目。你可以找到<a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>Github</a>上的源代码。</b></p>
-    <p class='lead'>如果你遇到技术问题或者你想提供反馈，请发送电子邮件至<a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>我们会尽量给您回复尽快。</p>"
+      <br><p class='lead'>该数字预算界面是由<a href='https://voxpopuli.stanford.edu/' target='_blank'>斯坦福众包民主团队</a>开发的。<br>我们希望该界面的视觉性及其展现的丰富信息能帮助你了解这些项目并投出更具信息性的投票。</p>
+      <p class='lead'><b>这是使用GNU GPL V3.0许可证授权的开源项目。你可以找到<a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>Github</a>上的源代码。</b></p>
+      <p class='lead'>如果你遇到技术问题或者你想提供反馈，请发送电子邮件至<a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a>我们会尽量给您回复尽快。</p>"
 
   result:
     title: "Results"

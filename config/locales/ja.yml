@@ -479,9 +479,9 @@ ja:
     - 十一月
     -  十二月
     order:
+    - :year
     - :month
     - :day
-    - :year
   activerecord:
     attributes:
       election:

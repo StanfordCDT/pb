@@ -488,3 +488,7 @@ ja:
         slug: URL
       project:
         cost_min: Minimum cost
+  errors:
+   messages:
+     blank: "can't be blank"
+     invalid: "is invalid"

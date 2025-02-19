@@ -23,10 +23,10 @@ zh:
         Crowdsourced Democracy Team 提供的 Participatory Budgeting 电子选票样本。</p> <p class='lead'>您可通过本网站了解今年的项目和电子选票。本网站仅供参考，您<b>不能</b>在此投出实际选票。</p>
         <p class='lead'>当您投出<u>实际选票</u>时，您将决定如何分配城市资本改善预算中的 $XXX 百万。您需要前往遍布全市的众多投票地点之一进行投票。投票时间为（XXX
         日）至（YYY 日）。下方可查看所有投票时间和地点。</p>"
-      proceed_button: 查看选票样本 >>
-      sms_verification_button: 立即投票 >>
+      proceed_button: "查看选票样本 >>"
+      sms_verification_button: "立即投票 >>"
       code_verification_button: 输入代码
-      other_verification_button: 立即投票 >>
+      other_verification_button: "立即投票 >>"
       see_projects_button: 查看项目
     voting_has_not_started: 本网站的投票尚未开始。我们将尽快开始收集远程投票。感谢您的耐心等待。
     voting_ended: 投票已结束。

@@ -359,7 +359,7 @@ en:
     description: "<center><h1 class='sub-header'>About the digital participatory budgeting interface</h1></center>
       <br><p class='lead'>The digital participatory budgeting interface has been developed by the <a href='https://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. We hope that the visual nature of the interface and the richness of the information presented will help you learn about the projects and cast more informative votes.</p>
       <p class='lead'>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
-      <p class='lead'>If you have technical problems or you want to give feedback, please email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> and we will try to get back to you as soon as possible.</p>"
+    <p class='lead'>If you have technical problems or you want to give feedback, please email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> and we will try to get back to you as soon as possible.</p>"
 
   result:
     title: "Results"

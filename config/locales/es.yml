@@ -143,10 +143,10 @@ es:
     popup:
       title: "Instrucciones"
       body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-      <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-      <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-      </ul>
-<p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
+        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
+        </ul>
+        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
       ok: "OK"
     instructions: "<h3>Instrucciones</h3>
                    <ol>
@@ -228,10 +228,10 @@ es:
     popup:
       title: "Instrucciones"
       body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-      <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-      <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-      </ul>
-<p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
+        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
+        </ul>
+        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
       ok: "Continuar"
       exit: "Salir"
 
@@ -241,10 +241,10 @@ es:
     popup:
       title: "Instrucciones"
       body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-      <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-      <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-      </ul>
-<p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
+        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
+        </ul>
+        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
       ok: "Continuar"
       exit: "Salir"
     instructions: "<h3>Instrucciones</h3>
@@ -290,10 +290,10 @@ es:
     popup:
       title: "Instrucciones"
       body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-      <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-      <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-      </ul>
-<p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
+        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
+        </ul>
+        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>
@@ -356,9 +356,9 @@ es:
   about:
     title: "Sobre Nosotros"
     description: "<center><h1 class='sub-header'>Sobre la interface digital de presupuesto</h1></center>
-    <br><p class='lead'>La interface digital ha sido desarrollada por el <a href='https://voxpopuli.stanford.edu/' target='_blank'>equipo de Democracia Participativa de la Universidad de Stanford</a>. <br>Esperamos que la naturaleza visual de la interface y la riqueza de la información que se presenta le ayudará a aprender acerca de los proyectos y emitir su voto de una manera más informada.</p>
-    <p class='lead'><b>Este es un proyecto de código abierto con licencia bajo la licencia GNU GPL v3.0. Puede encontrar el código fuente en <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
-    <p class='lead'>Si tiene un problema técnico o si desea dar su opinión, por favor escriba a <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> y vamos a tratar de volver a usted tan pronto como sea posible.</p>"
+      <br><p class='lead'>La interface digital ha sido desarrollada por el <a href='https://voxpopuli.stanford.edu/' target='_blank'>equipo de Democracia Participativa de la Universidad de Stanford</a>. <br>Esperamos que la naturaleza visual de la interface y la riqueza de la información que se presenta le ayudará a aprender acerca de los proyectos y emitir su voto de una manera más informada.</p>
+      <p class='lead'><b>Este es un proyecto de código abierto con licencia bajo la licencia GNU GPL v3.0. Puede encontrar el código fuente en <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
+      <p class='lead'>Si tiene un problema técnico o si desea dar su opinión, por favor escriba a <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> y vamos a tratar de volver a usted tan pronto como sea posible.</p>"
 
   result:
     title: "Results"

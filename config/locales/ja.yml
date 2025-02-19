@@ -8,9 +8,8 @@ ja:
   index:
     title: Participatory Budgeting
     voting_machine:
-      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
-        margin-right: auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>Participatory
-        Budgetingのデジタル投票インターフェースへようこそ</p>"'
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>Participatory
+        Budgetingのデジタル投票インターフェースへようこそ</p>"
       instruction: 受け取ったコードを入力してください。
       code_placeholder: コード
       enter_code_button: 入力する
@@ -18,19 +17,19 @@ ja:
       used_code: このコードはすでに使用されています。
       used_personal_id: このIDはすでに使用されています。エラーが発生した場合、または再再度投票する必要がある場合は、voxpopuli@lists.stanford.eduまでご連絡ください。
     remote:
-      welcome: '"<img src=""/img/sample-city-logo.png"" style=''margin-left: auto;
-        margin-right: auto; display: block;'' /> <p class=''lead''>Stanford Crowdsourced
-        Democracy Teamの厚意により提供された、Participatory Budgetingのデジタル投票用紙のサンプルへようこそ。</p>
-        <p class=''lead''>このウェブサイトでは、今年のプロジェクトとデジタル投票について詳しく知ることができます。このウェブサイトは情報提供のみを目的としており、ここで実際に<b>投票することはできません</b>。</p>
-        <p class=''lead''> <u>実際に投票する</u>際には、市の資本改善予算の$XXXミリオンをどのように配分するかを決定することになります。投票するには、市内各地に設置される多数の投票場所のいずれかに来る必要があります。投票は（日付XXX）から（日付YYY）まで行われます。すべての時間と場所は以下をご覧ください。</p>"'
-      proceed_button: 投票用紙のサンプルを見る>>
-      sms_verification_button: 今すぐ投票してください>>
+      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /> 
+        <p class='lead'>Stanford Crowdsourced Democracy Teamの厚意により提供された、Participatory Budgetingのデジタル投票用紙のサンプルへようこそ。</p>
+        <p class='lead'>このウェブサイトでは、今年のプロジェクトとデジタル投票について詳しく知ることができます。このウェブサイトは情報提供のみを目的としており、ここで実際に<b>投票することはできません</b>。</p>
+        <p class='lead'> <u>実際に投票する</u>際には、市の資本改善予算の$XXXミリオンをどのように配分するかを決定することになります。投票するには、市内各地に設置される多数の投票場所のいずれかに来る必要があります。投票は（日付XXX）から（日付YYY）まで行われます。すべての時間と場所は以下をご覧ください。</p>"
+      proceed_button: "投票用紙のサンプルを見る >>"
+      sms_verification_button: "今すぐ投票してください>>"
       code_verification_button: コードを入力してください
-      other_verification_button: 今すぐ投票してください>>
+      other_verification_button: "今すぐ投票してください>>"
       see_projects_button: プロジェクトを見る
     voting_has_not_started: このウェブサイトでの投票はまだ開始されていません。できるだけ早く遠隔投票の収集を開始する予定です。しばらくお待ちください。
     voting_ended: 投票は終了しました。
     public_results: 選挙結果を見る
+
   approval:
     title: Participatory Budgeting
     popup:
@@ -64,7 +63,7 @@ ja:
           item: "%{project}（%{cost}）"
         summary_token:
           zero: "<span style='color: red;'>あなたは何もプロジェクトを選択していません。</span>"
-          other: あなたは以下のプロジェクトのために、トークンを選択しました：%{projects}
+          other: "あなたは以下のプロジェクトのために、トークンを選択しました：%{projects}"
           item: "%{project}（%{cost}個のトークン）"
         under_n_project_limit:
           one: "<span style='color: red;'>あなたはプロジェクトを1件だけ選択しました。</span>"
@@ -98,7 +97,7 @@ ja:
       over_token: あなたは現在、使用可能なトークンよりも多くのトークンを使用しています。使用したトークンを最大数未満に減らしてください。
       over_budget_but_can_add_tokens: あなたは現在予算を超過していますが、トークンを追加し続けることができます。
     adjustable_cost_project:
-      instructions: 以下のオプションから1つを選択してください：
+      instructions: "以下のオプションから1つを選択してください："
       not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、$0を選択しました"
       message: あなたは%{cost}のために、%{project}を選択しました
       table_headings:
@@ -106,7 +105,7 @@ ja:
         cost_column: コスト
         number_column: 再舗装されたブロックの概数
     adjustable_token_project:
-      instructions: 以下のオプションから1つを選択してください：
+      instructions: "以下のオプションから1つを選択してください："
       not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
       message: あなたは%{cost}のために、%{project}個のトークンを選択しました
     map:
@@ -127,6 +126,7 @@ ja:
     project_ranking:
       list_header: あなたは以下のプロジェクトを選択しました。<span class='glyphicon glyphicon-sort'></span>アイコンをドラッグして順位を変更してください。
       continue_button: 続ける
+
   thanks_approval:
     title: ありがとうございました
     description:
@@ -205,7 +205,7 @@ ja:
       over_budget: あなたは現在、使用可能なトークンよりも多くのトークンを使用しています。使用したトークンを最大数未満に減らしてください。
       over_budget_but_can_add_projects: あなたは現在予算を超過していますが、プロジェクトを追加し続けることができます。
     adjustable_cost_project:
-      instructions: 以下のオプションから1つを選択してください：
+      instructions: "以下のオプションから1つを選択してください："
       not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、$0を選択しました"
       message: あなたは%{cost}のために、$%{project}を選択しました
       table_headings:
@@ -213,16 +213,18 @@ ja:
         cost_column: コスト
         number_column: 再舗装されたブロックの概数
     adjustable_token_project:
-      instructions: 以下のオプションから1つを選択してください：
+      instructions: "以下のオプションから1つを選択してください："
       not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
       message: あなたは%{cost}のために、%{project}個のトークンを選択しました
     image_gallery:
       cue: スライドショーのために、画像をクリックしてください
+
   question:
     title: 調査
     question: あなたは14歳以上ですか？
     ok: はい、私は14歳以上です
     alternative: いいえ、私は14歳未満です
+
   comparison:
     title: 比較
     header: どのプロジェクトが最も費用対効果が高いか、つまり、使った$1当たりにコミュニティに最も利益をもたらすでしょうか？
@@ -239,6 +241,7 @@ ja:
         Review Board（スタンフォード倫理審査委員会）（650-723-2480）にもご連絡ください。</p>"
       ok: 続ける
       exit: 終了する
+
   knapsack:
     title: Participatory Budgeting
     popup:
@@ -284,6 +287,7 @@ ja:
       instructions: 以下のオプションから1つを選択してください：
       not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
       message: あなたは%{cost}のために、%{project}個のトークンを選択しました
+
   token:
     title: Participatory Budgeting
     popup:
@@ -329,6 +333,7 @@ ja:
       instructions: 以下のオプションから1つを選択してください：
       not_adjusted_warning: "<span style='color:red'>あなたは%{project}</span>のために、0個のトークンを選択しました"
       message: あなたは%{cost}のために、%{project}個のトークンを選択しました
+
   survey:
     title: 調査
     header: 調査に回答する
@@ -337,14 +342,16 @@ ja:
       body: ご投票ありがとうございました。あなたは14歳以上ですか？
       ok: はい、私は14歳以上です
       alternative: いいえ、私は14歳未満です
-    url: ''
+    url: ""
+
   thanks:
     title: ありがとうございました
     description:
-      real: ご投票ありがとうございました。下の「終了する」ボタンをクリックしてください。
-      demo: 'Participatory Budgetingのデジタルインターフェースをテストしていただき、ありがとうございました！<span style=''color:
-        red;''><strong>これは<u>プレビュー</u>に過ぎないことにご注意ください。</strong></span>'
+      real: "ご投票ありがとうございました。下の「終了する」ボタンをクリックしてください。"
+      demo: "Participatory Budgetingのデジタルインターフェースをテストしていただき、ありがとうございました！<span style='color:
+        red;'><strong>これは<u>プレビュー</u>に過ぎないことにご注意ください。</strong></span>"
     exit: 終了する
+
   about:
     title: 概要
     description: "<center><h1 class='sub-header'>Participatory Budgetingのデジタルインターフェースについて</h1></center>
@@ -354,6 +361,7 @@ ja:
       href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>にあります。</p>
       <p class='lead'>技術的な問題がある場合、またはフィードバックを提供したい場合は、<a href='mailto:feedback@pbstanford.org'
       target='_blank'>feedback@pbstanford.org</a>にEメールを送信してください。できるだけ早くご連絡いたします。</p>"
+
   result:
     title: 結果
     vote_results: 投票結果
@@ -361,10 +369,12 @@ ja:
     proposed_project: 提案プロジェクト
     votes: 投票
     projects: プロジェクト
+
   election:
     can_also_vote_in_person: また、以下のいずれかの場所に来て投票することもできます：
-    info: '"<h3>投票場所</h3> <b>9月27日（土）</b>（正午12:00～午後4:00）<br>どこかで<br> <br> <b>9月30日（火）</b>（午後6:00～午後9:00）<br>どこかで<br>
-      <br> <p>詳細については、<a href=""http://www.example.com/"">http://www.example.com/</a></p>をご覧ください"'
+    info: "<h3>投票場所</h3> <b>9月27日（土）</b>（正午12:00～午後4:00）<br>どこかで<br> <br> <b>9月30日（火）</b>（午後6:00～午後9:00）<br>どこかで<br>
+      <br> <p>詳細については、<a href=\"http://www.example.com/\">http://www.example.com/</a></p>をご覧ください"
+
   sms_signup:
     title: 電話番号を確認してください
     header: 電話番号を確認してください
@@ -374,12 +384,13 @@ ja:
     invalid_phone_number: |-
       %{phone_number}は有効な電話番号ではありません。
 
-      "+sms_signup.blacklisted_phone_number  # ""START"" is a fixed word and must NOT be translated."
+      "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."
       この電話番号は、当社からのメッセージの受信をオプトアウトしています。確認コードを受け取るには、「START」を%{our_phone_number}に送信し、ここで電話番号をもう一度入力してください。
     blacklisted_phone_number: This phone number has opted out of receiving messages
       from us. To receive the confirmation code, please send START to %{our_phone_number}
       and then enter your phone number here again.
-    no_cell_phone_instruction: '"携帯電話をお持ちでない場合は、<a href=""%{code_signup_url}"">ここをクリックして</a>、別の方法でオンライン投票してください。"'
+    no_cell_phone_instruction: "携帯電話をお持ちでない場合は、<a href=\"%{code_signup_url\">ここをクリックして</a>、別の方法でオンライン投票してください。"
+
   code_signup:
     title: 投票するには、アクセスコードを入力してください
     instruction: アクセスコードを取得するには、XXX@stanford.eduにEメールを送信するか、XXX-XXX-XXXに電話してください。アクセスコードを取得したら、それを以下に入力し、<b>「投票」</b>ボタンを押して続行してください。
@@ -387,21 +398,24 @@ ja:
     vote_button: 投票
     wrong_access_code: 間違ったアクセスコード
     used_access_code: このアクセスコードはすでに使用されています
+
   other_signup:
     title: 投票するには、詳細を入力してください
-    instruction: ''
-    no_account_number_instruction: '"アカウント番号をお持ちでない場合は、<a href=""%{code_signup_url}"">ここをクリックして</a>、別の方法でオンライン投票してください。"'
+    instruction: 
+    no_account_number_instruction: "アカウント番号をお持ちでない場合は、<a href=\"%{code_signup_url}\">ここをクリックして</a>、別の方法でオンライン投票してください。"
     zipcode_placeholder: ZIPコード
     account_number_placeholder: アカウント番号
     vote_button: 投票
     wrong_account_number: 間違ったアカウント番号/ZIPコード
     used_account_number: このアカウント番号はすでに使用されています
+
   free_signup:
     title: 検証
     instruction: ZIPコードを入力してください
     placeholder: ZIPコード
     captcha: 以下に<b>%{captcha}</b>を入力してください
     vote_button: 投票
+
   registration:
     title: 投票者の詳細
     header: 投票者の詳細
@@ -427,6 +441,7 @@ ja:
     error: 以下のエラーを修正してください：
     not_voting_age_error: この選挙で投票するには、年齢要件を満たしている必要があります
     verify_age_error: "「%{checkbox_label}」を確認してください"
+
   sms_signup_confirm:
     title: 電話番号を確認してください
     header: 電話番号を確認してください
@@ -434,10 +449,10 @@ ja:
     code_placeholder: コードを入力してください
     confirm_button: 確認する
     wrong_code: コードが間違っています。
-    resend_code: '"1分以内にコードが届かない場合は、<a href=""%{resend_code_url}"">ここ</a>をクリックして確認コードを再送信してください。"'
-    make_sure_phone_number_is_correct: '"%{phone_number}があなたの正しい携帯電話番号であることを確認してください。もし<u>正しくない</u>場合は、<a
-      href=""%{signup_url}"">ここ</a>をクリックして変更してください。"'
-    still_not_working: '"何度試みても確認コードを受信できない場合は、<a href=""%{code_signup_url}"">ここをクリックして</a>、別の方法でオンライン投票してください。"'
+    resend_code: "1分以内にコードが届かない場合は、<a href=\"%{resend_code_url}\">ここ</a>をクリックして確認コードを再送信してください。"
+    make_sure_phone_number_is_correct: "%{phone_number}があなたの正しい携帯電話番号であることを確認してください。もし<u>正しくない</u>場合は、<a
+      href=\"%{signup_url}\">ここ</a>をクリックして変更してください。"
+    still_not_working: "何度試みても確認コードを受信できない場合は、<a href=\"%{code_signup_url}\">ここをクリックして</a>、別の方法でオンライン投票してください。"
     confirmation_textmsg: PBStanford.orgでParticipatory Budgetingに投票するには、コードとして%{confirmation_code}を使用してください
   general:
     demo_warning: これはプレビューに過ぎません。あなたの投票は記録されません。
@@ -451,18 +466,18 @@ ja:
   date:
     month_names:
     -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - Jul
-    - August
-    - September
-    - October
-    - November
-    - December
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    -  十二月
     order:
     - :month
     - :day

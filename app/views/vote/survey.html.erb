@@ -12,7 +12,7 @@ def add_params(url)
   host = URI.parse(url).host
   if host && host.end_with?('qualtrics.com')
     if I18n.locale != :en
-      ps[:Q_lang] = (I18n.locale == :zh) ? 'ZH-S' : I18n.locale.to_s.upcase
+      ps[:Q_lang] = (I18n.locale == :zh) ? 'ZH-S' : (I18n.locale == :zh_hant) ? 'ZH-T' : I18n.locale.to_s.upcase
     end
   end
   url + (ps.empty? ? '' : ((url.include?('?') ? '&' : '?') + ps.to_query))

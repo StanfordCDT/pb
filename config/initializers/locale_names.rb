@@ -19,7 +19,8 @@ LOCALE_NAMES = {
   ru: 'Russian',
   tl: 'Tagalog/Filipino',
   uk: 'Ukrainian',
-  zh: 'Chinese',
+  zh: 'Chinese (simplified)',
+  zh_hant: 'Chinese (traditional)',
 }
 
 LOCAL_LOCALE_NAMES = {
@@ -41,5 +42,6 @@ LOCAL_LOCALE_NAMES = {
   ru: 'Русский',
   tl: 'Tagalog/Filipino',
   uk: 'Українська',
-  zh: '中文',
+  zh: '中文 (汉语)',
+  zh_hant: '中文 (漢語)',
 }

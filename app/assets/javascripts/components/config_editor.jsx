@@ -894,12 +894,12 @@ class ConfigEditor extends React.Component {
   <label className="group-title">Languages</label>
   <div className="group-body">
     <div>Available languages:</div>
-    <CheckboxOption name="available_locales" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["de","German"],["ht","Haitian Creole"],["hi","Hindi"],["mww", "Hmong (Hmong Daw)"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["ru","Russian"],["es","Spanish"],["tl","Tagalog/Filipino"],["uk","Ukrainian"]]} />
+    <CheckboxOption name="available_locales" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese (simplified)"],["zh-hant", "Chinese (Traditional)"],["fi","Finnish"],["fr","French"],["de","German"],["ht","Haitian Creole"],["hi","Hindi"],["ja", "Japanese"],["mww", "Hmong (Hmong Daw)"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["ru","Russian"],["es","Spanish"],["tl","Tagalog/Filipino"],["uk","Ukrainian"]]} />
     { ((value)=>((value.length >= 1) ? null : (<div className="text-danger">Select at least one language.</div>) ))(db.get("available_locales")) }
 
     <div className="form-inline">
       <span className="mr-2">Default language:</span>
-      <SelectOption name="default_locale" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],["zh","Chinese"],["fi","Finnish"],["fr","French"],["de","German"],["ht","Haitian Creole"],["hi","Hindi"],["mww", "Hmong (Hmong Daw)"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["ru","Russian"],["es","Spanish"],["tl","Tagalog/Filipino"],["uk","Ukrainian"]]} />
+      <SelectOption name="default_locale" db={db} values={[["en","English"],["am","Amharic"],["ar","Arabic"],["bn","Bengali"],,["zh","Chinese (simplified)"],["zh-hant", "Chinese (Traditional)"],["fi","Finnish"],["fr","French"],["de","German"],["ht","Haitian Creole"],["hi","Hindi"],["ja", "Japanese"],["mww", "Hmong (Hmong Daw)"],["km","Khmer"],["pl","Polish"],["pt","Portuguese"],["ru","Russian"],["es","Spanish"],["tl","Tagalog/Filipino"],["uk","Ukrainian"]]} />
     </div>
     { ((value)=>((c('available_locales').indexOf(value) != -1) ? null : (<div className="text-danger">Must be a language that is available.</div>) ))(db.get("default_locale")) }
   </div>

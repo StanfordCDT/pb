@@ -22,12 +22,12 @@
 - name: available_locales
   default: [en]
   required: true
-  # values: [[en, English], [es, Spanish], [fi, Finnish], [fr, French], [zh, Chinese]]
+  # values: [[en, English], [es, Spanish], [fi, Finnish], [fr, French], [zh, Chines (simplified)]]
 
 - name: default_locale
   default: en
   required: true
-  # values: [[en, English], [es, Spanish], [fi, Finnish], [fr, French], [zh, Chinese]]
+  # values: [[en, English], [es, Spanish], [fi, Finnish], [fr, French], [zh, Chinese (simplified)]]
 
 - name: timeout
   default: 600

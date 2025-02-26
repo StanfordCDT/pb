@@ -146,19 +146,7 @@ en:
     title: "Participatory Budgeting"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that will <u>not</u> affect your vote, but is part of a Stanford University research project meant to help us improve the participatory budgeting process.</p><ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li> <li>The expected time for this activity is 2-3 minutes.</li> </ul> <p style='font-size: 14px;'>This study poses no risk. No payment will be made to you for participation, and we cannot guarantee any benefits to you. You have the right to refuse to  answer particular questions. Please contact Professor Ashish Goel at goel_admins@lists.stanford.edu if you have any questions, suggestions, or concerns. You may also contact the Stanford Institutional Review Board at 650-723-2480.</p>"
       ok: "OK"
     instructions: "<h3>Instructions</h3>
                    <ol>
@@ -251,19 +239,7 @@ Board at 650-723-2480.</p>"
     not_sure: "I am not sure"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that will <u>not</u> affect your vote, but is part of a Stanford University research project meant to help us improve the participatory budgeting process.</p> <ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li> <li>The expected time for this activity is 2-3 minutes.</li> </ul> <p style='font-size: 14px;'>This study poses no risk. No payment will be made to you for participation, and we cannot guarantee any benefits to you. You have the right to refuse to answer particular questions. Please contact Professor Ashish Goel at goel_admins@lists.stanford.edu if you have any questions, suggestions, or concerns. You may also contact the Stanford Institutional Review Board at 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
 
@@ -271,19 +247,7 @@ Board at 650-723-2480.</p>"
     title: "Participatory Budgeting"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that will <u>not</u> affect your vote, but is part of a Stanford University research project meant to help us improve the participatory budgeting process.</p> <ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li> <li>The expected time for this activity is 2-3 minutes.</li> </ul> <p style='font-size: 14px;'>This study poses no risk. No payment will be made to you for participation, and we cannot guarantee any benefits to you. You have the right to refuse to answer particular questions. Please contact Professor Ashish Goel at goel_admins@lists.stanford.edu if you have any questions, suggestions, or concerns. You may also contact the Stanford Institutional Review Board at 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>
@@ -330,19 +294,7 @@ Board at 650-723-2480.</p>"
     title: "Participatory Budgeting"
     popup:
       title: "Instructions"
-      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that
-will <u>not</u> affect your vote, but is part of a Stanford University research project meant
-to help us improve the participatory budgeting process.</p>
-<ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li>
-<li>The expected time for this activity is 2-3 minutes.</li>
-</ul>
-<p style='font-size: 14px;'>This study poses no risk.
-No payment will be made to you for participation, and we
-cannot guarantee any benefits to you. You have the right to refuse to
-answer particular questions. Please contact Professor Ashish Goel at
-goel_admins@lists.stanford.edu if you have any questions, suggestions,
-or concerns. You may also contact the Stanford Institutional Review
-Board at 650-723-2480.</p>"
+      body: "<p style='font-size: 20px;'>You will now be asked to participate in an activity that will <u>not</u> affect your vote, but is part of a Stanford University research project meant to help us improve the participatory budgeting process.</p> <ul style='font-size: 20px;'><li>Participating in this activity is optional. You can exit at any time.</li> <li>The expected time for this activity is 2-3 minutes.</li> </ul> <p style='font-size: 14px;'>This study poses no risk. No payment will be made to you for participation, and we cannot guarantee any benefits to you. You have the right to refuse to answer particular questions. Please contact Professor Ashish Goel at goel_admins@lists.stanford.edu if you have any questions, suggestions, or concerns. You may also contact the Stanford Institutional Review Board at 650-723-2480.</p>"
       ok: "Continue"
       exit: "Exit"
     instructions: "<h3>Instructions</h3>
@@ -405,8 +357,8 @@ Board at 650-723-2480.</p>"
   about:
     title: "About"
     description: "<center><h1 class='sub-header'>About the digital participatory budgeting interface</h1></center>
-    <br><p class='lead'>The digital participatory budgeting interface has been developed by the <a href='https://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. We hope that the visual nature of the interface and the richness of the information presented will help you learn about the projects and cast more informative votes.</p>
-    <p class='lead'>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
+      <br><p class='lead'>The digital participatory budgeting interface has been developed by the <a href='https://voxpopuli.stanford.edu/' target='_blank'>Stanford Crowdsourced Democracy Team</a>. We hope that the visual nature of the interface and the richness of the information presented will help you learn about the projects and cast more informative votes.</p>
+      <p class='lead'>This is an open source project licensed under the GNU GPL v3.0 license. You can find the source code on <a href='https://github.com/StanfordCDT/pb' target='_blank'>GitHub</a>.</p>
     <p class='lead'>If you have technical problems or you want to give feedback, please email <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> and we will try to get back to you as soon as possible.</p>"
 
   result:

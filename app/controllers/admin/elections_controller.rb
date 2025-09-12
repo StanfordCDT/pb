@@ -148,7 +148,7 @@ module Admin
       
       # Disable the permission for admins to change election configs when archiving
       election.update(archived: true)
-      election.update(allow_admins_to_update_election: false)
+      election.update_column(:allow_admins_to_update_election, false)
 
       # Leave a note that the election has been archived
       redirect_to admin_election_path(election), notice: 'Election has been archived.'
@@ -509,7 +509,7 @@ module Admin
 
     def election_params
       params.require(:election).permit(
-        [:name, :slug, :budget, :time_zone, :config_yaml] +
+        [:name, :slug, :budget, :time_zone, :config_yaml, :id] +
         (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :real_election, :remarks] : [])
       )
     end

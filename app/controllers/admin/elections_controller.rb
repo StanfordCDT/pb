@@ -1,5 +1,6 @@
 module Admin
   require 'csv'
+  require 'digest'
   require_relative "./knapsack_allocation"
   class ElectionsController < ApplicationController
     before_action :set_no_cache
@@ -131,7 +132,7 @@ module Admin
         updates = {}
         updates[:ip_address] = Digest::SHA256.hexdigest(voter.ip_address.to_s) if voter.ip_address.present?
         updates[:user_agent] = Digest::SHA256.hexdigest(voter.user_agent.to_s) if voter.user_agent.present?
-        
+        # TODO: retain some information from user_agent such as device type, browser, etc.
         voter.update_columns(updates) if updates.any?
       end
 
@@ -146,7 +147,8 @@ module Admin
       end
       
       # Disable the permission for admins to change election configs when archiving
-      election.update(archived: true, allow_admins_to_update_election: false)
+      election.update(archived: true)
+      election.update(allow_admins_to_update_election: false)
 
       # Leave a note that the election has been archived
       redirect_to admin_election_path(election), notice: 'Election has been archived.'

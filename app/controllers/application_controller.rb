@@ -115,7 +115,24 @@ class ApplicationController < ActionController::Base
     referrer = connection.quote(request.referer)
     url = connection.quote(request.url)
     request_method = connection.quote(request.method)
-    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, NOW())")
+    election_id = connection.quote(determine_election_id_from_url(request.url))
+    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, election_id, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, #{election_id}, NOW())")
+  end
+
+  def determine_election_id_from_url(url)
+    bases = ["http://localhost:3000/", "https://pbstanford.org/"]
+    
+    base = bases.find { |b| url.start_with?(b) }
+    return -1 unless base
+    
+    rest = url[base.length..] || ""
+    # first non-empty segment after base
+    first_segment = rest.split("/", 2).first
+    return -1 unless first_segment && !first_segment.empty?
+    
+    # Look up election by slug
+    election = Election.find_by(slug: first_segment)
+    election ? election.id : -1
   end
 
   def cost_with_delimiter(cost, currency_symbol)

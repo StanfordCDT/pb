@@ -17,7 +17,12 @@
 <tbody>
   <% elections.each do |election| %>
     <tr>
-      <td><a href="<%= admin_election_path(election.id) %>"><%= election.name %></a></td>
+      <td>
+        <a href="<%= admin_election_path(election.id) %>"><%= election.name %></a>
+        <% if election.archived? %>
+          <span class="badge badge-secondary ml-1" title="This election has been archived">Archived</span>
+        <% end %>
+      </td>
       <td>/<%= election.slug %></td>
       <% if current_user.superadmin? %>
         <td><%= election.workflow_summary.html_safe %></td>

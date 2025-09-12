@@ -12,6 +12,12 @@
         <b>URL:</b> <a href="<%= url %>" target="_blank"><%= url %></a>
       </p>
 
+      <% if @election.archived? %>
+        <div class="alert alert-warning" role="alert">
+          <strong>This election has been archived.</strong>
+        </div>
+      <% end %>
+
       <%
       todos = []
       if !@election.config[:allow_local_voting] && !@election.config[:allow_remote_voting]
@@ -64,8 +70,32 @@
       <%#= h(@election.config_yaml).gsub("\n", '<br>').gsub('  ', '&nbsp;').html_safe %>
 
       <% if current_user.superadmin? %>
-        <p><a href="#" data-toggle="modal" data-target="#confirm-delete">Delete this election...</a></p>
+        <p>
+          <% if @election.archived? %>
+            <span class="text-muted">This election has been archived</span> |
+          <% else %>
+            <a href="#" data-toggle="modal" data-target="#confirm-archive" style="color: red;">Archive this Election</a> |
+          <% end %>
+          <a href="#" data-toggle="modal" data-target="#confirm-delete">Delete this election...</a>
+        </p>
       <% end %>
+
+      <div class="modal fade" id="confirm-archive" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Archive Election</h5>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to archive this election? This action is permanent and cannot be undone.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <%= link_to 'Archive', archive_admin_election_path(@election), method: :post, class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">

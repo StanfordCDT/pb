@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         get 'analytics_chicago49'
         get 'to_voting_machine'
         post 'post_to_voting_machine'
+        post 'archive'
       end
       collection do
         get 'config_reference'

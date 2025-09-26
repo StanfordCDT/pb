@@ -1,3 +1,4 @@
+---
 hi:
   navigation:
     brand: PB
@@ -8,8 +9,9 @@ hi:
   index:
     title: पार्टिसिपेटरी बजटिंग
     voting_machine:
-      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>पार्टिसिपेटरी बजटिंग के लिए डिजिटल वोटिंग इंटरफ़ेस
-        में आपका स्वागत है</p>"
+      welcome: '<img src="/img/sample-city-logo.png" style=''margin-left: auto; margin-right:
+        auto; display: block;'' /><p class=''lead'' style=''text-align:center;''>पार्टिसिपेटरी
+        बजटिंग के लिए डिजिटल वोटिंग इंटरफ़ेस में आपका स्वागत है</p>'
       instruction: कृपया आपको मिला हुआ कोड दर्ज करें
       code_placeholder: कोड
       enter_code_button: दर्ज करें
@@ -69,22 +71,22 @@ hi:
       body:
         summary:
           zero: "<span style='color: red;'> आपने कोई  योजना नहीं चुना है। </span>"
-          other: "आपने निम्न योजना चुने हैं: %{projects}"
+          other: 'आपने निम्न योजना चुने हैं: %{projects}'
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: "<span style='color: red;'>आपने कोई परियोजना नहीं चुनी है।</span>"
+          other: 'आपने निम्नलिखित परियोजनाओं के लिए टोकन चुने हैं: %{projects}'
+          item: "%{project} (%{cost} टोकन)"
         under_n_project_limit:
           one: "<span style='color: red;'> आपने केवल एक योजना चुना है। </span>"
-          less: "<span style='color: red;'> आपने केवल %{count} योजना चुने हैं।
-            </span>"
-          limit: "<span style='color: red;'> आप%{max_n_projects} योजनाएं के  लिए
-            वोट कर सकते हैं।"
-        under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          less: "<span style='color: red;'> आपने केवल %{count} योजना चुने हैं। </span>"
+          limit: "<span style='color: red;'> आप%{max_n_projects} योजनाएं के  लिए वोट
+            कर सकते हैं।"
+        under_token_limit:
+          one: "<span style='color: red;'>आपने केवल एक टोकन चुना है।</span>"
+          less: "<span style='color: red;'>आपने केवल %{count} टोकन चुने हैं।</span>"
+          limit: "<span style='color: red;'>आप अधिकतम %{total_tokens} टोकन चुन सकते
+            हैं।</span>"
         warning: अपना वोट दर्ज करने के बाद, आप <strong> अपना वोट नहीं </strong> बदल
           सकते। यदि आप अपना वोट संशोधित करना चाहते हैं, तो कृपया नीचे 'वापस जाएँ'
           पर क्लिक करें। यदि आप अपना वोट दर्ज करना चाहते हैं, तो कृपया नीचे दिए गए
@@ -94,11 +96,13 @@ hi:
       cancel: वापस जाएँ
     confirmation_over_limit:
       title: आपका वोट दर्ज नहीं हुआ है
-      over_n_project_limit: "<span style='color: red'> आपने <b>%{n_projects} </b> योजना चुने हैं । आप केवल <b>%{max_n_projects} </b>  योजनाएं में चुन सकते
-        हैं। कृपया <b>% {अतिरिक्त} </b> या अधिक योजनाएं निकालें। </span>"
+      over_n_project_limit: "<span style='color: red'> आपने <b>%{n_projects} </b>
+        योजना चुने हैं । आप केवल <b>%{max_n_projects} </b>  योजनाएं में चुन सकते हैं।
+        कृपया <b>% {अतिरिक्त} </b> या अधिक योजनाएं निकालें। </span>"
       over_budget_limit: "<span style='color: red'> आप वर्तमान में बजट से अधिक हैं।
         </span>"
-      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
+      over_token_limit: "<span style= 'color:red'> आपने उपलब्ध टोकनों से अधिक टोकन
+        उपयोग कर लिए हैं। कृपया खर्च किए गए टोकनों को अधिकतम से कम करें।</span>"
       cancel: वापस जाएँ
     tracker:
       text: आपने %{count} योजनाएं चुना है।
@@ -109,23 +113,27 @@ hi:
       over_budget: आपके वर्त्तमान पैसे निश्चित किये गए बजट से ज़्यादा है
       over_budget_but_can_add_projects: आपके वर्त्तमान पैसे निश्चित किये गए बजट से
         ज़्यादा है, फिर भी आप और योजनाए चुन सकते है
-    tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_token: "You still have %{remaining_money} tokens left."
-      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
+    tokenbar:
+      text: आपने कुल %{budget} टोकनों में से %{total} चुने हैं।
+      under_token: आपके पास अभी भी %{remaining_money} टोकन बचे हैं।
+      over_token: Yआपने उपलब्ध टोकनों से अधिक टोकन उपयोग कर लिए हैं। कृपया खर्च किए
+        गए टोकनों को अधिकतम से कम करें।
+      over_budget_but_can_add_tokens: आप फिलहाल बजट से ऊपर हैं, लेकिन टोकन जोड़ना
+        जारी रख सकते हैं।
     adjustable_cost_project:
       instructions: कृपया नीचे दिए गए ऑप्शन में से एक को चुने
-      not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 चुना है</span>"
+      not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 चुना
+        है</span>"
       message: आपने %{project} के लिए %{cost} चुना हैं
       table_headings:
         percentage_column: खर्च किए गए बजट का प्रतिशत
         cost_column: दाम
         number_column: 'लगभग # ब्लॉक रिसॅःफ्इस'
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+    adjustable_token_project:
+      instructions: 'कृपया नीचे दिए गए विकल्पों में से एक चुनें:'
+      not_adjusted_warning: "<span style='color:red'>आपने %{project} के लिए 0 टोकन
+        चुने हैं</span>"
+      message: आपने %{project} के लिए %{cost} टोकन चुने हैं
     map:
       street_resurfacing_count:
         one: 1 स्ट्रीट रिपेव्
@@ -142,7 +150,8 @@ hi:
     image_gallery:
       cue: स्लाइड शो के लिए छवि पर क्लिक करें
     project_ranking:
-      list_header: आपने इन योजनाओं को चुना है| <span class='glyphicon glyphicon-sort'></span> आइकन खींचकर उनकी रैंकिंग बदलें।
+      list_header: आपने इन योजनाओं को चुना है| <span class='glyphicon glyphicon-sort'></span>
+        आइकन खींचकर उनकी रैंकिंग बदलें।
       continue_button: जारी रखें
   thanks_approval:
     title: धन्यवाद
@@ -150,7 +159,8 @@ hi:
       real: "<p class='lead text-center'> वोट दर्ज करने के लिए धन्यवाद। कृपया अगले
         पृष्ठ पर जाने के लिए नीचे 'अगला' पर क्लिक करें। </p>"
       demo: "<p class='lead'> वोट देने के लिए धन्यवाद! <span style='color: red;'>
-        <strong> कृपया ध्यान दें कि यह केवल <u> पूर्वावलोकन </u> है। </strong> </span> कृपया अगले पृष्ठ पर जाने के लिए नीचे 'अगला' पर क्लिक करें। । </p>"
+        <strong> कृपया ध्यान दें कि यह केवल <u> पूर्वावलोकन </u> है। </strong> </span>
+        कृपया अगले पृष्ठ पर जाने के लिए नीचे 'अगला' पर क्लिक करें। । </p>"
     send_vote_email: "(वैकल्पिक) मैं अपना वोट परिणाम अपने ईमेल पर भेजना चाहता हूं:"
     email_placeholder: ईमेल दर्ज करें
     next_button: आगे
@@ -158,19 +168,18 @@ hi:
     title: पार्टिसिपेटरी बजटिंग
     popup:
       title: सूचना
-      body: "<p style='font-size: 20px;'> अब आपको एक गतिविधि में भाग लेने के लिए कहा जाएगा
-        होगा <u> नहीं </u> अपने वोट को प्रभावित करते हैं, लेकिन एक स्टैनफोर्ड विश्वविद्यालय अनुसंधान परियोजना का हिस्सा है
-        सहभागी बजट प्रक्रिया को बेहतर बनाने में हमारी मदद करने के लिए। </p>
-        <ul style='font-size: 20px;'> <li> इस गतिविधि में भाग लेना वैकल्पिक है। आप किसी भी समय बाहर निकल सकते हैं। </li>
-        <li> इस गतिविधि का अपेक्षित समय 2-3 मिनट है। </li>
-        </ul>
-        <p style='font-size: 14px;'> इस अध्ययन में कोई जोखिम नहीं है।
-        भागीदारी के लिए आपको कोई भुगतान नहीं किया जाएगा
-        आपको किसी भी लाभ की गारंटी नहीं दे सकता है। आपको मना करने का अधिकार है
-        विशेष प्रश्नों के उत्तर दें। कृपया प्रोफेसर आशीष गोयल से संपर्क करें
-        यदि आपके कोई प्रश्न, सुझाव हैं, तो goel_admins@lists.stanford.edu,
-        या चिंता। आप स्टैनफोर्ड इंस्टीट्यूशनल रिव्यू से भी संपर्क कर सकते हैं
-        650-723-2480 पर बोर्ड। </p>"
+      body: "<p style='font-size: 20px;'> अब आपको एक गतिविधि में भाग लेने के लिए कहा
+        जाएगा होगा <u> नहीं </u> अपने वोट को प्रभावित करते हैं, लेकिन एक स्टैनफोर्ड
+        विश्वविद्यालय अनुसंधान परियोजना का हिस्सा है सहभागी बजट प्रक्रिया को बेहतर
+        बनाने में हमारी मदद करने के लिए। </p> <ul style='font-size: 20px;'> <li> इस
+        गतिविधि में भाग लेना वैकल्पिक है। आप किसी भी समय बाहर निकल सकते हैं। </li>
+        <li> इस गतिविधि का अपेक्षित समय 2-3 मिनट है। </li> </ul> <p style='font-size:
+        14px;'> इस अध्ययन में कोई जोखिम नहीं है। भागीदारी के लिए आपको कोई भुगतान नहीं
+        किया जाएगा आपको किसी भी लाभ की गारंटी नहीं दे सकता है। आपको मना करने का अधिकार
+        है विशेष प्रश्नों के उत्तर दें। कृपया प्रोफेसर आशीष गोयल से संपर्क करें यदि
+        आपके कोई प्रश्न, सुझाव हैं, तो goel_admins@lists.stanford.edu, या चिंता। आप
+        स्टैनफोर्ड इंस्टीट्यूशनल रिव्यू से भी संपर्क कर सकते हैं 650-723-2480 पर बोर्ड।
+        </p>"
       ok: ओके
     instructions: |-
       <h3>सूचना</h3>
@@ -198,22 +207,22 @@ hi:
       body:
         summary:
           zero: "<span style='color: red;'> आपने कोई योजना नहीं चुना है। </span>"
-          other: "आपने निम्न योजना चुने हैं: %{projects}"
+          other: 'आपने निम्न योजना चुने हैं: %{projects}'
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: "<span style='color: red;'>आपने कोई परियोजना नहीं चुनी है।</span>"
+          other: 'आपने निम्नलिखित परियोजनाओं के लिए टोकन चुने हैं: %{projects}'
+          item: "%{project} (%{cost} टोकन)"
         under_n_project_limit:
           one: "<span style='color: red;'> आपने केवल एक योजना चुना है। </span>"
-          less: "<span style='color: red;'> आपने केवल %{count} योजना चुने हैं।
-            </span>"
+          less: "<span style='color: red;'> आपने केवल %{count} योजना चुने हैं। </span>"
           limit: "<span style='color: red;'> आप%{max_n_projects} योजना के लिए वोट
             कर सकते हैं।"
-        under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>आपने केवल एक टोकन चुना है।</span>"
+          less: "<span style='color: red;'>आपने केवल %{count} टोकन चुने हैं।</span>"
+          limit: "<span style='color: red;'>आप अधिकतम %{total_tokens} टोकन चुन सकते
+            हैं।</span>"
         warning: अपना वोट दर्ज करने के बाद, आप अपना वोट नहीं बदल सकते। यदि आप अपना
           वोट बदलना चाहते हैं, तो कृपया नीचे 'वापस जाएँ' पर क्लिक करें। यदि आप अपना
           वोट दर्ज करना चाहते हैं, तो कृपया नीचे दिए गए बॉक्स को देखें और फिर 'मेरा
@@ -223,8 +232,9 @@ hi:
       cancel: वापस जाएँ
     confirmation_over_limit:
       title: आपका वोट दर्ज नहीं हुआ है
-      over_n_project_limit: "<span style='color: red'> आपने <b>%{n_projects} </b> योजना चुने हैं। आप केवल <b>%{max_n_projects} </b>  योजना में चुन सकते
-        हैं। कृपया <b>%{extra}</b> या अधिक योजना निकालें। </span>"
+      over_n_project_limit: "<span style='color: red'> आपने <b>%{n_projects} </b>
+        योजना चुने हैं। आप केवल <b>%{max_n_projects} </b>  योजना में चुन सकते हैं।
+        कृपया <b>%{extra}</b> या अधिक योजना निकालें। </span>"
       over_budget_limit: "<span style='color: red'> आप वर्तमान में बजट से अधिक हैं।
         </span>"
       cancel: वापस जाएँ
@@ -237,23 +247,27 @@ hi:
       over_budget: आपके वर्त्तमान पैसे निश्चित किये गए बजट से ज़्यादा है
       over_budget_but_can_add_projects: आपके वर्त्तमान पैसे निश्चित किये गए बजट से
         ज़्यादा है, फिर भी आप और योजनाए चुन सकते है
-    tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    tokenbar:
+      text: कुल %{budget} टोकनों में से %{total} चुने गए।
+      under_budget: आपके पास अभी भी %{remaining_money} बचे हैं।
+      over_budget: आपने उपलब्ध टोकनों से अधिक टोकन उपयोग कर लिए हैं। कृपया खर्च किए
+        गए टोकनों को अधिकतम से कम करें।
+      over_budget_but_can_add_projects: आप फिलहाल बजट से ऊपर हैं, लेकिन परियोजनाएँ
+        जोड़ना जारी रख सकते हैं।
     adjustable_cost_project:
       instructions: कृपया नीचे दिए गए ऑप्शन में से एक को चुने
-      not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 चुने हैं</span>"
+      not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 चुने
+        हैं</span>"
       message: आपने %{project} के लिए %{cost} चुना हैं
       table_headings:
         percentage_column: खर्च किए गए बजट का प्रतिशत
         cost_column: दाम
         number_column: 'लगभग # ब्लॉक रिसॅःफ्इस'
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"  
+    adjustable_token_project:
+      instructions: 'कृपया नीचे दिए गए विकल्पों में से एक चुनें:'
+      not_adjusted_warning: "<span style='color:red'> आपने %{project} के लिए 0 टोकन
+        चुने हैं </span>"
+      message: आपने %{project} के लिए %{cost} टोकन चुने हैं
     image_gallery:
       cue: स्लाइड शो के लिए चित्र पर क्लिक करें
   question:
@@ -318,93 +332,93 @@ hi:
       body:
         summary:
           zero: "<span style='color: red;'> आपने कोई  योजना नहीं चुना है। </span>"
-          other: "आपने निम्न  योजना चुने हैं: %{projects}"
+          other: 'आपने निम्न  योजना चुने हैं: %{projects}'
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: "<span style='color: red;'>आपने कोई परियोजना नहीं चुनी है।</span>"
+          other: 'आपने निम्नलिखित परियोजनाओं के लिए टोकन चुने हैं: %{projects}'
+          item: "%{project} (%{cost} टोकन)"
         under_n_project_limit:
           one: "<span style='color: red;'> आपने केवल एक योजना चुना है। </span>"
-          less: "<span style='color: red;'> आपने केवल less: योजना चुने हैं।
-            </span>"
+          less: "<span style='color: red;'> आपने केवल less: योजना चुने हैं। </span>"
           limit: "<span style='color: red;'> आप%{max_n_projects} योजना के लिए वोट
             कर सकते हैं।"
-        under_token_limit: ##fixme language
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+        under_token_limit:
+          one: "<span style='color: red;'>आपने केवल एक टोकन चुना है।</span>"
+          less: "<span style='color: red;'>आपने केवल %{count} टोकन चुने हैं।</span>"
+          limit: "<span style='color: red;'>आप अधिकतम %{total_tokens} टोकन चुन सकते
+            हैं।</span>"
         warning: अपना वोट दर्ज करने के बाद, आप अपना वोट नहीं बदल सकते।
       ok: मेरा वोट दर्ज करें
       cancel: वापस जाएँ
     adjustable_cost_project:
       instructions: कृपया नीचे दिए गए ऑप्शन में से एक को चुने
-      not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 को चुने</span>"
+      not_adjusted_warning: "<span style='color: red'>आपने %{project} के लिए $ 0 को
+        चुने</span>"
       message: आपने %{project} के लिए %{cost} चुना हैं
-    
-    adjustable_token_project: ##fixme language
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
-
+    adjustable_token_project:
+      instructions: 'कृपया नीचे दिए गए विकल्पों में से एक चुनें:'
+      not_adjusted_warning: "<span style='color:red'>आपने %{project} के लिए 0 टोकन
+        चुने हैं </span>"
+      message: आपने %{project} के लिए %{cost} टोकन चुने हैं
   token:
-    title: "Participatory Budgeting"
+    title: भागीदारी बजट
     popup:
-      title: "सूचना"
-      body: "<p style='font-size: 20px;'> अब आपको एक गतिविधि में भाग लेने के लिए कहा जाएगा
-        होगा <u> नहीं </u> अपने वोट को प्रभावित करते हैं, लेकिन एक स्टैनफोर्ड विश्वविद्यालय अनुसंधान परियोजना का हिस्सा है
-        सहभागी बजट प्रक्रिया को बेहतर बनाने में हमारी मदद करने के लिए। </p>
-        <ul style='font-size: 20px;'> <li> इस गतिविधि में भाग लेना वैकल्पिक है। आप किसी भी समय बाहर निकल सकते हैं। </li>
-        <li> इस गतिविधि का अपेक्षित समय 2-3 मिनट है। </li>
-        </ul>
-        <p style='font-size: 14px;'> इस अध्ययन में कोई जोखिम नहीं है।
-        भागीदारी के लिए आपको कोई भुगतान नहीं किया जाएगा
-        आपको किसी भी लाभ की गारंटी नहीं दे सकता है। आपको मना करने का अधिकार है
-        विशेष प्रश्नों के उत्तर दें। कृपया प्रोफेसर आशीष गोयल से संपर्क करें
-        यदि आपके कोई प्रश्न, सुझाव हैं, तो goel_admins@lists.stanford.edu,
-        या चिंता। आप स्टैनफोर्ड इंस्टीट्यूशनल रिव्यू से भी संपर्क कर सकते हैं
-        650-723-2480 पर बोर्ड। </p>"
-      ok: "Continue"
-      exit: "Exit"
-    instructions: "<h3>Instructions</h3>
-                   <ol>
-                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
-                     <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
-                   </ol>"
+      title: सूचना
+      body: "<p style='font-size: 20px;'> अब आपको एक गतिविधि में भाग लेने के लिए कहा
+        जाएगा होगा <u> नहीं </u> अपने वोट को प्रभावित करते हैं, लेकिन एक स्टैनफोर्ड
+        विश्वविद्यालय अनुसंधान परियोजना का हिस्सा है सहभागी बजट प्रक्रिया को बेहतर
+        बनाने में हमारी मदद करने के लिए। </p> <ul style='font-size: 20px;'> <li> इस
+        गतिविधि में भाग लेना वैकल्पिक है। आप किसी भी समय बाहर निकल सकते हैं। </li>
+        <li> इस गतिविधि का अपेक्षित समय 2-3 मिनट है। </li> </ul> <p style='font-size:
+        14px;'> इस अध्ययन में कोई जोखिम नहीं है। भागीदारी के लिए आपको कोई भुगतान नहीं
+        किया जाएगा आपको किसी भी लाभ की गारंटी नहीं दे सकता है। आपको मना करने का अधिकार
+        है विशेष प्रश्नों के उत्तर दें। कृपया प्रोफेसर आशीष गोयल से संपर्क करें यदि
+        आपके कोई प्रश्न, सुझाव हैं, तो goel_admins@lists.stanford.edu, या चिंता। आप
+        स्टैनफोर्ड इंस्टीट्यूशनल रिव्यू से भी संपर्क कर सकते हैं 650-723-2480 पर बोर्ड।
+        </p>"
+      ok: जारी रखें
+      exit: बाहर निकलें
+    instructions: <h3>निर्देश</h3> <ol> <li>वे परियोजनाएँ चुनें जिन्हें आप समर्थन
+      देना चाहते हैं। कुल टोकनों की संख्या <b>%{total_tokens}</b>. से अधिक नहीं हो
+      सकती।</li> <li>आप ऊपर की पट्टी में अब तक आवंटित कुल राशि देख सकते हैं। आप पट्टी
+      पर क्लिक करके या सीधे चुनी हुई परियोजना पर क्लिक करके पहले चुनी गई परियोजनाएँ
+      हटा सकते हैं।</li> <li><b>"मेरा वोट जमा करें"</b> बटन पर तब क्लिक करें जब आप
+      सबमिट करने के लिए तैयार हों।</li> </ol>
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: क्या आप वाकई अपना वोट जमा करना चाहते हैं?
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
-          other: "You have selected the following projects: %{projects}"
+          zero: "<span style='color: red;'>आपने कोई परियोजनाएँ नहीं चुनी हैं।</span>"
+          other: 'आपने निम्नलिखित परियोजनाएँ चुनी हैं: %{projects}'
           item: "%{project} (%{cost})"
         summary_token:
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
-
+          zero: "<span style='color: red;'>आपने कोई परियोजना नहीं चुनी है।</span>"
+          other: 'आपने निम्नलिखित परियोजनाओं के लिए टोकन चुने हैं: %{projects}'
+          item: "%{project} (%{cost} टोकन)"
         under_n_project_limit:
-          one: "<span style='color: red;'>You have selected only one project.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
-          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+          one: "<span style='color: red;'>आपने केवल एक परियोजना चुनी है।</span>"
+          less: "<span style='color: red;'>आपने केवल %{count} परियोजनाएँ चुनी हैं।</span>"
+          limit: "<span style='color: red;'>आप अधिकतम %{max_n_projects} परियोजनाओं
+            के लिए वोट कर सकते हैं।</span>"
         under_token_limit:
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
-
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+          one: "<span style='color: red;'>आपने केवल एक टोकन चुना है।</span>"
+          less: "<span style='color: red;'>आपने केवल %{count} टोकन चुने हैं।</span>"
+          limit: "<span style='color: red;'>आप अधिकतम %{total_tokens} टोकन चुन सकते
+            हैं।</span>"
+        warning: वोट जमा करने के बाद, आप अपना वोट बदल <strong>नहीं</strong> सकते।
+      ok: मेरा वोट जमा करें
+      cancel: वापस जाएँ
     adjustable_cost_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected %{cost} for %{project}"
-
+      instructions: 'कृपया नीचे दिए गए विकल्पों में से एक चुनें:'
+      not_adjusted_warning: "<span style='color:red'>आपने %{project} के लिए $0 चुना
+        है </span>"
+      message: आपने %{project} के लिए %{cost} चुना है
     adjustable_token_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+      instructions: 'कृपया नीचे दिए गए विकल्पों में से एक चुनें:'
+      not_adjusted_warning: "<span style='color:red'>आपने %{project} के लिए 0 टोकन
+        चुने हैं </span>"
+      message: आपने %{project} के लिए %{cost} टोकन चुने हैं
   survey:
     title: सर्वे
     header: एक सर्वे  ले
@@ -419,9 +433,9 @@ hi:
     description:
       real: वोट दर्ज करने के लिए धन्यवाद। कृपया नीचे दिए गए 'बाहर निकलें' बटन पर क्लिक
         करें
-      demo: "डिजिटल पार्टिसिपेटरी बजटिंग  इंटरफ़ेस का परीक्षण करने के लिए धन्यवाद!<span
-        style='color: red;'><strong> कृपया ध्यान दें कि यह केवल एक <u> प्रीव्यू
-        </u> है </u>.</strong></span>"
+      demo: 'डिजिटल पार्टिसिपेटरी बजटिंग  इंटरफ़ेस का परीक्षण करने के लिए धन्यवाद!<span
+        style=''color: red;''><strong> कृपया ध्यान दें कि यह केवल एक <u> प्रीव्यू
+        </u> है </u>.</strong></span>'
     exit: बाहर निकले
   about:
     title: के बारे में
@@ -457,12 +471,13 @@ hi:
       सेल फ़ोन नंबर दर्ज करें, और हम आपको एक कॉन्फ़र्मेशन कोड भेजेंगे</p>"
     phone_number_placeholder: फोन नंबर दर्ज करें
     verify_button: वेरफाइ
-    invalid_phone_number: "\"%{phone_number}\" एक वैध फ़ोन नंबर नहीं है।"
+    invalid_phone_number: '"%{phone_number}" एक वैध फ़ोन नंबर नहीं है।'
     blacklisted_phone_number: इस फ़ोन नंबर ने हमसे संदेश न प्राप्त करने का विकल्प
       चुना है।  कॉन्फ़र्मेशन कोड प्राप्त करने के लिए, कृपया START को %{our_phone_number}
       भेजें और फिर यहां अपना फ़ोन नंबर दर्ज करें
-    no_cell_phone_instruction: "यदि आपके पास कोई सेल फ़ोन नहीं है, तो कृपया ऑनलाइन
-      वोट देने के लिए किसी अन्य विधि का उपयोग करने के लिए कृपया <a href=\"%{code_signup_url}\">यहां क्लिक करें</a>।"
+    no_cell_phone_instruction: यदि आपके पास कोई सेल फ़ोन नहीं है, तो कृपया ऑनलाइन
+      वोट देने के लिए किसी अन्य विधि का उपयोग करने के लिए कृपया <a href="%{code_signup_url}">यहां
+      क्लिक करें</a>।
   code_signup:
     title: वोट करने के लिए प्रवेश कोड दर्ज करें
     instruction: एक्सेस कोड प्राप्त करने के लिए कृपया XXX@stanford.edu पर ईमेल करें
@@ -475,8 +490,9 @@ hi:
   other_signup:
     title: वोट डालने के लिए विवरण दर्ज करें
     instruction: ''
-    no_account_number_instruction: "यदि आपके पास कोई खाता संख्या नहीं है, तो कृपया
-      ऑनलाइन वोट करने के लिए किसी अन्य विधि का उपयोग करने के लिए कृपया <a href=\"%{code_signup_url}\">यहां क्लिक करें </a>"
+    no_account_number_instruction: यदि आपके पास कोई खाता संख्या नहीं है, तो कृपया
+      ऑनलाइन वोट करने के लिए किसी अन्य विधि का उपयोग करने के लिए कृपया <a href="%{code_signup_url}">यहां
+      क्लिक करें </a>
     zipcode_placeholder: पिन कोड
     account_number_placeholder: खाता संख्या
     vote_button: वोट
@@ -515,35 +531,36 @@ hi:
     error: कृपया निम्नलिखित गलतियां सुधारें
     not_voting_age_error: इस चुनाव में वोट करने के लिए आपकी आयु आवश्यकता के बीच होनी
       चाहिए
-    verify_age_error: "Please confirm \"%{checkbox_label}\""  # FIXME: Translate.
+    verify_age_error: 'कृपया पुष्टि करें: "%{checkbox_label}"'
   sms_signup_confirm:
     title: अपना फोन नंबर वेरफाइ करें
     header: अपना  फोन नंबर  वेरफाइ करें
     instructions: "<p> हमने <b>%{phone_number}</b> को एक  कॉन्फ़र्मेशन कोड भेजा है।
-      आपको एक मिनट के भीतर कोड प्राप्त करना चाहिए। </p> <p> कृपया अपना फ़ोन नंबर
-      सत्यापित करने के लिए कॉन्फ़र्मेशन कोड दर्ज करें। </p>"
+      आपको एक मिनट के भीतर कोड प्राप्त करना चाहिए। </p> <p> कृपया अपना फ़ोन नंबर सत्यापित
+      करने के लिए कॉन्फ़र्मेशन कोड दर्ज करें। </p>"
     code_placeholder: कोड दर्ज करें
     confirm_button: कॉन्फ़र्मे करें
     wrong_code: गलत कोड
-    resend_code: "यदि आपको एक मिनट के भीतर कोड प्राप्त नहीं होता है, तो कॉन्फ़र्मेशन
-      कोड को पुन: भेजने के लिए <a href=\"%{resend_code_url}\"> यहां </a> पर क्लिक
-      करें।"
-    make_sure_phone_number_is_correct: "सुनिश्चित करें कि %{phone_number} आपका सही सेल फ़ोन नंबर है। यदि यह <u> नहीं </u> सही है, तो इसे बदलने के लिए कृपया <a href=\"%{signup_url}\">यहां </a> क्लिक करें।"
-    still_not_working: "यदि आपको कई प्रयासों के बाद भी  कॉन्फ़र्मेशन कोड प्राप्त करने
+    resend_code: 'यदि आपको एक मिनट के भीतर कोड प्राप्त नहीं होता है, तो कॉन्फ़र्मेशन
+      कोड को पुन: भेजने के लिए <a href="%{resend_code_url}"> यहां </a> पर क्लिक करें।'
+    make_sure_phone_number_is_correct: सुनिश्चित करें कि %{phone_number} आपका सही
+      सेल फ़ोन नंबर है। यदि यह <u> नहीं </u> सही है, तो इसे बदलने के लिए कृपया <a
+      href="%{signup_url}">यहां </a> क्लिक करें।
+    still_not_working: यदि आपको कई प्रयासों के बाद भी  कॉन्फ़र्मेशन कोड प्राप्त करने
       में समस्या हो रही है, तो ऑनलाइन वोट करने के लिए किसी अन्य विधि का उपयोग करने
-      के लिए कृपया <a href=\"%{code_signup_url}\"> यहां क्लिक करें </a>।"
-    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
-
+      के लिए कृपया <a href="%{code_signup_url}"> यहां क्लिक करें </a>।
+    confirmation_textmsg: PBStanford.org पर भागीदारी बजट (Participatory Budgeting)
+      में वोट देने के लिए कोड के रूप में %{confirmation_code} का उपयोग करें
   general:
     demo_warning: यह केवल एक प्रिव्यू है। आपका वोट रिकॉर्ड नहीं किया जाएगा।
     experiment_disclaimer: यह केवल एक सर्वे   है। इसका असर आपके वोट पर नहीं पड़ेगा।
-    shuffle_note: "<span style='font-size: 18px;'>नोट: ये योजनाएँ यादृच्छिक क्रम
-      में व्यवस्थित हैं।</span>"
+    shuffle_note: "<span style='font-size: 18px;'>नोट: ये योजनाएँ यादृच्छिक क्रम में
+      व्यवस्थित हैं।</span>"
     project_string: योजना
-    close_button: "Close"  # FIXME: Translate.
+    close_button: बंद करें
     timeout:
-      body: "आपका सेशन समाप्त होने वाला है। वेबसाइट का उपयोग जारी रखने के लिए \"जारी
-        रखें\" पर क्लिक करें।"
+      body: आपका सेशन समाप्त होने वाला है। वेबसाइट का उपयोग जारी रखने के लिए "जारी
+        रखें" पर क्लिक करें।
       continue_button: जारी रखें
   date:
     month_names:
@@ -568,3 +585,9 @@ hi:
     messages:
       blank: खाली नहीं रह सकता है
       invalid: अवैध है
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: सबसे कम लागत

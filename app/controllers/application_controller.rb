@@ -120,19 +120,32 @@ class ApplicationController < ActionController::Base
   end
 
   def determine_election_id_from_url(url)
-    bases = ["http://localhost:3000/", "https://pbstanford.org/"]
-    
-    base = bases.find { |b| url.start_with?(b) }
-    return -1 unless base
-    
-    rest = url[base.length..] || ""
-    # first non-empty segment after base
-    first_segment = rest.split("/", 2).first
-    return -1 unless first_segment && !first_segment.empty?
-    
-    # Look up election by slug
-    election = Election.find_by(slug: first_segment)
-    election ? election.id : -1
+    begin
+      bases = ["http://localhost:3000/", "https://pbstanford.org/"]
+      
+      base = bases.find { |b| url.start_with?(b) }
+      unless base
+        url_logger.error "URL parsing failed: URL doesn't match expected base patterns | URL: #{url}"
+        return -1
+      end
+      
+      rest = url[base.length..] || ""
+      # Remove query string before splitting to handle URLs like "el4?locale=en"
+      path_without_query = rest.split('?').first
+      # Check if path_without_query is not nil before splitting
+      return -1 unless path_without_query
+      
+      # first non-empty segment after base
+      first_segment = path_without_query.split("/", 2).first
+      return -1 unless first_segment && !first_segment.empty?
+      
+      # Look up election by slug
+      election = Election.find_by(slug: first_segment)
+      election ? election.id : -1
+    rescue => e
+      url_logger.error "URL parsing failed: #{e.message} | URL: #{url} | Slug: #{first_segment rescue 'unknown'}"
+      -1
+    end
   end
 
   def cost_with_delimiter(cost, currency_symbol)
@@ -140,6 +153,18 @@ class ApplicationController < ActionController::Base
       number_with_delimiter(cost, delimiter: " ", separator: ",") + ' ' + currency_symbol
     else
       currency_symbol + number_with_delimiter(cost)
+    end
+  end
+
+  # Custom logger for URL processing errors
+  def url_logger
+    @url_logger ||= begin
+      log_file = Rails.root.join('log', 'url_logger.log')
+      logger = Logger.new(log_file, 'monthly')
+      logger.formatter = proc do |severity, datetime, progname, msg|
+        "[#{datetime.strftime('%Y-%m-%d %H:%M:%S')}] #{severity}: #{msg}\n"
+      end
+      logger
     end
   end
 end

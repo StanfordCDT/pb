@@ -82,8 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_11_182024) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "real_election", default: true, null: false
     t.text "remarks"
-    t.boolean "archived", default: false, null: false
-    t.index ["archived"], name: "index_elections_on_archived"
+    t.json "archived"
     t.index ["slug"], name: "index_elections_on_slug", unique: true
   end
 

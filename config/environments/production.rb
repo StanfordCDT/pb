@@ -83,4 +83,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = Rails.application.secrets.email.symbolize_keys
+
+  # Base URLs for visitor URL processing
+  # Update this when deploying on your own server
+  config.base_urls = ["https://pbstanford.org/"]
 end

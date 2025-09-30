@@ -10,7 +10,7 @@ class AddElectionIdToVisitors < ActiveRecord::Migration[7.0]
     visitor_klass  = Class.new(ActiveRecord::Base) { self.table_name = "visitors"  }
 
     slug_to_id = election_klass.pluck(:slug, :id).to_h
-    bases = ["http://localhost:3000/", "https://pbstanford.org/"]
+    bases = Rails.application.config.base_urls
     
     error_count = 0
     processed_count = 0

@@ -157,7 +157,7 @@ module Admin
         # Set archived information with user details
         archived_info = {
           username: current_user.username,
-          archived_at: Time.current.iso8601,
+          archived_at: Time.current,
           info: params[:archive_info] || ""
         }
         
@@ -525,7 +525,7 @@ module Admin
 
     def election_params
       params.require(:election).permit(
-        [:name, :slug, :budget, :time_zone, :config_yaml, :id] +
+        [:name, :slug, :budget, :time_zone, :config_yaml] +
         (current_user.superadmin? ? [:allow_admins_to_update_election, :allow_admins_to_see_voter_data, :allow_admins_to_see_exact_results, :real_election, :remarks] : [])
       )
     end

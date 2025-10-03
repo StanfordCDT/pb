@@ -148,7 +148,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_11_182024) do
     t.text "url"
     t.datetime "created_at", precision: nil
     t.string "method", null: false
-    t.integer "election_id", default: -1, null: false
+    t.integer "election_id"
     t.index ["election_id"], name: "index_visitors_on_election_id"
   end
 

@@ -100,18 +100,6 @@ class Election < ApplicationRecord
     archived.present?
   end
 
-  def archived_superadmin
-    archived&.dig('username')
-  end
-
-  def archived_time
-    archived&.dig('archived_at')
-  end
-
-  def archived_info
-    archived&.dig('info')
-  end
-
   private
 
   def self.default_config

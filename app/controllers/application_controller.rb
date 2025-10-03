@@ -122,21 +122,21 @@ class ApplicationController < ActionController::Base
   def get_election_id_from_params
     # For admin/elections controller: election ID is directly in params[:id]
     if params[:controller] == 'admin/elections'
-      return params[:id] || -1
+      return params[:id]
     end
     
     # For nested admin routes: election ID is in params[:election_id] 
     if params[:controller]&.start_with?('admin/')
-      return params[:election_id] || -1
+      return params[:election_id]
     end
     
     # For public vote routes: need to look up by slug (only case that needs DB lookup)
     if params[:election_slug]
       election = Election.find_by(slug: params[:election_slug])
-      return election&.id || -1
+      return election&.id
     end
     
-    -1
+    nil
   end
 
   def cost_with_delimiter(cost, currency_symbol)

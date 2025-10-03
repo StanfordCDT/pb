@@ -91,29 +91,40 @@
       <div class="modal fade" id="confirm-archive" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Archive Election</h5>
-            </div>
-            <div class="modal-body">
-              <p>Are you sure you want to archive this election? This action is permanent and cannot be undone.</p>
-              
-              <div class="alert alert-info" role="alert">
-                <strong>Before archiving, please verify:</strong>
-                <ul class="mb-0 mt-2">
-                  <li>Has this election ended?</li>
-                  <li>Have you checked if any (test) votes need to be voided? <a href="<%= admin_election_voters_path(@election) %>" target="_blank">Check the Voters tab</a></li>
-                </ul>
+            <%= form_with url: archive_admin_election_path(@election), method: :post, local: true, id: "archive-form" do |form| %>
+              <div class="modal-header">
+                <h5 class="modal-title">Archive Election</h5>
               </div>
-              
-              <div class="form-group">
-                <label for="archive-info">Additional Information:</label>
-                <textarea class="form-control" id="archive-info" name="archive_info" rows="3" placeholder="Enter any additional information (optional)"></textarea>
+              <div class="modal-body">
+                <div class="alert alert-info" role="alert">
+                  <strong>Note:</strong> Archiving will lead to data loss:
+                  <ul class="mb-0 mt-2">
+                    <li>IP addresses will be hashed</li>
+                    <li>Device Information will be hashed</li>
+                    <li>Authentication IDs will be anonymized</li>
+                    <li>Voter registration data will be cleared</li>
+                  </ul>
+                  <p class="mb-0 mt-2">These changes cannot be undone.</p>
+                </div>
+                
+                <div class="alert alert-info" role="alert">
+                  <strong>Before archiving, please verify:</strong>
+                  <ul class="mb-0 mt-2">
+                    <li>Has this election ended?</li>
+                    <li>Have you checked if any test votes need to be voided? <a href="<%= admin_election_voters_path(@election) %>" target="_blank">Check the Voters tab</a></li>
+                  </ul>
+                </div>
+                
+                <div class="form-group">
+                  <%= form.label :archive_info, "Additional Information:" %>
+                  <%= form.text_area :archive_info, class: "form-control", rows: 3, placeholder: "Enter any additional information (optional)" %>
+                </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="confirm-archive-btn">Archive</button>
-            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <%= form.submit "Archive", class: "btn btn-primary" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -135,29 +146,6 @@
         </div>
       </div>
 
-<script>
-document.getElementById('confirm-archive-btn').addEventListener('click', function() {
-  const info = document.getElementById('archive-info').value;
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = '<%= archive_admin_election_path(@election) %>';
-  
-  const csrfToken = document.createElement('input');
-  csrfToken.type = 'hidden';
-  csrfToken.name = 'authenticity_token';
-  csrfToken.value = '<%= form_authenticity_token %>';
-  form.appendChild(csrfToken);
-  
-  const infoInput = document.createElement('input');
-  infoInput.type = 'hidden';
-  infoInput.name = 'archive_info';
-  infoInput.value = info;
-  form.appendChild(infoInput);
-  
-  document.body.appendChild(form);
-  form.submit();
-});
-</script>
 
 </div>
 <% end %>

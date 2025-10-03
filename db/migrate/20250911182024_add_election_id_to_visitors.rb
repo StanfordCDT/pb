@@ -2,25 +2,25 @@
 
 class AddElectionIdToVisitors < ActiveRecord::Migration[7.0]
   def up
-    add_column :visitors, :election_id, :integer, null: false, default: -1
+    add_column :visitors, :election_id, :integer, null: true
     add_index  :visitors, :election_id
 
     # Minimal AR classes scoped to this migration (avoid app models)
-    election_klass = Class.new(ActiveRecord::Base) { self.table_name = "elections" }
-    visitor_klass  = Class.new(ActiveRecord::Base) { self.table_name = "visitors"  }
+    election_class = Class.new(ActiveRecord::Base) { self.table_name = "elections" }
+    visitor_class  = Class.new(ActiveRecord::Base) { self.table_name = "visitors"  }
 
-    slug_to_id = election_klass.pluck(:slug, :id).to_h
-    bases = Rails.application.config.base_urls
+    slug_to_id = election_class.pluck(:slug, :id).to_h
+    base_urls = ['http://localhost:3000', 'https://pbstanford.org/']
     
     error_count = 0
     processed_count = 0
 
-    visitor_klass.find_in_batches(batch_size: 1000) do |batch|
+    visitor_class.find_in_batches(batch_size: 1000) do |batch|
       batch.each do |v|
         begin
           url   = v[:url].to_s
-          base  = bases.find { |b| url.start_with?(b) }
-          eid   = -1
+          base  = base_urls.find { |b| url.start_with?(b) }
+          election_id = nil
 
           if base
             rest = url[base.length..] || ""
@@ -31,7 +31,7 @@ class AddElectionIdToVisitors < ActiveRecord::Migration[7.0]
               # first non-empty segment after base
               first_segment = path_without_query.split("/", 2).first
               if first_segment && !first_segment.empty?
-                eid = slug_to_id[first_segment] || -1
+                election_id = slug_to_id[first_segment]
               end
             end
           else
@@ -39,8 +39,8 @@ class AddElectionIdToVisitors < ActiveRecord::Migration[7.0]
             error_count += 1
           end
 
-          # Skip write if already correct (most rows start at -1 via default)
-          v.update_columns(election_id: eid) if v[:election_id] != eid
+          # Skip write if already correct (most rows start at nil via default)
+          v.update_columns(election_id: election_id) if v[:election_id] != election_id
           processed_count += 1
           
         rescue => e

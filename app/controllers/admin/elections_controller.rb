@@ -122,14 +122,18 @@ module Admin
         return
       end
 
+      # Generate a random salt string for this archive operation
+      # This salt will be used for all hashing operations within this archive call
+      archive_salt = SecureRandom.hex(32) # 64 character random hex string
+
       # Wrap all archiving operations in a transaction to ensure atomicity
       ActiveRecord::Base.transaction do
         # Hash the ip_address and user_agent of the visitors that have this election_id
         visitors = Visitor.where(election_id: election.id)
         visitors.find_each do |visitor|
           updates = {}
-          updates[:ip_address] = Digest::SHA256.hexdigest(visitor.ip_address.to_s) if visitor.ip_address.present?
-          updates[:user_agent] = Digest::SHA256.hexdigest(visitor.user_agent.to_s) if visitor.user_agent.present?
+          updates[:ip_address] = Digest::SHA256.hexdigest("#{archive_salt}#{visitor.ip_address.to_s}") if visitor.ip_address.present?
+          updates[:user_agent] = Digest::SHA256.hexdigest("#{archive_salt}#{visitor.user_agent.to_s}") if visitor.user_agent.present?
           
           visitor.update_columns(updates) if updates.any?
         end
@@ -138,8 +142,8 @@ module Admin
         voters = Voter.where(election_id: election.id)
         voters.find_each do |voter|
           updates = {}
-          updates[:ip_address] = Digest::SHA256.hexdigest(voter.ip_address.to_s) if voter.ip_address.present?
-          updates[:user_agent] = Digest::SHA256.hexdigest(voter.user_agent.to_s) if voter.user_agent.present?
+          updates[:ip_address] = Digest::SHA256.hexdigest("#{archive_salt}#{voter.ip_address.to_s}") if voter.ip_address.present?
+          updates[:user_agent] = Digest::SHA256.hexdigest("#{archive_salt}#{voter.user_agent.to_s}") if voter.user_agent.present?
           # TODO: retain some information from user_agent such as device type, browser, etc.
           voter.update_columns(updates) if updates.any?
         end

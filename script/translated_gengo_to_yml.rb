@@ -5,24 +5,24 @@ require "yaml"
 require "csv"
 
 if ARGV.length != 2
-  puts "Usage: " + File.basename(__FILE__) + " <lang> <translated_csv>"
+  puts "Usage: " + File.basename(__FILE__) + " <lang> <translated_file>"
   puts ""
   puts "Examples:"
-  puts "  " + File.basename(__FILE__) + " hi translated_hi.csv"
-  puts "  " + File.basename(__FILE__) + " es translated_es.csv"
-  puts "  " + File.basename(__FILE__) + " fr translated_fr.csv"
+  puts "  " + File.basename(__FILE__) + " hi translated_hi.txt"
+  puts "  " + File.basename(__FILE__) + " es translated_es.txt"
+  puts "  " + File.basename(__FILE__) + " fr translated_fr.txt"
   puts ""
-  puts "This script updates <lang>.yml with translations from the Gengo CSV file."
+  puts "This script updates <lang>.yml with translations from the Gengo TXT file."
   exit(-1)
 end
 
 lang_code      = ARGV[0]
-translated_csv = ARGV[1]
+translated_file = ARGV[1]
 
 LANG_PATH = File.join(File.dirname(__FILE__), "..", "config", "locales", lang_code + ".yml")
 
-unless File.exist?(translated_csv)
-  puts "Error: Translated CSV file not found at #{translated_csv}"
+unless File.exist?(translated_file)
+  puts "Error: Translated TXT file not found at #{translated_file}"
   exit(-1)
 end
 
@@ -58,7 +58,7 @@ def set_nested_value(hash, keys, value)
   current[keys.last] = value
 end
 
-def parse_gengo_csv(file_path)
+def parse_gengo_file(file_path)
   translations = {}
   current_key = nil
   current_value = ""
@@ -126,17 +126,17 @@ if yaml_data.nil? || yaml_data[lang_code].nil?
   exit(-1)
 end
 
-puts "Parsing translated Gengo CSV file: #{translated_csv}"
+puts "Parsing translated Gengo TXT file: #{translated_file}"
 begin
-  translations = parse_gengo_csv(translated_csv)
+  translations = parse_gengo_file(translated_file)
 rescue => e
-  puts "Error parsing CSV file: #{e.message}"
+  puts "Error parsing TXT file: #{e.message}"
   exit(-1)
 end
 
 if translations.empty?
-  puts "No translations found in the CSV file."
-  # Even if no CSV updates, still normalize the whole file to fix '' in HTML attributes.
+  puts "No translations found in the TXT file."
+  # Even if no TXT updates, still normalize the whole file to fix '' in HTML attributes.
 end
 
 puts "Found #{translations.length} translations to apply."

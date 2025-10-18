@@ -1,19 +1,21 @@
+---
 tl:
   navigation:
     brand: PB
     home: Home
     about: Tungkol dito
     help: Tulong
-    exit: Exit
+    exit: Mag-exit
   index:
-    title: Participatory Budgeting
+    title: Partisipatoryong Pagbuo ng Badyet
     voting_machine:
-      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto;
-        margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>Welcome
-        sa digital voting interface para sa Participatory Budgeting</p>"
+      welcome: '<img src="/img/sample-city-logo.png" style="margin-left: auto; margin-right:
+        auto; display: block;" /><p class="lead" style="text-align:center;">Maligayang
+        pagdating sa interface ng digital na pagboto para sa Partisipatoryong Pagbuo
+        ng Badyet</p>'
       instruction: Mangyari lang ilagay ang code na natanggap mao.
       code_placeholder: Code
-      enter_code_button: Enter
+      enter_code_button: Ilagay
       wrong_code: Maling code
       used_code: Ang code na ito ay nagamit na.
       used_personal_id: Ang ID na ito ay nagamit na. Mangyari lang makipag-ugnayan
@@ -21,11 +23,9 @@ tl:
         mong bumoto muli.
     remote:
       welcome: |-
-        <img src="/img/sample-city-logo.png" style='margin-left: auto; margin-right: auto; display: block;' />
-        <p class='lead'>Welcome sa Participatory Budgeting sample digital ballot mula sa Stanford Crowdsourced Democracy Team.</p>
-        <p class='lead'>Sa website na ito ay maaaring lubos ka pang mabigyang impormasyon sa mga proyekto ngayong taon at tungkol sa digital ballot. Ang website na ito ay nagbibigay lang ng impormasyon sa iyo at <b>hindi ka </b> puwedeng bumoto dito mismo.</p>
-        <p class='lead'>Kapag ikaw ay <u>aktuwal na bumoto</u> , magpapasya ka kung paano mo nais na ilaan ang $XXX milyon na budget ng lungsod para sa pagpapaganda ng capital. Para makaboto, kailangan mong magpunta sa isa sa maraming mga voting site na matatagpuan sa kabuuan ng lungsod. Ang panahon ng botohan ay magaganap mula (Petsa XXX) hanggang  (Petsa YYY). Basahin ang lahat ng mga oras at lokasyon sa ibaba</p>
-      proceed_button: Tingnan ang sample ballot >>
+        <img src="/img/sample-city-logo.png" style="margin-left: auto; margin-right: auto; display: block;" /> <p class="lead">Maligayang pagdating sa sample na digital na balota ng Partisipatoryong Pagbuo ng Badyet, sa kagandanghang-loob ng Stanford Crowdsourced Democracy Team.</p> <p class="lead">Sa website na ito, maaari mong gawing pamilyar ang iyong sarili sa mga proyekto sa taong ito at sa digital na balota. Ang website na ito ay nagbibigay-impormasyon lamang, at ikaw ay <b>hindi</b> maaaring bumoto nang aktuwal dito.</p> <p class="lead">Kapag inilagay mo ang iyong <u>aktuwal na balota</u>, ikaw ang magpapasiya kung paano mo gustong ilaan ang $XXX na milyon ng badyet sa
+        pagpapabuti ng kapital ng lungsod. Upang makaboto, kailangan mong pumunta sa isa sa napakaraming lugar ng botohan na matatagpuan sa iba't ibang bahagi ng lungsod.  Gaganapin ang botohan mula (Petsa XXX) hanggang (Petsa YYY). Tingnan ang lahat ng oras at lokasyon sa ibaba.</p>
+      proceed_button: Tingnan ang sample na balota >>
       sms_verification_button: Bumoto na ngayon>>
       code_verification_button: Ilagay ang code
       other_verification_button: Bumoto na ngayon>>
@@ -36,24 +36,23 @@ tl:
     voting_ended: Tapos na ang panahon para makaboto.
     public_results: Tingnan ang Mga Resulta ng Eleksyon
   approval:
-    title: Participatory Budgeting
+    title: Partisipatoryong Pagbuo ng Badyet
     popup:
-      title: Mga Instruksyon
-      body: "<ol> <li>Piliin ang mga proyekto na gusto mong suportahan. Maaari kang
-        bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li> <li>I-click ang
-        <b>\"Submit Ng Vote\"</b> na button kapag handa ka nang isumite ito.</li>
-        </ol>"
+      title: Mga Panuto
+      body: <ol> <li>Piliin ang mga proyektong nais mong suportahan. Maaari kang bumoto
+        ng hanggang <b>%{max_n_projects} na proyekto.</b></li> <li>I-click ang <b>"Submit
+        My Vote"</b> na button kapag handa ka nang magsumite.</li> </ol>
       ok: OK
-    instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
-      mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
-      <li>I-click ang <b>\"Isumite ang Aking Boto\"</b> na button kapag handa ka nang
-      isumite ito.</li> </ol>"
-    list_of_projects: Listahan ng Mga Proyekto
+    instructions: <h3>Mga panuto</h3> <ol> <li>Piliin ang mga proyektong nais mong
+      suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} na proyekto.</b></li>
+      <li>I-click ang <b>"Submit My Vote"</b> na button kapag handa ka nang magsumite.</li>
+      </ol>
+    list_of_projects: Listahan ng mga Proyekto
     estimated_cost: Tinatantiyang Halaga
-    youtube_video: YouTube video
+    youtube_video: Video sa YouTube
     location: Lokasyon
-    partner: Partner
-    committee: Committee
+    partner: Katuwang
+    committee: Komite
     read_details: Basahin ang higit pa...
     select_button:
       select: Pumili
@@ -68,120 +67,129 @@ tl:
       title: Sigurado ka bang gusto mong isumite ang iyong boto?
       body:
         summary:
-          zero: "<span style='color: red;'>Hindi ka pa nakakapili ng anumang proyekto.</span>"
+          zero: '<span style="color: red;">Hindi ka pa pumipili ng anumang proyekto.</span>'
           other: 'Napili mo ang mga sumusunod na proyekto: %{projects}'
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: '<span style="color: red;">Hindi ka pa pumipili ng anumang proyekto.</span>'
+          other: 'Nakapili ka ng mga token para sa mga sumusunod na proyekto: %{projects}'
+          item: "%{project} (%{cost} na token)"
         under_n_project_limit:
-          one: "<span style='color: red;'>Isang proyekto lang ang napili mo.</span>"
-          less: "<span style='color: red;'>Pumili ka ng %{count} proyekto lang.</span>"
-          limit: "<span style='color: red;'>Puwede kang bumoto ng hanggang %{max_n_projects}
-            proyekto.</span>"
-        under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
-        warning: "Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo
-          na ito puwede baguhin. Kung gusto mong baguhin ang iyong boto, mangyaring
-          i-click ang ‘Bumalik’ sa ibaba. Kung gusto mong isumite ang iyong boto,
-          pakilagyan ng tsek ang kahon sa ibaba at tapos ay i-click ang ‘Isumite ang
-          Aking Boto’"
+          one: '<span style="color: red;">Isang proyekto lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na proyekto.</span>'
+          limit: '<span style="color: red;">Maaari kang bumoto ng hanggang %{max_n_projects}
+            na proyekto.</span>'
+        under_token_limit:
+          one: '<span style="color: red;">Isang token lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na token.</span>'
+          limit: '<span style="color: red;">Maaari kang pumili ng hanggang %{total_tokens}
+            na token.</span>'
+        warning: Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo na
+          ito puwede baguhin. Kung gusto mong baguhin ang iyong boto, mangyaring i-click
+          ang ‘Bumalik’ sa ibaba. Kung gusto mong isumite ang iyong boto, pakilagyan
+          ng tsek ang kahon sa ibaba at tapos ay i-click ang ‘Isumite ang Aking Boto’
         checkbox: Nauunawaan ko na pagkatapos ko isumite ang aking boto <strong>hindi</strong>
           ko na ito mababago.
       ok: Isumite ang Aking Boto
       cancel: Bumalik
     confirmation_over_limit:
       title: Hindi masumite ang iyong boto.
-      over_n_project_limit: "<span style='color:red'>Pinili mo ang <b>%{n_projects}</b>
-        proyekto. Maaari ka lang pumili ng hanggang <b>%{max_n_projects}</b> proyekto.
-        Mangyaring alisin ang <b>%{extra}</b> o higit pang mga proyekto.</span>"
-      over_budget_limit: "<span style='color:red'>Kasalukuyan kang sobra sa budget
-        na nakalaan.</span>"
-      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
+      over_n_project_limit: <span style="color:red">Pinili mo ang <b>%{n_projects}</b>
+        na proyekto. Maaari ka lamang pumili ng hindi hihigit sa <b>%{max_n_projects}</b>
+        na proyekto. Pakialis ang <b>%{extra}</b> o higit pang mga proyekto.</span>
+      over_budget_limit: <span style="color:red">Lagpas ka na sa badyet.</span>
+      over_token_limit: <span style="color:red"> Mas maraming token ang ginamit mo
+        kaysa sa available. Pakibawasan ang mga nagamit na token upang maging mas
+        mababa sa maximum.</span>
       cancel: Bumalik
     tracker:
       text: Napili mo ang %{count} proyekto.
       x_out_of_y: "%{x} / %{y}"
     budgetbar:
-      text: Pumili ng %{total} ng %{budget} total na budget.
+      text: Pinili ang %{total} ng %{budget} kabuuang badyet.
       under_budget: Mayroon ka pang %{remaining_money} natitira.
       over_budget: Kasalukuyan kang sobra sa budget na nakalaan.
       over_budget_but_can_add_projects: Kasalukuyan kang sobra sa budhet pero puwede
         ka pa rin patuloy na magdagdag ng mga proyekto.
-    tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_token: "You still have %{remaining_money} tokens left."
-      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
+    tokenbar:
+      text: Pinili ang %{total} ng %{budget} kabuuang token.
+      under_token: May natitira ka pang %{remaining_money} na token.
+      over_token: Mas maraming token ang ginamit mo kaysa sa available. Pakibawasan
+        ang mga nagamit na token upang maging mas mababa sa maximum.
+      over_budget_but_can_add_tokens: Lagpas ka na sa badyet, ngunit maaaring patuloy
+        na magdagdag ng mga token.
     adjustable_cost_project:
       instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
-      not_adjusted_warning: "<span style='color:red'>Pinili mo ang $0 para sa %{project}</span>"
+      not_adjusted_warning: <span style="color:red">Pinili mo ang $0 para sa %{project}</span>
       message: Pinili mo ang %{cost} para sa %{project}
       table_headings:
         percentage_column: Porsiyento ng nagastos na budget
         cost_column: Halaga
         number_column: 'Tantiyang # ng blocks na nabago'
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+    adjustable_token_project:
+      instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
+      not_adjusted_warning: <span style="color:red">Pinili mo ang 0 na token para
+        sa %{project}</span>
+      message: Pinili mo ang %{cost} na token para sa %{project}
     map:
       street_resurfacing_count:
         one: 1 kalye ang nasementohan/naaspaltohan
-        other: "%{count} streets repaved"
+        other: "%{count} na kalyeng muling inaspalto"
       alley_resurfacing_count:
-        one: 1 alley ang nasementohan/naaspaltohan
-        other: "%{count} alleys repaved"
+        one: 1 eskinitang muling inaspalto
+        other: "%{count} na eskinitang muling inaspalto"
       apron_resurfacing_count:
         one: 1 alley ang nasementohan/naaspaltohan
-        other: "%{count} aprons repaved"
+        other: "%{count} na apron ang muling inaspalto"
       sidewalk_repairing_count:
         one: I sidewalk ang naayos
-        other: "%{count} sidewalks repaired"
+        other: "%{count} na bangketa ang inayos"
     image_gallery:
-      cue: I-click ang image para sa slide show
+      cue: I-click ang larawan para sa slide show
     project_ranking:
       list_header: Napili mo ang mga sumusunod na proyekto. Baguhin ang mga ranggo
-        nito sa pamamagitan ng pag-drag sa <span class='glyphicon glyphicon-sort'></span>
+        nito sa pamamagitan ng pag-drag sa <span class="glyphicon glyphicon-sort"></span>
         icons.
       continue_button: Magpatuloy
   thanks_approval:
     title: Salamat
     description:
-      real: "<p class='lead text-center'>Salamat sa iyong pagboto. Mangyaring i-click
-        ang ‘Susunod’ sa ibaba para magpunta sa susunod na pahina.</p>"
-      demo: "<p class='lead'>Salamat sa iyong pagboto! <span style='color: red;'><strong>Mangyaring
-        tandaan na ito ay isang <u>preview</u> lang.</strong></span> Mangyaring i-click
-        ang ‘Susunod’ sa ibaba para magpunta sa susunod na pahina.</p>"
-    send_vote_email: "(Opsyonal) Gusto kong magpadala ng kopya ng aking boto sa aking
+      real: <p class="lead text-center">Salamat sa pagboto. Paki-click ang 'Next'
+        sa ibaba upang pumunta sa susunod na page.</p>
+      demo: '<p class="lead">Salamat sa pagboto! <span style="color: red;"><strong>Pakitandaan
+        na ito ay isa lamang <u>pakita</u>.</strong></span> Paki-click ang ''Next''
+        sa ibaba upang pumunta sa susunod na page.</p>'
+    send_vote_email: "(Opsyonal) Nais kong magpadala ng kopya ng aking boto sa aking
       email:"
     email_placeholder: Ilagay ang email
     next_button: Susunod &gt;&gt;
   ranking:
-    title: Participatory Budgeting
+    title: Partisipatoryong Pagbuo ng Badyet
     popup:
-      title: Mga Instruksyon
-      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
-        sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
-        matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
-        sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
-        Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
-        mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
-        Review Board sa 650-723-2480.</p>"
+      title: Mga Panuto
+      body: '<p style="font-size: 20px;">Pasasalihin ka ngayon sa isang aktibidad
+        na <u>hindi</u> maaapektuhan ang iyong boto, ngunit bahagi ito ng isang proyektong
+        pananaliksik ng Stanford University na nilalayong tulungan kaming mapabuti
+        ang proseso ng partisipatoryong pagbuo ng badyet.</p><ul style="font-size:
+        20px;"><li>Opsyonal ang pagsali sa aktbidad na ito. Maaari kang mag-exit anumang
+        oras.</li> <li>Ang inaasahang oras para sa aktibidad na ito ay 2-3 na minuto.</li>
+        </ul> <p style="font-size: 14px;">Walang panganib ang pag-aaral na ito. Walang
+        babayaran sa iyo para sa pakikilahok, at hindi namin magagarantiya ang anumang
+        mga benepisyo para sa iyo. May karapatan kang tumangging sagutin ang mga partikular
+        na tanong.  Mangyaring makipag-ugnayan kay Propesor Ashish Goel sa goel_admins@lists.stanford.edu
+        kung mayroon kang anumang mga tanong, mungkahi, o alalahanin.  Maaari ka ring
+        makipag-ugnayan sa Stanford Institutional Review Board sa 650-723-2480.</p>'
       ok: OK
-    instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
-      mong suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} proyekto.</b></li>
-      <li>I-click ang <b>\"Isumite ang Aking Boto\"</b> na button kapag handa ka nang
-      isumite ito.</li> </ol>"
-    list_of_projects: Listahan ng Mga Proyekto
+    instructions: <h3>Mga panuto</h3> <ol> <li>Piliin ang mga proyektong nais mong
+      suportahan. Maaari kang bumoto ng hanggang <b>%{max_n_projects} na proyekto.</b></li>
+      <li>I-click ang <b>"Submit My Vote"</b> na button kapag handa ka nang magsumite.</li>
+      </ol>
+    list_of_projects: Listahan ng mga Proyekto
     estimated_cost: Tinatantiyang Halaga
-    youtube_video: YouTube video
+    youtube_video: Video sa YouTube
     location: Lokasyon
-    partner: Partner
-    committee: Committee
+    partner: Katuwang
+    committee: Komite
     read_details: Basahin ang higit pa...
     select_button:
       select: Pumili
@@ -196,66 +204,69 @@ tl:
       title: Sigurado ka bang gusto mong isumite ang iyong boto?
       body:
         summary:
-          zero: "<span style='color: red;'>Hindi ka pa nakakapili ng anumang proyekto.</span>"
+          zero: '<span style="color: red;">Wala kang napiling anumang proyekto.</span>'
           other: 'Napili mo ang mga sumusunod na proyekto: %{projects}'
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: '<span style="color: red;">Wala kang napiling anumang proyekto.</span>'
+          other: 'Pumili ka ng mga token para sa mga sumusunod na proyekto: %{projects}'
+          item: "%{project} (%{cost} na token)"
         under_n_project_limit:
-          one: "<span style='color: red;'>Isang proyekto lang ang napili mo.</span>"
-          less: "<span style='color: red;'>Pumili ka ng %{count} proyekto lang.</span>"
-          limit: "<span style='color: red;'>Puwede kang bumoto ng hanggang %{max_n_projects}
-            proyekto.</span>"
-        under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
-        warning: "Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo
-          na ito puwede baguhin. Kung gusto mong baguhin ang iyong boto, mangyaring
-          i-click ang ‘Bumalik’ sa ibaba. Kung gusto mong isumite ang iyong boto,
-          pakilagyan ng tsek ang kahon sa ibaba at tapos ay i-click ang ‘Isumite ang
-          Aking Boto’"
+          one: '<span style="color: red;">Isang proyekto lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na proyekto.</span>'
+          limit: '<span style="color: red;">Maaari kang bumoto ng hanggang sa %{max_n_projects}
+            na proyekto.</span>'
+        under_token_limit:
+          one: '<span style="color: red;">Isang token lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na token.</span>'
+          limit: '<span style="color: red;">Maaari kang pumili ng hanggang %{total_tokens}
+            na token.</span>'
+        warning: Pagkatapos na isumite ang iyong boto, <strong>hindi</strong> mo na
+          ito puwede baguhin. Kung gusto mong baguhin ang iyong boto, mangyaring i-click
+          ang ‘Bumalik’ sa ibaba. Kung gusto mong isumite ang iyong boto, pakilagyan
+          ng tsek ang kahon sa ibaba at tapos ay i-click ang ‘Isumite ang Aking Boto’
         checkbox: Nauunawaan ko na pagkatapos ko isumite ang aking boto <strong>hindi</strong>
           ko na ito mababago.
       ok: Isumite ang Aking Boto
       cancel: Bumalik
     confirmation_over_limit:
       title: Hindi masumite ang iyong boto.
-      over_n_project_limit: "<span style='color:red'>Pinili mo ang <b>%{n_projects}</b>
-        proyekto. Maaari ka lang pumili ng hanggang <b>%{max_n_projects}</b> proyekto.
-        Mangyaring alisin ang <b>%{extra}</b> o higit pang mga proyekto.</span>"
-      over_budget_limit: "<span style='color:red'>You're currently over budget.</span>"
+      over_n_project_limit: <span style="color:red">Pinili mo ang <b>%{n_projects}</b>
+        na proyekto. Maaari ka lamang pumili ng hindi hihigit sa <b>%{max_n_projects}</b>
+        na proyekto. Pakialis ang <b>%{extra}</b> o higit pang mga proyekto.</span>
+      over_budget_limit: <span style="color:red">Lagpas ka na sa badyet.</span>
       cancel: Bumalik
     tracker:
       text: Napili mo ang %{count} proyekto.
       x_out_of_y: "%{x} / %{y}"
     budgetbar:
-      text: Pumili ng %{total} ng %{budget} total na budget.
+      text: Pinili ang %{total} ng %{budget} kabuuang badyet.
       under_budget: Mayroon ka pang %{remaining_money} natitira.
       over_budget: Kasalukuyan kang sobra sa budget na nakalaan.
       over_budget_but_can_add_projects: Kasalukuyan kang sobra sa budhet pero puwede
         ka pa rin patuloy na magdagdag ng mga proyekto.
-    tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
+    tokenbar:
+      text: Pinili ang %{total} ng %{budget} kabuuang token.
+      under_budget: May natitira ka pang %{remaining_money}.
+      over_budget: Mas maraming token ang ginamit mo kaysa sa available. Pakibawasan
+        ang mga nagamit na token upang maging mas mababa sa maximum.
+      over_budget_but_can_add_projects: Lagpas ka na sa badyet, ngunit maaaring patuloy
+        na magdagdag ng mga proyekto.
     adjustable_cost_project:
       instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
-      not_adjusted_warning: "<span style='color:red'>Pinili mo ang $0 para sa %{project}</span>"
+      not_adjusted_warning: <span style="color:red">Pinili mo ang $0 para sa %{project}</span>
       message: Pinili mo ang %{cost} para sa %{project}
       table_headings:
         percentage_column: Porsiyento ng nagastos na budget
         cost_column: Halaga
         number_column: 'Tantiyang # ng blocks na nabago'
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"  
+    adjustable_token_project:
+      instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
+      not_adjusted_warning: <span style="color:red">Pinili mo ang 0 na token para
+        sa %{project}</span>
+      message: Pinili moa ang %{cost} na token para sa %{project}
     image_gallery:
-      cue: I-click ang image para sa slide show
+      cue: I-click ang larawan para sa slide show
   question:
     title: Survey
     question: Ikaw ba ay may edad na 14 taong gulang o mas matanda?
@@ -269,120 +280,139 @@ tl:
     this_project: Ang proyektong ito
     not_sure: Hindi ako sigurado
     popup:
-      title: Mga Instruksyon
-      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
-        sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
-        matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
-        sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
-        Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
-        mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
-        Review Board sa 650-723-2480.</p>"
+      title: Mga Panuto
+      body: '<p style="font-size: 20px;">Pasasalihin ka ngayon sa isang aktibidad
+        na <u>hindi</u> maaapektuhan ang iyong boto, ngunit bahagi ito ng isang proyektong
+        pananaliksik ng Stanford University na nilalayong tulungan kaming mapabuti
+        ang proseso ng partisipatoryong pagbuo ng badyet.</p> <ul style="font-size:
+        20px;"><li>Opsyonal ang pagsali sa aktibidad na ito. Maaari kang mag-exit
+        anumang oras.</li> <li>Ang inaasahang oras para sa aktibidad na ito ay 2-3
+        na minuto.</li> </ul> <p style="font-size: 14px;">Walang panganib ang pag-aaral
+        na ito. Walang babayaran sa iyo para sa pakikilahok, at hindi namin magagarantiya
+        ang anumang mga benepisyo para sa iyo.  May karapatan kang tumangging sagutin
+        ang mga partikular na tanong.  Mangyaring makipag-ugnayan kay Propesor Ashish
+        Goel sa goel_admins@lists.stanford.edu kung mayroon kang anumang mga tanong,
+        mungkahi, o alalahanin.  Maaari ka ring makipag-ugnayan sa Stanford Institutional
+        Review Board sa 650-723-2480. </p>'
       ok: Magpatuloy
-      exit: Exit
+      exit: Lumabas
   knapsack:
-    title: Participatory Budgeting
+    title: Partisipatoryong Pagbuo ng Badyet
     popup:
-      title: Mga Instruksyon
-      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
-        sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
-        matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
-        sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
-        Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
-        mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
-        Review Board sa 650-723-2480.</p>"
+      title: Mga Panuto
+      body: '<p style="font-size: 20px;">Pasasalihin ka ngayon sa isang aktibidad
+        na <u>hindi</u> maaapektuhan ang iyong boto, ngunit bahagi ito ng proyektong
+        pananaliksik ng Stanford University na nilalayong tulungan kaming mapabuti
+        ang proseso ng partisipatoryong pagbuo ng badyet.</p> <ul style="font-size:
+        20px;"><li>Opsyonal ang pagsali sa aktibidad na ito. Maaari kang mag-exit
+        anumang oras.</li> <li>Ang inaasahang oras para sa aktibidad na ito ay 2-3
+        na minuto.</li> </ul> <p style="font-size: 14px;">Walang panganib ang pag-aaral
+        na ito. Walang babayaran sa iyo para sa pakikilahok, at hindi namin magagarantiya
+        ang anumang mga benepisyo para sa iyo.  May karapatan kang tumangging sagutin
+        ang mga partikular na tanong. Mangyaring makipag-ugnayan kay Propesor Ashish
+        Goel sa goel_admins@lists.stanford.edu kung mayroon kang anumang mga tanong,
+        mungkahi, o alalahanin. Maaari ka ring makipag-ugnayan sa Stanford Institutional
+        Review Board sa 650-723-2480. </p>'
       ok: Magpatuloy
-      exit: Exit
-    instructions: "<h3>Mga Instruksyon</h3> <ol> <li>Piliin ang mga proyekto na gusto
-      mong suportahan. Ang total na halaga na hindi puwedeng lumampas sa <b>%{budget}</b>.</li>
-      <li>Makikita mo ang total na halaga a nailaan mo hanggang sa ngayon sa bar sa
-      itaas. Maaari mong alisin ang anumang naunang napiling mga proyekto sa pamamagitan
+      exit: Mag-exit
+    instructions: <h3>Mga panuto</h3> <ol> <li>Piliin ang mga proyektong nais mong
+      suportahan. Ang kabuuang gastos ay hindi maaaring lumampas sa <b>%{budget}</b>.</li>
+      <li>Makikita mo ang kabuuang halaga na iyong inilaan sa ngayon sa bar sa itaas.
+      Maaari mong alisin ang anumang mga napiling proyekto sa nakaraan sa pamamagitan
       ng pag-click sa bar o direktang pag-click sa napiling proyekto.</li> <li>I-click
-      ang <b>\"Isumite ang Aking Boto\"</b> na button kapag handa mo na itong isumite.</li>
-      </ol>"
+      ang <b>"Submit My Vote"</b> na button kapag handa ka nang magsumite.</li> </ol>
     confirmation:
       title: Sigurado ka bang gusto mong isumite ang iyong boto?
       body:
         summary:
-          zero: "<span style='color: red;'>Hindi ka pa nakakapili ng anumang proyekto.</span>"
+          zero: '<span style="color: red;">Wala ka pang piniling anumang mga proyekto.</span>'
           other: 'Napili mo ang mga sumusunod na proyekto: %{projects}'
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: '<span style="color: red;">Wala ka pang piniling anumang proyekto.</span>'
+          other: 'Pinili mo ang mga token para sa mga sumusunod na proyekto: %{projects}'
+          item: "%{project} (%{cost} na token)"
         under_n_project_limit:
-          one: "<span style='color: red;'>Isang proyekto lang ang napili mo.</span>"
-          less: "<span style='color: red;'>Pumili ka ng %{count} proyekto lang.</span>"
-          limit: "<span style='color: red;'>Puwede kang bumoto ng hanggang %{max_n_projects}
-            proyekto.</span>"
-        under_token_limit: ##fixme language
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: '<span style="color: red;">Isang proyekto lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na proyekto.</span>'
+          limit: '<span style="color: red;">Maaari kang bumoto ng hanggang sa %{max_n_projects}
+            na proyekto.</span>'
+        under_token_limit:
+          one: '<span style="color: red;">Isang token lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na token.</span>'
+          limit: '<span style="color: red;">Maaari kang pumili ng hanggang %{total_tokens}
+            na token.</span>'
         warning: Pagkatapos isumite ang iyong boto
       ok: Isumite ang Aking Boto
       cancel: Bumalik
     adjustable_cost_project:
       instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
-      not_adjusted_warning: "<span style='color:red'>Pinili mo ang $0 para sa %{project}</span>"
+      not_adjusted_warning: <span style="color:red">Pinili mo ang $0 para sa %{project}</span>
       message: Pinili mo ang %{cost} para sa %{project}
-    adjustable_token_project: ##fixme language
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
-
+    adjustable_token_project:
+      instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
+      not_adjusted_warning: <span style="color:red">Pinili mo ang 0 na token para
+        sa %{project}</span>
+      message: Pinili mo ang %{cost} na token para sa %{project}
   token:
-    title: "Participatory Budgeting"
+    title: Partisipatoryong Pagbuo ng Badyet
     popup:
-      title: "Mga Instruksyon"
-      body: "<p style='font-size: 20px;'>Ngayon ay hihilinging sa iyo na sumali
-        sa isang aktibidad na <u>hindi</u> makaka-apekto sa iyong boto,  at di namin
-        matitiyak ang anumang mga benepisyo para sa iyo. May karapatan kang tumangging
-        sumagot sa ilang mga tanong. Mangyaring makipag-ugnayan kay Professor Ashish
-        Goel at goel_admins@lists.stanford.edu kung mayroon kang mga tanong, mga suggestion,  o
-        mga ikinababahala. Maaari ka rin makipag-ugnayan sa Stanford Institutional
-        Review Board sa 650-723-2480.</p>"
-      ok: "Continue"
-      exit: "Exit"
-    instructions: "<h3>Mga Instruksyon</h3>
-                   <ol>
-                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
-                     <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
-                   </ol>"
+      title: Mga Panuto
+      body: '<p style="font-size: 20px;">Pasasalihin ka ngayon sa isang aktibidad
+        na <u>hindi</u> maaapektuhan ang iyong boto, ngunit bahagi ito ng isang proyektong
+        pananaliksik ng Stanford University na nilalayong tulungan kami na mapabuti
+        ang proseso ng partisipatoryong pagbuo ng badyet.</p> <ul style="font-size:
+        20px;"><li>Opsyonal ang pagsali sa aktibidad na ito. Maaari kang mag-exit
+        anumang oras.</li> <li>Ang inaasahang oras para sa aktibidad na ito ay 2-3
+        na minuto.</li> </ul> <p style="font-size: 14px;">Walang panganib ang pag-aaral
+        na ito. Walang babayaran sa iyo para sa pakikilahok, at hindi namin magagarantiya
+        ang anumang mga benepisyo para sa iyo.  May karapatan kang tumangging sagutin
+        ang mga partikular na tanong.  Mangyaring makipag-ugnayan kay Propesor Ashish
+        Goel sa goel_admins@lists.stanford.edu kung mayroon kang anumang mga tanong,
+        mungkahi, o alalahanin.  Maaari ka ring makipag-ugnayan sa Stanford Institutional
+        Review Board sa 650-723-2480.</p>'
+      ok: Magpatuloy
+      exit: Mag-exit
+    instructions: <h3>Mga panuto</h3> <ol> <li>Piliin ang mga proyektong nais mong
+      suportahan. Ang kabuuang bilang ng mga token ay hindi maaaring lumampas sa <b>%{total_tokens}</b>.</li>
+      <li>Makikita mo ang kabuuang halaga na iyong inilaan sa ngayon sa bar sa itaas.
+      Maaari mong alisin ang anumang mga napiling proyekto sa nakaraan sa pamamagitan
+      ng pag-click sa bar o direktang pag-click sa napiling proyekto.</li> <li>I-click
+      ang <b>"Submit My Vote"</b> na button kapag handa ka nang magsumite.</li> </ol>
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: Sigurado ka bang nais mo ng isumite ang iyong boto?
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
-          other: "You have selected the following projects: %{projects}"
+          zero: '<span style="color: red;">Wala ka pang piniling anumang mga proyekto.</span>'
+          other: 'Pinili mo ang mga sumusunod na proyekto: %{projects}'
           item: "%{project} (%{cost})"
         summary_token:
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
-
+          zero: '<span style="color: red;">Wala ka pang piniling anumang proyekto.</span>'
+          other: 'Pinili mo ang mga token para sa mga sumusunod na proyekto: %{projects}'
+          item: "%{project} (%{cost} na token)"
         under_n_project_limit:
-          one: "<span style='color: red;'>You have selected only one project.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
-          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+          one: '<span style="color: red;">Isang proyekto lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na proyekto.</span>'
+          limit: '<span style="color: red;">Maaari kang bumoto ng hanggang %{max_n_projects}
+            na proyekto.</span>'
         under_token_limit:
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
-
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+          one: '<span style="color: red;">Isang token lang ang pinili mo.</span>'
+          less: '<span style="color: red;">Pinili mo lang ang %{count} na token.</span>'
+          limit: '<span style="color: red;">Maaari kang pumili ng hanggang %{total_tokens}
+            na token.</span>'
+        warning: Pagkatapos isumite ang iyong boto, <strong>hindi</strong> mo maaaring
+          baguhin ang iyong boto.
+      ok: Isumite ang Aking Boto
+      cancel: Bumalik
     adjustable_cost_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected %{cost} for %{project}"
-
+      instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
+      not_adjusted_warning: <span style="color:red">Pinili mo ang $0 para sa %{project}</span>
+      message: Pinili mo ang %{cost} para sa %{project}
     adjustable_token_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+      instructions: 'Mangyaring pumili ng isa sa mga opsyon sa ibaba:'
+      not_adjusted_warning: <span style="color:red">Pinili mo ang 0 na token para
+        sa %{project}</span>
+      message: Pinili mo ang %{cost} na token para sa %{project}
   survey:
     title: Survey
     header: Sumagot sa isang survey
@@ -397,22 +427,25 @@ tl:
     title: Salamat
     description:
       real: Salamat sa iyong pagboto. Mangyaring i-click ang ‘Exit’ na button sa ibaba.
-      demo: "Salamat sa pagsubok mo sa digital participatory budgeting interface!
-        <span style='color: red;'><strong>Mangyaring tandaan na ito ay isang <u>preview</u>
-        lang.</strong></span>"
-    exit: Exit
+      demo: 'Salamat sa pagsubok sa interface ng digital na partisipatoryong pagbuo
+        ng budget! <span style="color: red;"><strong>Pakitandaan na ito ay isa lamang
+        <u>pakita</u>.</strong></span>'
+    exit: Mag-exit
   about:
     title: Tungkol dito
-    description: "<center><h1 class='sub-header'>Tungkol sa digital participatory
-      budgeting interface</h1></center> <br><p class='lead'>Ang digital participatory
-      budgeting interface ay na-develop ng <a href='https://voxpopuli.stanford.edu/'
-      target='_blank'>Stanford Crowdsourced Democracy Team</a>. Umaasa kami na ang
-      visual nature ng interface at ang dami ng impormasyon na ipinapakita ay makakatulong
-      sa iyong matutunan ang tungkol sa mga proyekto at makaboto ng may karagdagang
-      kaalaman.</p> <p class='lead'>Ito ay isang open source project na may lisensya
-      sa ilalim ng GNU GPL v3.0 license. Makikita mo ang source code sa <a href='https://github.com/StanfordCDT/pb'
-      target='_blank'>GitHub</a>.</p> <p class='lead'>Kung makaranas ka ng mga technical
-      na problema o gusto mong magbigay ng feedback."
+    description: <center><h1 class="sub-header">Tungkol sa interface ng digital na
+      partisipatoryong pagbuo ng badyet</h1></center> <br><p class="lead">Ang interface
+      ng digital na partisipatoryong pagbuo ng badyet ay binuo ng <a href="https://voxpopuli.stanford.edu/"
+      target="_blank">Stanford Crowdsourced Democracy Team</a>. Umaasa kami na ang
+      biswal na disenyo ng interface at ang kasaganaan ng impormasyong ipinapakita
+      ay makakatulong sa iyo na matutunan ang tungkol sa mga proyekto at makapagbigay
+      ng mas matalinong pagboto. </p> <p class="lead"> Ito ay isang open source na
+      proyekto na lisensyado sa ilalim ng GNU GPLv3.0.  Mahahanap mo ang source code
+      sa <a href="https://github.com/StanfordCDT/pb" target="_blank">GitHub</a>.</p>
+      <p class="lead">Kung mayroon kang mga problemang teknikal o nais mong magbigay
+      ng feedback, mangyaring mag-email sa <a href="mailto:feedback@pbstanford.org"
+      target="_blank">feedback@pbstanford.org</a> at susubukan naming balikan ka sa
+      lalong madaling panahon.</p>
   result:
     title: Mga Resulta
     vote_results: Mga Resulta ng Botohan
@@ -424,24 +457,26 @@ tl:
   election:
     can_also_vote_in_person: 'Maaari ka rin magpunta sa isa sa mga sumusunod na lugar
       para bumoto:'
-    info: "<h3>Mga Lokasyon para Makaboto</h3> <b>Sabado, Setyembre 30</b> &nbsp;
-      (6:00 p.m. - 9:00 p.m.)<br> Sa isang lugar<br> <br> <p>Para sa karagdagang impormasyon,
-      mangyaring bumisita sa <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
+    info: <h3>Mga Lugar ng Botohan</h3> <b>Sabado, Setyembre 27</b> &nbsp; (12:00
+      ng tanghali - 4:00 p.m.)<br> Sa isang lugar<br> <br> <b>Martes, Setyembre 30</b>
+      &nbsp; (6:00 p.m. - 9:00 p.m.)<br> Sa isang lugar<br> <br> <p>Para sa karagdagang
+      impormasyon, mangyaring bisitahin ang <a href="http://www.example.com/">http://www.example.com/</a></p>
   sms_signup:
     title: I-verify ang iyong numero ng telepono
     header: I-verify ang iyong numero ng telepono
-    instructions: "<p>Para makaboto online, para ma-verify namin ang iyong numero
-      ng telepono.</p><p>Ilagay ang numero ng iyong cell phone,  at ite-text namin
-      ang confirmation code sa iyo.</p>"
+    instructions: "<p>Upang makaboto online, kakailanganin mo ng cell phone na makakatanggap
+      ng text message, upang maberipika namin ang numero ng iyong telepono.</p><p>Ilagay
+      ang numero ng iyong cell phone, at magte-text kami sa iyo ng confirmation code.</p>"
     phone_number_placeholder: Ilagay ang numero ng telepono
-    verify_button: I-verify
+    verify_button: Beripikahin
     invalid_phone_number: |-
       %{phone_number} ay hindi isang balidong numero ng telepono.
       "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."
       Ang numero ng teleponong ito ay piniling hindi tumanggap ng mga mensahe mula sa amin. Para makuha ang confirmation code
-    blacklisted_phone_number: This phone number has opted out of receiving messages
-      from us. To receive the confirmation code, please send START to %{our_phone_number}
-      and then enter your phone number here again.
+    blacklisted_phone_number: Tumanggi nang tumanggap ang numero ng teleponong ito
+      ng mga mensahe mula sa amin.  Upang matanggap ang confirmation code, mangyaring
+      ipadala ang START sa %{our_phone_number} at pagkatapos ay ilagay muli ang numero
+      ng iyong telepono dito.
     no_cell_phone_instruction: Kung wala kang cell phone
   code_signup:
     title: Ilagay ang access code para makaboto
@@ -458,7 +493,7 @@ tl:
     zipcode_placeholder: ZIP code
     account_number_placeholder: Numero ng Account
     vote_button: Bumoto
-    wrong_account_number: Maling account number o ZIP code
+    wrong_account_number: Maling numero ng account o ZIP code
     used_account_number: Ang account number na ito ay nagamit na
   free_signup:
     title: Pagpapatunay
@@ -475,12 +510,12 @@ tl:
     no_phone_number: Wala akong numero ng telepono
     name: Pangalan
     first_name: Pangalan
-    middle_initial: Middle initial
+    middle_initial: Gitnang inisyal
     last_name: Apelyido
-    suffix: Suffix
+    suffix: Hulapi
     phone_number: Numero ng telepono
     email: Email
-    address: Street address
+    address: Address ng Kalye
     city: Lungsod
     zip_code: ZIP code
     birth_year: Taon ng kapanganakan
@@ -493,13 +528,13 @@ tl:
     error: 'Mangyaring ayusin ang mga sumusunod na error:'
     not_voting_age_error: Kailangan na ang edad mo ay nasa pagitan ng hinihiling na
       edad para makaboto sa eleksyon na ito.
-    verify_age_error: "Mangyaring kumpirmahin ang \"%{checkbox_label}\"."
+    verify_age_error: Mangyaring kumpirmahin ang "%{checkbox_label}".
   sms_signup_confirm:
     title: I-verify ang iyong numero ng telepono
     header: I-verify ang iyong numero ng telepono
     instructions: "<p>Nagpadala kami ng confirmation code sa <b>%{phone_number}</b>.
-      Makakatanggap ka ng code sa loob ng isang minuto. </p><p>Mangyaring ilagay ang
-      confirmation code para ma-verify ang iyong numeor ng telepono.</p>"
+      Dapat mong matanggap ang code sa loob ng isang minuto.</p><p>Pakilagay ang confirmation
+      code upang maberipika ang numero ng iyong telepono.</p>"
     code_placeholder: Ilagay ang code
     confirm_button: Kumpirmahin
     wrong_code: Maling code.
@@ -508,14 +543,14 @@ tl:
       tamang numero ng cell phone. Kung ito ay <u>hindi</u> tama
     still_not_working: Kung nagkakaproblema ka pa rin na makatanggap ng confirmation
       code pagkatapos ng ilang pagsubok
-    confirmation_textmsg: Gamitin ang %{confirmation_code} bilang code para makaboto
-      sa Participatory Budgeting sa PBStanford.org
+    confirmation_textmsg: Gamitin ang %{confirmation_code} bilang code upang bumoto
+      para sa Partisipatoryong Pagbuo ng Badyet sa PBStanford.org
   general:
-    demo_warning: Ito ay isang preview lang. Hindi ire-rekord ang iyong boto.
+    demo_warning: Pakita lamang ito.  Hindi maitatala ang iyong boto.
     experiment_disclaimer: Ito ay isang research survey. Hindi ito maka-apekto sa
       iyong boto.
-    shuffle_note: "<span style='font-size: 18px;'>Tala: Ang mga proyektong ito ay
-      random ang kaayusan. </span>"
+    shuffle_note: '<span style="font-size: 18px;">Tandaan: Nakaayos ang mga proyektong
+      ito sa random na pagkakasunod-sunod.</span>'
     project_string: Proyekto
     close_button: Sarado
     timeout:
@@ -546,8 +581,8 @@ tl:
       election:
         slug: URL
       project:
-        cost_min: Minimum cost
-  errors: # TODO: translate
+        cost_min: Minimum na gastos
+  errors:
     messages:
-      blank: "hindi maaaring walang laman"
-      invalid: "hindi wasto"
+      blank: hindi maaaring walang laman
+      invalid: hindi wasto

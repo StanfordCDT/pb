@@ -30,7 +30,7 @@ es:
     popup:
       title: Instrucciones
       body: "<ol> <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li> <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
-      ok: Bien
+      ok: Continuar
     instructions: "<h3>Instrucciones</h3> <ol> <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li> <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
     list_of_projects: Lista de proyectos
     estimated_cost: Costo Estimado
@@ -118,7 +118,7 @@ es:
       cue: "Hacer clic para una imagen de presentación de diapositivas"
     project_ranking:
       list_header: "Ha seleccionado los siguientes proyectos. Cambie su clasificación arrastrando los iconos <span class=\"glyphicon glyphicon-sort\"></span>."
-      continue_button: Seguir
+      continue_button: Continuar
   thanks_approval:
     title: Gracias
     description:
@@ -132,7 +132,7 @@ es:
     popup:
       title: Instrucciones
       body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: Bien
+      ok: Continuar
     instructions: "<h3>Instrucciones</h3> <ol> <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li> <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
     confirmation:
       title: "¿Está seguro(a) de que quiere enviar su voto?"
@@ -218,7 +218,7 @@ es:
     popup:
       title: Instrucciones
       body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: Seguir
+      ok: Continuar
       exit: Salir
   knapsack:
     title: Presupuesto Participativo
@@ -226,7 +226,7 @@ es:
     popup:
       title: Instrucciones
       body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: Seguir
+      ok: Continuar
       exit: Salir
     instructions: "<h3>Instrucciones</h3> <ol> <li>Seleccione los proyectos que le gustaría apoyar. El coste total no puede exceder los <b>%{budget}.</b></li> <li>Puede ver la cantidad total que ha acumulado en la barra de arriba. Puede eliminar cualquier proyecto seleccionado anteriormente haciendo click en la barra o directamente haciendo click en el proyecto elegido.</li> <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li> </ol>"
     confirmation:
@@ -264,7 +264,7 @@ es:
     popup:
       title: Instrucciones
       body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: Seguir
+      ok: Continuar
       exit: Salir
     instructions: "<h3>Instrucciones</h3> <ol> <li>Seleccione los proyectos que quiera apoyar. El número total de fichas no puede ser superior a <b>%{total_tokens}</b>.</li> <li>Podrá ver el monto total que asignó hasta ahora en la barra de la parte superior. Puede eliminar cualquier proyecto seleccionado anteriormente al hacer clic en la barra o directamente en el proyecto elegido.</li> <li>Haga clic en el botón <b>\"Enviar mi voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
     confirmation:
@@ -400,7 +400,7 @@ es:
     close_button: Cerrar
     timeout:
       body: "Su sesión está por vencer. Haga clic en \"Seguir\" para seguir usando el sitio web."
-      continue_button: Seguir
+      continue_button: Continuar
   date:
     month_names:
       - null

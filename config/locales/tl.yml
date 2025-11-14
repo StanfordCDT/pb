@@ -16,7 +16,7 @@ tl:
       used_code: Ang code na ito ay nagamit na.
       used_personal_id: "Ang ID na ito ay nagamit na. Mangyari lang makipag-ugnayan sa voxpopuli@lists.stanford.edu sa kaganapan na ito ay isang errorå o kailangan mong bumoto muli."
     remote:
-      welcome: |
+      welcome: |-
         <img src="/img/sample-city-logo.png" style="margin-left: auto; margin-right: auto; display: block;" /> <p class="lead">Maligayang pagdating sa sample na digital na balota ng Partisipatoryong Pagbuo ng Badyet, sa kagandanghang-loob ng Stanford Crowdsourced Democracy Team.</p> <p class="lead">Sa website na ito, maaari mong gawing pamilyar ang iyong sarili sa mga proyekto sa taong ito at sa digital na balota. Ang website na ito ay nagbibigay-impormasyon lamang, at ikaw ay <b>hindi</b> maaaring bumoto nang aktuwal dito.</p> <p class="lead">Kapag inilagay mo ang iyong <u>aktuwal na balota</u>, ikaw ang magpapasiya kung paano mo gustong ilaan ang $XXX na milyon ng badyet sa
         pagpapabuti ng kapital ng lungsod. Upang makaboto, kailangan mong pumunta sa isa sa napakaraming lugar ng botohan na matatagpuan sa iba't ibang bahagi ng lungsod.  Gaganapin ang botohan mula (Petsa XXX) hanggang (Petsa YYY). Tingnan ang lahat ng oras at lokasyon sa ibaba.</p>
       proceed_button: "Tingnan ang sample na balota >>"
@@ -332,7 +332,7 @@ tl:
     instructions: "<p>Upang makaboto online, kakailanganin mo ng cell phone na makakatanggap ng text message, upang maberipika namin ang numero ng iyong telepono.</p><p>Ilagay ang numero ng iyong cell phone, at magte-text kami sa iyo ng confirmation code.</p>"
     phone_number_placeholder: Ilagay ang numero ng telepono
     verify_button: Beripikahin
-    invalid_phone_number: |
+    invalid_phone_number: |-
       %{phone_number} ay hindi isang balidong numero ng telepono.
       "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."
       Ang numero ng teleponong ito ay piniling hindi tumanggap ng mga mensahe mula sa amin. Para makuha ang confirmation code

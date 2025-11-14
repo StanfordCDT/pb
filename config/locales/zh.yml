@@ -330,7 +330,7 @@ zh:
     instructions: "<p>为进行在线投票，您需要一部可以接收短信的手机来进行电话号码验证。</p><p>输入电话号码后，我们将通过短信向您发送确认码。</p>"
     phone_number_placeholder: "输入电话号码"
     verify_button: "验证"
-    invalid_phone_number: |
+    invalid_phone_number: |-
       %{phone_number} 电话号码无效。
       
       "+sms_signup.blacklisted_phone_number  # \"START\" is a fixed word and must NOT be translated."

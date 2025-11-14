@@ -209,7 +209,7 @@ tl:
   question:
     title: Survey
     question: Ikaw ba ay may edad na 14 taong gulang o mas matanda?
-    ok: Oo
+    ok: OK
     alternative: Hindi
   comparison:
     title: Pagkukumpara
@@ -304,7 +304,7 @@ tl:
     question:
       title: Salamat
       body: Salamat sa iyong pagboto. Ikaw ba ay may edad na 14 taong gulang o mas matanda?
-      ok: Oo
+      ok: OK
       alternative: Hindi
     url: ""
   thanks:

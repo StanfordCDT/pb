@@ -1,118 +1,109 @@
 es:
   navigation:
-    brand: "Presupuesto Participativo"
-    home: "Inicio"
-    about: "Sobre Nosotros"
-    help: "Ayuda"
-    exit: "Salir"
-
+    brand: Presupuesto Participativo
+    home: Inicio
+    about: Sobre Nosotros
+    help: Ayuda
+    exit: Salir
   index:
-    title: "Presupuesto Participativo"  # text on the title bar
+    title: Presupuesto Participativo
     voting_machine:
-      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead' style='text-align:center;'>Bienvenido a la interfaz de votación digital para el presupuesto participativo de la ciudad de NYC</p>"
+      welcome: "<img src=\"/img/sample-city-logo.png\" style=\"margin-left: auto; margin-right: auto; display: block;\" /><p class=\"lead\" style=\"text-align:center;\">Le damos la bienvenida a la interfaz del voto digital para el Presupuesto participativo</p>"
       instruction: "Por favor ingrese el código que recibió."
       code_placeholder: "Código"
-      enter_code_button: "Entrar"
+      enter_code_button: Entrar
       wrong_code: "Código incorrecto"
       used_code: "Este código ya ha sido utilizado."
       used_personal_id: "Este ID ya se ha utilizado. Por favor, póngase en contacto con voxpopuli@lists.stanford.edu en caso de que esto es un error o tienes que votar de nuevo."
     remote:
-      welcome: "<img src=\"/img/sample-city-logo.png\" style='margin-left: auto; margin-right: auto; display: block;' /><p class='lead'>Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del Equipo Stanford Crowdsourced Democracy.</p><p class='lead'>En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class='lead'>Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
+      welcome: "<img src=\"/img/sample-city-logo.png\" style=\"margin-left: auto; margin-right: auto; display: block;\" /><p class=\"lead\">Bienvenido a la boleta digital de muestra del presupuesto participativo de la ciudad de NYC, cortesía del Equipo Stanford Crowdsourced Democracy.</p><p class=\"lead\">En este sitio web se puede familiarizar con los proyectos de este año y con la boleta de votación digital. Este sitio web es sólo para información, <b>no puede</b> emitir su voto real aquí.</p><p class=\"lead\">Cuando emita <u>su boleta real</u>, estará decidiendo cómo quiere distribuir 2,4 millones de dólares del presupuesto de mejora capital de la ciudad. Para votar, necesita venir a uno de los múltiples lugares de votación que estarán ubicados por toda la ciudad. La votación tendrá lugar entre el 27 de septiembre y el 6 de octubre. Vea todas las horas y ubicaciones a continuación. </p>"
       proceed_button: "Boleta de muestra >>"
       sms_verification_button: "Votar >>"
       code_verification_button: "Introduzca el código"
       other_verification_button: "Votar >>"
-      see_projects_button: "Ver Proyectos"  # Link to an external site
-    voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
-    voting_ended: "The voting has ended."
-    public_results: "See Election Results"
-
+      see_projects_button: Ver Proyectos
+    voting_has_not_started: "La votación en este sitio web aún no comenzó. Comenzaremos a recopilar los votos en remoto lo antes posible. Gracias por la espera."
+    voting_ended: "La votación finalizó."
+    public_results: Ver resultado de las elecciones
   approval:
-    title: "Presupuesto Participativo"
+    title: Presupuesto Participativo
     popup:
-      title: "Instrucciones"
-      body: "<ol>
-              <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
-              <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-            </ol>"
-      ok: "OK"
-    instructions: "<h3>Instrucciones</h3>
-                   <ol>
-                    <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
-                    <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-                   </ol>"
-    list_of_projects: "Lista de proyectos"
-    estimated_cost: "Costo Estimado"
-    youtube_video: "YouTube video"
+      title: Instrucciones
+      body: "<ol> <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li> <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
+      ok: Continuar
+    instructions: "<h3>Instrucciones</h3> <ol> <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li> <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
+    list_of_projects: Lista de proyectos
+    estimated_cost: Costo Estimado
+    youtube_video: Video de YouTube
     location: "Ubicación"
-    partner: "Socio"
+    partner: Socio
     committee: "Comité"
     read_details: "Leer más..."
-    select_button:  # Text on the button to select a project
-      select: "Seleccionar"  # if the project is not selected
-      selected: "Seleccionado" # if the project is selected
-      not_enough_money: "No hay suficiente dinero"
-      more_projects: "Can't choose more than %{max_n_projects} projects"
-    remove_button: "Anular selección"  # Text on the button to remove a selected project
+    select_button:
+      select: Seleccionar
+      selected: Seleccionado
+      not_enough_money: No hay suficiente dinero
+      more_projects: "No se pueden elegir más de %{max_n_projects} proyectos"
+    remove_button: "Anular selección"
     remove_button_tooltip: "Haga clic aquí si ya no quiere seleccionar este proyecto."
-    submit_button: "Enviar Mi Voto..."
+    submit_button: Enviar Mi Voto...
     confirmation:
       title: "¿Está seguro(a) de que quiere enviar su voto?"
       body:
         summary:
-          zero: "<span style='color: red;'>No ha elegido ningún proyecto.</span>"
+          zero: "<span style=\"color: red;\">No ha elegido ningún proyecto.</span>"
           other: "Ha elegido los siguientes proyectos: %{projects}"
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: "<span style=\"color: red;\">Aún no seleccionó ningún proyecto.</span>"
+          other: "Seleccionó fichas para los siguientes proyectos: %{projects}"
+          item: "%{project} (%{cost} fichas)"
         under_n_project_limit:
-          one: "<span style='color: red;'>Ha seleccionado solo un proyecto.</span>"
-          less: "<span style='color: red;'>Ha seleccionado solo %{count} proyectos.</span>"
-          limit: "<span style='color: red;'>Puedes votar por hasta %{max_n_projects} proyectos.</span>"
-        under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: "<span style=\"color: red;\">Seleccionó solo un proyecto.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} proyectos.</span>"
+          limit: "<span style=\"color: red;\">Puedes votar por hasta %{max_n_projects} proyectos.</span>"
+        under_token_limit:
+          one: "<span style=\"color: red;\">Seleccionó solo una ficha.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} fichas.</span>"
+          limit: "<span style=\"color: red;\">Puede seleccionar hasta %{total_tokens} fichas.</span>"
         warning: "Después de enviar su voto, <strong>no podrá</strong> cambiarlo. Si quiere modificar su voto, haga clic en 'Regresar' a continuación. Si quiere enviar su voto, marque el recuadro a continuación y haga clic en 'Enviar Mi Voto.'"
         checkbox: "Entiendo que después de enviar mi voto, <strong>no puedo cambiarlo</strong>."
-      ok: "Enviar Mi Voto"
-      cancel: "Regresar"
+      ok: Enviar Mi Voto
+      cancel: Regresar
     confirmation_over_limit:
-      title: "No se ha podido enviar su voto"
-      over_n_project_limit: "<span style='color:red'>Ha seleccionado <b>%{n_projects}</b> proyectos. Solo puede seleccionar un máximo de <b>%{max_n_projects}</b> proyectos. Por favor elimine <b>%{extra}</b> o más proyectos.</span>"
-      over_budget_limit: "<span style='color:red'>Ha sobrepasado el presupuesto.</span>"
-      over_token_limit: "<span style= 'color:red'> You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum.</span>" #FIXME: translate
-      cancel: "Regresar"
+      title: No se ha podido enviar su voto
+      over_n_project_limit: "<span style=\"color:red\">Ha seleccionado <b>%{n_projects}</b> proyectos. Solo puede seleccionar un máximo de <b>%{max_n_projects}</b> proyectos. Por favor elimine <b>%{extra}</b> o más proyectos.</span>"
+      over_budget_limit: "<span style=\"color:red\">Ha sobrepasado el presupuesto.</span>"
+      over_token_limit: "<span style=\"color:red\"> Está usando más fichas de las que hay disponibles. Disminuya las fichas gastadas para no superar el límite máximo.</span>"
+      cancel: Regresar
     tracker:
       text: "Usted ha seleccionado %{count} proyectos."
       x_out_of_y: "%{x} / %{y}"
     budgetbar:
       text: "Seleccionados %{total} de los %{budget} del presupuesto total."
       under_budget: "Todavía le quedan %{remaining_money}."
-      over_budget: "Ha sobrepasado el presupuesto."
+      over_budget: Ha sobrepasado el presupuesto.
       over_budget_but_can_add_projects: "Ha sobrepasado el presupuesto, pero puede seguir añadiendo proyectos."
-    tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_token: "You still have %{remaining_money} tokens left."
-      over_token: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_tokens: "You're currently over budget, but can keep adding tokens."
+    tokenbar:
+      text: "Seleccionó %{total} de %{budget} fichas en total."
+      under_token: "Aún le quedan %{remaining_money} fichas."
+      over_token: "Está usando más fichas de las que hay disponibles. Disminuya las fichas gastadas para no superar el límite máximo."
+      over_budget_but_can_add_tokens: "Superó el presupuesto, pero puede seguir agregando fichas."
     adjustable_cost_project:
       instructions: "Por favor seleccione una de las siguientes opciones:"
-      not_adjusted_warning: "<span style='color:red'>Ha seleccionado 0 dólares para %{project}</span>"
+      not_adjusted_warning: "<span style=\"color:red\">Ha seleccionado 0 dólares para %{project}</span>"
       message: "Ha seleccionado %{cost} para %{project}"
       table_headings:
-        percentage_column: "Porcentaje del presupuesto gastado"
-        cost_column: "Costo"
+        percentage_column: Porcentaje del presupuesto gastado
+        cost_column: Costo
         number_column: "Estimado # de cuadras repavimentadas"
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
+    adjustable_token_project:
+      instructions: "Seleccione una de las opciones que aparecen a continuación:"
+      not_adjusted_warning: "<span style=\"color:red\">Seleccionó 0 fichas para %{project}</span>"
+      message: "Seleccionó %{cost} fichas para %{project}"
     map:
       street_resurfacing_count:
-        one: "1 calle repavimentada"
+        one: 1 calle repavimentada
         other: "%{count} calles repavimentadas"
       alley_resurfacing_count:
         one: "1 callejón repavimentada"
@@ -121,355 +112,321 @@ es:
         one: "1 entrada de callejón repavimentada"
         other: "%{count} entradas de callejónes repavimentadas"
       sidewalk_repairing_count:
-        one: "1 banqueta reparada"
+        one: 1 banqueta reparada
         other: "%{count} banquetas reparadas"
     image_gallery:
       cue: "Hacer clic para una imagen de presentación de diapositivas"
     project_ranking:
-      list_header: "Ha seleccionado los siguientes proyectos. Cambie su clasificación arrastrando los iconos <span class='glyphicon glyphicon-sort'></span>."
-      continue_button: "Continuar"
-
+      list_header: "Ha seleccionado los siguientes proyectos. Cambie su clasificación arrastrando los iconos <span class=\"glyphicon glyphicon-sort\"></span>."
+      continue_button: Continuar
   thanks_approval:
-    title: "Gracias"
+    title: Gracias
     description:
-      real: "<br><br><p class='lead'>Gracias por votar. Por favor haga clic en el botón 'Siguiente'.</p>"
-      demo: "<br><br><p class='lead'>¡Gracias por votar! <span style='color: red;'><strong>Tenga en cuenta que esto es sólo una <u>prueba</u>.</strong></span> Por favor haga clic en el botón 'Siguiente'.</p>"
+      real: "<br><br><p class=\"lead\">Gracias por votar. Por favor haga clic en el botón 'Siguiente'.</p>"
+      demo: "<br><br><p class=\"lead\">¡Gracias por votar! <span style=\"color: red;\"><strong>Tenga en cuenta que esto es sólo una <u>prueba</u>.</strong></span> Por favor haga clic en el botón 'Siguiente'.</p>"
     send_vote_email: "(Opcional) Quiero enviar el resultado de mi votación a mi correo electrónico:"
     email_placeholder: "Introduzca el correo electrónico"
     next_button: "Siguiente &gt;&gt;"
-
   ranking:
-    title: "Participatory Budgeting"
+    title: Presupuesto participativo
     popup:
-      title: "Instrucciones"
-      body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-        </ul>
-        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: "OK"
-    instructions: "<h3>Instrucciones</h3>
-                   <ol>
-                    <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li>
-                    <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li>
-                   </ol>"
+      title: Instrucciones
+      body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+      ok: Continuar
+    instructions: "<h3>Instrucciones</h3> <ol> <li>Selecciona los proyectos que le gustaría apoyar . Usted puede votar por hasta <b>%{max_n_projects} proyectos</b>.</li> <li>Haga clic en el botón <b>\"Enviar Mi Voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
     confirmation:
       title: "¿Está seguro(a) de que quiere enviar su voto?"
       body:
         summary:
-          zero: "<span style='color: red;'>No ha elegido ningún proyecto.</span>"
+          zero: "<span style=\"color: red;\">No ha elegido ningún proyecto.</span>"
           other: "Ha elegido los siguientes proyectos: %{projects}"
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: "<span style=\"color: red;\">Aún no seleccionó ningún proyecto.</span>"
+          other: "Seleccionó fichas para los siguientes proyectos: %{projects}"
+          item: "%{project} (%{cost} fichas)"
         under_n_project_limit:
-          one: "<span style='color: red;'>Ha seleccionado solo un proyecto.</span>"
-          less: "<span style='color: red;'>Ha seleccionado solo %{count} proyectos.</span>"
-          limit: "<span style='color: red;'>Puedes votar por hasta %{max_n_projects} proyectos.</span>"
-        under_token_limit: #FIXME: translate
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: "<span style=\"color: red;\">Seleccionó solo un proyecto.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} proyectos.</span>"
+          limit: "<span style=\"color: red;\">Puedes votar por hasta %{max_n_projects} proyectos.</span>"
+        under_token_limit:
+          one: "<span style=\"color: red;\">Seleccionó solo una ficha.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} fichas.</span>"
+          limit: "<span style=\"color: red;\">Puede seleccionar hasta %{total_tokens} fichas.</span>"
         warning: "Después de enviar su voto, <strong>no podrá</strong> cambiarlo. Si quiere modificar su voto, haga clic en 'Regresar' a continuación. Si quiere enviar su voto, marque el recuadro a continuación y haga clic en 'Enviar Mi Voto.'"
         checkbox: "Entiendo que después de enviar mi voto, <strong>no puedo cambiarlo</strong>."
-      ok: "Enviar Mi Voto"
-      cancel: "Regresar"
+      ok: Enviar Mi Voto
+      cancel: Regresar
     confirmation_over_limit:
-      title: "No se ha podido enviar su voto"
-      over_n_project_limit: "<span style='color:red'>Ha seleccionado <b>%{n_projects}</b> proyectos. Solo puede seleccionar un máximo de <b>%{max_n_projects}</b> proyectos. Por favor elimine <b>%{extra}</b> o más proyectos.</span>"
-      over_budget_limit: "<span style='color:red'>Ha sobrepasado el presupuesto.</span>"
-      cancel: "Regresar"
+      title: No se ha podido enviar su voto
+      over_n_project_limit: "<span style=\"color:red\">Ha seleccionado <b>%{n_projects}</b> proyectos. Solo puede seleccionar un máximo de <b>%{max_n_projects}</b> proyectos. Por favor elimine <b>%{extra}</b> o más proyectos.</span>"
+      over_budget_limit: "<span style=\"color:red\">Ha sobrepasado el presupuesto.</span>"
+      cancel: Regresar
     tracker:
       text: "Usted ha seleccionado %{count} proyectos."
       x_out_of_y: "%{x} / %{y}"
-    budgetbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total budget."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You're currently over budget."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
-    tokenbar: #FIXME: translate
-      text: "Selected %{total} of %{budget} total tokens."
-      under_budget: "You still have %{remaining_money} left."
-      over_budget: "You have currently used more tokens than available. Please reduce the spent tokens to be less than the maximum."
-      over_budget_but_can_add_projects: "You're currently over budget, but can keep adding projects."
-    adjustable_cost_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected $%{cost} for %{project}"
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"  
+    budgetbar:
+      text: "Seleccionó %{total} del presupuesto total de %{budget}."
+      under_budget: "Aún le quedan %{remaining_money}."
+      over_budget: "Superó el presupuesto."
+      over_budget_but_can_add_projects: "Superó el presupuesto, pero puede seguir agregando proyectos."
+    tokenbar:
+      text: "Seleccionó %{total} de %{budget} fichas en total."
+      under_budget: "Aún le quedan %{remaining_money}."
+      over_budget: "Está usando más fichas de las que hay disponibles. Disminuya las fichas gastadas para no superar el límite máximo."
+      over_budget_but_can_add_projects: "Superó el presupuesto, pero puede seguir agregando proyectos."
+    adjustable_cost_project:
+      instructions: "Seleccione una de las opciones que aparecen a continuación:"
+      not_adjusted_warning: "<span style=\"color:red\">Seleccionó $0 para %{project}</span>"
+      message: "Seleccionó $%{cost} para %{project}"
       table_headings:
-        percentage_column: "Percentage of the budget spent"
-        cost_column: "Cost"
-        number_column: "Approximate # of blocks resurfaced"
-    adjustable_token_project: #FIXME: translate
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"  
-    image_gallery: #FIXME: translate
-      cue: "Click image for slide show"
-
+        percentage_column: Porcentaje del presupuesto gastado
+        cost_column: Costo
+        number_column: "N.º aproximado de cuadras renovadas"
+    adjustable_token_project:
+      instructions: "Seleccione una de las opciones que aparecen a continuación:"
+      not_adjusted_warning: "<span style=\"color:red\">Seleccionó 0 fichas para %{project}</span>"
+      message: "Seleccionó %{cost} fichas para %{project}"
+    image_gallery:
+      cue: "Haga clic en la imagen para la presentación de diapositivas"
+    list_of_projects: Lista de proyectos
+    estimated_cost: Costo estimado
+    youtube_video: Video de YouTube
+    location: "Ubicación"
+    partner: Socio
+    committee: "Comité"
+    read_details: "Más información..."
+    select_button:
+      select: Seleccionar
+      selected: Seleccionado
+      not_enough_money: No hay suficiente dinero
+      more_projects: "No se pueden elegir más de %{max_n_projects} proyectos"
+    remove_button: Eliminar
+    remove_button_tooltip: "Haga clic aquí si ya no quiere elegir este proyecto."
+    submit_button: Enviar mi voto...
   question:
-    title: "Encuesta"
+    title: Encuesta
     question: "¿Tiene 14 años o más?"
     ok: "Sí, tengo 14 años o más"
     alternative: "No, soy menor de 14 años"
-
   comparison:
     title: "Comparación"
     header: "¿Qué proyecto ofrece mayor beneficio por su costo, es decir, el mayor beneficio para la comunidad por cada dólar gastado?"
-    estimated_cost: "Costo estimado"
-    this_project: "Este Proyecto"
-    not_sure: "No estoy seguro"
+    estimated_cost: Costo estimado
+    this_project: Este Proyecto
+    not_sure: No estoy seguro
     popup:
-      title: "Instrucciones"
-      body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-        </ul>
-        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: "Continuar"
-      exit: "Salir"
-
+      title: Instrucciones
+      body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+      ok: Continuar
+      exit: Salir
   knapsack:
-    title: "Presupuesto Participativo"
+    title: Presupuesto Participativo
     header: "Seleccione los proyectos que le gustaría apoyar, arrastrándolos de la derecha a la izquierda."
     popup:
-      title: "Instrucciones"
-      body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-        </ul>
-        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: "Continuar"
-      exit: "Salir"
-    instructions: "<h3>Instrucciones</h3>
-                   <ol>
-                     <li>Seleccione los proyectos que le gustaría apoyar. El coste total no puede exceder los <b>%{budget}.</b></li>
-                     <li>Puede ver la cantidad total que ha acumulado en la barra de arriba. Puede eliminar cualquier proyecto seleccionado anteriormente haciendo click en la barra o directamente haciendo click en el proyecto elegido.</li>
-                     <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li>
-                   </ol>"
+      title: Instrucciones
+      body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+      ok: Continuar
+      exit: Salir
+    instructions: "<h3>Instrucciones</h3> <ol> <li>Seleccione los proyectos que le gustaría apoyar. El coste total no puede exceder los <b>%{budget}.</b></li> <li>Puede ver la cantidad total que ha acumulado en la barra de arriba. Puede eliminar cualquier proyecto seleccionado anteriormente haciendo click en la barra o directamente haciendo click en el proyecto elegido.</li> <li>Haz clic en el botón <b>\"Enviar Mi Voto\"</b> cuando estés listo para presentar tu elección.</li> </ol>"
     confirmation:
       title: "¿Está seguro(a) de que quiere enviar su voto?"
       body:
         summary:
-          zero: "<span style='color: red;'>No ha elegido ningún proyecto.</span>"
+          zero: "<span style=\"color: red;\">No ha elegido ningún proyecto.</span>"
           other: "Ha elegido los siguientes proyectos: %{projects}"
           item: "%{project} (%{cost})"
-        summary_token: #FIXME: translate
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
+        summary_token:
+          zero: "<span style=\"color: red;\">Aún no seleccionó ningún proyecto.</span>"
+          other: "Seleccionó fichas para los siguientes proyectos: %{projects}"
+          item: "%{project} (%{cost} fichas)"
         under_n_project_limit:
-          one: "<span style='color: red;'>Ha seleccionado solo un proyecto.</span>"
-          less: "<span style='color: red;'>Ha seleccionado solo %{count} proyectos.</span>"
-          limit: "<span style='color: red;'>Puedes votar por hasta %{max_n_projects} proyectos.</span>"
+          one: "<span style=\"color: red;\">Seleccionó solo un proyecto.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} proyectos.</span>"
+          limit: "<span style=\"color: red;\">Puedes votar por hasta %{max_n_projects} proyectos.</span>"
         under_token_limit:
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
+          one: "<span style=\"color: red;\">Seleccionó solo una ficha.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} fichas.</span>"
+          limit: "<span style=\"color: red;\">Puede seleccionar hasta %{total_tokens} fichas.</span>"
         warning: "Después de enviar su voto, <strong>no podrá</strong> cambiarlo."
-      ok: "Enviar Mi Voto"
-      cancel: "Regresar"
+      ok: Enviar Mi Voto
+      cancel: Regresar
     adjustable_cost_project:
       instructions: "Por favor seleccionar uno de los siguientes opciones:"
-      not_adjusted_warning: "<span style='color:red'>Ha seleccionado 0 dólares para %{project}</span>"
+      not_adjusted_warning: "<span style=\"color:red\">Ha seleccionado 0 dólares para %{project}</span>"
       message: "Ha seleccionado %{cost} para %{project}"
-
-    adjustable_token_project: ##fix langauge
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
-
+    adjustable_token_project:
+      instructions: "Seleccione una de las opciones que aparecen a continuación:"
+      not_adjusted_warning: "<span style=\"color:red\">Seleccionó 0 fichas para %{project}</span>"
+      message: "Seleccionó %{cost} fichas para %{project}"
   token:
-    title: "Participatory Budgeting"
+    title: Presupuesto participativo
     popup:
-      title: "Instrucciones"
-      body: "<p style='font-size: 20px;'>Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p>
-        <ul style='font-size: 20px;'><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li>
-        <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li>
-        </ul>
-        <p style='font-size: 14px;'>Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
-      ok: "Continue"
-      exit: "Exit"
-    instructions: "<h3>Instructions</h3>
-                   <ol>
-                     <li>Select the projects you would like to support. The total number of tokens cannot exceed <b>%{total_tokens}</b>.</li>
-                     <li>You can see the total amount you have allocated so far in the bar above. You can remove any previously selected projects by clicking on the bar or directly by clicking on the chosen project.</li>
-                     <li>Click the <b>\"Submit My Vote\"</b> button when you're ready to submit.</li>
-                   </ol>"
+      title: Instrucciones
+      body: "<p style=\"font-size: 20px;\">Ahora se le pedirá participar en una actividad que <u>no</u> afectará a su voto, pero que es parte de un proyecto de investigación de la Universidad de Stanford que quiere ayudarnos a mejorar el proceso de presupuesto de participación.</p> <ul style=\"font-size: 20px;\"><li>Participar en esta actividad es opcional. Puede salir en cualquier momento.</li> <li>El tiempo estimado para esta actividad es de 2 a 3 minutos.</li> </ul> <p style=\"font-size: 14px;\">Este estudio no tiene ningún riesgo. No tendrá que asumir ningún pago por su participación y no podemos garantizarle ningún beneficio. Usted tiene el derecho de negarse a contestar preguntas particulares. Por favor, contacte el Profesor Ashish Goel en goel_admins@lists.stanford.edu si tiene alguna pregunta, sugerencia o duda. También puede contactar con Stanford Institutional Review Board en el at 650-723-2480.</p>"
+      ok: Continuar
+      exit: Salir
+    instructions: "<h3>Instrucciones</h3> <ol> <li>Seleccione los proyectos que quiera apoyar. El número total de fichas no puede ser superior a <b>%{total_tokens}</b>.</li> <li>Podrá ver el monto total que asignó hasta ahora en la barra de la parte superior. Puede eliminar cualquier proyecto seleccionado anteriormente al hacer clic en la barra o directamente en el proyecto elegido.</li> <li>Haga clic en el botón <b>\"Enviar mi voto\"</b> cuando esté listo para enviarlo.</li> </ol>"
     confirmation:
-      title: "Are you sure you want to submit your vote?"
+      title: "¿Está seguro de que quiere enviar su voto?"
       body:
         summary:
-          zero: "<span style='color: red;'>You haven't selected any projects.</span>"
-          other: "You have selected the following projects: %{projects}"
+          zero: "<span style=\"color: red;\">Aún no seleccionó ningún proyecto.</span>"
+          other: "Seleccionó los siguientes proyectos: %{projects}"
           item: "%{project} (%{cost})"
         summary_token:
-          zero: "<span style='color: red;'>You haven't selected any project.</span>"
-          other: "You have selected tokens for the following projects: %{projects}"
-          item: "%{project} (%{cost} tokens)"
-
+          zero: "<span style=\"color: red;\">Aún no seleccionó ningún proyecto.</span>"
+          other: "Seleccionó fichas para los siguientes proyectos: %{projects}"
+          item: "%{project} (%{cost} fichas)"
         under_n_project_limit:
-          one: "<span style='color: red;'>You have selected only one project.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} projects.</span>"
-          limit: "<span style='color: red;'>You can vote for up to %{max_n_projects} projects.</span>"
+          one: "<span style=\"color: red;\">Seleccionó solo un proyecto.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} proyectos.</span>"
+          limit: "<span style=\"color: red;\">Puede votar hasta por %{max_n_projects} proyectos.</span>"
         under_token_limit:
-          one: "<span style='color: red;'>You have selected only one token.</span>"
-          less: "<span style='color: red;'>You have selected only %{count} tokens.</span>"
-          limit: "<span style='color: red;'>You can select up to %{total_tokens} tokens.</span>"
-
-        warning: "After submitting your vote, you <strong>cannot</strong> change your vote."
-      ok: "Submit My Vote"
-      cancel: "Go Back"
+          one: "<span style=\"color: red;\">Seleccionó solo una ficha.</span>"
+          less: "<span style=\"color: red;\">Seleccionó solo %{count} fichas.</span>"
+          limit: "<span style=\"color: red;\">Puede seleccionar hasta %{total_tokens} fichas.</span>"
+        warning: "Después de enviar su voto, <strong>no</strong> podrá cambiarlo."
+      ok: Enviar mi voto
+      cancel: Regresar
     adjustable_cost_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected $0 for %{project}</span>"
-      message: "You have selected %{cost} for %{project}"
-
+      instructions: "Seleccione una de las opciones que aparecen a continuación:"
+      not_adjusted_warning: "<span style=\"color:red\">Seleccionó $0 para %{project}</span>"
+      message: "Seleccionó %{cost} para %{project}"
     adjustable_token_project:
-      instructions: "Please select one of the options below:"
-      not_adjusted_warning: "<span style='color:red'>You have selected 0 tokens for %{project}</span>"
-      message: "You have selected %{cost} tokens for %{project}"
-
+      instructions: "Seleccione una de las opciones que aparecen a continuación:"
+      not_adjusted_warning: "<span style=\"color:red\">Seleccionó 0 fichas para %{project}</span>"
+      message: "Seleccionó %{cost} fichas para %{project}"
   survey:
-    title: "Encuesta"
-    header: "Responda la Encuesta Por Favor"
+    title: Encuesta
+    header: Responda la Encuesta Por Favor
     question:
-      title: "Gracias"
+      title: Gracias
       body: "Gracias por votar. ¿Tiene 14 años o más?"
       ok: "Sí, tengo 14 años o más"
       alternative: "No, soy menor de 14 años"
     url: ""
-
   thanks:
-    title: "Gracias"
+    title: Gracias
     description:
       real: "Gracias por votar. Por favor haga clic en el botón 'Salir'."
-      demo: "¡Gracias por probar la interfaz digital del presupuesto participativo! <span style='color: red;'><strong>Tenga en cuenta que esto es sólo una <u>prueba</u>.</strong></span>"
-    exit: "Salir"
-
+      demo: "¡Gracias por probar la interfaz digital del presupuesto participativo! <span style=\"color: red;\"><strong>Tenga en cuenta que esto es sólo una <u>prueba</u>.</strong></span>"
+    exit: Salir
   about:
-    title: "Sobre Nosotros"
-    description: "<center><h1 class='sub-header'>Sobre la interface digital de presupuesto</h1></center>
-      <br><p class='lead'>La interface digital ha sido desarrollada por el <a href='https://voxpopuli.stanford.edu/' target='_blank'>equipo de Democracia Participativa de la Universidad de Stanford</a>. <br>Esperamos que la naturaleza visual de la interface y la riqueza de la información que se presenta le ayudará a aprender acerca de los proyectos y emitir su voto de una manera más informada.</p>
-      <p class='lead'><b>Este es un proyecto de código abierto con licencia bajo la licencia GNU GPL v3.0. Puede encontrar el código fuente en <a href='https://www.github.com/ashihg/pb-stanford/' target='_blank'>GitHub</a>.</b></p>
-      <p class='lead'>Si tiene un problema técnico o si desea dar su opinión, por favor escriba a <a href='mailto:feedback@pbstanford.org' target='_blank'>feedback@pbstanford.org</a> y vamos a tratar de volver a usted tan pronto como sea posible.</p>"
-
+    title: Sobre Nosotros
+    description: "<center><h1 class=\"sub-header\">Sobre la interface digital de presupuesto</h1></center> <br><p class=\"lead\">La interface digital ha sido desarrollada por el <a href=\"https://voxpopuli.stanford.edu/\" target=\"_blank\">equipo de Democracia Participativa de la Universidad de Stanford</a>. <br>Esperamos que la naturaleza visual de la interface y la riqueza de la información que se presenta le ayudará a aprender acerca de los proyectos y emitir su voto de una manera más informada.</p> <p class=\"lead\"><b>Este es un proyecto de código abierto con licencia bajo la licencia GNU GPL v3.0. Puede encontrar el código fuente en <a href=\"https://www.github.com/ashihg/pb-stanford/\" target=\"_blank\">GitHub</a>.</b></p> <p class=\"lead\">Si tiene un problema técnico o si desea dar su opinión, por favor escriba a <a href=\"mailto:feedback@pbstanford.org\" target=\"_blank\">feedback@pbstanford.org</a> y vamos a tratar de volver a usted tan pronto como sea posible.</p>"
   result:
-    title: "Results"
+    title: Resultados
     vote_results: "Resultados de la Votación"
     description: "Los resultados de la votación por %{count} votantes desde %{start} hasta %{end}."
-    proposed_project: "Proyecto Propuesto"  # A table header
-    votes: "Votos"  # A table header
-    projects: "Proyectos"
-
+    proposed_project: Proyecto Propuesto
+    votes: Votos
+    projects: Proyectos
   election:
     can_also_vote_in_person: "Puede dirigirse a uno de los siguientes lugares para emitir su voto:"
-    info: "<h3>Ubicación de las Urnas de Votación</h3>
-           <b>Sábado, 27 de Septiembre</b> &nbsp; (12:00 - 4:00 p.m.)<br>
-           Somewhere<br>
-           <br>
-           <b>Martes, 30 de Septiembre</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br>
-           Somewhere<br>
-           <br>
-           <p>Para más información, visite <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
-
+    info: "<h3>Ubicación de las Urnas de Votación</h3> <b>Sábado, 27 de Septiembre</b> &nbsp; (12:00 - 4:00 p.m.)<br> Somewhere<br> <br> <b>Martes, 30 de Septiembre</b> &nbsp; (6:00 p.m. - 9:00 p.m.)<br> Somewhere<br> <br> <p>Para más información, visite <a href=\"http://www.example.com/\">http://www.example.com/</a></p>"
   sms_signup:
     title: "Verifique su número de teléfono"
     header: "Verifique su número de teléfono"
     instructions: "<p>Para poder votar en línea, necesitará un teléfono móvil o celular que pueda recibir mensajes de texto para que podamos verificar su número de teléfono. </p><p>Introduzca su número de teléfono móvil o celular y le enviaremos un mensaje de texto con un código de confirmación.</p>"
     phone_number_placeholder: "Introducir número de teléfono"
-    verify_button: "Verifica"
+    verify_button: Verifica
     invalid_phone_number: "\"%{phone_number}\" no es un número de teléfono válido."
-    blacklisted_phone_number: "This phone number has opted out of receiving messages from us. To receive the confirmation code, please send START to %{our_phone_number} and then enter your phone number here again."  # FIXME: Translate this.
+    blacklisted_phone_number: "Este número de teléfono se dio de baja para no recibir nuestros mensajes. Para recibir el código de confirmación, envíe \"START\" (comenzar) a %{our_phone_number} e ingrese de nuevo su número de teléfono aquí."
     no_cell_phone_instruction: "Si no dispones de teléfono móvil, haz <a href=\"%{code_signup_url}\">clic aquí</a> para usar otro método de votación en línea."
-
   code_signup:
     title: "Introduzca el código de voto"
     instruction: "Envíe un correo electrónico a XXX@XXX.com o llame XXX-XXX-XXX para obtener un código de acceso. Una vez que obtenga el código de acceso, ingréselo a continuación y presione el botón <b>Votar</b> para continuar."
-    #no_code_instruction: "Si usted no tiene un código de acceso, obtener de la Ciudad"
     code_placeholder: "Código de acceso"
-    vote_button: "Votar"
+    vote_button: Votar
     wrong_access_code: "Código de acceso incorrecto"
     used_access_code: "Este código de acceso ya ha sido utilizado"
-
   other_signup:
-    title: "Enter details to vote"
+    title: Ingresar datos para votar
     instruction: ""
-    no_account_number_instruction: "If you don't have an account number, please <a href=\"%{code_signup_url}\">click here</a> to use another method to vote online."
-    zipcode_placeholder: "ZIP code"
-    account_number_placeholder: "Account Number"
-    vote_button: "Vote"
-    wrong_account_number: "Wrong account number or ZIP code"
-    used_account_number: "This account number has already been used"
-
+    no_account_number_instruction: "Si no dispone de un número de cuenta, <a href=\"%{code_signup_url}\">haga clic aquí</a> para usar otro método para votar en línea."
+    zipcode_placeholder: "Código postal"
+    account_number_placeholder: "Número de cuenta"
+    vote_button: Votar
+    wrong_account_number: "Número de cuenta o código postal erróneo"
+    used_account_number: "Ya se usa este número de cuenta"
   free_signup:
-    title: "Validation"
-    instruction: "Please enter your ZIP code"
-    placeholder: "ZIP code"
+    title: "Validación"
+    instruction: "Ingrese su código postal"
+    placeholder: "Código postal"
     captcha: "Por favor, escriba <b>%{captcha}</b>"
-    vote_button: "Vote"
-
+    vote_button: Votar
   registration:
-    title: "Detalles de votantes"
-    header: "Detalles de votantes"
+    title: Detalles de votantes
+    header: Detalles de votantes
     instructions: "Por favor, introduzca los siguientes datos para proceder a la votación para la votación. Los campos marcados con * son requeridos."
-    proceed_button: "Proceder"
+    proceed_button: Continuar
     no_phone_number: "Yo no tengo un número de teléfono"
-    name: "Nombre"
-    first_name: "Nombre"
-    middle_initial: "Inicial de su segundo nombre"
-    last_name: "Apellido"
-    suffix: "Sufijo"
-    phone_number: "Numero de telefono"
-    email: "Email"
-    address: "Direccion"
-    city: "Ciudad"
-    zip_code: "Codigo postal"
+    name: Nombre
+    first_name: Nombre
+    middle_initial: Inicial de su segundo nombre
+    last_name: Apellido
+    suffix: Sufijo
+    phone_number: Numero de telefono
+    email: "Correo electrónico"
+    address: Direccion
+    city: Ciudad
+    zip_code: Codigo postal
     birth_year: "Año de nacimiento"
-    date_of_birth: "Fecha de nacimiento"
+    date_of_birth: Fecha de nacimiento
     verify_age_label: "Soy mayor de 16 años"
     email_instruction_label: "¿Quieres conocer los resultados de esta votación? Introduce tu email para estar al día."
-    ward: "Ward"
-    ward_do_not_know: "Do not know"
-    error: "Please fix the following errors:"
-    not_voting_age_error: "You must be between the age requirement in order to vote in this election"
-    verify_age_error: "Please confirm \"%{checkbox_label}\""  # FIXME: Translate.
-
+    ward: Distrito electoral
+    ward_do_not_know: "No lo sé"
+    error: "Corrija los siguientes errores:"
+    not_voting_age_error: "Debe tener la edad mínima para votar en estas elecciones"
+    verify_age_error: "Confirme \"%{checkbox_label}\""
   sms_signup_confirm:
     title: "Verifique su número de teléfono"
     header: "Verifique su número de teléfono"
     instructions: "<p>Hemos enviado un código de confirmación al <b>%{phone_number}</b>. Debe recibir el código dentro de un minuto.</p><p>Introduzca el código de confirmación para verificar su número de teléfono.</p>"
     code_placeholder: "Introducir código"
-    confirm_button: "Confirmar"
+    confirm_button: Confirmar
     wrong_code: "Código incorrecto."
     resend_code: "Si no recibe el código en un minuto, haga clic <a href=\"%{resend_code_url}\">aquí</a> para reenviar el código de confirmación."
     make_sure_phone_number_is_correct: "Asegúrese de que %{phone_number} es su número de teléfono móvil o celular correcto. Si <u>no</u> es correcto, haga clic <a href=\"%{signup_url}\">aquí</a> para cambiarlo."
     still_not_working: "Si todavía tiene problemas para recibir el código de confirmación tras varios intentos, por favor haga <a href=\"%{code_signup_url}\">clic aquí</a> para usar otro método para votar en línea."
-    confirmation_textmsg: "Use %{confirmation_code} as the code to vote for Participatory Budgeting at PBStanford.org" #FIXME: translate
-
+    confirmation_textmsg: "Use %{confirmation_code} como código para votar por el Presupuesto participativo en PBStanford.org"
   general:
     demo_warning: "Esta es solo una vista previa. Su voto no se guardará."
     experiment_disclaimer: "Esto es sólo una encuesta. No afectará su voto."
-    shuffle_note: "<span style='font-size: 18px;'>Nota: Estos proyectos están en orden aleatorio.</span>"
-    project_string: "Proyecto"
-    close_button: "Close"  # FIXME: Translate.
+    shuffle_note: "<span style=\"font-size: 18px;\">Nota: Estos proyectos están en orden aleatorio.</span>"
+    project_string: Proyecto
+    close_button: Cerrar
     timeout:
-      body: "Your session is about to expire. Click \"Continue\" to continue using the website."
-      continue_button: "Continue"
-
+      body: "Su sesión está por vencer. Haga clic en \"Seguir\" para seguir usando el sitio web."
+      continue_button: Continuar
   date:
-    month_names: [~, enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre]
+    month_names:
+      - null
+      - enero
+      - febrero
+      - marzo
+      - abril
+      - mayo
+      - junio
+      - julio
+      - agosto
+      - septiembre
+      - octubre
+      - noviembre
+      - diciembre
     order:
-    - :day
-    - :month
-    - :year
+      - day
+      - month
+      - year
   errors:
     messages:
       blank: no puede estar en blanco
-      invalid: es inválido
+      invalid: "es inválido"
+  activerecord:
+    attributes:
+      election:
+        slug: URL
+      project:
+        cost_min: "Costo mínimo"

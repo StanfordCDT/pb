@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_010000) do
+ActiveRecord::Schema[7.0].define(version: 2025_09_11_182024) do
   create_table "activity_logs", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
     t.string "activity", default: "", null: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_010000) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "real_election", default: true, null: false
     t.text "remarks"
+    t.json "archived"
     t.index ["slug"], name: "index_elections_on_slug", unique: true
   end
 
@@ -147,6 +148,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_010000) do
     t.text "url"
     t.datetime "created_at", precision: nil
     t.string "method", null: false
+    t.integer "election_id"
+    t.index ["election_id"], name: "index_visitors_on_election_id"
   end
 
   create_table "vote_approvals", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

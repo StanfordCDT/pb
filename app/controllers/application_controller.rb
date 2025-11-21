@@ -115,7 +115,28 @@ class ApplicationController < ActionController::Base
     referrer = connection.quote(request.referer)
     url = connection.quote(request.url)
     request_method = connection.quote(request.method)
-    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, NOW())")
+    election_id = connection.quote(get_election_id_from_params)
+    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, election_id, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, #{election_id}, NOW())")
+  end
+
+  def get_election_id_from_params
+    # For admin/elections controller: election ID is directly in params[:id]
+    if params[:controller] == 'admin/elections'
+      return params[:id]
+    end
+    
+    # For nested admin routes: election ID is in params[:election_id] 
+    if params[:controller]&.start_with?('admin/')
+      return params[:election_id]
+    end
+    
+    # For public vote routes: need to look up by slug (only case that needs DB lookup)
+    if params[:election_slug]
+      election = Election.find_by(slug: params[:election_slug])
+      return election&.id
+    end
+    
+    nil
   end
 
   def cost_with_delimiter(cost, currency_symbol)
@@ -125,4 +146,5 @@ class ApplicationController < ActionController::Base
       currency_symbol + number_with_delimiter(cost)
     end
   end
+
 end

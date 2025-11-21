@@ -1,9 +1,10 @@
 module Admin
   require 'csv'
+  require 'digest'
   require_relative "./knapsack_allocation"
   class ElectionsController < ApplicationController
     before_action :set_no_cache
-    before_action :require_superadmin_auth, only: [:new, :create, :duplicate, :post_duplicate, :destroy]
+    before_action :require_superadmin_auth, only: [:new, :create, :duplicate, :post_duplicate, :destroy, :archive]
     before_action :require_admin_auth, only: [:edit, :update, :analytics, :analytics_more, :analytics_cooccurrence, :analytics_adjustable_cost_projects, :analytics_chicago49]
     before_action :require_admin_or_volunteer_auth, only: [:show, :to_voting_machine, :post_to_voting_machine]
     before_action :require_user_account, only: [:config_reference]
@@ -110,6 +111,67 @@ module Admin
       end
       election.destroy
       redirect_to admin_root_path
+    end
+
+    def archive
+      election = Election.find(params[:id])
+      
+      # Prevent archiving active elections
+      unless election.config[:voting_has_ended]
+        redirect_to admin_election_path(election), flash: { errors: ['Cannot archive an active election. Please end voting first.'] }
+        return
+      end
+
+      # Generate a random salt string for this archive operation
+      # This salt will be used for all hashing operations within this archive call
+      archive_salt = SecureRandom.hex(32) # 64 character random hex string
+
+      # Wrap all archiving operations in a transaction to ensure atomicity
+      ActiveRecord::Base.transaction do
+        # Hash the ip_address and user_agent of the visitors that have this election_id
+        visitors = Visitor.where(election_id: election.id)
+        visitors.find_each do |visitor|
+          updates = {}
+          updates[:ip_address] = Digest::SHA256.hexdigest("#{archive_salt}#{visitor.ip_address.to_s}") if visitor.ip_address.present?
+          updates[:user_agent] = Digest::SHA256.hexdigest("#{archive_salt}#{visitor.user_agent.to_s}") if visitor.user_agent.present?
+          
+          visitor.update_columns(updates) if updates.any?
+        end
+
+        # Hash the ip_address and user_agent of the voters that have this election_id
+        voters = Voter.where(election_id: election.id)
+        voters.find_each do |voter|
+          updates = {}
+          updates[:ip_address] = Digest::SHA256.hexdigest("#{archive_salt}#{voter.ip_address.to_s}") if voter.ip_address.present?
+          updates[:user_agent] = Digest::SHA256.hexdigest("#{archive_salt}#{voter.user_agent.to_s}") if voter.user_agent.present?
+          # TODO: retain some information from user_agent such as device type, browser, etc.
+          voter.update_columns(updates) if updates.any?
+        end
+
+        # Set the data column to NULL for voter_registration_record rows that have this election_id
+        VoterRegistrationRecord.where(election_id: election.id).update_all(data: nil)
+
+        # Anonymize the authentication_id for all voters that have this election_id
+        # We need to make each anonymized ID unique to avoid constraint violations
+        voters_for_auth_id = Voter.where(election_id: election.id)
+        voters_for_auth_id.find_each do |voter|
+          voter.update_column(:authentication_id, "anonymized_#{voter.id}")
+        end
+        
+        # Set archived information with user details
+        archived_info = {
+          username: current_user.username,
+          archived_at: Time.current,
+          info: params[:archive_info] || ""
+        }
+        
+        # Disable the permission for admins to change election configs when archiving
+        election.update(archived: archived_info)
+        election.update_column(:allow_admins_to_update_election, false)
+      end
+
+      # Leave a note that the election has been archived
+      redirect_to admin_election_path(election), notice: 'Election has been archived.'
     end
 
     def analytics

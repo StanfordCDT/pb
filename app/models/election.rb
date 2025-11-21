@@ -20,6 +20,7 @@ class Election < ApplicationRecord
                    exclusion: {in: ['admin', 'about', 'contact', 'done_survey', 'twilio_sms'], message: "'%{value}' is reserved." }
   validates :budget, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
   validate :validate_config_yaml
+  validate :validate_archived_election_permissions
   after_update :clear_config_cache
   after_destroy :clear_config_cache
   attribute :duplicate_projects, :boolean, default: true
@@ -95,6 +96,10 @@ class Election < ApplicationRecord
     workflow_summary_helper(config[:workflow]) || ""
   end
 
+  def archived?
+    archived.present?
+  end
+
   private
 
   def self.default_config
@@ -120,6 +125,12 @@ class Election < ApplicationRecord
       YAML.load(config_yaml,permitted_classes: [Date])
     rescue => exception
       errors.add(:config, "must be in the correct YAML format. Error message from the parser: \"#{exception.message}\"")
+    end
+  end
+
+  def validate_archived_election_permissions
+    if archived? && allow_admins_to_update_election_changed?
+      errors.add(:allow_admins_to_update_election, "setting cannot be changed on archived elections")
     end
   end
 

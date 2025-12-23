@@ -114,6 +114,10 @@
                     <li>Have you checked if any test votes need to be voided? <a href="<%= admin_election_voters_path(@election) %>" target="_blank">Check the Voters tab</a></li>
                   </ul>
                 </div>
+
+                <div class="alert alert-info" role="alert">
+                  <strong>The archiving may take up to 5 minutes to complete (longer for larger elections)</strong>
+                </div>
                 
                 <div class="form-group">
                   <%= form.label :archive_info, "Additional Information:" %>

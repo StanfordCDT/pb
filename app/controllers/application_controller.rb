@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   include ActionView::Helpers::NumberHelper
   protect_from_forgery with: :exception
-  helper_method :current_user, :cost_with_delimiter
+  helper_method :current_user, :cost_with_delimiter, :maintenance_mode?
   before_action :set_locale
+  before_action :check_maintenance_mode
   before_action :record_visitor
 
   private
@@ -106,6 +107,24 @@ class ApplicationController < ActionController::Base
   def set_locale
     # See http://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-url-params
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def maintenance_mode?
+    ENV['MAINTENANCE_MODE'].to_s.downcase == 'true'
+  end
+
+  def check_maintenance_mode
+    return unless maintenance_mode?
+
+    # Allow superadmins to continue accessing the site during maintenance.
+    return if current_user&.superadmin?
+
+    # Allow login-related pages so superadmins can sign in.
+    if params[:controller] == 'admin/users' && %w[login post_login logout reset_password post_reset_password reset_password_email_sent profile edit_profile update_profile edit_password update_password].include?(params[:action])
+      return
+    end
+
+    render template: 'shared/maintenance', status: :service_unavailable
   end
 
   def record_visitor

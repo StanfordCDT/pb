@@ -182,7 +182,11 @@ var margin = {top: 30, right: 150, bottom: 300, left: 50},
 
       <% if current_user.can_see_voter_data?(@election) && @voter_registration_exists %>
         <h3>Voter registration</h3>
-        <a href="<%= url_for(format: :csv, table: 'voter_registration') %>">Export voter registration records</a>
+        <% if @election.archived? %>
+          <span class="text-muted">Export disabled - election has been archived</span>
+        <% else %>
+          <a href="<%= url_for(format: :csv, table: 'voter_registration') %>">Export voter registration records</a>
+        <% end %>
       <% end %>
 
       <% if current_user.can_see_voter_data?(@election) && @election.config[:remote_voting_free_verification] %>

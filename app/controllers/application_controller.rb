@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   include ActionView::Helpers::NumberHelper
   protect_from_forgery with: :exception
-  helper_method :current_user, :cost_with_delimiter
+  helper_method :current_user, :cost_with_delimiter, :maintenance_mode?
   before_action :set_locale
+  before_action :check_maintenance_mode
   before_action :record_visitor
 
   private
@@ -108,6 +109,24 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
+  def maintenance_mode?
+    ENV['MAINTENANCE_MODE'].to_s.downcase == 'true'
+  end
+
+  def check_maintenance_mode
+    return unless maintenance_mode?
+
+    # Allow superadmins to continue accessing the site during maintenance.
+    return if current_user&.superadmin?
+
+    # Allow login-related pages so superadmins can sign in.
+    if params[:controller] == 'admin/users' && %w[login post_login logout reset_password post_reset_password reset_password_email_sent profile edit_profile update_profile edit_password update_password].include?(params[:action])
+      return
+    end
+
+    render template: 'shared/maintenance', layout: false, status: :service_unavailable
+  end
+
   def record_visitor
     connection = ActiveRecord::Base.connection
     ip = connection.quote(request.remote_ip)
@@ -115,7 +134,28 @@ class ApplicationController < ActionController::Base
     referrer = connection.quote(request.referer)
     url = connection.quote(request.url)
     request_method = connection.quote(request.method)
-    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, NOW())")
+    election_id = connection.quote(get_election_id_from_params)
+    connection.execute("INSERT INTO visitors (ip_address, user_agent, referrer, url, method, election_id, created_at) VALUES (#{ip}, #{user_agent}, #{referrer}, #{url}, #{request_method}, #{election_id}, NOW())")
+  end
+
+  def get_election_id_from_params
+    # For admin/elections controller: election ID is directly in params[:id]
+    if params[:controller] == 'admin/elections'
+      return params[:id]
+    end
+    
+    # For nested admin routes: election ID is in params[:election_id] 
+    if params[:controller]&.start_with?('admin/')
+      return params[:election_id]
+    end
+    
+    # For public vote routes: need to look up by slug (only case that needs DB lookup)
+    if params[:election_slug]
+      election = Election.find_by(slug: params[:election_slug])
+      return election&.id
+    end
+    
+    nil
   end
 
   def cost_with_delimiter(cost, currency_symbol)
@@ -125,4 +165,5 @@ class ApplicationController < ActionController::Base
       currency_symbol + number_with_delimiter(cost)
     end
   end
+
 end

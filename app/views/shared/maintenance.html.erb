@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Maintenance in progress</title>
+    <style>
+      body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; margin: 0; }
+      .maintenance { max-width: 720px; margin: 80px auto; padding: 30px; background: #fff; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+      h1 { color: #bb0000; margin-top: 0; }
+      p { line-height: 1.5; }
+      .timestamp { margin-top: 16px; color: #666; font-size: 0.9em; }
+    </style>
+  </head>
+  <body>
+    <div class="maintenance">
+      <h1>🔧 Maintenance in progress</h1>
+      <p>We are currently performing maintenance. The website is temporarily unavailable. Please check back in 1-2 days once maintenance is complete.</p>
+      <div class="timestamp">Updated at: <%= Time.current.strftime('%Y-%m-%d %H:%M:%S %Z') %></div>
+    </div>
+  </body>
+</html>

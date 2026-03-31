@@ -5,61 +5,72 @@
 
 <h2>Codes</h2>
 
-<p>
-  <a href="<%= url_for(action: :new) %>">Generate new codes</a> &nbsp;|&nbsp;
-  <a href="<%= url_for(action: :import) %>">Import existing codes</a>
-</p>
+<% if @election.archived? %>
+  <p><span class="text-muted">Generate new codes (disabled - election archived)</span> &nbsp;|&nbsp;
+  <span class="text-muted">Import existing codes (disabled - election archived)</span></p>
+<% else %>
+  <p>
+    <a href="<%= url_for(action: :new) %>">Generate new codes</a> &nbsp;|&nbsp;
+    <a href="<%= url_for(action: :import) %>">Import existing codes</a>
+  </p>
+<% end %>
 
-<ul class="list-group">
-  <% @code_batches.each do |batch| %>
-    <li class="list-group-item">
-      <table>
-        <tbody>
-          <tr>
-            <td>Batch #</td>
-            <td><%= batch.id %></td>
-          </tr>
+<% if @election.archived? && !current_user.superadmin? %>
+  <div class="alert alert-info" role="alert">
+    <strong>Code batches are not available after an election has been archived.</strong>
+  </div>
+<% else %>
+  <ul class="list-group">
+    <% @code_batches.each do |batch| %>
+      <li class="list-group-item">
+        <table>
+          <tbody>
+            <tr>
+              <td>Batch #</td>
+              <td><%= batch.id %></td>
+            </tr>
 
-          <tr>
-            <td>Number of codes</td>
-            <td><%= number_with_delimiter(batch.codes.count) %></td>
-          </tr>
+            <tr>
+              <td>Number of codes</td>
+              <td><%= number_with_delimiter(batch.codes.count) %></td>
+            </tr>
 
-          <tr>
-            <td>Issued by</td>
-            <td><%= batch.user.nil? ? "(Deleted)" : batch.user.username %></td>
-          </tr>
+            <tr>
+              <td>Issued by</td>
+              <td><%= batch.user.nil? ? "(Deleted)" : batch.user.username %></td>
+            </tr>
 
-          <tr>
-            <td>Issued on</td>
-            <td><%= batch.created_at.in_time_zone(@election.time_zone).strftime('%A, %B %e, %Y %l:%M %p %Z') %></td>
-          </tr>
+            <tr>
+              <td>Issued on</td>
+              <td><%= batch.created_at.in_time_zone(@election.time_zone).strftime('%A, %B %e, %Y %l:%M %p %Z') %></td>
+            </tr>
 
-          <tr>
-            <td>Actions</td>
-            <td>
-              <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id) %>">View</a> &nbsp; | &nbsp;
-              <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :pdf) %>">Print</a> &nbsp; | &nbsp;
+            <tr>
+              <td>Actions</td>
+              <td>
+                <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id) %>">View</a> &nbsp; | &nbsp;
+                <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :pdf) %>">Print</a> &nbsp; | &nbsp;
 
-              <span class="dropdown">
-                <a class="dropdown-toggle" id="exportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Export
-                </a>
-                <div class="dropdown-menu" aria-labelledby="exportDropdown">
-                  <h6 class="dropdown-header">Export as ...</h6>
-                  <a class="dropdown-item" href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :txt) %>">Text (.txt)</a>
-                  <a class="dropdown-item" href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :csv) %>">Excel (.csv)</a>
-                </div>
-              </span> &nbsp; | &nbsp;
+                <span class="dropdown">
+                  <a class="dropdown-toggle" id="exportDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Export
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="exportDropdown">
+                    <h6 class="dropdown-header">Export as ...</h6>
+                    <a class="dropdown-item" href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :txt) %>">Text (.txt)</a>
+                    <a class="dropdown-item" href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id, format: :csv) %>">Excel (.csv)</a>
+                  </div>
+                </span> &nbsp; | &nbsp;
 
-              <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id) %>" data-method="delete" data-confirm="Are you sure you want to remove this code batch?">Remove</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </li>
-  <% end %>
-</ul>
+                <a href="<%= admin_election_code_batch_path(election_id: @election.id, id: batch.id) %>" data-method="delete" data-confirm="Are you sure you want to remove this code batch?">Remove</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 </div>
 <% end %>

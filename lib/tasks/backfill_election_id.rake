@@ -96,6 +96,8 @@ namespace :backfill do
 
     processed = 0
     errors = 0
+    total = Visitor.where(election_id: nil).count
+    Rails.logger.info "Backfill starting: #{total} visitors to process"
 
     csv = nil
     if log_path
@@ -133,7 +135,8 @@ namespace :backfill do
         end
       end
 
-      Rails.logger.info "Backfill progress: processed=#{processed}, errors=#{errors}"
+      pct = total > 0 ? ((processed + errors).to_f / total * 100).round(1) : 0
+      Rails.logger.info "Backfill progress: #{processed + errors}/#{total} (#{pct}%) — matched=#{processed}, errors=#{errors}"
     end
 
     csv.close if csv

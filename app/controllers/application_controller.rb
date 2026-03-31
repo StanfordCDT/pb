@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    render template: 'shared/maintenance', status: :service_unavailable
+    render template: 'shared/maintenance', layout: false, status: :service_unavailable
   end
 
   def record_visitor

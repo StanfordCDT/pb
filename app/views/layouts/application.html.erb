@@ -81,19 +81,6 @@
   </nav>
 </div>
 
-<%# MAINTENANCE BANNER - Remove this entire block after Dec 25, 2024 %>
-<% if current_user && params[:controller]&.start_with?('admin/') %>
-  <div class="container-fluid mb-2">
-    <div class="row">
-      <div class="col-12">
-        <div class="alert alert-warning text-center mb-0" style="border-radius: 0;">
-          <strong>⚠️ Maintenance Notice:</strong> The site will undergo maintenance on December 24-25, 2024. Please plan accordingly.
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-<%# END MAINTENANCE BANNER %>
 
 <div class="primary">  <%# Hacky fix to make it work with the admin template. %>
   <% if flash[:errors] %>

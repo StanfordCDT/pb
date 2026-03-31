@@ -122,9 +122,20 @@ module Admin
         return
       end
 
-      # Generate a random salt string for this archive operation
-      # This salt will be used for all hashing operations within this archive call
-      archive_salt = SecureRandom.hex(32) # 64 character random hex string
+      # Generate a random salt for this archive operation.
+      # This salt is used for all SHA-256 hashing (ip_address, user_agent) in this call.
+      #
+      # IMPORTANT — deliberate design choices:
+      #   1. The salt is ephemeral: it is NOT stored anywhere after this request completes.
+      #      This means the hashed values are effectively one-way — original IPs/user_agents
+      #      cannot be recovered by anyone, including us. This is intentional.
+      #   2. The salt is random per-archive: the same IP address hashed in two different
+      #      elections will produce two different hashes. Cross-election deduplication or
+      #      fraud analysis based on IP/user_agent is permanently impossible after archiving.
+      #      This is intentional — we prioritise voter privacy over analytical capability.
+      #   3. Do NOT replace this with a stored or global salt. A global salt would allow
+      #      re-identification by anyone with access to it, defeating the purpose.
+      archive_salt = SecureRandom.hex(32)
 
       # Wrap all archiving operations in a transaction to ensure atomicity
       ActiveRecord::Base.transaction do

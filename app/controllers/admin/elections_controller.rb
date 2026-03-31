@@ -137,8 +137,16 @@ module Admin
       #      re-identification by anyone with access to it, defeating the purpose.
       archive_salt = SecureRandom.hex(32)
 
-      # Wrap all archiving operations in a transaction to ensure atomicity
-      ActiveRecord::Base.transaction do
+      # with_lock issues SELECT ... FOR UPDATE on the election row, serialising concurrent
+      # requests (double-click, two admins simultaneously). A second request blocks here
+      # until the first commits, then re-reads the election and sees archived? == true,
+      # so it exits without re-running the archive logic. with_lock also wraps the block
+      # in a transaction, so any failure mid-way rolls back all changes.
+      election.with_lock do
+        if election.archived?
+          redirect_to admin_election_path(election), notice: 'Election is already archived.'
+          return # return exits the archive method entirely, not just this block
+        end
         # Hash the ip_address and user_agent of the visitors that have this election_id
         visitors = Visitor.where(election_id: election.id)
         visitors.find_each do |visitor|

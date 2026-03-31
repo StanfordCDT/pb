@@ -97,7 +97,7 @@ class Election < ApplicationRecord
   end
 
   def archived?
-    archived.present?
+    archived.is_a?(Hash) && archived['archived_at'].present?
   end
 
   private

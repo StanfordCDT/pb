@@ -25,19 +25,18 @@ class Election < ApplicationRecord
   after_destroy :clear_config_cache
   attribute :duplicate_projects, :boolean, default: true
 
-  @@config_cache = {}
-
   def config
-    if !@@config_cache.key?(id)
-      self_config = (YAML.load(config_yaml,permitted_classes: [Date]) || {}).deep_symbolize_keys
-      @@config_cache[id] = deep_freeze(Election.default_config.deep_merge(self_config))
-    else
-      @@config_cache[id]
+    @config ||= begin
+      self_config = (
+        YAML.load(config_yaml, permitted_classes: [Date]) || {}
+      ).deep_symbolize_keys
+
+      deep_freeze(Election.default_config.deep_merge(self_config))
     end
   end
 
   def clear_config_cache
-    @@config_cache.delete(id)
+    @config = nil
   end
 
   def categorized?

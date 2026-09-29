@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ClosedVoteSubmissionTest < ActionDispatch::IntegrationTest
+  CLOSED_MESSAGE = 'Your submission was not recorded since voting has been closed.'
+
   test 'closed approval submission is not saved or sent to thanks' do
     election = Election.create!(
       name: 'Closed submission test',
@@ -26,7 +28,7 @@ class ClosedVoteSubmissionTest < ActionDispatch::IntegrationTest
     voter = Voter.find_by!(election_id: election.id)
     assert_equal 'approval', voter.stage
 
-    election.update!(config_yaml: election.config_yaml.sub('stop_accepting_votes: false', 'stop_accepting_votes: true'))
+    close_voting(election)
 
     assert_no_difference 'VoteApproval.count' do
       post "/#{election.slug}/submit_approval",
@@ -38,6 +40,81 @@ class ClosedVoteSubmissionTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :success
-    assert_select 'div.alert.alert-danger[role=alert]', text: 'Your submission was not recorded since voting has been closed.'
+    assert_select 'div.alert.alert-danger[role=alert]', text: CLOSED_MESSAGE
+  end
+
+  test 'finishing comparisons after close is not sent to thanks' do
+    election = Election.create!(
+      name: 'Closed comparison test',
+      slug: 'closed-comparison-test',
+      config_yaml: <<~YAML
+        workflow: [comparison, thanks]
+        allow_remote_voting: true
+        remote_voting_free_verification: true
+        free_verification_use_captcha: false
+        stop_accepting_votes: false
+      YAML
+    )
+    category = Category.create!(election: election, name: 'Test category', category_group: 1)
+    Project.create!(election: election, category: category, number: '1', cost: 100)
+    Project.create!(election: election, category: category, number: '2', cost: 200)
+
+    post "/#{election.slug}/post_free_signup", params: { freeform_text: 'integration test voter' }
+    get "/#{election.slug}/comparison"
+    assert_response :success
+    voter = Voter.find_by!(election_id: election.id)
+    assert_equal 'comparison', voter.stage
+
+    close_voting(election)
+
+    get "/#{election.slug}/done_comparison"
+
+    assert_equal 'comparison', voter.reload.stage
+    assert_redirected_to action: :index
+
+    follow_redirect!
+    assert_select 'div.alert.alert-danger[role=alert]', text: CLOSED_MESSAGE
+  end
+
+  test 'closed submission message uses the election string override' do
+    election = Election.create!(
+      name: 'Closed override test',
+      slug: 'closed-override-test',
+      config_yaml: <<~YAML
+        workflow: [approval, thanks]
+        allow_remote_voting: true
+        remote_voting_free_verification: true
+        free_verification_use_captcha: false
+        stop_accepting_votes: false
+        approval:
+          has_n_project_limit: false
+          pages: [1]
+          shuffle_projects: false
+        locales:
+          en:
+            index:
+              submission_not_recorded: 'Custom closed message'
+      YAML
+    )
+    category = Category.create!(election: election, name: 'Test category', category_group: 1)
+    project = Project.create!(election: election, category: category, number: '1', cost: 100)
+
+    post "/#{election.slug}/post_free_signup", params: { freeform_text: 'integration test voter' }
+    get "/#{election.slug}/approval"
+    close_voting(election)
+
+    # A server thread keeps the string overrides of whichever election it served last.
+    Thread.current[:i18n_locales] = nil
+    post "/#{election.slug}/submit_approval",
+         params: { subpage: 0, project: { project.id.to_s => project.cost } }
+
+    assert_redirected_to action: :index
+    assert_equal 'Custom closed message', flash[:error]
+  end
+
+  private
+
+  def close_voting(election)
+    election.update!(config_yaml: election.config_yaml.sub('stop_accepting_votes: false', 'stop_accepting_votes: true'))
   end
 end

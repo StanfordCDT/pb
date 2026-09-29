@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ClosedVoteSubmissionTest < ActionDispatch::IntegrationTest
-  CLOSED_MESSAGE = 'Your submission was not recorded since voting has been closed.'
+  CLOSED_MESSAGE = 'Voting has been closed. Your submission was not recorded.'
 
   test 'closed approval submission is not saved or sent to thanks' do
     election = Election.create!(

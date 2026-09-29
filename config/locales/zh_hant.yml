@@ -30,6 +30,7 @@ zh_hant:
       see_projects_button: 查看項目
     voting_has_not_started: 本網站的投票尚未開始。我們將盡快開始收集遠端投票。感謝您的耐心等待。
     voting_ended: 投票已結束。
+    submission_not_recorded: 投票已結束，未記錄您的投票。
     public_results: 查看投票結果
   approval:
     title: Participatory Budgeting

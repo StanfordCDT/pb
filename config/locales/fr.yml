@@ -24,6 +24,7 @@ fr:
       see_projects_button: Voir les projets
     voting_has_not_started: "Le vote sur ce site n'a pas encore commencé. Nous commencerons à recueillir les votes à distance dès que possible. Merci pour votre patience."
     voting_ended: "Le vote est terminé."
+    submission_not_recorded: "Le vote est terminé. Votre vote n'a pas été enregistré."
     public_results: "Voir les résultats des élections"
   approval:
     title: Budget participatif

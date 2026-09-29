@@ -30,6 +30,7 @@ fi:
     voting_has_not_started: "Äänestäminen tällä sivustolla ei ole vielä alkanut. Alamme
       keräämään etä-ääniä niin pian kuin mahdollista. Kiitos kärsivällisyydestäsi."
     voting_ended: "Äänestys on päättynyt."
+    submission_not_recorded: "Äänestys on päättynyt. Ääntäsi ei tallennettu."
     public_results: Katso äänestystulokset
   approval:
     title: Osallistava budjetointi

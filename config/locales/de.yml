@@ -40,6 +40,7 @@ de:
       Wir werden so bald wie möglich mit der Erhebung von Online-Stimmen beginnen.
       Wir danken Ihnen für Ihre Geduld.
     voting_ended: Die Abstimmung ist beendet.
+    submission_not_recorded: Die Abstimmung ist beendet. Ihre Stimme wurde nicht gezählt.
     public_results: Abstimmungsresultate anzeigen
   approval:
     title: Partizipatives Budget

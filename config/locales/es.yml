@@ -24,6 +24,7 @@ es:
       see_projects_button: Ver Proyectos
     voting_has_not_started: "La votación en este sitio web aún no comenzó. Comenzaremos a recopilar los votos en remoto lo antes posible. Gracias por la espera."
     voting_ended: "La votación finalizó."
+    submission_not_recorded: "La votación finalizó. Su voto no se guardó."
     public_results: Ver resultado de las elecciones
   approval:
     title: Presupuesto Participativo

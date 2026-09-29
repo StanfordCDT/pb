@@ -24,6 +24,7 @@ zh:
       see_projects_button: "查看项目"
     voting_has_not_started: "本网站的投票尚未开始。我们将尽快开始收集远程投票。感谢您的耐心等待。"
     voting_ended: "投票已结束。"
+    submission_not_recorded: "投票已结束，未记录您的投票。"
     public_results: "查看投票结果"
   approval:
     title: "参与式预算"

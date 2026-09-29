@@ -33,6 +33,7 @@ pl:
     voting_has_not_started: Głosowanie na tej stronie jeszcze się nie rozpoczęło.
       Głosy zdalne zaczną być zbierane wkrótce. Dziękujemy za cierpliwość.
     voting_ended: Głosowanie zostało zakończone.
+    submission_not_recorded: Głosowanie zostało zakończone. Twój głos nie został zarejestrowany.
     public_results: Zobacz Wyniki Głosowania
   approval:
     title: Budżet Partycypacyjny

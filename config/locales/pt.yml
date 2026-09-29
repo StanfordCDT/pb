@@ -32,6 +32,7 @@ pt:
     voting_has_not_started: A votação neste site ainda não começou. Começaremos a
       coletar votos remotos o mais rápido possível. Obrigado pela sua paciência.
     voting_ended: A votação terminou
+    submission_not_recorded: A votação terminou. Seu voto não foi registrado.
     public_results: Ver resultados da eleição
   approval:
     title: Orçamento participativo

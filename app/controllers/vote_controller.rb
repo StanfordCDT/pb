@@ -3,6 +3,8 @@ class VoteController < ApplicationController
   before_action :check_voter, only: [:approval, :submit_approval, :ranking, :submit_ranking, :knapsack, :submit_knapsack, :token, :submit_token, :comparison, :submit_comparison, :thanks_approval, :question, :survey, :done_survey, :thanks]
   helper_method :conf, :voting_machine?, :real_voting?, :next_page, :current_action
   before_action :update_locales_with_config
+  # Must run after update_locales_with_config so the flash message uses the election's strings.
+  before_action :reject_closed_vote_submission, only: [:submit_approval, :submit_ranking, :submit_knapsack, :submit_token, :done_comparison]
 
   def index
     I18n.locale = params[:locale] ? params[:locale] : conf[:default_locale]
@@ -787,6 +789,14 @@ class VoteController < ApplicationController
     if real_voting? && current_voter.nil?
       redirect_to action: :index
     end
+  end
+
+  def reject_closed_vote_submission
+    voter = current_voter
+    return if voter.nil? || voter.test? || !conf[:stop_accepting_votes]
+
+    flash[:error] = t('index.submission_not_recorded')
+    redirect_to action: :index
   end
 
   def current_action

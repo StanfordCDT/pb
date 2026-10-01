@@ -15,6 +15,10 @@
         </div>
       <% end %>
 
+      <% if flash[:error] %>
+        <div class="alert alert-danger" role="alert"><%= flash[:error] %></div>
+      <% end %>
+
       <% if voting_machine? %>
         <%= raw t('index.voting_machine.welcome', about_url: 'http://voxpopuli.stanford.edu/') %>
 
@@ -23,10 +27,6 @@
 
           <div style="font-size: 30px;"><%= t('index.voting_machine.instruction').html_safe %></div><br /><br />
 
-
-          <% if flash[:error] %>
-            <p style="font-size: 20px; color: red;"><%= flash[:error] %></p>
-          <% end %>
 
           <% if !conf[:stop_accepting_votes] %>
             <%= f.text_field :code, placeholder: t('index.voting_machine.code_placeholder'), maxlength: 10, autocomplete: "off", autofocus: "autofocus", style: "font-size: 20px; width: 150px;" %>

@@ -28,6 +28,7 @@ en:
       see_projects_button: "See Projects"  # Link to an external site that shows a list of projects.
     voting_has_not_started: "Voting on this website has not started yet. We will begin collecting remote votes as soon as possible. Thank you for your patience."
     voting_ended: "The voting has ended."
+    submission_not_recorded: "Voting has been closed. Your submission was not recorded."  # Shown when a voter submits a ballot after voting was closed.
     public_results: "See Election Results"
 
   approval:

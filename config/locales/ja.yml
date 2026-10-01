@@ -28,6 +28,7 @@ ja:
       see_projects_button: プロジェクトを見る
     voting_has_not_started: このウェブサイトでの投票はまだ開始されていません。できるだけ早く遠隔投票の収集を開始する予定です。しばらくお待ちください。
     voting_ended: 投票は終了しました。
+    submission_not_recorded: 投票は終了しました。あなたの投票は記録されませんでした。
     public_results: 選挙結果を見る
 
   approval:

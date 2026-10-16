@@ -826,19 +826,21 @@ module Admin
       knapsack_max_vote_count = knapsack_data.map { |p| p[:votes].map { |v| v[1] }.sum }.max
 
       knapsacks_csv = lambda do
-=begin
-        CSV.generate do |csv|
-          csv << ["Project", "Votes"]
-          votes_by_project_and_cost.each do |p|
-            curr_row = []
-            if knapsack_cutoff == p[:title]
-              csv << ["BUDGET", "$" + election.budget.to_s]
-            end
-            csv << [p[:title], p[:vote_count]]
+        title_by_id = {}
+        cost_by_id = {}
+        Globalize.with_locale(election.config[:default_locale]) do
+          election.projects.each do |p|
+            title_by_id[p.id] = p.title
+            cost_by_id[p.id] = p.cost
           end
         end
-=end
-        {}  # FIXME: Make it work.
+        CSV.generate do |csv|
+          csv << ["Project", "Cost", "Total allocation", "Voters"]
+          knapsack_data.each do |p|
+            voters = p[:votes].sum { |(_cost, count)| count }
+            csv << [title_by_id[p[:id]], "$" + cost_by_id[p[:id]].to_s, p[:allocation], voters]
+          end
+        end
       end
 
       knapsack_voters_by_date = election.valid_voters.joins(:vote_knapsacks)
@@ -882,7 +884,7 @@ module Admin
           csv << ['Allocation', ''] + projects.map { |p| total_allocations[p.id] }
           indices = (0..(vote_knapsacks_matrix.length - 1)).to_a.shuffle
           indices.each_with_index do |data_index, new_voter_idx|
-            csv << [new_voter_idx] + vote_knapsacks_matrix[data_index]
+            csv << [new_voter_idx, voter_id_matrix[data_index][1]] + vote_knapsacks_matrix[data_index]
           end
         end
       end

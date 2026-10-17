@@ -5,11 +5,6 @@
   </p>
 <% end %>
 
-<!--
-FIXME: Currently not working. Need to fix this.
-<a href="<%= url_for(format: :csv, table: 'knapsacks') %>">Export into Excel</a><br>
--->
-
 <% if current_user.can_see_voter_data?(@election) %>
   <div style="float: right;">
     <a href="<%= url_for(format: :pb, table: 'knapsacks') %>">Export to PB file</a>
@@ -18,9 +13,14 @@ FIXME: Currently not working. Need to fix this.
         Export to Excel
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="knapsackExportDropdown">
+        <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'knapsacks') %>">Aggregate results</a>
         <a class="dropdown-item" href="<%= url_for(format: :csv, table: 'knapsacks_individual') %>">Individual votes</a>
       </div>
     </span>
+  </div>
+<% else %>
+  <div style="float: right;">
+    <a href="<%= url_for(format: :csv, table: 'knapsacks') %>">Export to Excel</a>
   </div>
 <% end %>
 

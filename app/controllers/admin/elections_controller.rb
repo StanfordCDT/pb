@@ -1029,7 +1029,7 @@ module Admin
       end
 
       n_projects = projects_to_rank.count
-      k = election.config[:ranking][:max_n_projects]
+      k = effective_ranking_k(election, 'vote_rankings')
 
       # [title] [cost] [k projects] [total]
       n_cols = k + 3
@@ -1105,7 +1105,7 @@ module Admin
         headers = ['Voter ID']
 
         # Add headers for the ranked projects
-        for i in 1..(election.config[:ranking][:max_n_projects])
+        for i in 1..k
           headers += ['Rank' + i.to_s]
         end
 
@@ -1180,7 +1180,7 @@ module Admin
       end
 
       n_projects = projects_to_rank.count
-      k = election.config[:ranking][:max_n_projects]
+      k = effective_ranking_k(election, 'vote_approvals')
 
       # [title] [cost] [k projects] [total]
       n_cols = k + 3
@@ -1256,7 +1256,7 @@ module Admin
         headers = ['Voter ID']
 
         # Add headers for the ranked projects
-        for i in 1..(election.config[:ranking][:max_n_projects])
+        for i in 1..k
           headers += ['Rank' + i.to_s]
         end
 
@@ -1290,6 +1290,26 @@ module Admin
     # Method to calculate the score for each project
     def project_vote_score(number_projects, number_votes, rank)
       (number_projects + number_votes - 2*rank + 1).to_f / 2
+    end
+
+    # The number of ranked slots (k) to tabulate. The config default for
+    # ranking.max_n_projects is 4 and the config editor hides the field when
+    # has_n_project_limit is false, so reading it unconditionally wrongly assumes
+    # k = 4 (the "k not set" case). When no limit is configured, use the highest
+    # rank any valid voter actually cast so no rankings are dropped.
+    # vote_table is 'vote_rankings' (current) or 'vote_approvals' (legacy).
+    def effective_ranking_k(election, vote_table)
+      # When a project limit is set, voters cannot rank more than max_n_projects,
+      # so keep the configured value (identical to the previous behaviour).
+      return election.config[:ranking][:max_n_projects] if election.config[:ranking][:has_n_project_limit]
+
+      # No limit: max_n_projects keeps its config default (4) even though voters
+      # may rank more, so use the highest rank actually cast. Use the same voter
+      # population as the tally (void = 0) so no counted vote is dropped.
+      observed = election.voters.where(void: false)
+        .joins("JOIN #{vote_table} ON #{vote_table}.voter_id = voters.id")
+        .maximum("#{vote_table}.rank").to_i
+      [observed, 1].max
     end
 
     # Analytics for the voter registration details - Get CSV

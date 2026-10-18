@@ -32,7 +32,13 @@
 <!-- Code for the projects ranked-approval table -->
 <script type="text/javascript">
 var project_ranked_votes = analytics_data.ranking.project_ranked_votes;
-var max_n_projects = <%= @election.config[:ranking][:max_n_projects] %>;
+// Derive the number of ranked slots (k) and the total-score column index from
+// the data itself. The server may tabulate more than ranking.max_n_projects
+// ranks when no project limit is configured (see analytics_ranking), so reading
+// the config value here would truncate columns and misread the total column.
+// Each row is [title, cost, rank_1 .. rank_k, total], i.e. k + 3 entries.
+var n_rank_cols = project_ranked_votes.length > 0 ? (project_ranked_votes[0].length - 3) : 0;
+var total_index = n_rank_cols + 2;
 
 function reloadRankedApprovalTable() {
   var table = document.createElement('table');
@@ -52,7 +58,7 @@ function reloadRankedApprovalTable() {
       th.textContent = 'Cost';
       tr.appendChild(th);
 
-      for (var i = 1; i <= max_n_projects; i++) {
+      for (var i = 1; i <= n_rank_cols; i++) {
         th = document.createElement('th');
         th.textContent = 'Rank ' + i;
         tr.appendChild(th);
@@ -70,8 +76,8 @@ function reloadRankedApprovalTable() {
   // Find the maximum vote count
   var maximum_vote_count = 0;
   for (var i = 0; i < project_ranked_votes.length; i++) {
-    if (project_ranked_votes[i][max_n_projects+2] > maximum_vote_count) {
-      maximum_vote_count = project_ranked_votes[i][max_n_projects+2];
+    if (project_ranked_votes[i][total_index] > maximum_vote_count) {
+      maximum_vote_count = project_ranked_votes[i][total_index];
     }
   }
 
@@ -88,7 +94,7 @@ function reloadRankedApprovalTable() {
       td.textContent = costWithDelimiter(project_ranked_votes[i][1], currency_symbol);
       tr.appendChild(td);
 
-      for (var j = 0; j < max_n_projects; j++) {
+      for (var j = 0; j < n_rank_cols; j++) {
         td = document.createElement('td');
         td.textContent = project_ranked_votes[i][j+2];
         tr.appendChild(td);
@@ -101,8 +107,8 @@ function reloadRankedApprovalTable() {
         {
           var progressBarDiv = document.createElement('div');
           progressBarDiv.className = 'progress-bar progress-bar-success';
-          progressBarDiv.style.width = (project_ranked_votes[i][max_n_projects+2] / maximum_vote_count * 100) + '%';
-          progressBarDiv.textContent = numberWithDelimiter(project_ranked_votes[i][max_n_projects+2]);
+          progressBarDiv.style.width = (project_ranked_votes[i][total_index] / maximum_vote_count * 100) + '%';
+          progressBarDiv.textContent = numberWithDelimiter(project_ranked_votes[i][total_index]);
           progressDiv.appendChild(progressBarDiv);
         }
         td.appendChild(progressDiv);

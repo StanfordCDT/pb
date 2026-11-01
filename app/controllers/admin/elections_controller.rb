@@ -1299,6 +1299,10 @@ module Admin
     # rank any valid voter actually cast so no rankings are dropped.
     # vote_table is 'vote_rankings' (current) or 'vote_approvals' (legacy).
     def effective_ranking_k(election, vote_table)
+      # vote_table is interpolated into SQL below, so it must be one of the known
+      # literals (never user input).
+      raise ArgumentError, "unexpected vote_table: #{vote_table}" unless %w[vote_rankings vote_approvals].include?(vote_table)
+
       # When a project limit is set, voters cannot rank more than max_n_projects,
       # so keep the configured value (identical to the previous behaviour).
       return election.config[:ranking][:max_n_projects] if election.config[:ranking][:has_n_project_limit]

@@ -21,6 +21,11 @@ class Admin::RankingKTest < ActiveSupport::TestCase
     data[:project_ranked_votes]
   end
 
+  def run_ranking_legacy(election)
+    data, = stubbed_controller.send(:analytics_ranking_legacy, election)
+    data[:project_ranked_votes]
+  end
+
   def winner(matrix); matrix.first[0]; end
 
   def make_project(election, title, cost: 100)
@@ -63,6 +68,29 @@ class Admin::RankingKTest < ActiveSupport::TestCase
     rank_columns = p5.length - 3
     assert_equal 5, rank_columns, 'table must widen to 5 rank columns, not truncate to 4'
     assert p5.last > 0, "P5 was ranked 5th by every voter; its rank-5 votes must not be dropped (got #{p5.last})"
+  end
+
+  test 'legacy (vote_approvals) analytics also widens k when no limit is set' do
+    # analytics_ranking_legacy reads the old vote_approvals table; it shares
+    # effective_ranking_k, so the no-limit widening must hold there too.
+    yaml = <<~YAML
+      workflow: [ranking]
+      stop_accepting_votes: false
+      ranking:
+        has_n_project_limit: false
+    YAML
+    election = Election.create!(name: 'k76-legacy', slug: 'k76-legacy', budget: 100000, config_yaml: yaml)
+    projects = (1..5).map { |i| make_project(election, "P#{i}") }
+    3.times do |i|
+      voter = Voter.create!(election: election, authentication_method: 'test',
+                            authentication_id: "kl-#{i}", stage: 'ranking', void: false)
+      projects.each_with_index { |p, idx| VoteApproval.create!(voter: voter, project: p, rank: idx + 1, cost: 100) }
+    end
+
+    matrix = run_ranking_legacy(election)
+    p5 = matrix.find { |r| r[0] == 'P5' }
+    assert_equal 5, p5.length - 3, 'legacy table must widen to 5 rank columns, not truncate to 4'
+    assert p5.last > 0, "P5 ranked 5th; its rank-5 votes must not be dropped (got #{p5.last})"
   end
 
   test 'limited ranking election still honours the configured k' do

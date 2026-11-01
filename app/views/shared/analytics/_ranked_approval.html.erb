@@ -36,7 +36,8 @@ var project_ranked_votes = analytics_data.ranking.project_ranked_votes;
 // the data itself. The server may tabulate more than ranking.max_n_projects
 // ranks when no project limit is configured (see analytics_ranking), so reading
 // the config value here would truncate columns and misread the total column.
-// Each row is [title, cost, rank_1 .. rank_k, total], i.e. k + 3 entries.
+// Each row is [title, cost, rank_1 .. rank_k, total], i.e. k + 3 entries, and
+// the server builds every row with the same length, so row 0 gives k for all.
 var n_rank_cols = project_ranked_votes.length > 0 ? (project_ranked_votes[0].length - 3) : 0;
 var total_index = n_rank_cols + 2;
 
